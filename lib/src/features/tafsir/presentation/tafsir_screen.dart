@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get_it/get_it.dart';
 
 import '../../../shared/widgets/widgets.dart';
 import '../../../theme/app_colors.dart';
@@ -15,7 +16,7 @@ class TafsirScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => context.read<TafsirBloc>()..add(const LoadAllTafsirs()),
+      create: (_) => GetIt.I<TafsirBloc>()..add(const LoadAllTafsirs()),
       child: const _TafsirView(),
     );
   }
@@ -100,11 +101,7 @@ class _TafsirCard extends StatelessWidget {
                 color: isDark ? AppColors.darkPrimaryContainer : AppColors.lightPrimaryContainer,
                 borderRadius: BorderRadius.circular(AppSizes.radiusS.r),
               ),
-              child: Icon(
-                Icons.menu_book_outlined,
-                size: AppSizes.iconL.w,
-                color: accentColor,
-              ),
+              child: Icon(Icons.menu_book_outlined, size: AppSizes.iconL.w, color: accentColor),
             ),
             SizedBox(width: AppSizes.paddingM.w),
             Expanded(
@@ -126,11 +123,7 @@ class _TafsirCard extends StatelessWidget {
                 ],
               ),
             ),
-            Icon(
-              Icons.chevron_right_rounded,
-              size: AppSizes.iconL.w,
-              color: isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted,
-            ),
+            Icon(Icons.chevron_right_rounded, size: AppSizes.iconL.w, color: isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted),
           ],
         ),
       ),
@@ -143,17 +136,12 @@ class TafsirDetailScreen extends StatelessWidget {
   final int tafsirId;
   final int surahId;
 
-  const TafsirDetailScreen({
-    required this.tafsirId,
-    required this.surahId,
-    super.key,
-  });
+  const TafsirDetailScreen({required this.tafsirId, required this.surahId, super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => context.read<TafsirBloc>()
-        ..add(LoadTafsirForSurah(tafsirId: tafsirId, surahId: surahId)),
+      create: (_) => GetIt.I<TafsirBloc>()..add(LoadTafsirForSurah(tafsirId: tafsirId, surahId: surahId)),
       child: const _TafsirDetailView(),
     );
   }
@@ -179,22 +167,13 @@ class _TafsirDetailView extends StatelessWidget {
               );
             case TafsirStatus.loaded:
               if (state.currentEntries.isEmpty) {
-                return const EmptyStateWidget(
-                  title: 'No tafsir entries found',
-                  icon: Icons.menu_book_outlined,
-                );
+                return const EmptyStateWidget(title: 'No tafsir entries found', icon: Icons.menu_book_outlined);
               }
               return ListView.separated(
                 padding: EdgeInsets.all(AppSizes.paddingM.w),
                 itemCount: state.currentEntries.length,
-                separatorBuilder: (_, __) => Divider(
-                  height: AppSizes.paddingM.h,
-                  color: AppColors.lightBorderSubtle,
-                ),
-                itemBuilder: (context, index) {
-                  final entry = state.currentEntries[index];
-                  return _TafsirEntryCard(entry: entry);
-                },
+                separatorBuilder: (_, __) => Divider(height: AppSizes.paddingM.h, color: AppColors.lightBorderSubtle),
+                itemBuilder: (context, index) => _TafsirEntryCard(entry: state.currentEntries[index]),
               );
           }
         },
@@ -211,16 +190,13 @@ class _TafsirEntryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return Padding(
       padding: EdgeInsets.symmetric(vertical: AppSizes.paddingS.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Ayah reference
           AppChip(label: entry.ayahKey),
           SizedBox(height: AppSizes.paddingS.h),
-          // Arabic text
           if (entry.text.isNotEmpty)
             Text(
               entry.text,
