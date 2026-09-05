@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "770442072941",
+    "project_id": "al-furkan-app",
+    "storage_bucket": "al-furkan-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770442072941:android:d6de38f8a8211599fc8064",
+        "android_client_info": {
+          "package_name": "com.idrisium.alfurkan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770442072941-gkb264mdbvamave6hqkj9d3q2hv4d56s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCXggAwaJB-LHo-hlK_zLDYxSptOMPsog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770442072941-gkb264mdbvamave6hqkj9d3q2hv4d56s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770442072941:android:a497b4a6fc91271afc8064",
+        "android_client_info": {
+          "package_name": "com.idrisium.alfurkan.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "770442072941-gkb264mdbvamave6hqkj9d3q2hv4d56s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCXggAwaJB-LHo-hlK_zLDYxSptOMPsog"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "770442072941-gkb264mdbvamave6hqkj9d3q2hv4d56s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
