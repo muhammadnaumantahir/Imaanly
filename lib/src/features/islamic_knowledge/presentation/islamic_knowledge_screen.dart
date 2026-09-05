@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../tafsir/presentation/tafsir_bloc.dart';
@@ -193,15 +194,4 @@ class _IslamicKnowledgeScreenState extends State<IslamicKnowledgeScreen> {
       ),
     );
   }
-}
-
-class BlocProvider extends InheritedWidget {
-  const BlocProvider({super.key, required this.value, required super.child});
-  final TafsirBloc value;
-
-  static TafsirBloc of(BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<BlocProvider>()!.value;
-
-  @override
-  bool updateShouldNotify(BlocProvider oldWidget) => value != oldWidget.value;
 }
