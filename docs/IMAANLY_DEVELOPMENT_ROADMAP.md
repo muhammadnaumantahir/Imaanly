@@ -24,106 +24,49 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 ## Development phases
 
 ### Phase 1 — Foundation & Rebranding
-
-- Imaanly product identity and home experience.
-- Modern Islamic/premium/calm Material 3 styling.
-- Rounded cards, strong typography, dark-mode support and responsive layouts.
-- Core shortcuts: Salah, Quran, Dhikr and Qibla.
-- Keep inherited Quran/prayer functionality intact.
-
 **Status: Completed.**
 
 ### Phase 2 — Salah / Prayer Times
-
-- Preserve existing prayer calculation, adjustment, Iqamah and notification behavior.
-- Add a focused Prayer Timeline presentation.
-- Show current prayer, next prayer, live countdown and five daily prayers.
-- Show sunrise separately.
-- Correctly handle after-Isha → following-day Fajr.
-- Reuse the user's selected calculation method and Madhab in the timeline.
-- Keep a canonical prayer schedule domain model for future Home, notifications and widgets.
-
 **Status: Core work completed; final device validation remains.**
 
 ### Phase 3 — Athan / Prayer Notifications
-
-- Make prayer alerts easy to understand and configure.
-- Per-prayer enable/disable.
-- Optional lead time before prayer.
-- Reliable local scheduling.
-- Permission-aware onboarding.
-- Fajr-specific worship actions where appropriate.
-- Reschedule after location/calculation changes.
-- Avoid any cloud notification dependency.
-- Initialize notification channels before prayer scheduling.
-- Restore saved notification schedules without requiring the user to reopen settings.
-
 **Status: Core local notification engine and prayer alert UX are implemented; hardening and device validation remain.**
 
 ### Phase 4 — Qibla
-
-- Polished Qibla screen.
-- On-device compass/direction.
-- Calibration guidance.
-- Offline operation.
-- Pure domain calculations for normalization, shortest-turn guidance and great-circle distance to the Kaaba.
-- Unit coverage for the core Qibla math.
-
 **Status: Core work completed; final physical-device compass validation remains.**
 
 ### Phase 5 — Quran Polish
-
-- Keep the mature QCF/Uthmanic reader.
-- Improve discovery from Home.
-- Preserve audio, Tafsir, translations, bookmarks and Hifz functionality.
-- Improve Surah discovery with a responsive card-based index and lifecycle-safe search.
-
 **Status: Core polish completed; final device/UI validation remains.**
 
 ### Phase 6 — Dhikr
-
-- Simple offline Dhikr experience.
-- Categories and counters.
-- Daily progress stored locally.
-- Fast search and featured morning/evening access.
-- Tactile counting with haptic feedback.
-- Font-size personalization and share/image actions in the existing detail experience.
-- Persist per-category counter state for the current day.
-- Track daily goal completion locally and calculate a lightweight completion streak.
-- Surface today's progress in the Dhikr detail experience without introducing accounts or a backend.
-
 **Status: Core attractive Dhikr experience and local daily-progress persistence implemented; final device/UI validation remains.**
 
 ### Phase 7 — Islamic Knowledge
-
 - Curated offline-first educational content.
 - Clear source attribution.
 - Avoid presenting uncertain religious claims as authoritative.
-- Provide a calm learning hub that reuses existing bundled Quran/Tafsir, Dhikr and saved-collection capabilities.
-- Add local search across learning sections.
+- Calm learning hub reusing existing bundled Quran/Tafsir, Dhikr and saved-collection capabilities.
+- Local search across learning sections.
 
-**Status: Learning hub and domain catalog implemented; app-level navigation integration and final device validation remain.**
+**Status: Learning hub, domain catalog, local search and Home navigation integration implemented; final device validation remains.**
 
 ### Phase 8 — Worship Dashboard
-
 - Daily Salah progress.
 - Quran reading progress.
 - Dhikr progress.
 - Fasting and worship statistics as later features.
 - Keep the dashboard calm rather than crowded.
 
-**Status: Planned next after Islamic Knowledge integration.**
+**Status: Dashboard foundation implemented. It currently consumes existing local Quran reading statistics and persisted per-category Dhikr progress; Salah completion tracking remains intentionally pending because Prayer Times does not yet record actual completion.**
 
 ### Phase 9 — Islamic Calendar
-
 - Local Hijri/Gregorian date display.
 - Important Islamic dates using the existing calendar capability/dependency where practical.
 - No mandatory network dependency.
 
-**Status: Planned.**
+**Status: Local Hijri/Gregorian day foundation implemented using the existing `hijri` dependency; important-date browsing remains next.**
 
 ### Phase 10 — Home-screen Widgets
-
 - Next prayer widget.
 - Prayer countdown/status.
 - Ayah/Dhikr quick-glance widgets where platform support permits.
@@ -132,7 +75,6 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 **Status: Planned.**
 
 ### Phase 11 — Intelligent Local Notifications
-
 - Context-aware reminders based on local app state.
 - Gentle Quran/Dhikr reminders.
 - Avoid notification fatigue.
@@ -141,7 +83,6 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 **Status: Planned.**
 
 ### Phase 12 — Personalization
-
 - Theme and appearance preferences.
 - Home shortcuts.
 - Reading and Dhikr preferences.
@@ -150,7 +91,6 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 **Status: Planned.**
 
 ### Phase 13 — Profile & Settings Expansion
-
 - Clear local profile/preferences area.
 - Privacy-friendly controls.
 - Notification, calculation, appearance and content settings in one coherent experience.
@@ -171,13 +111,7 @@ They can be resumed after the core companion experience is integrated and valida
 
 Use the inherited BLoC + Clean Architecture structure and add small feature/domain services rather than putting calculation/business logic inside widgets.
 
-Prayer scheduling should have a stable domain representation that can be reused by:
-
-- Home
-- Prayer Times
-- Prayer Timeline
-- Notifications
-- Future widgets
+Prayer scheduling should have a stable domain representation that can be reused by Home, Prayer Times, Prayer Timeline, Notifications and future widgets.
 
 Qibla should keep its mathematical core independent from Flutter widgets so it remains deterministic, testable and offline-first.
 
@@ -186,6 +120,10 @@ The mature `TimeListOfPrayers` remains the source of truth for advanced prayer s
 The existing Azkar data remains bundled/local. The new Dhikr presentation layer should build on it rather than introduce a remote content service.
 
 The Islamic Knowledge hub should compose existing local content instead of duplicating religious source material. New educational content must have an identifiable source before it is presented as authoritative.
+
+The Worship Dashboard should aggregate existing local metrics only. Do not invent prayer completion from scheduled prayer times; add explicit completion tracking when the Salah UX supports it.
+
+The Islamic Calendar should use the existing local Hijri dependency first and keep any moon-sighting adjustment clearly distinguishable from calculated dates.
 
 ## Free-cost rule
 
