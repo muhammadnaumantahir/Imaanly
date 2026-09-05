@@ -4,6 +4,7 @@ import "package:adhan_dart/adhan_dart.dart" hide Prayer;
 import "package:al_furkan/src/screen/location_handler/cubit/location_data_qibla_data_cubit.dart";
 import "package:al_furkan/src/screen/location_handler/location_aquire.dart";
 import "package:al_furkan/src/screen/location_handler/model/location_data_qibla_data_state.dart";
+import "package:al_furkan/src/screen/prayer_time/models/calculation_method_enum.dart";
 import "package:al_furkan/src/screen/prayer_time/models/prayer_enum.dart";
 import "package:al_furkan/src/screen/prayer_time/prayer_time_functions/prayer_time_helper.dart";
 import "package:al_furkan/src/utils/format_time_of_day.dart";
@@ -25,14 +26,6 @@ class PrayerTimelinePage extends StatefulWidget {
 }
 
 class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
-  static const _prayers = <Prayer>[
-    Prayer.fajr,
-    Prayer.dhuhr,
-    Prayer.asr,
-    Prayer.maghrib,
-    Prayer.isha,
-  ];
-
   DateTime _now = DateTime.now();
   Timer? _ticker;
 
@@ -68,8 +61,11 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
   }
 
   PrayerTimes _times(LocationQiblaPrayerDataState state, DateTime date) {
-    final parameters = CalculationMethodParameters.karachi()
-      ..madhab = state.madhab ?? Madhab.hanafi;
+    final method =
+        state.calculationMethod?.method ?? CalculationMethod.egyptian;
+    final parameters = getCalculationParameters(fromLibraryEnum(method));
+    parameters.madhab = state.madhab ?? Madhab.shafi;
+
     return PrayerTimes(
       coordinates: Coordinates(state.latLon!.latitude, state.latLon!.longitude),
       date: date,
@@ -92,16 +88,14 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
       body: BlocBuilder<LocationQiblaPrayerDataCubit, LocationQiblaPrayerDataState>(
         builder: (context, state) {
           if (state.latLon == null) return const LocationAcquire();
-          final times = _times(state, _now);
-          final schedule = const PrayerScheduleCalculator().calculate(times);
+          final today = _times(state, _now);
+          final tomorrow = _times(state, _now.add(const Duration(days: 1)));
           final calculator = const PrayerScheduleCalculator();
+          final schedule = calculator.calculate(today);
           final current = calculator.current(schedule, _now);
           final next = calculator.next(schedule, _now);
-          final nextEntry = next ?? PrayerScheduleEntry(
-            prayer: Prayer.fajr,
-            time: _times(state, _now.add(const Duration(days: 1))).fajrAfter.toLocal(),
-          );
-          final sunrise = calculator.sunrise(times);
+          final nextEntry = next ?? calculator.nextDayFajr(tomorrow);
+          final sunrise = calculator.sunrise(today);
 
           return ListView(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 40),
