@@ -78,7 +78,6 @@
                     android:name="android.intent.action.MEDIA_BUTTON"/>
             </intent-filter>
         </receiver>
-        <!-- for just audio background -->
         <!-- flutter -->
         <meta-data
             android:name="flutterEmbedding"
@@ -119,10 +118,21 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/prayer_widget_provider" />
         </receiver>
-        <!-- alarm -->
-        <service
-            android:name="com.gdelataillade.alarm.services.NotificationOnKillService"/>
-            
+
+        <!-- Awesome Notifications: keep scheduled notifications alive across reboot. -->
+        <receiver
+            android:name="me.carda.awesome_notifications.core.broadcasters.receivers.ScheduledNotificationReceiver"
+            android:exported="true" />
+        <receiver
+            android:name="me.carda.awesome_notifications.core.broadcasters.receivers.RefreshSchedulesReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Existing flutter_local_notifications receivers kept for legacy scheduling paths. -->
         <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" />
         <receiver android:exported="false" android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
             <intent-filter>
