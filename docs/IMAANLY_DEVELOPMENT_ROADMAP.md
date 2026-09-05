@@ -99,6 +99,10 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 - Curated offline-first educational content.
 - Clear source attribution.
 - Avoid presenting uncertain religious claims as authoritative.
+- Provide a calm learning hub that reuses existing bundled Quran/Tafsir, Dhikr and saved-collection capabilities.
+- Add local search across learning sections.
+
+**Status: Learning hub and domain catalog implemented; app-level navigation integration and final device validation remain.**
 
 ### Phase 8 — Worship Dashboard
 
@@ -108,16 +112,60 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 - Fasting and worship statistics as later features.
 - Keep the dashboard calm rather than crowded.
 
-### Later phases
+**Status: Planned next after Islamic Knowledge integration.**
+
+### Phase 9 — Islamic Calendar
+
+- Local Hijri/Gregorian date display.
+- Important Islamic dates using the existing calendar capability/dependency where practical.
+- No mandatory network dependency.
+
+**Status: Planned.**
+
+### Phase 10 — Home-screen Widgets
+
+- Next prayer widget.
+- Prayer countdown/status.
+- Ayah/Dhikr quick-glance widgets where platform support permits.
+- Reuse the existing local widget update infrastructure.
+
+**Status: Planned.**
+
+### Phase 11 — Intelligent Local Notifications
+
+- Context-aware reminders based on local app state.
+- Gentle Quran/Dhikr reminders.
+- Avoid notification fatigue.
+- Keep all worship notifications local and configurable.
+
+**Status: Planned.**
+
+### Phase 12 — Personalization
+
+- Theme and appearance preferences.
+- Home shortcuts.
+- Reading and Dhikr preferences.
+- Local-only personalization with no account requirement.
+
+**Status: Planned.**
+
+### Phase 13 — Profile & Settings Expansion
+
+- Clear local profile/preferences area.
+- Privacy-friendly controls.
+- Notification, calculation, appearance and content settings in one coherent experience.
+
+**Status: Planned.**
+
+### Deferred by product decision
+
+The following are intentionally **skipped for now**, not removed from the product plan:
 
 - Hifz improvements
-- Islamic calendar
+- Islamic Places
 - Fasting tools
-- Islamic places
-- Home-screen widgets
-- Intelligent local notifications
-- Personalization
-- Optional profile/settings expansion
+
+They can be resumed after the core companion experience is integrated and validated.
 
 ## Architecture direction
 
@@ -136,6 +184,8 @@ Qibla should keep its mathematical core independent from Flutter widgets so it r
 The mature `TimeListOfPrayers` remains the source of truth for advanced prayer settings and existing notification/Iqamah/adjustment flows until those responsibilities are deliberately extracted into shared services.
 
 The existing Azkar data remains bundled/local. The new Dhikr presentation layer should build on it rather than introduce a remote content service.
+
+The Islamic Knowledge hub should compose existing local content instead of duplicating religious source material. New educational content must have an identifiable source before it is presented as authoritative.
 
 ## Free-cost rule
 
