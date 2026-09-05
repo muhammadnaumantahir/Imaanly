@@ -65,6 +65,10 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 - On-device compass/direction.
 - Calibration guidance.
 - Offline operation.
+- Pure domain calculations for normalization, shortest-turn guidance and great-circle distance to the Kaaba.
+- Unit coverage for the core Qibla math.
+
+**Status: Core work completed; final physical-device compass validation remains.**
 
 ### Phase 5 — Quran Polish
 
@@ -114,6 +118,8 @@ Prayer scheduling should have a stable domain representation that can be reused 
 - Prayer Timeline
 - Notifications
 - Future widgets
+
+Qibla should keep its mathematical core independent from Flutter widgets so it remains deterministic, testable and offline-first.
 
 The mature `TimeListOfPrayers` remains the source of truth for advanced prayer settings and existing notification/Iqamah/adjustment flows until those responsibilities are deliberately extracted into shared services.
 
