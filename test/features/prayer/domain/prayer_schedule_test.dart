@@ -69,6 +69,26 @@ void main() {
 
     expect(next, isNull);
   });
+
+  test('uses the following day Fajr after Isha', () {
+    final coordinates = Coordinates(31.5204, 74.3587);
+    final date = DateTime(2026, 9, 5);
+    final parameters = CalculationMethodParameters.karachi()
+      ..madhab = Madhab.hanafi;
+    final today = PrayerTimes(coordinates, date, parameters);
+    final tomorrow = PrayerTimes(
+      coordinates,
+      date.add(const Duration(days: 1)),
+      parameters,
+    );
+
+    final nextFajr = const PrayerScheduleCalculator().nextDayFajr(tomorrow);
+
+    expect(nextFajr.prayer, Prayer.fajr);
+    expect(nextFajr.time, tomorrow.fajrAfter.toLocal());
+    expect(nextFajr.time.day, 6);
+    expect(today.isha.isBefore(nextFajr.time), isTrue);
+  });
 }
 
 List<PrayerScheduleEntry> _sampleSchedule() {
