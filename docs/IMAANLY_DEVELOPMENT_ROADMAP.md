@@ -75,6 +75,10 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 - Keep the mature QCF/Uthmanic reader.
 - Improve discovery from Home.
 - Preserve audio, Tafsir, translations, bookmarks and Hifz functionality.
+- Polish the Surah index with clearer cards, responsive text handling and stronger light/dark surfaces.
+- Dispose Quran index controllers/timers correctly and guard asynchronous metadata loading after widget disposal.
+
+**Status: Core polish completed; final device/UI validation remains.**
 
 ### Phase 6 — Dhikr
 
