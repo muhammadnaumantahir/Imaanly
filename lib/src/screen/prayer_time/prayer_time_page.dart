@@ -7,6 +7,11 @@ import "package:al_furkan/src/screen/mushaf/widgets/wahy_side_drawer.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 
+/// Imaanly's daily Salah schedule.
+///
+/// The existing prayer engine remains the source of truth for calculation,
+/// adjustments, notifications and related prayer features. This page only
+/// provides the Imaanly presentation shell around that stable functionality.
 class PrayerTimePage extends StatefulWidget {
   const PrayerTimePage({super.key});
 
@@ -36,18 +41,31 @@ class _PrayerTimePageState extends State<PrayerTimePage> {
         surfaceTintColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: Text(
-          "مواقيت الصلاة",
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: 18,
-            color: cs.onSurface,
-          ),
+        title: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              "Prayer Times",
+              style: TextStyle(
+                fontWeight: FontWeight.w800,
+                fontSize: 18,
+                color: cs.onSurface,
+              ),
+            ),
+            Text(
+              "مواقيت الصلاة",
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 11,
+                color: cs.onSurfaceVariant,
+              ),
+            ),
+          ],
         ),
         leading: IconButton(
           onPressed: () => _scaffoldKey.currentState?.openDrawer(),
           icon: Icon(Icons.menu_rounded, color: cs.primary),
-          tooltip: "القائمة الرئيسية",
+          tooltip: "Main menu",
         ),
       ),
       body: BlocBuilder<
@@ -57,9 +75,8 @@ class _PrayerTimePageState extends State<PrayerTimePage> {
         builder: (context, state) {
           if (state.latLon == null) {
             return const LocationAcquire();
-          } else {
-            return const TimeListOfPrayers();
           }
+          return const TimeListOfPrayers();
         },
       ),
     );
