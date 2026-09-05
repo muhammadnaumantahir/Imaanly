@@ -34,7 +34,7 @@
     <application
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-        android:label="الفُرقان"
+        android:label="Imaanly"
         android:enableOnBackInvokedCallback="true"
         android:usesCleartextTraffic="false"
         android:allowBackup="false"
