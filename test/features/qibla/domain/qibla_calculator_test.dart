@@ -9,8 +9,8 @@ void main() {
         74.3587,
       );
 
-      expect(distance, greaterThan(900));
-      expect(distance, lessThan(1_100));
+      expect(distance, greaterThan(3_400));
+      expect(distance, lessThan(3_800));
     });
 
     test('normalizes compass headings to the 0-360 range', () {
