@@ -33,4 +33,50 @@ void main() {
     expect(sunrise.prayer, Prayer.sunrise);
     expect(sunrise.time, prayerTimes.sunrise.toLocal());
   });
+
+  test('identifies the current prayer from the canonical daily schedule', () {
+    final entries = _sampleSchedule();
+    final now = DateTime(2026, 9, 5, 13, 0);
+
+    final current = const PrayerScheduleCalculator().current(entries, now);
+
+    expect(current?.prayer, Prayer.dhuhr);
+  });
+
+  test('identifies the next prayer from the canonical daily schedule', () {
+    final entries = _sampleSchedule();
+    final now = DateTime(2026, 9, 5, 13, 0);
+
+    final next = const PrayerScheduleCalculator().next(entries, now);
+
+    expect(next?.prayer, Prayer.asr);
+  });
+
+  test('returns no current prayer before Fajr', () {
+    final entries = _sampleSchedule();
+    final now = DateTime(2026, 9, 5, 4, 0);
+
+    final current = const PrayerScheduleCalculator().current(entries, now);
+
+    expect(current, isNull);
+  });
+
+  test('returns no next prayer after Isha', () {
+    final entries = _sampleSchedule();
+    final now = DateTime(2026, 9, 5, 21, 30);
+
+    final next = const PrayerScheduleCalculator().next(entries, now);
+
+    expect(next, isNull);
+  });
+}
+
+List<PrayerScheduleEntry> _sampleSchedule() {
+  return [
+    PrayerScheduleEntry(prayer: Prayer.fajr, time: DateTime(2026, 9, 5, 5)),
+    PrayerScheduleEntry(prayer: Prayer.dhuhr, time: DateTime(2026, 9, 5, 12)),
+    PrayerScheduleEntry(prayer: Prayer.asr, time: DateTime(2026, 9, 5, 16)),
+    PrayerScheduleEntry(prayer: Prayer.maghrib, time: DateTime(2026, 9, 5, 18, 30)),
+    PrayerScheduleEntry(prayer: Prayer.isha, time: DateTime(2026, 9, 5, 20)),
+  ];
 }
