@@ -88,8 +88,11 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 - Fast search and featured morning/evening access.
 - Tactile counting with haptic feedback.
 - Font-size personalization and share/image actions in the existing detail experience.
+- Persist per-category counter state for the current day.
+- Track daily goal completion locally and calculate a lightweight completion streak.
+- Surface today's progress in the Dhikr detail experience without introducing accounts or a backend.
 
-**Status: Core attractive Dhikr experience implemented; daily-progress persistence and final device validation remain.**
+**Status: Core attractive Dhikr experience and local daily-progress persistence implemented; final device/UI validation remains.**
 
 ### Phase 7 — Islamic Knowledge
 
