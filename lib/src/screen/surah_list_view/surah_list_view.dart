@@ -10,8 +10,6 @@ import "package:al_furkan/src/screen/surah_list_view/model/surah_info_model.dart
 import "package:al_furkan/src/theme/values/values.dart";
 import "package:al_furkan/src/widget/components/get_surah_index_widget.dart";
 
-
-
 import "package:fluentui_system_icons/fluentui_system_icons.dart";
 import "package:flutter/material.dart";
 import "package:al_furkan/src/core/navigation/wahy_page_route.dart";
@@ -36,17 +34,26 @@ class SurahListView extends StatefulWidget {
 }
 
 class _SurahListViewState extends State<SurahListView> {
-  TextEditingController searchController = TextEditingController();
-
-  ScrollController scrollController = ScrollController();
+  final TextEditingController searchController = TextEditingController();
+  final ScrollController scrollController = ScrollController();
   Timer? _debounce;
 
   @override
   void initState() {
-    if (surahNameLocalization.isEmpty || surahMeaningLocalization.isEmpty) {
-      loadMetaSurah().then((value) => setState(() {}));
-    }
     super.initState();
+    if (surahNameLocalization.isEmpty || surahMeaningLocalization.isEmpty) {
+      loadMetaSurah().then((value) {
+        if (mounted) setState(() {});
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _debounce?.cancel();
+    searchController.dispose();
+    scrollController.dispose();
+    super.dispose();
   }
 
   @override
@@ -55,6 +62,13 @@ class _SurahListViewState extends State<SurahListView> {
     final Brightness brightness = Theme.of(context).brightness;
     final Color textColor =
         brightness == Brightness.light ? Colors.black : Colors.white;
+    final Color secondaryTextColor =
+        brightness == Brightness.light ? Colors.grey.shade600 : Colors.grey.shade400;
+    final Color cardColor = brightness == Brightness.dark
+        ? const Color(0xFF1E1E1E)
+        : const Color(0xFFF8F9FA);
+    final Color borderColor =
+        context.read<ThemeCubit>().state.primaryShade200.withValues(alpha: 0.65);
     final List<SurahInfoModel> filteredSurah = getFilteredSurah(
       context,
       searchController.text.trim(),
@@ -63,198 +77,189 @@ class _SurahListViewState extends State<SurahListView> {
     return (surahNameLocalization.isEmpty || surahMeaningLocalization.isEmpty)
         ? const Center(child: CircularProgressIndicator())
         : Scrollbar(
-          controller: scrollController,
-          radius: Radius.circular(roundedRadius),
-          thickness: 13,
-          interactive: true,
-
-          child: ListView.builder(
-            padding: EdgeInsets.only(
-              bottom: 120,
-              top: MediaQuery.of(context).padding.top + 3 + 40,
-            ),
-            itemCount: filteredSurah.length + 1,
             controller: scrollController,
-            itemBuilder: (context, index) {
-              if (index == 0) {
-                return Padding(
-                  padding: const EdgeInsets.only(
-                    top: 5,
-                    bottom: 5,
-                    left: 5,
-                    right: 5,
-                  ),
-                  child: SearchBar(
-                    elevation: WidgetStateProperty.all<double?>(0),
-                    hintText: l10n.searchForASurah,
-                    controller: searchController,
-                    backgroundColor: WidgetStateProperty.all<Color?>(
-                      brightness == Brightness.dark
-                          ? const Color(0xFF1E1E1E)
-                          : const Color(0xFFF3F4F6),
-                    ),
-                    leading: const Icon(FluentIcons.search_24_filled),
-                    onChanged: (value) {
-                      _debounce?.cancel();
-                      _debounce = Timer(
-                        const Duration(milliseconds: 300),
-                        () {
-                          if (mounted) setState(() {});
-                        },
-                      );
-                    },
-                  ),
-                );
-              }
-              final surahIndex = index - 1;
-
-              return Padding(
-                padding: const EdgeInsets.only(top: 5, right: 5, left: 5),
-                child: TextButton(
-                  style: TextButton.styleFrom(
-                    padding: EdgeInsets.zero,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(roundedRadius),
-                    ),
-                    side: BorderSide(
-                      color: context.read<ThemeCubit>().state.primaryShade200,
-                    ),
-                  ),
-                  onPressed: () {
-                    final onOpen = widget.onOpenLocation;
-                    if (onOpen != null) {
-                      onOpen(
-                        qcf.getPageNumber(filteredSurah[surahIndex].id, 1),
-                        "${filteredSurah[surahIndex].id}:1",
-                      );
-                      return;
-                    }
-                    Navigator.push(
-                      context,
-                      WahyPageRoute(
-                        page: QuranScriptView(
-                              startKey: "${filteredSurah[surahIndex].id}:1",
-                              endKey:
-                                  "${filteredSurah[surahIndex].id}:${filteredSurah[surahIndex].versesCount}",
-                            ),
+            radius: Radius.circular(roundedRadius),
+            thickness: 8,
+            interactive: true,
+            child: ListView.builder(
+              padding: EdgeInsets.only(
+                bottom: 120,
+                top: MediaQuery.of(context).padding.top + 3 + 40,
+              ),
+              itemCount: filteredSurah.length + 1,
+              controller: scrollController,
+              itemBuilder: (context, index) {
+                if (index == 0) {
+                  return Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 5, 8, 8),
+                    child: SearchBar(
+                      elevation: WidgetStateProperty.all<double?>(0),
+                      hintText: l10n.searchForASurah,
+                      controller: searchController,
+                      backgroundColor: WidgetStateProperty.all<Color?>(cardColor),
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          side: BorderSide(color: borderColor),
+                        ),
                       ),
-                    );
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.only(
-                      left: 10,
-                      right: 10,
-                      top: 3,
-                      bottom: 3,
+                      leading: const Icon(FluentIcons.search_24_filled),
+                      padding: WidgetStateProperty.all(
+                        const EdgeInsets.symmetric(horizontal: 16),
+                      ),
+                      onChanged: (value) {
+                        _debounce?.cancel();
+                        _debounce = Timer(
+                          const Duration(milliseconds: 250),
+                          () {
+                            if (mounted) setState(() {});
+                          },
+                        );
+                      },
                     ),
-                    height: 60,
-                    child: Row(
-                      children: [
-                        getIndexNumberWidget(
+                  );
+                }
+
+                final surahIndex = index - 1;
+                final surah = filteredSurah[surahIndex];
+                final isMakkah = surah.revelationPlace == "makkah";
+                final hasSajda = qcf.isSajdaVerse(surah.id, 1) ||
+                    qcf.allSajdaVerses.any((s) => s.surah == surah.id);
+
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(8, 4, 8, 4),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(16),
+                      onTap: () {
+                        final onOpen = widget.onOpenLocation;
+                        if (onOpen != null) {
+                          onOpen(qcf.getPageNumber(surah.id, 1), "${surah.id}:1");
+                          return;
+                        }
+                        Navigator.push(
                           context,
-                          filteredSurah[surahIndex].id,
-                          textColor: textColor,
-                          height: 40,
-                          width: 40,
-                        ),
-                        const Gap(15),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                SizedBox(
-                                  height: 20,
-                                  width: 20,
-                                  child: Image.asset(
-                                    filteredSurah[surahIndex].revelationPlace ==
-                                            "makkah"
-                                        ? "assets/img/kaaba_10171102.png"
-                                        : "assets/img/masjid-al-nabawi_16183907.png",
-                                  ),
-                                ),
-                                const Gap(3),
-                                Text(
-                                  getSurahName(
-                                    context,
-                                    filteredSurah[surahIndex].id,
-                                  ),
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: textColor,
-                                  ),
-                                ),
-                              ],
+                          WahyPageRoute(
+                            page: QuranScriptView(
+                              startKey: "${surah.id}:1",
+                              endKey: "${surah.id}:${surah.versesCount}",
                             ),
-                            const Gap(5),
-                            Text(
-                              getSurahMeaning(context, filteredSurah[surahIndex].id),
-                              style: TextStyle(
-                                color:
-                                    brightness == Brightness.light
-                                        ? Colors.grey.shade600
-                                        : Colors.grey.shade400,
+                          ),
+                        );
+                      },
+                      child: Ink(
+                        decoration: BoxDecoration(
+                          color: cardColor,
+                          borderRadius: BorderRadius.circular(16),
+                          border: Border.all(color: borderColor),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 9),
+                          child: Row(
+                            children: [
+                              getIndexNumberWidget(
+                                context,
+                                surah.id,
+                                textColor: textColor,
+                                height: 42,
+                                width: 42,
                               ),
-                            ),
-                          ],
-                        ),
-                        const Spacer(),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(
-                                  "surah${filteredSurah[surahIndex].id.toString().padLeft(3, '0')}",
-                                  style: TextStyle(
-                                    fontSize: 18,
-                                    color: textColor,
-                                    fontFamily: "surah-name-v1",
-                                  ),
-                                ),
-                                if (qcf.isSajdaVerse(filteredSurah[surahIndex].id, 1) ||
-                                    qcf.allSajdaVerses.any((s) => s.surah == filteredSurah[surahIndex].id))
-                                  Padding(
-                                    padding: const EdgeInsets.only(right: 4),
-                                    child: Text(
-                                      '۩',
+                              const Gap(12),
+                              Expanded(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        SizedBox(
+                                          height: 18,
+                                          width: 18,
+                                          child: Image.asset(
+                                            isMakkah
+                                                ? "assets/img/kaaba_10171102.png"
+                                                : "assets/img/masjid-al-nabawi_16183907.png",
+                                          ),
+                                        ),
+                                        const Gap(5),
+                                        Flexible(
+                                          child: Text(
+                                            getSurahName(context, surah.id),
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700,
+                                              color: textColor,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    const Gap(4),
+                                    Text(
+                                      getSurahMeaning(context, surah.id),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
-                                        fontSize: 14,
-                                        color: context.read<ThemeCubit>().state.primary,
+                                        fontSize: 12,
+                                        color: secondaryTextColor,
                                       ),
                                     ),
-                                  ),
-                              ],
-                            ),
-                            Text(
-                              l10n.ayahsCount(
-                                localizedNumber(
-                                  context,
-                                  filteredSurah[surahIndex].versesCount,
+                                  ],
                                 ),
                               ),
-                              style: TextStyle(
-                                color:
-                                    brightness == Brightness.light
-                                        ? Colors.grey.shade600
-                                        : Colors.grey.shade400,
+                              const Gap(8),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        "surah${surah.id.toString().padLeft(3, '0')}",
+                                        style: TextStyle(
+                                          fontSize: 18,
+                                          color: textColor,
+                                          fontFamily: "surah-name-v1",
+                                        ),
+                                      ),
+                                      if (hasSajda)
+                                        Padding(
+                                          padding: const EdgeInsets.only(right: 4),
+                                          child: Text(
+                                            '۩',
+                                            style: TextStyle(
+                                              fontSize: 14,
+                                              color: context.read<ThemeCubit>().state.primary,
+                                            ),
+                                          ),
+                                        ),
+                                    ],
+                                  ),
+                                  const Gap(2),
+                                  Text(
+                                    l10n.ayahsCount(
+                                      localizedNumber(context, surah.versesCount),
+                                    ),
+                                    style: TextStyle(
+                                      fontSize: 11,
+                                      color: secondaryTextColor,
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ],
+                      ),
                     ),
                   ),
-                ),
-              );
-            },
-          ),
-        );
+                );
+              },
+            ),
+          );
   }
-
-
 }
