@@ -2,7 +2,7 @@ import 'package:al_furkan/src/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // ── Light Theme — Warm Beige + Sage Green ──
+  // Imaanly Phase 1: calm, rounded Material 3 foundation.
   static ThemeData lightTheme() {
     final base = ThemeData(
       useMaterial3: true,
@@ -29,38 +29,32 @@ class AppTheme {
         outlineVariant: AppColors.lightOutlineVariant,
       ),
       scaffoldBackgroundColor: AppColors.lightBackground,
-      dividerTheme: const DividerThemeData(
-        color: AppColors.lightBorder,
-      ),
+      dividerTheme: const DividerThemeData(color: AppColors.lightBorder),
       cardTheme: CardThemeData(
         color: AppColors.lightCard,
         surfaceTintColor: Colors.transparent,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(16),
           side: const BorderSide(color: AppColors.lightBorder, width: 0.5),
         ),
       ),
       dialogTheme: DialogThemeData(
         backgroundColor: AppColors.lightCard,
         surfaceTintColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       ),
-      bottomSheetTheme: BottomSheetThemeData(
+      bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: AppColors.lightCard,
         surfaceTintColor: Colors.transparent,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
         ),
       ),
       popupMenuTheme: PopupMenuThemeData(
         color: AppColors.lightCard,
         surfaceTintColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         textStyle: const TextStyle(color: AppColors.lightTextMain),
       ),
       appBarTheme: const AppBarTheme(
@@ -73,53 +67,44 @@ class AppTheme {
         filled: true,
         fillColor: AppColors.lightSurface,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.lightBorder),
+          borderRadius: BorderRadius.all(Radius.circular(14)),
+          borderSide: BorderSide(color: AppColors.lightBorder),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.lightBorder),
+          borderRadius: BorderRadius.all(Radius.circular(14)),
+          borderSide: BorderSide(color: AppColors.lightBorder),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.lightPrimary, width: 1.5),
+          borderRadius: BorderRadius.all(Radius.circular(14)),
+          borderSide: BorderSide(color: AppColors.lightPrimary, width: 1.5),
         ),
       ),
       chipTheme: ChipThemeData(
         backgroundColor: AppColors.lightPrimaryLight,
         selectedColor: AppColors.lightPrimaryContainer,
         labelStyle: const TextStyle(color: AppColors.lightPrimary, fontWeight: FontWeight.w600),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         side: BorderSide.none,
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: AppColors.lightPrimary,
         foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
       ),
       textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-          foregroundColor: AppColors.lightPrimary,
-        ),
+        style: TextButton.styleFrom(foregroundColor: AppColors.lightPrimary),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.lightPrimary,
           foregroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         ),
       ),
     );
     return base;
   }
 
-  // ── Dark Theme — Deep Slate + Lighter Sage ──
   static ThemeData darkTheme() {
     final base = ThemeData(
       useMaterial3: true,
@@ -146,38 +131,32 @@ class AppTheme {
         outlineVariant: AppColors.darkOutlineVariant,
       ),
       scaffoldBackgroundColor: AppColors.darkBackground,
-      dividerTheme: const DividerThemeData(
-        color: AppColors.darkBorder,
-      ),
+      dividerTheme: const DividerThemeData(color: AppColors.darkBorder),
       cardTheme: CardThemeData(
         color: AppColors.darkCard,
         surfaceTintColor: Colors.transparent,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(16),
           side: BorderSide(color: AppColors.darkBorder.withValues(alpha: 0.5), width: 0.5),
         ),
       ),
       dialogTheme: DialogThemeData(
         backgroundColor: AppColors.darkCard,
         surfaceTintColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       ),
-      bottomSheetTheme: BottomSheetThemeData(
+      bottomSheetTheme: const BottomSheetThemeData(
         backgroundColor: AppColors.darkCard,
         surfaceTintColor: Colors.transparent,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
         ),
       ),
       popupMenuTheme: PopupMenuThemeData(
         color: AppColors.darkCard,
         surfaceTintColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         textStyle: const TextStyle(color: AppColors.darkTextMain),
       ),
       appBarTheme: const AppBarTheme(
@@ -189,47 +168,39 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.darkSurface,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.darkBorder),
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(14)),
+          borderSide: BorderSide(color: AppColors.darkBorder),
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.darkBorder),
+        enabledBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(14)),
+          borderSide: BorderSide(color: AppColors.darkBorder),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: AppColors.darkPrimary, width: 1.5),
+        focusedBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(14)),
+          borderSide: BorderSide(color: AppColors.darkPrimary, width: 1.5),
         ),
       ),
       chipTheme: ChipThemeData(
         backgroundColor: AppColors.darkPrimaryLight,
         selectedColor: AppColors.darkPrimaryContainer,
         labelStyle: const TextStyle(color: AppColors.darkPrimary, fontWeight: FontWeight.w600),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         side: BorderSide.none,
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         backgroundColor: AppColors.darkPrimary,
         foregroundColor: AppColors.darkBackground,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
       ),
       textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-          foregroundColor: AppColors.darkPrimary,
-        ),
+        style: TextButton.styleFrom(foregroundColor: AppColors.darkPrimary),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.darkPrimary,
           foregroundColor: AppColors.darkBackground,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
         ),
       ),
     );
