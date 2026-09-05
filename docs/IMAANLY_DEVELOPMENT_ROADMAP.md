@@ -19,6 +19,7 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 - If monetization is introduced later, ads must never interrupt Quran reading, Salah/Athan, Dhikr, Qibla, or other worship actions.
 - Preserve mature inherited functionality instead of replacing working subsystems unnecessarily.
 - Prefer existing open-source Flutter packages and local storage over paid infrastructure.
+- Worship interactions should feel calm, tactile and premium rather than gamified or distracting.
 
 ## Development phases
 
@@ -75,8 +76,7 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 - Keep the mature QCF/Uthmanic reader.
 - Improve discovery from Home.
 - Preserve audio, Tafsir, translations, bookmarks and Hifz functionality.
-- Polish the Surah index with clearer cards, responsive text handling and stronger light/dark surfaces.
-- Dispose Quran index controllers/timers correctly and guard asynchronous metadata loading after widget disposal.
+- Improve Surah discovery with a responsive card-based index and lifecycle-safe search.
 
 **Status: Core polish completed; final device/UI validation remains.**
 
@@ -85,6 +85,11 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 - Simple offline Dhikr experience.
 - Categories and counters.
 - Daily progress stored locally.
+- Fast search and featured morning/evening access.
+- Tactile counting with haptic feedback.
+- Font-size personalization and share/image actions in the existing detail experience.
+
+**Status: Core attractive Dhikr experience implemented; daily-progress persistence and final device validation remain.**
 
 ### Phase 7 — Islamic Knowledge
 
@@ -126,6 +131,8 @@ Prayer scheduling should have a stable domain representation that can be reused 
 Qibla should keep its mathematical core independent from Flutter widgets so it remains deterministic, testable and offline-first.
 
 The mature `TimeListOfPrayers` remains the source of truth for advanced prayer settings and existing notification/Iqamah/adjustment flows until those responsibilities are deliberately extracted into shared services.
+
+The existing Azkar data remains bundled/local. The new Dhikr presentation layer should build on it rather than introduce a remote content service.
 
 ## Free-cost rule
 
