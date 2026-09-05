@@ -1,7 +1,8 @@
-import "package:adhan_dart/adhan_dart.dart";
+import 'package:adhan_dart/adhan_dart.dart';
+import 'package:al_furkan/src/features/qibla/domain/qibla_calculator.dart';
 
-const double kaabaLatDegrees = 21.422487;
-const double kaabaLonDegrees = 39.826206;
+const double kaabaLatDegrees = QiblaCalculator.kaabaLatitude;
+const double kaabaLonDegrees = QiblaCalculator.kaabaLongitude;
 
 enum QiblaAlignment { aligned, close, adjusting }
 
@@ -30,14 +31,10 @@ class QiblaGuidance {
   bool get isClose => alignment != QiblaAlignment.adjusting;
 }
 
-double normalizeDegrees(double value) {
-  return (value % 360 + 360) % 360;
-}
+double normalizeDegrees(double value) => QiblaCalculator.normalizeDegrees(value);
 
-double shortestSignedAngleDifference(double fromDegrees, double toDegrees) {
-  final normalized = normalizeDegrees(toDegrees - fromDegrees);
-  return normalized > 180 ? normalized - 360 : normalized;
-}
+double shortestSignedAngleDifference(double fromDegrees, double toDegrees) =>
+    QiblaCalculator.shortestSignedDifference(fromDegrees, toDegrees);
 
 double smoothHeading({
   required double nextDegrees,
