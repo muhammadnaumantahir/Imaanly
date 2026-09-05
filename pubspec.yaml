@@ -1,6 +1,6 @@
 name: al_furkan
-description: "Al-Furkan — A production-grade, modular, open-source Quran platform and developer framework."
-version: 2.0.0+1
+description: "Imaanly — a balanced Islamic companion for Salah, Quran, Dhikr, Qibla and daily worship."
+version: 2.1.0+2
 publish_to: none
 
 environment:
@@ -123,9 +123,9 @@ dependency_overrides:
     path: packages/flutter_compass_v2_patch
 
 msix_config:
-  display_name: "Quran's Tafsir, Audio and Prayer"
-  publisher_display_name: "IDRISIUM Corp"
-  identity_name: com.idrisium.alquran
+  display_name: "Imaanly — Islamic Companion"
+  publisher_display_name: "Imaanly"
+  identity_name: com.imaanly.app
   publisher: "CN=B9F6AC9B-F4A4-426C-9C75-82E3872E24AB"
   msix_version: 3.8.0.0
   logo_path: "assets/img/Quran_Logo_v3.png"
