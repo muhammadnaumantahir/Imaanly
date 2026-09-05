@@ -1,6 +1,7 @@
 import "package:al_furkan/src/screen/location_handler/cubit/location_data_qibla_data_cubit.dart";
 import "package:al_furkan/src/screen/location_handler/location_aquire.dart";
 import "package:al_furkan/src/screen/location_handler/model/location_data_qibla_data_state.dart";
+import "package:al_furkan/src/screen/prayer_time/prayer_timeline_page.dart";
 import "package:al_furkan/src/screen/prayer_time/time_list_of_prayers.dart";
 import "package:al_furkan/src/screen/mushaf/widgets/wahy_side_drawer.dart";
 
@@ -67,6 +68,17 @@ class _PrayerTimePageState extends State<PrayerTimePage> {
           icon: Icon(Icons.menu_rounded, color: cs.primary),
           tooltip: "Main menu",
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const PrayerTimelinePage()),
+              );
+            },
+            icon: Icon(Icons.view_timeline_rounded, color: cs.primary),
+            tooltip: "Prayer timeline",
+          ),
+        ],
       ),
       body: BlocBuilder<
         LocationQiblaPrayerDataCubit,
