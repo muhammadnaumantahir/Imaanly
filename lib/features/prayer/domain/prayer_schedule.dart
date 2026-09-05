@@ -45,6 +45,17 @@ class PrayerScheduleCalculator {
     );
   }
 
+  /// Builds the next day's Fajr entry from an already calculated day.
+  ///
+  /// Keeping this behavior here prevents individual UI surfaces from
+  /// implementing subtly different after-Isha logic.
+  PrayerScheduleEntry nextDayFajr(PrayerTimes nextDayPrayerTimes) {
+    return PrayerScheduleEntry(
+      prayer: Prayer.fajr,
+      time: nextDayPrayerTimes.fajrAfter.toLocal(),
+    );
+  }
+
   /// Returns the prayer whose interval has started and whose next prayer has
   /// not started yet. Before Fajr there is no current prayer in today's list.
   PrayerScheduleEntry? current(
@@ -63,7 +74,7 @@ class PrayerScheduleCalculator {
   }
 
   /// Returns the first prayer strictly after [now]. After Isha, callers can
-  /// use the following day's Fajr from their PrayerTimes model.
+  /// use [nextDayFajr] with the following day's PrayerTimes model.
   PrayerScheduleEntry? next(
     List<PrayerScheduleEntry> entries,
     DateTime now,
