@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get_it/get_it.dart';
 
-import '../../tafsir/presentation/tafsir_bloc.dart';
 import '../../tafsir/presentation/tafsir_screen.dart';
 import '../../../screen/azkar/azkar_categories_screen.dart';
 import '../../../screen/collections/collection_page.dart';
@@ -43,10 +40,7 @@ class _IslamicKnowledgeScreenState extends State<IslamicKnowledgeScreen> {
     Widget? page;
     switch (section.id) {
       case 'tafsir':
-        page = BlocProvider.value(
-          value: GetIt.I<TafsirBloc>(),
-          child: const TafsirScreen(),
-        );
+        page = const TafsirScreen();
       case 'quran_topics':
         page = const CollectionPage(collectionType: CollectionType.pinned);
       case 'worship':
