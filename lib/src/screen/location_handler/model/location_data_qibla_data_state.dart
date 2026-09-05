@@ -2,6 +2,9 @@ import "package:flutter/foundation.dart";
 import "package:adhan_dart/adhan_dart.dart";
 import "package:al_furkan/src/screen/location_handler/model/lat_lon.dart";
 
+// Re-export the controller for feature screens that consume the location state.
+export "../cubit/location_data_qibla_data_cubit.dart";
+
 @immutable
 class LocationQiblaPrayerDataState {
   final LatLon? latLon;
