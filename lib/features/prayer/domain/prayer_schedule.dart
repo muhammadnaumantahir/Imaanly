@@ -44,4 +44,35 @@ class PrayerScheduleCalculator {
       time: prayerTimes.sunrise.toLocal(),
     );
   }
+
+  /// Returns the prayer whose interval has started and whose next prayer has
+  /// not started yet. Before Fajr there is no current prayer in today's list.
+  PrayerScheduleEntry? current(
+    List<PrayerScheduleEntry> entries,
+    DateTime now,
+  ) {
+    PrayerScheduleEntry? result;
+    for (final entry in entries) {
+      if (!entry.time.isAfter(now)) {
+        result = entry;
+      } else {
+        break;
+      }
+    }
+    return result;
+  }
+
+  /// Returns the first prayer strictly after [now]. After Isha, callers can
+  /// use the following day's Fajr from their PrayerTimes model.
+  PrayerScheduleEntry? next(
+    List<PrayerScheduleEntry> entries,
+    DateTime now,
+  ) {
+    for (final entry in entries) {
+      if (entry.time.isAfter(now)) {
+        return entry;
+      }
+    }
+    return null;
+  }
 }
