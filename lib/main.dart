@@ -50,6 +50,7 @@ import "package:al_furkan/src/theme/controller/theme_state.dart";
 import "package:al_furkan/src/core/audio/services/idrisium_audio_tracker.dart";
 import "package:al_furkan/src/widget/history/cubit/quran_history_cubit.dart";
 import "package:al_furkan/src/widget/quran_script_words/cubit/word_playing_state_cubit.dart";
+import "package:al_furkan/src/features/islamic_knowledge/presentation/islamic_knowledge_screen.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
@@ -229,11 +230,30 @@ class MyApp extends StatelessWidget {
                 themeMode: themeState.themeMode,
                 builder: (context, child) => _FullscreenEnforcer(child: _AudioPlayerBridgeBinder(child: child ?? const SizedBox.shrink())),
                 scrollBehavior: AppScrollBehavior(),
-                home: const ImaanlyHomePage(),
+                home: const ImaanlyHomeShell(),
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class ImaanlyHomeShell extends StatelessWidget {
+  const ImaanlyHomeShell({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: const ImaanlyHomePage(),
+      floatingActionButton: FloatingActionButton.small(
+        heroTag: 'knowledge-launcher',
+        tooltip: 'Islamic Knowledge',
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const IslamicKnowledgeScreen()),
+        ),
+        child: const Icon(Icons.school_outlined),
       ),
     );
   }
