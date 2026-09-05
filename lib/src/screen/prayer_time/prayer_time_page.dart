@@ -1,3 +1,4 @@
+import "package:al_furkan/src/core/notifications/wahy_notification_service.dart";
 import "package:al_furkan/src/screen/location_handler/cubit/location_data_qibla_data_cubit.dart";
 import "package:al_furkan/src/screen/location_handler/location_aquire.dart";
 import "package:al_furkan/src/screen/location_handler/model/location_data_qibla_data_state.dart";
@@ -22,6 +23,16 @@ class PrayerTimePage extends StatefulWidget {
 
 class _PrayerTimePageState extends State<PrayerTimePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize local notification channels before the prayer UI can schedule
+    // alerts. No server, API key, or paid service is required.
+    WahyNotificationService.instance.init().catchError((error) {
+      debugPrint("[Imaanly] Prayer notification init failed: $error");
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
