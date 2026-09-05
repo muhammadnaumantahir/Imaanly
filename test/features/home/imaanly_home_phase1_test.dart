@@ -1,3 +1,5 @@
+import 'package:al_furkan/src/theme/app_theme.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -9,10 +11,11 @@ void main() {
       expect(actions, hasLength(4));
     });
 
-    test('does not require an account for the initial experience', () {
-      const requiresAccount = false;
+    test('uses a softer 16px card radius for the Imaanly visual system', () {
+      final shape = AppTheme.lightTheme().cardTheme.shape as RoundedRectangleBorder;
+      final radius = (shape.borderRadius as BorderRadius).topLeft.x;
 
-      expect(requiresAccount, isFalse);
+      expect(radius, 16);
     });
 
     test('keeps advertising disabled for the initial release', () {
