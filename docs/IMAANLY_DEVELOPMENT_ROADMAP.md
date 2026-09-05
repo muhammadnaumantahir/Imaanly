@@ -42,7 +42,7 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 - Reuse the user's selected calculation method and Madhab in the timeline.
 - Keep a canonical prayer schedule domain model for future Home, notifications and widgets.
 
-**Status: In progress / core work completed.**
+**Status: Core work completed; final device validation remains.**
 
 ### Phase 3 — Athan / Prayer Notifications
 
@@ -54,8 +54,10 @@ The first release should feel simple and dependable like a dedicated Salah/Athan
 - Fajr-specific worship actions where appropriate.
 - Reschedule after location/calculation changes.
 - Avoid any cloud notification dependency.
+- Initialize notification channels before prayer scheduling.
+- Restore saved notification schedules without requiring the user to reopen settings.
 
-**Status: Existing notification engine available; UX hardening next.**
+**Status: Core local notification engine and prayer alert UX are implemented; hardening and device validation remain.**
 
 ### Phase 4 — Qibla
 
