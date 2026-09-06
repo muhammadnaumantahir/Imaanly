@@ -46,7 +46,7 @@ class WorshipActivityRepository {
     }
 
     final recordedAt = date ?? DateTime.now();
-    final day = WorshipActivity.dateKey(recordedAt);
+    final day = WorshipActivity.dayKey(recordedAt);
     final activity = WorshipActivity(
       id: 'dhikr:$day:$category',
       type: WorshipActivityType.dhikr,
