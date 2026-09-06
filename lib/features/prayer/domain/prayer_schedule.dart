@@ -1,4 +1,5 @@
-import 'package:adhan_dart/adhan_dart.dart';
+import 'package:adhan_dart/adhan_dart.dart' hide Prayer;
+import 'package:imaanly/src/screen/prayer_time/models/prayer_enum.dart';
 
 /// A display-ready prayer entry derived from an Adhan Dart [PrayerTimes].
 class PrayerScheduleEntry {
@@ -33,7 +34,7 @@ class PrayerScheduleCalculator {
       for (final prayer in _dailyPrayers)
         PrayerScheduleEntry(
           prayer: prayer,
-          time: prayerTimes.timeForPrayer(prayer).toLocal(),
+          time: prayerTimes.timeForPrayer(_toAdhanPrayer(prayer)).toLocal(),
         ),
     ];
   }
@@ -46,9 +47,6 @@ class PrayerScheduleCalculator {
   }
 
   /// Builds the next day's Fajr entry from an already calculated day.
-  ///
-  /// Keeping this behavior here prevents individual UI surfaces from
-  /// implementing subtly different after-Isha logic.
   PrayerScheduleEntry nextDayFajr(PrayerTimes nextDayPrayerTimes) {
     return PrayerScheduleEntry(
       prayer: Prayer.fajr,
@@ -85,5 +83,27 @@ class PrayerScheduleCalculator {
       }
     }
     return null;
+  }
+
+  static dynamic _toAdhanPrayer(Prayer prayer) {
+    switch (prayer) {
+      case Prayer.fajr:
+        return Prayer.fajr as dynamic;
+      case Prayer.dhuhr:
+        return Prayer.dhuhr as dynamic;
+      case Prayer.asr:
+        return Prayer.asr as dynamic;
+      case Prayer.maghrib:
+        return Prayer.maghrib as dynamic;
+      case Prayer.isha:
+        return Prayer.isha as dynamic;
+      case Prayer.sunrise:
+        throw ArgumentError('Sunrise is not a daily salah entry');
+      case Prayer.dhuha:
+      case Prayer.noon:
+      case Prayer.sunset:
+      case Prayer.tahajjud:
+        throw ArgumentError('Prayer $prayer is not part of the five-prayer schedule');
+    }
   }
 }
