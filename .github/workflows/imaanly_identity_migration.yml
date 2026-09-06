@@ -1,0 +1,102 @@
+name: Imaanly identity migration
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    if: "!contains(github.event.head_commit.message, '[imaanly-migration]')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Rename legacy identity
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python3 - <<'PY'
+          from pathlib import Path
+
+          text_exts = {
+              '.dart', '.kt', '.java', '.xml', '.gradle', '.kts', '.plist',
+              '.pbxproj', '.xcconfig', '.swift', '.m', '.mm', '.h', '.json',
+              '.yaml', '.yml', '.md', '.html', '.js', '.ts', '.rc', '.properties',
+              '.desktop', '.cmake', '.cpp', '.hpp', '.sh', '.txt', '.xcscheme'
+          }
+          ignored_parts = {'.git', '.dart_tool', 'build', 'Pods'}
+          replacements = [
+              ('com.idrisium.al_furkan', 'com.imaanly.app'),
+              ('com.idrisium.alfurkan', 'com.imaanly.app'),
+              ('package:al_furkan', 'package:imaanly'),
+              ('Al-Furkan', 'Imaanly'),
+              ('AL-FURKAN', 'IMAANLY'),
+              ('al_furkan', 'imaanly'),
+              ('alfurkan', 'imaanly'),
+              ('al-furkan', 'imaanly'),
+          ]
+
+          for path in Path('.').rglob('*'):
+              if not path.is_file() or path.suffix.lower() not in text_exts:
+                  continue
+              if any(part in ignored_parts for part in path.parts):
+                  continue
+              try:
+                  original = path.read_text(encoding='utf-8')
+              except (UnicodeDecodeError, OSError):
+                  continue
+              updated = original
+              for old, new in replacements:
+                  updated = updated.replace(old, new)
+              if updated != original:
+                  path.write_text(updated, encoding='utf-8')
+          PY
+
+          # Flutter package name is a real build input and must be changed explicitly.
+          sed -i 's/^name: al_furkan$/name: imaanly/' pubspec.yaml
+
+          # Keep the active audio-service Activity and widget providers together
+          # under the new package. Remove the obsolete duplicate legacy Activity.
+          mkdir -p android/app/src/main/kotlin/com/imaanly/app
+          if [ -d android/app/src/main/kotlin/com/idrisium/alfurkan ]; then
+            for file in android/app/src/main/kotlin/com/idrisium/alfurkan/*.kt; do
+              [ -f "$file" ] && mv "$file" android/app/src/main/kotlin/com/imaanly/app/
+            done
+          fi
+          rm -f android/app/src/main/kotlin/com/idrisium/al_furkan/MainActivity.kt
+
+          # Ensure every moved Android source uses the new package declaration.
+          sed -i 's/^package com\.idrisium\.alfurkan$/package com.imaanly.app/' android/app/src/main/kotlin/com/imaanly/app/*.kt 2>/dev/null || true
+          sed -i 's/^package com\.idrisium\.al_furkan$/package com.imaanly.app/' android/app/src/main/kotlin/com/imaanly/app/*.kt 2>/dev/null || true
+
+          # Remove empty legacy Android package directories.
+          find android/app/src/main/kotlin/com/idrisium -type d -empty -delete 2>/dev/null || true
+
+          flutter pub get
+          flutter analyze
+          flutter test
+
+          # The migration workflow is intentionally one-shot.
+          rm -f .github/workflows/imaanly_identity_migration.yml
+
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No migration changes were produced.'
+            exit 0
+          fi
+          git commit -m 'refactor: rename al_furkan identity to Imaanly [imaanly-migration]'
+          git push
