@@ -18,6 +18,8 @@ class WorshipDailySummary {
     final completedPrayers = <String>{};
     var quranPages = 0;
     var dhikrCount = 0;
+    var dhikrGoal = 0;
+    var hasDhikrGoal = false;
 
     for (final activity in activities) {
       if (activity.dateKey != key) continue;
@@ -30,6 +32,10 @@ class WorshipDailySummary {
           quranPages += activity.amount;
         case WorshipActivityType.dhikr:
           dhikrCount += activity.amount;
+          if (activity.target != null) {
+            dhikrGoal += activity.target!;
+            hasDhikrGoal = true;
+          }
       }
     }
 
@@ -39,6 +45,7 @@ class WorshipDailySummary {
       prayersTotal: 5,
       quranPages: quranPages,
       dhikrCount: dhikrCount,
+      dhikrGoal: hasDhikrGoal ? dhikrGoal : 33,
     );
   }
 
