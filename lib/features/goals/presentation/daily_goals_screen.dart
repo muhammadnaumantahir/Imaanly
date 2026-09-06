@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../analytics/presentation/worship_analytics_screen.dart';
 import '../data/daily_goals_repository.dart';
 import '../domain/daily_goals.dart';
 
@@ -39,12 +40,19 @@ class _DailyGoalsScreenState extends State<DailyGoalsScreen> {
           controller: controller,
           autofocus: true,
           keyboardType: TextInputType.number,
-          decoration: const InputDecoration(labelText: 'Daily target', suffixText: 'per day'),
+          decoration: const InputDecoration(
+            labelText: 'Daily target',
+            suffixText: 'per day',
+          ),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(context), child: const Text('Cancel')),
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Cancel'),
+          ),
           FilledButton(
-            onPressed: () => Navigator.pop(context, int.tryParse(controller.text.trim())),
+            onPressed: () =>
+                Navigator.pop(context, int.tryParse(controller.text.trim())),
             child: const Text('Save'),
           ),
         ],
@@ -83,25 +91,57 @@ class _DailyGoalsScreenState extends State<DailyGoalsScreen> {
             icon: Icons.menu_book_rounded,
             title: 'Quran pages',
             value: _goals.quranPages,
-            onEdit: () => _edit('Quran pages', _goals.quranPages, (v) => _goals = _goals.copyWith(quranPages: v)),
+            onEdit: () => _edit(
+              'Quran pages',
+              _goals.quranPages,
+              (v) => _goals = _goals.copyWith(quranPages: v),
+            ),
           ),
           _GoalTile(
             icon: Icons.format_list_numbered_rounded,
             title: 'Quran ayahs',
             value: _goals.quranAyahs,
-            onEdit: () => _edit('Quran ayahs', _goals.quranAyahs, (v) => _goals = _goals.copyWith(quranAyahs: v)),
+            onEdit: () => _edit(
+              'Quran ayahs',
+              _goals.quranAyahs,
+              (v) => _goals = _goals.copyWith(quranAyahs: v),
+            ),
           ),
           _GoalTile(
             icon: Icons.favorite_outline_rounded,
             title: 'Dhikr',
             value: _goals.dhikr,
-            onEdit: () => _edit('Dhikr', _goals.dhikr, (v) => _goals = _goals.copyWith(dhikr: v)),
+            onEdit: () => _edit(
+              'Dhikr',
+              _goals.dhikr,
+              (v) => _goals = _goals.copyWith(dhikr: v),
+            ),
           ),
           _GoalTile(
             icon: Icons.mosque_outlined,
             title: 'Salah',
             value: _goals.salah,
-            onEdit: () => _edit('Salah', _goals.salah, (v) => _goals = _goals.copyWith(salah: v.clamp(0, 5))),
+            onEdit: () => _edit(
+              'Salah',
+              _goals.salah,
+              (v) => _goals = _goals.copyWith(salah: v.clamp(0, 5)),
+            ),
+          ),
+          const SizedBox(height: 12),
+          Card(
+            child: ListTile(
+              leading: const Icon(Icons.insights_outlined),
+              title: const Text('Worship insights'),
+              subtitle: const Text(
+                'Review your last 7 days of worship activity',
+              ),
+              trailing: const Icon(Icons.chevron_right_rounded),
+              onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => const WorshipAnalyticsScreen(),
+                ),
+              ),
+            ),
           ),
           const SizedBox(height: 16),
           Text(
@@ -116,7 +156,12 @@ class _DailyGoalsScreenState extends State<DailyGoalsScreen> {
 }
 
 class _GoalTile extends StatelessWidget {
-  const _GoalTile({required this.icon, required this.title, required this.value, required this.onEdit});
+  const _GoalTile({
+    required this.icon,
+    required this.title,
+    required this.value,
+    required this.onEdit,
+  });
 
   final IconData icon;
   final String title;
@@ -129,7 +174,11 @@ class _GoalTile extends StatelessWidget {
           leading: Icon(icon),
           title: Text(title),
           subtitle: Text(value == 0 ? 'Disabled' : '$value per day'),
-          trailing: IconButton(icon: const Icon(Icons.edit_rounded), tooltip: 'Edit goal', onPressed: onEdit),
+          trailing: IconButton(
+            icon: const Icon(Icons.edit_rounded),
+            tooltip: 'Edit goal',
+            onPressed: onEdit,
+          ),
         ),
       );
 }
