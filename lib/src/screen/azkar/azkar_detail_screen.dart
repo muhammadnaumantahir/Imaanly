@@ -1,9 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:al_furkan/features/dhikr/domain/dhikr_progress.dart';
+import 'package:al_furkan/features/worship/data/worship_activity_repository.dart';
 import 'package:al_furkan/src/screen/azkar/azkar_share_screen.dart';
 
 class AzkarDetailScreen extends StatefulWidget {
@@ -63,6 +66,22 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
       }
     }
     _saveProgress();
+    unawaited(_syncWorshipActivity());
+  }
+
+  Future<void> _syncWorshipActivity() async {
+    try {
+      final repository = await WorshipActivityRepository.openLocal();
+      await repository.upsertDailyDhikr(
+        category: widget.categoryName,
+        completed: _dailyProgress.completed,
+        goal: _dailyProgress.goal,
+        date: DateTime.now(),
+      );
+    } catch (_) {
+      // The existing Dhikr Hive progress remains the source of truth if the
+      // unified worship store is temporarily unavailable.
+    }
   }
 
   void _saveProgress() {
@@ -78,6 +97,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
     _dailyProgress = _dailyProgress.increment();
     if (_dailyProgress.isGoalComplete) _completedDates.add(_dailyProgress.dateKey);
     _saveProgress();
+    unawaited(_syncWorshipActivity());
   }
 
   void _onCountTap() {
