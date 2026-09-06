@@ -1,5 +1,5 @@
-import "package:al_furkan/src/core/audio/model/recitation_info_model.dart";
-import "package:al_furkan/src/core/audio/resources/recitations.dart";
+import "package:imaanly/src/core/audio/model/recitation_info_model.dart";
+import "package:imaanly/src/core/audio/resources/recitations.dart";
 
 List<ReciterInfoModel> getSegmentsSupportedReciters() {
   List<ReciterInfoModel> recitations =

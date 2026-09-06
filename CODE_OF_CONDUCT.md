@@ -1,4 +1,4 @@
-# Code of Conduct — Al-Furkan الفُرقان
+# Code of Conduct — Imaanly الفُرقان
 
 ## Our Pledge
 

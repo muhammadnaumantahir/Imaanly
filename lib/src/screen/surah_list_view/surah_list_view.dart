@@ -1,18 +1,18 @@
 import "dart:async";
 
-import "package:al_furkan/l10n/app_localizations.dart";
+import "package:imaanly/l10n/app_localizations.dart";
 
-import "package:al_furkan/src/screen/quran_script_view/quran_script_view.dart";
-import "package:al_furkan/src/utils/filter/filter_surah.dart";
-import "package:al_furkan/src/utils/number_localization.dart";
-import "package:al_furkan/src/resources/quran_resources/meaning_of_surah.dart";
-import "package:al_furkan/src/screen/surah_list_view/model/surah_info_model.dart";
-import "package:al_furkan/src/theme/values/values.dart";
-import "package:al_furkan/src/widget/components/get_surah_index_widget.dart";
+import "package:imaanly/src/screen/quran_script_view/quran_script_view.dart";
+import "package:imaanly/src/utils/filter/filter_surah.dart";
+import "package:imaanly/src/utils/number_localization.dart";
+import "package:imaanly/src/resources/quran_resources/meaning_of_surah.dart";
+import "package:imaanly/src/screen/surah_list_view/model/surah_info_model.dart";
+import "package:imaanly/src/theme/values/values.dart";
+import "package:imaanly/src/widget/components/get_surah_index_widget.dart";
 
 import "package:fluentui_system_icons/fluentui_system_icons.dart";
 import "package:flutter/material.dart";
-import "package:al_furkan/src/core/navigation/wahy_page_route.dart";
+import "package:imaanly/src/core/navigation/wahy_page_route.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:gap/gap.dart";
 import "package:qcf_quran/qcf_quran.dart" as qcf;

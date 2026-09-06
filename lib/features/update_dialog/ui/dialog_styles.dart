@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:al_furkan/core/models/update_config.dart';
+import 'package:imaanly/core/models/update_config.dart';
 
 /// Builds the dialog decoration based on the selected [DialogStyle].
 ///

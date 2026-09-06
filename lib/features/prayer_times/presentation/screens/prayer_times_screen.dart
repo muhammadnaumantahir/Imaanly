@@ -4,7 +4,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:adhan_dart/adhan_dart.dart';
 import 'package:intl/intl.dart';
-import 'package:al_furkan/src/screen/qibla/qibla_direction.dart';
+import 'package:imaanly/src/screen/qibla/qibla_direction.dart';
 import '../../core/utils/prayer_names.dart';
 import '../widgets/prayer_times_app_bar.dart';
 import '../widgets/next_prayer_hero_card.dart';

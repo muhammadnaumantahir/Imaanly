@@ -1,5 +1,5 @@
-import "package:al_furkan/src/core/audio/model/recitation_info_model.dart";
-import "package:al_furkan/src/core/audio/services/offline_audio_service.dart";
+import "package:imaanly/src/core/audio/model/recitation_info_model.dart";
+import "package:imaanly/src/core/audio/services/offline_audio_service.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 

@@ -1,4 +1,4 @@
-# Al-Furkan Analysis Options — Strict linting for production-grade code
+# Imaanly Analysis Options — Strict linting for production-grade code
 analyzer:
   exclude:
     - "تطبيق وحي/**"
@@ -6,6 +6,13 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
     - "l10n/**"
+    - build/**
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**
   errors:
     use_build_context_synchronously: warning
     unused_element: warning

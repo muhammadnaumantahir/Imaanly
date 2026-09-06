@@ -1,6 +1,6 @@
 import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:al_furkan/features/home/domain/next_prayer.dart';
+import 'package:imaanly/features/home/domain/next_prayer.dart';
 
 void main() {
   final calculator = const NextPrayerCalculator();

@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:al_furkan/core/models/notification_model.dart';
+import 'package:imaanly/core/models/notification_model.dart';
 
 /// Firestore repository for the `/notifications` collection.
 class NotificationRepository {

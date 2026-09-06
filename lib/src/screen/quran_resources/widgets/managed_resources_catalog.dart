@@ -1,8 +1,8 @@
 import "dart:async";
 
-import "package:al_furkan/src/theme/app_colors.dart";
-import "package:al_furkan/src/theme/controller/theme_cubit.dart";
-import "package:al_furkan/src/theme/controller/theme_state.dart" as theme;
+import "package:imaanly/src/theme/app_colors.dart";
+import "package:imaanly/src/theme/controller/theme_cubit.dart";
+import "package:imaanly/src/theme/controller/theme_state.dart" as theme;
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_screenutil/flutter_screenutil.dart";

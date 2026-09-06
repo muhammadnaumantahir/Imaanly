@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
-import 'package:al_furkan/src/utils/number_localization.dart';
-import 'package:al_furkan/src/utils/quran_ayahs_function/get_page_number.dart';
-import 'package:al_furkan/src/core/audio/cubit/ayah_key_cubit.dart';
+import 'package:imaanly/src/utils/number_localization.dart';
+import 'package:imaanly/src/utils/quran_ayahs_function/get_page_number.dart';
+import 'package:imaanly/src/core/audio/cubit/ayah_key_cubit.dart';
 import 'package:qcf_quran/qcf_quran.dart' hide getPageNumber;
-import 'package:al_furkan/src/theme/app_colors.dart';
+import 'package:imaanly/src/theme/app_colors.dart';
 
 Future<void> showStarredSheet({
   required BuildContext context,

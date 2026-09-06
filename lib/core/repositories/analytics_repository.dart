@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 
-import 'package:al_furkan/core/models/analytics_data.dart';
+import 'package:imaanly/core/models/analytics_data.dart';
 
 /// Firestore repository for the `/analytics` collection.
 class AnalyticsRepository {

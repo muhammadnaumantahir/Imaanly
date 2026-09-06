@@ -1,5 +1,5 @@
-import "package:al_furkan/src/core/reading_stats/reading_stats_cubit.dart";
-import "package:al_furkan/src/theme/controller/theme_cubit.dart";
+import "package:imaanly/src/core/reading_stats/reading_stats_cubit.dart";
+import "package:imaanly/src/theme/controller/theme_cubit.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:gap/gap.dart";

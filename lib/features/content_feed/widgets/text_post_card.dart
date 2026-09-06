@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:al_furkan/core/models/content_post.dart';
+import 'package:imaanly/core/models/content_post.dart';
 import 'pinned_badge.dart';
 import 'post_interaction_row.dart';
 

@@ -1,7 +1,7 @@
-import "package:al_furkan/src/core/audio/cubit/custom_playlist_cubit.dart";
-import "package:al_furkan/src/core/audio/cubit/segmented_quran_reciter_cubit.dart";
-import "package:al_furkan/src/core/audio/player/audio_player_manager.dart";
-import "package:al_furkan/src/theme/controller/theme_cubit.dart";
+import "package:imaanly/src/core/audio/cubit/custom_playlist_cubit.dart";
+import "package:imaanly/src/core/audio/cubit/segmented_quran_reciter_cubit.dart";
+import "package:imaanly/src/core/audio/player/audio_player_manager.dart";
+import "package:imaanly/src/theme/controller/theme_cubit.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:gap/gap.dart";

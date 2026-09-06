@@ -1,15 +1,15 @@
 {
   "project_info": {
     "project_number": "770442072941",
-    "project_id": "al-furkan-app",
-    "storage_bucket": "al-furkan-app.firebasestorage.app"
+    "project_id": "imaanly-app",
+    "storage_bucket": "imaanly-app.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
         "mobilesdk_app_id": "1:770442072941:android:d6de38f8a8211599fc8064",
         "android_client_info": {
-          "package_name": "com.idrisium.alfurkan"
+          "package_name": "com.imaanly.app"
         }
       },
       "oauth_client": [
@@ -38,7 +38,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:770442072941:android:a497b4a6fc91271afc8064",
         "android_client_info": {
-          "package_name": "com.idrisium.alfurkan.admin"
+          "package_name": "com.imaanly.app.admin"
         }
       },
       "oauth_client": [

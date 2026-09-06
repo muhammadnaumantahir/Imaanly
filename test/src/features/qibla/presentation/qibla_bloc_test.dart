@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:al_furkan/src/core/error/failures.dart';
-import 'package:al_furkan/src/features/qibla/domain/entities/qibla.dart';
-import 'package:al_furkan/src/features/qibla/domain/repositories/qibla_repository.dart';
-import 'package:al_furkan/src/features/qibla/presentation/qibla_bloc.dart';
+import 'package:imaanly/src/core/error/failures.dart';
+import 'package:imaanly/src/features/qibla/domain/entities/qibla.dart';
+import 'package:imaanly/src/features/qibla/domain/repositories/qibla_repository.dart';
+import 'package:imaanly/src/features/qibla/presentation/qibla_bloc.dart';
 
 const _testQiblaInfo = QiblaInfo(
   latitude: 30.0444,

@@ -2,8 +2,8 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import 'package:al_furkan/core/models/update_config.dart';
-import 'package:al_furkan/core/repositories/update_repository.dart';
+import 'package:imaanly/core/models/update_config.dart';
+import 'package:imaanly/core/repositories/update_repository.dart';
 
 // ─────────────────────────────────────────────────────────────
 // STATE

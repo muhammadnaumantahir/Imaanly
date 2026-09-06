@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:al_furkan/core/models/update_config.dart';
+import 'package:imaanly/core/models/update_config.dart';
 
 /// Firestore repository for the `/update_config/current` document.
 class UpdateRepository {

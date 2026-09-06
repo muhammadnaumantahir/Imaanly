@@ -1,6 +1,6 @@
-import "package:al_furkan/l10n/app_localizations.dart";
-import "package:al_furkan/src/utils/quran_resources/get_translation.dart";
-import "package:al_furkan/src/widget/ayah_by_ayah/ayah_by_ayah_card.dart";
+import "package:imaanly/l10n/app_localizations.dart";
+import "package:imaanly/src/utils/quran_resources/get_translation.dart";
+import "package:imaanly/src/widget/ayah_by_ayah/ayah_by_ayah_card.dart";
 import "package:flutter/material.dart";
 
 class ListOfAyahsViews extends StatefulWidget {

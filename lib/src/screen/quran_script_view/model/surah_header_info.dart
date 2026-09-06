@@ -1,4 +1,4 @@
-import "package:al_furkan/src/screen/surah_list_view/model/surah_info_model.dart";
+import "package:imaanly/src/screen/surah_list_view/model/surah_info_model.dart";
 
 class SurahHeaderInfoModel {
   final SurahInfoModel surahInfoModel;

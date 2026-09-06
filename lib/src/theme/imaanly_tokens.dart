@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 ///
 /// Keep feature screens dependent on these tokens instead of introducing
 /// one-off spacing, radii, or text sizes. The values intentionally remain
-/// small and predictable so the existing Al-Furkan-derived UI can migrate
+/// small and predictable so the existing Imaanly-derived UI can migrate
 /// incrementally without a visual rewrite.
 class ImaanlySpacing {
   ImaanlySpacing._();

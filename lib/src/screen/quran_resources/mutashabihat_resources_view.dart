@@ -1,9 +1,9 @@
-import "package:al_furkan/src/resources/quran_resources/models/mutashabihat_book_model.dart";
-import "package:al_furkan/src/resources/quran_resources/mutashabihat_resources.dart";
-import "package:al_furkan/src/screen/quran_resources/widgets/managed_resources_catalog.dart";
-import "package:al_furkan/src/screen/setup/cubit/resources_progress_cubit_cubit.dart";
-import "package:al_furkan/src/screen/setup/cubit/resources_progress_cubit_state.dart";
-import "package:al_furkan/src/utils/quran_resources/quran_mutashabihat_function.dart";
+import "package:imaanly/src/resources/quran_resources/models/mutashabihat_book_model.dart";
+import "package:imaanly/src/resources/quran_resources/mutashabihat_resources.dart";
+import "package:imaanly/src/screen/quran_resources/widgets/managed_resources_catalog.dart";
+import "package:imaanly/src/screen/setup/cubit/resources_progress_cubit_cubit.dart";
+import "package:imaanly/src/screen/setup/cubit/resources_progress_cubit_state.dart";
+import "package:imaanly/src/utils/quran_resources/quran_mutashabihat_function.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 

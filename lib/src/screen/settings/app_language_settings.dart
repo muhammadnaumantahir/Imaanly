@@ -1,11 +1,11 @@
 import "dart:ui";
 
-import "package:al_furkan/l10n/app_localizations.dart";
-import "package:al_furkan/src/resources/translation/language_cubit.dart";
-import "package:al_furkan/src/resources/translation/languages.dart";
-import "package:al_furkan/src/theme/controller/theme_cubit.dart";
-import "package:al_furkan/src/theme/controller/theme_state.dart";
-import "package:al_furkan/src/theme/values/values.dart";
+import "package:imaanly/l10n/app_localizations.dart";
+import "package:imaanly/src/resources/translation/language_cubit.dart";
+import "package:imaanly/src/resources/translation/languages.dart";
+import "package:imaanly/src/theme/controller/theme_cubit.dart";
+import "package:imaanly/src/theme/controller/theme_state.dart";
+import "package:imaanly/src/theme/values/values.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 

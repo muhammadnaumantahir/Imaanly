@@ -1,4 +1,4 @@
-/// Al-Furkan User-Facing String Constants — Single Source of Truth
+/// Imaanly User-Facing String Constants — Single Source of Truth
 /// ZERO hardcoded user-facing strings outside this file and l10n ARB files.
 /// For localized strings, use AppLocalizations (generated from ARB).
 /// This file holds non-localized technical strings only.
@@ -6,7 +6,7 @@ class AppStrings {
   AppStrings._();
 
   // ── App Identity ──
-  static const String appName = 'Al-Furkan';
+  static const String appName = 'Imaanly';
   static const String appNameAr = 'الفُرقان';
   static const String publisher = 'IDRISIUM Corp';
   static const String founderName = 'Idris Ghamid';
@@ -35,8 +35,8 @@ class AppStrings {
       'Data integrity check failed — resource may be corrupted';
 
   // ── Notification Channel ──
-  static const String notificationChannelId = 'al_furkan_notifications';
-  static const String notificationChannelName = 'Al-Furkan Notifications';
+  static const String notificationChannelId = 'imaanly_notifications';
+  static const String notificationChannelName = 'Imaanly Notifications';
 
   // ── Hive Box Names ──
   static const String hiveBoxUser = 'user';

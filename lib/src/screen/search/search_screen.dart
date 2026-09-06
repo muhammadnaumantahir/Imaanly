@@ -1,12 +1,12 @@
 import "dart:async";
 
-import "package:al_furkan/src/core/audio/cubit/ayah_key_cubit.dart";
-import "package:al_furkan/src/screen/quran_script_view/cubit/ayah_to_highlight.dart";
-import "package:al_furkan/src/core/audio/services/idrisium_audio_tracker.dart";
-import "package:al_furkan/src/theme/controller/theme_cubit.dart";
-import "package:al_furkan/src/theme/controller/theme_state.dart";
-import "package:al_furkan/src/utils/number_localization.dart";
-import "package:al_furkan/src/utils/quran_search_engine.dart";
+import "package:imaanly/src/core/audio/cubit/ayah_key_cubit.dart";
+import "package:imaanly/src/screen/quran_script_view/cubit/ayah_to_highlight.dart";
+import "package:imaanly/src/core/audio/services/idrisium_audio_tracker.dart";
+import "package:imaanly/src/theme/controller/theme_cubit.dart";
+import "package:imaanly/src/theme/controller/theme_state.dart";
+import "package:imaanly/src/utils/number_localization.dart";
+import "package:imaanly/src/utils/quran_search_engine.dart";
 import "package:fluentui_system_icons/fluentui_system_icons.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
@@ -14,7 +14,7 @@ import "package:flutter_bloc/flutter_bloc.dart";
 import "package:gap/gap.dart";
 import "package:hive_ce_flutter/hive_flutter.dart";
 import "package:qcf_quran/qcf_quran.dart" as qcf;
-import "package:al_furkan/src/widget/share/unified_share_bottom_sheet.dart";
+import "package:imaanly/src/widget/share/unified_share_bottom_sheet.dart";
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});

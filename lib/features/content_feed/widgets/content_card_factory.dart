@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:al_furkan/core/models/content_post.dart';
+import 'package:imaanly/core/models/content_post.dart';
 import 'video_card.dart';
 import 'image_post_card.dart';
 import 'text_post_card.dart';

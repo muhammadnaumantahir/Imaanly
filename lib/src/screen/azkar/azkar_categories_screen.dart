@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:al_furkan/src/core/constants/wahy_assets.dart';
-import 'package:al_furkan/src/screen/azkar/azkar_detail_screen.dart';
-import 'package:al_furkan/src/theme/controller/theme_cubit.dart';
+import 'package:imaanly/src/core/constants/wahy_assets.dart';
+import 'package:imaanly/src/screen/azkar/azkar_detail_screen.dart';
+import 'package:imaanly/src/theme/controller/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

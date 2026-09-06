@@ -1,7 +1,7 @@
 import 'dart:ui' as ui;
-import 'package:al_furkan/l10n/app_localizations.dart';
-import 'package:al_furkan/src/theme/controller/theme_cubit.dart';
-import 'package:al_furkan/src/theme/controller/theme_state.dart';
+import 'package:imaanly/l10n/app_localizations.dart';
+import 'package:imaanly/src/theme/controller/theme_cubit.dart';
+import 'package:imaanly/src/theme/controller/theme_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -237,7 +237,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
                     // ── GitHub Repo Button ──
                     InkWell(
                       onTap: () => launchUrl(
-                        Uri.parse("https://github.com/IDRISIUMCorp/al-furkan-quran-flutter-app"),
+                        Uri.parse("https://github.com/IDRISIUMCorp/imaanly-quran-flutter-app"),
                         mode: LaunchMode.externalApplication,
                       ),
                       borderRadius: BorderRadius.circular(24),

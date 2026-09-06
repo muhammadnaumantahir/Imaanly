@@ -1,4 +1,4 @@
-import "package:al_furkan/src/resources/translation/languages.dart";
+import "package:imaanly/src/resources/translation/languages.dart";
 import "package:dartx/dartx.dart";
 import "package:flutter/widgets.dart";
 import "package:flutter_bloc/flutter_bloc.dart";

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
-import 'package:al_furkan/core/models/content_post.dart';
+import 'package:imaanly/core/models/content_post.dart';
 
 /// Horizontal scrollable category filter chips.
 /// تصميم نظيف ومتناسق مع روح التطبيق

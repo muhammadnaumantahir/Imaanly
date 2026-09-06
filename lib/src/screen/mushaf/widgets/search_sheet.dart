@@ -1,8 +1,8 @@
 import "dart:async";
 import "dart:math" as math;
 
-import "package:al_furkan/src/core/unified_quran_settings/cubit/quran_settings_cubit.dart";
-import "package:al_furkan/src/utils/number_localization.dart";
+import "package:imaanly/src/core/unified_quran_settings/cubit/quran_settings_cubit.dart";
+import "package:imaanly/src/utils/number_localization.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_animate/flutter_animate.dart";

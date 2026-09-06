@@ -44,7 +44,7 @@ class AudioLocalDataSource {
 
   static const String _keyReciters = 'reciters_data';
   static const String _keySelectedReciter = 'selected_reciter_id';
-  static const String _audioDirName = 'al_furkan_audio';
+  static const String _audioDirName = 'imaanly_audio';
 
   /// Get cached reciters list
   List<ReciterModel> getCachedReciters() {

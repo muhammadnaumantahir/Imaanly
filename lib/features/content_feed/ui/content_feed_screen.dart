@@ -6,13 +6,13 @@ import 'package:share_plus/share_plus.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 
-import 'package:al_furkan/core/models/content_post.dart';
-import 'package:al_furkan/features/content_feed/bloc/content_feed_bloc.dart';
-import 'package:al_furkan/features/content_feed/bloc/content_feed_event.dart';
-import 'package:al_furkan/features/content_feed/bloc/content_feed_state.dart';
-import 'package:al_furkan/features/content_feed/widgets/content_card_factory.dart';
-import 'package:al_furkan/features/content_feed/widgets/category_filter_chips.dart';
-import 'package:al_furkan/features/content_feed/widgets/content_shimmer.dart';
+import 'package:imaanly/core/models/content_post.dart';
+import 'package:imaanly/features/content_feed/bloc/content_feed_bloc.dart';
+import 'package:imaanly/features/content_feed/bloc/content_feed_event.dart';
+import 'package:imaanly/features/content_feed/bloc/content_feed_state.dart';
+import 'package:imaanly/features/content_feed/widgets/content_card_factory.dart';
+import 'package:imaanly/features/content_feed/widgets/category_filter_chips.dart';
+import 'package:imaanly/features/content_feed/widgets/content_shimmer.dart';
 
 /// شاشة عرض المحتوى الإسلامي للمستخدمين
 /// تصميم Organic Minimalism — نظيف، بسيط، وفخم

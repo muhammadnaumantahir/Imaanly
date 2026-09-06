@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:al_furkan/src/core/storage/app_boxes.dart';
-import 'package:al_furkan/src/core/storage/app_storage.dart';
+import 'package:imaanly/src/core/storage/app_boxes.dart';
+import 'package:imaanly/src/core/storage/app_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -84,8 +84,8 @@ void main() {
       await storage.preferences.setInt('counter', 42);
       expect(storage.preferences.getInt('counter'), 42);
 
-      await storage.preferences.setString('name', 'Al-Furkan');
-      expect(storage.preferences.getString('name'), 'Al-Furkan');
+      await storage.preferences.setString('name', 'Imaanly');
+      expect(storage.preferences.getString('name'), 'Imaanly');
     });
 
     test('userBox returns null for non-existent keys', () {

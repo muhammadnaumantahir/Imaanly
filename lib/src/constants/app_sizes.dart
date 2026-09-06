@@ -1,4 +1,4 @@
-/// Al-Furkan Spacing & Size Tokens — Single Source of Truth
+/// Imaanly Spacing & Size Tokens — Single Source of Truth
 /// ZERO hardcoded spacing/sizes outside this file.
 /// Based on 8dp grid system.
 class AppSizes {

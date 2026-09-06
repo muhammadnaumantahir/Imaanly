@@ -1,4 +1,4 @@
-import "package:al_furkan/src/screen/surah_list_view/model/surah_info_model.dart";
+import "package:imaanly/src/screen/surah_list_view/model/surah_info_model.dart";
 import "package:bloc/bloc.dart";
 import "package:hive_ce_flutter/hive_flutter.dart";
 

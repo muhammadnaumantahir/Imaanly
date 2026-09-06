@@ -1,4 +1,4 @@
-import 'package:al_furkan/src/theme/app_theme.dart';
+import 'package:imaanly/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 

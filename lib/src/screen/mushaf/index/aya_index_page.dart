@@ -1,15 +1,15 @@
-import "package:al_furkan/src/screen/collections/collection_page.dart";
+import "package:imaanly/src/screen/collections/collection_page.dart";
 import "dart:ui" as ui;
 import "package:flutter/material.dart";
-import "package:al_furkan/src/screen/smart_khatma/smart_khatma_page.dart";
-import "package:al_furkan/src/screen/surah_list_view/surah_list_view.dart";
-import "package:al_furkan/src/resources/quran_resources/meta/meta_data_surah.dart";
-import "package:al_furkan/src/screen/surah_list_view/model/surah_info_model.dart";
+import "package:imaanly/src/screen/smart_khatma/smart_khatma_page.dart";
+import "package:imaanly/src/screen/surah_list_view/surah_list_view.dart";
+import "package:imaanly/src/resources/quran_resources/meta/meta_data_surah.dart";
+import "package:imaanly/src/screen/surah_list_view/model/surah_info_model.dart";
 import "package:hive_ce_flutter/hive_flutter.dart";
-import "package:al_furkan/src/utils/number_localization.dart";
-import "package:al_furkan/src/utils/quran_ayahs_function/get_page_number.dart";
-import "package:al_furkan/src/utils/quran_resources/quran_script_function.dart";
-import "package:al_furkan/src/widget/quran_script/model/script_info.dart";
+import "package:imaanly/src/utils/number_localization.dart";
+import "package:imaanly/src/utils/quran_ayahs_function/get_page_number.dart";
+import "package:imaanly/src/utils/quran_resources/quran_script_function.dart";
+import "package:imaanly/src/widget/quran_script/model/script_info.dart";
 import "package:qcf_quran/qcf_quran.dart" hide getPageNumber;
 
 class AyaIndexPage extends StatefulWidget {

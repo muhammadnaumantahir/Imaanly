@@ -1,13 +1,13 @@
 import "dart:io";
 import "dart:async";
 
-import "package:al_furkan/main.dart";
-import "package:al_furkan/src/core/audio/model/recitation_info_model.dart";
-import "package:al_furkan/src/core/audio/player/audio_player_manager.dart";
-import "package:al_furkan/src/core/audio/resources/recitations.dart";
-import "package:al_furkan/src/resources/quran_resources/meta/meta_data_surah.dart";
+import "package:imaanly/main.dart";
+import "package:imaanly/src/core/audio/model/recitation_info_model.dart";
+import "package:imaanly/src/core/audio/player/audio_player_manager.dart";
+import "package:imaanly/src/core/audio/resources/recitations.dart";
+import "package:imaanly/src/resources/quran_resources/meta/meta_data_surah.dart";
 
-import "package:al_furkan/src/resources/quran_resources/quran_ayah_count.dart";
+import "package:imaanly/src/resources/quran_resources/quran_ayah_count.dart";
 import "package:dio/dio.dart";
 import "package:flutter/foundation.dart";
 import "package:path/path.dart" as p;

@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import '../error/exceptions.dart';
 import '../error/failures.dart';
 
-/// Al-Furkan Error Handler — Converts exceptions to Either<Failure, T>
+/// Imaanly Error Handler — Converts exceptions to Either<Failure, T>
 /// Centralized error mapping so repositories never write try/catch twice.
 class ErrorHandler {
   ErrorHandler._();

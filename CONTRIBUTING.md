@@ -1,6 +1,6 @@
-# Contributing to Al-Furkan الفُرقان
+# Contributing to Imaanly الفُرقان
 
-First off, thank you for considering contributing to Al-Furkan! 🕌
+First off, thank you for considering contributing to Imaanly! 🕌
 
 This project is an **open-source Quran application** built as a _صدقة جارية_ (ongoing charity). Every contribution matters.
 
@@ -44,8 +44,8 @@ This project follows the principle of **respect and sincerity**. We build for th
 ### Getting Started
 ```bash
 # Clone the repo
-git clone https://github.com/IDRISIUMCorp/al-furkan-quran-flutter-app.git
-cd al-furkan-quran-flutter-app
+git clone https://github.com/IDRISIUMCorp/imaanly-quran-flutter-app.git
+cd imaanly-quran-flutter-app
 
 # Install dependencies
 flutter pub get
@@ -67,7 +67,7 @@ flutter run
 
 ## Architecture
 
-Al-Furkan follows **BLoC + Clean Architecture** with modular feature packages:
+Imaanly follows **BLoC + Clean Architecture** with modular feature packages:
 
 ```
 lib/

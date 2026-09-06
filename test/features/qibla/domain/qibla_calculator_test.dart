@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:al_furkan/src/features/qibla/domain/qibla_calculator.dart';
+import 'package:imaanly/src/features/qibla/domain/qibla_calculator.dart';
 
 void main() {
   group('QiblaCalculator', () {

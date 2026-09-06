@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:al_furkan/features/worship/data/worship_activity_repository.dart';
-import 'package:al_furkan/features/worship/domain/worship_activity.dart';
+import 'package:imaanly/features/worship/data/worship_activity_repository.dart';
+import 'package:imaanly/features/worship/domain/worship_activity.dart';
 
 void main() {
   test('repository stores activities and exposes a daily summary', () async {

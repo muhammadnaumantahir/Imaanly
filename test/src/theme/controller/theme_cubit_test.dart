@@ -1,7 +1,7 @@
-import 'package:al_furkan/src/theme/app_colors.dart';
-import 'package:al_furkan/src/theme/controller/theme_cubit.dart';
-import 'package:al_furkan/src/theme/controller/theme_state.dart';
-import 'package:al_furkan/src/theme/functions/theme_functions.dart';
+import 'package:imaanly/src/theme/app_colors.dart';
+import 'package:imaanly/src/theme/controller/theme_cubit.dart';
+import 'package:imaanly/src/theme/controller/theme_state.dart';
+import 'package:imaanly/src/theme/functions/theme_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';

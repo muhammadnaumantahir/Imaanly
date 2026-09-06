@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:al_furkan/features/worship_dashboard/domain/worship_dashboard_summary.dart';
+import 'package:imaanly/features/worship_dashboard/domain/worship_dashboard_summary.dart';
 
 void main() {
   test('clamps prayer progress to one', () {

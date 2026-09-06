@@ -1,10 +1,10 @@
-import "package:al_furkan/src/core/audio/services/idrisium_audio_tracker.dart";
-import "package:al_furkan/src/core/unified_quran_settings/cubit/quran_settings_cubit.dart";
-import "package:al_furkan/src/screen/settings/cubit/quran_script_view_cubit.dart";
-import "package:al_furkan/src/utils/quran_resources/quran_script_function.dart";
-import "package:al_furkan/src/utils/quran_word/show_popup_word_function.dart";
-import "package:al_furkan/src/widget/quran_script/model/script_info.dart";
-import "package:al_furkan/src/utils/quran_ayahs_function/get_page_number.dart";
+import "package:imaanly/src/core/audio/services/idrisium_audio_tracker.dart";
+import "package:imaanly/src/core/unified_quran_settings/cubit/quran_settings_cubit.dart";
+import "package:imaanly/src/screen/settings/cubit/quran_script_view_cubit.dart";
+import "package:imaanly/src/utils/quran_resources/quran_script_function.dart";
+import "package:imaanly/src/utils/quran_word/show_popup_word_function.dart";
+import "package:imaanly/src/widget/quran_script/model/script_info.dart";
+import "package:imaanly/src/utils/quran_ayahs_function/get_page_number.dart";
 import "package:qcf_quran/qcf_quran.dart" as qcf;
 import "package:flutter/gestures.dart";
 import "package:flutter/material.dart";

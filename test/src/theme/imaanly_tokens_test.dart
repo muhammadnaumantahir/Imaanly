@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:al_furkan/src/theme/imaanly_tokens.dart';
-import 'package:al_furkan/src/theme/imaanly_components.dart';
+import 'package:imaanly/src/theme/imaanly_tokens.dart';
+import 'package:imaanly/src/theme/imaanly_components.dart';
 
 void main() {
   group('Imaanly design tokens', () {

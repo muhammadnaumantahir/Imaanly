@@ -1,4 +1,4 @@
-import 'package:al_furkan/src/core/storage/app_boxes.dart';
+import 'package:imaanly/src/core/storage/app_boxes.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

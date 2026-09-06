@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:al_furkan/src/core/di/service_locator.dart';
-import 'package:al_furkan/src/core/notifications/notification_scheduler.dart';
-import 'package:al_furkan/src/core/quran_resources/quran_resources_repository.dart';
-import 'package:al_furkan/src/core/reader_session/reader_session_repository.dart';
-import 'package:al_furkan/src/core/settings/settings_repository.dart';
-import 'package:al_furkan/src/core/storage/app_boxes.dart';
-import 'package:al_furkan/src/core/storage/app_storage.dart';
+import 'package:imaanly/src/core/di/service_locator.dart';
+import 'package:imaanly/src/core/notifications/notification_scheduler.dart';
+import 'package:imaanly/src/core/quran_resources/quran_resources_repository.dart';
+import 'package:imaanly/src/core/reader_session/reader_session_repository.dart';
+import 'package:imaanly/src/core/settings/settings_repository.dart';
+import 'package:imaanly/src/core/storage/app_boxes.dart';
+import 'package:imaanly/src/core/storage/app_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:shared_preferences/shared_preferences.dart';

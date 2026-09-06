@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 /// Imaanly color system — calm, warm, and focused on readability.
 ///
 /// Kept in one place so feature screens can migrate away from legacy
-/// Al-Furkan styling without changing the underlying worship architecture.
+/// Imaanly styling without changing the underlying worship architecture.
 class AppColors {
   AppColors._();
 

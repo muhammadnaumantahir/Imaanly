@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:al_furkan/core/models/content_post.dart';
+import 'package:imaanly/core/models/content_post.dart';
 import 'pinned_badge.dart';
 import 'post_interaction_row.dart';
 

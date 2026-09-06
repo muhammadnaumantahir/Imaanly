@@ -1,4 +1,4 @@
-import "package:al_furkan/src/core/audio/model/ayahkey_management.dart";
+import "package:imaanly/src/core/audio/model/ayahkey_management.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:hive_ce_flutter/hive_flutter.dart";
 

@@ -1,6 +1,6 @@
-import "package:al_furkan/src/resources/quran_resources/models/tafsir_book_model.dart";
-import "package:al_furkan/src/resources/quran_resources/models/translation_book_model.dart";
-import "package:al_furkan/src/screen/setup/cubit/resources_progress_cubit_state.dart";
+import "package:imaanly/src/resources/quran_resources/models/tafsir_book_model.dart";
+import "package:imaanly/src/resources/quran_resources/models/translation_book_model.dart";
+import "package:imaanly/src/screen/setup/cubit/resources_progress_cubit_state.dart";
 import "package:bloc/bloc.dart";
 
 class ResourcesProgressCubit extends Cubit<ResourcesProgressCubitState> {

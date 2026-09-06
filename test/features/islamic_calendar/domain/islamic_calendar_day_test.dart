@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:al_furkan/features/islamic_calendar/domain/islamic_calendar_day.dart';
+import 'package:imaanly/features/islamic_calendar/domain/islamic_calendar_day.dart';
 
 void main() {
   test('keeps civil date and calculated Hijri label together', () {

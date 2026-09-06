@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:home_widget/home_widget.dart';
 import 'package:qcf_quran/qcf_quran.dart';
-import 'package:al_furkan/src/screen/settings/widgets/premium_widget_design.dart';
-import 'package:al_furkan/src/screen/settings/widgets/zekr_mini_widget_design.dart';
-import 'package:al_furkan/src/screen/settings/widgets/prayer_widget_design.dart';
+import 'package:imaanly/src/screen/settings/widgets/premium_widget_design.dart';
+import 'package:imaanly/src/screen/settings/widgets/zekr_mini_widget_design.dart';
+import 'package:imaanly/src/screen/settings/widgets/prayer_widget_design.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:workmanager/workmanager.dart';
@@ -33,7 +33,7 @@ void ayahWidgetCallbackDispatcher() {
 }
 
 class AyahOfTheDayService {
-  static const String appGroupId = 'com.idrisium.alfurkan';
+  static const String appGroupId = 'com.imaanly.app';
   static const String androidWidgetName = 'AyahWidgetProvider';
   static const String periodicTaskName = "updateAyahWidgetTask";
 
@@ -268,13 +268,13 @@ class AyahOfTheDayService {
     
     // Setup Deep Links
     if (contentType == "azkar") {
-      await HomeWidget.saveWidgetData<String>('ayah_url', 'alfurkan://widget?action=open_azkar');
-      await HomeWidget.saveWidgetData<String>('word_url', 'alfurkan://widget?action=open_azkar');
+      await HomeWidget.saveWidgetData<String>('ayah_url', 'imaanly://widget?action=open_azkar');
+      await HomeWidget.saveWidgetData<String>('word_url', 'imaanly://widget?action=open_azkar');
     } else {
-      await HomeWidget.saveWidgetData<String>('ayah_url', 'alfurkan://widget?action=jump_to_ayah&surah=$surah&verse=$verse');
-      await HomeWidget.saveWidgetData<String>('word_url', 'alfurkan://widget?action=jump_to_ayah&surah=$surah&verse=$verse');
+      await HomeWidget.saveWidgetData<String>('ayah_url', 'imaanly://widget?action=jump_to_ayah&surah=$surah&verse=$verse');
+      await HomeWidget.saveWidgetData<String>('word_url', 'imaanly://widget?action=jump_to_ayah&surah=$surah&verse=$verse');
     }
-    await HomeWidget.saveWidgetData<String>('prayer_url', 'alfurkan://widget?action=open_prayer');
+    await HomeWidget.saveWidgetData<String>('prayer_url', 'imaanly://widget?action=open_prayer');
     
     // حساب مواقيت الصلاة لو مفعلة
     Map<String, String>? prayerTimes;

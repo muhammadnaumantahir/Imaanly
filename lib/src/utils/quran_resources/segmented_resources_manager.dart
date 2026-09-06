@@ -1,11 +1,11 @@
 import "dart:convert";
 
-import "package:al_furkan/l10n/app_localizations.dart";
-import "package:al_furkan/src/api/apis_urls.dart";
-import "package:al_furkan/src/core/audio/cubit/segmented_quran_reciter_cubit.dart";
-import "package:al_furkan/src/core/audio/model/recitation_info_model.dart";
-import "package:al_furkan/src/utils/encode_decode.dart";
-import "package:al_furkan/src/screen/setup/cubit/resources_progress_cubit_cubit.dart";
+import "package:imaanly/l10n/app_localizations.dart";
+import "package:imaanly/src/api/apis_urls.dart";
+import "package:imaanly/src/core/audio/cubit/segmented_quran_reciter_cubit.dart";
+import "package:imaanly/src/core/audio/model/recitation_info_model.dart";
+import "package:imaanly/src/utils/encode_decode.dart";
+import "package:imaanly/src/screen/setup/cubit/resources_progress_cubit_cubit.dart";
 import "package:dio/dio.dart" as dio;
 import "package:flutter/cupertino.dart";
 import "package:flutter/foundation.dart";

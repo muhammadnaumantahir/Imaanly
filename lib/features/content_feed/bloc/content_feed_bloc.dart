@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_ce/hive.dart';
 
-import 'package:al_furkan/core/repositories/content_repository.dart';
-import 'package:al_furkan/core/models/content_post.dart';
+import 'package:imaanly/core/repositories/content_repository.dart';
+import 'package:imaanly/core/models/content_post.dart';
 import 'content_feed_event.dart';
 import 'content_feed_state.dart';
 

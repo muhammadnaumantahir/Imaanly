@@ -1,6 +1,6 @@
-import "package:al_furkan/src/core/settings/settings_repository.dart";
-import "package:al_furkan/src/screen/settings/cubit/quran_script_view_state.dart";
-import "package:al_furkan/src/widget/quran_script/model/script_info.dart";
+import "package:imaanly/src/core/settings/settings_repository.dart";
+import "package:imaanly/src/screen/settings/cubit/quran_script_view_state.dart";
+import "package:imaanly/src/widget/quran_script/model/script_info.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 
 class QuranViewCubit extends Cubit<QuranViewState> {

@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'package:flutter/foundation.dart';
-import 'package:al_furkan/src/core/audio/cubit/ayah_key_cubit.dart';
-import 'package:al_furkan/src/core/audio/cubit/player_position_cubit.dart';
-import 'package:al_furkan/src/core/audio/cubit/player_state_cubit.dart';
-import 'package:al_furkan/src/core/audio/cubit/segmented_quran_reciter_cubit.dart';
-import 'package:al_furkan/src/core/audio/model/audio_player_position_model.dart';
-import 'package:al_furkan/src/utils/quran_resources/quran_script_function.dart';
-import 'package:al_furkan/src/widget/quran_script/model/script_info.dart';
+import 'package:imaanly/src/core/audio/cubit/ayah_key_cubit.dart';
+import 'package:imaanly/src/core/audio/cubit/player_position_cubit.dart';
+import 'package:imaanly/src/core/audio/cubit/player_state_cubit.dart';
+import 'package:imaanly/src/core/audio/cubit/segmented_quran_reciter_cubit.dart';
+import 'package:imaanly/src/core/audio/model/audio_player_position_model.dart';
+import 'package:imaanly/src/utils/quran_resources/quran_script_function.dart';
+import 'package:imaanly/src/widget/quran_script/model/script_info.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
 

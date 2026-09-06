@@ -1,16 +1,16 @@
 import "dart:async";
 
 import "package:adhan_dart/adhan_dart.dart" hide Prayer;
-import "package:al_furkan/features/worship/data/worship_activity_repository.dart";
-import "package:al_furkan/features/worship/domain/worship_activity.dart";
-import "package:al_furkan/src/core/storage/app_boxes.dart";
-import "package:al_furkan/src/screen/location_handler/cubit/location_data_qibla_data_cubit.dart";
-import "package:al_furkan/src/screen/location_handler/location_aquire.dart";
-import "package:al_furkan/src/screen/location_handler/model/location_data_qibla_data_state.dart";
-import "package:al_furkan/src/screen/prayer_time/models/calculation_method_enum.dart";
-import "package:al_furkan/src/screen/prayer_time/models/prayer_enum.dart";
-import "package:al_furkan/src/screen/prayer_time/prayer_time_functions/prayer_time_helper.dart";
-import "package:al_furkan/src/utils/format_time_of_day.dart";
+import "package:imaanly/features/worship/data/worship_activity_repository.dart";
+import "package:imaanly/features/worship/domain/worship_activity.dart";
+import "package:imaanly/src/core/storage/app_boxes.dart";
+import "package:imaanly/src/screen/location_handler/cubit/location_data_qibla_data_cubit.dart";
+import "package:imaanly/src/screen/location_handler/location_aquire.dart";
+import "package:imaanly/src/screen/location_handler/model/location_data_qibla_data_state.dart";
+import "package:imaanly/src/screen/prayer_time/models/calculation_method_enum.dart";
+import "package:imaanly/src/screen/prayer_time/models/prayer_enum.dart";
+import "package:imaanly/src/screen/prayer_time/prayer_time_functions/prayer_time_helper.dart";
+import "package:imaanly/src/utils/format_time_of_day.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:google_fonts/google_fonts.dart";

@@ -1,13 +1,13 @@
 import "dart:math" as math;
 import "dart:ui" as ui;
 
-import "package:al_furkan/l10n/app_localizations.dart";
-import "package:al_furkan/src/screen/location_handler/cubit/location_data_qibla_data_cubit.dart";
-import "package:al_furkan/src/screen/location_handler/location_aquire.dart";
-import "package:al_furkan/src/screen/location_handler/model/location_data_qibla_data_state.dart";
-import "package:al_furkan/src/screen/qibla/qibla_guidance.dart";
-import "package:al_furkan/src/theme/controller/theme_cubit.dart";
-import "package:al_furkan/src/theme/controller/theme_state.dart";
+import "package:imaanly/l10n/app_localizations.dart";
+import "package:imaanly/src/screen/location_handler/cubit/location_data_qibla_data_cubit.dart";
+import "package:imaanly/src/screen/location_handler/location_aquire.dart";
+import "package:imaanly/src/screen/location_handler/model/location_data_qibla_data_state.dart";
+import "package:imaanly/src/screen/qibla/qibla_guidance.dart";
+import "package:imaanly/src/theme/controller/theme_cubit.dart";
+import "package:imaanly/src/theme/controller/theme_state.dart";
 import "package:camera/camera.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";

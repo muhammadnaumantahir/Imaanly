@@ -1,9 +1,9 @@
 import "dart:convert";
 import "dart:developer";
 
-import "package:al_furkan/src/resources/quran_resources/language_resources.dart";
-import "package:al_furkan/src/resources/translation/language_cubit.dart";
-import "package:al_furkan/src/utils/quran_resources/get_translation.dart";
+import "package:imaanly/src/resources/quran_resources/language_resources.dart";
+import "package:imaanly/src/resources/translation/language_cubit.dart";
+import "package:imaanly/src/utils/quran_resources/get_translation.dart";
 import "package:dio/dio.dart" as dio;
 import "package:flutter/cupertino.dart";
 import "package:flutter/foundation.dart";

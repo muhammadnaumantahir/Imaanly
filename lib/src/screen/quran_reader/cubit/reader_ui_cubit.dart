@@ -1,4 +1,4 @@
-import "package:al_furkan/src/core/reader_session/reader_session_repository.dart";
+import "package:imaanly/src/core/reader_session/reader_session_repository.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 
 import "reader_ui_state.dart";

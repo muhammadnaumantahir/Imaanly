@@ -2,7 +2,7 @@
 
 An extensively modified and ultra-optimized Flutter package for rendering the Holy Quran with highest quality vector text (QCF) and complete page layouts.
 
-**Proprietary fork heavily customized for the [Al-Furkan App](https://github.com/IDRISIUMCorp/al-furkan-quran-flutter-app).**
+**Proprietary fork heavily customized for the [Imaanly App](https://github.com/IDRISIUMCorp/imaanly-quran-flutter-app).**
 
 ---
 
@@ -30,7 +30,7 @@ This internal module has been significantly expanded beyond its original state t
 ---
 
 ## 💻 Integration
-This package should **not** be used independently outside of its designated parent directory due to tight coupling with `al-furkan-quran-flutter-app`'s core styling components. All assets are safely stored in `.assets/` and routed accordingly.
+This package should **not** be used independently outside of its designated parent directory due to tight coupling with `imaanly-quran-flutter-app`'s core styling components. All assets are safely stored in `.assets/` and routed accordingly.
 
 ### 📜 Note
 This module strictly follows the "No Placeholders" and standard coding practices defined by **Idris Ghamid**.

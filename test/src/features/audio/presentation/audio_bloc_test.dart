@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:al_furkan/src/core/error/failures.dart';
-import 'package:al_furkan/src/features/audio/domain/entities/reciter.dart';
-import 'package:al_furkan/src/features/audio/domain/repositories/audio_repository.dart';
-import 'package:al_furkan/src/features/audio/presentation/audio_bloc.dart';
+import 'package:imaanly/src/core/error/failures.dart';
+import 'package:imaanly/src/features/audio/domain/entities/reciter.dart';
+import 'package:imaanly/src/features/audio/domain/repositories/audio_repository.dart';
+import 'package:imaanly/src/features/audio/presentation/audio_bloc.dart';
 
 const _testReciter = Reciter(
   id: 1,

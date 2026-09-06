@@ -1,4 +1,4 @@
-import 'package:al_furkan/core/models/content_post.dart';
+import 'package:imaanly/core/models/content_post.dart';
 
 /// Events for the Content Feed BLoC.
 sealed class ContentFeedEvent {

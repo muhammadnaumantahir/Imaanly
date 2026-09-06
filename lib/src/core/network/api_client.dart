@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../constants/app_strings.dart';
 
-/// Al-Furkan API Client — Centralized Dio instance with interceptors
+/// Imaanly API Client — Centralized Dio instance with interceptors
 /// All network calls go through this client. ZERO raw Dio instances elsewhere.
 class ApiClient {
   ApiClient._();

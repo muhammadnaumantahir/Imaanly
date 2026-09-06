@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:al_furkan/src/core/error/failures.dart';
-import 'package:al_furkan/src/features/azkar/domain/entities/azkar.dart';
-import 'package:al_furkan/src/features/azkar/domain/repositories/azkar_repository.dart';
-import 'package:al_furkan/src/features/azkar/presentation/azkar_bloc.dart';
+import 'package:imaanly/src/core/error/failures.dart';
+import 'package:imaanly/src/features/azkar/domain/entities/azkar.dart';
+import 'package:imaanly/src/features/azkar/domain/repositories/azkar_repository.dart';
+import 'package:imaanly/src/features/azkar/presentation/azkar_bloc.dart';
 
 /// Manual mock — no code-gen needed
 class MockAzkarRepository implements AzkarRepository {

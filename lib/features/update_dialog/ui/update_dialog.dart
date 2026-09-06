@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:al_furkan/core/models/update_config.dart';
+import 'package:imaanly/core/models/update_config.dart';
 import 'dialog_styles.dart';
 import 'countdown_dismiss_button.dart';
 

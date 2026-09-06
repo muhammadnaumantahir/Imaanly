@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:device_info_plus/device_info_plus.dart';
 
-import 'package:al_furkan/core/repositories/analytics_repository.dart';
+import 'package:imaanly/core/repositories/analytics_repository.dart';
 
 /// Singleton service that silently tracks user activity
 /// and sends periodic heartbeats to Firestore.

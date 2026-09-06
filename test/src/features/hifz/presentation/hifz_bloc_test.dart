@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:al_furkan/src/core/error/failures.dart';
-import 'package:al_furkan/src/features/hifz/domain/entities/hifz.dart';
-import 'package:al_furkan/src/features/hifz/domain/repositories/hifz_repository.dart';
-import 'package:al_furkan/src/features/hifz/presentation/hifz_bloc.dart';
+import 'package:imaanly/src/core/error/failures.dart';
+import 'package:imaanly/src/features/hifz/domain/entities/hifz.dart';
+import 'package:imaanly/src/features/hifz/domain/repositories/hifz_repository.dart';
+import 'package:imaanly/src/features/hifz/presentation/hifz_bloc.dart';
 
 // Shared test data — non-const because DateTime is not const
 final _testDate = DateTime(2026, 1, 1);

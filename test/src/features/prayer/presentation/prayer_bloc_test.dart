@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:al_furkan/src/core/error/failures.dart';
-import 'package:al_furkan/src/features/prayer/domain/entities/prayer_time.dart';
-import 'package:al_furkan/src/features/prayer/domain/usecases/get_today_prayer_times.dart';
-import 'package:al_furkan/src/features/prayer/presentation/prayer_bloc.dart';
+import 'package:imaanly/src/core/error/failures.dart';
+import 'package:imaanly/src/features/prayer/domain/entities/prayer_time.dart';
+import 'package:imaanly/src/features/prayer/domain/usecases/get_today_prayer_times.dart';
+import 'package:imaanly/src/features/prayer/presentation/prayer_bloc.dart';
 
 final _testSchedule = DailyPrayerSchedule(
   date: DateTime(2026, 4, 28),

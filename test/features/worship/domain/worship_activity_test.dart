@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:al_furkan/features/worship/domain/worship_activity.dart';
+import 'package:imaanly/features/worship/domain/worship_activity.dart';
 
 void main() {
   test('creates a stable day key from a local date', () {

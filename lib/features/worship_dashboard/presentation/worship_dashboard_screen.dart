@@ -1,8 +1,8 @@
-import 'package:al_furkan/features/worship/data/worship_activity_repository.dart';
-import 'package:al_furkan/features/worship/domain/worship_daily_summary.dart';
-import 'package:al_furkan/features/worship_dashboard/domain/worship_dashboard_summary.dart';
-import 'package:al_furkan/src/core/reading_stats/reading_stats_cubit.dart';
-import 'package:al_furkan/src/core/storage/app_boxes.dart';
+import 'package:imaanly/features/worship/data/worship_activity_repository.dart';
+import 'package:imaanly/features/worship/domain/worship_daily_summary.dart';
+import 'package:imaanly/features/worship_dashboard/domain/worship_dashboard_summary.dart';
+import 'package:imaanly/src/core/reading_stats/reading_stats_cubit.dart';
+import 'package:imaanly/src/core/storage/app_boxes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';

@@ -1,7 +1,7 @@
 import "dart:convert";
 import "dart:developer";
 
-import "package:al_furkan/src/resources/quran_resources/models/transliteration_book_model.dart";
+import "package:imaanly/src/resources/quran_resources/models/transliteration_book_model.dart";
 import "package:dio/dio.dart" as dio;
 import "package:flutter/cupertino.dart";
 import "package:flutter/foundation.dart";

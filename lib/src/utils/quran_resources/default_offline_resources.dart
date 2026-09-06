@@ -1,7 +1,7 @@
 import "dart:convert";
 
-import "package:al_furkan/src/resources/quran_resources/models/tafsir_book_model.dart";
-import "package:al_furkan/src/utils/quran_resources/quran_tafsir_function.dart";
+import "package:imaanly/src/resources/quran_resources/models/tafsir_book_model.dart";
+import "package:imaanly/src/utils/quran_resources/quran_tafsir_function.dart";
 import "package:archive/archive.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter/services.dart";

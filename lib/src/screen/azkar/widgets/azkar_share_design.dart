@@ -1101,7 +1101,7 @@ class AzkarShareDesign extends StatelessWidget {
           ],
           if (showBranding) ...[
             const SizedBox(height: 80),
-            Text("AL-FURKAN APP", style: TextStyle(color: accentColor.withValues(alpha: 0.5), fontSize: 16, letterSpacing: 6, fontWeight: FontWeight.bold, fontFamily: "NotoSans")),
+            Text("IMAANLY APP", style: TextStyle(color: accentColor.withValues(alpha: 0.5), fontSize: 16, letterSpacing: 6, fontWeight: FontWeight.bold, fontFamily: "NotoSans")),
           ]
         ],
       ),

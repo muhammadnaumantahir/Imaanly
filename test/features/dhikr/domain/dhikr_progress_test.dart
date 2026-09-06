@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:al_furkan/features/dhikr/domain/dhikr_progress.dart';
+import 'package:imaanly/features/dhikr/domain/dhikr_progress.dart';
 
 void main() {
   group('DhikrProgress', () {

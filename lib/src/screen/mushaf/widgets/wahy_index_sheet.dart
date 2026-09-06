@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:al_furkan/src/theme/controller/theme_cubit.dart';
-import 'package:al_furkan/src/theme/app_colors.dart';
-import 'package:al_furkan/src/screen/surah_list_view/model/surah_info_model.dart';
+import 'package:imaanly/src/theme/controller/theme_cubit.dart';
+import 'package:imaanly/src/theme/app_colors.dart';
+import 'package:imaanly/src/screen/surah_list_view/model/surah_info_model.dart';
 import 'package:qcf_quran/qcf_quran.dart';
 
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:al_furkan/src/utils/number_localization.dart';
-import 'package:al_furkan/src/resources/quran_resources/meta/meta_data_surah.dart';
-import 'package:al_furkan/src/utils/quran_ayahs_function/get_page_number.dart' as p;
+import 'package:imaanly/src/utils/number_localization.dart';
+import 'package:imaanly/src/resources/quran_resources/meta/meta_data_surah.dart';
+import 'package:imaanly/src/utils/quran_ayahs_function/get_page_number.dart' as p;
 class WahyIndexSheet extends StatefulWidget {
   final ValueChanged<int> onOpenPage;
   final ValueChanged<String>? onOpenAyah;

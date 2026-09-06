@@ -12,10 +12,10 @@ import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:al_furkan/src/theme/controller/theme_cubit.dart';
-import 'package:al_furkan/src/screen/azkar/widgets/azkar_share_design.dart';
-import 'package:al_furkan/src/screen/azkar/models/azkar_share_settings.dart';
-import 'package:al_furkan/src/screen/azkar/services/azkar_share_preferences.dart';
+import 'package:imaanly/src/theme/controller/theme_cubit.dart';
+import 'package:imaanly/src/screen/azkar/widgets/azkar_share_design.dart';
+import 'package:imaanly/src/screen/azkar/models/azkar_share_settings.dart';
+import 'package:imaanly/src/screen/azkar/services/azkar_share_preferences.dart';
 
 
 

@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:al_furkan/features/worship/domain/worship_activity.dart';
-import 'package:al_furkan/features/worship/domain/worship_daily_summary.dart';
+import 'package:imaanly/features/worship/domain/worship_activity.dart';
+import 'package:imaanly/features/worship/domain/worship_daily_summary.dart';
 
 void main() {
   test('aggregates one day without counting duplicate salah completion', () {

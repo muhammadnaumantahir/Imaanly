@@ -1,16 +1,16 @@
-import "package:al_furkan/l10n/app_localizations.dart";
-import "package:al_furkan/src/resources/translation/language_cubit.dart";
-import "package:al_furkan/src/resources/translation/languages.dart";
-import "package:al_furkan/src/screen/settings/app_language_settings.dart";
-import "package:al_furkan/src/screen/settings/notification_settings_page_enhanced.dart";
-import "package:al_furkan/src/screen/settings/widgets/home_widget_studio_screen.dart";
-import "package:al_furkan/src/widget/theme/theme_icon_button.dart";
+import "package:imaanly/l10n/app_localizations.dart";
+import "package:imaanly/src/resources/translation/language_cubit.dart";
+import "package:imaanly/src/resources/translation/languages.dart";
+import "package:imaanly/src/screen/settings/app_language_settings.dart";
+import "package:imaanly/src/screen/settings/notification_settings_page_enhanced.dart";
+import "package:imaanly/src/screen/settings/widgets/home_widget_studio_screen.dart";
+import "package:imaanly/src/widget/theme/theme_icon_button.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter_screenutil/flutter_screenutil.dart";
 import "package:gap/gap.dart";
-import "package:al_furkan/src/core/hifz/hifz_cubit.dart";
-import "package:al_furkan/src/core/night_mode/night_reading_cubit.dart";
+import "package:imaanly/src/core/hifz/hifz_cubit.dart";
+import "package:imaanly/src/core/night_mode/night_reading_cubit.dart";
 import "package:google_fonts/google_fonts.dart";
 
 import "../../theme/controller/theme_cubit.dart";

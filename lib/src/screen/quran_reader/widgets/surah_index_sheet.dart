@@ -1,12 +1,12 @@
 import "dart:ui";
 
-import "package:al_furkan/l10n/app_localizations.dart";
-import "package:al_furkan/src/resources/quran_resources/meaning_of_surah.dart";
-import "package:al_furkan/src/resources/quran_resources/meta/meta_data_surah.dart";
-import "package:al_furkan/src/screen/surah_list_view/model/surah_info_model.dart";
-import "package:al_furkan/src/theme/controller/theme_cubit.dart";
-import "package:al_furkan/src/theme/controller/theme_state.dart";
-import "package:al_furkan/src/utils/number_localization.dart";
+import "package:imaanly/l10n/app_localizations.dart";
+import "package:imaanly/src/resources/quran_resources/meaning_of_surah.dart";
+import "package:imaanly/src/resources/quran_resources/meta/meta_data_surah.dart";
+import "package:imaanly/src/screen/surah_list_view/model/surah_info_model.dart";
+import "package:imaanly/src/theme/controller/theme_cubit.dart";
+import "package:imaanly/src/theme/controller/theme_state.dart";
+import "package:imaanly/src/utils/number_localization.dart";
 import "package:fluentui_system_icons/fluentui_system_icons.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";

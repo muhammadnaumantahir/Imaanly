@@ -1,14 +1,14 @@
 import "dart:convert";
 import "dart:developer";
 
-import "package:al_furkan/src/resources/quran_resources/models/tafsir_book_model.dart";
+import "package:imaanly/src/resources/quran_resources/models/tafsir_book_model.dart";
 import "package:dio/dio.dart" as dio;
 import "package:flutter/cupertino.dart";
 import "package:flutter/foundation.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:hive_ce_flutter/hive_flutter.dart";
 
-import "package:al_furkan/src/utils/quran_resources/default_offline_resources.dart";
+import "package:imaanly/src/utils/quran_resources/default_offline_resources.dart";
 
 import "../../api/apis_urls.dart";
 import "../../screen/setup/cubit/resources_progress_cubit_cubit.dart";

@@ -1,6 +1,6 @@
 import 'package:hive_ce/hive.dart';
 
-import 'package:al_furkan/src/core/storage/app_boxes.dart';
+import 'package:imaanly/src/core/storage/app_boxes.dart';
 import '../domain/worship_activity.dart';
 import '../domain/worship_daily_summary.dart';
 

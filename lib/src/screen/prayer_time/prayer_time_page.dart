@@ -1,10 +1,10 @@
-import "package:al_furkan/src/core/notifications/wahy_notification_service.dart";
-import "package:al_furkan/src/screen/location_handler/cubit/location_data_qibla_data_cubit.dart";
-import "package:al_furkan/src/screen/location_handler/location_aquire.dart";
-import "package:al_furkan/src/screen/location_handler/model/location_data_qibla_data_state.dart";
-import "package:al_furkan/src/screen/prayer_time/prayer_timeline_page.dart";
-import "package:al_furkan/src/screen/prayer_time/time_list_of_prayers.dart";
-import "package:al_furkan/src/screen/mushaf/widgets/wahy_side_drawer.dart";
+import "package:imaanly/src/core/notifications/wahy_notification_service.dart";
+import "package:imaanly/src/screen/location_handler/cubit/location_data_qibla_data_cubit.dart";
+import "package:imaanly/src/screen/location_handler/location_aquire.dart";
+import "package:imaanly/src/screen/location_handler/model/location_data_qibla_data_state.dart";
+import "package:imaanly/src/screen/prayer_time/prayer_timeline_page.dart";
+import "package:imaanly/src/screen/prayer_time/time_list_of_prayers.dart";
+import "package:imaanly/src/screen/mushaf/widgets/wahy_side_drawer.dart";
 
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";

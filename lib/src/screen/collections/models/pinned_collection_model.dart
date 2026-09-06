@@ -1,6 +1,6 @@
 import "dart:convert";
 
-import "package:al_furkan/src/screen/collections/models/pinned_model.dart.dart";
+import "package:imaanly/src/screen/collections/models/pinned_model.dart.dart";
 
 class PinnedCollectionModel {
   String id;

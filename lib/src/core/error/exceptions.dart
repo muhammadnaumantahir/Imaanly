@@ -1,4 +1,4 @@
-/// Al-Furkan Custom Exceptions — Internal to Data layer only
+/// Imaanly Custom Exceptions — Internal to Data layer only
 /// Domain/Presentation layers use Failure types, never these.
 class AppException implements Exception {
   final String message;

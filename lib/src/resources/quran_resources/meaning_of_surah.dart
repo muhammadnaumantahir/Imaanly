@@ -1,6 +1,6 @@
 import "dart:convert";
 
-import "package:al_furkan/src/resources/translation/language_cubit.dart";
+import "package:imaanly/src/resources/translation/language_cubit.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_bloc/flutter_bloc.dart";

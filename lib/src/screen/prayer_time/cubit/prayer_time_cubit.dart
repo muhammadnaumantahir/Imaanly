@@ -1,8 +1,8 @@
-import "package:al_furkan/src/core/settings/settings_repository.dart";
-import "package:al_furkan/src/screen/prayer_time/models/prayer_enum.dart";
-import "package:al_furkan/src/screen/prayer_time/cubit/prayer_time_state.dart";
-import "package:al_furkan/src/screen/prayer_time/models/reminder_type.dart";
-import "package:al_furkan/src/screen/prayer_time/models/reminder_type_with_pray_model.dart";
+import "package:imaanly/src/core/settings/settings_repository.dart";
+import "package:imaanly/src/screen/prayer_time/models/prayer_enum.dart";
+import "package:imaanly/src/screen/prayer_time/cubit/prayer_time_state.dart";
+import "package:imaanly/src/screen/prayer_time/models/reminder_type.dart";
+import "package:imaanly/src/screen/prayer_time/models/reminder_type_with_pray_model.dart";
 import "package:bloc/bloc.dart";
 
 class PrayerReminderCubit extends Cubit<PrayerReminderState> {

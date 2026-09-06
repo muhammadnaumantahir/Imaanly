@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:googleapis_auth/auth_io.dart';
 
-import 'package:al_furkan/core/models/notification_model.dart';
-import 'package:al_furkan/core/repositories/notification_repository.dart';
-import 'package:al_furkan/core/constants/service_account_key.dart';
+import 'package:imaanly/core/models/notification_model.dart';
+import 'package:imaanly/core/repositories/notification_repository.dart';
+import 'package:imaanly/core/constants/service_account_key.dart';
 
 /// Service for sending push notifications via FCM HTTP v1 API.
 class FcmService {
@@ -15,7 +15,7 @@ class FcmService {
 
   final NotificationRepository _repository;
 
-  static const _projectId = 'al-furkan-app';
+  static const _projectId = 'imaanly-app';
   static const _fcmUrl = 'https://fcm.googleapis.com/v1/projects/$_projectId/messages:send';
   static const _scopes = ['https://www.googleapis.com/auth/firebase.messaging'];
 
@@ -112,7 +112,7 @@ class FcmService {
         'android': {
           'priority': 'high',
           'notification': {
-            'channel_id': 'alfurkan_updates',
+            'channel_id': 'imaanly_updates',
             'click_action': 'FLUTTER_NOTIFICATION_CLICK',
             'sound': 'default',
           },

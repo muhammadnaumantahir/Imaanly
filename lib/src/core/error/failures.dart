@@ -2,7 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'failures.freezed.dart';
 
-/// Al-Furkan Failure Types — Sealed class pattern
+/// Imaanly Failure Types — Sealed class pattern
 /// Every async operation returns Either<Failure, T>
 /// ZERO raw exceptions exposed to domain/presentation layers.
 @freezed

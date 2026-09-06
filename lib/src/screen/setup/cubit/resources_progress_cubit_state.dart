@@ -1,5 +1,5 @@
-import "package:al_furkan/src/resources/quran_resources/models/tafsir_book_model.dart";
-import "package:al_furkan/src/resources/quran_resources/models/translation_book_model.dart";
+import "package:imaanly/src/resources/quran_resources/models/tafsir_book_model.dart";
+import "package:imaanly/src/resources/quran_resources/models/translation_book_model.dart";
 
 class ResourcesProgressCubitState {
   double? percentage;

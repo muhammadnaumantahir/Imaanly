@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:al_furkan/src/model/ayah_image_settings.dart';
-import 'package:al_furkan/src/resources/quran_resources/quran_pages_info.dart';
-import 'package:al_furkan/src/theme/app_colors.dart';
-import 'package:al_furkan/src/theme/controller/theme_cubit.dart';
-import 'package:al_furkan/src/utils/basic_functions.dart';
-import 'package:al_furkan/src/utils/quran_ayahs_function/get_page_number.dart';
+import 'package:imaanly/src/model/ayah_image_settings.dart';
+import 'package:imaanly/src/resources/quran_resources/quran_pages_info.dart';
+import 'package:imaanly/src/theme/app_colors.dart';
+import 'package:imaanly/src/theme/controller/theme_cubit.dart';
+import 'package:imaanly/src/utils/basic_functions.dart';
+import 'package:imaanly/src/utils/quran_ayahs_function/get_page_number.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -16,9 +16,9 @@ import 'package:qcf_quran/qcf_quran.dart' hide getPageNumber;
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
-import 'package:al_furkan/src/resources/quran_resources/models/tafsir_book_model.dart';
-import 'package:al_furkan/src/utils/quran_resources/quran_tafsir_function.dart';
-import 'package:al_furkan/src/core/constants/app_fonts.dart';
+import 'package:imaanly/src/resources/quran_resources/models/tafsir_book_model.dart';
+import 'package:imaanly/src/utils/quran_resources/quran_tafsir_function.dart';
+import 'package:imaanly/src/core/constants/app_fonts.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class UnifiedShareBottomSheet extends StatefulWidget {
@@ -365,7 +365,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
         buffer.writeln(
           "تمت المشاركة من تطبيق الفرقان",
         );
-        buffer.writeln("github.com/IDRISIUMCorp/al-furkan-quran-flutter-app");
+        buffer.writeln("github.com/IDRISIUMCorp/imaanly-quran-flutter-app");
       }
 
       await SharePlus.instance.share(ShareParams(text: buffer.toString()));
@@ -1828,7 +1828,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                         ),
                       ),
                       Text(
-                        "github.com/IDRISIUMCorp/al-furkan-quran-flutter-app",
+                        "github.com/IDRISIUMCorp/imaanly-quran-flutter-app",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,

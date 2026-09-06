@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:al_furkan/src/screen/mushaf/widgets/wahy_side_drawer.dart';
+import 'package:imaanly/src/screen/mushaf/widgets/wahy_side_drawer.dart';
 import '../../core/theme/sunnah_theme.dart';
 import '../../services/sunnah_share_service.dart';
 import '../widgets/sunnah_intro_card.dart';

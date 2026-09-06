@@ -1,20 +1,20 @@
 import "dart:ui" as ui;
 import "package:flutter/material.dart";
 
-import "package:al_furkan/src/theme/app_colors.dart";
-import "package:al_furkan/src/screen/about/about_the_app.dart";
-import "package:al_furkan/src/screen/smart_khatma/smart_khatma_page.dart";
-import "package:al_furkan/src/screen/qibla/qibla_direction.dart";
-import "package:al_furkan/src/screen/settings/settings_page.dart";
-import "package:al_furkan/src/screen/reading_stats/reading_stats_screen.dart";
-import "package:al_furkan/src/screen/custom_playlist/custom_playlist_screen.dart";
-import "package:al_furkan/src/screen/prayer_time/prayer_time_page.dart";
-import "package:al_furkan/src/screen/azkar/azkar_categories_screen.dart";
-import "package:al_furkan/src/screen/quran_resources/quran_resources_view.dart";
-import "package:al_furkan/src/screen/settings/widgets/home_widget_studio_screen.dart";
-import "package:al_furkan/features/sunnah/presentation/screens/sunnah_prayer_screen_v2.dart";
-import "package:al_furkan/src/screen/offline_player/offline_player_screen.dart";
-import "package:al_furkan/src/screen/mushaf/widgets/wahy_feedback_dialog.dart";
+import "package:imaanly/src/theme/app_colors.dart";
+import "package:imaanly/src/screen/about/about_the_app.dart";
+import "package:imaanly/src/screen/smart_khatma/smart_khatma_page.dart";
+import "package:imaanly/src/screen/qibla/qibla_direction.dart";
+import "package:imaanly/src/screen/settings/settings_page.dart";
+import "package:imaanly/src/screen/reading_stats/reading_stats_screen.dart";
+import "package:imaanly/src/screen/custom_playlist/custom_playlist_screen.dart";
+import "package:imaanly/src/screen/prayer_time/prayer_time_page.dart";
+import "package:imaanly/src/screen/azkar/azkar_categories_screen.dart";
+import "package:imaanly/src/screen/quran_resources/quran_resources_view.dart";
+import "package:imaanly/src/screen/settings/widgets/home_widget_studio_screen.dart";
+import "package:imaanly/features/sunnah/presentation/screens/sunnah_prayer_screen_v2.dart";
+import "package:imaanly/src/screen/offline_player/offline_player_screen.dart";
+import "package:imaanly/src/screen/mushaf/widgets/wahy_feedback_dialog.dart";
 
 class WahySideDrawer extends StatefulWidget {
   final Color primary;

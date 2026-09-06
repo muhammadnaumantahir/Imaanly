@@ -1,5 +1,5 @@
-import "package:al_furkan/src/screen/prayer_time/models/prayer_enum.dart";
-import "package:al_furkan/l10n/app_localizations.dart";
+import "package:imaanly/src/screen/prayer_time/models/prayer_enum.dart";
+import "package:imaanly/l10n/app_localizations.dart";
 import "package:flutter/material.dart";
 
 class PrayerTimeHelper {

@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📖 Al-Furkan — الفُرقان
+# 📖 Imaanly — الفُرقان
 
 **One of the most advanced open-source Quran apps built with Flutter, combining BLoC, Clean Architecture, and precise Uthmanic script rendering with audio, Tafsir, and daily Islamic tools.**
 
@@ -10,7 +10,7 @@
 </p>
 
 [![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?logo=android&logoColor=white&style=for-the-badge)](https://developer.android.com)
-[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen?style=for-the-badge)](https://github.com/IDRISIUMCorp/al-furkan-quran-flutter-app)
+[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen?style=for-the-badge)](https://github.com/IDRISIUMCorp/imaanly-quran-flutter-app)
 [![Built with Flutter](https://img.shields.io/badge/Built_with-Flutter-02569B?logo=flutter&logoColor=white&style=for-the-badge)](https://flutter.dev)
 [![License](https://img.shields.io/badge/License-Waqf_(Charity)-red?style=for-the-badge)](LICENSE)
 [![Developer](https://img.shields.io/badge/Developed_By-IDRISIUM_Corp-8B5CF6?style=for-the-badge)](https://github.com/IDRISIUM)
@@ -21,13 +21,13 @@
 
 ## About
 
-Al-Furkan is a **production-ready, cross-platform Flutter Quran app** — not a demo, not a UI showcase, but a **real Islamic application** built with **BLoC + Clean Architecture** and **Uthmanic (QCF) script rendering** that feels close to reading from a physical Mushaf.
+Imaanly is a **production-ready, cross-platform Flutter Quran app** — not a demo, not a UI showcase, but a **real Islamic application** built with **BLoC + Clean Architecture** and **Uthmanic (QCF) script rendering** that feels close to reading from a physical Mushaf.
 
 It is designed for **daily reading, deep study, memorization, and personalization** — combining an interactive mushaf, 61 tafsirs in 25 languages, 209+ translations in 50+ languages, a word-level Ayah library with 7 analysis tabs, 56 reciters with advanced audio controls, prayer times, qibla, azkar, khatma tracking, smart notifications, and a fully customizable **"Ayah of the Day"** home widget — all in one app.
 
-> _Whether you are a daily Quran reader, a student of knowledge, a hafiz, or a Flutter developer building a serious product… Al-Furkan is made to serve you._
+> _Whether you are a daily Quran reader, a student of knowledge, a hafiz, or a Flutter developer building a serious product… Imaanly is made to serve you._
 
-### Why Al-Furkan?
+### Why Imaanly?
 
 - **Not just text + audio** — QCF Uthmanic Mushaf + Word-level Ayah Library + Resource Management
 - **BLoC + Clean Architecture** — not random state scattered inside screens; testable, scalable, maintainable
@@ -652,7 +652,7 @@ It is designed for **daily reading, deep study, memorization, and personalizatio
 1. **Clone**
 
 ```bash
-git clone https://github.com/IDRISIUMCorp/al-furkan-quran-flutter-app.git
+git clone https://github.com/IDRISIUMCorp/imaanly-quran-flutter-app.git
 ```
 
 1. **Install dependencies**
@@ -729,10 +729,10 @@ flutter run
 
 ## Star History
 
-<a href="https://www.star-history.com/?repos=IDRISIUMCorp%2Fal-furkan-quran-flutter-app&type=date&legend=bottom-right">
+<a href="https://www.star-history.com/?repos=IDRISIUMCorp%2Fimaanly-quran-flutter-app&type=date&legend=bottom-right">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=IDRISIUMCorp/al-furkan-quran-flutter-app&type=date&theme=dark&legend=bottom-right" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=IDRISIUMCorp/al-furkan-quran-flutter-app&type=date&legend=bottom-right" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=IDRISIUMCorp/al-furkan-quran-flutter-app&type=date&legend=bottom-right" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=IDRISIUMCorp/imaanly-quran-flutter-app&type=date&theme=dark&legend=bottom-right" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=IDRISIUMCorp/imaanly-quran-flutter-app&type=date&legend=bottom-right" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=IDRISIUMCorp/imaanly-quran-flutter-app&type=date&legend=bottom-right" />
  </picture>
 </a>

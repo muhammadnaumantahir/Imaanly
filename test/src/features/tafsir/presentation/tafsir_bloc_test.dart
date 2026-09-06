@@ -1,10 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:al_furkan/src/core/error/failures.dart';
-import 'package:al_furkan/src/features/tafsir/domain/entities/tafsir.dart';
-import 'package:al_furkan/src/features/tafsir/domain/repositories/tafsir_repository.dart';
-import 'package:al_furkan/src/features/tafsir/presentation/tafsir_bloc.dart';
+import 'package:imaanly/src/core/error/failures.dart';
+import 'package:imaanly/src/features/tafsir/domain/entities/tafsir.dart';
+import 'package:imaanly/src/features/tafsir/domain/repositories/tafsir_repository.dart';
+import 'package:imaanly/src/features/tafsir/presentation/tafsir_bloc.dart';
 
 const _testTafsir = Tafsir(
   id: 1,

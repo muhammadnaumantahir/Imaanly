@@ -37,7 +37,7 @@ The initial dashboard contains a prominent next-prayer card, countdown, daily pr
 
 1. Establish a unique product name, package identifiers, app icon, colour tokens, typography, spacing, and component conventions.
 2. Use one adaptive Flutter UI for Android and iOS with responsive phone layouts, dark/light themes, and semantic accessibility labels.
-3. Replace any visible Al-Furkan branding before distribution; audit the origin and licence of Quran text, translations, recitations, images, fonts, and icons before each is shipped.
+3. Replace any visible Imaanly branding before distribution; audit the origin and licence of Quran text, translations, recitations, images, fonts, and icons before each is shipped.
 4. Add a release-feature registry; move navigation entries behind it without removing the underlying modules.
 5. Ensure launch cannot block indefinitely: surface initialization failures with a safe retry path and never silently clear user data.
 

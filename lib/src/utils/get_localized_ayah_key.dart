@@ -1,4 +1,4 @@
-import "package:al_furkan/src/utils/number_localization.dart";
+import "package:imaanly/src/utils/number_localization.dart";
 import "package:dartx/dartx.dart";
 import "package:flutter/material.dart";
 

@@ -1,12 +1,12 @@
 import "dart:convert";
 
-import "package:al_furkan/src/core/storage/app_storage.dart";
-import "package:al_furkan/src/screen/prayer_time/cubit/prayer_time_state.dart";
-import "package:al_furkan/src/screen/prayer_time/models/prayer_enum.dart";
-import "package:al_furkan/src/screen/prayer_time/models/reminder_type.dart";
-import "package:al_furkan/src/screen/prayer_time/models/reminder_type_with_pray_model.dart";
-import "package:al_furkan/src/screen/settings/cubit/quran_script_view_state.dart";
-import "package:al_furkan/src/widget/quran_script/model/script_info.dart";
+import "package:imaanly/src/core/storage/app_storage.dart";
+import "package:imaanly/src/screen/prayer_time/cubit/prayer_time_state.dart";
+import "package:imaanly/src/screen/prayer_time/models/prayer_enum.dart";
+import "package:imaanly/src/screen/prayer_time/models/reminder_type.dart";
+import "package:imaanly/src/screen/prayer_time/models/reminder_type_with_pray_model.dart";
+import "package:imaanly/src/screen/settings/cubit/quran_script_view_state.dart";
+import "package:imaanly/src/widget/quran_script/model/script_info.dart";
 import "package:flutter/material.dart";
 
 abstract class SettingsRepository {

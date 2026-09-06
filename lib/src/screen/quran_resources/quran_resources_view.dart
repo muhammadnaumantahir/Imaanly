@@ -1,9 +1,9 @@
-import "package:al_furkan/src/screen/quran_resources/mutashabihat_resources_view.dart";
-import "package:al_furkan/src/screen/quran_resources/tafsir_resources_view.dart";
-import "package:al_furkan/src/screen/quran_resources/transliteration_resources_view.dart";
-import "package:al_furkan/src/screen/quran_resources/translation_resources_view.dart";
-import "package:al_furkan/src/screen/quran_resources/word_info_resources_view.dart";
-import "package:al_furkan/src/theme/app_colors.dart";
+import "package:imaanly/src/screen/quran_resources/mutashabihat_resources_view.dart";
+import "package:imaanly/src/screen/quran_resources/tafsir_resources_view.dart";
+import "package:imaanly/src/screen/quran_resources/transliteration_resources_view.dart";
+import "package:imaanly/src/screen/quran_resources/translation_resources_view.dart";
+import "package:imaanly/src/screen/quran_resources/word_info_resources_view.dart";
+import "package:imaanly/src/theme/app_colors.dart";
 import "package:flutter/material.dart";
 import "package:flutter_screenutil/flutter_screenutil.dart";
 

@@ -1,4 +1,4 @@
-import "package:al_furkan/src/core/unified_quran_settings/cubit/quran_settings_cubit.dart";
+import "package:imaanly/src/core/unified_quran_settings/cubit/quran_settings_cubit.dart";
 import "package:fluentui_system_icons/fluentui_system_icons.dart";
 import "package:flutter/material.dart";
 import "package:flutter_animate/flutter_animate.dart";

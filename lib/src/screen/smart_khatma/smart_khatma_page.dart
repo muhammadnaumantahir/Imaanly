@@ -1,13 +1,13 @@
 import "dart:math";
 
-import "package:al_furkan/src/resources/quran_resources/quran_pages_info.dart";
-import "package:al_furkan/src/screen/mushaf/widgets/wahy_side_drawer.dart";
-import "package:al_furkan/src/core/notifications/khatma_notification_service.dart";
-import "package:al_furkan/src/theme/controller/theme_cubit.dart";
-import "package:al_furkan/src/theme/controller/theme_state.dart";
-import "package:al_furkan/src/theme/app_colors.dart";
-import "package:al_furkan/src/utils/basic_functions.dart";
-import "package:al_furkan/src/utils/number_localization.dart";
+import "package:imaanly/src/resources/quran_resources/quran_pages_info.dart";
+import "package:imaanly/src/screen/mushaf/widgets/wahy_side_drawer.dart";
+import "package:imaanly/src/core/notifications/khatma_notification_service.dart";
+import "package:imaanly/src/theme/controller/theme_cubit.dart";
+import "package:imaanly/src/theme/controller/theme_state.dart";
+import "package:imaanly/src/theme/app_colors.dart";
+import "package:imaanly/src/utils/basic_functions.dart";
+import "package:imaanly/src/utils/number_localization.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:gap/gap.dart";

@@ -1,6 +1,6 @@
 import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:al_furkan/features/prayer/domain/prayer_schedule.dart';
+import 'package:imaanly/features/prayer/domain/prayer_schedule.dart';
 
 void main() {
   test('builds the five daily prayers in chronological order', () {

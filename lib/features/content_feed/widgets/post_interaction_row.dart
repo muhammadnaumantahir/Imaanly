@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluentui_system_icons/fluentui_system_icons.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'package:al_furkan/core/models/content_post.dart';
+import 'package:imaanly/core/models/content_post.dart';
 
 /// Interaction row — مشاهدات · وقت | ❤️ إعجاب | ↗ مشاركة
 /// تصميم نظيف وخفيف بدون ثقل بصري
