@@ -14,7 +14,7 @@ class WorshipDailySummary {
     Iterable<WorshipActivity> activities, {
     required DateTime date,
   }) {
-    final key = WorshipActivity.dateKey(date);
+    final key = WorshipActivity.dayKey(date);
     final completedPrayers = <String>{};
     var quranPages = 0;
     var dhikrCount = 0;
