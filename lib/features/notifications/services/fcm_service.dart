@@ -1,13 +1,17 @@
 import 'dart:convert';
 import 'dart:developer';
 import 'package:http/http.dart' as http;
-import 'package:googleapis_auth/auth_io.dart';
 
 import 'package:imaanly/core/models/notification_model.dart';
 import 'package:imaanly/core/repositories/notification_repository.dart';
-import 'package:imaanly/core/constants/service_account_key.dart';
 
-/// Service for sending push notifications via FCM HTTP v1 API.
+/// Client-side notification service.
+///
+/// FCM HTTP v1 sending requires Firebase Admin credentials and therefore must
+/// run in a trusted backend, not inside the Flutter application. This class
+/// retains the public API used by the app while making that security boundary
+/// explicit. Device/topic subscription and receiving notifications remain
+/// client-side responsibilities of Firebase Messaging.
 class FcmService {
   FcmService({
     NotificationRepository? repository,
@@ -15,24 +19,13 @@ class FcmService {
 
   final NotificationRepository _repository;
 
-  static const _projectId = 'imaanly-app';
-  static const _fcmUrl = 'https://fcm.googleapis.com/v1/projects/$_projectId/messages:send';
-  static const _scopes = ['https://www.googleapis.com/auth/firebase.messaging'];
-
-  Future<String?> _getAccessToken() async {
-    try {
-      final accountCredentials = ServiceAccountCredentials.fromJson(serviceAccountJson);
-      final authClient = await clientViaServiceAccount(accountCredentials, _scopes);
-      final token = authClient.credentials.accessToken.data;
-      authClient.close();
-      return token;
-    } catch (e) {
-      log('Error getting access token: $e', name: 'FcmService');
-      return null;
-    }
-  }
+  /// Returns false because privileged FCM sending is intentionally disabled in
+  /// the client application. A backend/cloud function should own this action.
+  Future<String?> _getAccessToken() async => null;
 
   /// Sends a notification to all users (topic: "all") and logs it to Firestore.
+  ///
+  /// The actual FCM send must be performed by a trusted backend.
   Future<bool> sendToAll({
     required String title,
     required String body,
@@ -50,7 +43,6 @@ class FcmService {
     );
   }
 
-  /// Sends to a specific topic.
   Future<bool> sendToTopic({
     required String topic,
     required String title,
@@ -69,7 +61,6 @@ class FcmService {
     );
   }
 
-  /// Sends to a specific device token.
   Future<bool> sendToDevice({
     required String token,
     required String title,
@@ -99,7 +90,13 @@ class FcmService {
   }) async {
     try {
       final token = await _getAccessToken();
-      if (token == null) return false;
+      if (token == null) {
+        log(
+          'FCM send skipped: privileged HTTP v1 credentials belong in a backend.',
+          name: 'FcmService',
+        );
+        return false;
+      }
 
       final message = <String, dynamic>{
         if (isTopic) 'topic': target else 'token': target,
@@ -120,9 +117,9 @@ class FcmService {
       };
 
       final payload = {'message': message};
-
+      const fcmUrl = 'https://fcm.googleapis.com/v1/projects/imaanly-app/messages:send';
       final response = await http.post(
-        Uri.parse(_fcmUrl),
+        Uri.parse(fcmUrl),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',
@@ -131,12 +128,8 @@ class FcmService {
       );
 
       final success = response.statusCode == 200;
+      if (!success) log('FCM Error Response: ${response.body}', name: 'FcmService');
 
-      if (!success) {
-        log('FCM Error Response: ${response.body}', name: 'FcmService');
-      }
-
-      // Log to Firestore.
       final logEntry = NotificationLog.create(
         title: title,
         body: body,
@@ -144,17 +137,10 @@ class FcmService {
         audience: audience,
         topicOrToken: target,
         data: data ?? {},
-        sentCount: success ? 1 : 0, 
+        sentCount: success ? 1 : 0,
         failedCount: success ? 0 : 1,
       );
-
       await _repository.logNotification(logEntry);
-
-      log(
-        'FCM v1 ${success ? "✅" : "❌"}: $title → $target',
-        name: 'FcmService',
-      );
-
       return success;
     } catch (e, st) {
       log('FCM send error: $e', name: 'FcmService', stackTrace: st);
@@ -162,4 +148,3 @@ class FcmService {
     }
   }
 }
-
