@@ -1,4 +1,4 @@
-name: al_furkan
+name: imaanly
 description: "Imaanly — a balanced Islamic companion for Salah, Quran, Dhikr, Qibla and daily worship."
 version: 2.1.0+2
 publish_to: none
@@ -80,7 +80,6 @@ dependencies:
   camera: ^0.11.4
   sensors_plus: ^7.0.0
   percent_indicator: ^4.2.5
-
   flutter_screenutil: ^5.9.3
   home_widget: ^0.7.0
   workmanager: ^0.9.0+3
@@ -97,7 +96,6 @@ dependencies:
   cloud_firestore: ^5.6.7
   firebase_messaging: ^15.2.7
   firebase_auth: ^5.5.7
-
   timeago: ^3.7.1
   googleapis_auth: ^1.6.0
   google_sign_in: ^7.2.0
@@ -106,9 +104,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^6.0.0
-  icons_launcher: ^3.0.1
+  icons_launcher: ^3.0.0
   flutter_gen: ^5.10.0
   msix: ^3.16.12
   change_app_package_name: ^1.5.0
@@ -131,7 +128,6 @@ msix_config:
   logo_path: "assets/img/Quran_Logo_v3.png"
   capabilities: "internetClient, location"
   store: true
-
 
 flutter:
   uses-material-design: true
@@ -162,27 +158,21 @@ flutter:
     - family: QPC_Hafs
       fonts:
         - asset: assets/fonts/Quran/QPC Hafs font.ttf
-
     - family: AlQuranNeov5x1
       fonts:
         - asset: assets/fonts/Quran/AlQuranNeov5x1.ttf
-
     - family: IndopakNastaleeq
       fonts:
         - asset: assets/fonts/Quran/Indopak Nastaleeq font.ttf
     - family: surah-name-v1
       fonts:
         - asset: assets/fonts/Quran/surah-name-v1.ttf
-
-
     - family: KFGQPC-Uthmanic-HAFS-Regular
       fonts:
         - asset: assets/fonts/Quran/KFGQPC Uthmanic Script HAFS Regular.otf
-
     - family: me_quran_volt_newmet
       fonts:
         - asset: assets/fonts/Quran/me_quran_volt_newmet.ttf
-
     - family: NotoSans
       fonts:
         - asset: assets/fonts/App/NotoSans-Bold.ttf
@@ -197,27 +187,22 @@ flutter:
           weight: 400
         - asset: assets/fonts/App/NotoSans-SemiBold.ttf
           weight: 600
-
     - family: Cairo-Black
       fonts:
         - asset: assets/fonts/App/Cairo-Black.ttf
           weight: 900
-
     - family: Cairo-Bold
       fonts:
         - asset: assets/fonts/App/Cairo-Bold.ttf
           weight: 700
-
     - family: Cairo-SemiBold
       fonts:
         - asset: assets/fonts/App/Cairo-SemiBold.ttf
           weight: 600
-
     - family: Cairo-Regular
       fonts:
         - asset: assets/fonts/App/Cairo-Regular.ttf
           weight: 400
-
     - family: Cairo-Light
       fonts:
         - asset: assets/fonts/App/Cairo-Light.ttf
@@ -235,22 +220,18 @@ icons_launcher:
     macos:
       enable: true
       image_path: "assets/img/Quran_Logo_v3.png"
-
     windows:
       enable: false
       image_path: "assets/img/Quran_Logo_v3.png"
-
     linux:
       enable: true
       image_path: "assets/img/Quran_Logo_v3.png"
-
 
 flutter_native_splash:
   color: "#ffffff"
   image: assets/img/Quran_Logo_v3.png
   color_dark: "#121212"
   image_dark: assets/img/Quran_Logo_v3.png
-
   android_12:
     image: assets/img/Quran_Logo_v3.png
     icon_background_color: "#ffffff"
