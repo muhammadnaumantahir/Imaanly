@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
-/// Al-Furkan Color System — Organic Minimalism × Quiet Luxury
-/// Reference: Apple, Linear, Vercel, Raycast, the 'Ayah' Quran app
-/// Philosophy: Restraint is power. Every color must justify its existence.
+/// Imaanly color system — calm, warm, and focused on readability.
+///
+/// Kept in one place so feature screens can migrate away from legacy
+/// Al-Furkan styling without changing the underlying worship architecture.
 class AppColors {
   AppColors._();
 
-  // ── LIGHT MODE — Neutral Elegance & Warm Beige ──
+  // ── LIGHT MODE ───────────────────────────────────────────────────────────
 
   static const Color lightBackground = Color(0xFFF8F9FA);
   static const Color lightBackgroundSecondary = Color(0xFFF0EAE2);
@@ -33,7 +34,7 @@ class AppColors {
   static const Color lightBorderSubtle = Color(0xFFEDE8E2);
   static const Color lightOutlineVariant = Color(0xFFE3D5CA);
 
-  // ── DARK MODE — Light Steel & Charcoal ──
+  // ── DARK MODE ────────────────────────────────────────────────────────────
 
   static const Color darkBackground = Color(0xFF212529);
   static const Color darkBackgroundSecondary = Color(0xFF1A1D21);
@@ -60,7 +61,7 @@ class AppColors {
   static const Color darkBorderSubtle = Color(0xFF2E3338);
   static const Color darkOutlineVariant = Color(0xFF545C64);
 
-  // ── SHARED — Semantic Colors ──
+  // ── SEMANTIC ─────────────────────────────────────────────────────────────
 
   static const Color error = Color(0xFF922B21);
   static const Color errorDark = Color(0xFFC0392B);
@@ -68,4 +69,38 @@ class AppColors {
   static const Color successDark = Color(0xFF27AE60);
   static const Color warning = Color(0xFFB7950B);
   static const Color warningDark = Color(0xFFD4AC0D);
+}
+
+/// Imaanly-branded alias for the shared palette.
+///
+/// AppColors remains available during the migration so existing features do
+/// not need to be rewritten in one risky change.
+class ImaanlyColors {
+  ImaanlyColors._();
+
+  static const lightBackground = AppColors.lightBackground;
+  static const lightSurface = AppColors.lightSurface;
+  static const lightCard = AppColors.lightCard;
+  static const lightPrimary = AppColors.lightPrimary;
+  static const lightPrimaryContainer = AppColors.lightPrimaryContainer;
+  static const lightSecondary = AppColors.lightSecondary;
+  static const lightTextMain = AppColors.lightTextMain;
+  static const lightTextSecondary = AppColors.lightTextSecondary;
+  static const lightTextMuted = AppColors.lightTextMuted;
+  static const lightBorder = AppColors.lightBorder;
+
+  static const darkBackground = AppColors.darkBackground;
+  static const darkSurface = AppColors.darkSurface;
+  static const darkCard = AppColors.darkCard;
+  static const darkPrimary = AppColors.darkPrimary;
+  static const darkPrimaryContainer = AppColors.darkPrimaryContainer;
+  static const darkSecondary = AppColors.darkSecondary;
+  static const darkTextMain = AppColors.darkTextMain;
+  static const darkTextSecondary = AppColors.darkTextSecondary;
+  static const darkTextMuted = AppColors.darkTextMuted;
+  static const darkBorder = AppColors.darkBorder;
+
+  static const success = AppColors.success;
+  static const warning = AppColors.warning;
+  static const error = AppColors.error;
 }
