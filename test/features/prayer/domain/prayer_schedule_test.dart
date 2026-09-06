@@ -1,14 +1,19 @@
-import 'package:adhan_dart/adhan_dart.dart';
+import 'package:adhan_dart/adhan_dart.dart' as adhan;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:imaanly/features/prayer/domain/prayer_schedule.dart';
+import 'package:imaanly/src/screen/prayer_time/models/prayer_enum.dart';
 
 void main() {
   test('returns the five daily prayers in worship order', () {
-    final coordinates = Coordinates(31.5204, 74.3587);
+    final coordinates = adhan.Coordinates(31.5204, 74.3587);
     final date = DateTime(2026, 9, 5);
-    final parameters = CalculationMethodParameters.karachi()
-      ..madhab = Madhab.hanafi;
-    final prayerTimes = PrayerTimes(coordinates, date, parameters);
+    final parameters = adhan.CalculationMethodParameters.karachi()
+      ..madhab = adhan.Madhab.hanafi;
+    final prayerTimes = adhan.PrayerTimes(
+      coordinates: coordinates,
+      date: date,
+      calculationParameters: parameters,
+    );
 
     final entries = const PrayerScheduleCalculator().calculate(prayerTimes);
 
@@ -22,11 +27,15 @@ void main() {
   });
 
   test('exposes sunrise separately from the five daily prayers', () {
-    final coordinates = Coordinates(31.5204, 74.3587);
+    final coordinates = adhan.Coordinates(31.5204, 74.3587);
     final date = DateTime(2026, 9, 5);
-    final parameters = CalculationMethodParameters.karachi()
-      ..madhab = Madhab.hanafi;
-    final prayerTimes = PrayerTimes(coordinates, date, parameters);
+    final parameters = adhan.CalculationMethodParameters.karachi()
+      ..madhab = adhan.Madhab.hanafi;
+    final prayerTimes = adhan.PrayerTimes(
+      coordinates: coordinates,
+      date: date,
+      calculationParameters: parameters,
+    );
 
     final sunrise = const PrayerScheduleCalculator().sunrise(prayerTimes);
 
@@ -71,15 +80,19 @@ void main() {
   });
 
   test('uses the following day Fajr after Isha', () {
-    final coordinates = Coordinates(31.5204, 74.3587);
+    final coordinates = adhan.Coordinates(31.5204, 74.3587);
     final date = DateTime(2026, 9, 5);
-    final parameters = CalculationMethodParameters.karachi()
-      ..madhab = Madhab.hanafi;
-    final today = PrayerTimes(coordinates, date, parameters);
-    final tomorrow = PrayerTimes(
-      coordinates,
-      date.add(const Duration(days: 1)),
-      parameters,
+    final parameters = adhan.CalculationMethodParameters.karachi()
+      ..madhab = adhan.Madhab.hanafi;
+    final today = adhan.PrayerTimes(
+      coordinates: coordinates,
+      date: date,
+      calculationParameters: parameters,
+    );
+    final tomorrow = adhan.PrayerTimes(
+      coordinates: coordinates,
+      date: date.add(const Duration(days: 1)),
+      calculationParameters: parameters,
     );
 
     final nextFajr = const PrayerScheduleCalculator().nextDayFajr(tomorrow);
