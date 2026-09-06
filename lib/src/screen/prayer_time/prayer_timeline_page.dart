@@ -5,7 +5,6 @@ import "package:imaanly/features/prayer/domain/prayer_schedule.dart";
 import "package:imaanly/features/worship/data/worship_activity_repository.dart";
 import "package:imaanly/features/worship/domain/worship_activity.dart";
 import "package:imaanly/src/core/storage/app_boxes.dart";
-import "package:imaanly/src/screen/location_handler/cubit/location_data_qibla_data_cubit.dart";
 import "package:imaanly/src/screen/location_handler/location_aquire.dart";
 import "package:imaanly/src/screen/location_handler/model/location_data_qibla_data_state.dart";
 import "package:imaanly/src/screen/prayer_time/models/calculation_method_enum.dart";
@@ -145,20 +144,25 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
             children: [
               _buildHero(context, current, nextEntry, cs),
               const SizedBox(height: 20),
-              Text("Today's Salah", style: GoogleFonts.cairo(fontSize: 20, fontWeight: FontWeight.w900)),
+              Text(
+                "Today's Salah",
+                style: GoogleFonts.cairo(fontSize: 20, fontWeight: FontWeight.w900),
+              ),
               const SizedBox(height: 12),
-              for (final entry in schedule) ...[
-                _buildPrayerCard(
-                  context,
-                  entry.prayer,
-                  entry.time,
-                  entry.prayer == current?.prayer,
-                  entry.prayer == next?.prayer,
-                  _completedPrayers.contains(entry.prayer.name),
-                  cs,
+              ...schedule.map(
+                (entry) => Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: _buildPrayerCard(
+                    context,
+                    entry.prayer,
+                    entry.time,
+                    entry.prayer == current?.prayer,
+                    entry.prayer == next?.prayer,
+                    _completedPrayers.contains(entry.prayer.name),
+                    cs,
+                  ),
                 ),
-                const SizedBox(height: 10),
-              ],
+              ),
               _buildSunrise(context, sunrise.time, cs),
             ],
           );
@@ -176,20 +180,47 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
     return Container(
       padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [cs.primary, cs.primary.withValues(alpha: 0.78)], begin: Alignment.topLeft, end: Alignment.bottomRight),
+        gradient: LinearGradient(
+          colors: [cs.primary, cs.primary.withValues(alpha: 0.78)],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
         borderRadius: BorderRadius.circular(28),
       ),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text("NEXT PRAYER", style: GoogleFonts.dmMono(fontSize: 12, fontWeight: FontWeight.w700, color: cs.onPrimary.withValues(alpha: 0.78))),
-        const SizedBox(height: 8),
-        Text(PrayerTimeHelper.localizedPrayerName(context, next.prayer) ?? next.prayer.name, style: GoogleFonts.cairo(fontSize: 28, fontWeight: FontWeight.w900, color: cs.onPrimary)),
-        const SizedBox(height: 12),
-        Text("$hours:$minutes:$seconds", style: GoogleFonts.dmMono(fontSize: 34, fontWeight: FontWeight.w900, color: cs.onPrimary)),
-        if (current != null) ...[
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "NEXT PRAYER",
+            style: GoogleFonts.dmMono(
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+              color: cs.onPrimary.withValues(alpha: 0.78),
+            ),
+          ),
           const SizedBox(height: 8),
-          Text("Current: ${PrayerTimeHelper.localizedPrayerName(context, current.prayer) ?? current.prayer.name}", style: GoogleFonts.cairo(fontSize: 13, fontWeight: FontWeight.w700, color: cs.onPrimary.withValues(alpha: 0.82))),
+          Text(
+            PrayerTimeHelper.localizedPrayerName(context, next.prayer) ?? next.prayer.name,
+            style: GoogleFonts.cairo(fontSize: 28, fontWeight: FontWeight.w900, color: cs.onPrimary),
+          ),
+          const SizedBox(height: 12),
+          Text(
+            "$hours:$minutes:$seconds",
+            style: GoogleFonts.dmMono(fontSize: 34, fontWeight: FontWeight.w900, color: cs.onPrimary),
+          ),
+          if (current != null) ...[
+            const SizedBox(height: 8),
+            Text(
+              "Current: ${PrayerTimeHelper.localizedPrayerName(context, current.prayer) ?? current.prayer.name}",
+              style: GoogleFonts.cairo(
+                fontSize: 13,
+                fontWeight: FontWeight.w700,
+                color: cs.onPrimary.withValues(alpha: 0.82),
+              ),
+            ),
+          ],
         ],
-      ]),
+      ),
     );
   }
 
@@ -202,7 +233,13 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
     bool isCompleted,
     ColorScheme cs,
   ) {
-    final accent = isCompleted ? cs.primary : isCurrent ? cs.primary : isNext ? cs.secondary : cs.outline;
+    final accent = isCompleted
+        ? cs.primary
+        : isCurrent
+            ? cs.primary
+            : isNext
+                ? cs.secondary
+                : cs.outline;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -217,54 +254,107 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
           width: isCompleted || isCurrent ? 2 : 1,
         ),
       ),
-      child: Row(children: [
-        Container(padding: const EdgeInsets.all(11), decoration: BoxDecoration(color: accent.withValues(alpha: 0.14), shape: BoxShape.circle), child: Icon(isCompleted ? Icons.check_rounded : _icon(prayer), color: accent)),
-        const SizedBox(width: 14),
-        Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Row(children: [
-            Flexible(child: Text(PrayerTimeHelper.localizedPrayerName(context, prayer) ?? prayer.name, style: GoogleFonts.cairo(fontSize: 17, fontWeight: FontWeight.w900))),
-            if (isCurrent || isNext || isCompleted) ...[
-              const SizedBox(width: 8),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                decoration: BoxDecoration(color: accent, borderRadius: BorderRadius.circular(8)),
-                child: Text(isCompleted ? "DONE" : isCurrent ? "NOW" : "NEXT", style: GoogleFonts.dmMono(fontSize: 9, fontWeight: FontWeight.w800, color: Colors.white)),
+      child: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(11),
+            decoration: BoxDecoration(color: accent.withValues(alpha: 0.14), shape: BoxShape.circle),
+            child: Icon(isCompleted ? Icons.check_rounded : _icon(prayer), color: accent),
+          ),
+          const SizedBox(width: 14),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Flexible(
+                      child: Text(
+                        PrayerTimeHelper.localizedPrayerName(context, prayer) ?? prayer.name,
+                        style: GoogleFonts.cairo(fontSize: 17, fontWeight: FontWeight.w900),
+                      ),
+                    ),
+                    if (isCurrent || isNext || isCompleted) ...[
+                      const SizedBox(width: 8),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                        decoration: BoxDecoration(color: accent, borderRadius: BorderRadius.circular(8)),
+                        child: Text(
+                          isCompleted ? "DONE" : isCurrent ? "NOW" : "NEXT",
+                          style: GoogleFonts.dmMono(fontSize: 9, fontWeight: FontWeight.w800, color: Colors.white),
+                        ),
+                      ),
+                    ],
+                  ],
+                ),
+                const SizedBox(height: 3),
+                Text(
+                  isCompleted
+                      ? "Salah recorded today"
+                      : isCurrent
+                          ? "Prayer time is in progress"
+                          : isNext
+                              ? "Prepare for Salah"
+                              : "Daily prayer",
+                  style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.w600, color: cs.onSurfaceVariant),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(width: 8),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                formatTimeOfDay(context, TimeOfDay.fromDateTime(time)),
+                style: GoogleFonts.dmMono(fontSize: 20, fontWeight: FontWeight.w900),
               ),
+              const SizedBox(height: 6),
+              if (isCompleted)
+                Icon(Icons.verified_rounded, size: 20, color: cs.primary)
+              else
+                TextButton(
+                  onPressed: _worshipRepository == null ? null : () => _markPrayerCompleted(prayer),
+                  style: TextButton.styleFrom(
+                    visualDensity: VisualDensity.compact,
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                  ),
+                  child: const Text("Mark done"),
+                ),
             ],
           ),
-          const SizedBox(height: 3),
-          Text(isCompleted ? "Salah recorded today" : isCurrent ? "Prayer time is in progress" : isNext ? "Prepare for Salah" : "Daily prayer", style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.w600, color: cs.onSurfaceVariant)),
-        ])),
-        const SizedBox(width: 8),
-        Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
-          Text(formatTimeOfDay(context, TimeOfDay.fromDateTime(time)), style: GoogleFonts.dmMono(fontSize: 20, fontWeight: FontWeight.w900)),
-          const SizedBox(height: 6),
-          if (isCompleted)
-            Icon(Icons.verified_rounded, size: 20, color: cs.primary)
-          else
-            TextButton(
-              onPressed: _worshipRepository == null ? null : () => _markPrayerCompleted(prayer),
-              style: TextButton.styleFrom(visualDensity: VisualDensity.compact, padding: const EdgeInsets.symmetric(horizontal: 8)),
-              child: const Text("Mark done"),
-            ),
-        ]),
-      ]),
+        ],
+      ),
     );
   }
 
   Widget _buildSunrise(BuildContext context, DateTime time, ColorScheme cs) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-      decoration: BoxDecoration(color: cs.surfaceContainerHighest.withValues(alpha: 0.4), borderRadius: BorderRadius.circular(18), border: Border.all(color: cs.outlineVariant)),
-      child: Row(children: [
-        Icon(Icons.wb_sunny_outlined, color: cs.secondary),
-        const SizedBox(width: 12),
-        Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const Text("Sunrise"),
-          const SizedBox(height: 2),
-          Text(formatTimeOfDay(context, TimeOfDay.fromDateTime(time)), style: GoogleFonts.dmMono(fontSize: 18, fontWeight: FontWeight.w800)),
-        ])),
-      ]),
+      decoration: BoxDecoration(
+        color: cs.surfaceContainerHighest.withValues(alpha: 0.4),
+        borderRadius: BorderRadius.circular(18),
+        border: Border.all(color: cs.outlineVariant),
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.wb_sunny_outlined, color: cs.secondary),
+          const SizedBox(width: 12),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text("Sunrise"),
+                const SizedBox(height: 2),
+                Text(
+                  formatTimeOfDay(context, TimeOfDay.fromDateTime(time)),
+                  style: GoogleFonts.dmMono(fontSize: 18, fontWeight: FontWeight.w800),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
