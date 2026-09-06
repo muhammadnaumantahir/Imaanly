@@ -2,6 +2,7 @@ import 'package:imaanly/features/fasting/data/fasting_repository.dart';
 import 'package:imaanly/features/fasting/domain/fasting_entry.dart';
 import 'package:imaanly/features/goals/data/daily_goals_repository.dart';
 import 'package:imaanly/features/goals/domain/daily_goals.dart';
+import 'package:imaanly/features/goals/presentation/daily_goals_screen.dart';
 import 'package:imaanly/features/worship/data/worship_activity_repository.dart';
 import 'package:imaanly/features/worship/domain/worship_daily_summary.dart';
 import 'package:imaanly/features/worship_dashboard/domain/worship_dashboard_summary.dart';
@@ -56,6 +57,13 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
     setState(() => _dataFuture = _loadData());
   }
 
+  Future<void> _openGoals() async {
+    await Navigator.of(context).push(
+      MaterialPageRoute(builder: (_) => const DailyGoalsScreen()),
+    );
+    if (mounted) _refresh();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ReadingStatsCubit, ReadingStatsState>(
@@ -84,10 +92,13 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
                 centerTitle: true,
                 actions: [
                   IconButton(
+                    tooltip: 'Daily goals',
+                    onPressed: _openGoals,
+                    icon: const Icon(Icons.flag_circle_outlined),
+                  ),
+                  IconButton(
                     tooltip: 'Refresh',
-                    onPressed: snapshot.connectionState == ConnectionState.waiting
-                        ? null
-                        : _refresh,
+                    onPressed: snapshot.connectionState == ConnectionState.waiting ? null : _refresh,
                     icon: const Icon(Icons.refresh_rounded),
                   ),
                 ],
@@ -103,9 +114,7 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
                     _ProgressCard(
                       icon: Icons.menu_book_rounded,
                       title: 'Quran',
-                      value: goals.quranPages > 0
-                          ? '${summary.quranPages} / ${goals.quranPages} pages'
-                          : '${summary.quranPages} pages today',
+                      value: goals.quranPages > 0 ? '${summary.quranPages} / ${goals.quranPages} pages' : '${summary.quranPages} pages today',
                       progress: quranProgress,
                     ),
                     const SizedBox(height: 12),
@@ -134,9 +143,7 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
                       child: ListTile(
                         leading: const Icon(Icons.local_fire_department_rounded),
                         title: const Text('Reading streak'),
-                        subtitle: Text(
-                          '${summary.readingStreak} consecutive day${summary.readingStreak == 1 ? '' : 's'}',
-                        ),
+                        subtitle: Text('${summary.readingStreak} consecutive day${summary.readingStreak == 1 ? '' : 's'}'),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -144,9 +151,7 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
                       child: ListTile(
                         leading: const Icon(Icons.nightlight_outlined),
                         title: const Text('Fasting streak'),
-                        subtitle: Text(
-                          '${data?.fastingStreak ?? 0} consecutive fasted day${(data?.fastingStreak ?? 0) == 1 ? '' : 's'}',
-                        ),
+                        subtitle: Text('${data?.fastingStreak ?? 0} consecutive fasted day${(data?.fastingStreak ?? 0) == 1 ? '' : 's'}'),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -154,9 +159,9 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
                       child: ListTile(
                         leading: const Icon(Icons.flag_outlined),
                         title: const Text('Daily goals'),
-                        subtitle: Text(
-                          '${goals.quranPages} Quran pages • ${goals.dhikr} Dhikr • ${goals.salah} Salah',
-                        ),
+                        subtitle: Text('${goals.quranPages} Quran pages • ${goals.dhikr} Dhikr • ${goals.salah} Salah'),
+                        trailing: const Icon(Icons.chevron_right_rounded),
+                        onTap: _openGoals,
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -164,17 +169,13 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
                       Text(
                         'Some worship activity could not be loaded. Your existing Quran progress is still shown.',
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Theme.of(context).colorScheme.error,
-                            ),
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Theme.of(context).colorScheme.error),
                       )
                     else
                       Text(
                         'Your worship activity stays on this device. Each feature contributes to one daily view as tracking is enabled.',
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                              color: Theme.of(context).colorScheme.onSurfaceVariant,
-                            ),
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
                       ),
                   ],
                 ),
@@ -188,13 +189,7 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
 }
 
 class _DashboardData {
-  const _DashboardData({
-    required this.worship,
-    required this.fastedThisMonth,
-    required this.fastingStreak,
-    required this.goals,
-  });
-
+  const _DashboardData({required this.worship, required this.fastedThisMonth, required this.fastingStreak, required this.goals});
   final WorshipDailySummary worship;
   final int fastedThisMonth;
   final int fastingStreak;
@@ -209,54 +204,22 @@ class _HeroCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    final completed = summary.prayersCompleted > 0 ||
-        summary.quranPages > 0 ||
-        summary.dhikrCompleted > 0;
+    final completed = summary.prayersCompleted > 0 || summary.quranPages > 0 || summary.dhikrCompleted > 0;
     final progress = ((summary.prayerProgress + quranProgress + summary.dhikrProgress) / 3).clamp(0.0, 1.0);
-
     return Card(
       clipBehavior: Clip.antiAlias,
       child: Container(
         padding: const EdgeInsets.all(22),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [scheme.primaryContainer, scheme.surfaceContainerHighest],
-          ),
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    completed ? 'Keep going' : 'Begin gently',
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900),
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    'A simple view of today\'s worship habits.',
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 16),
-            SizedBox(
-              width: 68,
-              height: 68,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  CircularProgressIndicator(value: progress),
-                  const Icon(Icons.auto_awesome_rounded),
-                ],
-              ),
-            ),
-          ],
-        ),
+        decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [scheme.primaryContainer, scheme.surfaceContainerHighest])),
+        child: Row(children: [
+          Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(completed ? 'Keep going' : 'Begin gently', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900)),
+            const SizedBox(height: 6),
+            Text('A simple view of today\'s worship habits.', style: Theme.of(context).textTheme.bodyMedium),
+          ])),
+          const SizedBox(width: 16),
+          SizedBox(width: 68, height: 68, child: Stack(alignment: Alignment.center, children: [CircularProgressIndicator(value: progress), const Icon(Icons.auto_awesome_rounded)])),
+        ]),
       ),
     );
   }
@@ -264,7 +227,6 @@ class _HeroCard extends StatelessWidget {
 
 class _ProgressCard extends StatelessWidget {
   const _ProgressCard({required this.icon, required this.title, required this.value, required this.progress});
-
   final IconData icon;
   final String title;
   final String value;
@@ -273,27 +235,10 @@ class _ProgressCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.all(17),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Icon(icon, color: scheme.primary),
-                const SizedBox(width: 12),
-                Expanded(child: Text(title, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16))),
-                Flexible(child: Text(value, textAlign: TextAlign.end, style: Theme.of(context).textTheme.bodySmall)),
-              ],
-            ),
-            const SizedBox(height: 12),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: LinearProgressIndicator(value: progress, minHeight: 8),
-            ),
-          ],
-        ),
-      ),
-    );
+    return Card(child: Padding(padding: const EdgeInsets.all(17), child: Column(children: [
+      Row(children: [Icon(icon, color: scheme.primary), const SizedBox(width: 12), Expanded(child: Text(title, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16))), Flexible(child: Text(value, textAlign: TextAlign.end, style: Theme.of(context).textTheme.bodySmall))]),
+      const SizedBox(height: 12),
+      ClipRRect(borderRadius: BorderRadius.circular(8), child: LinearProgressIndicator(value: progress, minHeight: 8)),
+    ])));
   }
 }
