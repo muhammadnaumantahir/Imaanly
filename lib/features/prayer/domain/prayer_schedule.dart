@@ -102,6 +102,7 @@ class PrayerScheduleCalculator {
       case Prayer.noon:
       case Prayer.sunset:
       case Prayer.tahajjud:
+      case Prayer.none:
         throw ArgumentError('Prayer $prayer is not part of the five-prayer schedule');
     }
   }
