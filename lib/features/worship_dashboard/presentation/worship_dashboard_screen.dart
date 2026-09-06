@@ -1,5 +1,7 @@
 import 'package:imaanly/features/fasting/data/fasting_repository.dart';
 import 'package:imaanly/features/fasting/domain/fasting_entry.dart';
+import 'package:imaanly/features/goals/data/daily_goals_repository.dart';
+import 'package:imaanly/features/goals/domain/daily_goals.dart';
 import 'package:imaanly/features/worship/data/worship_activity_repository.dart';
 import 'package:imaanly/features/worship/domain/worship_daily_summary.dart';
 import 'package:imaanly/features/worship_dashboard/domain/worship_dashboard_summary.dart';
@@ -34,6 +36,7 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
     final repository = WorshipActivityRepository(HiveWorshipActivityBackend(box));
     final preferences = await SharedPreferences.getInstance();
     final fastingRepository = FastingRepository(preferences);
+    final goals = DailyGoalsRepository(preferences).load();
     final now = DateTime.now();
     final monthStart = DateTime(now.year, now.month, 1);
     final fastedThisMonth = fastingRepository.countStatus(
@@ -45,6 +48,7 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
       worship: await repository.getDailySummary(now),
       fastedThisMonth: fastedThisMonth,
       fastingStreak: fastingRepository.fastedStreak(through: now),
+      goals: goals,
     );
   }
 
@@ -61,14 +65,18 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
           builder: (context, snapshot) {
             final data = snapshot.data;
             final activity = data?.worship;
+            final goals = data?.goals ?? const DailyGoals();
             final summary = WorshipDashboardSummary(
               prayersCompleted: activity?.prayersCompleted ?? 0,
-              prayersTotal: activity?.prayersTotal ?? 5,
+              prayersTotal: goals.salah > 0 ? goals.salah : 5,
               quranPages: reading.pagesToday,
               dhikrCompleted: activity?.dhikrCount ?? 0,
-              dhikrGoal: activity?.dhikrGoal ?? 33,
+              dhikrGoal: goals.dhikr,
               readingStreak: reading.streak,
             );
+            final quranProgress = goals.quranPages > 0
+                ? (summary.quranPages / goals.quranPages).clamp(0.0, 1.0)
+                : 0.0;
 
             return Scaffold(
               appBar: AppBar(
@@ -90,13 +98,15 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
                   physics: const AlwaysScrollableScrollPhysics(),
                   padding: const EdgeInsets.fromLTRB(16, 8, 16, 32),
                   children: [
-                    _HeroCard(summary: summary),
+                    _HeroCard(summary: summary, quranProgress: quranProgress),
                     const SizedBox(height: 16),
                     _ProgressCard(
                       icon: Icons.menu_book_rounded,
                       title: 'Quran',
-                      value: '${summary.quranPages} pages today',
-                      progress: (summary.quranPages / 5).clamp(0.0, 1.0),
+                      value: goals.quranPages > 0
+                          ? '${summary.quranPages} / ${goals.quranPages} pages'
+                          : '${summary.quranPages} pages today',
+                      progress: quranProgress,
                     ),
                     const SizedBox(height: 12),
                     _ProgressCard(
@@ -140,6 +150,16 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
                       ),
                     ),
                     const SizedBox(height: 10),
+                    Card(
+                      child: ListTile(
+                        leading: const Icon(Icons.flag_outlined),
+                        title: const Text('Daily goals'),
+                        subtitle: Text(
+                          '${goals.quranPages} Quran pages • ${goals.dhikr} Dhikr • ${goals.salah} Salah',
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
                     if (snapshot.hasError)
                       Text(
                         'Some worship activity could not be loaded. Your existing Quran progress is still shown.',
@@ -172,16 +192,19 @@ class _DashboardData {
     required this.worship,
     required this.fastedThisMonth,
     required this.fastingStreak,
+    required this.goals,
   });
 
   final WorshipDailySummary worship;
   final int fastedThisMonth;
   final int fastingStreak;
+  final DailyGoals goals;
 }
 
 class _HeroCard extends StatelessWidget {
-  const _HeroCard({required this.summary});
+  const _HeroCard({required this.summary, required this.quranProgress});
   final WorshipDashboardSummary summary;
+  final double quranProgress;
 
   @override
   Widget build(BuildContext context) {
@@ -189,11 +212,7 @@ class _HeroCard extends StatelessWidget {
     final completed = summary.prayersCompleted > 0 ||
         summary.quranPages > 0 ||
         summary.dhikrCompleted > 0;
-    final progress = ((summary.prayerProgress +
-                (summary.quranPages / 5).clamp(0.0, 1.0) +
-                summary.dhikrProgress) /
-            3)
-        .clamp(0.0, 1.0);
+    final progress = ((summary.prayerProgress + quranProgress + summary.dhikrProgress) / 3).clamp(0.0, 1.0);
 
     return Card(
       clipBehavior: Clip.antiAlias,
@@ -214,10 +233,7 @@ class _HeroCard extends StatelessWidget {
                 children: [
                   Text(
                     completed ? 'Keep going' : 'Begin gently',
-                    style: Theme.of(context)
-                        .textTheme
-                        .headlineSmall
-                        ?.copyWith(fontWeight: FontWeight.w900),
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900),
                   ),
                   const SizedBox(height: 6),
                   Text(
@@ -247,12 +263,7 @@ class _HeroCard extends StatelessWidget {
 }
 
 class _ProgressCard extends StatelessWidget {
-  const _ProgressCard({
-    required this.icon,
-    required this.title,
-    required this.value,
-    required this.progress,
-  });
+  const _ProgressCard({required this.icon, required this.title, required this.value, required this.progress});
 
   final IconData icon;
   final String title;
@@ -271,19 +282,8 @@ class _ProgressCard extends StatelessWidget {
               children: [
                 Icon(icon, color: scheme.primary),
                 const SizedBox(width: 12),
-                Expanded(
-                  child: Text(
-                    title,
-                    style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16),
-                  ),
-                ),
-                Flexible(
-                  child: Text(
-                    value,
-                    textAlign: TextAlign.end,
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
-                ),
+                Expanded(child: Text(title, style: const TextStyle(fontWeight: FontWeight.w800, fontSize: 16))),
+                Flexible(child: Text(value, textAlign: TextAlign.end, style: Theme.of(context).textTheme.bodySmall)),
               ],
             ),
             const SizedBox(height: 12),
