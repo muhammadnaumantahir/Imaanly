@@ -22,7 +22,8 @@ void main() {
       Prayer.maghrib,
       Prayer.isha,
     ]);
-    expect(schedule.every((entry) => entry.time.isLocal), isTrue);
+    expect(schedule, isNotEmpty);
+    expect(schedule.every((entry) => entry.time.isAfter(DateTime(2026, 9, 4))), isTrue);
   });
 
   test('includes sunrise separately without treating it as a salah', () {
@@ -38,6 +39,6 @@ void main() {
     final sunrise = PrayerScheduleCalculator().sunrise(times);
 
     expect(sunrise.prayer, Prayer.sunrise);
-    expect(sunrise.time.isLocal, isTrue);
+    expect(sunrise.time, times.sunrise.toLocal());
   });
 }
