@@ -27,6 +27,38 @@ class WorshipActivityRepository {
 
   Future<void> record(WorshipActivity activity) => _backend.put(activity);
 
+  /// Persists the current cumulative Dhikr progress for one category/day.
+  ///
+  /// This is deliberately an upsert rather than a new event on every tap.
+  /// The existing Dhikr screen stores a cumulative daily counter, so recording
+  /// snapshots prevents the worship dashboard from double-counting every tap.
+  Future<void> upsertDailyDhikr({
+    required String category,
+    required int completed,
+    required int goal,
+    DateTime? date,
+  }) async {
+    if (completed < 0) {
+      throw ArgumentError.value(completed, 'completed', 'must not be negative');
+    }
+    if (goal < 0) {
+      throw ArgumentError.value(goal, 'goal', 'must not be negative');
+    }
+
+    final recordedAt = date ?? DateTime.now();
+    final day = WorshipActivity.dateKey(recordedAt);
+    final activity = WorshipActivity(
+      id: 'dhikr:$day:$category',
+      type: WorshipActivityType.dhikr,
+      dateKey: day,
+      recordedAt: recordedAt,
+      amount: completed,
+      target: goal,
+      reference: category,
+    );
+    await record(activity);
+  }
+
   Future<List<WorshipActivity>> getAll() => _backend.values();
 
   Future<WorshipDailySummary> getDailySummary(DateTime date) async {
