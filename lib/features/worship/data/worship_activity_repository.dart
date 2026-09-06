@@ -1,5 +1,6 @@
 import 'package:hive_ce/hive.dart';
 
+import 'package:al_furkan/src/core/storage/app_boxes.dart';
 import '../domain/worship_activity.dart';
 import '../domain/worship_daily_summary.dart';
 
@@ -16,6 +17,13 @@ class WorshipActivityRepository {
   WorshipActivityRepository(this._backend);
 
   final WorshipActivityBackend _backend;
+
+  static Future<WorshipActivityRepository> openLocal() async {
+    final box = Hive.isBoxOpen(AppBoxes.worshipActivity)
+        ? Hive.box<Map>(AppBoxes.worshipActivity)
+        : await Hive.openBox<Map>(AppBoxes.worshipActivity);
+    return WorshipActivityRepository(HiveWorshipActivityBackend(box));
+  }
 
   Future<void> record(WorshipActivity activity) => _backend.put(activity);
 
