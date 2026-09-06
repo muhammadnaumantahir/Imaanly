@@ -286,9 +286,31 @@ class _AudioPlayerBridgeBinder extends StatefulWidget {
   final Widget child;
   @override State<_AudioPlayerBridgeBinder> createState() => _AudioPlayerBridgeBinderState();
 }
+
 class _AudioPlayerBridgeBinderState extends State<_AudioPlayerBridgeBinder> {
-  @override void initState() { super.initState(); AudioPlayerUIBridge.instance.bindToNavigator(navigatorKey); }
-  @override Widget build(BuildContext context) => widget.child;
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final bridge = BlocAudioPlayerUiBridge(
+        context: context,
+        audioUiCubit: context.read<AudioUiCubit>(),
+        playerPositionCubit: context.read<PlayerPositionCubit>(),
+        playerStateCubit: context.read<PlayerStateCubit>(),
+        ayahKeyCubit: context.read<AyahKeyCubit>(),
+        quranViewCubit: context.read<QuranViewCubit>(),
+        wordPlayingStateCubit: context.read<WordPlayingStateCubit>(),
+        highlightCubit: context.read<AudioAyahHighlightCubit>(),
+        reciterCubit: context.read<SegmentedQuranReciterCubit>(),
+        ayahToHighlight: context.read<AyahToHighlight>(),
+      );
+      AudioPlayerManager.bindUiBridge(bridge);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) => widget.child;
 }
 
 class _FullscreenEnforcer extends StatelessWidget {
