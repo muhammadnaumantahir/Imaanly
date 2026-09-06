@@ -51,6 +51,7 @@ import "package:imaanly/src/core/audio/services/idrisium_audio_tracker.dart";
 import "package:imaanly/src/widget/history/cubit/quran_history_cubit.dart";
 import "package:imaanly/src/widget/quran_script_words/cubit/word_playing_state_cubit.dart";
 import "package:imaanly/src/features/islamic_knowledge/presentation/islamic_knowledge_screen.dart";
+import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
@@ -278,26 +279,3 @@ class _UsageTimeTrackerState extends State<_UsageTimeTracker> with WidgetsBindin
 
 class AppScrollBehavior extends MaterialScrollBehavior {
   @override Set<PointerDeviceKind> get dragDevices => {PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.trackpad, PointerDeviceKind.stylus};
-}
-
-class _AudioPlayerBridgeBinder extends StatefulWidget {
-  const _AudioPlayerBridgeBinder({required this.child});
-  final Widget child;
-  @override State<_AudioPlayerBridgeBinder> createState() => _AudioPlayerBridgeBinderState();
-}
-class _AudioPlayerBridgeBinderState extends State<_AudioPlayerBridgeBinder> {
-  @override void initState() { super.initState(); AudioPlayerUIBridge.instance.bindToNavigator(navigatorKey); }
-  @override Widget build(BuildContext context) => widget.child;
-}
-
-class _FullscreenEnforcer extends StatelessWidget {
-  const _FullscreenEnforcer({required this.child});
-  final Widget child;
-  @override Widget build(BuildContext context) { SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky); return child; }
-}
-
-class _FatalErrorScreen extends StatelessWidget {
-  const _FatalErrorScreen({required this.error});
-  final Object error;
-  @override Widget build(BuildContext context) => Scaffold(body: Center(child: Padding(padding: const EdgeInsets.all(24), child: Text("Imaanly could not start.\n\n$error", textAlign: TextAlign.center))));
-}
