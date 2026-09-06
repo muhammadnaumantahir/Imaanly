@@ -19,7 +19,7 @@ class WorshipActivity {
     required String prayer,
     required DateTime completedAt,
   }) {
-    final day = dateKey(completedAt);
+    final day = dayKey(completedAt);
     return WorshipActivity(
       id: 'salah:$prayer:$day',
       type: WorshipActivityType.salah,
@@ -41,7 +41,7 @@ class WorshipActivity {
     return WorshipActivity(
       id: 'quran:${recordedAt.microsecondsSinceEpoch}',
       type: WorshipActivityType.quran,
-      dateKey: dateKey(recordedAt),
+      dateKey: dayKey(recordedAt),
       recordedAt: recordedAt,
       amount: pages,
     );
@@ -58,7 +58,7 @@ class WorshipActivity {
     return WorshipActivity(
       id: 'dhikr:${recordedAt.microsecondsSinceEpoch}',
       type: WorshipActivityType.dhikr,
-      dateKey: dateKey(recordedAt),
+      dateKey: dayKey(recordedAt),
       recordedAt: recordedAt,
       amount: count,
       reference: category,
@@ -76,7 +76,7 @@ class WorshipActivity {
   /// Stable key used to make a Salah completion idempotent for a given day.
   String get completionKey => id;
 
-  static String dateKey(DateTime date) {
+  static String dayKey(DateTime date) {
     return '${date.year}-${date.month.toString().padLeft(2, '0')}-${date.day.toString().padLeft(2, '0')}';
   }
 }
