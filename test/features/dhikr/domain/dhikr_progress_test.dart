@@ -3,7 +3,7 @@ import 'package:imaanly/features/dhikr/domain/dhikr_progress.dart';
 
 void main() {
   group('DhikrProgress', () {
-    test('increments today's progress without exceeding the goal', () {
+    test('increments today\'s progress without exceeding the goal', () {
       final progress = DhikrProgress(goal: 33, completed: 32);
 
       final next = progress.increment(3);
