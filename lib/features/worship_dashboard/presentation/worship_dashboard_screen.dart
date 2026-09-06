@@ -1,3 +1,5 @@
+import 'package:imaanly/features/fasting/data/fasting_repository.dart';
+import 'package:imaanly/features/fasting/domain/fasting_entry.dart';
 import 'package:imaanly/features/worship/data/worship_activity_repository.dart';
 import 'package:imaanly/features/worship/domain/worship_daily_summary.dart';
 import 'package:imaanly/features/worship_dashboard/domain/worship_dashboard_summary.dart';
@@ -6,6 +8,7 @@ import 'package:imaanly/src/core/storage/app_boxes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Daily worship overview backed by the unified local worship activity store.
 class WorshipDashboardScreen extends StatefulWidget {
@@ -16,34 +19,48 @@ class WorshipDashboardScreen extends StatefulWidget {
 }
 
 class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
-  Future<WorshipDailySummary>? _summaryFuture;
+  Future<_DashboardData>? _dataFuture;
 
   @override
   void initState() {
     super.initState();
-    _summaryFuture = _loadSummary();
+    _dataFuture = _loadData();
   }
 
-  Future<WorshipDailySummary> _loadSummary() async {
+  Future<_DashboardData> _loadData() async {
     final box = Hive.isBoxOpen(AppBoxes.worshipActivity)
         ? Hive.box<Map>(AppBoxes.worshipActivity)
         : await Hive.openBox<Map>(AppBoxes.worshipActivity);
     final repository = WorshipActivityRepository(HiveWorshipActivityBackend(box));
-    return repository.getDailySummary(DateTime.now());
+    final preferences = await SharedPreferences.getInstance();
+    final fastingRepository = FastingRepository(preferences);
+    final now = DateTime.now();
+    final monthStart = DateTime(now.year, now.month, 1);
+    final fastedThisMonth = fastingRepository.countStatus(
+      FastingStatus.fasted,
+      from: monthStart,
+      to: now,
+    );
+    return _DashboardData(
+      worship: await repository.getDailySummary(now),
+      fastedThisMonth: fastedThisMonth,
+      fastingStreak: fastingRepository.fastedStreak(through: now),
+    );
   }
 
   void _refresh() {
-    setState(() => _summaryFuture = _loadSummary());
+    setState(() => _dataFuture = _loadData());
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ReadingStatsCubit, ReadingStatsState>(
       builder: (context, reading) {
-        return FutureBuilder<WorshipDailySummary>(
-          future: _summaryFuture,
+        return FutureBuilder<_DashboardData>(
+          future: _dataFuture,
           builder: (context, snapshot) {
-            final activity = snapshot.data;
+            final data = snapshot.data;
+            final activity = data?.worship;
             final summary = WorshipDashboardSummary(
               prayersCompleted: activity?.prayersCompleted ?? 0,
               prayersTotal: activity?.prayersTotal ?? 5,
@@ -95,6 +112,13 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
                       value: '${summary.prayersCompleted} / ${summary.prayersTotal} completed',
                       progress: summary.prayerProgress,
                     ),
+                    const SizedBox(height: 12),
+                    _ProgressCard(
+                      icon: Icons.nightlight_round,
+                      title: 'Fasting',
+                      value: '${data?.fastedThisMonth ?? 0} day${(data?.fastedThisMonth ?? 0) == 1 ? '' : 's'} this month',
+                      progress: ((data?.fastedThisMonth ?? 0) / 30).clamp(0.0, 1.0),
+                    ),
                     const SizedBox(height: 16),
                     Card(
                       child: ListTile(
@@ -106,9 +130,19 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
                       ),
                     ),
                     const SizedBox(height: 10),
+                    Card(
+                      child: ListTile(
+                        leading: const Icon(Icons.nightlight_outlined),
+                        title: const Text('Fasting streak'),
+                        subtitle: Text(
+                          '${data?.fastingStreak ?? 0} consecutive fasted day${(data?.fastingStreak ?? 0) == 1 ? '' : 's'}',
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
                     if (snapshot.hasError)
                       Text(
-                        'Worship activity could not be loaded. Your existing Quran progress is still shown.',
+                        'Some worship activity could not be loaded. Your existing Quran progress is still shown.',
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: Theme.of(context).colorScheme.error,
@@ -131,6 +165,18 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
       },
     );
   }
+}
+
+class _DashboardData {
+  const _DashboardData({
+    required this.worship,
+    required this.fastedThisMonth,
+    required this.fastingStreak,
+  });
+
+  final WorshipDailySummary worship;
+  final int fastedThisMonth;
+  final int fastingStreak;
 }
 
 class _HeroCard extends StatelessWidget {
