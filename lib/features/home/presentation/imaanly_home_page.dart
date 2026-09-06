@@ -1,5 +1,6 @@
 import 'package:adhan_dart/adhan_dart.dart';
 import 'package:imaanly/features/fasting/presentation/fasting_launcher_screen.dart';
+import 'package:imaanly/features/goals/presentation/daily_goals_screen.dart';
 import 'package:imaanly/features/home/domain/next_prayer.dart';
 import 'package:imaanly/features/islamic_calendar/presentation/islamic_calendar_screen.dart';
 import 'package:imaanly/features/worship_dashboard/presentation/worship_dashboard_screen.dart';
@@ -52,22 +53,13 @@ class ImaanlyHomePage extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
             sliver: SliverList(
               delegate: SliverChildListDelegate([
-                _SectionHeader(
-                  title: 'Your day',
-                  action: 'Prayer times',
-                  onAction: () => _open(context, const PrayerTimePage()),
-                ),
+                _SectionHeader(title: 'Your day', action: 'Prayer times', onAction: () => _open(context, const PrayerTimePage())),
                 const SizedBox(height: 10),
                 _NextPrayerCard(onOpen: () => _open(context, const PrayerTimePage())),
                 const SizedBox(height: 24),
                 const _SectionHeader(title: 'Continue your journey'),
                 const SizedBox(height: 10),
-                _QuranCard(
-                  onOpen: () => _open(
-                    context,
-                    QuranScriptView(startKey: '1:1', endKey: getEndAyahKeyFromSurahNumber(1), toScrollKey: '1:1'),
-                  ),
-                ),
+                _QuranCard(onOpen: () => _open(context, QuranScriptView(startKey: '1:1', endKey: getEndAyahKeyFromSurahNumber(1), toScrollKey: '1:1'))),
                 const SizedBox(height: 24),
                 const _SectionHeader(title: 'Quick actions'),
                 const SizedBox(height: 10),
@@ -85,6 +77,7 @@ class ImaanlyHomePage extends StatelessWidget {
                   onDashboard: () => _open(context, const WorshipDashboardScreen()),
                   onCalendar: () => _open(context, const IslamicCalendarScreen()),
                   onFasting: () => _open(context, const FastingLauncherScreen()),
+                  onGoals: () => _open(context, const DailyGoalsScreen()),
                 ),
                 const SizedBox(height: 24),
                 const _SectionHeader(title: 'Today\'s reflection'),
@@ -106,25 +99,17 @@ class ImaanlyHomePage extends StatelessWidget {
 class _HeroHeader extends StatelessWidget {
   const _HeroHeader({required this.dateLabel});
   final String dateLabel;
-
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     return Container(
       decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [scheme.primaryContainer, scheme.surface])),
       padding: const EdgeInsets.fromLTRB(20, 76, 20, 18),
-      child: Align(
-        alignment: Alignment.bottomLeft,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Assalamu Alaikum', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800)),
-            const SizedBox(height: 4),
-            Text(dateLabel, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: scheme.onSurfaceVariant)),
-          ],
-        ),
-      ),
+      child: Align(alignment: Alignment.bottomLeft, child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text('Assalamu Alaikum', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800)),
+        const SizedBox(height: 4),
+        Text(dateLabel, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: scheme.onSurfaceVariant)),
+      ])),
     );
   }
 }
@@ -138,51 +123,16 @@ class _NextPrayerCard extends StatefulWidget {
 class _NextPrayerCardState extends State<_NextPrayerCard> {
   DateTime _now = DateTime.now();
   late final Stream<DateTime> _clock;
-
   @override
-  void initState() {
-    super.initState();
-    _clock = Stream<DateTime>.periodic(const Duration(seconds: 1), (_) => DateTime.now());
-  }
-
+  void initState() { super.initState(); _clock = Stream<DateTime>.periodic(const Duration(seconds: 1), (_) => DateTime.now()); }
   @override
-  Widget build(BuildContext context) {
-    return StreamBuilder<DateTime>(
-      stream: _clock,
-      initialData: _now,
-      builder: (context, snapshot) {
-        _now = snapshot.data ?? DateTime.now();
-        return BlocBuilder<LocationQiblaPrayerDataCubit, LocationQiblaPrayerDataState>(
-          builder: (context, location) => _buildCard(context, location, _now),
-        );
-      },
-    );
-  }
+  Widget build(BuildContext context) => StreamBuilder<DateTime>(stream: _clock, initialData: _now, builder: (context, snapshot) { _now = snapshot.data ?? DateTime.now(); return BlocBuilder<LocationQiblaPrayerDataCubit, LocationQiblaPrayerDataState>(builder: (context, location) => _buildCard(context, location, _now)); });
 
   Widget _buildCard(BuildContext context, LocationQiblaPrayerDataState location, DateTime now) {
     final scheme = Theme.of(context).colorScheme;
     if (location.latLon == null) {
-      return Card(
-        clipBehavior: Clip.antiAlias,
-        child: InkWell(
-          onTap: widget.onOpen,
-          child: const Padding(
-            padding: EdgeInsets.all(18),
-            child: Row(children: [
-              Icon(Icons.mosque_outlined, size: 32),
-              SizedBox(width: 14),
-              Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text('Prayer times', style: TextStyle(fontWeight: FontWeight.w800)),
-                SizedBox(height: 4),
-                Text('Set your location to see the live next-prayer countdown.'),
-              ])),
-              Icon(Icons.chevron_right_rounded),
-            ]),
-          ),
-        ),
-      );
+      return Card(clipBehavior: Clip.antiAlias, child: InkWell(onTap: widget.onOpen, child: const Padding(padding: EdgeInsets.all(18), child: Row(children: [Icon(Icons.mosque_outlined, size: 32), SizedBox(width: 14), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('Prayer times', style: TextStyle(fontWeight: FontWeight.w800)), SizedBox(height: 4), Text('Set your location to see the live next-prayer countdown.')])) , Icon(Icons.chevron_right_rounded)]))));
     }
-
     final params = location.calculationMethod ?? CalculationMethodParameters.karachi();
     params.madhab = location.madhab ?? Madhab.hanafi;
     final coordinates = Coordinates(location.latLon!.latitude, location.latLon!.longitude);
@@ -190,104 +140,39 @@ class _NextPrayerCardState extends State<_NextPrayerCard> {
     final next = const NextPrayerCalculator().calculate(prayerTimes, now);
     final current = prayerTimes.currentPrayer(date: now);
     if (next == null) return const SizedBox.shrink();
-
     final timeLabel = DateFormat.jm().format(next.time);
-    final currentLabel = _prayerLabel(current);
-    final nextLabel = _prayerLabel(next.prayer);
-
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: widget.onOpen,
-        child: Padding(
-          padding: const EdgeInsets.all(18),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Row(children: [
-              Container(width: 52, height: 52, decoration: BoxDecoration(color: scheme.primaryContainer, borderRadius: BorderRadius.circular(16)), child: Icon(Icons.mosque_outlined, color: scheme.primary)),
-              const SizedBox(width: 14),
-              Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text('Next prayer', style: Theme.of(context).textTheme.labelLarge),
-                const SizedBox(height: 2),
-                Text(nextLabel, style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900)),
-              ])),
-              Text(timeLabel, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800)),
-            ]),
-            const SizedBox(height: 18),
-            Row(crossAxisAlignment: CrossAxisAlignment.end, children: [
-              Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                Text('Starts in', style: Theme.of(context).textTheme.bodySmall),
-                const SizedBox(height: 2),
-                Text(_formatCountdown(next.remaining), style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900)),
-              ])),
-              Text('Current: $currentLabel', style: Theme.of(context).textTheme.labelMedium?.copyWith(color: scheme.onSurfaceVariant)),
-            ]),
-            const SizedBox(height: 14),
-            LinearProgressIndicator(value: _progress(prayerTimes, now, next.time), minHeight: 6),
-          ]),
-        ),
-      ),
-    );
+    return Card(clipBehavior: Clip.antiAlias, child: InkWell(onTap: widget.onOpen, child: Padding(padding: const EdgeInsets.all(18), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Row(children: [Container(width: 52, height: 52, decoration: BoxDecoration(color: scheme.primaryContainer, borderRadius: BorderRadius.circular(16)), child: Icon(Icons.mosque_outlined, color: scheme.primary)), const SizedBox(width: 14), Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('Next prayer', style: Theme.of(context).textTheme.labelLarge), const SizedBox(height: 2), Text(_prayerLabel(next.prayer), style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900))])), Text(timeLabel, style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w800))]),
+      const SizedBox(height: 18),
+      Row(crossAxisAlignment: CrossAxisAlignment.end, children: [Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('Starts in', style: Theme.of(context).textTheme.bodySmall), const SizedBox(height: 2), Text(_formatCountdown(next.remaining), style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w900))])), Text('Current: ${_prayerLabel(current)}', style: Theme.of(context).textTheme.labelMedium?.copyWith(color: scheme.onSurfaceVariant))]),
+      const SizedBox(height: 14),
+      LinearProgressIndicator(value: _progress(prayerTimes, now, next.time), minHeight: 6),
+    ]))));
   }
 
   double _progress(PrayerTimes times, DateTime now, DateTime nextTime) {
-    final previous = <DateTime>[times.fajr.toLocal(), times.dhuhr.toLocal(), times.asr.toLocal(), times.maghrib.toLocal(), times.isha.toLocal()]
-        .where((time) => time.isBefore(nextTime))
-        .fold<DateTime?>(null, (latest, time) => latest == null || time.isAfter(latest) ? time : latest);
+    final previous = <DateTime>[times.fajr.toLocal(), times.dhuhr.toLocal(), times.asr.toLocal(), times.maghrib.toLocal(), times.isha.toLocal()].where((time) => time.isBefore(nextTime)).fold<DateTime?>(null, (latest, time) => latest == null || time.isAfter(latest) ? time : latest);
     if (previous == null) return 0;
     final total = nextTime.difference(previous).inSeconds;
     if (total <= 0) return 0;
     return (1 - nextTime.difference(now).inSeconds / total).clamp(0.0, 1.0);
   }
-
-  String _formatCountdown(Duration duration) {
-    final safe = duration.isNegative ? Duration.zero : duration;
-    final hours = safe.inHours;
-    final minutes = safe.inMinutes.remainder(60).toString().padLeft(2, '0');
-    final seconds = safe.inSeconds.remainder(60).toString().padLeft(2, '0');
-    return '${hours.toString().padLeft(2, '0')}:$minutes:$seconds';
-  }
-
-  String _prayerLabel(Prayer prayer) {
-    switch (prayer.name) {
-      case 'fajr': return 'Fajr';
-      case 'dhuhr': return 'Dhuhr';
-      case 'asr': return 'Asr';
-      case 'maghrib': return 'Maghrib';
-      case 'isha': return 'Isha';
-      case 'sunrise': return 'Sunrise';
-      default: return prayer.name;
-    }
-  }
+  String _formatCountdown(Duration duration) { final safe = duration.isNegative ? Duration.zero : duration; return '${safe.inHours.toString().padLeft(2, '0')}:${safe.inMinutes.remainder(60).toString().padLeft(2, '0')}:${safe.inSeconds.remainder(60).toString().padLeft(2, '0')}'; }
+  String _prayerLabel(Prayer prayer) { switch (prayer.name) { case 'fajr': return 'Fajr'; case 'dhuhr': return 'Dhuhr'; case 'asr': return 'Asr'; case 'maghrib': return 'Maghrib'; case 'isha': return 'Isha'; case 'sunrise': return 'Sunrise'; default: return prayer.name; } }
 }
 
 class _QuranCard extends StatelessWidget {
   const _QuranCard({required this.onOpen});
   final VoidCallback onOpen;
   @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Card(clipBehavior: Clip.antiAlias, child: InkWell(onTap: onOpen, child: Padding(padding: const EdgeInsets.all(18), child: Row(children: [
-      Container(width: 56, height: 56, decoration: BoxDecoration(color: scheme.secondaryContainer, borderRadius: BorderRadius.circular(18)), child: Icon(Icons.menu_book_rounded, color: scheme.secondary)),
-      const SizedBox(width: 14),
-      const Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('Continue Quran', style: TextStyle(fontWeight: FontWeight.w800)), SizedBox(height: 4), Text('Return to your reading and keep the habit going.')])),
-      FilledButton.tonal(onPressed: onOpen, child: const Text('Read')),
-    ]))));
-  }
+  Widget build(BuildContext context) { final scheme = Theme.of(context).colorScheme; return Card(clipBehavior: Clip.antiAlias, child: InkWell(onTap: onOpen, child: Padding(padding: const EdgeInsets.all(18), child: Row(children: [Container(width: 56, height: 56, decoration: BoxDecoration(color: scheme.secondaryContainer, borderRadius: BorderRadius.circular(18)), child: Icon(Icons.menu_book_rounded, color: scheme.secondary)), const SizedBox(width: 14), const Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('Continue Quran', style: TextStyle(fontWeight: FontWeight.w800)), SizedBox(height: 4), Text('Return to your reading and keep the habit going.')])), FilledButton.tonal(onPressed: onOpen, child: const Text('Read'))])))); }
 }
 
 class _QuickActions extends StatelessWidget {
   const _QuickActions({required this.onQuran, required this.onDhikr, required this.onPrayer, required this.onQibla});
   final VoidCallback onQuran, onDhikr, onPrayer, onQibla;
   @override
-  Widget build(BuildContext context) => Row(children: [
-    Expanded(child: _ActionTile(icon: Icons.menu_book_rounded, label: 'Quran', onTap: onQuran)),
-    const SizedBox(width: 10),
-    Expanded(child: _ActionTile(icon: Icons.favorite_outline_rounded, label: 'Dhikr', onTap: onDhikr)),
-    const SizedBox(width: 10),
-    Expanded(child: _ActionTile(icon: Icons.access_time_rounded, label: 'Prayer', onTap: onPrayer)),
-    const SizedBox(width: 10),
-    Expanded(child: _ActionTile(icon: Icons.explore_outlined, label: 'Qibla', onTap: onQibla)),
-  ]);
+  Widget build(BuildContext context) => Row(children: [Expanded(child: _ActionTile(icon: Icons.menu_book_rounded, label: 'Quran', onTap: onQuran)), const SizedBox(width: 10), Expanded(child: _ActionTile(icon: Icons.favorite_outline_rounded, label: 'Dhikr', onTap: onDhikr)), const SizedBox(width: 10), Expanded(child: _ActionTile(icon: Icons.access_time_rounded, label: 'Prayer', onTap: onPrayer)), const SizedBox(width: 10), Expanded(child: _ActionTile(icon: Icons.explore_outlined, label: 'Qibla', onTap: onQibla))]);
 }
 
 class _ActionTile extends StatelessWidget {
@@ -298,27 +183,16 @@ class _ActionTile extends StatelessWidget {
 }
 
 class _ExploreGrid extends StatelessWidget {
-  const _ExploreGrid({required this.onKnowledge, required this.onDashboard, required this.onCalendar, required this.onFasting});
-  final VoidCallback onKnowledge, onDashboard, onCalendar, onFasting;
+  const _ExploreGrid({required this.onKnowledge, required this.onDashboard, required this.onCalendar, required this.onFasting, required this.onGoals});
+  final VoidCallback onKnowledge, onDashboard, onCalendar, onFasting, onGoals;
   @override
-  Widget build(BuildContext context) => LayoutBuilder(builder: (context, constraints) {
-    final width = constraints.maxWidth;
-    final columns = width >= 900 ? 4 : width >= 700 ? 2 : 1;
-    return GridView.count(
-      crossAxisCount: columns,
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      mainAxisSpacing: 10,
-      crossAxisSpacing: 10,
-      childAspectRatio: width >= 700 ? 2.5 : 3.5,
-      children: [
-        _ExploreTile(icon: Icons.auto_stories_rounded, title: 'Islamic Knowledge', subtitle: 'Learn from existing resources', onTap: onKnowledge),
-        _ExploreTile(icon: Icons.insights_rounded, title: 'Worship Dashboard', subtitle: 'See your daily progress', onTap: onDashboard),
-        _ExploreTile(icon: Icons.calendar_month_rounded, title: 'Islamic Calendar', subtitle: 'Today\'s Hijri date', onTap: onCalendar),
-        _ExploreTile(icon: Icons.nightlight_round, title: 'Fasting Tracker', subtitle: 'Record your fasting days', onTap: onFasting),
-      ],
-    );
-  });
+  Widget build(BuildContext context) => LayoutBuilder(builder: (context, constraints) { final width = constraints.maxWidth; final columns = width >= 900 ? 4 : width >= 700 ? 2 : 1; return GridView.count(crossAxisCount: columns, shrinkWrap: true, physics: const NeverScrollableScrollPhysics(), mainAxisSpacing: 10, crossAxisSpacing: 10, childAspectRatio: width >= 700 ? 2.5 : 3.5, children: [
+    _ExploreTile(icon: Icons.auto_stories_rounded, title: 'Islamic Knowledge', subtitle: 'Learn from existing resources', onTap: onKnowledge),
+    _ExploreTile(icon: Icons.insights_rounded, title: 'Worship Dashboard', subtitle: 'See your daily progress', onTap: onDashboard),
+    _ExploreTile(icon: Icons.calendar_month_rounded, title: 'Islamic Calendar', subtitle: 'Today\'s Hijri date', onTap: onCalendar),
+    _ExploreTile(icon: Icons.nightlight_round, title: 'Fasting Tracker', subtitle: 'Record your fasting days', onTap: onFasting),
+    _ExploreTile(icon: Icons.flag_circle_outlined, title: 'Daily Goals', subtitle: 'Set your worship targets', onTap: onGoals),
+  ]); });
 }
 
 class _ExploreTile extends StatelessWidget {
@@ -338,10 +212,7 @@ class _DashboardTeaser extends StatelessWidget {
   const _DashboardTeaser({required this.onOpen});
   final VoidCallback onOpen;
   @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Card(child: InkWell(onTap: onOpen, borderRadius: BorderRadius.circular(16), child: Padding(padding: const EdgeInsets.all(18), child: Row(children: [Container(width: 52, height: 52, decoration: BoxDecoration(color: scheme.primaryContainer, borderRadius: BorderRadius.circular(16)), child: Icon(Icons.insights_rounded, color: scheme.primary)), const SizedBox(width: 14), const Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('Your worship overview', style: TextStyle(fontWeight: FontWeight.w800)), SizedBox(height: 4), Text('Open the dashboard for Quran reading, Dhikr and daily habit progress.')])) , const Icon(Icons.chevron_right_rounded)]))));
-  }
+  Widget build(BuildContext context) { final scheme = Theme.of(context).colorScheme; return Card(child: InkWell(onTap: onOpen, borderRadius: BorderRadius.circular(16), child: Padding(padding: const EdgeInsets.all(18), child: Row(children: [Container(width: 52, height: 52, decoration: BoxDecoration(color: scheme.primaryContainer, borderRadius: BorderRadius.circular(16)), child: Icon(Icons.insights_rounded, color: scheme.primary)), const SizedBox(width: 14), const Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('Your worship overview', style: TextStyle(fontWeight: FontWeight.w800)), SizedBox(height: 4), Text('Open the dashboard for Quran reading, Dhikr and daily habit progress.')])), const Icon(Icons.chevron_right_rounded)])))); }
 }
 
 class _SectionHeader extends StatelessWidget {
