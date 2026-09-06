@@ -1,4 +1,5 @@
 import 'package:adhan_dart/adhan_dart.dart';
+import 'package:imaanly/features/fasting/presentation/fasting_launcher_screen.dart';
 import 'package:imaanly/features/home/domain/next_prayer.dart';
 import 'package:imaanly/features/islamic_calendar/presentation/islamic_calendar_screen.dart';
 import 'package:imaanly/features/worship_dashboard/presentation/worship_dashboard_screen.dart';
@@ -83,6 +84,7 @@ class ImaanlyHomePage extends StatelessWidget {
                   onKnowledge: () => _open(context, const IslamicKnowledgeScreen()),
                   onDashboard: () => _open(context, const WorshipDashboardScreen()),
                   onCalendar: () => _open(context, const IslamicCalendarScreen()),
+                  onFasting: () => _open(context, const FastingLauncherScreen()),
                 ),
                 const SizedBox(height: 24),
                 const _SectionHeader(title: 'Today\'s reflection'),
@@ -296,12 +298,12 @@ class _ActionTile extends StatelessWidget {
 }
 
 class _ExploreGrid extends StatelessWidget {
-  const _ExploreGrid({required this.onKnowledge, required this.onDashboard, required this.onCalendar});
-  final VoidCallback onKnowledge, onDashboard, onCalendar;
+  const _ExploreGrid({required this.onKnowledge, required this.onDashboard, required this.onCalendar, required this.onFasting});
+  final VoidCallback onKnowledge, onDashboard, onCalendar, onFasting;
   @override
   Widget build(BuildContext context) => LayoutBuilder(builder: (context, constraints) {
     final width = constraints.maxWidth;
-    final columns = width >= 700 ? 3 : 1;
+    final columns = width >= 900 ? 4 : width >= 700 ? 2 : 1;
     return GridView.count(
       crossAxisCount: columns,
       shrinkWrap: true,
@@ -313,6 +315,7 @@ class _ExploreGrid extends StatelessWidget {
         _ExploreTile(icon: Icons.auto_stories_rounded, title: 'Islamic Knowledge', subtitle: 'Learn from existing resources', onTap: onKnowledge),
         _ExploreTile(icon: Icons.insights_rounded, title: 'Worship Dashboard', subtitle: 'See your daily progress', onTap: onDashboard),
         _ExploreTile(icon: Icons.calendar_month_rounded, title: 'Islamic Calendar', subtitle: 'Today\'s Hijri date', onTap: onCalendar),
+        _ExploreTile(icon: Icons.nightlight_round, title: 'Fasting Tracker', subtitle: 'Record your fasting days', onTap: onFasting),
       ],
     );
   });
