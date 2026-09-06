@@ -1,0 +1,100 @@
+import 'package:hive_ce/hive.dart';
+
+import '../domain/worship_activity.dart';
+import '../domain/worship_daily_summary.dart';
+
+abstract interface class WorshipActivityBackend {
+  Future<void> put(WorshipActivity activity);
+  Future<List<WorshipActivity>> values();
+}
+
+/// Local Hive-backed persistence for worship events.
+///
+/// The repository is intentionally small: worship features record events here,
+/// while the domain layer owns aggregation and progress rules.
+class WorshipActivityRepository {
+  WorshipActivityRepository(this._backend);
+
+  final WorshipActivityBackend _backend;
+
+  Future<void> record(WorshipActivity activity) => _backend.put(activity);
+
+  Future<List<WorshipActivity>> getAll() => _backend.values();
+
+  Future<WorshipDailySummary> getDailySummary(DateTime date) async {
+    return WorshipDailySummary.fromActivities(await getAll(), date: date);
+  }
+
+  Future<bool> isSalahCompleted(String prayer, DateTime date) async {
+    final key = WorshipActivity.salah(prayer: prayer, completedAt: date).completionKey;
+    final activities = await getAll();
+    return activities.any((activity) => activity.completionKey == key);
+  }
+}
+
+class HiveWorshipActivityBackend implements WorshipActivityBackend {
+  HiveWorshipActivityBackend(this._box);
+
+  final Box<Map> _box;
+
+  @override
+  Future<void> put(WorshipActivity activity) async {
+    await _box.put(activity.id, _toMap(activity));
+  }
+
+  @override
+  Future<List<WorshipActivity>> values() async {
+    return _box.values
+        .map(_fromMap)
+        .whereType<WorshipActivity>()
+        .toList(growable: false);
+  }
+
+  Map<String, dynamic> _toMap(WorshipActivity activity) {
+    return {
+      'id': activity.id,
+      'type': activity.type.name,
+      'dateKey': activity.dateKey,
+      'recordedAt': activity.recordedAt.toIso8601String(),
+      'amount': activity.amount,
+      'target': activity.target,
+      'reference': activity.reference,
+    };
+  }
+
+  WorshipActivity? _fromMap(Map raw) {
+    try {
+      final typeName = raw['type']?.toString();
+      final type = WorshipActivityType.values.firstWhere(
+        (value) => value.name == typeName,
+      );
+      final recordedAt = DateTime.parse(raw['recordedAt'].toString());
+      return WorshipActivity(
+        id: raw['id'].toString(),
+        type: type,
+        dateKey: raw['dateKey'].toString(),
+        recordedAt: recordedAt,
+        amount: (raw['amount'] as num?)?.toInt() ?? 0,
+        target: (raw['target'] as num?)?.toInt(),
+        reference: raw['reference']?.toString(),
+      );
+    } catch (_) {
+      return null;
+    }
+  }
+}
+
+/// Lightweight in-memory backend useful for domain-level tests and previews.
+class MemoryWorshipActivityBackend implements WorshipActivityBackend {
+  final Map<String, WorshipActivity> _activities = {};
+
+  @override
+  Future<void> put(WorshipActivity activity) async {
+    _activities[activity.id] = activity;
+  }
+
+  @override
+  Future<List<WorshipActivity>> values() async {
+    return List.unmodifiable(_activities.values);
+  }
+}
