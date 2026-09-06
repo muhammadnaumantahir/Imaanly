@@ -1,6 +1,7 @@
 import "dart:async";
 
 import "package:adhan_dart/adhan_dart.dart" hide Prayer;
+import "package:imaanly/features/prayer/domain/prayer_schedule.dart";
 import "package:imaanly/features/worship/data/worship_activity_repository.dart";
 import "package:imaanly/features/worship/domain/worship_activity.dart";
 import "package:imaanly/src/core/storage/app_boxes.dart";
@@ -258,8 +259,11 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
       child: Row(children: [
         Icon(Icons.wb_sunny_outlined, color: cs.secondary),
         const SizedBox(width: 12),
-        Expanded(child: Text("Sunrise", style: GoogleFonts.cairo(fontSize: 14, fontWeight: FontWeight.w800))),
-        Text(formatTimeOfDay(context, TimeOfDay.fromDateTime(time)), style: GoogleFonts.dmMono(fontSize: 16, fontWeight: FontWeight.w800)),
+        Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const Text("Sunrise"),
+          const SizedBox(height: 2),
+          Text(formatTimeOfDay(context, TimeOfDay.fromDateTime(time)), style: GoogleFonts.dmMono(fontSize: 18, fontWeight: FontWeight.w800)),
+        ])),
       ]),
     );
   }
