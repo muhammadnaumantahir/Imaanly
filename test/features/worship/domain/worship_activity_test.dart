@@ -3,7 +3,7 @@ import 'package:imaanly/features/worship/domain/worship_activity.dart';
 
 void main() {
   test('creates a stable day key from a local date', () {
-    final key = WorshipActivity.dateKey(DateTime(2026, 9, 6, 23, 45));
+    final key = WorshipActivity.dayKey(DateTime(2026, 9, 6, 23, 45));
 
     expect(key, '2026-09-06');
   });
