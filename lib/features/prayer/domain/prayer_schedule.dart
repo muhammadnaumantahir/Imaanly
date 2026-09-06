@@ -1,7 +1,7 @@
-import 'package:adhan_dart/adhan_dart.dart' hide Prayer;
+import 'package:adhan_dart/adhan_dart.dart' as adhan;
 import 'package:imaanly/src/screen/prayer_time/models/prayer_enum.dart';
 
-/// A display-ready prayer entry derived from an Adhan Dart [PrayerTimes].
+/// A display-ready prayer entry derived from an Adhan Dart [adhan.PrayerTimes].
 class PrayerScheduleEntry {
   const PrayerScheduleEntry({
     required this.prayer,
@@ -29,7 +29,7 @@ class PrayerScheduleCalculator {
     Prayer.isha,
   ];
 
-  List<PrayerScheduleEntry> calculate(PrayerTimes prayerTimes) {
+  List<PrayerScheduleEntry> calculate(adhan.PrayerTimes prayerTimes) {
     return [
       for (final prayer in _dailyPrayers)
         PrayerScheduleEntry(
@@ -39,7 +39,7 @@ class PrayerScheduleCalculator {
     ];
   }
 
-  PrayerScheduleEntry sunrise(PrayerTimes prayerTimes) {
+  PrayerScheduleEntry sunrise(adhan.PrayerTimes prayerTimes) {
     return PrayerScheduleEntry(
       prayer: Prayer.sunrise,
       time: prayerTimes.sunrise.toLocal(),
@@ -47,7 +47,7 @@ class PrayerScheduleCalculator {
   }
 
   /// Builds the next day's Fajr entry from an already calculated day.
-  PrayerScheduleEntry nextDayFajr(PrayerTimes nextDayPrayerTimes) {
+  PrayerScheduleEntry nextDayFajr(adhan.PrayerTimes nextDayPrayerTimes) {
     return PrayerScheduleEntry(
       prayer: Prayer.fajr,
       time: nextDayPrayerTimes.fajrAfter.toLocal(),
@@ -85,20 +85,19 @@ class PrayerScheduleCalculator {
     return null;
   }
 
-  static dynamic _toAdhanPrayer(Prayer prayer) {
+  static adhan.Prayer _toAdhanPrayer(Prayer prayer) {
     switch (prayer) {
       case Prayer.fajr:
-        return Prayer.fajr as dynamic;
+        return adhan.Prayer.fajr;
       case Prayer.dhuhr:
-        return Prayer.dhuhr as dynamic;
+        return adhan.Prayer.dhuhr;
       case Prayer.asr:
-        return Prayer.asr as dynamic;
+        return adhan.Prayer.asr;
       case Prayer.maghrib:
-        return Prayer.maghrib as dynamic;
+        return adhan.Prayer.maghrib;
       case Prayer.isha:
-        return Prayer.isha as dynamic;
+        return adhan.Prayer.isha;
       case Prayer.sunrise:
-        throw ArgumentError('Sunrise is not a daily salah entry');
       case Prayer.dhuha:
       case Prayer.noon:
       case Prayer.sunset:
