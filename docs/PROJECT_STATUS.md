@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~95%**
+**~96%**
 
 ## Recently completed
 
@@ -22,7 +22,8 @@ Updated: 2026-09-07
 - Fasting daily reminder scheduler and persisted reminder controls.
 - Islamic Calendar day selection and selected-day event details.
 - Offline Hadith catalog with searchable reading screen.
-- Hadith entry added to the Islamic Knowledge hub.
+- Offline Sunnah & adab starter catalog with searchable reading screen and references.
+- Hadith and Sunnah entries integrated into the Islamic Knowledge hub.
 
 ## Completed foundation
 
@@ -55,7 +56,7 @@ Updated: 2026-09-07
 - Hifz audio integration and richer memorization/review content.
 - Worship analytics/history beyond seven-day history.
 - Calendar event details/context beyond the current built-in occasion set.
-- Expand Hadith/Sunnah catalog with a properly sourced, maintainable corpus.
+- Expand Hadith/Sunnah catalogs into a larger properly sourced, maintainable corpus.
 
 ## Remaining P2
 
