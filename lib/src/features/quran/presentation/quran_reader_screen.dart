@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/di/service_locator.dart';
 import '../domain/entities/entities.dart';
 import 'quran_bloc.dart';
+import 'quran_reading_progress_screen.dart';
 
 /// Local-first Quran reader backed by the feature repository.
 ///
@@ -56,9 +57,15 @@ class _QuranReaderViewState extends State<_QuranReaderView> {
       appBar: AppBar(
         title: const Text('Quran'),
         actions: [
+          IconButton(
+            tooltip: 'Reading progress',
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const QuranReadingProgressScreen()),
+            ),
+            icon: const Icon(Icons.insights_outlined),
+          ),
           BlocBuilder<QuranBloc, QuranState>(
-            buildWhen: (previous, current) =>
-                previous.lastReadPage != current.lastReadPage,
+            buildWhen: (previous, current) => previous.lastReadPage != current.lastReadPage,
             builder: (context, state) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Center(child: Text('Page ${state.lastReadPage}')),
@@ -73,34 +80,23 @@ class _QuranReaderViewState extends State<_QuranReaderView> {
         listener: (context, state) {
           _syncControllerToPage(state.lastReadPage);
           if (state.errorMessage != null && state.status == QuranStatus.error) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.errorMessage!)),
-            );
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.errorMessage!)));
           }
         },
         builder: (context, state) {
           _ensureController(state.lastReadPage - 1);
-
           return PageView.builder(
             controller: _controller,
             itemCount: 604,
-            onPageChanged: (index) {
-              context.read<QuranBloc>().add(LoadQuranPage(index + 1));
-            },
+            onPageChanged: (index) => context.read<QuranBloc>().add(LoadQuranPage(index + 1)),
             itemBuilder: (context, index) {
               if (state.currentPage?.pageNumber == index + 1) {
                 return _QuranPageContent(page: state.currentPage!);
               }
-              if (index + 1 == state.lastReadPage &&
-                  state.status == QuranStatus.loading) {
+              if (index + 1 == state.lastReadPage && state.status == QuranStatus.loading) {
                 return const Center(child: CircularProgressIndicator());
               }
-              return Center(
-                child: Text(
-                  'Page ${index + 1}',
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-              );
+              return Center(child: Text('Page ${index + 1}', style: Theme.of(context).textTheme.titleMedium));
             },
           );
         },
@@ -111,7 +107,6 @@ class _QuranReaderViewState extends State<_QuranReaderView> {
 
 class _QuranPageContent extends StatelessWidget {
   const _QuranPageContent({required this.page});
-
   final QuranPage page;
 
   @override
@@ -120,37 +115,17 @@ class _QuranPageContent extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.fromLTRB(20, 24, 20, 40),
       children: [
-        Center(
-          child: Text(
-            'Juz ${page.juz}  •  Page ${page.pageNumber}',
-            style: theme.textTheme.labelLarge?.copyWith(
-              color: theme.colorScheme.onSurfaceVariant,
-            ),
-          ),
-        ),
+        Center(child: Text('Juz ${page.juz}  •  Page ${page.pageNumber}', style: theme.textTheme.labelLarge?.copyWith(color: theme.colorScheme.onSurfaceVariant))),
         const SizedBox(height: 20),
         for (final ayah in page.ayahs) ...[
           Semantics(
             label: 'Ayah ${ayah.key}',
             child: InkWell(
               borderRadius: BorderRadius.circular(12),
-              onTap: () => context.read<QuranBloc>().add(
-                SaveLastReadPosition(
-                  page: page.pageNumber,
-                  ayahKey: ayah.key,
-                ),
-              ),
+              onTap: () => context.read<QuranBloc>().add(SaveLastReadPosition(page: page.pageNumber, ayahKey: ayah.key)),
               child: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 6),
-                child: Text(
-                  ayah.text,
-                  textAlign: TextAlign.right,
-                  textDirection: TextDirection.rtl,
-                  style: theme.textTheme.headlineSmall?.copyWith(
-                    height: 2.0,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                child: Text(ayah.text, textAlign: TextAlign.right, textDirection: TextDirection.rtl, style: theme.textTheme.headlineSmall?.copyWith(height: 2.0, fontWeight: FontWeight.w500)),
               ),
             ),
           ),
