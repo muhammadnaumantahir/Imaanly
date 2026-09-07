@@ -91,9 +91,9 @@ class SmartNotificationPreferences {
       dhikrEnabled: readBool('dhikrEnabled', true),
       streakEnabled: readBool('streakEnabled', true),
       maxNotificationsPerDay:
-          readInt('maxNotificationsPerDay', 1).clamp(0, 10),
-      quietStartHour: readInt('quietStartHour', 22).clamp(0, 23),
-      quietEndHour: readInt('quietEndHour', 7).clamp(0, 23),
+          readInt('maxNotificationsPerDay', 1).clamp(0, 10).toInt(),
+      quietStartHour: readInt('quietStartHour', 22).clamp(0, 23).toInt(),
+      quietEndHour: readInt('quietEndHour', 7).clamp(0, 23).toInt(),
     );
   }
 }
