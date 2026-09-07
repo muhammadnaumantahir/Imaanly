@@ -10,6 +10,7 @@ import 'package:imaanly/src/screen/location_handler/cubit/location_data_qibla_da
 import 'package:imaanly/src/screen/location_handler/model/location_data_qibla_data_state.dart';
 import 'package:imaanly/src/screen/mushaf/mushaf_screen.dart';
 import 'package:imaanly/src/screen/prayer_time/prayer_time_page.dart';
+import 'package:imaanly/src/screen/qibla/qibla_direction.dart';
 import 'package:imaanly/src/screen/quran_script_view/quran_script_view.dart';
 import 'package:imaanly/src/utils/quran_ayahs_function/gen_ayahs_key.dart';
 import 'package:imaanly/features/personalization/presentation/personalization_cubit.dart';
@@ -74,7 +75,7 @@ class ImaanlyHomePage extends StatelessWidget {
                   onQuran: () => _open(context, const MushafScreen()),
                   onDhikr: () => _open(context, const AzkarCategoriesScreen()),
                   onPrayer: () => _open(context, const PrayerTimePage()),
-                  onQibla: () => ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Open Qibla from the Prayer tools when needed.'))),
+                  onQibla: () => _open(context, const QiblaDirection()),
                 ),
                 const SizedBox(height: 24),
                 const _SectionHeader(title: 'Explore'),
