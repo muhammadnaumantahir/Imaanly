@@ -1,12 +1,5 @@
+import 'smart_notification_category.dart';
 import 'smart_notification_preferences.dart';
-
-/// Categories used by Imaanly's contextual notification engine.
-enum SmartNotificationCategory {
-  prayer,
-  quran,
-  dhikr,
-  streak,
-}
 
 class SmartNotificationCandidate {
   const SmartNotificationCandidate({
