@@ -3,12 +3,12 @@ import 'package:flutter/foundation.dart';
 import '../data/dhikr_progress_store.dart';
 import '../domain/dhikr_progress.dart';
 
-/// Coordinates the interactive counter with the local persistence layer.
 class DhikrController extends ChangeNotifier {
-  DhikrController({DhikrProgressStore? store}) : _store = store ?? const DhikrProgressStore();
+  DhikrController({DhikrProgressStore? store})
+      : _store = store ?? const DhikrProgressStore();
 
   final DhikrProgressStore _store;
-  DhikrProgress _progress = const DhikrProgress(goal: 33);
+  DhikrProgress _progress = const DhikrProgress(goal: 33, completed: 0);
   int _streak = 0;
   bool _loading = true;
   bool _busy = false;
