@@ -76,7 +76,7 @@ class _HifzNewMemorizationScreenState extends State<HifzNewMemorizationScreen> {
           Text('Choose a Surah and the ayah range you want to memorize. Your range will then appear in Hifz progress and review.'),
           const SizedBox(height: 24),
           DropdownButtonFormField<int>(
-            value: _surahId,
+            initialValue: _surahId,
             decoration: const InputDecoration(labelText: 'Surah', border: OutlineInputBorder()),
             items: [
               for (var id = 1; id <= 114; id++)
@@ -116,6 +116,7 @@ class _AyahField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      key: ValueKey('$label-$value'),
       initialValue: '$value',
       keyboardType: TextInputType.number,
       decoration: InputDecoration(labelText: label, helperText: '1–$max', border: const OutlineInputBorder()),
