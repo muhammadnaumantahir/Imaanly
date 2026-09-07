@@ -36,6 +36,8 @@ Updated: 2026-09-07
 - Hifz review sessions persist duration, hints and session type.
 - Hifz dashboard due-review and progress cards now launch the review workflow.
 - Hifz review mastery thresholds are covered by automated tests.
+- Hifz review completion now uses a single BLoC operation to persist progress and the session sequentially.
+- Hifz review completion refreshes progress, recent sessions, due reviews and aggregate statistics together.
 
 ## Completed foundation
 
