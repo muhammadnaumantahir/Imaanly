@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:imaanly/features/notifications/domain/smart_notification.dart';
+import 'package:imaanly/features/notifications/domain/smart_notification_category.dart';
 import 'package:imaanly/features/notifications/domain/smart_notification_preferences.dart';
 
 void main() {
@@ -11,12 +12,7 @@ void main() {
   });
 
   test('category switches are independently respected', () {
-    const preferences = SmartNotificationPreferences(
-      prayerEnabled: false,
-      quranEnabled: true,
-      dhikrEnabled: false,
-      streakEnabled: true,
-    );
+    const preferences = SmartNotificationPreferences(prayerEnabled: false, quranEnabled: true, dhikrEnabled: false, streakEnabled: true);
     expect(preferences.isEnabled(SmartNotificationCategory.prayer), isFalse);
     expect(preferences.isEnabled(SmartNotificationCategory.quran), isTrue);
     expect(preferences.isEnabled(SmartNotificationCategory.dhikr), isFalse);
@@ -24,10 +20,7 @@ void main() {
 
   test('copyWith changes only requested fields', () {
     const original = SmartNotificationPreferences();
-    final updated = original.copyWith(
-      quranEnabled: false,
-      maxNotificationsPerDay: 3,
-    );
+    final updated = original.copyWith(quranEnabled: false, maxNotificationsPerDay: 3);
     expect(updated.quranEnabled, isFalse);
     expect(updated.maxNotificationsPerDay, 3);
     expect(updated.prayerEnabled, isTrue);
@@ -35,15 +28,7 @@ void main() {
   });
 
   test('preferences survive map serialization', () {
-    const original = SmartNotificationPreferences(
-      prayerEnabled: false,
-      quranEnabled: true,
-      dhikrEnabled: false,
-      streakEnabled: true,
-      maxNotificationsPerDay: 5,
-      quietStartHour: 21,
-      quietEndHour: 6,
-    );
+    const original = SmartNotificationPreferences(prayerEnabled: false, quranEnabled: true, dhikrEnabled: false, streakEnabled: true, maxNotificationsPerDay: 5, quietStartHour: 21, quietEndHour: 6);
     final restored = SmartNotificationPreferences.fromMap(original.toMap());
     expect(restored.prayerEnabled, original.prayerEnabled);
     expect(restored.quranEnabled, original.quranEnabled);
