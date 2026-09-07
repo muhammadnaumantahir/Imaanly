@@ -33,8 +33,11 @@ class SmartNotificationCoordinator {
     int dhikrGoal = 0,
     int currentStreak = 0,
     DateTime? lastActiveDay,
+    SmartNotificationPreferences? preferences,
+    Future<void> Function(SmartNotificationCandidate candidate)? deliver,
   }) async {
-    if (!await canNotify(now)) return null;
+    final effectivePreferences = preferences ?? _preferences;
+    if (!await canNotify(now, preferences: effectivePreferences)) return null;
 
     final candidate = _planner.evaluate(
       now: now,
@@ -46,26 +49,30 @@ class SmartNotificationCoordinator {
       dhikrGoal: dhikrGoal,
       currentStreak: currentStreak,
       lastActiveDay: lastActiveDay,
-      preferences: _preferences,
+      preferences: effectivePreferences,
     );
     if (candidate == null) return null;
 
     await _recordSent(now);
-    await _deliver?.call(candidate);
+    await (deliver ?? _deliver)?.call(candidate);
     return candidate;
   }
 
-  Future<bool> canNotify(DateTime now) async {
-    if (_preferences.maxNotificationsPerDay <= 0 ||
-        !_preferences.isEnabledForAnyCategory ||
-        _preferences.isQuietHour(now)) {
+  Future<bool> canNotify(
+    DateTime now, {
+    SmartNotificationPreferences? preferences,
+  }) async {
+    final effectivePreferences = preferences ?? _preferences;
+    if (effectivePreferences.maxNotificationsPerDay <= 0 ||
+        !effectivePreferences.isEnabledForAnyCategory ||
+        effectivePreferences.isQuietHour(now)) {
       return false;
     }
     final box = await _openBox();
     final today = _dayKey(now);
     final sentDate = box.get(_sentDateKey)?.toString();
     final count = sentDate == today ? (box.get(_sentCountKey) as num?)?.toInt() ?? 0 : 0;
-    return count < _preferences.maxNotificationsPerDay;
+    return count < effectivePreferences.maxNotificationsPerDay;
   }
 
   Future<void> _recordSent(DateTime now) async {

@@ -274,6 +274,7 @@ Every future feature/status-changing commit MUST update this document in the sam
 ## 8. Changelog
 | Date | Commit / milestone | Result | Overall |
 |---|---|---|---:|
+| 2026-09-07 | Contextual scheduler/coordinator contract fix | Aligned the background Workmanager integration with the coordinator's injectable preferences/delivery API, preventing the scheduler from calling a stale method signature. No feature-scope percentage change; CI/device validation remains required. | ~78% |
 | 2026-09-07 | Personalization foundation | Added a local-only personalization model/repository with Home shortcuts, appearance, Quran, Dhikr and dashboard preferences plus reset/export/import support and tests. UI wiring remains. | ~78% |
 | 2026-09-07 | Contextual background scheduler | Added a Workmanager periodic task that evaluates local worship activity in the background and routes eligible Quran/Dhikr/streak decisions through the local notification delivery adapter. Physical-device/background validation remains. | ~76% |
 | 2026-09-07 | Contextual notification delivery | Connected the local smart-notification decision output to the existing Awesome Notifications infrastructure with a dedicated contextual channel and stable category IDs. Background automatic evaluation remained. | ~75% |
