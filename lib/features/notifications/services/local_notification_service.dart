@@ -1,13 +1,12 @@
 import 'dart:developer';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 import '../domain/smart_notification.dart';
 
-/// Platform adapter for delivering the app's locally generated notifications.
-///
-/// Policy decisions remain in [SmartNotificationCoordinator]; this service only
-/// owns plugin initialization, permissions and delivery.
+/// Platform adapter for delivering and scheduling local Imaanly notifications.
 class LocalNotificationService {
   LocalNotificationService._();
 
@@ -17,6 +16,7 @@ class LocalNotificationService {
       FlutterLocalNotificationsPlugin();
 
   bool _initialized = false;
+  bool _timezoneInitialized = false;
 
   static const _channelId = 'imaanly_smart_notifications';
   static const _channelName = 'Imaanly reminders';
@@ -81,13 +81,82 @@ class LocalNotificationService {
 
   Future<void> deliver(SmartNotificationCandidate candidate) async {
     await initialize();
-
-    final id = _notificationId(candidate);
     await _plugin.show(
-      id,
+      _notificationId(candidate),
       candidate.title,
       candidate.body,
-      const NotificationDetails(
+      _details(),
+      payload: candidate.reason,
+    );
+  }
+
+  /// Schedules a prayer reminder at the requested local date/time.
+  ///
+  /// Past occurrences are ignored. A stable ID makes rescheduling the same
+  /// prayer/date replace the previous occurrence instead of duplicating it.
+  Future<void> schedulePrayerReminder({
+    required String prayerName,
+    required DateTime prayerAt,
+    int reminderMinutes = 10,
+    bool silent = false,
+  }) async {
+    await initialize();
+    _ensureTimezone();
+
+    final scheduledAt = prayerAt.subtract(Duration(minutes: reminderMinutes));
+    if (!scheduledAt.isAfter(DateTime.now())) return;
+
+    final details = NotificationDetails(
+      android: AndroidNotificationDetails(
+        _channelId,
+        _channelName,
+        channelDescription: _channelDescription,
+        importance: silent ? Importance.low : Importance.high,
+        priority: silent ? Priority.low : Priority.high,
+        playSound: !silent,
+        category: AndroidNotificationCategory.alarm,
+      ),
+      iOS: DarwinNotificationDetails(presentSound: !silent),
+      macOS: DarwinNotificationDetails(presentSound: !silent),
+      linux: const LinuxNotificationDetails(
+        urgency: LinuxNotificationUrgency.normal,
+      ),
+    );
+
+    final id = _prayerNotificationId(prayerName, prayerAt);
+    await _plugin.zonedSchedule(
+      id,
+      '$prayerName is approaching',
+      reminderMinutes <= 0
+          ? 'It is time for $prayerName.'
+          : '$prayerName begins in $reminderMinutes minutes.',
+      tz.TZDateTime.from(scheduledAt, tz.local),
+      details,
+      androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+      payload: 'prayer:${prayerName.toLowerCase()}',
+    );
+  }
+
+  Future<void> cancelPrayerReminder({
+    required String prayerName,
+    required DateTime prayerAt,
+  }) async {
+    await initialize();
+    await _plugin.cancel(_prayerNotificationId(prayerName, prayerAt));
+  }
+
+  Future<void> cancelAll() async {
+    await initialize();
+    await _plugin.cancelAll();
+  }
+
+  void _ensureTimezone() {
+    if (_timezoneInitialized) return;
+    tz.initializeTimeZones();
+    _timezoneInitialized = true;
+  }
+
+  NotificationDetails _details() => const NotificationDetails(
         android: AndroidNotificationDetails(
           _channelId,
           _channelName,
@@ -101,17 +170,21 @@ class LocalNotificationService {
         linux: LinuxNotificationDetails(
           urgency: LinuxNotificationUrgency.normal,
         ),
-      ),
-      payload: candidate.reason,
-    );
-  }
-
-  Future<void> cancelAll() => _plugin.cancelAll();
+      );
 
   int _notificationId(SmartNotificationCandidate candidate) {
     final key = '${candidate.category.name}:${candidate.reason}:${candidate.title}';
+    return _stableHash(key);
+  }
+
+  int _prayerNotificationId(String prayerName, DateTime prayerAt) {
+    final day = '${prayerAt.year}-${prayerAt.month}-${prayerAt.day}';
+    return _stableHash('prayer:$day:${prayerName.toLowerCase()}');
+  }
+
+  int _stableHash(String value) {
     var hash = 0;
-    for (final unit in key.codeUnits) {
+    for (final unit in value.codeUnits) {
       hash = 0x1fffffff & (hash + unit);
       hash = 0x1fffffff & (hash + ((hash & 0x0007ffff) << 10));
       hash ^= hash >> 6;
