@@ -14,7 +14,7 @@
 - 🧪 VALIDATION — implementation exists but needs Flutter/Android/device verification.
 
 ## Overall completion
-**~66% feature-complete.** Planning estimate based on product requirements, not a test/build percentage. Production readiness remains lower until CI, automated tests, Android builds and physical-device validation are clean.
+**~71% feature-complete.** Planning estimate based on product requirements, not a test/build percentage. Production readiness remains lower until CI, automated tests, Android builds and physical-device validation are clean.
 
 ## 1. Product principles
 - [x] Free core application.
@@ -164,15 +164,15 @@
 - [ ] Stronger source attribution UX.
 - [ ] Final content review.
 
-### 2.12 Islamic Calendar — 🟡 PARTIAL (~50%)
+### 2.12 Islamic Calendar — 🟢 CORE DONE (~85%)
 - [x] Gregorian date.
 - [x] Hijri conversion.
 - [x] Offline/local calculation.
 - [x] Adjustment foundation.
-- [ ] Important Islamic dates.
-- [ ] Month navigation.
-- [ ] Event detail cards.
-- [ ] Premium calendar UI.
+- [x] Important Islamic dates.
+- [x] Month navigation.
+- [x] Event detail cards.
+- [x] Premium calendar UI.
 - [ ] Final validation.
 
 ### 2.13 Android Widgets — 🟡 PARTIAL (~65%)
@@ -276,6 +276,7 @@ Every future feature/status-changing commit MUST update this document in the sam
 ## 8. Changelog
 | Date | Commit / milestone | Result | Overall |
 |---|---|---|---:|
+| 2026-09-07 | Islamic Calendar phase | Added offline Hijri calendar service, important Islamic dates, month grid/navigation, today card, event cards, and tests. Physical/device validation remains. | ~71% |
 | 2026-09-07 | CI stabilization | Root cause found: `simple_icons` 14.6.1 is incompatible with Flutter 3.47/Dart 3.13. Test suite also exposed asynchronous test races and one invalid theme expectation. Fixes are being applied; CI verification remains required. | ~66% |
 | 2026-09-06 | `3178ff3` | Weekly worship insights tests added. | ~66% |
 | 2026-09-06 | `7a0261a` | Analyzer warnings/info made non-fatal so tests execute. | ~66% |
