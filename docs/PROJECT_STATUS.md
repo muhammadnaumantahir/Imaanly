@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~91%**
+**~93%**
 
 ## Recently completed
 
@@ -52,7 +52,13 @@ Updated: 2026-09-07
 - Hifz review can reveal the actual Mushaf text after the memory attempt and provides a limited Arabic text hint.
 - Worship seven-day history is derived from persisted local worship activity.
 - Worship dashboard now exposes the history view directly.
-- Fasting now has a reusable daily local reminder scheduler built on the existing notification service.
+- Fasting has a reusable daily local reminder scheduler built on the existing notification service.
+- Fasting reminder enabled state and local time are persisted with the fasting repository.
+- Fasting Tracker exposes reminder enable/disable and time selection directly in the UI.
+- Reminder changes immediately schedule or cancel the device-local daily notification.
+- Islamic Calendar day selection now exposes the selected Gregorian/Hijri date and its associated event details.
+- Calendar event cards now reflect the selected calendar day instead of always showing the first day of the month.
+- Calendar navigation resets the selected date safely and the Today action restores today's context.
 
 ## Completed foundation
 
@@ -89,8 +95,7 @@ Updated: 2026-09-07
 
 - Hifz audio integration and richer memorization/review content.
 - Worship analytics/history beyond the current seven-day history view.
-- Fasting reminder settings/UI connection and Ramadan-aware fasting workflow.
-- Calendar event details/context.
+- Calendar event details/context beyond the current built-in occasion set.
 - Duas/Hadith/Sunnah flows/favorites.
 
 ## Remaining P2
