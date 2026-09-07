@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~82%**
+**~84%**
 
 ## Recently completed
 
@@ -38,6 +38,8 @@ Updated: 2026-09-07
 - Hifz review mastery thresholds are covered by automated tests.
 - Hifz review completion now uses a single BLoC operation to persist progress and the session sequentially.
 - Hifz review completion refreshes progress, recent sessions, due reviews and aggregate statistics together.
+- Hifz new-memorization screen supports selecting any Surah and a validated ayah range.
+- Hifz dashboard now exposes Start New Memorization and an empty-state onboarding action.
 
 ## Completed foundation
 
@@ -75,7 +77,7 @@ Updated: 2026-09-07
 - Connect the new Quran reader to the main Continue Reading/home entry.
 - Quran history/goals UI integration.
 - Dhikr reminder Settings UI and recurring reminder management.
-- Hifz new-memorization workflow and richer review content/audio integration.
+- Hifz richer memorization/review content and Quran text/audio integration.
 - Worship analytics/history beyond the current daily dashboard.
 - Fasting active workflow/reminders/Ramadan behavior.
 - Calendar event details/context.
