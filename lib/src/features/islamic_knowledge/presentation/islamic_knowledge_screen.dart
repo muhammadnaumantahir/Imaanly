@@ -4,6 +4,7 @@ import '../../../screen/azkar/azkar_categories_screen.dart';
 import '../../../screen/collections/collection_page.dart';
 import '../domain/islamic_knowledge_catalog.dart';
 import 'hadith_screen.dart';
+import 'sunnah_screen.dart';
 
 class IslamicKnowledgeScreen extends StatefulWidget {
   const IslamicKnowledgeScreen({super.key});
@@ -25,6 +26,7 @@ class _IslamicKnowledgeScreenState extends State<IslamicKnowledgeScreen> {
     switch (section.id) {
       case 'tafsir': page = const TafsirScreen(); break;
       case 'hadith': page = const HadithScreen(); break;
+      case 'sunnah': page = const SunnahScreen(); break;
       case 'quran_topics': page = const CollectionPage(collectionType: CollectionType.pinned); break;
       case 'worship': page = const AzkarCategoriesScreen(); break;
       case 'collections': page = const CollectionPage(collectionType: CollectionType.notes); break;
@@ -35,6 +37,7 @@ class _IslamicKnowledgeScreenState extends State<IslamicKnowledgeScreen> {
   IconData _iconFor(String icon) {
     switch (icon) {
       case 'hadith': return Icons.format_quote_rounded;
+      case 'sunnah': return Icons.auto_awesome_rounded;
       case 'topics': return Icons.auto_stories_rounded;
       case 'mosque': return Icons.mosque_outlined;
       case 'collections': return Icons.collections_bookmark_outlined;
@@ -52,7 +55,7 @@ class _IslamicKnowledgeScreenState extends State<IslamicKnowledgeScreen> {
           Container(width: double.infinity, padding: const EdgeInsets.all(22), decoration: BoxDecoration(borderRadius: BorderRadius.circular(28), gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [scheme.primaryContainer, scheme.surfaceContainerHighest])), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Icon(Icons.auto_awesome_rounded, color: scheme.primary, size: 30), const SizedBox(height: 14),
             Text('Learn with purpose', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900)), const SizedBox(height: 6),
-            Text('Explore Quran commentary, Hadith, saved ayahs and worship resources already available in Imaanly.', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: scheme.onSurfaceVariant)),
+            Text('Explore Quran commentary, Hadith, Sunnah, saved ayahs and worship resources already available in Imaanly.', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: scheme.onSurfaceVariant)),
           ]),), const SizedBox(height: 14),
           TextField(controller: _searchController, decoration: InputDecoration(hintText: 'Search knowledge', prefixIcon: const Icon(Icons.search_rounded), suffixIcon: _searchController.text.isEmpty ? null : IconButton(onPressed: _searchController.clear, icon: const Icon(Icons.clear_rounded)), filled: true, border: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: BorderSide.none))),
         ]))),
