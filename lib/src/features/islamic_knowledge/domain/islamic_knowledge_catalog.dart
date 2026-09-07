@@ -12,6 +12,7 @@ class IslamicKnowledgeCatalog {
   static const sections = <IslamicKnowledgeSection>[
     IslamicKnowledgeSection(id: 'tafsir', title: 'Tafsir', subtitle: 'Explore Quran commentary and understand ayahs in context.', icon: 'book'),
     IslamicKnowledgeSection(id: 'hadith', title: 'Hadith', subtitle: 'Read a small offline collection of authentic-source hadith.', icon: 'hadith'),
+    IslamicKnowledgeSection(id: 'sunnah', title: 'Sunnah & adab', subtitle: 'Browse simple daily practices with references for further reading.', icon: 'sunnah'),
     IslamicKnowledgeSection(id: 'quran_topics', title: 'Quran topics', subtitle: 'Return to your saved Quran collections and reflections.', icon: 'topics'),
     IslamicKnowledgeSection(id: 'worship', title: 'Worship & adab', subtitle: 'Build knowledge around prayer, remembrance and daily worship.', icon: 'mosque'),
     IslamicKnowledgeSection(id: 'collections', title: 'My collections', subtitle: 'Review ayahs and notes you have saved while learning.', icon: 'collections'),
