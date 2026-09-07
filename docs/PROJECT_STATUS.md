@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~79%**
+**~80%**
 
 ## Recently completed
 
@@ -28,6 +28,9 @@ Updated: 2026-09-07
 - Quran reader restores the persisted page and keeps the PageView synchronized with saved state.
 - Quran feature dependencies are registered during app bootstrap.
 - Unified Quran persistence keys with the existing Mushaf last-read keys.
+- Hifz review scheduling is centralized in a pure-Dart domain service.
+- Hifz spaced-repetition intervals are covered by automated domain tests.
+- Hifz due-review repository logic now consumes the shared scheduling rules.
 
 ## Completed foundation
 
@@ -65,7 +68,7 @@ Updated: 2026-09-07
 - Connect the new Quran reader to the main Continue Reading/home entry.
 - Quran history/goals UI integration.
 - Dhikr reminder Settings UI and recurring reminder management.
-- Hifz review workflow, scheduling and progress entry.
+- Hifz review session workflow and progress entry UI.
 - Worship analytics/history beyond the current daily dashboard.
 - Fasting active workflow/reminders/Ramadan behavior.
 - Calendar event details/context.
