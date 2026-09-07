@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'dhikr_controller.dart';
+import 'dhikr_reminder_settings_page.dart';
 
 /// Focused, offline-first Dhikr counter screen.
 class DhikrPage extends StatefulWidget {
@@ -69,6 +70,13 @@ class _DhikrPageState extends State<DhikrPage> {
             tooltip: 'Daily target',
             onPressed: _controller.loading || _controller.busy ? null : _changeGoal,
             icon: const Icon(Icons.tune_rounded),
+          ),
+          IconButton(
+            tooltip: 'Dhikr reminder',
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const DhikrReminderSettingsPage()),
+            ),
+            icon: const Icon(Icons.notifications_active_outlined),
           ),
         ],
       ),
@@ -148,6 +156,18 @@ class _DhikrPageState extends State<DhikrPage> {
                       subtitle: Text('${progress.goal} repetitions'),
                       trailing: const Icon(Icons.chevron_right),
                       onTap: _controller.busy ? null : _changeGoal,
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Card(
+                    child: ListTile(
+                      leading: const Icon(Icons.notifications_active_outlined),
+                      title: const Text('Daily reminder'),
+                      subtitle: const Text('Choose a recurring reminder time'),
+                      trailing: const Icon(Icons.chevron_right_rounded),
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const DhikrReminderSettingsPage()),
+                      ),
                     ),
                   ),
                 ],
