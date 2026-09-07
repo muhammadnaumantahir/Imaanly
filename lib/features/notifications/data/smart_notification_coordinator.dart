@@ -14,14 +14,32 @@ class SmartNotificationCoordinator {
         _preferences = preferences;
 
   static const _boxName = 'user';
+  static const _preferencesKey = 'smart_notification_preferences';
   static const _sentDateKey = 'smart_notification_sent_date';
   static const _sentCountKey = 'smart_notification_sent_count';
 
   final Future<void> Function(SmartNotificationCandidate candidate)? _deliver;
-  final SmartNotificationPreferences _preferences;
+  SmartNotificationPreferences _preferences;
   final SmartNotificationPlanner _planner = const SmartNotificationPlanner();
 
   SmartNotificationPreferences get preferences => _preferences;
+
+  /// Loads saved preferences from Hive, falling back to [preferences].
+  Future<SmartNotificationPreferences> loadPreferences() async {
+    final box = await _openBox();
+    final raw = box.get(_preferencesKey);
+    if (raw is Map) {
+      _preferences = SmartNotificationPreferences.fromMap(raw);
+    }
+    return _preferences;
+  }
+
+  /// Saves preferences locally and makes them the active policy.
+  Future<void> savePreferences(SmartNotificationPreferences preferences) async {
+    _preferences = preferences;
+    final box = await _openBox();
+    await box.put(_preferencesKey, preferences.toMap());
+  }
 
   Future<SmartNotificationCandidate?> evaluateAndDeliver({
     required DateTime now,
