@@ -61,8 +61,9 @@
 - [x] Local prayer notification scheduling.
 - [x] Notification preferences/offsets.
 - [x] Restoration/reboot infrastructure.
+- [x] Local contextual notification decision engine.
 - [ ] Physical-device reliability testing.
-- [ ] Intelligent context-aware reminders.
+- [ ] Intelligent context-aware scheduler integration.
 - [ ] Notification fatigue controls.
 
 ### 2.5 Qibla — 🟢 CORE DONE (~90%)
@@ -174,15 +175,15 @@
 - [ ] Physical-device validation.
 - [ ] Reboot/background restriction testing.
 
-### 2.14 Intelligent Local Notifications — 🔴 TODO (0%)
-- [ ] Local context-aware decision engine.
+### 2.14 Intelligent Local Notifications — 🟡 PARTIAL (~15%)
+- [x] Local context-aware decision engine.
 - [ ] Quran-goal reminders.
 - [ ] Dhikr-goal reminders.
 - [ ] Streak-risk reminders.
 - [ ] Gentle personalized timing.
 - [ ] User-controlled categories.
 - [ ] Notification fatigue limits.
-- [ ] No cloud/paid AI requirement.
+- [x] No cloud/paid AI requirement.
 
 ### 2.15 Personalization — 🔴 TODO (0%)
 - [ ] Personalized Home shortcuts.
@@ -263,6 +264,8 @@ Every future feature/status-changing commit MUST update this document in the sam
 ## 8. Changelog
 | Date | Commit / milestone | Result | Overall |
 |---|---|---|---:|
+| 2026-09-07 | `0530545` | Added tests for the local contextual notification planner; direct Flutter test execution remains pending. | ~71% |
+| 2026-09-07 | `f7a8551` | Added the first Intelligent Local Notifications decision engine: nearby-prayer priority, Quran/Dhikr fallbacks, and conservative silent behavior. | ~71% |
 | 2026-09-07 | `3169e4c` | Fixed CI prayer schedule tests to assert Imaanly's canonical `Prayer` enum instead of the separate `adhan_dart` enum; CI previously reported 150 passed / 2 failed. | ~71% |
 | 2026-09-07 | Calendar CI follow-up | Fixed the stale Islamic Calendar day model test after CI reported the newly-required `isCurrentMonth` argument. | ~71% |
 | 2026-09-07 | Islamic Calendar phase | Added offline Hijri calendar service, important Islamic dates, month grid/navigation, today card, event cards, and tests. Physical/device validation remains. | ~71% |
