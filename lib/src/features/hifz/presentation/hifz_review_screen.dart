@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../quran/domain/entities/entities.dart';
+import '../../quran/domain/repositories/quran_repository.dart';
+import '../../core/di/service_locator.dart';
 import '../domain/entities/hifz.dart';
 import 'hifz_bloc.dart';
 
-/// Interactive review session for a memorized ayah range.
-/// The session is intentionally text-light: the user self-tests from memory,
-/// then records whether each ayah was recalled correctly.
+/// Interactive Hifz review session backed by the local Quran repository.
+///
+/// The user first recalls each ayah from memory. The actual Quran text can be
+/// revealed after the attempt, while hints expose only a small prefix.
 class HifzReviewScreen extends StatefulWidget {
   final HifzProgress progress;
 
@@ -24,15 +28,42 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
   int _hints = 0;
   late final DateTime _startedAt;
   bool _finished = false;
+  bool _revealed = false;
+  bool _loadingText = true;
+  String? _textError;
+  final Map<int, Ayah> _ayahs = {};
 
   @override
   void initState() {
     super.initState();
-    _totalAyahs = (widget.progress.ayahEnd - widget.progress.ayahStart + 1).clamp(1, 1000);
+    _totalAyahs =
+        (widget.progress.ayahEnd - widget.progress.ayahStart + 1).clamp(1, 1000);
     _startedAt = DateTime.now();
+    _loadQuranText();
   }
 
   int get _currentAyah => widget.progress.ayahStart + _currentIndex;
+
+  Future<void> _loadQuranText() async {
+    final result = await getIt<QuranRepository>().getAyahsBySurah(widget.progress.surahId);
+    if (!mounted) return;
+    result.fold(
+      (failure) => setState(() {
+        _loadingText = false;
+        _textError = failure.message;
+      }),
+      (ayahs) => setState(() {
+        for (final ayah in ayahs) {
+          if (ayah.ayahNumber >= widget.progress.ayahStart &&
+              ayah.ayahNumber <= widget.progress.ayahEnd) {
+            _ayahs[ayah.ayahNumber] = ayah;
+          }
+        }
+        _loadingText = false;
+        _textError = null;
+      }),
+    );
+  }
 
   void _mark(bool correct) {
     if (_finished) return;
@@ -42,6 +73,7 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
       } else {
         _mistakes++;
       }
+      _revealed = false;
       if (_currentIndex + 1 >= _totalAyahs) {
         _finished = true;
       } else {
@@ -85,9 +117,7 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
       type: HifzSessionType.review,
     );
 
-    context.read<HifzBloc>().add(
-          CompleteReview(progress: updated, session: session),
-        );
+    context.read<HifzBloc>().add(CompleteReview(progress: updated, session: session));
 
     if (!mounted) return;
     await showDialog<void>(
@@ -126,9 +156,16 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
         HifzMasteryLevel.mastered => 'Mastered',
       };
 
+  String _hintText(Ayah? ayah) {
+    if (ayah == null) return 'Quran text is still loading.';
+    final words = ayah.textUthmani.trim().split(RegExp(r'\s+'));
+    return words.take(5).join(' ') + (words.length > 5 ? ' …' : '');
+  }
+
   @override
   Widget build(BuildContext context) {
     final progress = (_currentIndex + 1) / _totalAyahs;
+    final ayah = _ayahs[_currentAyah];
     return Scaffold(
       appBar: AppBar(title: Text('Surah ${widget.progress.surahId} review')),
       body: SafeArea(
@@ -141,20 +178,46 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
               const SizedBox(height: 12),
               Text('Ayah $_currentAyah of ${widget.progress.ayahEnd}', textAlign: TextAlign.center),
               const Spacer(),
-              const Icon(Icons.psychology_outlined, size: 72),
-              const SizedBox(height: 20),
+              const Icon(Icons.psychology_outlined, size: 64),
+              const SizedBox(height: 16),
               Text(
                 'Recite this ayah from memory',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800),
               ),
               const SizedBox(height: 10),
-              Text(
-                'Self-test before revealing the Mushaf. Record the result honestly to improve your review schedule.',
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyMedium,
+              if (_loadingText)
+                const Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Center(child: CircularProgressIndicator()),
+                )
+              else if (_textError != null)
+                Text('Quran text unavailable: $_textError', textAlign: TextAlign.center)
+              else if (_revealed && ayah != null)
+                Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text(
+                      ayah.textUthmani,
+                      textAlign: TextAlign.right,
+                      textDirection: TextDirection.rtl,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(height: 2.0),
+                    ),
+                  ),
+                )
+              else if (_hints > 0)
+                Text(
+                  'Hint: ${_hintText(ayah)}',
+                  textAlign: TextAlign.center,
+                  textDirection: TextDirection.rtl,
+                ),
+              const SizedBox(height: 16),
+              OutlinedButton.icon(
+                onPressed: _loadingText ? null : () => setState(() => _revealed = !_revealed),
+                icon: Icon(_revealed ? Icons.visibility_off_outlined : Icons.menu_book_outlined),
+                label: Text(_revealed ? 'Hide ayah' : 'Reveal Mushaf'),
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 8),
               OutlinedButton.icon(
                 onPressed: _hint,
                 icon: const Icon(Icons.lightbulb_outline),
