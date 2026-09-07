@@ -6,8 +6,6 @@ import '../domain/usecases/get_all_surahs.dart';
 import '../domain/usecases/get_quran_page.dart';
 import '../domain/usecases/search_ayahs.dart';
 
-// ── States ──
-
 enum QuranStatus { initial, loading, loaded, error }
 
 class QuranState {
@@ -49,8 +47,6 @@ class QuranState {
       );
 }
 
-// ── Events ──
-
 sealed class QuranEvent {
   const QuranEvent();
 }
@@ -83,8 +79,6 @@ final class SearchAyahs extends QuranEvent {
   final String query;
   const SearchAyahs(this.query);
 }
-
-// ── BLoC ──
 
 class QuranBloc extends Bloc<QuranEvent, QuranState> {
   final GetAllSurahsUseCase _getAllSurahs;
@@ -125,18 +119,46 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
     );
   }
 
-  Future<void> _onLoadQuranPage(LoadQuranPage event, Emitter<QuranState> emit) async {
-    final result = await _getQuranPage(event.pageNumber);
-    result.fold(
-      (failure) => emit(state.copyWith(
-        status: QuranStatus.error,
-        errorMessage: failure.message,
-      )),
-      (page) => emit(state.copyWith(
-        status: QuranStatus.loaded,
-        currentPage: page,
-        lastReadPage: event.pageNumber,
-      )),
+  Future<void> _onLoadQuranPage(
+    LoadQuranPage event,
+    Emitter<QuranState> emit,
+  ) async {
+    final pageNumber = event.pageNumber.clamp(1, 604).toInt();
+    emit(state.copyWith(status: QuranStatus.loading));
+
+    final result = await _getQuranPage(pageNumber);
+    await result.fold<Future<void>>(
+      (failure) async {
+        emit(state.copyWith(
+          status: QuranStatus.error,
+          errorMessage: failure.message,
+        ));
+      },
+      (page) async {
+        final firstAyahKey = page.ayahs.isNotEmpty
+            ? page.ayahs.first.key
+            : (state.lastAyahKey ?? '1:1');
+        final saveResult = await _quranRepository.saveLastReadPosition(
+          page: page.pageNumber,
+          ayahKey: firstAyahKey,
+        );
+
+        saveResult.fold(
+          (failure) => emit(state.copyWith(
+            status: QuranStatus.error,
+            currentPage: page,
+            lastReadPage: page.pageNumber,
+            errorMessage: failure.message,
+          )),
+          (_) => emit(state.copyWith(
+            status: QuranStatus.loaded,
+            currentPage: page,
+            lastReadPage: page.pageNumber,
+            lastAyahKey: firstAyahKey,
+            errorMessage: null,
+          )),
+        );
+      },
     );
   }
 
@@ -149,15 +171,20 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
     Emitter<QuranState> emit,
   ) async {
     final result = await _quranRepository.getLastReadPosition();
-    result.fold(
-      (failure) => emit(state.copyWith(
-        status: QuranStatus.error,
-        errorMessage: failure.message,
-      )),
-      (position) => emit(state.copyWith(
-        lastReadPage: position.page,
-        lastAyahKey: position.ayahKey,
-      )),
+    await result.fold<Future<void>>(
+      (failure) async {
+        emit(state.copyWith(
+          status: QuranStatus.error,
+          errorMessage: failure.message,
+        ));
+      },
+      (position) async {
+        emit(state.copyWith(
+          lastReadPage: position.page.clamp(1, 604).toInt(),
+          lastAyahKey: position.ayahKey,
+        ));
+        add(LoadQuranPage(position.page));
+      },
     );
   }
 
@@ -165,8 +192,9 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
     SaveLastReadPosition event,
     Emitter<QuranState> emit,
   ) async {
+    final page = event.page.clamp(1, 604).toInt();
     final result = await _quranRepository.saveLastReadPosition(
-      page: event.page,
+      page: page,
       ayahKey: event.ayahKey,
     );
     result.fold(
@@ -175,13 +203,17 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
         errorMessage: failure.message,
       )),
       (_) => emit(state.copyWith(
-        lastReadPage: event.page,
+        lastReadPage: page,
         lastAyahKey: event.ayahKey,
+        errorMessage: null,
       )),
     );
   }
 
-  Future<void> _onSearchAyahs(SearchAyahs event, Emitter<QuranState> emit) async {
+  Future<void> _onSearchAyahs(
+    SearchAyahs event,
+    Emitter<QuranState> emit,
+  ) async {
     if (event.query.isEmpty) return;
     final result = await _searchAyahs(event.query);
     result.fold(
@@ -189,7 +221,7 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
         status: QuranStatus.error,
         errorMessage: failure.message,
       )),
-      (_) {}, // Search results handled separately
+      (_) {},
     );
   }
 }
