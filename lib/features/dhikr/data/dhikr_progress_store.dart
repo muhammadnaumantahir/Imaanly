@@ -2,7 +2,6 @@ import 'package:hive_ce_flutter/hive_flutter.dart';
 
 import '../domain/dhikr_progress.dart';
 
-/// Local-first persistence for the daily Dhikr counter and completed-day history.
 class DhikrProgressStore {
   static const _boxName = 'user';
   static const _progressKey = 'dhikr_progress';
@@ -15,14 +14,13 @@ class DhikrProgressStore {
     final raw = box.get(_progressKey);
     final stored = raw is Map
         ? DhikrProgress.fromMap(raw)
-        : const DhikrProgress(goal: 33);
+        : const DhikrProgress(goal: 33, completed: 0);
     return stored.forDate(date ?? DateTime.now());
   }
 
   Future<void> save(DhikrProgress progress) async {
     final box = await _openBox();
     await box.put(_progressKey, progress.toMap());
-
     if (progress.isGoalComplete && progress.dateKey.isNotEmpty) {
       final dates = _readDates(box);
       dates.add(progress.dateKey);
@@ -53,18 +51,15 @@ class DhikrProgressStore {
   }
 
   Future<int> loadCurrentStreak([DateTime? today]) async {
-    final dates = await loadCompletedDates();
     return DhikrStreakCalculator.calculate(
-      completedDates: dates,
+      completedDates: await loadCompletedDates(),
       today: today ?? DateTime.now(),
     );
   }
 
   Set<String> _readDates(Box box) {
     final raw = box.get(_completedDatesKey);
-    if (raw is Iterable) {
-      return raw.map((value) => value.toString()).toSet();
-    }
+    if (raw is Iterable) return raw.map((value) => value.toString()).toSet();
     return <String>{};
   }
 
