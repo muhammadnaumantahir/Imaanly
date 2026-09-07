@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~70%**
+**~72%**
 
 ## Recently completed
 
@@ -14,6 +14,9 @@ Updated: 2026-09-07
 - Dhikr local-first progress store with daily counter persistence.
 - Dhikr daily goal updates and completed-day history persistence.
 - Dhikr streak calculation wired to persisted completion history.
+- Interactive Dhikr counter screen with live completion progress.
+- Dhikr daily target selector with safe goal bounds.
+- Dhikr counter controller connected to persistence and streak state.
 
 ## Completed foundation
 
@@ -48,7 +51,6 @@ Updated: 2026-09-07
 
 ## Remaining P1
 
-- Dhikr interactive UI/counter screen and target controls.
 - Dhikr reminder scheduling and richer history UI.
 - Quran actual reading continuation/history/goals.
 - Hifz scheduling/progress.
