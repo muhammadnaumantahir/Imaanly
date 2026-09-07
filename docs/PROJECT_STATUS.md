@@ -48,8 +48,11 @@ Updated: 2026-09-07
 - Hifz review completion refreshes progress, recent sessions, due reviews and aggregate statistics together.
 - Hifz new-memorization screen supports selecting any Surah and a validated ayah range.
 - Hifz dashboard now exposes Start New Memorization and an empty-state onboarding action.
+- Hifz review now loads the selected ayah range from the local Quran repository.
+- Hifz review can reveal the actual Mushaf text after the memory attempt and provides a limited Arabic text hint.
 - Worship seven-day history is derived from persisted local worship activity.
 - Worship dashboard now exposes the history view directly.
+- Fasting now has a reusable daily local reminder scheduler built on the existing notification service.
 
 ## Completed foundation
 
@@ -86,7 +89,7 @@ Updated: 2026-09-07
 
 - Hifz audio integration and richer memorization/review content.
 - Worship analytics/history beyond the current seven-day history view.
-- Fasting active workflow/reminders/Ramadan behavior.
+- Fasting reminder settings/UI connection and Ramadan-aware fasting workflow.
 - Calendar event details/context.
 - Duas/Hadith/Sunnah flows/favorites.
 
