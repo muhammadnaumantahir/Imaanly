@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~90%**
+**~91%**
 
 ## Recently completed
 
@@ -48,8 +48,8 @@ Updated: 2026-09-07
 - Hifz review completion refreshes progress, recent sessions, due reviews and aggregate statistics together.
 - Hifz new-memorization screen supports selecting any Surah and a validated ayah range.
 - Hifz dashboard now exposes Start New Memorization and an empty-state onboarding action.
-- Hifz review now loads the selected ayah range from the local Quran repository.
-- Hifz review can reveal the actual Mushaf text after the memory attempt and provides a limited Arabic text hint.
+- Worship seven-day history is derived from persisted local worship activity.
+- Worship dashboard now exposes the history view directly.
 
 ## Completed foundation
 
@@ -85,7 +85,7 @@ Updated: 2026-09-07
 ## Remaining P1
 
 - Hifz audio integration and richer memorization/review content.
-- Worship analytics/history beyond the current daily dashboard.
+- Worship analytics/history beyond the current seven-day history view.
 - Fasting active workflow/reminders/Ramadan behavior.
 - Calendar event details/context.
 - Duas/Hadith/Sunnah flows/favorites.
