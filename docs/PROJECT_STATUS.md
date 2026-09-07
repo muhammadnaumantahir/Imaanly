@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~85%**
+**~86%**
 
 ## Recently completed
 
@@ -19,6 +19,9 @@ Updated: 2026-09-07
 - Dhikr counter controller connected to persistence and streak state.
 - Dhikr completed-day history screen.
 - Generic local reminder scheduling support for Dhikr reminders.
+- Recurring daily Dhikr reminder scheduling with device-local time.
+- Dhikr reminder enable/disable and time preferences persisted locally.
+- Dhikr counter screen exposes reminder settings directly.
 - Quran local-first reading position persistence.
 - Quran daily page goal and progress persistence.
 - Quran reading history persistence by day.
@@ -79,7 +82,6 @@ Updated: 2026-09-07
 
 - Connect the new Quran reader to the main Continue Reading/home entry.
 - Quran history/goals deeper integration and historical trend UI.
-- Dhikr reminder Settings UI and recurring reminder management.
 - Hifz richer memorization/review content and Quran text/audio integration.
 - Worship analytics/history beyond the current daily dashboard.
 - Fasting active workflow/reminders/Ramadan behavior.
