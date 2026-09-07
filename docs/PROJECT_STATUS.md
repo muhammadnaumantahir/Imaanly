@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall progress
 
-**Estimated completion: ~67%**
+**Estimated completion: ~69%**
 
 This is a product-requirements estimate, not a code-line percentage. Existing inherited Quran functionality is substantial, while the newer Imaanly product layer still needs deeper workflow integration, background reliability, QA, and release hardening.
 
@@ -40,6 +40,8 @@ This is a product-requirements estimate, not a code-line percentage. Existing in
 - Scheduled prayer reminder delivery with configurable reminder lead time and silent mode
 - Stable prayer/date notification IDs so rescheduling does not create duplicate alarms
 - Prayer notification scheduler/orchestrator that applies per-prayer preferences to calculated daily prayer times
+- Scheduler now consumes persisted per-prayer Settings values when explicit preferences are not supplied
+- Device timezone is resolved through `flutter_timezone` and applied to the timezone scheduler before prayer alarms are created, with a safe bundled-database fallback
 - Android exact-alarm, notification and boot-reschedule permissions/receivers are present
 - Existing SettingsPage now reachable from the main Home dashboard
 - Service-account dependency removed from the app workflow
@@ -48,6 +50,8 @@ This is a product-requirements estimate, not a code-line percentage. Existing in
 ## Recently completed
 
 ### 2026-09-07
+- `d822c6f` — synchronized local prayer scheduling with the device IANA timezone and added graceful timezone fallback
+- `ed24170` — made the prayer scheduler load persisted per-prayer reminder settings instead of silently reverting to defaults
 - `b2fa8b2` — added user-facing per-prayer notification settings, reminder offset and silent mode
 - `17daece` — added local Hive persistence for per-prayer notification preferences
 - `3b0cfa6` — added prayer notification scheduler/orchestrator for calculated daily schedules
@@ -70,8 +74,7 @@ This is a product-requirements estimate, not a code-line percentage. Existing in
 ### P0 — make the product operational end-to-end
 
 - Call the prayer notification scheduler from the actual prayer calculation/location refresh lifecycle
-- Connect persisted per-prayer preferences to the scheduler instead of using defaults
-- Add robust timezone selection/synchronization for scheduled alarms using the device timezone
+- Connect the scheduler to the real location/prayer-time source rather than the current placeholder Cairo calculation in the legacy prayer-times screen
 - Add actual Athan audio selection/playback for prayer notifications
 - Verify Android exact-alarm permission behavior on supported Android versions
 - Verify notification delivery, reboot rescheduling and battery-optimization edge cases on real devices
