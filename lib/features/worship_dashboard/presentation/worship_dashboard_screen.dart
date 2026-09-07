@@ -8,6 +8,7 @@ import 'package:imaanly/features/personalization/presentation/personalization_cu
 import 'package:imaanly/features/worship/data/worship_activity_repository.dart';
 import 'package:imaanly/features/worship/domain/worship_daily_summary.dart';
 import 'package:imaanly/features/worship_dashboard/domain/worship_dashboard_summary.dart';
+import 'package:imaanly/features/worship_dashboard/presentation/worship_history_screen.dart';
 import 'package:imaanly/src/core/di/service_locator.dart';
 import 'package:imaanly/src/core/reading_stats/reading_stats_cubit.dart';
 import 'package:imaanly/src/core/storage/app_boxes.dart';
@@ -34,6 +35,7 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
   }
   void _refresh() => setState(() => _dataFuture = _loadData());
   Future<void> _openGoals() async { await Navigator.of(context).push(MaterialPageRoute(builder: (_) => const DailyGoalsScreen())); if (mounted) _refresh(); }
+  Future<void> _openHistory() async { await Navigator.of(context).push(MaterialPageRoute(builder: (_) => const WorshipHistoryScreen())); if (mounted) _refresh(); }
   @override Widget build(BuildContext context) {
     final compact = getIt<PersonalizationCubit>().state.dashboardCompact;
     return BlocBuilder<ReadingStatsCubit, ReadingStatsState>(builder: (context, reading) => FutureBuilder<_DashboardData>(future: _dataFuture, builder: (context, snapshot) {
@@ -41,7 +43,7 @@ class _WorshipDashboardScreenState extends State<WorshipDashboardScreen> {
       final summary = WorshipDashboardSummary(prayersCompleted: activity?.prayersCompleted ?? 0, prayersTotal: goals.salah > 0 ? goals.salah : 5, quranPages: reading.pagesToday, dhikrCompleted: activity?.dhikrCount ?? 0, dhikrGoal: goals.dhikr, readingStreak: reading.streak);
       final quranProgress = goals.quranPages > 0 ? (summary.quranPages / goals.quranPages).clamp(0.0, 1.0) : 0.0;
       return Scaffold(
-        appBar: AppBar(title: Text(compact ? 'Worship' : 'Worship Today'), centerTitle: true, actions: [IconButton(tooltip: 'Daily goals', onPressed: _openGoals, icon: const Icon(Icons.flag_circle_outlined)), IconButton(tooltip: 'Refresh', onPressed: snapshot.connectionState == ConnectionState.waiting ? null : _refresh, icon: const Icon(Icons.refresh_rounded))]),
+        appBar: AppBar(title: Text(compact ? 'Worship' : 'Worship Today'), centerTitle: true, actions: [IconButton(tooltip: 'History', onPressed: _openHistory, icon: const Icon(Icons.history_rounded)), IconButton(tooltip: 'Daily goals', onPressed: _openGoals, icon: const Icon(Icons.flag_circle_outlined)), IconButton(tooltip: 'Refresh', onPressed: snapshot.connectionState == ConnectionState.waiting ? null : _refresh, icon: const Icon(Icons.refresh_rounded))]),
         body: RefreshIndicator(onRefresh: () async => _refresh(), child: ListView(physics: const AlwaysScrollableScrollPhysics(), padding: const EdgeInsets.fromLTRB(16, 8, 16, 32), children: [
           _HeroCard(summary: summary, quranProgress: quranProgress),
           const SizedBox(height: 16),
