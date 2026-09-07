@@ -16,7 +16,6 @@ class QuranInjection {
   QuranInjection._();
 
   static void init(GetIt sl) {
-    // ── Data Sources ──
     sl.registerLazySingleton<QuranLocalDataSource>(
       () => QuranLocalDataSource(
         userBox: Hive.box(AppStrings.hiveBoxUser),
@@ -24,21 +23,19 @@ class QuranInjection {
       ),
     );
 
-    // ── Repositories ──
     sl.registerLazySingleton<QuranRepository>(
       () => QuranRepositoryImpl(localDataSource: sl<QuranLocalDataSource>()),
     );
 
-    // ── Use Cases ──
     sl.registerLazySingleton(() => GetAllSurahsUseCase(sl<QuranRepository>()));
     sl.registerLazySingleton(() => GetQuranPageUseCase(sl<QuranRepository>()));
     sl.registerLazySingleton(() => SearchAyahsUseCase(sl<QuranRepository>()));
 
-    // ── BLoC ──
     sl.registerFactory(() => QuranBloc(
           getAllSurahs: sl<GetAllSurahsUseCase>(),
           getQuranPage: sl<GetQuranPageUseCase>(),
           searchAyahs: sl<SearchAyahsUseCase>(),
+          quranRepository: sl<QuranRepository>(),
         ));
   }
 }
