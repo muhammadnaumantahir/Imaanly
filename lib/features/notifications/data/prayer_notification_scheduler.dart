@@ -1,5 +1,6 @@
 import '../domain/prayer_notification_preferences.dart';
 import '../services/local_notification_service.dart';
+import 'prayer_notification_preferences_store.dart';
 
 /// Synchronizes calculated daily prayer times with local reminder alarms.
 ///
@@ -10,9 +11,13 @@ import '../services/local_notification_service.dart';
 class PrayerNotificationScheduler {
   PrayerNotificationScheduler({
     LocalNotificationService? notifications,
-  }) : _notifications = notifications ?? LocalNotificationService.instance;
+    PrayerNotificationPreferencesStore? preferencesStore,
+  })  : _notifications = notifications ?? LocalNotificationService.instance,
+        _preferencesStore =
+            preferencesStore ?? const PrayerNotificationPreferencesStore();
 
   final LocalNotificationService _notifications;
+  final PrayerNotificationPreferencesStore _preferencesStore;
 
   static const _prayers = <String>[
     'Fajr',
@@ -24,22 +29,23 @@ class PrayerNotificationScheduler {
 
   /// Replaces all five prayer reminders for the supplied schedule.
   ///
-  /// Disabled prayers are explicitly cancelled so changing a preference does
-  /// not leave an old alarm on the device. Past occurrences are ignored by the
-  /// platform service. When [preferences] are omitted, all five prayers are
-  /// enabled with the default 10-minute reminder and normal sound.
+  /// When [preferences] is omitted, the persisted Settings value is loaded
+  /// from the device. This prevents the scheduler from silently reverting to
+  /// default reminder settings whenever prayer times are refreshed.
   Future<void> synchronize({
     required List<PrayerScheduleNotificationTime> schedule,
-    PrayerNotificationPreferences preferences =
-        const PrayerNotificationPreferences(),
+    PrayerNotificationPreferences? preferences,
   }) async {
+    final effectivePreferences =
+        preferences ?? await _preferencesStore.load();
+
     await _notifications.initialize();
 
     for (final prayer in _prayers) {
       final item = _find(schedule, prayer);
       if (item == null) continue;
 
-      if (!preferences.isEnabled(prayer)) {
+      if (!effectivePreferences.isEnabled(prayer)) {
         await _notifications.cancelPrayerReminder(
           prayerName: prayer,
           prayerAt: item.time,
@@ -50,8 +56,8 @@ class PrayerNotificationScheduler {
       await _notifications.schedulePrayerReminder(
         prayerName: prayer,
         prayerAt: item.time,
-        reminderMinutes: preferences.reminderMinutes,
-        silent: preferences.silent,
+        reminderMinutes: effectivePreferences.reminderMinutes,
+        silent: effectivePreferences.silent,
       );
     }
   }
