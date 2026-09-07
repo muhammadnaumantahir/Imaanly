@@ -19,7 +19,7 @@ Updated: 2026-09-07
 - Hifz scheduling, interactive review, scoring, persistence, mastery and new memorization ranges.
 - Hifz review can reveal local Mushaf text and limited Arabic hints.
 - Worship seven-day history and dashboard access.
-- Fasting daily reminder scheduler and persisted reminder controls.
+- Fasting tracker now supports editable private journal notes and persisted daily reminder settings/time.
 - Islamic Calendar day selection and selected-day event details.
 - Offline Hadith catalog with searchable reading screen.
 - Offline Sunnah & adab starter catalog with searchable reading screen and references.
