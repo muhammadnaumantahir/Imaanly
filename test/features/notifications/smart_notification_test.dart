@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:imaanly/features/notifications/domain/smart_notification.dart';
+import 'package:imaanly/features/notifications/domain/smart_notification_category.dart';
 
 void main() {
   const planner = SmartNotificationPlanner();
