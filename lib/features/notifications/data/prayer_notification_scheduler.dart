@@ -1,13 +1,12 @@
 import '../domain/prayer_notification_preferences.dart';
-import '../domain/smart_notification.dart';
 import '../services/local_notification_service.dart';
 
 /// Synchronizes calculated daily prayer times with local reminder alarms.
 ///
 /// The scheduler is deliberately independent from the prayer calculation
 /// implementation: callers provide the already calculated five daily prayers.
-/// This keeps notification scheduling deterministic and makes it reusable by
-/// Home, the prayer-times screen, background refresh and future widgets.
+/// This keeps notification scheduling deterministic and reusable by Home, the
+/// prayer-times screen, background refresh and future widgets.
 class PrayerNotificationScheduler {
   PrayerNotificationScheduler({
     LocalNotificationService? notifications,
@@ -27,8 +26,8 @@ class PrayerNotificationScheduler {
   ///
   /// Disabled prayers are explicitly cancelled so changing a preference does
   /// not leave an old alarm on the device. Past occurrences are ignored by the
-  /// platform service. When [preferences] are omitted, the safe default is
-  /// used: all five prayers enabled, 10 minutes before, with sound enabled.
+  /// platform service. When [preferences] are omitted, all five prayers are
+  /// enabled with the default 10-minute reminder and normal sound.
   Future<void> synchronize({
     required List<PrayerScheduleNotificationTime> schedule,
     PrayerNotificationPreferences preferences =
@@ -38,13 +37,13 @@ class PrayerNotificationScheduler {
 
     for (final prayer in _prayers) {
       final item = _find(schedule, prayer);
-      if (item == null || !preferences.isEnabled(prayer)) {
-        if (item != null) {
-          await _notifications.cancelPrayerReminder(
-            prayerName: prayer,
-            prayerAt: item.time,
-          );
-        }
+      if (item == null) continue;
+
+      if (!preferences.isEnabled(prayer)) {
+        await _notifications.cancelPrayerReminder(
+          prayerName: prayer,
+          prayerAt: item.time,
+        );
         continue;
       }
 
