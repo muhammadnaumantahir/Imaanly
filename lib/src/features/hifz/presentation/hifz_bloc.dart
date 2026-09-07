@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/error/failures.dart';
 import '../domain/entities/hifz.dart';
 import '../domain/repositories/hifz_repository.dart';
 
