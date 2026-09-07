@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
@@ -55,6 +56,7 @@ class LocalNotificationService {
           importance: Importance.high,
         ));
 
+    await _initializeDeviceTimezone();
     _initialized = true;
   }
 
@@ -90,7 +92,7 @@ class LocalNotificationService {
     );
   }
 
-  /// Schedules a prayer reminder at the requested local date/time.
+  /// Schedules a prayer reminder at the requested device-local date/time.
   ///
   /// Past occurrences are ignored. A stable ID makes rescheduling the same
   /// prayer/date replace the previous occurrence instead of duplicating it.
@@ -101,7 +103,6 @@ class LocalNotificationService {
     bool silent = false,
   }) async {
     await initialize();
-    _ensureTimezone();
 
     final scheduledAt = prayerAt.subtract(Duration(minutes: reminderMinutes));
     if (!scheduledAt.isAfter(DateTime.now())) return;
@@ -150,10 +151,24 @@ class LocalNotificationService {
     await _plugin.cancelAll();
   }
 
-  void _ensureTimezone() {
+  Future<void> _initializeDeviceTimezone() async {
     if (_timezoneInitialized) return;
+
     tz.initializeTimeZones();
     _timezoneInitialized = true;
+
+    try {
+      final timezoneName = await FlutterTimezone.getLocalTimezone();
+      tz.setLocalLocation(tz.getLocation(timezoneName));
+    } catch (error, stackTrace) {
+      // The bundled timezone database remains a safe fallback when a platform
+      // cannot expose its IANA timezone identifier.
+      log(
+        'Could not resolve device timezone; using timezone package default: $error',
+        name: 'LocalNotificationService',
+        stackTrace: stackTrace,
+      );
+    }
   }
 
   NotificationDetails _details() => const NotificationDetails(
