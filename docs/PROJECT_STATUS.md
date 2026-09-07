@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~86%**
+**~87%**
 
 ## Recently completed
 
@@ -34,6 +34,7 @@ Updated: 2026-09-07
 - Quran reading progress screen exposes today's pages, ayahs, time, streak and all-time totals.
 - Quran daily page goal can be created, changed or cleared from the progress screen.
 - Quran reader now exposes the reading-progress screen directly from its AppBar.
+- Home Continue Quran entry now launches the new persisted Quran reader instead of the legacy QuranScriptView.
 - Hifz review scheduling is centralized in a pure-Dart domain service.
 - Hifz spaced-repetition intervals are covered by automated domain tests.
 - Hifz due-review repository logic now consumes the shared scheduling rules.
@@ -80,7 +81,6 @@ Updated: 2026-09-07
 
 ## Remaining P1
 
-- Connect the new Quran reader to the main Continue Reading/home entry.
 - Quran history/goals deeper integration and historical trend UI.
 - Hifz richer memorization/review content and Quran text/audio integration.
 - Worship analytics/history beyond the current daily dashboard.
