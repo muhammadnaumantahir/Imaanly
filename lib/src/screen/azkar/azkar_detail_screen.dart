@@ -41,7 +41,9 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
   void _restore() {
     final today = DateTime.now();
     final saved = _box.get(_progressKey);
-    _dailyProgress = saved is Map ? DhikrProgress.fromMap(saved).forDate(today) : DhikrProgress(goal: 33, completed: 0, dateKey: DhikrProgress.dateKeyFor(today));
+    _dailyProgress = saved is Map
+        ? DhikrProgress.fromMap(saved).forDate(today)
+        : DhikrProgress(goal: 33, completed: 0, dateKey: DhikrProgress.dateKeyFor(today));
     final counts = _box.get(_countsKey);
     if (counts is Map && counts['dateKey']?.toString() == _dailyProgress.dateKey && counts['values'] is Map) {
       final values = counts['values'] as Map;
@@ -54,7 +56,10 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
 
   void _persist() {
     _box.put(_progressKey, _dailyProgress.toMap());
-    _box.put(_countsKey, {'dateKey': _dailyProgress.dateKey, 'values': {for (var i = 0; i < _counts.length; i++) '$i': _counts[i]}});
+    _box.put(_countsKey, {
+      'dateKey': _dailyProgress.dateKey,
+      'values': {for (var i = 0; i < _counts.length; i++) '$i': _counts[i]},
+    });
   }
 
   void _recordTap() {
@@ -66,7 +71,11 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
   Future<void> _syncWorship() async {
     try {
       final repository = await WorshipActivityRepository.openLocal();
-      await repository.upsertDailyDhikr(category: widget.categoryName, completed: _dailyProgress.completed, goal: _dailyProgress.goal);
+      await repository.upsertDailyDhikr(
+        category: widget.categoryName,
+        completed: _dailyProgress.completed,
+        goal: _dailyProgress.goal,
+      );
     } catch (_) {}
   }
 
@@ -79,7 +88,12 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
     });
     if (_counts[_currentIndex] == 0 && _currentIndex < _counts.length - 1) {
       Future.delayed(const Duration(milliseconds: 300), () {
-        if (mounted) _pageController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
+        if (mounted) {
+          _pageController.nextPage(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOut,
+          );
+        }
       });
     }
   }
@@ -94,42 +108,118 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    if (widget.azkarList.isEmpty) return const Scaffold(body: Center(child: Text('No Adhkar available.')));
-    final zekr = widget.azkarList[_currentIndex];
-    final remaining = _counts[_currentIndex];
+    if (widget.azkarList.isEmpty) {
+      return const Scaffold(body: Center(child: Text('No Adhkar available.')));
+    }
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
         appBar: AppBar(
           title: Text(widget.categoryName),
-          actions: [IconButton(onPressed: () => setState(() => _fontSize = (_fontSize + 2).clamp(20, 48).toDouble()), icon: const Icon(Icons.text_fields))],
-          bottom: PreferredSize(preferredSize: const Size.fromHeight(4), child: LinearProgressIndicator(value: (_currentIndex + 1) / widget.azkarList.length)),
+          actions: [
+            IconButton(
+              onPressed: () => setState(() => _fontSize = (_fontSize + 2).clamp(20, 48).toDouble()),
+              icon: const Icon(Icons.text_fields),
+            ),
+          ],
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(4),
+            child: LinearProgressIndicator(value: (_currentIndex + 1) / widget.azkarList.length),
+          ),
         ),
-        body: Column(children: [
-          Padding(padding: const EdgeInsets.all(16), child: Text('الذكر ${_currentIndex + 1} من ${widget.azkarList.length} • المتبقي $remaining', style: const TextStyle(fontWeight: FontWeight.w800))),
-          Expanded(child: PageView.builder(
-            controller: _pageController,
-            itemCount: widget.azkarList.length,
-            onPageChanged: (index) => setState(() => _currentIndex = index),
-            itemBuilder: (context, index) {
-              final item = widget.azkarList[index];
-              return Padding(padding: const EdgeInsets.all(16), child: Card(child: Padding(padding: const EdgeInsets.all(22), child: Column(children: [
-                Expanded(child: SingleChildScrollView(child: Column(children: [
-                  Text(item['zekr']?.toString() ?? '', textAlign: TextAlign.center, style: TextStyle(fontSize: _fontSize, height: 1.8, fontWeight: FontWeight.w700, color: isDark ? Colors.white : null)),
-                  if (item['description']?.toString().isNotEmpty == true) Padding(padding: const EdgeInsets.only(top: 18), child: Text(item['description'].toString(), textAlign: TextAlign.center)),
-                  if (item['reference']?.toString().isNotEmpty == true) Padding(padding: const EdgeInsets.only(top: 14), child: Text(item['reference'].toString(), textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodySmall)),
-                ]))),
-                const SizedBox(height: 18),
-                GestureDetector(onTap: index == _currentIndex ? _onTap : null, child: Container(width: 120, height: 120, decoration: BoxDecoration(color: widget.primary, shape: BoxShape.circle), child: Center(child: Text('${_counts[index]}', style: const TextStyle(color: Colors.white, fontSize: 38, fontWeight: FontWeight.w900))))),
-                const SizedBox(height: 16),
-                Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-                  IconButton(onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => AzkarShareScreen(zekr: item, categoryName: widget.categoryName))), icon: const Icon(Icons.image_outlined), tooltip: 'Share image'),
-                  IconButton(onPressed: () => SharePlus.instance.share(ShareParams(text: '${item['zekr']}\n\n${item['reference'] ?? ''}')), icon: const Icon(Icons.share_outlined), tooltip: 'Share'),
-                ]),
-              ])));
-            },
-          )),
-        ]),
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Text(
+                'الذكر ${_currentIndex + 1} من ${widget.azkarList.length} • المتبقي ${_counts[_currentIndex]}',
+                style: const TextStyle(fontWeight: FontWeight.w800),
+              ),
+            ),
+            Expanded(
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: widget.azkarList.length,
+                onPageChanged: (index) => setState(() => _currentIndex = index),
+                itemBuilder: (context, index) {
+                  final item = widget.azkarList[index];
+                  return Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(22),
+                        child: Column(
+                          children: [
+                            Expanded(
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      item['zekr']?.toString() ?? '',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize: _fontSize,
+                                        height: 1.8,
+                                        fontWeight: FontWeight.w700,
+                                        color: isDark ? Colors.white : null,
+                                      ),
+                                    ),
+                                    if (item['description']?.toString().isNotEmpty == true)
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 18),
+                                        child: Text(item['description'].toString(), textAlign: TextAlign.center),
+                                      ),
+                                    if (item['reference']?.toString().isNotEmpty == true)
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 14),
+                                        child: Text(item['reference'].toString(), textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodySmall),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 18),
+                            GestureDetector(
+                              onTap: index == _currentIndex ? _onTap : null,
+                              child: Container(
+                                width: 120,
+                                height: 120,
+                                decoration: BoxDecoration(color: widget.primary, shape: BoxShape.circle),
+                                child: Center(
+                                  child: Text('${_counts[index]}', style: const TextStyle(color: Colors.white, fontSize: 38, fontWeight: FontWeight.w900)),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                IconButton(
+                                  onPressed: () => Navigator.of(context).push(
+                                    MaterialPageRoute(builder: (_) => AzkarShareScreen(zekr: item, categoryName: widget.categoryName)),
+                                  ),
+                                  icon: const Icon(Icons.image_outlined),
+                                  tooltip: 'Share image',
+                                ),
+                                IconButton(
+                                  onPressed: () => SharePlus.instance.share(
+                                    ShareParams(text: '${item['zekr']}\n\n${item['reference'] ?? ''}'),
+                                  ),
+                                  icon: const Icon(Icons.share_outlined),
+                                  tooltip: 'Share',
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
