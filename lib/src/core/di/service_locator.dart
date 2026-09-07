@@ -1,3 +1,5 @@
+import "package:imaanly/features/personalization/data/imaanly_personalization_repository.dart";
+import "package:imaanly/features/personalization/presentation/personalization_cubit.dart";
 import "package:imaanly/src/core/audio/services/audio_playback_service.dart";
 import "package:imaanly/src/core/bootstrap/app_bootstrap_coordinator.dart";
 import "package:imaanly/src/core/notifications/notification_scheduler.dart";
@@ -12,42 +14,15 @@ import "package:shared_preferences/shared_preferences.dart";
 
 final GetIt getIt = GetIt.instance;
 
-Future<void> configureDependencies({
-  required SharedPreferences preferences,
-}) async {
-  if (getIt.isRegistered<AppStorage>()) {
-    await getIt.reset();
-  }
-
-  getIt.registerSingleton<AppStorage>(
-    AppStorage(
-      preferences: preferences,
-      userBox: Hive.box<dynamic>(AppBoxes.user),
-      pinnedBox: Hive.box<dynamic>(AppBoxes.pinned),
-      notesBox: Hive.box<dynamic>(AppBoxes.notes),
-    ),
-  );
-
-  getIt.registerLazySingleton<SettingsRepository>(
-    () => LocalSettingsRepository(getIt<AppStorage>()),
-  );
-  getIt.registerLazySingleton<ReaderSessionRepository>(
-    () => LocalReaderSessionRepository(getIt<AppStorage>()),
-  );
-  getIt.registerLazySingleton<AudioPlaybackService>(
-    LocalAudioPlaybackService.new,
-  );
-  getIt.registerLazySingleton<QuranResourcesRepository>(
-    LocalQuranResourcesRepository.new,
-  );
-  getIt.registerLazySingleton<NotificationScheduler>(
-    LocalNotificationScheduler.new,
-  );
-  getIt.registerLazySingleton<AppBootstrapCoordinator>(
-    () => AppBootstrapCoordinator(
-      settingsRepository: getIt<SettingsRepository>(),
-      notificationScheduler: getIt<NotificationScheduler>(),
-      quranResourcesRepository: getIt<QuranResourcesRepository>(),
-    ),
-  );
+Future<void> configureDependencies({required SharedPreferences preferences}) async {
+  if (getIt.isRegistered<AppStorage>()) await getIt.reset();
+  getIt.registerSingleton<AppStorage>(AppStorage(preferences: preferences, userBox: Hive.box<dynamic>(AppBoxes.user), pinnedBox: Hive.box<dynamic>(AppBoxes.pinned), notesBox: Hive.box<dynamic>(AppBoxes.notes)));
+  getIt.registerLazySingleton<SettingsRepository>(() => LocalSettingsRepository(getIt<AppStorage>()));
+  getIt.registerLazySingleton<ReaderSessionRepository>(() => LocalReaderSessionRepository(getIt<AppStorage>()));
+  getIt.registerLazySingleton<AudioPlaybackService>(LocalAudioPlaybackService.new);
+  getIt.registerLazySingleton<QuranResourcesRepository>(LocalQuranResourcesRepository.new);
+  getIt.registerLazySingleton<NotificationScheduler>(LocalNotificationScheduler.new);
+  getIt.registerLazySingleton<ImaanlyPersonalizationRepository>(() => ImaanlyPersonalizationRepository(preferences));
+  getIt.registerLazySingleton<PersonalizationCubit>(() => PersonalizationCubit(getIt<ImaanlyPersonalizationRepository>()));
+  getIt.registerLazySingleton<AppBootstrapCoordinator>(() => AppBootstrapCoordinator(settingsRepository: getIt<SettingsRepository>(), notificationScheduler: getIt<NotificationScheduler>(), quranResourcesRepository: getIt<QuranResourcesRepository>()));
 }
