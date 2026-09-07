@@ -72,7 +72,7 @@ class SmartNotificationPlanner {
         body: quranGoalMinutes > 0
             ? 'You are ${quranGoalMinutes - quranMinutesToday} minutes short of today\'s Quran goal.'
             : "You haven't read Quran today. Even a few minutes can keep your habit going.",
-        reason: 'quran_goal',
+        reason: quranGoalMinutes > 0 ? 'quran_goal' : 'no_quran_today',
       );
     }
 
@@ -86,12 +86,11 @@ class SmartNotificationPlanner {
         body: dhikrGoal > 0
             ? 'You have ${dhikrGoal - dhikrCompletedToday} Dhikr remaining in today\'s goal.'
             : "You haven't recorded any Dhikr today. Take a quiet moment for remembrance.",
-        reason: 'dhikr_goal',
+        reason: dhikrGoal > 0 ? 'dhikr_goal' : 'no_dhikr_today',
       );
     }
 
-    if (preferences.isEnabled(SmartNotificationCategory.streak) &&
-        preferences.streakEnabled &&
+    if (preferences.streakEnabled &&
         currentStreak > 0 &&
         _isStreakAtRisk(now, lastActiveDay)) {
       return SmartNotificationCandidate(
