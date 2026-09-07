@@ -30,8 +30,6 @@ class SmartNotificationPreferences {
         return quranEnabled;
       case SmartNotificationCategory.dhikr:
         return dhikrEnabled;
-      case SmartNotificationCategory.streak:
-        return streakEnabled;
     }
   }
 
