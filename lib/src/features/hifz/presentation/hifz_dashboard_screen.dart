@@ -8,6 +8,7 @@ import '../../../constants/app_sizes.dart';
 import '../domain/entities/hifz.dart';
 import '../domain/repositories/hifz_repository.dart' show HifzStats;
 import 'hifz_bloc.dart';
+import 'hifz_new_memorization_screen.dart';
 import 'hifz_review_screen.dart';
 
 /// Hifz Dashboard Screen — memorization progress overview.
@@ -35,6 +36,15 @@ class _HifzDashboardView extends StatelessWidget {
       appBar: AppBar(
         title: Text(Directionality.of(context) == TextDirection.rtl ? 'الحفظ' : 'Hifz'),
         elevation: 0,
+        actions: [
+          IconButton(
+            tooltip: 'New memorization',
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const HifzNewMemorizationScreen()),
+            ),
+            icon: const Icon(Icons.add_rounded),
+          ),
+        ],
       ),
       body: BlocBuilder<HifzBloc, HifzState>(
         builder: (context, state) {
@@ -74,10 +84,24 @@ class _HifzContent extends StatelessWidget {
   Widget build(BuildContext context) {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
     if (state.allProgress.isEmpty && state.stats == null) {
-      return const EmptyStateWidget(
-        title: 'No memorization progress',
-        subtitle: 'Start memorizing to track your progress here',
-        icon: Icons.school_outlined,
+      return ListView(
+        physics: const AlwaysScrollableScrollPhysics(),
+        padding: EdgeInsets.all(AppSizes.paddingM.w),
+        children: [
+          const EmptyStateWidget(
+            title: 'No memorization progress',
+            subtitle: 'Start memorizing to track your progress here',
+            icon: Icons.school_outlined,
+          ),
+          SizedBox(height: AppSizes.paddingM.h),
+          FilledButton.icon(
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (_) => const HifzNewMemorizationScreen()),
+            ),
+            icon: const Icon(Icons.add_rounded),
+            label: const Text('Start memorizing'),
+          ),
+        ],
       );
     }
 
@@ -88,6 +112,14 @@ class _HifzContent extends StatelessWidget {
           _StatsGrid(stats: state.stats!),
           SizedBox(height: AppSizes.paddingM.h),
         ],
+        FilledButton.icon(
+          onPressed: () => Navigator.of(context).push(
+            MaterialPageRoute(builder: (_) => const HifzNewMemorizationScreen()),
+          ),
+          icon: const Icon(Icons.add_rounded),
+          label: Text(isRtl ? 'بدء حفظ جديد' : 'Start new memorization'),
+        ),
+        SizedBox(height: AppSizes.paddingM.h),
         if (state.dueForReview.isNotEmpty) ...[
           SectionHeader(
             title: isRtl ? 'مراجعة اليوم' : 'Due for Review',
