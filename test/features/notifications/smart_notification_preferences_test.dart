@@ -22,7 +22,39 @@ void main() {
     expect(preferences.isEnabled(SmartNotificationCategory.dhikr), isFalse);
   });
 
-  test('notification limit cannot be negative in normal policy', () {
+  test('copyWith changes only requested fields', () {
+    const original = SmartNotificationPreferences();
+    final updated = original.copyWith(
+      quranEnabled: false,
+      maxNotificationsPerDay: 3,
+    );
+    expect(updated.quranEnabled, isFalse);
+    expect(updated.maxNotificationsPerDay, 3);
+    expect(updated.prayerEnabled, isTrue);
+    expect(updated.quietStartHour, 22);
+  });
+
+  test('preferences survive map serialization', () {
+    const original = SmartNotificationPreferences(
+      prayerEnabled: false,
+      quranEnabled: true,
+      dhikrEnabled: false,
+      streakEnabled: true,
+      maxNotificationsPerDay: 5,
+      quietStartHour: 21,
+      quietEndHour: 6,
+    );
+    final restored = SmartNotificationPreferences.fromMap(original.toMap());
+    expect(restored.prayerEnabled, original.prayerEnabled);
+    expect(restored.quranEnabled, original.quranEnabled);
+    expect(restored.dhikrEnabled, original.dhikrEnabled);
+    expect(restored.streakEnabled, original.streakEnabled);
+    expect(restored.maxNotificationsPerDay, original.maxNotificationsPerDay);
+    expect(restored.quietStartHour, original.quietStartHour);
+    expect(restored.quietEndHour, original.quietEndHour);
+  });
+
+  test('notification limit can be disabled with zero', () {
     const preferences = SmartNotificationPreferences(maxNotificationsPerDay: 0);
     expect(preferences.maxNotificationsPerDay, 0);
   });
