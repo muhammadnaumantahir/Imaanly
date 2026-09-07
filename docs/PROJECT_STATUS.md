@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~76%**
+**~78%**
 
 ## Recently completed
 
@@ -27,6 +27,10 @@ Updated: 2026-09-07
 - Quran BLoC now persists last-read page and ayah through the repository.
 - Quran dependency injection now provides the repository to the BLoC.
 - Quran BLoC last-read persistence regression test.
+- Quran feature dependencies are now registered during app bootstrap.
+- Added a dedicated local-first Quran reader screen using the persisted last-read page.
+- Quran reader page changes and ayah selections persist through the feature repository.
+- Unified the new Quran persistence keys with the existing Mushaf last-read keys for seamless resume behavior.
 
 ## Completed foundation
 
@@ -62,7 +66,7 @@ Updated: 2026-09-07
 ## Remaining P1
 
 - Dhikr reminder Settings UI and recurring reminder management.
-- Quran reader UI integration for persisted Continue Reading state.
+- Connect the new Quran reader to the main Continue Reading/home entry.
 - Quran history/goals UI integration.
 - Hifz scheduling/progress.
 - Worship analytics.
