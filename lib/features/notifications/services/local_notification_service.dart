@@ -61,6 +61,20 @@ class LocalNotificationService {
     await _plugin.zonedSchedule(id, title, body, tz.TZDateTime.from(scheduledAt, tz.local), _details(), androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle, payload: 'generic_reminder');
   }
 
+  /// Schedule a reminder at the same local clock time every day.
+  Future<void> scheduleDailyReminder({required int id, required String title, required String body, required DateTime time}) async {
+    await initialize();
+    final now = tz.TZDateTime.now(tz.local);
+    var next = tz.TZDateTime(tz.local, now.year, now.month, now.day, time.hour, time.minute);
+    if (!next.isAfter(now)) next = next.add(const Duration(days: 1));
+    await _plugin.zonedSchedule(id, title, body, next, _details(), androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle, matchDateTimeComponents: DateTimeComponents.time, payload: 'dhikr_daily_reminder');
+  }
+
+  Future<void> cancel(int id) async {
+    await initialize();
+    await _plugin.cancel(id);
+  }
+
   Future<void> cancelPrayerReminder({required String prayerName, required DateTime prayerAt}) async {
     await initialize();
     await _plugin.cancel(_prayerNotificationId(prayerName, prayerAt));
