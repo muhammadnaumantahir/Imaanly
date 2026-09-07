@@ -4,9 +4,9 @@ Updated: 2026-09-07
 
 ## Overall progress
 
-**Estimated completion: ~60%**
+**Estimated completion: ~61%**
 
-This is a product-requirements estimate, not a code-line percentage. Existing inherited Quran functionality is substantial, while the newer Imaanly product layer still needs integration, workflows, QA, and release hardening.
+This is a product-requirements estimate, not a code-line percentage. Existing inherited Quran functionality is substantial, while the newer Imaanly product layer still needs integration, complete workflows, background reliability, QA, and release hardening.
 
 ## Completed / substantially implemented
 
@@ -15,8 +15,9 @@ This is a product-requirements estimate, not a code-line percentage. Existing in
 - Centralized Imaanly design tokens and reusable UI primitives
 - Home dashboard foundation
 - Live next-prayer countdown and prayer-time entry point
-- Qibla compass implementation with calibration/alignment behavior
 - Home Qibla shortcut connected to the real compass screen
+- Home Settings entry point connected to the existing SettingsPage
+- Qibla compass implementation with calibration/alignment behavior
 - Quran reader / Mushaf / search / resources / audio foundation
 - Quran personalization bridge and initialization behavior
 - Dhikr/Azkar feature foundation
@@ -29,6 +30,7 @@ This is a product-requirements estimate, not a code-line percentage. Existing in
 - Smart notification preferences persistence in Hive
 - Notification preferences UI for prayer/Quran/dhikr/streak categories, daily limits and quiet hours
 - Automated tests for notification preference behavior and serialization
+- Existing SettingsPage now reachable from the main Home dashboard
 - Service-account dependency removed from the app workflow
 - Permanent Flutter analyze/test CI workflow added
 
@@ -42,12 +44,12 @@ This is a product-requirements estimate, not a code-line percentage. Existing in
 - `9006555` — normalized persisted integer settings
 - `5c89419` — fixed quiet-hour endpoint persistence
 - `daadb12` — expanded notification preference tests
+- `2c1ada1` — exposed Settings from the Home dashboard
 
 ## Remaining priority work
 
 ### P0 — make the product operational end-to-end
 
-- Wire notification preferences screen into the app's settings/navigation surface
 - Connect smart notification evaluation to real prayer/Quran/dhikr activity lifecycle
 - Connect notification candidates to the platform local-notification delivery service
 - Complete prayer notification controls: per-prayer enable/disable, reminder offsets, Athan/silent modes, sound behavior
@@ -68,7 +70,7 @@ This is a product-requirements estimate, not a code-line percentage. Existing in
 ### P2 — personalization and account experience
 
 - Profile experience and user-facing preferences
-- Settings hub and navigation structure
+- Expand Settings into a complete product settings hub
 - Personalization controls for Home sections, Quran behavior and worship targets
 - Collections/bookmarks/notes management polish
 - Accessibility, localization and typography audit
