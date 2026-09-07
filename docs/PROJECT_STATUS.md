@@ -4,86 +4,43 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~94%**
+**~95%**
 
 ## Recently completed
 
 - Prayer notification scheduler connected to the calculated prayer lifecycle.
 - Device timezone synchronization for scheduled local notifications.
 - Persisted per-prayer notification preferences consumed by the scheduler.
-- Dhikr local-first progress store with daily counter persistence.
-- Dhikr daily goal updates and completed-day history persistence.
-- Dhikr streak calculation wired to persisted completion history.
-- Interactive Dhikr counter screen with live completion progress.
-- Dhikr daily target selector with safe goal bounds.
-- Dhikr counter controller connected to persistence and streak state.
-- Dhikr completed-day history screen.
-- Generic local reminder scheduling support for Dhikr reminders.
-- Recurring daily Dhikr reminder scheduling with device-local time.
-- Dhikr reminder enable/disable and time preferences persisted locally.
-- Dhikr counter screen exposes reminder settings directly.
-- Quran local-first reading position persistence.
-- Quran daily page goal and progress persistence.
-- Quran reading history persistence by day.
-- Quran last-7-days reading trend UI.
-- Quran reading progress domain validation tests.
-- Quran BLoC loads persisted last-read position and immediately loads that page.
-- Quran BLoC persists page navigation and selected ayah positions.
-- Quran reader restores the persisted page and keeps the PageView synchronized with saved state.
-- Quran feature dependencies are registered during app bootstrap.
-- Unified Quran persistence keys with the existing Mushaf last-read keys.
-- Quran reading progress screen exposes today's pages, ayahs, time, streak and all-time totals.
-- Quran daily page goal can be created, changed or cleared from the progress screen.
-- Quran reader now exposes the reading-progress screen directly from its AppBar.
-- Home Continue Quran entry now launches the new persisted Quran reader instead of the legacy QuranScriptView.
-- Hifz review scheduling is centralized in a pure-Dart domain service.
-- Hifz spaced-repetition intervals are covered by automated domain tests.
-- Hifz due-review repository logic now consumes the shared scheduling rules.
-- Interactive Hifz review session with per-ayah correct/mistake tracking.
-- Hifz review results persist updated accuracy, mastery, review counts and mistakes.
-- Hifz review sessions persist duration, hints and session type.
-- Hifz dashboard due-review and progress cards now launch the review workflow.
-- Hifz review mastery thresholds are covered by automated tests.
-- Hifz review completion now uses a single BLoC operation to persist progress and the session sequentially.
-- Hifz review completion refreshes progress, recent sessions, due reviews and aggregate statistics together.
-- Hifz new-memorization screen supports selecting any Surah and a validated ayah range.
-- Hifz dashboard now exposes Start New Memorization and an empty-state onboarding action.
-- Hifz review now loads the selected ayah range from the local Quran repository.
-- Hifz review can reveal the actual Mushaf text after the memory attempt and provides a limited Arabic text hint.
-- Worship seven-day history is derived from persisted local worship activity.
-- Worship dashboard now exposes the history view directly.
-- Fasting has a reusable daily local reminder scheduler built on the existing notification service.
-- Fasting reminder enabled state and local time are persisted with the fasting repository.
-- Fasting Tracker exposes reminder enable/disable and time selection directly in the UI.
-- Reminder changes immediately schedule or cancel the device-local daily notification.
-- Islamic Calendar day selection now exposes the selected Gregorian/Hijri date and its associated event details.
-- Calendar event cards now reflect the selected calendar day instead of always showing the first day of the month.
-- Calendar navigation resets the selected date safely and the Today action restores today's context.
-- Duas/Adhkar detail now supports persistent local favorites without duplicating the mature Adhkar content source.
-- A dedicated favorites screen lists saved Duas/Adhkar and supports removal.
+- Dhikr local-first progress, goals, streaks and recurring reminders.
+- Interactive Adhkar counter with sharing and saved favorites.
+- Dedicated local-first Dua/Adhkar favorites collection.
+- Quran local-first reading position, daily goals, history and seven-day trend.
+- Quran reader restores persisted position and navigation progress.
+- Hifz scheduling, interactive review, scoring, persistence, mastery and new memorization ranges.
+- Hifz review can reveal local Mushaf text and limited Arabic hints.
+- Worship seven-day history and dashboard access.
+- Fasting daily reminder scheduler and persisted reminder controls.
+- Islamic Calendar day selection and selected-day event details.
+- Offline Hadith catalog with searchable reading screen.
+- Hadith entry added to the Islamic Knowledge hub.
 
 ## Completed foundation
 
 - Imaanly rebrand/package/import migration
 - Clean Architecture + BLoC foundation
 - Centralized design tokens/UI primitives
-- Home dashboard foundation
-- Next-prayer countdown and prayer-time entry
-- Home Qibla shortcut and Settings entry
-- Qibla compass calibration/alignment
+- Home dashboard
+- Prayer countdown/time entry and notification scheduling
+- Qibla shortcut, settings and calibration
 - Quran reader/Mushaf/search/resources/audio foundation
-- Quran personalization bridge/init behavior
-- Dhikr/Azkar foundation
-- Daily goals + Dhikr integration
-- Worship dashboard
-- Islamic calendar foundation
-- Fasting tracker foundation
-- Islamic knowledge foundation
-- Smart notification planner/coordinator
-- Smart notification preference persistence and UI
-- Platform local-notification delivery
-- Prayer notification preferences, offsets and silent mode
-- Prayer notification scheduling/orchestration
+- Quran personalization bridge
+- Dhikr/Azkar and worship dashboard
+- Islamic calendar
+- Fasting tracker
+- Islamic knowledge hub
+- Tafsir foundation
+- Collections foundation
+- Smart notification planner/coordinator and local notifications
 - Android exact-alarm/boot-reschedule configuration
 - Flutter analyze/test CI workflow
 
@@ -96,13 +53,13 @@ Updated: 2026-09-07
 ## Remaining P1
 
 - Hifz audio integration and richer memorization/review content.
-- Worship analytics/history beyond the current seven-day history view.
+- Worship analytics/history beyond seven-day history.
 - Calendar event details/context beyond the current built-in occasion set.
-- Hadith reading/content flow and broader Sunnah library integration.
+- Expand Hadith/Sunnah catalog with a properly sourced, maintainable corpus.
 
 ## Remaining P2
 
-- Profile/settings/personalization/collections/accessibility/localization.
+- Profile/settings/personalization/collections/accessibility/localization polish.
 
 ## Remaining P3
 
