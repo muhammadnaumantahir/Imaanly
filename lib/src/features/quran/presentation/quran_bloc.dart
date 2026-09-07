@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../domain/entities/entities.dart';
+import '../domain/repositories/quran_repository.dart';
 import '../domain/usecases/get_all_surahs.dart';
 import '../domain/usecases/get_quran_page.dart';
 import '../domain/usecases/search_ayahs.dart';
@@ -14,6 +15,7 @@ class QuranState {
   final List<Surah> surahs;
   final QuranPage? currentPage;
   final int currentPageIndex;
+  final int lastReadPage;
   final String? lastAyahKey;
   final String? errorMessage;
 
@@ -22,6 +24,7 @@ class QuranState {
     this.surahs = const [],
     this.currentPage,
     this.currentPageIndex = 0,
+    this.lastReadPage = 1,
     this.lastAyahKey,
     this.errorMessage,
   });
@@ -31,6 +34,7 @@ class QuranState {
     List<Surah>? surahs,
     QuranPage? currentPage,
     int? currentPageIndex,
+    int? lastReadPage,
     String? lastAyahKey,
     String? errorMessage,
   }) =>
@@ -39,6 +43,7 @@ class QuranState {
         surahs: surahs ?? this.surahs,
         currentPage: currentPage ?? this.currentPage,
         currentPageIndex: currentPageIndex ?? this.currentPageIndex,
+        lastReadPage: lastReadPage ?? this.lastReadPage,
         lastAyahKey: lastAyahKey ?? this.lastAyahKey,
         errorMessage: errorMessage ?? this.errorMessage,
       );
@@ -64,6 +69,10 @@ final class GoToPage extends QuranEvent {
   const GoToPage(this.pageIndex);
 }
 
+final class LoadLastReadPosition extends QuranEvent {
+  const LoadLastReadPosition();
+}
+
 final class SaveLastReadPosition extends QuranEvent {
   final int page;
   final String ayahKey;
@@ -81,18 +90,22 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
   final GetAllSurahsUseCase _getAllSurahs;
   final GetQuranPageUseCase _getQuranPage;
   final SearchAyahsUseCase _searchAyahs;
+  final QuranRepository _quranRepository;
 
   QuranBloc({
     required GetAllSurahsUseCase getAllSurahs,
     required GetQuranPageUseCase getQuranPage,
     required SearchAyahsUseCase searchAyahs,
+    required QuranRepository quranRepository,
   })  : _getAllSurahs = getAllSurahs,
         _getQuranPage = getQuranPage,
         _searchAyahs = searchAyahs,
+        _quranRepository = quranRepository,
         super(const QuranState()) {
     on<LoadSurahs>(_onLoadSurahs);
     on<LoadQuranPage>(_onLoadQuranPage);
     on<GoToPage>(_onGoToPage);
+    on<LoadLastReadPosition>(_onLoadLastReadPosition);
     on<SaveLastReadPosition>(_onSaveLastReadPosition);
     on<SearchAyahs>(_onSearchAyahs);
   }
@@ -122,6 +135,7 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
       (page) => emit(state.copyWith(
         status: QuranStatus.loaded,
         currentPage: page,
+        lastReadPage: event.pageNumber,
       )),
     );
   }
@@ -130,8 +144,41 @@ class QuranBloc extends Bloc<QuranEvent, QuranState> {
     emit(state.copyWith(currentPageIndex: event.pageIndex));
   }
 
-  Future<void> _onSaveLastReadPosition(SaveLastReadPosition event, Emitter<QuranState> emit) async {
-    emit(state.copyWith(lastAyahKey: event.ayahKey));
+  Future<void> _onLoadLastReadPosition(
+    LoadLastReadPosition event,
+    Emitter<QuranState> emit,
+  ) async {
+    final result = await _quranRepository.getLastReadPosition();
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: QuranStatus.error,
+        errorMessage: failure.message,
+      )),
+      (position) => emit(state.copyWith(
+        lastReadPage: position.page,
+        lastAyahKey: position.ayahKey,
+      )),
+    );
+  }
+
+  Future<void> _onSaveLastReadPosition(
+    SaveLastReadPosition event,
+    Emitter<QuranState> emit,
+  ) async {
+    final result = await _quranRepository.saveLastReadPosition(
+      page: event.page,
+      ayahKey: event.ayahKey,
+    );
+    result.fold(
+      (failure) => emit(state.copyWith(
+        status: QuranStatus.error,
+        errorMessage: failure.message,
+      )),
+      (_) => emit(state.copyWith(
+        lastReadPage: event.page,
+        lastAyahKey: event.ayahKey,
+      )),
+    );
   }
 
   Future<void> _onSearchAyahs(SearchAyahs event, Emitter<QuranState> emit) async {
