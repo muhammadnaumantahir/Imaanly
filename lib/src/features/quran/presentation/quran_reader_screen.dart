@@ -31,20 +31,11 @@ class _QuranReaderView extends StatefulWidget {
 
 class _QuranReaderViewState extends State<_QuranReaderView> {
   PageController? _controller;
-  int? _controllerPage;
 
   @override
   void dispose() {
     _controller?.dispose();
     super.dispose();
-  }
-
-  void _ensureController(int page) {
-    if (_controller != null && _controllerPage == page) return;
-    final old = _controller;
-    _controller = PageController(initialPage: page.clamp(0, 603));
-    _controllerPage = page;
-    old?.dispose();
   }
 
   @override
@@ -75,8 +66,15 @@ class _QuranReaderViewState extends State<_QuranReaderView> {
           }
         },
         builder: (context, state) {
-          final page = (state.lastReadPage - 1).clamp(0, 603);
-          _ensureController(page);
+          if (_controller == null) {
+            _controller = PageController(
+              initialPage: (state.lastReadPage - 1).clamp(0, 603),
+            );
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (!mounted) return;
+              context.read<QuranBloc>().add(LoadQuranPage(state.lastReadPage));
+            });
+          }
 
           return PageView.builder(
             controller: _controller,
