@@ -3,8 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../domain/entities/hifz.dart';
 import '../domain/repositories/hifz_repository.dart';
 
-// ── States ──
-
 enum HifzStatus { initial, loading, loaded, error }
 
 class HifzState {
@@ -34,8 +32,7 @@ class HifzState {
     List<HifzProgress>? dueForReview,
     HifzStats? stats,
     String? errorMessage,
-  }) =>
-      HifzState(
+  }) => HifzState(
         status: status ?? this.status,
         allProgress: allProgress ?? this.allProgress,
         currentProgress: currentProgress ?? this.currentProgress,
@@ -45,8 +42,6 @@ class HifzState {
         errorMessage: errorMessage ?? this.errorMessage,
       );
 }
-
-// ── Events ──
 
 sealed class HifzEvent {
   const HifzEvent();
@@ -71,6 +66,15 @@ final class RecordSession extends HifzEvent {
   const RecordSession(this.session);
 }
 
+/// Persists the progress update and its review session as one BLoC operation.
+/// This prevents the review screen from dispatching two independent writes.
+final class CompleteReview extends HifzEvent {
+  final HifzProgress progress;
+  final HifzSession session;
+
+  const CompleteReview({required this.progress, required this.session});
+}
+
 final class LoadDueForReview extends HifzEvent {
   const LoadDueForReview();
 }
@@ -84,8 +88,6 @@ final class DeleteProgress extends HifzEvent {
   const DeleteProgress(this.surahId);
 }
 
-// ── BLoC ──
-
 class HifzBloc extends Bloc<HifzEvent, HifzState> {
   final HifzRepository _hifzRepository;
 
@@ -96,6 +98,7 @@ class HifzBloc extends Bloc<HifzEvent, HifzState> {
     on<LoadProgressForSurah>(_onLoadProgressForSurah);
     on<SaveProgress>(_onSaveProgress);
     on<RecordSession>(_onRecordSession);
+    on<CompleteReview>(_onCompleteReview);
     on<LoadDueForReview>(_onLoadDueForReview);
     on<LoadStats>(_onLoadStats);
     on<DeleteProgress>(_onDeleteProgress);
@@ -146,10 +149,7 @@ class HifzBloc extends Bloc<HifzEvent, HifzState> {
         status: HifzStatus.error,
         errorMessage: failure.message,
       )),
-      (_) {
-        // Refresh all progress after save
-        add(const LoadAllProgress());
-      },
+      (_) => add(const LoadAllProgress()),
     );
   }
 
@@ -163,11 +163,62 @@ class HifzBloc extends Bloc<HifzEvent, HifzState> {
         status: HifzStatus.error,
         errorMessage: failure.message,
       )),
-      (_) {
-        // Refresh sessions after recording
-        add(const LoadAllProgress());
-      },
+      (_) => add(const LoadAllProgress()),
     );
+  }
+
+  Future<void> _onCompleteReview(
+    CompleteReview event,
+    Emitter<HifzState> emit,
+  ) async {
+    emit(state.copyWith(status: HifzStatus.loading));
+
+    final progressResult = await _hifzRepository.saveProgress(event.progress);
+    final progressFailure = progressResult.fold<Failure?>((failure) => failure, (_) => null);
+    if (progressFailure != null) {
+      emit(state.copyWith(
+        status: HifzStatus.error,
+        errorMessage: progressFailure.message,
+      ));
+      return;
+    }
+
+    final sessionResult = await _hifzRepository.recordSession(event.session);
+    final sessionFailure = sessionResult.fold<Failure?>((failure) => failure, (_) => null);
+    if (sessionFailure != null) {
+      emit(state.copyWith(
+        status: HifzStatus.error,
+        errorMessage: sessionFailure.message,
+      ));
+      return;
+    }
+
+    final allProgress = await _hifzRepository.getAllProgress();
+    final recentSessions = await _hifzRepository.getRecentSessions();
+    final dueForReview = await _hifzRepository.getDueForReview();
+    final stats = await _hifzRepository.getStats();
+
+    final allFailure = allProgress.fold<Failure?>((failure) => failure, (_) => null);
+    final sessionsFailure = recentSessions.fold<Failure?>((failure) => failure, (_) => null);
+    final dueFailure = dueForReview.fold<Failure?>((failure) => failure, (_) => null);
+    final statsFailure = stats.fold<Failure?>((failure) => failure, (_) => null);
+    final failure = allFailure ?? sessionsFailure ?? dueFailure ?? statsFailure;
+
+    if (failure != null) {
+      emit(state.copyWith(
+        status: HifzStatus.error,
+        errorMessage: failure.message,
+      ));
+      return;
+    }
+
+    emit(state.copyWith(
+      status: HifzStatus.loaded,
+      allProgress: allProgress.getOrElse(() => const []),
+      recentSessions: recentSessions.getOrElse(() => const []),
+      dueForReview: dueForReview.getOrElse(() => const []),
+      stats: stats.getOrElse(() => throw StateError('Hifz stats unavailable')),
+    ));
   }
 
   Future<void> _onLoadDueForReview(
