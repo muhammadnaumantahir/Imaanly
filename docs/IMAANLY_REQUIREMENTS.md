@@ -14,7 +14,7 @@
 - 🧪 VALIDATION — implementation exists but needs Flutter/Android/device verification.
 
 ## Overall completion
-**~76% feature-complete.** Planning estimate based on product requirements, not a test/build percentage. Production readiness remains lower until CI, automated tests, Android builds and physical-device validation are clean.
+**~78% feature-complete.** Planning estimate based on product requirements, not a test/build percentage. Production readiness remains lower until CI, automated tests, Android builds and physical-device validation are clean.
 
 ## 2. Feature tracker
 
@@ -189,14 +189,19 @@
 - [x] Background periodic context evaluation.
 - [ ] Physical-device/background restriction validation.
 
-### 2.15 Personalization — 🔴 TODO (0%)
-- [ ] Personalized Home shortcuts.
-- [ ] Appearance preferences.
-- [ ] Quran reading preferences.
-- [ ] Dhikr preferences.
-- [ ] Dashboard preferences.
-- [ ] Local-only preference storage.
-- [ ] Reset/export preferences.
+### 2.15 Personalization — 🟡 PARTIAL (~30%)
+- [x] Personalized Home shortcut preferences model.
+- [x] Appearance preference model.
+- [x] Quran reading preference model.
+- [x] Dhikr preference model.
+- [x] Dashboard preference model.
+- [x] Local-only preference storage.
+- [x] Reset/export/import preference repository.
+- [ ] Connect preferences to Home UI.
+- [ ] Connect appearance preferences to ThemeCubit.
+- [ ] Connect Quran preferences to reader settings.
+- [ ] Connect Dhikr preference to daily goal UI.
+- [ ] Connect dashboard preference to dashboard UI.
 
 ### 2.16 Profile & Settings — 🟡 PARTIAL (~45%)
 - [x] Prayer settings.
@@ -204,7 +209,7 @@
 - [x] Location/calculation settings.
 - [ ] Unified Imaanly Settings.
 - [ ] Privacy/data controls.
-- [ ] Personalization settings.
+- [ ] Personalization settings UI.
 - [ ] Widget settings.
 - [ ] About/version information.
 - [ ] Final settings UI modernization.
@@ -269,6 +274,7 @@ Every future feature/status-changing commit MUST update this document in the sam
 ## 8. Changelog
 | Date | Commit / milestone | Result | Overall |
 |---|---|---|---:|
+| 2026-09-07 | Personalization foundation | Added a local-only personalization model/repository with Home shortcuts, appearance, Quran, Dhikr and dashboard preferences plus reset/export/import support and tests. UI wiring remains. | ~78% |
 | 2026-09-07 | Contextual background scheduler | Added a Workmanager periodic task that evaluates local worship activity in the background and routes eligible Quran/Dhikr/streak decisions through the local notification delivery adapter. Physical-device/background validation remains. | ~76% |
 | 2026-09-07 | Contextual notification delivery | Connected the local smart-notification decision output to the existing Awesome Notifications infrastructure with a dedicated contextual channel and stable category IDs. Background automatic evaluation remained. | ~75% |
 | 2026-09-07 | Notification policy phase | Added local category controls, overnight quiet hours, daily notification cap, Quran/Dhikr goal reminders, streak-risk detection, and a persistent once-per-day coordinator. | ~74% |
