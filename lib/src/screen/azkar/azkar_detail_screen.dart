@@ -4,9 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:hive_ce_flutter/hive_flutter.dart';
+import 'package:hive_ce_flutter/hive_ce_flutter.dart';
 import 'package:imaanly/features/dhikr/domain/dhikr_progress.dart';
 import 'package:imaanly/features/worship/data/worship_activity_repository.dart';
+import 'package:imaanly/features/duas/presentation/dua_favorites_screen.dart';
 import 'package:imaanly/src/screen/azkar/azkar_share_screen.dart';
 
 class AzkarDetailScreen extends StatefulWidget {
@@ -22,6 +23,7 @@ class AzkarDetailScreen extends StatefulWidget {
 
 class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
   static const _defaultGoal = 33;
+  static const _favoritesKey = 'dua_favorites_v1';
   late List<int> _counts;
   late PageController _pageController;
   int _currentIndex = 0;
@@ -33,6 +35,49 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
   String get _progressKey => 'dhikr_progress_${widget.categoryName}';
   String get _historyKey => 'dhikr_completed_dates';
   String get _countsKey => '${_progressKey}_counts';
+
+  Map<String, dynamic> get _currentZekr => widget.azkarList[_currentIndex];
+
+  String _favoriteId(Map<String, dynamic> zekr) =>
+      '${widget.categoryName}::${zekr['zekr']?.toString() ?? ''}::${zekr['reference']?.toString() ?? ''}';
+
+  bool _isFavorite(Map<String, dynamic> zekr) {
+    final raw = _box.get(_favoritesKey, defaultValue: <dynamic>[]);
+    if (raw is! List) return false;
+    final id = _favoriteId(zekr);
+    return raw.whereType<Map>().any((item) => item['id']?.toString() == id);
+  }
+
+  void _toggleFavorite() {
+    final zekr = _currentZekr;
+    final raw = _box.get(_favoritesKey, defaultValue: <dynamic>[]);
+    final favorites = raw is List
+        ? raw.whereType<Map>().map((item) => Map<String, dynamic>.from(item)).toList()
+        : <Map<String, dynamic>>[];
+    final id = _favoriteId(zekr);
+    final index = favorites.indexWhere((item) => item['id']?.toString() == id);
+
+    if (index >= 0) {
+      favorites.removeAt(index);
+      _box.put(_favoritesKey, favorites);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('تمت الإزالة من المفضلة')));
+    } else {
+      favorites.add({
+        'id': id,
+        'category': widget.categoryName,
+        'zekr': zekr['zekr']?.toString() ?? '',
+        'description': zekr['description']?.toString() ?? '',
+        'reference': zekr['reference']?.toString() ?? '',
+      });
+      _box.put(_favoritesKey, favorites);
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('تمت الإضافة إلى المفضلة')));
+    }
+    setState(() {});
+  }
+
+  void _openFavorites() {
+    Navigator.push(context, MaterialPageRoute(builder: (_) => const DuaFavoritesScreen()));
+  }
 
   @override
   void initState() {
@@ -78,10 +123,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
         goal: _dailyProgress.goal,
         date: DateTime.now(),
       );
-    } catch (_) {
-      // The existing Dhikr Hive progress remains the source of truth if the
-      // unified worship store is temporarily unavailable.
-    }
+    } catch (_) {}
   }
 
   void _saveProgress() {
@@ -134,6 +176,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
     final bg = isDark ? const Color(0xFF0F0F0F) : const Color(0xFFF7F1E6);
     final cardColor = isDark ? const Color(0xFF1E1E1E) : Colors.white;
     final textColor = isDark ? Colors.white : const Color(0xFF1B1B1B);
+    final isFavorite = _isFavorite(_currentZekr);
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -145,7 +188,15 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
           leading: IconButton(icon: Icon(Icons.arrow_back_ios_rounded, color: widget.primary), onPressed: () => Navigator.pop(context)),
           title: Text(widget.categoryName, style: TextStyle(color: textColor, fontWeight: FontWeight.w900, fontSize: 20)),
           centerTitle: true,
-          actions: [IconButton(icon: Icon(Icons.text_fields_rounded, color: widget.primary), onPressed: _showFontSizeSheet)],
+          actions: [
+            IconButton(
+              tooltip: isFavorite ? 'إزالة من المفضلة' : 'إضافة إلى المفضلة',
+              icon: Icon(isFavorite ? Icons.star_rounded : Icons.star_border_rounded, color: widget.primary),
+              onPressed: _toggleFavorite,
+            ),
+            IconButton(icon: Icon(Icons.folder_special_rounded, color: widget.primary), tooltip: 'المفضلة', onPressed: _openFavorites),
+            IconButton(icon: Icon(Icons.text_fields_rounded, color: widget.primary), onPressed: _showFontSizeSheet),
+          ],
           bottom: PreferredSize(preferredSize: const Size.fromHeight(4), child: LinearProgressIndicator(value: (_currentIndex + 1) / widget.azkarList.length, backgroundColor: widget.primary.withValues(alpha: 0.2), valueColor: AlwaysStoppedAnimation<Color>(widget.primary))),
         ),
         body: Column(
@@ -198,7 +249,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
                                             ],
                                             if (zekr['reference'] != null && zekr['reference'].toString().isNotEmpty) ...[
                                               const Gap(16),
-                                              Text(zekr['reference'].toString(), textAlign: TextAlign.center, style: TextStyle(fontSize: 12, color: Colors.grey)),
+                                              Text(zekr['reference'].toString(), textAlign: TextAlign.center, style: const TextStyle(fontSize: 12, color: Colors.grey)),
                                             ],
                                           ],
                                         ),
