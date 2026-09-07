@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~78%**
+**~79%**
 
 ## Recently completed
 
@@ -23,14 +23,11 @@ Updated: 2026-09-07
 - Quran daily page goal and progress persistence.
 - Quran reading history persistence by day.
 - Quran reading progress domain validation tests.
-- Quran BLoC now loads persisted last-read position.
-- Quran BLoC now persists last-read page and ayah through the repository.
-- Quran dependency injection now provides the repository to the BLoC.
-- Quran BLoC last-read persistence regression test.
-- Quran feature dependencies are now registered during app bootstrap.
-- Added a dedicated local-first Quran reader screen using the persisted last-read page.
-- Quran reader page changes and ayah selections persist through the feature repository.
-- Unified the new Quran persistence keys with the existing Mushaf last-read keys for seamless resume behavior.
+- Quran BLoC loads persisted last-read position and immediately loads that page.
+- Quran BLoC persists page navigation and selected ayah positions.
+- Quran reader restores the persisted page and keeps the PageView synchronized with saved state.
+- Quran feature dependencies are registered during app bootstrap.
+- Unified Quran persistence keys with the existing Mushaf last-read keys.
 
 ## Completed foundation
 
@@ -65,11 +62,11 @@ Updated: 2026-09-07
 
 ## Remaining P1
 
-- Dhikr reminder Settings UI and recurring reminder management.
 - Connect the new Quran reader to the main Continue Reading/home entry.
 - Quran history/goals UI integration.
-- Hifz scheduling/progress.
-- Worship analytics.
+- Dhikr reminder Settings UI and recurring reminder management.
+- Hifz review workflow, scheduling and progress entry.
+- Worship analytics/history beyond the current daily dashboard.
 - Fasting active workflow/reminders/Ramadan behavior.
 - Calendar event details/context.
 - Duas/Hadith/Sunnah flows/favorites.
