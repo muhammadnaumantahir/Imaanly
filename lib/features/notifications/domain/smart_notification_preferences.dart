@@ -42,4 +42,58 @@ class SmartNotificationPreferences {
     }
     return now.hour >= quietStartHour && now.hour < quietEndHour;
   }
+
+  SmartNotificationPreferences copyWith({
+    bool? prayerEnabled,
+    bool? quranEnabled,
+    bool? dhikrEnabled,
+    bool? streakEnabled,
+    int? maxNotificationsPerDay,
+    int? quietStartHour,
+    int? quietEndHour,
+  }) {
+    return SmartNotificationPreferences(
+      prayerEnabled: prayerEnabled ?? this.prayerEnabled,
+      quranEnabled: quranEnabled ?? this.quranEnabled,
+      dhikrEnabled: dhikrEnabled ?? this.dhikrEnabled,
+      streakEnabled: streakEnabled ?? this.streakEnabled,
+      maxNotificationsPerDay:
+          maxNotificationsPerDay ?? this.maxNotificationsPerDay,
+      quietStartHour: quietStartHour ?? this.quietStartHour,
+      quietEndHour: quietEndHour ?? this.quietEndHour,
+    );
+  }
+
+  Map<String, dynamic> toMap() => {
+        'prayerEnabled': prayerEnabled,
+        'quranEnabled': quranEnabled,
+        'dhikrEnabled': dhikrEnabled,
+        'streakEnabled': streakEnabled,
+        'maxNotificationsPerDay': maxNotificationsPerDay,
+        'quietStartHour': quietStartHour,
+        'quietEndHour': quietEndHour,
+      };
+
+  factory SmartNotificationPreferences.fromMap(Map<dynamic, dynamic> map) {
+    int readInt(String key, int fallback) {
+      final value = map[key];
+      return value is num ? value.toInt() : fallback;
+    }
+
+    bool readBool(String key, bool fallback) {
+      final value = map[key];
+      return value is bool ? value : fallback;
+    }
+
+    return SmartNotificationPreferences(
+      prayerEnabled: readBool('prayerEnabled', true),
+      quranEnabled: readBool('quranEnabled', true),
+      dhikrEnabled: readBool('dhikrEnabled', true),
+      streakEnabled: readBool('streakEnabled', true),
+      maxNotificationsPerDay:
+          readInt('maxNotificationsPerDay', 1).clamp(0, 10),
+      quietStartHour: readInt('quietStartHour', 22).clamp(0, 23),
+      quietEndHour: readInt('quietEndHour', 7).clamp(0, 23),
+    );
+  }
 }
