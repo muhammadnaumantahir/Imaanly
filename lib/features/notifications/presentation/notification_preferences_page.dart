@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../data/prayer_notification_preferences_store.dart';
 import '../data/smart_notification_coordinator.dart';
+import '../domain/prayer_notification_preferences.dart';
 import '../domain/smart_notification_preferences.dart';
 
 class NotificationPreferencesPage extends StatefulWidget {
@@ -14,8 +16,11 @@ class NotificationPreferencesPage extends StatefulWidget {
 class _NotificationPreferencesPageState
     extends State<NotificationPreferencesPage> {
   final _coordinator = SmartNotificationCoordinator();
+  final _prayerStore = const PrayerNotificationPreferencesStore();
   SmartNotificationPreferences _preferences =
       const SmartNotificationPreferences();
+  PrayerNotificationPreferences _prayerPreferences =
+      const PrayerNotificationPreferences();
   bool _loading = true;
   bool _saving = false;
 
@@ -27,9 +32,11 @@ class _NotificationPreferencesPageState
 
   Future<void> _load() async {
     final preferences = await _coordinator.loadPreferences();
+    final prayerPreferences = await _prayerStore.load();
     if (!mounted) return;
     setState(() {
       _preferences = preferences;
+      _prayerPreferences = prayerPreferences;
       _loading = false;
     });
   }
@@ -40,6 +47,15 @@ class _NotificationPreferencesPageState
       _saving = true;
     });
     await _coordinator.savePreferences(next);
+    if (mounted) setState(() => _saving = false);
+  }
+
+  Future<void> _savePrayer(PrayerNotificationPreferences next) async {
+    setState(() {
+      _prayerPreferences = next;
+      _saving = true;
+    });
+    await _prayerStore.save(next);
     if (mounted) setState(() => _saving = false);
   }
 
@@ -54,6 +70,34 @@ class _NotificationPreferencesPageState
         ? _preferences.copyWith(quietStartHour: picked.hour)
         : _preferences.copyWith(quietEndHour: picked.hour);
     await _save(next);
+  }
+
+  Future<void> _pickReminderMinutes() async {
+    final options = [0, 5, 10, 15, 20, 30, 45, 60];
+    final selected = await showModalBottomSheet<int>(
+      context: context,
+      builder: (context) => SafeArea(
+        child: ListView(
+          shrinkWrap: true,
+          children: options
+              .map(
+                (minutes) => ListTile(
+                  title: Text(
+                    minutes == 0 ? 'At prayer time' : '$minutes minutes before',
+                  ),
+                  trailing: minutes == _prayerPreferences.reminderMinutes
+                      ? const Icon(Icons.check)
+                      : null,
+                  onTap: () => Navigator.pop(context, minutes),
+                ),
+              )
+              .toList(),
+        ),
+      ),
+    );
+    if (selected != null) {
+      await _savePrayer(_prayerPreferences.copyWith(reminderMinutes: selected));
+    }
   }
 
   @override
@@ -96,6 +140,44 @@ class _NotificationPreferencesPageState
                 Card(
                   child: Column(
                     children: [
+                      const ListTile(
+                        leading: Icon(Icons.mosque_outlined),
+                        title: Text('Prayer schedule'),
+                        subtitle: Text('Control reminders for each salah independently.'),
+                      ),
+                      _prayerToggle('Fajr', _prayerPreferences.fajr, (value) => _savePrayer(_prayerPreferences.copyWith(fajr: value))),
+                      _prayerToggle('Dhuhr', _prayerPreferences.dhuhr, (value) => _savePrayer(_prayerPreferences.copyWith(dhuhr: value))),
+                      _prayerToggle('Asr', _prayerPreferences.asr, (value) => _savePrayer(_prayerPreferences.copyWith(asr: value))),
+                      _prayerToggle('Maghrib', _prayerPreferences.maghrib, (value) => _savePrayer(_prayerPreferences.copyWith(maghrib: value))),
+                      _prayerToggle('Isha', _prayerPreferences.isha, (value) => _savePrayer(_prayerPreferences.copyWith(isha: value))),
+                      const Divider(height: 1),
+                      ListTile(
+                        leading: const Icon(Icons.schedule_outlined),
+                        title: const Text('Reminder time'),
+                        subtitle: Text(_prayerPreferences.reminderMinutes == 0
+                            ? 'At prayer time'
+                            : '${_prayerPreferences.reminderMinutes} minutes before each prayer'),
+                        trailing: TextButton(
+                          onPressed: _pickReminderMinutes,
+                          child: const Text('Change'),
+                        ),
+                      ),
+                      SwitchListTile.adaptive(
+                        secondary: const Icon(Icons.volume_off_outlined),
+                        title: const Text('Silent prayer reminders'),
+                        subtitle: const Text('Use notification delivery without a sound.'),
+                        value: _prayerPreferences.silent,
+                        onChanged: (value) => _savePrayer(
+                          _prayerPreferences.copyWith(silent: value),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Card(
+                  child: Column(
+                    children: [
                       ListTile(
                         leading: const Icon(Icons.notifications_active_outlined),
                         title: const Text('Daily limit'),
@@ -128,7 +210,7 @@ class _NotificationPreferencesPageState
                   ),
                 ),
                 const SizedBox(height: 12),
-                Text('Quiet hours suppress smart reminders during the selected period. Prayer scheduling itself is not changed.', style: Theme.of(context).textTheme.bodySmall),
+                Text('Quiet hours suppress smart reminders during the selected period. Prayer scheduling is controlled separately above.', style: Theme.of(context).textTheme.bodySmall),
               ],
             ),
     );
@@ -139,6 +221,14 @@ class _NotificationPreferencesPageState
       secondary: Icon(icon),
       title: Text(title),
       subtitle: Text(subtitle),
+      value: value,
+      onChanged: onChanged,
+    );
+  }
+
+  Widget _prayerToggle(String title, bool value, ValueChanged<bool> onChanged) {
+    return SwitchListTile.adaptive(
+      title: Text(title),
       value: value,
       onChanged: onChanged,
     );
