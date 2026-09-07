@@ -1,4 +1,5 @@
 import "package:imaanly/src/core/notifications/khatma_notification_service.dart";
+import "package:imaanly/src/core/notifications/smart_notification_background_service.dart";
 import "package:imaanly/src/platform_services.dart" as platform_services;
 
 abstract class NotificationScheduler {
@@ -14,6 +15,7 @@ class LocalNotificationScheduler implements NotificationScheduler {
     if (platform != platform_services.PlatformOwn.isLinux &&
         platform != platform_services.PlatformOwn.isWindows) {
       await platform_services.initAwesomeNotification();
+      await SmartNotificationBackgroundService.initialize();
     }
   }
 }
