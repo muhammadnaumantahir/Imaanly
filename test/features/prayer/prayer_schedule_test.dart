@@ -8,14 +8,11 @@ void main() {
     final times = PrayerTimes(
       coordinates: Coordinates(31.5204, 74.3587),
       date: date,
-      calculationParameters: CalculationMethodParameters.karachi()
-        ..madhab = Madhab.hanafi,
+      calculationParameters: CalculationMethodParameters.karachi()..madhab = Madhab.hanafi,
       precision: true,
     );
-
     final schedule = PrayerScheduleCalculator().calculate(times);
-
-    expect(schedule.map((entry) => entry.prayer), [
+    expect(schedule.map((entry) => entry.prayer).toList(), [
       Prayer.fajr,
       Prayer.dhuhr,
       Prayer.asr,
@@ -31,13 +28,10 @@ void main() {
     final times = PrayerTimes(
       coordinates: Coordinates(31.5204, 74.3587),
       date: date,
-      calculationParameters: CalculationMethodParameters.karachi()
-        ..madhab = Madhab.hanafi,
+      calculationParameters: CalculationMethodParameters.karachi()..madhab = Madhab.hanafi,
       precision: true,
     );
-
     final sunrise = PrayerScheduleCalculator().sunrise(times);
-
     expect(sunrise.prayer, Prayer.sunrise);
     expect(sunrise.time, times.sunrise.toLocal());
   });

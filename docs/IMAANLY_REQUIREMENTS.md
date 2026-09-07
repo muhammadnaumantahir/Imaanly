@@ -14,7 +14,7 @@
 - 🧪 VALIDATION — implementation exists but needs Flutter/Android/device verification.
 
 ## Overall completion
-**~66% feature-complete.** This is a planning estimate based on product requirements, not a test/build percentage. Production readiness remains lower until CI, automated tests, Android builds and physical-device validation are clean.
+**~66% feature-complete.** Planning estimate based on product requirements, not a test/build percentage. Production readiness remains lower until CI, automated tests, Android builds and physical-device validation are clean.
 
 ## 1. Product principles
 - [x] Free core application.
@@ -218,7 +218,6 @@
 - [ ] Final settings UI modernization.
 
 ## 3. Explicitly deferred
-Do not implement unless explicitly re-approved:
 - ⏸️ Hifz improvements — existing functionality remains preserved.
 - ⏸️ Islamic Places — later.
 - ⏸️ Fasting — later.
@@ -277,7 +276,7 @@ Every future feature/status-changing commit MUST update this document in the sam
 ## 8. Changelog
 | Date | Commit / milestone | Result | Overall |
 |---|---|---|---:|
-| 2026-09-07 | `9c2b76e` | Upgraded `simple_icons` to 16.23.0 after CI exposed incompatibility with Flutter 3.47/Dart 3.13. CI still has test failures to resolve. | ~66% |
+| 2026-09-07 | CI stabilization | Root cause found: `simple_icons` 14.6.1 is incompatible with Flutter 3.47/Dart 3.13. Test suite also exposed asynchronous test races and one invalid theme expectation. Fixes are being applied; CI verification remains required. | ~66% |
 | 2026-09-06 | `3178ff3` | Weekly worship insights tests added. | ~66% |
 | 2026-09-06 | `7a0261a` | Analyzer warnings/info made non-fatal so tests execute. | ~66% |
 | 2026-09-06 | Requirements tracker | Canonical living tracker established. | ~66% |
