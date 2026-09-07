@@ -14,7 +14,7 @@
 - 🧪 VALIDATION — implementation exists but needs Flutter/Android/device verification.
 
 ## Overall completion
-**~71% feature-complete.** Planning estimate based on product requirements, not a test/build percentage. Production readiness remains lower until CI, automated tests, Android builds and physical-device validation are clean.
+**~74% feature-complete.** Planning estimate based on product requirements, not a test/build percentage. Production readiness remains lower until CI, automated tests, Android builds and physical-device validation are clean.
 
 ## 2. Feature tracker
 
@@ -61,10 +61,10 @@
 - [x] Local prayer notification scheduling.
 - [x] Notification preferences/offsets.
 - [x] Restoration/reboot infrastructure.
-- [x] Local contextual notification decision engine.
+- [x] Local contextual decision engine.
+- [x] Local notification preferences and fatigue limits.
+- [ ] Contextual scheduler/delivery integration.
 - [ ] Physical-device reliability testing.
-- [ ] Intelligent context-aware scheduler integration.
-- [ ] Notification fatigue controls.
 
 ### 2.5 Qibla — 🟢 CORE DONE (~90%)
 - [x] Qibla direction calculation.
@@ -175,15 +175,16 @@
 - [ ] Physical-device validation.
 - [ ] Reboot/background restriction testing.
 
-### 2.14 Intelligent Local Notifications — 🟡 PARTIAL (~15%)
+### 2.14 Intelligent Local Notifications — 🟡 PARTIAL (~65%)
 - [x] Local context-aware decision engine.
-- [ ] Quran-goal reminders.
-- [ ] Dhikr-goal reminders.
-- [ ] Streak-risk reminders.
+- [x] Quran-goal reminders.
+- [x] Dhikr-goal reminders.
+- [x] Streak-risk reminders.
 - [ ] Gentle personalized timing.
-- [ ] User-controlled categories.
-- [ ] Notification fatigue limits.
+- [x] User-controlled categories.
+- [x] Notification fatigue limits.
 - [x] No cloud/paid AI requirement.
+- [ ] Final platform scheduler/delivery integration.
 
 ### 2.15 Personalization — 🔴 TODO (0%)
 - [ ] Personalized Home shortcuts.
@@ -264,6 +265,7 @@ Every future feature/status-changing commit MUST update this document in the sam
 ## 8. Changelog
 | Date | Commit / milestone | Result | Overall |
 |---|---|---|---:|
+| 2026-09-07 | Notification policy phase | Added local category controls, overnight quiet hours, daily notification cap, Quran/Dhikr goal reminders, streak-risk detection, and a persistent once-per-day coordinator. Platform delivery integration and direct Flutter verification remain pending. | ~74% |
 | 2026-09-07 | `0530545` | Added tests for the local contextual notification planner; direct Flutter test execution remains pending. | ~71% |
 | 2026-09-07 | `f7a8551` | Added the first Intelligent Local Notifications decision engine: nearby-prayer priority, Quran/Dhikr fallbacks, and conservative silent behavior. | ~71% |
 | 2026-09-07 | `3169e4c` | Fixed CI prayer schedule tests to assert Imaanly's canonical `Prayer` enum instead of the separate `adhan_dart` enum; CI previously reported 150 passed / 2 failed. | ~71% |
