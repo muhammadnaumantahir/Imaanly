@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~87%**
+**~89%**
 
 ## Recently completed
 
@@ -25,6 +25,7 @@ Updated: 2026-09-07
 - Quran local-first reading position persistence.
 - Quran daily page goal and progress persistence.
 - Quran reading history persistence by day.
+- Quran last-7-days reading trend UI.
 - Quran reading progress domain validation tests.
 - Quran BLoC loads persisted last-read position and immediately loads that page.
 - Quran BLoC persists page navigation and selected ayah positions.
@@ -81,7 +82,6 @@ Updated: 2026-09-07
 
 ## Remaining P1
 
-- Quran history/goals deeper integration and historical trend UI.
 - Hifz richer memorization/review content and Quran text/audio integration.
 - Worship analytics/history beyond the current daily dashboard.
 - Fasting active workflow/reminders/Ramadan behavior.
