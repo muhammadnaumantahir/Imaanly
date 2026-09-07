@@ -11,9 +11,8 @@ import 'package:imaanly/src/screen/location_handler/model/location_data_qibla_da
 import 'package:imaanly/src/screen/mushaf/mushaf_screen.dart';
 import 'package:imaanly/src/screen/prayer_time/prayer_time_page.dart';
 import 'package:imaanly/src/screen/qibla/qibla_direction.dart';
-import 'package:imaanly/src/screen/quran_script_view/quran_script_view.dart';
+import 'package:imaanly/src/features/quran/presentation/quran_reader_screen.dart';
 import 'package:imaanly/src/screen/settings/settings_page.dart';
-import 'package:imaanly/src/utils/quran_ayahs_function/gen_ayahs_key.dart';
 import 'package:imaanly/features/personalization/presentation/personalization_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -71,7 +70,7 @@ class ImaanlyHomePage extends StatelessWidget {
                 if (visible.contains('quran')) ...[
                   const _SectionHeader(title: 'Continue your journey'),
                   const SizedBox(height: 10),
-                  _QuranCard(onOpen: () => _open(context, QuranScriptView(startKey: '1:1', endKey: getEndAyahKeyFromSurahNumber(1), toScrollKey: '1:1'))),
+                  _QuranCard(onOpen: () => _open(context, const QuranReaderScreen())),
                   const SizedBox(height: 24),
                 ],
                 const _SectionHeader(title: 'Quick actions'),
