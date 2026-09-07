@@ -71,11 +71,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
   Future<void> _syncWorship() async {
     try {
       final repository = await WorshipActivityRepository.openLocal();
-      await repository.upsertDailyDhikr(
-        category: widget.categoryName,
-        completed: _dailyProgress.completed,
-        goal: _dailyProgress.goal,
-      );
+      await repository.upsertDailyDhikr(category: widget.categoryName, completed: _dailyProgress.completed, goal: _dailyProgress.goal);
     } catch (_) {}
   }
 
@@ -89,10 +85,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
     if (_counts[_currentIndex] == 0 && _currentIndex < _counts.length - 1) {
       Future.delayed(const Duration(milliseconds: 300), () {
         if (mounted) {
-          _pageController.nextPage(
-            duration: const Duration(milliseconds: 300),
-            curve: Curves.easeOut,
-          );
+          _pageController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeOut);
         }
       });
     }
@@ -108,9 +101,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    if (widget.azkarList.isEmpty) {
-      return const Scaffold(body: Center(child: Text('No Adhkar available.')));
-    }
+    if (widget.azkarList.isEmpty) return const Scaffold(body: Center(child: Text('No Adhkar available.')));
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
@@ -157,12 +148,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
                                     Text(
                                       item['zekr']?.toString() ?? '',
                                       textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: _fontSize,
-                                        height: 1.8,
-                                        fontWeight: FontWeight.w700,
-                                        color: isDark ? Colors.white : null,
-                                      ),
+                                      style: TextStyle(fontSize: _fontSize, height: 1.8, fontWeight: FontWeight.w700, color: isDark ? Colors.white : null),
                                     ),
                                     if (item['description']?.toString().isNotEmpty == true)
                                       Padding(
@@ -195,16 +181,12 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 IconButton(
-                                  onPressed: () => Navigator.of(context).push(
-                                    MaterialPageRoute(builder: (_) => AzkarShareScreen(zekr: item, categoryName: widget.categoryName)),
-                                  ),
+                                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => AzkarShareScreen(zekr: item, categoryName: widget.categoryName))),
                                   icon: const Icon(Icons.image_outlined),
                                   tooltip: 'Share image',
                                 ),
                                 IconButton(
-                                  onPressed: () => SharePlus.instance.share(
-                                    ShareParams(text: '${item['zekr']}\n\n${item['reference'] ?? ''}'),
-                                  ),
+                                  onPressed: () => SharePlus.instance.share(ShareParams(text: '${item['zekr']}\n\n${item['reference'] ?? ''}')),
                                   icon: const Icon(Icons.share_outlined),
                                   tooltip: 'Share',
                                 ),
