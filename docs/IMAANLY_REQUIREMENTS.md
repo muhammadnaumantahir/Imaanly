@@ -14,7 +14,7 @@
 - 🧪 VALIDATION — implementation exists but needs Flutter/Android/device verification.
 
 ## Overall completion
-**~74% feature-complete.** Planning estimate based on product requirements, not a test/build percentage. Production readiness remains lower until CI, automated tests, Android builds and physical-device validation are clean.
+**~75% feature-complete.** Planning estimate based on product requirements, not a test/build percentage. Production readiness remains lower until CI, automated tests, Android builds and physical-device validation are clean.
 
 ## 2. Feature tracker
 
@@ -57,13 +57,14 @@
 - [ ] Android notification validation.
 - [ ] Timezone/DST/edge-case validation.
 
-### 2.4 Athan & Notifications — 🟢 CORE DONE (~85%)
+### 2.4 Athan & Notifications — 🟢 CORE DONE (~90%)
 - [x] Local prayer notification scheduling.
 - [x] Notification preferences/offsets.
 - [x] Restoration/reboot infrastructure.
 - [x] Local contextual decision engine.
 - [x] Local notification preferences and fatigue limits.
-- [ ] Contextual scheduler/delivery integration.
+- [x] Concrete Awesome Notifications delivery adapter for contextual decisions.
+- [ ] Contextual background scheduler/automatic evaluation integration.
 - [ ] Physical-device reliability testing.
 
 ### 2.5 Qibla — 🟢 CORE DONE (~90%)
@@ -175,7 +176,7 @@
 - [ ] Physical-device validation.
 - [ ] Reboot/background restriction testing.
 
-### 2.14 Intelligent Local Notifications — 🟡 PARTIAL (~65%)
+### 2.14 Intelligent Local Notifications — 🟡 PARTIAL (~75%)
 - [x] Local context-aware decision engine.
 - [x] Quran-goal reminders.
 - [x] Dhikr-goal reminders.
@@ -184,7 +185,8 @@
 - [x] User-controlled categories.
 - [x] Notification fatigue limits.
 - [x] No cloud/paid AI requirement.
-- [ ] Final platform scheduler/delivery integration.
+- [x] Platform notification delivery adapter.
+- [ ] Background scheduler/automatic context evaluation.
 
 ### 2.15 Personalization — 🔴 TODO (0%)
 - [ ] Personalized Home shortcuts.
@@ -241,6 +243,7 @@
 - [ ] Dhikr persistence test.
 - [ ] Worship aggregation test.
 - [ ] Widget/background test.
+- [ ] Contextual notification background scheduling test.
 - [ ] Light/dark review.
 - [ ] RTL/Arabic review.
 - [ ] Accessibility review.
@@ -265,6 +268,7 @@ Every future feature/status-changing commit MUST update this document in the sam
 ## 8. Changelog
 | Date | Commit / milestone | Result | Overall |
 |---|---|---|---:|
+| 2026-09-07 | Contextual notification delivery | Connected the local smart-notification decision output to the existing Awesome Notifications infrastructure with a dedicated contextual channel and stable category IDs. Background automatic evaluation remains. | ~75% |
 | 2026-09-07 | Notification policy phase | Added local category controls, overnight quiet hours, daily notification cap, Quran/Dhikr goal reminders, streak-risk detection, and a persistent once-per-day coordinator. Platform delivery integration and direct Flutter verification remain pending. | ~74% |
 | 2026-09-07 | `0530545` | Added tests for the local contextual notification planner; direct Flutter test execution remains pending. | ~71% |
 | 2026-09-07 | `f7a8551` | Added the first Intelligent Local Notifications decision engine: nearby-prayer priority, Quran/Dhikr fallbacks, and conservative silent behavior. | ~71% |

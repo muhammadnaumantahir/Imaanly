@@ -1,5 +1,7 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
+import 'package:imaanly/features/notifications/domain/smart_notification.dart';
+import 'package:imaanly/features/notifications/domain/smart_notification_category.dart';
 
 class NotificationService {
   static final NotificationService _instance = NotificationService._internal();
@@ -12,10 +14,10 @@ class NotificationService {
 
   static const String khatmaChannelKey = 'smart_khatma_channel';
   static const String werdChannelKey = 'daily_werd_channel';
+  static const String smartChannelKey = 'contextual_worship_channel';
 
   Future<void> initialize() async {
     await AwesomeNotifications().initialize(
-      // set the icon to null if you want to use the default app icon
       null,
       [
         NotificationChannel(
@@ -23,7 +25,7 @@ class NotificationService {
           channelKey: khatmaChannelKey,
           channelName: 'إشعارات الختمة الذكية',
           channelDescription: 'تنبيهات لمتابعة الختمة الذكية',
-          defaultColor: const Color(0xFF0F8C69), // App default green
+          defaultColor: const Color(0xFF0F8C69),
           ledColor: Colors.white,
           importance: NotificationImportance.High,
           channelShowBadge: true,
@@ -37,13 +39,27 @@ class NotificationService {
           defaultColor: const Color(0xFF0F8C69),
           ledColor: Colors.white,
           importance: NotificationImportance.Default,
-        )
+        ),
+        NotificationChannel(
+          channelGroupKey: 'contextual_worship_group',
+          channelKey: smartChannelKey,
+          channelName: 'تذكيرات العبادة السياقية',
+          channelDescription: 'تذكيرات محلية هادئة مبنية على نشاطك اليومي',
+          defaultColor: const Color(0xFF0F8C69),
+          ledColor: Colors.white,
+          importance: NotificationImportance.Default,
+          channelShowBadge: true,
+        ),
       ],
       channelGroups: [
         NotificationChannelGroup(
             channelGroupKey: 'khatma_group', channelGroupName: 'الختمة الذكية'),
         NotificationChannelGroup(
-            channelGroupKey: 'werd_group', channelGroupName: 'الورد اليومي')
+            channelGroupKey: 'werd_group', channelGroupName: 'الورد اليومي'),
+        NotificationChannelGroup(
+          channelGroupKey: 'contextual_worship_group',
+          channelGroupName: 'التذكيرات السياقية',
+        ),
       ],
       debug: false,
     );
@@ -57,6 +73,39 @@ class NotificationService {
     return isAllowed;
   }
 
+  /// Delivers one decision from the local contextual notification engine.
+  ///
+  /// The decision engine remains platform-agnostic; this method is the concrete
+  /// Awesome Notifications adapter used by the application layer.
+  Future<void> deliverSmartNotification(
+    SmartNotificationCandidate candidate,
+  ) async {
+    await AwesomeNotifications().createNotification(
+      content: NotificationContent(
+        id: _smartNotificationId(candidate.category),
+        channelKey: smartChannelKey,
+        title: candidate.title,
+        body: candidate.body,
+        category: NotificationCategory.Reminder,
+        wakeUpScreen: false,
+        notificationLayout: NotificationLayout.Default,
+      ),
+    );
+  }
+
+  int _smartNotificationId(SmartNotificationCategory category) {
+    switch (category) {
+      case SmartNotificationCategory.prayer:
+        return 2101;
+      case SmartNotificationCategory.quran:
+        return 2102;
+      case SmartNotificationCategory.dhikr:
+        return 2103;
+      case SmartNotificationCategory.streak:
+        return 2104;
+    }
+  }
+
   Future<void> scheduleDailyWerdReminder({
     required TimeOfDay time,
     String title = 'حان وقت الورد اليومي',
@@ -64,7 +113,7 @@ class NotificationService {
   }) async {
     await AwesomeNotifications().createNotification(
       content: NotificationContent(
-        id: 100, // Fixed ID for daily werd
+        id: 100,
         channelKey: werdChannelKey,
         title: title,
         body: body,
@@ -76,7 +125,7 @@ class NotificationService {
         minute: time.minute,
         second: 0,
         millisecond: 0,
-        repeats: true, // Daily repeat
+        repeats: true,
       ),
     );
   }
