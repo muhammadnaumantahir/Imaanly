@@ -7,7 +7,7 @@ import '../../../../constants/app_strings.dart';
 import '../models/bookmark_model.dart';
 import '../models/surah_model.dart';
 
-/// Quran Local Data Source — Hive-based persistence for Quran data
+/// Quran Local Data Source — Hive-based persistence for Quran data.
 class QuranLocalDataSource {
   final Box _userBox;
   final Box _pinnedBox;
@@ -47,19 +47,29 @@ class QuranLocalDataSource {
   }
 
   // ── Last Read Position ──
+  // The legacy Mushaf UI uses wahy_last_page/wahy_last_ayah_key. Read those
+  // first and mirror writes to the feature keys so both reader stacks resume
+  // from exactly the same position.
 
   Future<({int page, String ayahKey})> getLastReadPosition() async {
-    final page = _userBox.get(AppStrings.prefsKeyLastPage) as int? ?? 1;
-    final ayahKey = _userBox.get(AppStrings.prefsKeyLastAyahKey) as String? ?? '1:1';
-    return (page: page, ayahKey: ayahKey);
+    final page = (_userBox.get('wahy_last_page') as int?) ??
+        (_userBox.get(AppStrings.prefsKeyLastPage) as int?) ??
+        1;
+    final ayahKey = (_userBox.get('wahy_last_ayah_key') as String?) ??
+        (_userBox.get(AppStrings.prefsKeyLastAyahKey) as String?) ??
+        '1:1';
+    return (page: page.clamp(1, 604), ayahKey: ayahKey);
   }
 
   Future<void> saveLastReadPosition({
     required int page,
     required String ayahKey,
   }) async {
-    await _userBox.put(AppStrings.prefsKeyLastPage, page);
+    final safePage = page.clamp(1, 604);
+    await _userBox.put(AppStrings.prefsKeyLastPage, safePage);
     await _userBox.put(AppStrings.prefsKeyLastAyahKey, ayahKey);
+    await _userBox.put('wahy_last_page', safePage);
+    await _userBox.put('wahy_last_ayah_key', ayahKey);
   }
 
   // ── Pinned Surahs ──
