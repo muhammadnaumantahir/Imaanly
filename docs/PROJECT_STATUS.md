@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~80%**
+**~82%**
 
 ## Recently completed
 
@@ -31,6 +31,11 @@ Updated: 2026-09-07
 - Hifz review scheduling is centralized in a pure-Dart domain service.
 - Hifz spaced-repetition intervals are covered by automated domain tests.
 - Hifz due-review repository logic now consumes the shared scheduling rules.
+- Interactive Hifz review session with per-ayah correct/mistake tracking.
+- Hifz review results persist updated accuracy, mastery, review counts and mistakes.
+- Hifz review sessions persist duration, hints and session type.
+- Hifz dashboard due-review and progress cards now launch the review workflow.
+- Hifz review mastery thresholds are covered by automated tests.
 
 ## Completed foundation
 
@@ -68,7 +73,7 @@ Updated: 2026-09-07
 - Connect the new Quran reader to the main Continue Reading/home entry.
 - Quran history/goals UI integration.
 - Dhikr reminder Settings UI and recurring reminder management.
-- Hifz review session workflow and progress entry UI.
+- Hifz new-memorization workflow and richer review content/audio integration.
 - Worship analytics/history beyond the current daily dashboard.
 - Fasting active workflow/reminders/Ramadan behavior.
 - Calendar event details/context.
