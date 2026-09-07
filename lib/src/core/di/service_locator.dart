@@ -8,6 +8,7 @@ import "package:imaanly/src/core/reader_session/reader_session_repository.dart";
 import "package:imaanly/src/core/settings/settings_repository.dart";
 import "package:imaanly/src/core/storage/app_boxes.dart";
 import "package:imaanly/src/core/storage/app_storage.dart";
+import "package:imaanly/src/features/quran/quran_injection.dart";
 import "package:get_it/get_it.dart";
 import "package:hive_ce_flutter/hive_flutter.dart";
 import "package:shared_preferences/shared_preferences.dart";
@@ -25,4 +26,8 @@ Future<void> configureDependencies({required SharedPreferences preferences}) asy
   getIt.registerLazySingleton<ImaanlyPersonalizationRepository>(() => ImaanlyPersonalizationRepository(preferences));
   getIt.registerLazySingleton<PersonalizationCubit>(() => PersonalizationCubit(getIt<ImaanlyPersonalizationRepository>()));
   getIt.registerLazySingleton<AppBootstrapCoordinator>(() => AppBootstrapCoordinator(settingsRepository: getIt<SettingsRepository>(), notificationScheduler: getIt<NotificationScheduler>(), quranResourcesRepository: getIt<QuranResourcesRepository>()));
+
+  // Register the feature-level Quran repository, use cases and BLoC so the
+  // local-first reader can be consumed by the presentation layer.
+  QuranInjection.init(getIt);
 }
