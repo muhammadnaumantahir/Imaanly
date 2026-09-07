@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall progress
 
-**Estimated completion: ~61%**
+**Estimated completion: ~63%**
 
 This is a product-requirements estimate, not a code-line percentage. Existing inherited Quran functionality is substantial, while the newer Imaanly product layer still needs integration, complete workflows, background reliability, QA, and release hardening.
 
@@ -30,6 +30,8 @@ This is a product-requirements estimate, not a code-line percentage. Existing in
 - Smart notification preferences persistence in Hive
 - Notification preferences UI for prayer/Quran/dhikr/streak categories, daily limits and quiet hours
 - Automated tests for notification preference behavior and serialization
+- Platform local-notification delivery adapter using `flutter_local_notifications`
+- Smart-notification runtime bridge connecting policy evaluation to local delivery
 - Existing SettingsPage now reachable from the main Home dashboard
 - Service-account dependency removed from the app workflow
 - Permanent Flutter analyze/test CI workflow added
@@ -37,6 +39,8 @@ This is a product-requirements estimate, not a code-line percentage. Existing in
 ## Recently completed
 
 ### 2026-09-07
+- `6b9db7b` — connected smart notification policy to the platform delivery adapter through a runtime bridge
+- `0047ebf` — added local notification initialization, Android channel creation, permission requests and candidate delivery
 - `47d5eb1` — connected Home Qibla quick action to `QiblaDirection`
 - `795eee7` — added copy/serialization support to smart notification preferences
 - `e39edb6` — persisted smart notification preferences through Hive
@@ -50,9 +54,9 @@ This is a product-requirements estimate, not a code-line percentage. Existing in
 
 ### P0 — make the product operational end-to-end
 
-- Connect smart notification evaluation to real prayer/Quran/dhikr activity lifecycle
-- Connect notification candidates to the platform local-notification delivery service
+- Invoke smart notification evaluation from the real prayer/Quran/dhikr activity lifecycle rather than only exposing the runtime bridge
 - Complete prayer notification controls: per-prayer enable/disable, reminder offsets, Athan/silent modes, sound behavior
+- Add scheduled local delivery for future prayer/reminder times
 - Verify Android notification permission, exact-alarm/background behavior and reboot rescheduling
 - Finish device-level prayer/Qibla/location QA
 
