@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~72%**
+**~73%**
 
 ## Recently completed
 
@@ -17,6 +17,8 @@ Updated: 2026-09-07
 - Interactive Dhikr counter screen with live completion progress.
 - Dhikr daily target selector with safe goal bounds.
 - Dhikr counter controller connected to persistence and streak state.
+- Dhikr completed-day history screen.
+- Generic local reminder scheduling support for Dhikr reminders.
 
 ## Completed foundation
 
@@ -51,7 +53,7 @@ Updated: 2026-09-07
 
 ## Remaining P1
 
-- Dhikr reminder scheduling and richer history UI.
+- Dhikr reminder Settings UI and recurring reminder management.
 - Quran actual reading continuation/history/goals.
 - Hifz scheduling/progress.
 - Worship analytics.
