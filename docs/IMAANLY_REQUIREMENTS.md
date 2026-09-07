@@ -16,19 +16,6 @@
 ## Overall completion
 **~71% feature-complete.** Planning estimate based on product requirements, not a test/build percentage. Production readiness remains lower until CI, automated tests, Android builds and physical-device validation are clean.
 
-## 1. Product principles
-- [x] Free core application.
-- [x] No account/sign-in required for core functionality.
-- [x] No mandatory paid API/backend/cloud service.
-- [x] Offline-first for core experiences.
-- [x] Local persistence for personal progress/preferences.
-- [x] Advanced, attractive Material 3 UI.
-- [x] Strong Arabic/RTL support.
-- [x] Preserve mature inherited functionality.
-- [x] Never fabricate worship-completion statistics.
-- [ ] Optional advertising — future.
-- [ ] Optional cloud synchronization — future.
-
 ## 2. Feature tracker
 
 ### 2.1 Foundation & Rebrand — 🟢 CORE DONE (~90%)
@@ -276,6 +263,7 @@ Every future feature/status-changing commit MUST update this document in the sam
 ## 8. Changelog
 | Date | Commit / milestone | Result | Overall |
 |---|---|---|---:|
+| 2026-09-07 | `3169e4c` | Fixed CI prayer schedule tests to assert Imaanly's canonical `Prayer` enum instead of the separate `adhan_dart` enum; CI previously reported 150 passed / 2 failed. | ~71% |
 | 2026-09-07 | Islamic Calendar phase | Added offline Hijri calendar service, important Islamic dates, month grid/navigation, today card, event cards, and tests. Physical/device validation remains. | ~71% |
 | 2026-09-07 | CI stabilization | Root cause found: `simple_icons` 14.6.1 is incompatible with Flutter 3.47/Dart 3.13. Test suite also exposed asynchronous test races and one invalid theme expectation. Fixes are being applied; CI verification remains required. | ~66% |
 | 2026-09-06 | `3178ff3` | Weekly worship insights tests added. | ~66% |
