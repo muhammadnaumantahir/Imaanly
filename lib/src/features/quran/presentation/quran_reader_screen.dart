@@ -7,9 +7,8 @@ import 'quran_bloc.dart';
 
 /// Local-first Quran reader backed by the feature repository.
 ///
-/// The initial page comes from the persisted last-read position. Whenever the
-/// user changes pages, the page and its first ayah are persisted so the next
-/// session can resume from the same place.
+/// The reader restores the persisted page on startup and continuously saves
+/// page/ayah progress so Continue Reading survives app restarts.
 class QuranReaderScreen extends StatelessWidget {
   const QuranReaderScreen({super.key});
 
@@ -38,6 +37,19 @@ class _QuranReaderViewState extends State<_QuranReaderView> {
     super.dispose();
   }
 
+  void _ensureController(int pageIndex) {
+    _controller ??= PageController(initialPage: pageIndex.clamp(0, 603));
+  }
+
+  void _syncControllerToPage(int pageNumber) {
+    final controller = _controller;
+    if (controller == null || !controller.hasClients) return;
+    final target = (pageNumber - 1).clamp(0, 603).toInt();
+    final current = controller.page?.round();
+    if (current == target) return;
+    controller.jumpToPage(target);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,6 +71,7 @@ class _QuranReaderViewState extends State<_QuranReaderView> {
             previous.lastReadPage != current.lastReadPage ||
             previous.errorMessage != current.errorMessage,
         listener: (context, state) {
+          _syncControllerToPage(state.lastReadPage);
           if (state.errorMessage != null && state.status == QuranStatus.error) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text(state.errorMessage!)),
@@ -66,15 +79,7 @@ class _QuranReaderViewState extends State<_QuranReaderView> {
           }
         },
         builder: (context, state) {
-          if (_controller == null) {
-            _controller = PageController(
-              initialPage: (state.lastReadPage - 1).clamp(0, 603),
-            );
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              if (!mounted) return;
-              context.read<QuranBloc>().add(LoadQuranPage(state.lastReadPage));
-            });
-          }
+          _ensureController(state.lastReadPage - 1);
 
           return PageView.builder(
             controller: _controller,
@@ -86,7 +91,8 @@ class _QuranReaderViewState extends State<_QuranReaderView> {
               if (state.currentPage?.pageNumber == index + 1) {
                 return _QuranPageContent(page: state.currentPage!);
               }
-              if (index + 1 == state.lastReadPage && state.status == QuranStatus.loading) {
+              if (index + 1 == state.lastReadPage &&
+                  state.status == QuranStatus.loading) {
                 return const Center(child: CircularProgressIndicator());
               }
               return Center(
