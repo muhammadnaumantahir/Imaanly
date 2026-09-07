@@ -34,7 +34,8 @@
 
 ### Quran — 🟢 CORE DONE (~90%)
 - [x] Uthmanic/QCF rendering, index/search, offline content, translation/transliteration, Tafsir, audio, bookmarks and Hifz preservation.
-- [ ] Consume new personalization script/translation preferences in the reader.
+- [x] Added a dedicated bridge component mapping personalization Quran-script choices to the unified Quran font settings.
+- [ ] Wire the bridge into the app shell and consume translation visibility preference in the reader.
 - [ ] Final device/accessibility validation and deeper reading-goal/history integration.
 
 ### Dhikr — 🟢 CORE DONE (~92%)
@@ -49,7 +50,7 @@
 
 ### Worship Dashboard — 🟢 CORE DONE (~94%)
 - [x] Daily overview, Salah/Quran/Dhikr progress, goals, analytics and unified integration.
-- [x] Dashboard compact personalization now changes the dashboard presentation and secondary cards.
+- [x] Dashboard compact personalization changes the dashboard presentation and secondary cards.
 - [ ] Final Home/dashboard UX polish, long-term trends and device validation.
 
 ### Worship Analytics — 🟢 CORE DONE (~80%)
@@ -77,7 +78,8 @@
 - [x] Home shortcut preferences consumed by Home.
 - [x] Dashboard compact preference consumed by Worship Dashboard.
 - [x] Personalization state is shared app-wide through DI and updates reactively where integrated.
-- [ ] Connect Quran script/translation preference to reader settings.
+- [x] Quran-script bridge component created for unified reader settings.
+- [ ] Wire Quran bridge into the app shell and connect translation visibility.
 - [ ] Connect Dhikr goal preference to all Dhikr goal/progress consumers.
 
 ### Profile & Settings — 🟡 PARTIAL (~60%)
@@ -129,6 +131,7 @@ Every future feature/status-changing commit MUST update this document in the sam
 ## Changelog
 | Date | Commit / milestone | Result | Overall |
 |---|---|---|---:|
+| 2026-09-07 | Quran personalization bridge | Added a reusable bridge component mapping the app-level Quran script preference to the unified Quran font-family settings. App-shell integration remains next. | ~83% |
 | 2026-09-07 | Personalization consumer wiring | Added a shared PersonalizationCubit through DI; Home shortcut choices now drive Quick Actions/Quran continuation and Worship Dashboard compact mode changes the dashboard layout. Added Cubit persistence/reset tests. | ~83% |
 | 2026-09-07 | Personalization settings UI | Added local-only settings for appearance, Quran preferences, Dhikr goal, Home shortcuts, dashboard compact mode and reset; appearance is connected to ThemeCubit. | ~80% |
 | 2026-09-07 | Contextual scheduler/coordinator contract fix | Aligned Workmanager background integration with the coordinator API. | ~78% |
