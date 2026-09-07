@@ -59,12 +59,13 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
   Future<void> _finish() async {
     final accuracy = _correct / _totalAyahs;
     final nextMastery = _masteryForAccuracy(accuracy);
+    final reviewedAt = DateTime.now();
     final updated = HifzProgress(
       surahId: widget.progress.surahId,
       ayahStart: widget.progress.ayahStart,
       ayahEnd: widget.progress.ayahEnd,
       totalAyahs: widget.progress.totalAyahs,
-      lastReviewed: DateTime.now(),
+      lastReviewed: reviewedAt,
       mastery: nextMastery,
       reviewCount: widget.progress.reviewCount + _totalAyahs,
       correctCount: widget.progress.correctCount + _correct,
@@ -77,16 +78,16 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
       surahId: widget.progress.surahId,
       ayahStart: widget.progress.ayahStart,
       ayahEnd: widget.progress.ayahEnd,
-      date: DateTime.now(),
+      date: reviewedAt,
       durationSeconds: duration,
       mistakes: _mistakes,
       hints: _hints,
       type: HifzSessionType.review,
     );
 
-    final bloc = context.read<HifzBloc>();
-    bloc.add(SaveProgress(updated));
-    bloc.add(RecordSession(session));
+    context.read<HifzBloc>().add(
+          CompleteReview(progress: updated, session: session),
+        );
 
     if (!mounted) return;
     await showDialog<void>(
