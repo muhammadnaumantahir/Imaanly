@@ -1,5 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
+import 'package:imaanly/features/goals/data/daily_goals_repository.dart';
 import 'package:imaanly/features/goals/domain/daily_goals.dart';
+import 'package:imaanly/features/personalization/domain/imaanly_personalization.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   test('daily goals round-trip through json', () {
@@ -40,5 +45,21 @@ void main() {
     expect(updated.quranPages, original.quranPages);
     expect(updated.quranAyahs, original.quranAyahs);
     expect(updated.salah, original.salah);
+  });
+
+  test('personalized Dhikr goal overrides the legacy goal value', () async {
+    SharedPreferences.setMockInitialValues({
+      'imaanly.daily_goals.v1':
+          jsonEncode(const DailyGoals(dhikr: 500).toJson()),
+      'imaanly.personalization.v1':
+          const ImaanlyPersonalization(dhikrDailyGoal: 100).encode(),
+    });
+    final preferences = await SharedPreferences.getInstance();
+
+    final goals = DailyGoalsRepository(preferences).load();
+
+    expect(goals.dhikr, 100);
+    expect(goals.quranPages, 5);
+    expect(goals.salah, 5);
   });
 }
