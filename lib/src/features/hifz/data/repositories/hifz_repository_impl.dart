@@ -3,6 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/error/failures.dart';
 import '../../../../core/network/error_handler.dart';
 import '../../domain/entities/hifz.dart';
+import '../../domain/hifz_review_schedule.dart';
 import '../../domain/repositories/hifz_repository.dart';
 import '../datasources/hifz_data_source.dart';
 import '../models/hifz_model.dart';
@@ -82,19 +83,13 @@ class HifzRepositoryImpl implements HifzRepository {
   Future<Either<Failure, List<HifzProgress>>> getDueForReview() async {
     try {
       final all = _localDataSource.getAllProgress();
-      final now = DateTime.now();
-      final due = all.where((m) {
-        final lastReviewed = DateTime.parse(m.lastReviewed);
-        final daysSinceReview = now.difference(lastReviewed).inDays;
-        // Spaced repetition: review based on mastery level
-        final reviewInterval = switch (m.mastery) {
-          'learning' => 1,
-          'familiar' => 3,
-          'confident' => 7,
-          'mastered' => 14,
-          _ => 1,
-        };
-        return daysSinceReview >= reviewInterval;
+      final due = all.where((model) {
+        try {
+          return HifzReviewSchedule.isDue(model.toDomain());
+        } catch (_) {
+          // A malformed persisted item should not make every review disappear.
+          return false;
+        }
       }).toList();
       return Right(due.map((m) => m.toDomain()).toList());
     } catch (e) {
@@ -130,7 +125,6 @@ class HifzRepositoryImpl implements HifzRepository {
       final avgMastery = all.isNotEmpty ? totalMastery / all.length : 0.0;
       final totalMinutes = sessions.fold<int>(0, (sum, s) => sum + s.durationSeconds) ~/ 60;
 
-      // Calculate streaks from session dates
       final sessionDates = sessions
           .map((s) {
             final dt = DateTime.parse(s.date);
@@ -138,7 +132,7 @@ class HifzRepositoryImpl implements HifzRepository {
           })
           .toSet()
           .toList()
-        ..sort((a, b) => b.compareTo(a)); // descending
+        ..sort((a, b) => b.compareTo(a));
 
       int currentStreak = 0;
       int longestStreak = 0;
@@ -147,7 +141,6 @@ class HifzRepositoryImpl implements HifzRepository {
         final todayDate = DateTime(today.year, today.month, today.day);
         final yesterday = todayDate.subtract(const Duration(days: 1));
 
-        // Current streak: count consecutive days from today/yesterday backwards
         final checkDate = sessionDates.first;
         if (checkDate == todayDate || checkDate == yesterday) {
           currentStreak = 1;
@@ -162,7 +155,6 @@ class HifzRepositoryImpl implements HifzRepository {
           }
         }
 
-        // Longest streak: scan all dates
         var runLength = 1;
         for (int i = 1; i < sessionDates.length; i++) {
           final diff = sessionDates[i - 1].difference(sessionDates[i]).inDays;
@@ -179,7 +171,7 @@ class HifzRepositoryImpl implements HifzRepository {
       return Right(HifzStats(
         totalSurahsMemorized: totalSurahs,
         totalAyahsMemorized: totalAyahs,
-        totalPagesMemorized: totalAyahs ~/ 15, // Approx 15 ayahs per page
+        totalPagesMemorized: totalAyahs ~/ 15,
         overallMasteryPercentage: avgMastery,
         totalSessions: sessions.length,
         totalReviewMinutes: totalMinutes,
