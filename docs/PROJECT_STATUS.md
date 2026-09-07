@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~75%**
+**~76%**
 
 ## Recently completed
 
@@ -23,6 +23,10 @@ Updated: 2026-09-07
 - Quran daily page goal and progress persistence.
 - Quran reading history persistence by day.
 - Quran reading progress domain validation tests.
+- Quran BLoC now loads persisted last-read position.
+- Quran BLoC now persists last-read page and ayah through the repository.
+- Quran dependency injection now provides the repository to the BLoC.
+- Quran BLoC last-read persistence regression test.
 
 ## Completed foundation
 
