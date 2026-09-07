@@ -4,7 +4,7 @@ Updated: 2026-09-07
 
 ## Overall completion
 
-**~93%**
+**~94%**
 
 ## Recently completed
 
@@ -59,6 +59,8 @@ Updated: 2026-09-07
 - Islamic Calendar day selection now exposes the selected Gregorian/Hijri date and its associated event details.
 - Calendar event cards now reflect the selected calendar day instead of always showing the first day of the month.
 - Calendar navigation resets the selected date safely and the Today action restores today's context.
+- Duas/Adhkar detail now supports persistent local favorites without duplicating the mature Adhkar content source.
+- A dedicated favorites screen lists saved Duas/Adhkar and supports removal.
 
 ## Completed foundation
 
@@ -96,7 +98,7 @@ Updated: 2026-09-07
 - Hifz audio integration and richer memorization/review content.
 - Worship analytics/history beyond the current seven-day history view.
 - Calendar event details/context beyond the current built-in occasion set.
-- Duas/Hadith/Sunnah flows/favorites.
+- Hadith reading/content flow and broader Sunnah library integration.
 
 ## Remaining P2
 
