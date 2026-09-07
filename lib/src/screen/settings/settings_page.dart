@@ -3,6 +3,7 @@ import "package:imaanly/src/resources/translation/language_cubit.dart";
 import "package:imaanly/src/resources/translation/languages.dart";
 import "package:imaanly/src/screen/settings/app_language_settings.dart";
 import "package:imaanly/src/screen/settings/notification_settings_page_enhanced.dart";
+import "package:imaanly/src/screen/settings/personalization_settings_page.dart";
 import "package:imaanly/src/screen/settings/widgets/home_widget_studio_screen.dart";
 import "package:imaanly/src/widget/theme/theme_icon_button.dart";
 import "package:flutter/material.dart";
@@ -79,7 +80,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                     padding: EdgeInsets.fromLTRB(16.w, 8.h, 16.w, 32.h),
                     physics: const BouncingScrollPhysics(),
                     children: [
-                      // Language Suggestion Banner (if not Arabic)
                       if (!isArabic)
                         _buildLanguageSuggestionBanner(
                           context,
@@ -88,8 +88,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                           languageState,
                         ),
                       if (!isArabic) Gap(14.h),
-                      
-                      // Theme & Appearance Section
                       _SettingsSectionCard(
                         title: "المظهر العام",
                         icon: Icons.palette_rounded,
@@ -102,8 +100,26 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                         ),
                       ),
                       Gap(14.h),
-                      
-                      // Auto Scroll Settings
+                      _SettingsSectionCard(
+                        title: "التخصيص",
+                        icon: Icons.tune_rounded,
+                        themeState: themeState,
+                        isDark: isDark,
+                        child: _SettingsShortcutTile(
+                          icon: Icons.tune_rounded,
+                          title: "تخصيص تجربة Imaanly",
+                          subtitle: "الصفحة الرئيسية، المظهر، القرآن، الذكر ولوحة العبادة.",
+                          themeState: themeState,
+                          isDark: isDark,
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const PersonalizationSettingsPage(),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Gap(14.h),
                       _SettingsSectionCard(
                         title: "التمرير التلقائي",
                         icon: Icons.auto_mode_rounded,
@@ -112,8 +128,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                         child: _buildAutoScrollSettings(themeState, isDark),
                       ),
                       Gap(14.h),
-                      
-                      // Quick Shortcuts Section
                       _SettingsSectionCard(
                         title: "اختصارات سريعة",
                         icon: Icons.dashboard_customize_rounded,
@@ -167,8 +181,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                         ),
                       ),
                       Gap(14.h),
-
-                      // Reading Modes Section
                       _SettingsSectionCard(
                         title: "أوضاع القراءة",
                         icon: Icons.auto_stories_rounded,
@@ -176,7 +188,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                         isDark: isDark,
                         child: Column(
                           children: [
-                            // Hifz Mode
                             BlocBuilder<HifzCubit, HifzState>(
                               builder: (context, hifzState) {
                                 return _SettingsShortcutTile(
@@ -197,7 +208,6 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                               },
                             ),
                             Gap(10.h),
-                            // Night Reading Mode
                             BlocBuilder<NightReadingCubit, NightReadingState>(
                               builder: (context, nightState) {
                                 return _SettingsShortcutTile(
