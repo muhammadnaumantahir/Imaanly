@@ -36,11 +36,14 @@ Updated: 2026-09-08
 - The prayer-screen Athan action now opens a real picker and user-triggered preview player instead of the previous placeholder-only settings flow.
 - Athan source attribution and browser/platform playback limitations are documented in `docs/ATHAN_AUDIO.md`.
 - Automated tests cover the Athan source catalog and URL integrity.
+- Android notification scheduling now detects whether exact-alarm access is available and falls back to inexact-while-idle scheduling instead of failing on devices where the user has not granted the special access.
+- Added notification-service APIs to request and query Android exact-alarm access.
+- Android manifest now uses the user-granted `SCHEDULE_EXACT_ALARM` permission rather than declaring both exact-alarm permissions.
 
 ## Cross-platform target
 
 - Chrome/Web: Flutter web build is supported; Hifz and Athan audio use `just_audio` web playback and explicit anonymous cross-origin mode for remote audio.
-- Android: Hifz and Athan audio use the same `just_audio` API and HTTPS audio sources.
+- Android: Hifz and Athan audio use the same `just_audio` API and HTTPS audio sources; scheduled notifications gracefully degrade to inexact delivery if exact-alarm access is unavailable.
 - Flutter/Dart shared code: audio URL construction, validation, Hifz state, Athan catalog and analytics are platform-neutral.
 - Real-device/browser testing remains necessary for network/CORS, autoplay policy, audio output, permissions and device-specific behavior.
 
