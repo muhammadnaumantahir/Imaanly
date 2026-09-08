@@ -28,6 +28,8 @@ class HifzAudioService {
   final AudioPlayer _player;
 
   Stream<bool> get playingStream => _player.playingStream;
+  Stream<Duration> get positionStream => _player.positionStream;
+  Stream<Duration?> get durationStream => _player.durationStream;
 
   Future<void> playAyah({required int surahId, required int ayahNumber}) async {
     final url = HifzAudioSource.forAyah(
@@ -46,6 +48,18 @@ class HifzAudioService {
   Future<void> pause() => _player.pause();
 
   Future<void> stop() => _player.stop();
+
+  Future<void> replay() async {
+    await _player.seek(Duration.zero);
+    await _player.play();
+  }
+
+  Future<void> setSpeed(double speed) {
+    if (speed < 0.5 || speed > 2.0) {
+      throw ArgumentError.value(speed, 'speed', 'must be between 0.5 and 2.0');
+    }
+    return _player.setSpeed(speed);
+  }
 
   Future<void> dispose() => _player.dispose();
 }
