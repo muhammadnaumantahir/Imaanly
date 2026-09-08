@@ -39,13 +39,68 @@ class IslamicCalendarService {
   }
 
   static const _events = <String, List<IslamicCalendarEvent>>{
-    '1-1': [IslamicCalendarEvent(title: 'Islamic New Year', description: 'The beginning of a new Hijri year.', icon: '🌙')],
-    '1-10': [IslamicCalendarEvent(title: 'Ashura', description: 'The tenth day of Muharram.', icon: '🌙')],
-    '3-12': [IslamicCalendarEvent(title: 'Mawlid an-Nabi', description: 'A commonly observed date commemorating the birth of Prophet Muhammad ﷺ.', icon: '✨')],
-    '9-1': [IslamicCalendarEvent(title: 'Ramadan begins', description: 'The first day of Ramadan according to the calculated Hijri date.', icon: '🌙')],
-    '9-27': [IslamicCalendarEvent(title: 'Laylat al-Qadr', description: 'The 27th night of Ramadan is traditionally observed by many Muslims.', icon: '✨')],
-    '10-1': [IslamicCalendarEvent(title: 'Eid al-Fitr', description: 'The first day of Shawwal and Eid al-Fitr.', icon: '🎉')],
-    '12-9': [IslamicCalendarEvent(title: 'Day of Arafah', description: 'The ninth day of Dhul Hijjah.', icon: '🕋')],
-    '12-10': [IslamicCalendarEvent(title: 'Eid al-Adha', description: 'The tenth day of Dhul Hijjah and Eid al-Adha.', icon: '🕋')],
+    '1-1': [
+      IslamicCalendarEvent(
+        title: 'Islamic New Year',
+        description: 'The beginning of a new Hijri year. It is a calendar milestone rather than a prescribed annual worship day.',
+        icon: '🌙',
+      ),
+    ],
+    '1-10': [
+      IslamicCalendarEvent(
+        title: 'Ashura',
+        description: 'The tenth day of Muharram. Fasting this day is a well-known Sunnah, with the ninth also encouraged when possible.',
+        icon: '🌙',
+      ),
+    ],
+    '3-12': [
+      IslamicCalendarEvent(
+        title: 'Mawlid an-Nabi',
+        description: 'A date commonly used by some Muslims to commemorate the birth of Prophet Muhammad ﷺ; observance is not universal.',
+        icon: '✨',
+      ),
+    ],
+    '9-1': [
+      IslamicCalendarEvent(
+        title: 'Ramadan begins',
+        description: 'The first day of Ramadan according to the selected calculated Hijri calendar. Local moon sighting can produce a different observance date.',
+        icon: '🌙',
+      ),
+    ],
+    '9-21': [
+      IslamicCalendarEvent(
+        title: 'Last ten nights begin',
+        description: 'The final ten nights of Ramadan begin. They are a special period for increased prayer, Quran recitation, remembrance and seeking Laylat al-Qadr.',
+        icon: '✨',
+      ),
+    ],
+    '9-27': [
+      IslamicCalendarEvent(
+        title: '27th night of Ramadan',
+        description: 'A night commonly highlighted for Laylat al-Qadr. The exact night of Laylat al-Qadr is sought among the last ten nights, especially the odd nights.',
+        icon: '✨',
+      ),
+    ],
+    '10-1': [
+      IslamicCalendarEvent(
+        title: 'Eid al-Fitr',
+        description: 'The first day of Shawwal and Eid al-Fitr, following the completion of Ramadan.',
+        icon: '🎉',
+      ),
+    ],
+    '12-9': [
+      IslamicCalendarEvent(
+        title: 'Day of Arafah',
+        description: 'The ninth day of Dhul Hijjah. It is a major day of worship during Hajj, and fasting it is recommended for those not performing Hajj.',
+        icon: '🕋',
+      ),
+    ],
+    '12-10': [
+      IslamicCalendarEvent(
+        title: 'Eid al-Adha',
+        description: 'The tenth day of Dhul Hijjah and Eid al-Adha, the festival associated with the sacrifice and the Hajj season.',
+        icon: '🕋',
+      ),
+    ],
   };
 }
