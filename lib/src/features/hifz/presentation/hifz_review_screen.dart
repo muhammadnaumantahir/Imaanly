@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../core/di/service_locator.dart';
 import '../../quran/domain/entities/entities.dart';
 import '../../quran/domain/repositories/quran_repository.dart';
+import '../data/hifz_audio_service.dart';
 import '../domain/entities/hifz.dart';
 import 'hifz_bloc.dart';
 
@@ -18,6 +19,7 @@ class HifzReviewScreen extends StatefulWidget {
 class _HifzReviewScreenState extends State<HifzReviewScreen> {
   late final int _totalAyahs;
   late final DateTime _startedAt;
+  late final HifzAudioService _audio;
   int _currentIndex = 0;
   int _correct = 0;
   int _mistakes = 0;
@@ -25,7 +27,9 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
   bool _finished = false;
   bool _revealed = false;
   bool _loadingText = true;
+  bool _loadingAudio = false;
   String? _textError;
+  String? _audioError;
   final Map<int, Ayah> _ayahs = {};
 
   int get _currentAyah => widget.progress.ayahStart + _currentIndex;
@@ -35,7 +39,14 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
     super.initState();
     _totalAyahs = (widget.progress.ayahEnd - widget.progress.ayahStart + 1).clamp(1, 1000).toInt();
     _startedAt = DateTime.now();
+    _audio = HifzAudioService();
     _loadQuranText();
+  }
+
+  @override
+  void dispose() {
+    _audio.dispose();
+    super.dispose();
   }
 
   Future<void> _loadQuranText() async {
@@ -53,11 +64,30 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
     );
   }
 
+  Future<void> _toggleAudio() async {
+    if (_loadingText || _finished) return;
+    setState(() { _loadingAudio = true; _audioError = null; });
+    try {
+      await _audio.playAyah(surahId: widget.progress.surahId, ayahNumber: _currentAyah);
+    } catch (error) {
+      if (mounted) setState(() => _audioError = 'Audio could not be played. Check your connection and try again.');
+    } finally {
+      if (mounted) setState(() => _loadingAudio = false);
+    }
+  }
+
+  Future<void> _pauseAudio() async {
+    await _audio.pause();
+    if (mounted) setState(() {});
+  }
+
   void _mark(bool correct) {
     if (_finished) return;
+    _audio.stop();
     setState(() {
       if (correct) { _correct++; } else { _mistakes++; }
       _revealed = false;
+      _audioError = null;
       if (_currentIndex + 1 >= _totalAyahs) { _finished = true; } else { _currentIndex++; }
     });
     if (_finished) _finish();
@@ -69,6 +99,7 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
   }
 
   Future<void> _finish() async {
+    await _audio.stop();
     final accuracy = _correct / _totalAyahs;
     final mastery = accuracy >= .85 ? HifzMasteryLevel.mastered : accuracy >= .60 ? HifzMasteryLevel.confident : accuracy >= .30 ? HifzMasteryLevel.familiar : HifzMasteryLevel.learning;
     final reviewedAt = DateTime.now();
@@ -107,7 +138,14 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
         else if (_revealed && ayah != null) Card(child: Padding(padding: const EdgeInsets.all(16), child: Text(ayah.textUthmani, textAlign: TextAlign.right, textDirection: TextDirection.rtl, style: Theme.of(context).textTheme.titleLarge?.copyWith(height: 2))))
         else if (_hints > 0 && ayah != null) Text('Hint: ${ayah.textUthmani.trim().split(RegExp(r'\s+')).take(5).join(' ')} …', textDirection: TextDirection.rtl, textAlign: TextAlign.center),
         const SizedBox(height: 16),
-        OutlinedButton.icon(onPressed: _loadingText ? null : () => setState(() => _revealed = !_revealed), icon: Icon(_revealed ? Icons.visibility_off_outlined : Icons.menu_book_outlined), label: Text(_revealed ? 'Hide ayah' : 'Reveal Mushaf')),
+        Wrap(alignment: WrapAlignment.center, spacing: 8, children: [
+          OutlinedButton.icon(onPressed: _loadingText ? null : () => setState(() => _revealed = !_revealed), icon: Icon(_revealed ? Icons.visibility_off_outlined : Icons.menu_book_outlined), label: Text(_revealed ? 'Hide ayah' : 'Reveal Mushaf')),
+          StreamBuilder<bool>(stream: _audio.playingStream, initialData: false, builder: (context, snapshot) {
+            final playing = snapshot.data ?? false;
+            return OutlinedButton.icon(onPressed: _loadingAudio ? null : (playing ? _pauseAudio : _toggleAudio), icon: _loadingAudio ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)) : Icon(playing ? Icons.pause_rounded : Icons.volume_up_rounded), label: Text(playing ? 'Pause audio' : 'Play audio'));
+          }),
+        ]),
+        if (_audioError != null) Padding(padding: const EdgeInsets.only(top: 8), child: Text(_audioError!, textAlign: TextAlign.center, style: TextStyle(color: Theme.of(context).colorScheme.error))),
         OutlinedButton.icon(onPressed: _hint, icon: const Icon(Icons.lightbulb_outline), label: Text(_hints == 0 ? 'Need a hint' : 'Hint used ($_hints)')),
         const SizedBox(height: 12),
         Row(children: [Expanded(child: FilledButton.icon(onPressed: () => _mark(false), icon: const Icon(Icons.close_rounded), label: const Text('Mistake'))), const SizedBox(width: 12), Expanded(child: FilledButton.icon(onPressed: () => _mark(true), icon: const Icon(Icons.check_rounded), label: const Text('Correct')))]),
