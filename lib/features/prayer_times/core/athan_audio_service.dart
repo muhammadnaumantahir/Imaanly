@@ -46,6 +46,7 @@ class AthanAudioService {
     if (_player.playing) {
       await _player.stop();
     }
+    await _player.setWebCrossOrigin(WebCrossOrigin.anonymous);
     await _player.setUrl(athan.url);
     await _player.play();
   }
