@@ -1,14 +1,34 @@
 import 'package:just_audio/just_audio.dart';
 
+enum HifzReciter {
+  abdulBasetMujawwad(
+    'AbdulBaset AbdulSamad — Mujawwad',
+    'AbdulBaset/Mujawwad',
+  ),
+  alafasy(
+    'Mishary Rashid al-Afasy',
+    'Alafasy',
+  );
+
+  const HifzReciter(this.label, this.pathPrefix);
+
+  final String label;
+  final String pathPrefix;
+}
+
 /// Resolves and plays a single ayah recitation for Hifz review.
 ///
-/// The default source uses the documented Quran Foundation verse-audio
-/// resource shape. Keeping URL construction here makes the review UI
-/// independent from the audio provider and makes it easy to replace later.
+/// The default source uses Quran Foundation's documented verse-audio URL
+/// shape. Keeping URL construction here makes the review UI independent from
+/// the audio provider and makes reciter selection easy to extend later.
 class HifzAudioSource {
   const HifzAudioSource._();
 
-  static String forAyah({required int surahId, required int ayahNumber}) {
+  static String forAyah({
+    required int surahId,
+    required int ayahNumber,
+    HifzReciter reciter = HifzReciter.abdulBasetMujawwad,
+  }) {
     if (surahId < 1 || surahId > 114) {
       throw ArgumentError.value(surahId, 'surahId', 'must be between 1 and 114');
     }
@@ -18,7 +38,7 @@ class HifzAudioSource {
 
     final surah = surahId.toString().padLeft(3, '0');
     final ayah = ayahNumber.toString().padLeft(3, '0');
-    return 'https://verses.quran.foundation/AbdulBaset/Mujawwad/mp3/$surah$ayah.mp3';
+    return 'https://verses.quran.foundation/${reciter.pathPrefix}/mp3/$surah$ayah.mp3';
   }
 }
 
@@ -31,10 +51,15 @@ class HifzAudioService {
   Stream<Duration> get positionStream => _player.positionStream;
   Stream<Duration?> get durationStream => _player.durationStream;
 
-  Future<void> playAyah({required int surahId, required int ayahNumber}) async {
+  Future<void> playAyah({
+    required int surahId,
+    required int ayahNumber,
+    HifzReciter reciter = HifzReciter.abdulBasetMujawwad,
+  }) async {
     final url = HifzAudioSource.forAyah(
       surahId: surahId,
       ayahNumber: ayahNumber,
+      reciter: reciter,
     );
 
     // HTML audio requires an explicit cross-origin mode when the source is
