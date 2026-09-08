@@ -30,10 +30,30 @@ class LocalNotificationService {
 
   Future<bool> requestPermissions() async {
     await initialize();
-    final androidGranted = await _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>()?.requestNotificationsPermission();
+    final android = _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+    final androidGranted = await android?.requestNotificationsPermission();
     final iosGranted = await _plugin.resolvePlatformSpecificImplementation<IOSFlutterLocalNotificationsPlugin>()?.requestPermissions(alert: true, badge: true, sound: true);
     final macGranted = await _plugin.resolvePlatformSpecificImplementation<MacOSFlutterLocalNotificationsPlugin>()?.requestPermissions(alert: true, badge: true, sound: true);
     return androidGranted ?? iosGranted ?? macGranted ?? true;
+  }
+
+  /// Requests Android's user-controlled "Alarms & reminders" access.
+  /// Returns true when exact alarms are available, and true on non-Android
+  /// platforms where this permission does not apply.
+  Future<bool> requestExactAlarmPermission() async {
+    await initialize();
+    final android = _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+    if (android == null) return true;
+    final alreadyAllowed = await android.canScheduleExactNotifications();
+    if (alreadyAllowed == true) return true;
+    return await android.requestExactAlarmsPermission() ?? false;
+  }
+
+  Future<bool> canScheduleExactAlarms() async {
+    await initialize();
+    final android = _plugin.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+    if (android == null) return true;
+    return await android.canScheduleExactNotifications() ?? false;
   }
 
   Future<void> deliver(SmartNotificationCandidate candidate) async {
@@ -51,14 +71,14 @@ class LocalNotificationService {
       macOS: DarwinNotificationDetails(presentSound: !silent),
       linux: const LinuxNotificationDetails(urgency: LinuxNotificationUrgency.normal),
     );
-    await _plugin.zonedSchedule(_prayerNotificationId(prayerName, prayerAt), '$prayerName is approaching', reminderMinutes <= 0 ? 'It is time for $prayerName.' : '$prayerName begins in $reminderMinutes minutes.', tz.TZDateTime.from(scheduledAt, tz.local), details, androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle, payload: 'prayer:${prayerName.toLowerCase()}');
+    await _schedule(zonedDate: tz.TZDateTime.from(scheduledAt, tz.local), id: _prayerNotificationId(prayerName, prayerAt), title: '$prayerName is approaching', body: reminderMinutes <= 0 ? 'It is time for $prayerName.' : '$prayerName begins in $reminderMinutes minutes.', details: details, payload: 'prayer:${prayerName.toLowerCase()}');
   }
 
   Future<void> scheduleGenericReminder({required String title, required String body, required DateTime scheduledAt}) async {
     await initialize();
     if (!scheduledAt.isAfter(DateTime.now())) return;
     final id = _stableHash('generic:$title:${scheduledAt.toIso8601String()}');
-    await _plugin.zonedSchedule(id, title, body, tz.TZDateTime.from(scheduledAt, tz.local), _details(), androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle, payload: 'generic_reminder');
+    await _schedule(zonedDate: tz.TZDateTime.from(scheduledAt, tz.local), id: id, title: title, body: body, details: _details(), payload: 'generic_reminder');
   }
 
   /// Schedule a reminder at the same local clock time every day.
@@ -67,7 +87,13 @@ class LocalNotificationService {
     final now = tz.TZDateTime.now(tz.local);
     var next = tz.TZDateTime(tz.local, now.year, now.month, now.day, time.hour, time.minute);
     if (!next.isAfter(now)) next = next.add(const Duration(days: 1));
-    await _plugin.zonedSchedule(id, title, body, next, _details(), androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle, matchDateTimeComponents: DateTimeComponents.time, payload: 'dhikr_daily_reminder');
+    final exact = await canScheduleExactAlarms();
+    await _plugin.zonedSchedule(id, title, body, next, _details(), androidScheduleMode: exact ? AndroidScheduleMode.exactAllowWhileIdle : AndroidScheduleMode.inexactAllowWhileIdle, matchDateTimeComponents: DateTimeComponents.time, payload: 'dhikr_daily_reminder');
+  }
+
+  Future<void> _schedule({required tz.TZDateTime zonedDate, required int id, required String title, required String body, required NotificationDetails details, required String payload}) async {
+    final exact = await canScheduleExactAlarms();
+    await _plugin.zonedSchedule(id, title, body, zonedDate, details, androidScheduleMode: exact ? AndroidScheduleMode.exactAllowWhileIdle : AndroidScheduleMode.inexactAllowWhileIdle, payload: payload);
   }
 
   Future<void> cancel(int id) async {
