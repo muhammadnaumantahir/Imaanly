@@ -20,6 +20,7 @@ Updated: 2026-09-08
 - Hifz review can reveal local Mushaf text and limited Arabic hints.
 - Hifz review now has ayah-level recitation playback with pause/stop lifecycle and provider-isolated URL construction.
 - Hifz audio is hardened for Flutter web with explicit anonymous cross-origin configuration while keeping the same service API for Android.
+- Hifz review now supports replay, playback speed selection and basic playback progress feedback.
 - Worship seven-day history and dashboard access.
 - Worship analytics can now aggregate daily summaries over arbitrary date ranges.
 - Fasting tracker now supports editable private journal notes and persisted daily reminder settings/time.
