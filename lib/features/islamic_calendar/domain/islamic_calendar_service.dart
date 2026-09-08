@@ -88,6 +88,13 @@ class IslamicCalendarService {
         icon: '🎉',
       ),
     ],
+    '12-1': [
+      IslamicCalendarEvent(
+        title: 'First ten days of Dhul Hijjah',
+        description: 'The first ten days of Dhul Hijjah are a virtuous season for increased remembrance, good deeds and worship.',
+        icon: '🕋',
+      ),
+    ],
     '12-9': [
       IslamicCalendarEvent(
         title: 'Day of Arafah',
@@ -99,6 +106,27 @@ class IslamicCalendarService {
       IslamicCalendarEvent(
         title: 'Eid al-Adha',
         description: 'The tenth day of Dhul Hijjah and Eid al-Adha, the festival associated with the sacrifice and the Hajj season.',
+        icon: '🕋',
+      ),
+    ],
+    '12-11': [
+      IslamicCalendarEvent(
+        title: 'Days of Tashreeq',
+        description: 'The eleventh day of Dhul Hijjah, part of the Days of Tashreeq when pilgrims continue the rites of Hajj and remembrance is emphasized.',
+        icon: '🕋',
+      ),
+    ],
+    '12-12': [
+      IslamicCalendarEvent(
+        title: 'Days of Tashreeq',
+        description: 'The twelfth day of Dhul Hijjah, one of the Days of Tashreeq. Remembrance of Allah is emphasized during these days.',
+        icon: '🕋',
+      ),
+    ],
+    '12-13': [
+      IslamicCalendarEvent(
+        title: 'Last Day of Tashreeq',
+        description: 'The thirteenth day of Dhul Hijjah and the final Day of Tashreeq, after which the Hajj season rites move beyond these designated days.',
         icon: '🕋',
       ),
     ],
