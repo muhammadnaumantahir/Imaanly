@@ -34,6 +34,11 @@ class HifzAudioService {
       surahId: surahId,
       ayahNumber: ayahNumber,
     );
+
+    // HTML audio requires an explicit cross-origin mode when the source is
+    // hosted on another origin. just_audio ignores this setting on platforms
+    // where it does not apply, while the web implementation uses it for CORS.
+    await _player.setWebCrossOrigin(WebCrossOrigin.anonymous);
     await _player.setUrl(url);
     await _player.play();
   }
