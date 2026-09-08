@@ -26,6 +26,7 @@ Updated: 2026-09-08
 - Worship dashboard now surfaces a 30-day analytics summary with active days, Salah completion, Quran pages and Dhikr totals/averages.
 - Fasting tracker now supports editable private journal notes and persisted daily reminder settings/time.
 - Islamic Calendar day selection and selected-day event details with expanded context for Ramadan, the last ten nights, Laylat al-Qadr, Eid, Arafah and Ashura.
+- Islamic Calendar now also covers the first ten days of Dhul Hijjah, Arafah, Eid al-Adha and the Days of Tashreeq.
 - Offline Hadith catalog with searchable reading screen.
 - Offline Sunnah & adab starter catalog with searchable reading screen and references.
 - Hadith and Sunnah entries integrated into the Islamic Knowledge hub.
