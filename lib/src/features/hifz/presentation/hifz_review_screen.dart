@@ -25,6 +25,7 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
   int _mistakes = 0;
   int _hints = 0;
   double _speed = 1.0;
+  HifzReciter _reciter = HifzReciter.abdulBasetMujawwad;
   bool _finished = false;
   bool _revealed = false;
   bool _loadingText = true;
@@ -69,7 +70,7 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
     if (_loadingText || _finished) return;
     setState(() { _loadingAudio = true; _audioError = null; });
     try {
-      await _audio.playAyah(surahId: widget.progress.surahId, ayahNumber: _currentAyah);
+      await _audio.playAyah(surahId: widget.progress.surahId, ayahNumber: _currentAyah, reciter: _reciter);
       await _audio.setSpeed(_speed);
     } catch (_) {
       if (mounted) setState(() => _audioError = 'Audio could not be played. Check your connection and try again.');
@@ -98,6 +99,15 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
       await _audio.setSpeed(speed);
     } catch (_) {
       // Speed is a player preference; an unavailable player should not break review.
+    }
+  }
+
+  Future<void> _changeReciter(HifzReciter reciter) async {
+    if (_reciter == reciter) return;
+    setState(() { _reciter = reciter; _audioError = null; });
+    if (_audio.playing) {
+      await _audio.stop();
+      if (mounted) await _toggleAudio();
     }
   }
 
@@ -175,6 +185,7 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
               OutlinedButton.icon(onPressed: _loadingAudio ? null : (playing ? _pauseAudio : _toggleAudio), icon: _loadingAudio ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)) : Icon(playing ? Icons.pause_rounded : Icons.volume_up_rounded), label: Text(playing ? 'Pause' : 'Play audio')),
               OutlinedButton.icon(onPressed: _loadingAudio || !playing ? _replayAudio : _replayAudio, icon: const Icon(Icons.replay_rounded), label: const Text('Replay')),
               DropdownButton<double>(value: _speed, underline: const SizedBox.shrink(), items: const [0.75, 1.0, 1.25, 1.5].map((speed) => DropdownMenuItem(value: speed, child: Text('${speed}x'))).toList(), onChanged: (value) { if (value != null) _changeSpeed(value); }),
+              DropdownButton<HifzReciter>(value: _reciter, underline: const SizedBox.shrink(), items: HifzReciter.values.map((reciter) => DropdownMenuItem(value: reciter, child: Text(reciter.label, overflow: TextOverflow.ellipsis))).toList(), onChanged: _loadingAudio ? null : (value) { if (value != null) _changeReciter(value); }),
             ]),
           ]);
         }),
