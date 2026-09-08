@@ -217,3 +217,109 @@ class MyApp extends StatelessWidget {
             builder: (context, themeState) => ScreenUtilInit(
               designSize: const Size(360, 690),
               minTextAdapt: true,
+              splitScreenMode: true,
+              builder: (_, child) => MaterialApp(
+                navigatorKey: navigatorKey,
+                debugShowCheckedModeBanner: false,
+                locale: languageState.locale,
+                localizationsDelegates: const [AppLocalizations.delegate, GlobalMaterialLocalizations.delegate, GlobalWidgetsLocalizations.delegate, GlobalCupertinoLocalizations.delegate],
+                supportedLocales: AppLocalizations.supportedLocales,
+                onGenerateTitle: (_) => "Imaanly",
+                theme: AppTheme.lightTheme().copyWith(pageTransitionsTheme: pageTransitionsTheme, textTheme: getTextTheme(languageState.locale, false)),
+                darkTheme: AppTheme.darkTheme().copyWith(pageTransitionsTheme: pageTransitionsTheme, textTheme: getTextTheme(languageState.locale, true)),
+                themeMode: themeState.themeMode,
+                builder: (context, child) => _FullscreenEnforcer(child: _AudioPlayerBridgeBinder(child: child ?? const SizedBox.shrink())),
+                scrollBehavior: AppScrollBehavior(),
+                home: const ImaanlyHomeShell(),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ImaanlyHomeShell extends StatelessWidget {
+  const ImaanlyHomeShell({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: const ImaanlyHomePage(),
+      floatingActionButton: FloatingActionButton.small(
+        heroTag: 'knowledge-launcher',
+        tooltip: 'Islamic Knowledge',
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(builder: (_) => const IslamicKnowledgeScreen()),
+        ),
+        child: const Icon(Icons.school_outlined),
+      ),
+    );
+  }
+}
+
+class _UsageTimeTracker extends StatefulWidget {
+  const _UsageTimeTracker({required this.child});
+  final Widget child;
+  @override State<_UsageTimeTracker> createState() => _UsageTimeTrackerState();
+}
+
+class _UsageTimeTrackerState extends State<_UsageTimeTracker> with WidgetsBindingObserver {
+  static const _kUsageSeconds = "usage_time_seconds";
+  DateTime? _sessionStart;
+  @override void initState() { super.initState(); WidgetsBinding.instance.addObserver(this); _sessionStart = DateTime.now(); WidgetsBinding.instance.addPostFrameCallback((_) => _checkPendingSunnahPage()); }
+  @override void dispose() { WidgetsBinding.instance.removeObserver(this); _saveSession(); super.dispose(); }
+  @override void didChangeAppLifecycleState(AppLifecycleState state) { if (state == AppLifecycleState.paused || state == AppLifecycleState.detached) _saveSession(); if (state == AppLifecycleState.resumed) _sessionStart = DateTime.now(); }
+  Future<void> _saveSession() async { final start = _sessionStart; if (start == null) return; final elapsed = DateTime.now().difference(start).inSeconds; if (elapsed <= 0) return; _sessionStart = DateTime.now(); final prefs = await SharedPreferences.getInstance(); await prefs.setInt(_kUsageSeconds, (prefs.getInt(_kUsageSeconds) ?? 0) + elapsed); }
+  Future<void> _checkPendingSunnahPage() async {}
+  @override Widget build(BuildContext context) => widget.child;
+}
+
+class AppScrollBehavior extends MaterialScrollBehavior {
+  @override Set<PointerDeviceKind> get dragDevices => {PointerDeviceKind.touch, PointerDeviceKind.mouse, PointerDeviceKind.trackpad, PointerDeviceKind.stylus};
+}
+
+class _AudioPlayerBridgeBinder extends StatefulWidget {
+  const _AudioPlayerBridgeBinder({required this.child});
+  final Widget child;
+  @override State<_AudioPlayerBridgeBinder> createState() => _AudioPlayerBridgeBinderState();
+}
+
+class _AudioPlayerBridgeBinderState extends State<_AudioPlayerBridgeBinder> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted) return;
+      final bridge = BlocAudioPlayerUiBridge(
+        context: context,
+        audioUiCubit: context.read<AudioUiCubit>(),
+        playerPositionCubit: context.read<PlayerPositionCubit>(),
+        playerStateCubit: context.read<PlayerStateCubit>(),
+        ayahKeyCubit: context.read<AyahKeyCubit>(),
+        quranViewCubit: context.read<QuranViewCubit>(),
+        wordPlayingStateCubit: context.read<WordPlayingStateCubit>(),
+        highlightCubit: context.read<AudioAyahHighlightCubit>(),
+        reciterCubit: context.read<SegmentedQuranReciterCubit>(),
+        ayahToHighlight: context.read<AyahToHighlight>(),
+      );
+      AudioPlayerManager.bindUiBridge(bridge);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) => widget.child;
+}
+
+class _FullscreenEnforcer extends StatelessWidget {
+  const _FullscreenEnforcer({required this.child});
+  final Widget child;
+  @override Widget build(BuildContext context) { SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky); return child; }
+}
+
+class _FatalErrorScreen extends StatelessWidget {
+  const _FatalErrorScreen({required this.error});
+  final Object error;
+  @override Widget build(BuildContext context) => Scaffold(body: Center(child: Padding(padding: const EdgeInsets.all(24), child: Text("Imaanly could not start.\n\n$error", textAlign: TextAlign.center))));
+}
