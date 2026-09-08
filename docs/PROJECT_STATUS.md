@@ -19,13 +19,22 @@ Updated: 2026-09-08
 - Hifz scheduling, interactive review, scoring, persistence, mastery and new memorization ranges.
 - Hifz review can reveal local Mushaf text and limited Arabic hints.
 - Hifz review now has ayah-level recitation playback with pause/stop lifecycle and provider-isolated URL construction.
+- Hifz audio is hardened for Flutter web with explicit anonymous cross-origin configuration while keeping the same service API for Android.
 - Worship seven-day history and dashboard access.
+- Worship analytics can now aggregate daily summaries over arbitrary date ranges.
 - Fasting tracker now supports editable private journal notes and persisted daily reminder settings/time.
 - Islamic Calendar day selection and selected-day event details.
 - Offline Hadith catalog with searchable reading screen.
 - Offline Sunnah & adab starter catalog with searchable reading screen and references.
 - Hadith and Sunnah entries integrated into the Islamic Knowledge hub.
 - Flutter CI is configured to analyze and test every push/PR on main.
+
+## Cross-platform target
+
+- Chrome/Web: Flutter web build is supported; Hifz audio uses `just_audio` web playback and explicit anonymous cross-origin mode for remote audio.
+- Android: Hifz audio uses the same `just_audio` API and HTTPS audio source.
+- Flutter/Dart shared code: audio URL construction, validation, Hifz state and analytics are platform-neutral.
+- Real-device/browser testing remains necessary for network/CORS, autoplay policy, audio output, permissions and device-specific behavior.
 
 ## Completed foundation
 
@@ -52,11 +61,12 @@ Updated: 2026-09-08
 - Real-device verification of exact alarms, reboot rescheduling and battery optimization.
 - Actual Athan audio selection/playback.
 - Device-level prayer/Qibla/location QA.
+- Verify Hifz remote audio playback in Chrome and Android against the live recitation host.
 
 ## Remaining P1
 
-- Hifz richer memorization/review content beyond the current text, hints and ayah audio playback.
-- Worship analytics/history beyond seven-day history.
+- Richer Hifz memorization/review content and additional audio controls/reciter selection.
+- Worship analytics UI beyond the current repository/domain aggregation.
 - Calendar event details/context beyond the current built-in occasion set.
 - Expand Hadith/Sunnah catalogs into a larger properly sourced, maintainable corpus.
 
