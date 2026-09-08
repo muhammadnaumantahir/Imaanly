@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../notifications/services/local_notification_service.dart';
 import '../../core/athan_audio_service.dart';
 import '../../core/theme/prayer_theme_colors.dart';
 import '../../core/theme/prayer_dimensions.dart';
@@ -81,8 +82,8 @@ class _QuickActionButton extends StatefulWidget {
   const _QuickActionButton({
     required this.icon,
     required this.label,
-    required this.color,
     required this.isDark,
+    this.color = Colors.white,
     this.onTap,
     this.isAthan = false,
   });
@@ -119,7 +120,79 @@ class _QuickActionButtonState extends State<_QuickActionButton>
       await _showAthanPicker(context);
       return;
     }
+    if (widget.label == 'إعدادات الصلاة') {
+      await _ensureExactAlarmAccess(context);
+    }
     widget.onTap?.call();
+  }
+
+  Future<void> _ensureExactAlarmAccess(BuildContext context) async {
+    final service = LocalNotificationService.instance;
+    final available = await service.canScheduleExactAlarms();
+    if (!context.mounted || available) return;
+
+    await showDialog<void>(
+      context: context,
+      builder: (dialogContext) {
+        final isDark = Theme.of(dialogContext).brightness == Brightness.dark;
+        return AlertDialog(
+          title: Row(
+            children: [
+              Icon(Icons.alarm_rounded, color: PrayerThemeColors.green),
+              SizedBox(width: PrayerDimensions.space8),
+              Expanded(
+                child: Text(
+                  'تفعيل التنبيهات الدقيقة',
+                  style: PrayerTextStyles.arabicLabel(
+                    color: PrayerThemeColors.getTextColor('primary', isDark),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          content: Text(
+            'للحصول على تنبيهات الصلاة في وقتها بدقة على Android، اسمح لـ Imaanly بإرسال المنبهات والتذكيرات من إعدادات النظام. إذا لم تمنح الإذن، سيستمر التطبيق باستخدام تنبيهات غير دقيقة عند الحاجة.',
+            textAlign: TextAlign.right,
+            style: PrayerTextStyles.arabicBody(
+              color: PrayerThemeColors.getTextColor('secondary', isDark),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(dialogContext),
+              child: Text(
+                'لاحقاً',
+                style: PrayerTextStyles.arabicLabel(
+                  color: PrayerThemeColors.textMuted,
+                ),
+              ),
+            ),
+            ElevatedButton.icon(
+              onPressed: () async {
+                final granted = await service.requestExactAlarmPermission();
+                if (!dialogContext.mounted) return;
+                Navigator.pop(dialogContext);
+                if (!granted && context.mounted) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('لم يتم تفعيل صلاحية التنبيهات الدقيقة.'),
+                    ),
+                  );
+                }
+              },
+              icon: const Icon(Icons.open_in_new_rounded),
+              label: Text(
+                'تفعيل',
+                style: PrayerTextStyles.arabicLabel(color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: PrayerThemeColors.green,
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Future<void> _showAthanPicker(BuildContext context) async {
