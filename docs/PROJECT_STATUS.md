@@ -4,7 +4,7 @@ Updated: 2026-09-08
 
 ## Overall completion
 
-**~96%**
+**~97%**
 
 ## Recently completed
 
@@ -18,13 +18,14 @@ Updated: 2026-09-08
 - Quran reader restores persisted position and navigation progress.
 - Hifz scheduling, interactive review, scoring, persistence, mastery and new memorization ranges.
 - Hifz review can reveal local Mushaf text and limited Arabic hints.
+- Hifz review now has ayah-level recitation playback with pause/stop lifecycle and provider-isolated URL construction.
 - Worship seven-day history and dashboard access.
 - Fasting tracker now supports editable private journal notes and persisted daily reminder settings/time.
 - Islamic Calendar day selection and selected-day event details.
 - Offline Hadith catalog with searchable reading screen.
 - Offline Sunnah & adab starter catalog with searchable reading screen and references.
 - Hadith and Sunnah entries integrated into the Islamic Knowledge hub.
-- Flutter CI is green on the current main commit after making Dhikr persistence tests platform-independent and updating the Knowledge catalog test contract.
+- Flutter CI is configured to analyze and test every push/PR on main.
 
 ## Completed foundation
 
@@ -54,7 +55,7 @@ Updated: 2026-09-08
 
 ## Remaining P1
 
-- Hifz audio integration and richer memorization/review content.
+- Hifz richer memorization/review content beyond the current text, hints and ayah audio playback.
 - Worship analytics/history beyond seven-day history.
 - Calendar event details/context beyond the current built-in occasion set.
 - Expand Hadith/Sunnah catalogs into a larger properly sourced, maintainable corpus.
