@@ -4,7 +4,7 @@ Updated: 2026-09-08
 
 ## Overall completion
 
-**~98%**
+**~98.5%**
 
 ## Recently completed
 
@@ -31,12 +31,16 @@ Updated: 2026-09-08
 - Offline Sunnah & adab starter catalog with searchable reading screen and references.
 - Hadith and Sunnah entries integrated into the Islamic Knowledge hub.
 - Flutter CI is configured to analyze and test every push/PR on main.
+- Cross-platform Athan audio service added with five real HTTPS MP3 recordings, one for each daily prayer.
+- Athan web playback is explicitly configured for anonymous cross-origin audio loading.
+- Athan source attribution and browser/platform playback limitations are documented in `docs/ATHAN_AUDIO.md`.
+- Automated tests cover the Athan source catalog and URL integrity.
 
 ## Cross-platform target
 
-- Chrome/Web: Flutter web build is supported; Hifz audio uses `just_audio` web playback and explicit anonymous cross-origin mode for remote audio.
-- Android: Hifz audio uses the same `just_audio` API and HTTPS audio source.
-- Flutter/Dart shared code: audio URL construction, validation, Hifz state and analytics are platform-neutral.
+- Chrome/Web: Flutter web build is supported; Hifz and Athan audio use `just_audio` web playback and explicit anonymous cross-origin mode for remote audio.
+- Android: Hifz and Athan audio use the same `just_audio` API and HTTPS audio sources.
+- Flutter/Dart shared code: audio URL construction, validation, Hifz state, Athan catalog and analytics are platform-neutral.
 - Real-device/browser testing remains necessary for network/CORS, autoplay policy, audio output, permissions and device-specific behavior.
 
 ## Completed foundation
@@ -61,8 +65,9 @@ Updated: 2026-09-08
 
 ## Remaining P0
 
+- Connect the new Athan service to the existing prayer settings UI so users can choose and preview a recording from the app.
+- Android scheduled/full Athan playback needs device-level background execution and exact-alarm validation; web browsers cannot guarantee unattended autoplay.
 - Real-device verification of exact alarms, reboot rescheduling and battery optimization.
-- Actual Athan audio selection/playback.
 - Device-level prayer/Qibla/location QA.
 - Verify Hifz remote audio playback in Chrome and Android against the live recitation host.
 
