@@ -94,4 +94,46 @@ void main() {
     expect(summary.dhikrCount, 23);
     expect(summary.dhikrGoal, 66);
   });
+
+  test('ranged analytics includes every calendar day in the requested range', () async {
+    final backend = MemoryWorshipActivityBackend();
+    final repository = WorshipActivityRepository(backend);
+    final start = DateTime(2026, 9, 1);
+    final end = DateTime(2026, 9, 3);
+
+    await repository.record(
+      WorshipActivity.salah(prayer: 'Fajr', completedAt: DateTime(2026, 9, 1, 5)),
+    );
+    await repository.record(
+      WorshipActivity.salah(prayer: 'Dhuhr', completedAt: DateTime(2026, 9, 2, 13)),
+    );
+    await repository.record(
+      WorshipActivity.quranPages(pages: 4, recordedAt: DateTime(2026, 9, 3)),
+    );
+
+    final summaries = await repository.getDailySummaries(start: start, end: end);
+    final analytics = await repository.getAnalytics(start: start, end: end);
+
+    expect(summaries.length, 3);
+    expect(summaries.first.prayersCompleted, 1);
+    expect(summaries.last.quranPages, 4);
+    expect(analytics.days, 3);
+    expect(analytics.activeDays, 3);
+    expect(analytics.prayerCompletions, 2);
+    expect(analytics.prayerCompletionRate, closeTo(2 / 15, 0.0001));
+    expect(analytics.quranPages, 4);
+    expect(analytics.averageQuranPages, closeTo(4 / 3, 0.0001));
+  });
+
+  test('ranged analytics rejects an inverted date range', () async {
+    final repository = WorshipActivityRepository(MemoryWorshipActivityBackend());
+
+    expect(
+      () => repository.getAnalytics(
+        start: DateTime(2026, 9, 3),
+        end: DateTime(2026, 9, 1),
+      ),
+      throwsArgumentError,
+    );
+  });
 }
