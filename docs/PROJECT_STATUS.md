@@ -4,7 +4,7 @@ Updated: 2026-09-08
 
 ## Overall completion
 
-**~98.5%**
+**~99%**
 
 ## Recently completed
 
@@ -33,6 +33,7 @@ Updated: 2026-09-08
 - Flutter CI is configured to analyze and test every push/PR on main.
 - Cross-platform Athan audio service added with five real HTTPS MP3 recordings, one for each daily prayer.
 - Athan web playback is explicitly configured for anonymous cross-origin audio loading.
+- The prayer-screen Athan action now opens a real picker and user-triggered preview player instead of the previous placeholder-only settings flow.
 - Athan source attribution and browser/platform playback limitations are documented in `docs/ATHAN_AUDIO.md`.
 - Automated tests cover the Athan source catalog and URL integrity.
 
@@ -65,7 +66,6 @@ Updated: 2026-09-08
 
 ## Remaining P0
 
-- Connect the new Athan service to the existing prayer settings UI so users can choose and preview a recording from the app.
 - Android scheduled/full Athan playback needs device-level background execution and exact-alarm validation; web browsers cannot guarantee unattended autoplay.
 - Real-device verification of exact alarms, reboot rescheduling and battery optimization.
 - Device-level prayer/Qibla/location QA.
