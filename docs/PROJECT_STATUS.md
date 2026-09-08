@@ -4,7 +4,7 @@ Updated: 2026-09-08
 
 ## Overall completion
 
-**~97%**
+**~98%**
 
 ## Recently completed
 
@@ -23,6 +23,7 @@ Updated: 2026-09-08
 - Hifz review now supports replay, playback speed selection and basic playback progress feedback.
 - Worship seven-day history and dashboard access.
 - Worship analytics can now aggregate daily summaries over arbitrary date ranges.
+- Worship dashboard now surfaces a 30-day analytics summary with active days, Salah completion, Quran pages and Dhikr totals/averages.
 - Fasting tracker now supports editable private journal notes and persisted daily reminder settings/time.
 - Islamic Calendar day selection and selected-day event details.
 - Offline Hadith catalog with searchable reading screen.
@@ -66,8 +67,7 @@ Updated: 2026-09-08
 
 ## Remaining P1
 
-- Richer Hifz memorization/review content and additional audio controls/reciter selection.
-- Worship analytics UI beyond the current repository/domain aggregation.
+- Richer Hifz memorization/review content and additional reciter selection.
 - Calendar event details/context beyond the current built-in occasion set.
 - Expand Hadith/Sunnah catalogs into a larger properly sourced, maintainable corpus.
 
