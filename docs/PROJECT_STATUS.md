@@ -1,6 +1,6 @@
 # Imaanly Project Status
 
-Updated: 2026-09-07
+Updated: 2026-09-08
 
 ## Overall completion
 
@@ -24,6 +24,7 @@ Updated: 2026-09-07
 - Offline Hadith catalog with searchable reading screen.
 - Offline Sunnah & adab starter catalog with searchable reading screen and references.
 - Hadith and Sunnah entries integrated into the Islamic Knowledge hub.
+- Flutter CI is green on the current main commit after making Dhikr persistence tests platform-independent and updating the Knowledge catalog test contract.
 
 ## Completed foundation
 
