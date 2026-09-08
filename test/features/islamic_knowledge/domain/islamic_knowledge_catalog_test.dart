@@ -2,10 +2,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:imaanly/src/features/islamic_knowledge/domain/islamic_knowledge_catalog.dart';
 
 void main() {
-  test('catalog exposes the core knowledge sections in a stable order', () {
+  test('catalog exposes knowledge sections in a stable order', () {
     expect(
       IslamicKnowledgeCatalog.sections.map((section) => section.id).toList(),
-      ['tafsir', 'quran_topics', 'worship', 'collections'],
+      ['tafsir', 'hadith', 'sunnah', 'quran_topics', 'worship', 'collections'],
     );
   });
 
