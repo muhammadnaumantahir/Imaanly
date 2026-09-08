@@ -39,6 +39,7 @@ Updated: 2026-09-08
 - Android notification scheduling now detects whether exact-alarm access is available and falls back to inexact-while-idle scheduling instead of failing on devices where the user has not granted the special access.
 - Added notification-service APIs to request and query Android exact-alarm access.
 - Android manifest now uses the user-granted `SCHEDULE_EXACT_ALARM` permission rather than declaring both exact-alarm permissions.
+- Prayer settings now explain exact-alarm access and provide an in-context action to request Android “Alarms & reminders” access before continuing to prayer settings.
 
 ## Cross-platform target
 
