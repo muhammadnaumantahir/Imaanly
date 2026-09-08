@@ -2,6 +2,7 @@ import 'package:hive_ce/hive.dart';
 
 import 'package:imaanly/src/core/storage/app_boxes.dart';
 import '../domain/worship_activity.dart';
+import '../domain/worship_analytics.dart';
 import '../domain/worship_daily_summary.dart';
 
 abstract interface class WorshipActivityBackend {
@@ -63,6 +64,33 @@ class WorshipActivityRepository {
 
   Future<WorshipDailySummary> getDailySummary(DateTime date) async {
     return WorshipDailySummary.fromActivities(await getAll(), date: date);
+  }
+
+  /// Returns one summary per calendar day, oldest first.
+  Future<List<WorshipDailySummary>> getDailySummaries({
+    required DateTime start,
+    required DateTime end,
+  }) async {
+    final first = DateTime(start.year, start.month, start.day);
+    final last = DateTime(end.year, end.month, end.day);
+    if (last.isBefore(first)) {
+      throw ArgumentError('end must be on or after start');
+    }
+
+    final activities = await getAll();
+    final summaries = <WorshipDailySummary>[];
+    for (var day = first; !day.isAfter(last); day = day.add(const Duration(days: 1))) {
+      summaries.add(WorshipDailySummary.fromActivities(activities, date: day));
+    }
+    return List.unmodifiable(summaries);
+  }
+
+  Future<WorshipAnalytics> getAnalytics({
+    required DateTime start,
+    required DateTime end,
+  }) async {
+    final summaries = await getDailySummaries(start: start, end: end);
+    return WorshipAnalytics.fromSummaries(summaries);
   }
 
   Future<bool> isSalahCompleted(String prayer, DateTime date) async {
