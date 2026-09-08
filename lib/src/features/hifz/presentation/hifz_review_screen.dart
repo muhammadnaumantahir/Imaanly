@@ -24,6 +24,7 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
   int _correct = 0;
   int _mistakes = 0;
   int _hints = 0;
+  double _speed = 1.0;
   bool _finished = false;
   bool _revealed = false;
   bool _loadingText = true;
@@ -69,7 +70,8 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
     setState(() { _loadingAudio = true; _audioError = null; });
     try {
       await _audio.playAyah(surahId: widget.progress.surahId, ayahNumber: _currentAyah);
-    } catch (error) {
+      await _audio.setSpeed(_speed);
+    } catch (_) {
       if (mounted) setState(() => _audioError = 'Audio could not be played. Check your connection and try again.');
     } finally {
       if (mounted) setState(() => _loadingAudio = false);
@@ -78,7 +80,25 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
 
   Future<void> _pauseAudio() async {
     await _audio.pause();
-    if (mounted) setState(() {});
+  }
+
+  Future<void> _replayAudio() async {
+    if (_loadingText || _finished) return;
+    try {
+      await _audio.replay();
+      await _audio.setSpeed(_speed);
+    } catch (_) {
+      await _toggleAudio();
+    }
+  }
+
+  Future<void> _changeSpeed(double speed) async {
+    setState(() => _speed = speed);
+    try {
+      await _audio.setSpeed(speed);
+    } catch (_) {
+      // Speed is a player preference; an unavailable player should not break review.
+    }
   }
 
   void _mark(bool correct) {
@@ -138,15 +158,32 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
         else if (_revealed && ayah != null) Card(child: Padding(padding: const EdgeInsets.all(16), child: Text(ayah.textUthmani, textAlign: TextAlign.right, textDirection: TextDirection.rtl, style: Theme.of(context).textTheme.titleLarge?.copyWith(height: 2))))
         else if (_hints > 0 && ayah != null) Text('Hint: ${ayah.textUthmani.trim().split(RegExp(r'\s+')).take(5).join(' ')} …', textDirection: TextDirection.rtl, textAlign: TextAlign.center),
         const SizedBox(height: 16),
+        StreamBuilder<bool>(stream: _audio.playingStream, initialData: false, builder: (context, snapshot) {
+          final playing = snapshot.data ?? false;
+          return Column(children: [
+            StreamBuilder<Duration>(stream: _audio.positionStream, initialData: Duration.zero, builder: (context, positionSnapshot) {
+              return StreamBuilder<Duration?>(stream: _audio.durationStream, initialData: null, builder: (context, durationSnapshot) {
+                final duration = durationSnapshot.data;
+                final position = positionSnapshot.data ?? Duration.zero;
+                final max = duration == null || duration.inMilliseconds <= 0 ? 1.0 : duration.inMilliseconds.toDouble();
+                final value = position.inMilliseconds.clamp(0, max.toInt()).toDouble();
+                return LinearProgressIndicator(value: duration == null ? null : value / max, minHeight: 4);
+              });
+            }),
+            const SizedBox(height: 8),
+            Wrap(alignment: WrapAlignment.center, spacing: 8, runSpacing: 8, children: [
+              OutlinedButton.icon(onPressed: _loadingAudio ? null : (playing ? _pauseAudio : _toggleAudio), icon: _loadingAudio ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)) : Icon(playing ? Icons.pause_rounded : Icons.volume_up_rounded), label: Text(playing ? 'Pause' : 'Play audio')),
+              OutlinedButton.icon(onPressed: _loadingAudio || !playing ? _replayAudio : _replayAudio, icon: const Icon(Icons.replay_rounded), label: const Text('Replay')),
+              DropdownButton<double>(value: _speed, underline: const SizedBox.shrink(), items: const [0.75, 1.0, 1.25, 1.5].map((speed) => DropdownMenuItem(value: speed, child: Text('${speed}x'))).toList(), onChanged: (value) { if (value != null) _changeSpeed(value); }),
+            ]),
+          ]);
+        }),
+        if (_audioError != null) Padding(padding: const EdgeInsets.only(top: 8), child: Text(_audioError!, textAlign: TextAlign.center, style: TextStyle(color: Theme.of(context).colorScheme.error))),
+        const SizedBox(height: 8),
         Wrap(alignment: WrapAlignment.center, spacing: 8, children: [
           OutlinedButton.icon(onPressed: _loadingText ? null : () => setState(() => _revealed = !_revealed), icon: Icon(_revealed ? Icons.visibility_off_outlined : Icons.menu_book_outlined), label: Text(_revealed ? 'Hide ayah' : 'Reveal Mushaf')),
-          StreamBuilder<bool>(stream: _audio.playingStream, initialData: false, builder: (context, snapshot) {
-            final playing = snapshot.data ?? false;
-            return OutlinedButton.icon(onPressed: _loadingAudio ? null : (playing ? _pauseAudio : _toggleAudio), icon: _loadingAudio ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2)) : Icon(playing ? Icons.pause_rounded : Icons.volume_up_rounded), label: Text(playing ? 'Pause audio' : 'Play audio'));
-          }),
+          OutlinedButton.icon(onPressed: _hint, icon: const Icon(Icons.lightbulb_outline), label: Text(_hints == 0 ? 'Need a hint' : 'Hint used ($_hints)')),
         ]),
-        if (_audioError != null) Padding(padding: const EdgeInsets.only(top: 8), child: Text(_audioError!, textAlign: TextAlign.center, style: TextStyle(color: Theme.of(context).colorScheme.error))),
-        OutlinedButton.icon(onPressed: _hint, icon: const Icon(Icons.lightbulb_outline), label: Text(_hints == 0 ? 'Need a hint' : 'Hint used ($_hints)')),
         const SizedBox(height: 12),
         Row(children: [Expanded(child: FilledButton.icon(onPressed: () => _mark(false), icon: const Icon(Icons.close_rounded), label: const Text('Mistake'))), const SizedBox(width: 12), Expanded(child: FilledButton.icon(onPressed: () => _mark(true), icon: const Icon(Icons.check_rounded), label: const Text('Correct')))]),
         const SizedBox(height: 12),
