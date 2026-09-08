@@ -21,6 +21,7 @@ Updated: 2026-09-08
 - Hifz review now has ayah-level recitation playback with pause/stop lifecycle and provider-isolated URL construction.
 - Hifz audio is hardened for Flutter web with explicit anonymous cross-origin configuration while keeping the same service API for Android.
 - Hifz review now supports replay, playback speed selection and basic playback progress feedback.
+- Hifz review now supports selecting between AbdulBaset AbdulSamad Mujawwad and Mishary Rashid al-Afasy ayah recitations.
 - Worship seven-day history and dashboard access.
 - Worship analytics can now aggregate daily summaries over arbitrary date ranges.
 - Worship dashboard now surfaces a 30-day analytics summary with active days, Salah completion, Quran pages and Dhikr totals/averages.
@@ -39,6 +40,7 @@ Updated: 2026-09-08
 - Android notification scheduling now detects whether exact-alarm access is available and falls back to inexact-while-idle scheduling instead of failing on devices where the user has not granted the special access.
 - Added notification-service APIs to request and query Android exact-alarm access.
 - Android manifest now uses the user-granted `SCHEDULE_EXACT_ALARM` permission rather than declaring both exact-alarm permissions.
+- Android media playback service explicitly declares `foregroundServiceType="mediaPlayback"` for Android 14+ compatibility.
 - Prayer settings now explain exact-alarm access and provide an in-context action to request Android “Alarms & reminders” access before continuing to prayer settings.
 
 ## Cross-platform target
@@ -77,7 +79,7 @@ Updated: 2026-09-08
 
 ## Remaining P1
 
-- Richer Hifz memorization/review content and additional reciter selection.
+- Richer Hifz memorization/review modes and auto-advance.
 - Expand Hadith/Sunnah catalogs into a larger properly sourced, maintainable corpus.
 
 ## Remaining P2
