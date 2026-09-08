@@ -1,14 +1,25 @@
+import 'dart:io';
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:imaanly/features/dhikr/data/dhikr_progress_store.dart';
 
 void main() {
   setUpAll(() async {
-    await Hive.initFlutter();
+    final path = Directory.systemTemp.createTempSync('imaanly_dhikr_test_');
+    Hive.init(path.path);
   });
 
   setUp(() async {
-    if (Hive.isBoxOpen('user')) await Hive.box('user').clear();
+    if (Hive.isBoxOpen('user')) {
+      await Hive.box('user').clear();
+    } else {
+      await Hive.openBox('user');
+    }
+  });
+
+  tearDownAll(() async {
+    if (Hive.isBoxOpen('user')) await Hive.box('user').close();
   });
 
   test('persists progress and completed-day history', () async {
