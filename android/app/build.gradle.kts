@@ -1,7 +1,6 @@
 import java.util.Properties
 import java.io.FileInputStream
 
-
 plugins {
     id("com.android.application")
     // START: FlutterFire Configuration
@@ -32,10 +31,7 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.imaanly.app"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdkVersion(flutter.minSdkVersion)
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
@@ -43,13 +39,11 @@ android {
         multiDexEnabled = true
     }
 
-
-
-     packagingOptions {
+    packagingOptions {
         jniLibs {
             useLegacyPackaging = true
         }
-     }
+    }
 
     signingConfigs {
         create("release") {
@@ -68,15 +62,21 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
             val hasReleaseKeystore =
                 !((keystoreProperties["keyAlias"] as? String).isNullOrBlank()) &&
-                    (keystoreProperties["storeFile"] as? String)?.isNotBlank() == true
+                    !((keystoreProperties["keyPassword"] as? String).isNullOrBlank()) &&
+                    !((keystoreProperties["storePassword"] as? String).isNullOrBlank()) &&
+                    (keystoreProperties["storeFile"] as? String)?.isNotBlank() == true &&
+                    (keystoreProperties["storeFile"] as? String)?.let { file(it).exists() } == true
 
-            signingConfig = if (hasReleaseKeystore) {
-                signingConfigs.getByName("release")
-            } else {
-                signingConfigs.getByName("debug")
+            // Never ship a release build signed with the debug key. Local/CI
+            // release builds must provide an explicit release keystore.
+            check(hasReleaseKeystore) {
+                "Release signing is not configured. Create android/key.properties " +
+                    "with keyAlias, keyPassword, storeFile, and storePassword."
             }
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     buildToolsVersion = "36.1.0"
