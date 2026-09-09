@@ -29,6 +29,20 @@ jobs:
       - name: Apply safe Dart fixes
         run: dart fix --apply
 
+      - name: Apply remaining analyzer compatibility fix
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('lib/src/screen/tafsir_view/tafsir_view.dart')
+          text = path.read_text()
+          old = '''onReorder: (oldIndex, newIndex) {\n                    setSheetState(() {\n                      var adjustedIndex = newIndex;\n                      if (adjustedIndex > oldIndex) adjustedIndex -= 1;\n                      final item = workingOrder.removeAt(oldIndex);\n                      workingOrder.insert(adjustedIndex, item);\n                    });\n                  },'''
+          new = '''onReorderItem: (oldIndex, newIndex) {\n                    setSheetState(() {\n                      final item = workingOrder.removeAt(oldIndex);\n                      workingOrder.insert(newIndex, item);\n                    });\n                  },'''
+          if old in text:
+              path.write_text(text.replace(old, new, 1))
+          elif 'onReorder:' in text:
+              raise SystemExit('Unexpected onReorder formatting; refusing unsafe edit')
+          PY
+
       - name: Verify analyzer
         run: flutter analyze
 
