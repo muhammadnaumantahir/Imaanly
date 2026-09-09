@@ -47,6 +47,7 @@ class HifzAudioService {
 
   final AudioPlayer _player;
 
+  bool get playing => _player.playing;
   Stream<bool> get playingStream => _player.playingStream;
   Stream<Duration> get positionStream => _player.positionStream;
   Stream<Duration?> get durationStream => _player.durationStream;
