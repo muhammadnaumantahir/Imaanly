@@ -52,7 +52,7 @@ class ImaanlySection extends StatelessWidget {
             Expanded(
               child: Text(title, style: ImaanlyTypography.title),
             ),
-            if (action != null) action!,
+            ?action,
           ],
         ),
         const SizedBox(height: ImaanlySpacing.sm),
