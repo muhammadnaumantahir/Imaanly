@@ -13,7 +13,7 @@ class IslamicCalendarService {
     final firstHijri = HijriCalendar()..hYear = year..hMonth = month..hDay = 1;
     final firstGregorian = firstHijri.hijriToGregorian(year, month, 1);
     final start = DateTime(firstGregorian.year, firstGregorian.month, firstGregorian.day);
-    final daysInMonth = month == 12 ? 30 : _monthLength(year, month);
+    final daysInMonth = _monthLength(year, month);
     final firstWeekday = start.weekday % 7;
     final total = ((firstWeekday + daysInMonth + 6) ~/ 7) * 7;
     return List.generate(total, (index) {
