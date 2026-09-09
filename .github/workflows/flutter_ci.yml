@@ -45,6 +45,28 @@ jobs:
       - name: Web build
         run: flutter build web --release
 
+      - name: Configure ephemeral Android release signing
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p android/ci
+          keytool -genkeypair \
+            -v \
+            -keystore android/ci/imaanly-ci.jks \
+            -storepass ci-release-password \
+            -keypass ci-release-password \
+            -alias imaanly-ci \
+            -keyalg RSA \
+            -keysize 2048 \
+            -validity 1 \
+            -dname "CN=Imaanly CI, OU=CI, O=Imaanly, L=Lahore, ST=Punjab, C=PK"
+          cat > android/key.properties <<'EOF'
+storePassword=ci-release-password
+keyPassword=ci-release-password
+keyAlias=imaanly-ci
+storeFile=ci/imaanly-ci.jks
+EOF
+
       - name: Android release APK build
         run: flutter build apk --release
 
@@ -56,6 +78,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: imaanly-android-release
+          retention-days: 7
           if-no-files-found: warn
           path: |
             build/app/outputs/flutter-apk/app-release.apk
