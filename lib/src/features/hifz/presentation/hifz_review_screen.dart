@@ -130,13 +130,13 @@ class _HifzReviewScreenState extends State<HifzReviewScreen> {
 
   Future<void> _finish() async {
     await _audio.stop();
+    if (!mounted) return;
     final accuracy = _correct / _totalAyahs;
     final mastery = accuracy >= .85 ? HifzMasteryLevel.mastered : accuracy >= .60 ? HifzMasteryLevel.confident : accuracy >= .30 ? HifzMasteryLevel.familiar : HifzMasteryLevel.learning;
     final reviewedAt = DateTime.now();
     final updated = HifzProgress(surahId: widget.progress.surahId, ayahStart: widget.progress.ayahStart, ayahEnd: widget.progress.ayahEnd, totalAyahs: widget.progress.totalAyahs, lastReviewed: reviewedAt, mastery: mastery, reviewCount: widget.progress.reviewCount + _totalAyahs, correctCount: widget.progress.correctCount + _correct, mistakeCount: widget.progress.mistakeCount + _mistakes);
     final session = HifzSession(id: DateTime.now().microsecondsSinceEpoch, surahId: widget.progress.surahId, ayahStart: widget.progress.ayahStart, ayahEnd: widget.progress.ayahEnd, date: reviewedAt, durationSeconds: DateTime.now().difference(_startedAt).inSeconds.clamp(1, 86400).toInt(), mistakes: _mistakes, hints: _hints, type: HifzSessionType.review);
     context.read<HifzBloc>().add(CompleteReview(progress: updated, session: session));
-    if (!mounted) return;
     await showDialog<void>(context: context, barrierDismissible: false, builder: (context) => AlertDialog(title: const Text('Review complete'), content: Text('$_correct of $_totalAyahs ayahs recalled correctly.\n\nAccuracy: ${(accuracy * 100).round()}%\nMastery: ${_masteryLabel(mastery)}'), actions: [FilledButton(onPressed: () => Navigator.of(context).pop(), child: const Text('Done'))]));
     if (mounted) Navigator.of(context).pop();
   }
