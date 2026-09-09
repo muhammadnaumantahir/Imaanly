@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:qcf_quran/qcf_quran.dart';
 
 /// Double-page (side-by-side) Mushaf layout.
