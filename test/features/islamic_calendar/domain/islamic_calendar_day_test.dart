@@ -15,7 +15,7 @@ void main() {
   });
 
   test('defaults to an empty event list', () {
-    const day = IslamicCalendarDay(
+    final day = IslamicCalendarDay(
       date: DateTime(2026, 9, 6),
       hijriLabel: 'Rabi al-Awwal 1448',
       isCurrentMonth: true,
@@ -30,7 +30,7 @@ void main() {
       description: 'A calendar event',
       icon: 'moon',
     );
-    const day = IslamicCalendarDay(
+    final day = IslamicCalendarDay(
       date: DateTime(2026, 9, 6),
       hijriLabel: 'Rabi al-Awwal 1448',
       isCurrentMonth: true,
