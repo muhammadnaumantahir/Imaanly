@@ -7,12 +7,22 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: gradle
 
       - name: Install Flutter
         uses: subosito/flutter-action@v2
@@ -30,7 +40,23 @@ jobs:
         run: flutter analyze --no-fatal-warnings --no-fatal-infos
 
       - name: Test
-        run: flutter test
+        run: flutter test --coverage
 
       - name: Web build
         run: flutter build web --release
+
+      - name: Android release APK build
+        run: flutter build apk --release
+
+      - name: Android release App Bundle build
+        run: flutter build appbundle --release
+
+      - name: Upload Android artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: imaanly-android-release
+          if-no-files-found: warn
+          path: |
+            build/app/outputs/flutter-apk/app-release.apk
+            build/app/outputs/bundle/release/app-release.aab
