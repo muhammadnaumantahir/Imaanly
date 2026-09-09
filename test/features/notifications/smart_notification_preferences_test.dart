@@ -12,7 +12,12 @@ void main() {
   });
 
   test('category switches are independently respected', () {
-    const preferences = SmartNotificationPreferences(prayerEnabled: false, quranEnabled: true, dhikrEnabled: false, streakEnabled: true);
+    const preferences = SmartNotificationPreferences(
+      prayerEnabled: false,
+      quranEnabled: true,
+      dhikrEnabled: false,
+      streakEnabled: true,
+    );
     expect(preferences.isEnabled(SmartNotificationCategory.prayer), isFalse);
     expect(preferences.isEnabled(SmartNotificationCategory.quran), isTrue);
     expect(preferences.isEnabled(SmartNotificationCategory.dhikr), isFalse);
@@ -28,7 +33,15 @@ void main() {
   });
 
   test('preferences survive map serialization', () {
-    const original = SmartNotificationPreferences(prayerEnabled: false, quranEnabled: true, dhikrEnabled: false, streakEnabled: true, maxNotificationsPerDay: 5, quietStartHour: 21, quietEndHour: 6);
+    const original = SmartNotificationPreferences(
+      prayerEnabled: false,
+      quranEnabled: true,
+      dhikrEnabled: false,
+      streakEnabled: true,
+      maxNotificationsPerDay: 5,
+      quietStartHour: 21,
+      quietEndHour: 6,
+    );
     final restored = SmartNotificationPreferences.fromMap(original.toMap());
     expect(restored.prayerEnabled, original.prayerEnabled);
     expect(restored.quranEnabled, original.quranEnabled);
@@ -37,6 +50,19 @@ void main() {
     expect(restored.maxNotificationsPerDay, original.maxNotificationsPerDay);
     expect(restored.quietStartHour, original.quietStartHour);
     expect(restored.quietEndHour, original.quietEndHour);
+  });
+
+  test('malformed persisted numeric values are safely clamped', () {
+    final preferences = SmartNotificationPreferences.fromMap({
+      'maxNotificationsPerDay': 99,
+      'quietStartHour': -10,
+      'quietEndHour': 99,
+      'prayerEnabled': true,
+    });
+    expect(preferences.maxNotificationsPerDay, 10);
+    expect(preferences.quietStartHour, 0);
+    expect(preferences.quietEndHour, 23);
+    expect(preferences.isEnabled(SmartNotificationCategory.prayer), isTrue);
   });
 
   test('notification limit can be disabled with zero', () {
