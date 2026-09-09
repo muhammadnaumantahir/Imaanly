@@ -71,7 +71,7 @@ class _TafsirList extends StatelessWidget {
     return ListView.separated(
       padding: EdgeInsets.all(AppSizes.paddingM.w),
       itemCount: tafsirs.length,
-      separatorBuilder: (_, __) => SizedBox(height: AppSizes.paddingS.h),
+      separatorBuilder: (_, _) => SizedBox(height: AppSizes.paddingS.h),
       itemBuilder: (context, index) {
         final tafsir = tafsirs[index];
         return _TafsirCard(tafsir: tafsir);
@@ -172,7 +172,7 @@ class _TafsirDetailView extends StatelessWidget {
               return ListView.separated(
                 padding: EdgeInsets.all(AppSizes.paddingM.w),
                 itemCount: state.currentEntries.length,
-                separatorBuilder: (_, __) => Divider(height: AppSizes.paddingM.h, color: AppColors.lightBorderSubtle),
+                separatorBuilder: (_, _) => Divider(height: AppSizes.paddingM.h, color: AppColors.lightBorderSubtle),
                 itemBuilder: (context, index) => _TafsirEntryCard(entry: state.currentEntries[index]),
               );
           }
