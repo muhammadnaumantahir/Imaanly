@@ -1,5 +1,4 @@
 import "package:imaanly/src/core/notifications/wahy_notification_service.dart";
-import "package:imaanly/src/screen/location_handler/cubit/location_data_qibla_data_cubit.dart";
 import "package:imaanly/src/screen/location_handler/location_aquire.dart";
 import "package:imaanly/src/screen/location_handler/model/location_data_qibla_data_state.dart";
 import "package:imaanly/src/screen/prayer_time/prayer_timeline_page.dart";

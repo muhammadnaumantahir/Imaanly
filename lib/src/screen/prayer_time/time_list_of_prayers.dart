@@ -4,7 +4,6 @@ import "package:adhan_dart/adhan_dart.dart" hide Prayer;
 import "package:adhan_dart/adhan_dart.dart" as adhan;
 import "package:imaanly/l10n/app_localizations.dart";
 import "package:imaanly/src/core/notifications/wahy_notification_service.dart";
-import "package:imaanly/src/screen/location_handler/cubit/location_data_qibla_data_cubit.dart";
 import "package:imaanly/src/screen/location_handler/location_aquire.dart";
 import "package:imaanly/src/screen/location_handler/model/lat_lon.dart";
 import "package:imaanly/src/screen/location_handler/model/location_data_qibla_data_state.dart";

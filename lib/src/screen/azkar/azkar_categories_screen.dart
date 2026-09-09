@@ -334,7 +334,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
       (category) => category?.contains('المساء') ?? false,
       orElse: () => null,
     );
-    final featured = [if (morning != null) morning, if (evening != null) evening];
+    final featured = [?morning, ?evening];
     if (featured.isEmpty) return const SizedBox.shrink();
 
     return SizedBox(
@@ -344,9 +344,9 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         itemCount: featured.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 12),
+        separatorBuilder: (_, _) => const SizedBox(width: 12),
         itemBuilder: (_, index) {
-          final category = featured[index]!;
+          final category = featured[index];
           final isMorning = category.contains('الصباح');
           return _buildFeaturedCard(category, isMorning, primary, surface, text, muted);
         },

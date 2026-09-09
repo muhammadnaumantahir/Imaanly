@@ -2,7 +2,6 @@ import "dart:math" as math;
 import "dart:ui" as ui;
 
 import "package:imaanly/l10n/app_localizations.dart";
-import "package:imaanly/src/screen/location_handler/cubit/location_data_qibla_data_cubit.dart";
 import "package:imaanly/src/screen/location_handler/location_aquire.dart";
 import "package:imaanly/src/screen/location_handler/model/location_data_qibla_data_state.dart";
 import "package:imaanly/src/screen/qibla/qibla_guidance.dart";
