@@ -2,7 +2,6 @@
 /// ZERO feature-specific logic. Pure presentation components.
 ///
 /// Usage: import 'package:imaanly/src/shared/widgets/widgets.dart';
-library;
 
 export 'app_components.dart';
 export 'pressable.dart';

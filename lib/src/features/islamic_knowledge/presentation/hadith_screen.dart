@@ -25,7 +25,7 @@ class _HadithScreenState extends State<HadithScreen> {
       body: CustomScrollView(slivers: [
         SliverToBoxAdapter(child: Padding(padding: const EdgeInsets.all(16), child: TextField(controller: _search, decoration: InputDecoration(hintText: 'Search hadith', prefixIcon: const Icon(Icons.search_rounded), suffixIcon: _search.text.isEmpty ? null : IconButton(onPressed: _search.clear, icon: const Icon(Icons.clear_rounded)), filled: true, border: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: BorderSide.none))))),
         if (_items.isEmpty) const SliverFillRemaining(hasScrollBody: false, child: Center(child: Text('No hadith found')))
-        else SliverPadding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 32), sliver: SliverList.separated(itemCount: _items.length, separatorBuilder: (_, _) => const SizedBox(height: 12), itemBuilder: (_, i) {
+        else SliverPadding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 32), sliver: SliverList.separated(itemCount: _items.length, separatorBuilder: (_, __) => const SizedBox(height: 12), itemBuilder: (_, i) {
           final item = _items[i];
           return Card(child: Padding(padding: const EdgeInsets.all(20), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(children: [Expanded(child: Text(item.title, style: TextStyle(color: scheme.primary, fontWeight: FontWeight.w900, fontSize: 17))), Icon(Icons.format_quote_rounded, color: scheme.primary)]),

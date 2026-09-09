@@ -70,7 +70,7 @@ class _DuaFavoritesScreenState extends State<DuaFavoritesScreen> {
             : ListView.separated(
                 padding: const EdgeInsets.all(16),
                 itemCount: favorites.length,
-                separatorBuilder: (_, _) => const SizedBox(height: 12),
+                separatorBuilder: (_, __) => const SizedBox(height: 12),
                 itemBuilder: (context, index) {
                   final item = favorites[index];
                   final text = item['zekr']?.toString() ?? '';

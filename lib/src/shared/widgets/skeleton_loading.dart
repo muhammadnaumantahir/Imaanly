@@ -11,19 +11,28 @@ class SkeletonBox extends StatefulWidget {
   final double height;
   final BorderRadius? borderRadius;
 
-  const SkeletonBox({required this.width, required this.height, this.borderRadius, super.key});
+  const SkeletonBox({
+    required this.width,
+    required this.height,
+    this.borderRadius,
+    super.key,
+  });
 
   @override
   State<SkeletonBox> createState() => _SkeletonBoxState();
 }
 
-class _SkeletonBoxState extends State<SkeletonBox> with SingleTickerProviderStateMixin {
+class _SkeletonBoxState extends State<SkeletonBox>
+    with SingleTickerProviderStateMixin {
   late final AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 1500))..repeat();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1500),
+    )..repeat();
   }
 
   @override
@@ -37,6 +46,7 @@ class _SkeletonBoxState extends State<SkeletonBox> with SingleTickerProviderStat
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final baseColor = isDark ? AppColors.darkSurface : AppColors.lightSurface;
     final highlightColor = isDark ? AppColors.darkSurfaceSecondary : AppColors.lightSurfaceSecondary;
+
     return AnimatedBuilder(
       animation: _controller,
       builder: (context, child) {
@@ -64,13 +74,21 @@ class SkeletonLine extends StatelessWidget {
   final double height;
   final double topMargin;
 
-  const SkeletonLine({this.width, this.height = 14, this.topMargin = 8, super.key});
+  const SkeletonLine({
+    this.width,
+    this.height = 14,
+    this.topMargin = 8,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(top: topMargin.h),
-      child: SkeletonBox(width: width ?? double.infinity, height: height.h),
+      child: SkeletonBox(
+        width: width ?? double.infinity,
+        height: height.h,
+      ),
     );
   }
 }
@@ -83,14 +101,17 @@ class SkeletonCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(AppSizes.paddingM.w),
-      decoration: BoxDecoration(color: Theme.of(context).cardColor, borderRadius: BorderRadius.circular(AppSizes.radiusM.r)),
-      child: const Column(
+      decoration: BoxDecoration(
+        color: Theme.of(context).cardColor,
+        borderRadius: BorderRadius.circular(AppSizes.radiusM.r),
+      ),
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SkeletonLine(width: 120, height: 18),
-          SkeletonLine(height: 12),
-          SkeletonLine(height: 12),
-          SkeletonLine(width: 180, height: 12),
+          const SkeletonLine(width: 120, height: 18),
+          const SkeletonLine(height: 12),
+          const SkeletonLine(height: 12),
+          const SkeletonLine(width: 180, height: 12),
         ],
       ),
     );
@@ -102,7 +123,11 @@ class SkeletonList extends StatelessWidget {
   final int itemCount;
   final EdgeInsets? padding;
 
-  const SkeletonList({this.itemCount = 5, this.padding, super.key});
+  const SkeletonList({
+    this.itemCount = 5,
+    this.padding,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +135,7 @@ class SkeletonList extends StatelessWidget {
       padding: padding ?? EdgeInsets.all(AppSizes.paddingM.w),
       physics: const NeverScrollableScrollPhysics(),
       itemCount: itemCount,
-      itemBuilder: (_, _) => const SkeletonCard(),
+      itemBuilder: (_, __) => const SkeletonCard(),
     );
   }
 }

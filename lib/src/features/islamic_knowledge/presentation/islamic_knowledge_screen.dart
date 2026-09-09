@@ -59,7 +59,7 @@ class _IslamicKnowledgeScreenState extends State<IslamicKnowledgeScreen> {
           ]),), const SizedBox(height: 14),
           TextField(controller: _searchController, decoration: InputDecoration(hintText: 'Search knowledge', prefixIcon: const Icon(Icons.search_rounded), suffixIcon: _searchController.text.isEmpty ? null : IconButton(onPressed: _searchController.clear, icon: const Icon(Icons.clear_rounded)), filled: true, border: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: BorderSide.none))),
         ]))),
-        if (_sections.isEmpty) const SliverFillRemaining(hasScrollBody: false, child: Center(child: Text('No knowledge sections found'))) else SliverPadding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 32), sliver: SliverList.separated(itemCount: _sections.length, separatorBuilder: (_, _) => const SizedBox(height: 12), itemBuilder: (context, index) {
+        if (_sections.isEmpty) const SliverFillRemaining(hasScrollBody: false, child: Center(child: Text('No knowledge sections found'))) else SliverPadding(padding: const EdgeInsets.fromLTRB(16, 0, 16, 32), sliver: SliverList.separated(itemCount: _sections.length, separatorBuilder: (_, __) => const SizedBox(height: 12), itemBuilder: (context, index) {
           final section = _sections[index];
           return Card(clipBehavior: Clip.antiAlias, child: InkWell(onTap: () => _openSection(section), child: Padding(padding: const EdgeInsets.all(18), child: Row(children: [
             Container(width: 54, height: 54, decoration: BoxDecoration(color: scheme.primaryContainer, borderRadius: BorderRadius.circular(17)), child: Icon(_iconFor(section.icon), color: scheme.primary)), const SizedBox(width: 14),

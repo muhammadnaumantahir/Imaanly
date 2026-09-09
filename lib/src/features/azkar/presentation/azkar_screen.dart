@@ -74,6 +74,7 @@ class _AzkarContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // Type filter chips
         SizedBox(
           height: 48.h,
           child: ListView(
@@ -88,6 +89,7 @@ class _AzkarContent extends StatelessWidget {
           ),
         ),
         Divider(height: 1, color: AppColors.lightBorderSubtle),
+        // Categories grid
         Expanded(
           child: GridView.builder(
             padding: EdgeInsets.all(AppSizes.paddingM.w),
@@ -100,7 +102,10 @@ class _AzkarContent extends StatelessWidget {
             itemCount: categories.length,
             itemBuilder: (context, index) {
               final category = categories[index];
-              return _CategoryCard(category: category, index: index);
+              return _CategoryCard(
+                category: category,
+                index: index,
+              );
             },
           ),
         ),
@@ -145,10 +150,14 @@ class _TypeFilterChip extends StatelessWidget {
       builder: (context, state) {
         final isSelected = state.selectedType == type;
         final isDark = Theme.of(context).brightness == Brightness.dark;
+
         return PressableOpacity(
           onTap: () => context.read<AzkarBloc>().add(LoadAzkarByType(type)),
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: AppSizes.paddingM.w, vertical: AppSizes.paddingS.h),
+            padding: EdgeInsets.symmetric(
+              horizontal: AppSizes.paddingM.w,
+              vertical: AppSizes.paddingS.h,
+            ),
             decoration: BoxDecoration(
               color: isSelected
                   ? (isDark ? AppColors.darkPrimary : AppColors.lightPrimary)
@@ -195,28 +204,33 @@ class _CategoryCard extends StatelessWidget {
 
   const _CategoryCard({required this.category, required this.index});
 
-  IconData _categoryIcon() => switch (category.iconKey) {
-        'morning' => Icons.wb_sunny_outlined,
-        'evening' => Icons.nights_stay_outlined,
-        'prayer' => Icons.mosque_outlined,
-        'sleep' => Icons.bedtime_outlined,
-        'wakeup' => Icons.alarm_outlined,
-        'quran' => Icons.menu_book_outlined,
-        'ruqyah' => Icons.healing_outlined,
-        'general' => Icons.auto_awesome_outlined,
-        _ => Icons.auto_awesome_outlined,
-      };
+  IconData _categoryIcon() {
+    // Map iconKey to IconData — fallback to category icon
+    return switch (category.iconKey) {
+      'morning' => Icons.wb_sunny_outlined,
+      'evening' => Icons.nights_stay_outlined,
+      'prayer' => Icons.mosque_outlined,
+      'sleep' => Icons.bedtime_outlined,
+      'wakeup' => Icons.alarm_outlined,
+      'quran' => Icons.menu_book_outlined,
+      'ruqyah' => Icons.healing_outlined,
+      'general' => Icons.auto_awesome_outlined,
+      _ => Icons.auto_awesome_outlined,
+    };
+  }
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final isRtl = Directionality.of(context) == TextDirection.rtl;
+
     return Pressable(
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (_) => BlocProvider.value(
-              value: context.read<AzkarBloc>()..add(LoadAzkarByCategory(category.id)),
+              value: context.read<AzkarBloc>()
+                ..add(LoadAzkarByCategory(category.id)),
               child: const AzkarItemsScreen(),
             ),
           ),
@@ -229,7 +243,9 @@ class _CategoryCard extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(AppSizes.paddingM.w),
               decoration: BoxDecoration(
-                color: isDark ? AppColors.darkPrimaryContainer : AppColors.lightPrimaryContainer,
+                color: isDark
+                    ? AppColors.darkPrimaryContainer
+                    : AppColors.lightPrimaryContainer,
                 shape: BoxShape.circle,
               ),
               child: Icon(
@@ -262,6 +278,7 @@ class _CategoryCard extends StatelessWidget {
   }
 }
 
+/// Azkar Items Screen — shows azkar list with counter for a category
 class AzkarItemsScreen extends StatelessWidget {
   const AzkarItemsScreen({super.key});
 
@@ -269,7 +286,9 @@ class AzkarItemsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Directionality.of(context) == TextDirection.rtl ? 'الأذكار' : 'Azkar'),
+        title: Text(
+          Directionality.of(context) == TextDirection.rtl ? 'الأذكار' : 'Azkar',
+        ),
         elevation: 0,
         actions: [
           IconButton(
@@ -292,7 +311,10 @@ class AzkarItemsScreen extends StatelessWidget {
               );
             case AzkarStatus.loaded:
               if (state.currentAzkar.isEmpty) {
-                return const EmptyStateWidget(title: 'No azkar in this category', icon: Icons.auto_awesome_outlined);
+                return const EmptyStateWidget(
+                  title: 'No azkar in this category',
+                  icon: Icons.auto_awesome_outlined,
+                );
               }
               return _AzkarItemsList(items: state.currentAzkar, counts: state.remainingCounts);
           }
@@ -313,14 +335,21 @@ class _AzkarItemsList extends StatelessWidget {
     return ListView.separated(
       padding: EdgeInsets.all(AppSizes.paddingM.w),
       itemCount: items.length,
-      separatorBuilder: (_, _) => SizedBox(height: AppSizes.paddingS.h),
+      separatorBuilder: (_, __) => SizedBox(height: AppSizes.paddingS.h),
       itemBuilder: (context, index) {
         final item = items[index];
         final remaining = counts[item.id] ?? item.count;
         final total = item.count;
         final progress = total > 0 ? (total - remaining) / total : 0.0;
         final isComplete = remaining <= 0;
-        return _AzkarItemCard(item: item, remaining: remaining, total: total, progress: progress, isComplete: isComplete);
+
+        return _AzkarItemCard(
+          item: item,
+          remaining: remaining,
+          total: total,
+          progress: progress,
+          isComplete: isComplete,
+        );
       },
     );
   }
@@ -333,39 +362,84 @@ class _AzkarItemCard extends StatelessWidget {
   final double progress;
   final bool isComplete;
 
-  const _AzkarItemCard({required this.item, required this.remaining, required this.total, required this.progress, required this.isComplete});
+  const _AzkarItemCard({
+    required this.item,
+    required this.remaining,
+    required this.total,
+    required this.progress,
+    required this.isComplete,
+  });
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final accentColor = isDark ? AppColors.darkPrimary : AppColors.lightPrimary;
+
     return Pressable(
-      onTap: isComplete ? null : () => context.read<AzkarBloc>().add(DecrementAzkarCount(item.id)),
+      onTap: isComplete
+          ? null
+          : () => context.read<AzkarBloc>().add(DecrementAzkarCount(item.id)),
       child: AppCard(
-        color: isComplete ? (isDark ? AppColors.darkPrimaryContainer : AppColors.lightPrimaryContainer) : null,
+        color: isComplete
+            ? (isDark ? AppColors.darkPrimaryContainer : AppColors.lightPrimaryContainer)
+            : null,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text(item.textArabic, textAlign: TextAlign.right, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: isDark ? AppColors.darkTextMain : AppColors.lightTextMain, height: 1.8)),
+            // Arabic text
+            Text(
+              item.textArabic,
+              textAlign: TextAlign.right,
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: isDark ? AppColors.darkTextMain : AppColors.lightTextMain,
+                    height: 1.8,
+                  ),
+            ),
+            // Translation
             if (item.textTranslation != null) ...[
               SizedBox(height: AppSizes.paddingXS.h),
-              Text(item.textTranslation!, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted)),
+              Text(
+                item.textTranslation!,
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color: isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted,
+                    ),
+              ),
             ],
+            // Reference
             if (item.reference != null) ...[
               SizedBox(height: AppSizes.paddingXS.h),
-              Text(item.reference!, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted, fontStyle: FontStyle.italic)),
+              Text(
+                item.reference!,
+                style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                      color: isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted,
+                      fontStyle: FontStyle.italic,
+                    ),
+              ),
             ],
             SizedBox(height: AppSizes.paddingS.h),
+            // Progress bar + counter
             Row(
               children: [
                 Expanded(
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(AppSizes.radiusXS.r),
-                    child: LinearProgressIndicator(value: progress, backgroundColor: isDark ? AppColors.darkSurface : AppColors.lightSurface, valueColor: AlwaysStoppedAnimation(accentColor), minHeight: 4.h),
+                    child: LinearProgressIndicator(
+                      value: progress,
+                      backgroundColor: isDark ? AppColors.darkSurface : AppColors.lightSurface,
+                      valueColor: AlwaysStoppedAnimation(accentColor),
+                      minHeight: 4.h,
+                    ),
                   ),
                 ),
                 SizedBox(width: AppSizes.paddingS.w),
-                Text('$remaining', style: Theme.of(context).textTheme.labelLarge?.copyWith(color: isComplete ? (isDark ? AppColors.successDark : AppColors.success) : accentColor)),
+                Text(
+                  '$remaining',
+                  style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                        color: isComplete
+                            ? (isDark ? AppColors.successDark : AppColors.success)
+                            : accentColor,
+                      ),
+                ),
               ],
             ),
           ],
