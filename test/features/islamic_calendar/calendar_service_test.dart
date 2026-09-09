@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:hijri/hijri_calendar.dart';
 import 'package:imaanly/features/islamic_calendar/domain/islamic_calendar_service.dart';
 
 void main() {
@@ -29,6 +30,24 @@ void main() {
       final days = service.monthDays(1445, 10);
       expect(days.length, greaterThanOrEqualTo(35));
       expect(days.any((day) => day.isCurrentMonth), isTrue);
+    });
+
+    test('uses the actual length of Dhul Hijjah instead of assuming 30 days', () {
+      const year = 1445;
+      const month = 12;
+      final first = HijriCalendar()..hYear = year..hMonth = month..hDay = 1;
+      final next = HijriCalendar()..hYear = year + 1..hMonth = 1..hDay = 1;
+      final firstGregorian = first.hijriToGregorian(year, month, 1);
+      final nextGregorian = next.hijriToGregorian(year + 1, 1, 1);
+      final expectedLength = DateTime(nextGregorian.year, nextGregorian.month, nextGregorian.day)
+          .difference(DateTime(firstGregorian.year, firstGregorian.month, firstGregorian.day))
+          .inDays;
+
+      final actualLength = service.monthDays(year, month)
+          .where((day) => day.isCurrentMonth)
+          .length;
+
+      expect(actualLength, expectedLength);
     });
   });
 }
