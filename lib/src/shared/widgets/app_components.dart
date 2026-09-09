@@ -122,7 +122,7 @@ class AppChip extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: AppSizes.paddingS.w, vertical: AppSizes.paddingXS.h),
       decoration: BoxDecoration(
         color: backgroundColor ?? (isDark ? AppColors.darkSurface : AppColors.lightSurface),
-        borderRadius: BorderRadius.circular(AppSizes.chipRadius.r),
+        borderRadius: BorderRadius.circular(AppSizes.radiusS.r),
       ),
       child: Text(
         label,

@@ -482,14 +482,12 @@ class _TafsirViewState extends State<TafsirView>
                 child: ReorderableListView.builder(
                   scrollController: scrollController,
                   itemCount: workingOrder.length,
-                  onReorder: (oldIndex, newIndex) {
-                    setSheetState(() {
-                      var adjustedIndex = newIndex;
-                      if (adjustedIndex > oldIndex) adjustedIndex -= 1;
-                      final item = workingOrder.removeAt(oldIndex);
-                      workingOrder.insert(adjustedIndex, item);
-                    });
-                  },
+                  onReorderItem: (oldIndex, newIndex) {
+          setSheetState(() {
+            final item = workingOrder.removeAt(oldIndex);
+            workingOrder.insert(newIndex, item);
+          });
+        },
                   proxyDecorator: (child, index, animation) => AnimatedBuilder(
                     animation: animation,
                     builder: (context, child) => Transform.scale(
