@@ -1,0 +1,33 @@
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+build/
+coverage/
+
+# Android / Gradle
+.gradle/
+android/.gradle/
+android/local.properties
+android/**/captures/
+android/**/generated/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Local environment
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated signing / keystore material
+*.jks
+*.keystore
