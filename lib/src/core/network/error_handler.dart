@@ -4,12 +4,12 @@ import 'package:dartz/dartz.dart';
 import '../error/exceptions.dart';
 import '../error/failures.dart';
 
-/// Imaanly Error Handler — Converts exceptions to Either<Failure, T>
+/// Imaanly Error Handler — Converts exceptions to `Either<Failure, T>`
 /// Centralized error mapping so repositories never write try/catch twice.
 class ErrorHandler {
   ErrorHandler._();
 
-  /// Execute an async operation and return Either<Failure, T>
+  /// Execute an async operation and return `Either<Failure, T>`
   /// Every repository method should use this instead of raw try/catch.
   static Future<Either<Failure, T>> guard<T>(
     Future<T> Function() operation,
@@ -53,7 +53,7 @@ class ErrorHandler {
     }
   }
 
-  /// Execute a sync operation and return Either<Failure, T>
+  /// Execute a sync operation and return `Either<Failure, T>`
   static Either<Failure, T> guardSync<T>(T Function() operation) {
     try {
       final result = operation();
