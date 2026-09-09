@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-
-import '../../../../../lib/src/features/hifz/data/hifz_audio_service.dart';
+import 'package:imaanly/src/features/hifz/data/hifz_audio_service.dart';
 
 void main() {
   group('HifzAudioSource', () {
