@@ -72,7 +72,7 @@ class _ReciterList extends StatelessWidget {
     return ListView.separated(
       padding: EdgeInsets.all(AppSizes.paddingM.w),
       itemCount: reciters.length,
-      separatorBuilder: (_, __) => SizedBox(height: AppSizes.paddingS.h),
+      separatorBuilder: (_, _) => SizedBox(height: AppSizes.paddingS.h),
       itemBuilder: (context, index) {
         return _ReciterCard(reciter: reciters[index]);
       },
@@ -103,7 +103,6 @@ class _ReciterCard extends StatelessWidget {
       child: AppCard(
         child: Row(
           children: [
-            // Avatar circle
             Container(
               width: AppSizes.avatarL.w,
               height: AppSizes.avatarL.w,
