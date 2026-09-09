@@ -35,11 +35,15 @@ class PersonalizationSettingsPage extends StatelessWidget {
                 onSelectionChanged: (selection) => _setTheme(context, cubit, selection.first),
               )),
               const SizedBox(height: 14),
-              _Section(title: 'Quran', icon: Icons.menu_book_outlined, child: Column(children: [
-                RadioListTile<String>(value: 'uthmanic', groupValue: value.quranScript, title: const Text('Uthmanic'), onChanged: (v) { if (v != null) cubit.update(value.copyWith(quranScript: v)); }),
-                RadioListTile<String>(value: 'indopak', groupValue: value.quranScript, title: const Text('Indo-Pak'), onChanged: (v) { if (v != null) cubit.update(value.copyWith(quranScript: v)); }),
-                SwitchListTile.adaptive(title: const Text('Show translation'), value: value.quranShowTranslation, onChanged: (v) => cubit.update(value.copyWith(quranShowTranslation: v))),
-              ])),
+              _Section(title: 'Quran', icon: Icons.menu_book_outlined, child: RadioGroup<String>(
+                groupValue: value.quranScript,
+                onChanged: (v) { if (v != null) cubit.update(value.copyWith(quranScript: v)); },
+                child: Column(children: [
+                  const RadioListTile<String>(value: 'uthmanic', title: Text('Uthmanic')),
+                  const RadioListTile<String>(value: 'indopak', title: Text('Indo-Pak')),
+                  SwitchListTile.adaptive(title: const Text('Show translation'), value: value.quranShowTranslation, onChanged: (v) => cubit.update(value.copyWith(quranShowTranslation: v))),
+                ]),
+              )),
               const SizedBox(height: 14),
               _Section(title: 'Dhikr', icon: Icons.favorite_outline, child: ListTile(
                 title: const Text('Daily goal'),
