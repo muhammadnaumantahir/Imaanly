@@ -173,7 +173,7 @@ class _ContinuousScrollMushafState extends State<ContinuousScrollMushaf> {
     return ListView.builder(
       controller: _scrollController,
       physics: const ClampingScrollPhysics(),
-      scrollCacheExtent: pageH * 2,
+      scrollCacheExtent: ScrollCacheExtent.pixels(pageH * 2),
       itemCount: 604,
       itemBuilder: (context, index) {
         final pageNumber = index + 1;
