@@ -27,8 +27,7 @@ class AppCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final cardColor = color ??
-        (isDark ? AppColors.darkCard : AppColors.lightCard);
+    final cardColor = color ?? (isDark ? AppColors.darkCard : AppColors.lightCard);
 
     return GestureDetector(
       onTap: onTap,
@@ -40,9 +39,7 @@ class AppCard extends StatelessWidget {
         padding: padding ?? EdgeInsets.all(AppSizes.paddingM.w),
         decoration: BoxDecoration(
           color: cardColor,
-          borderRadius: BorderRadius.circular(
-            (borderRadius ?? AppSizes.cardRadius).r,
-          ),
+          borderRadius: BorderRadius.circular((borderRadius ?? AppSizes.cardRadius).r),
           border: Border.all(
             color: isDark ? AppColors.darkBorderSubtle : AppColors.lightBorderSubtle,
             width: 0.5,
@@ -85,24 +82,20 @@ class SectionHeader extends StatelessWidget {
                 Text(
                   title,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        color: isDark
-                            ? AppColors.darkTextMain
-                            : AppColors.lightTextMain,
+                        color: isDark ? AppColors.darkTextMain : AppColors.lightTextMain,
                       ),
                 ),
                 if (subtitle != null)
                   Text(
                     subtitle!,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: isDark
-                              ? AppColors.darkTextMuted
-                              : AppColors.lightTextMuted,
+                          color: isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted,
                         ),
                   ),
               ],
             ),
           ),
-          if (trailing != null) trailing!,
+          trailing?,
         ],
       ),
     );
@@ -125,10 +118,8 @@ class AppChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bgColor = backgroundColor ??
-        (isDark ? AppColors.darkPrimaryContainer : AppColors.lightPrimaryContainer);
-    final fgColor = textColor ??
-        (isDark ? AppColors.darkPrimary : AppColors.lightPrimary);
+    final bgColor = backgroundColor ?? (isDark ? AppColors.darkPrimaryContainer : AppColors.lightPrimaryContainer);
+    final fgColor = textColor ?? (isDark ? AppColors.darkPrimary : AppColors.lightPrimary);
 
     return Container(
       padding: EdgeInsets.symmetric(
