@@ -29,9 +29,7 @@ class _TafsirView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          Directionality.of(context) == TextDirection.rtl ? 'التفسير' : 'Tafsir',
-        ),
+        title: Text(Directionality.of(context) == TextDirection.rtl ? 'التفسير' : 'Tafsir'),
         elevation: 0,
       ),
       body: BlocBuilder<TafsirBloc, TafsirState>(
@@ -47,11 +45,7 @@ class _TafsirView extends StatelessWidget {
               );
             case TafsirStatus.loaded:
               if (state.tafsirs.isEmpty) {
-                return const EmptyStateWidget(
-                  title: 'No tafsirs available',
-                  subtitle: 'Download tafsirs for offline use',
-                  icon: Icons.menu_book_outlined,
-                );
+                return const EmptyStateWidget(title: 'No tafsirs available', subtitle: 'Download tafsirs for offline use', icon: Icons.menu_book_outlined);
               }
               return _TafsirList(tafsirs: state.tafsirs);
           }
@@ -63,7 +57,6 @@ class _TafsirView extends StatelessWidget {
 
 class _TafsirList extends StatelessWidget {
   final List<Tafsir> tafsirs;
-
   const _TafsirList({required this.tafsirs});
 
   @override
@@ -71,25 +64,20 @@ class _TafsirList extends StatelessWidget {
     return ListView.separated(
       padding: EdgeInsets.all(AppSizes.paddingM.w),
       itemCount: tafsirs.length,
-      separatorBuilder: (_, __) => SizedBox(height: AppSizes.paddingS.h),
-      itemBuilder: (context, index) {
-        final tafsir = tafsirs[index];
-        return _TafsirCard(tafsir: tafsir);
-      },
+      separatorBuilder: (_, _) => SizedBox(height: AppSizes.paddingS.h),
+      itemBuilder: (context, index) => _TafsirCard(tafsir: tafsirs[index]),
     );
   }
 }
 
 class _TafsirCard extends StatelessWidget {
   final Tafsir tafsir;
-
   const _TafsirCard({required this.tafsir});
 
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final accentColor = isDark ? AppColors.darkPrimary : AppColors.lightPrimary;
-
     return Pressable(
       onTap: () => context.read<TafsirBloc>().add(SelectTafsir(tafsir.id)),
       child: AppCard(
@@ -108,14 +96,7 @@ class _TafsirCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    tafsir.nameEnglish,
-                    style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                          color: isDark ? AppColors.darkTextMain : AppColors.lightTextMain,
-                        ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                  Text(tafsir.nameEnglish, style: Theme.of(context).textTheme.titleSmall?.copyWith(color: isDark ? AppColors.darkTextMain : AppColors.lightTextMain), maxLines: 1, overflow: TextOverflow.ellipsis),
                   if (tafsir.languageCode.isNotEmpty) ...[
                     SizedBox(height: AppSizes.paddingXS.h),
                     AppChip(label: tafsir.languageCode),
@@ -135,7 +116,6 @@ class _TafsirCard extends StatelessWidget {
 class TafsirDetailScreen extends StatelessWidget {
   final int tafsirId;
   final int surahId;
-
   const TafsirDetailScreen({required this.tafsirId, required this.surahId, super.key});
 
   @override
@@ -172,7 +152,7 @@ class _TafsirDetailView extends StatelessWidget {
               return ListView.separated(
                 padding: EdgeInsets.all(AppSizes.paddingM.w),
                 itemCount: state.currentEntries.length,
-                separatorBuilder: (_, __) => Divider(height: AppSizes.paddingM.h, color: AppColors.lightBorderSubtle),
+                separatorBuilder: (_, _) => Divider(height: AppSizes.paddingM.h, color: AppColors.lightBorderSubtle),
                 itemBuilder: (context, index) => _TafsirEntryCard(entry: state.currentEntries[index]),
               );
           }
@@ -184,7 +164,6 @@ class _TafsirDetailView extends StatelessWidget {
 
 class _TafsirEntryCard extends StatelessWidget {
   final TafsirEntry entry;
-
   const _TafsirEntryCard({required this.entry});
 
   @override
@@ -198,14 +177,7 @@ class _TafsirEntryCard extends StatelessWidget {
           AppChip(label: entry.ayahKey),
           SizedBox(height: AppSizes.paddingS.h),
           if (entry.text.isNotEmpty)
-            Text(
-              entry.text,
-              textAlign: TextAlign.right,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                    color: isDark ? AppColors.darkTextMain : AppColors.lightTextMain,
-                    height: 1.8,
-                  ),
-            ),
+            Text(entry.text, textAlign: TextAlign.right, style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: isDark ? AppColors.darkTextMain : AppColors.lightTextMain, height: 1.8)),
         ],
       ),
     );
