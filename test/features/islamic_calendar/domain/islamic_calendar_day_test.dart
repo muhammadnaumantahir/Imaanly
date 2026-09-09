@@ -14,6 +14,16 @@ void main() {
     expect(day.isCurrentMonth, isTrue);
   });
 
+  test('defaults to an empty event list', () {
+    const day = IslamicCalendarDay(
+      date: DateTime(2026, 9, 6),
+      hijriLabel: 'Rabi al-Awwal 1448',
+      isCurrentMonth: true,
+    );
+
+    expect(day.events, isEmpty);
+  });
+
   test('preserves events attached to a calendar day', () {
     const event = IslamicCalendarEvent(
       title: 'Prophetic Birthday',
