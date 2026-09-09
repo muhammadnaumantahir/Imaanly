@@ -61,13 +61,13 @@ class _WorshipHistoryScreenState extends State<WorshipHistoryScreen> {
             return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasError) {
-            return Center(child: Text('Unable to load worship history.'));
+            return const Center(child: Text('Unable to load worship history.'));
           }
           final days = snapshot.data ?? const <_DaySummary>[];
           return ListView.separated(
             padding: const EdgeInsets.all(16),
             itemCount: days.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 10),
+            separatorBuilder: (_, _) => const SizedBox(height: 10),
             itemBuilder: (context, index) {
               final day = days[index];
               final total = day.salah + day.quranPages + day.dhikr;
