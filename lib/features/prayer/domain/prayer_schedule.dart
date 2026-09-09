@@ -47,10 +47,15 @@ class PrayerScheduleCalculator {
   }
 
   /// Builds the next day's Fajr entry from an already calculated day.
+  ///
+  /// [PrayerTimes.fajrAfter] is the Fajr after the date represented by the
+  /// supplied object. Therefore, when callers already pass tomorrow's
+  /// [PrayerTimes], its [fajr] is the correct next-day Fajr for the current
+  /// day's schedule.
   PrayerScheduleEntry nextDayFajr(adhan.PrayerTimes nextDayPrayerTimes) {
     return PrayerScheduleEntry(
       prayer: Prayer.fajr,
-      time: nextDayPrayerTimes.fajrAfter.toLocal(),
+      time: nextDayPrayerTimes.fajr.toLocal(),
     );
   }
 
