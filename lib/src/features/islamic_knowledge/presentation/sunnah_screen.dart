@@ -84,7 +84,7 @@ class _SunnahScreenState extends State<SunnahScreen> {
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
               sliver: SliverList.separated(
                 itemCount: _items.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 12),
+                separatorBuilder: (_, _) => const SizedBox(height: 12),
                 itemBuilder: (context, index) {
                   final item = _items[index];
                   return Card(
