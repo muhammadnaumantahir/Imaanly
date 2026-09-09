@@ -135,7 +135,7 @@ class SkeletonList extends StatelessWidget {
       padding: padding ?? EdgeInsets.all(AppSizes.paddingM.w),
       physics: const NeverScrollableScrollPhysics(),
       itemCount: itemCount,
-      itemBuilder: (_, __) => const SkeletonCard(),
+      itemBuilder: (_, _) => const SkeletonCard(),
     );
   }
 }
