@@ -295,7 +295,7 @@ class _QuickActionButtonState extends State<_QuickActionButton>
                           horizontal: PrayerDimensions.pagePadding,
                         ),
                         itemCount: AthanAudio.values.length,
-                        separatorBuilder: (_, __) =>
+                        separatorBuilder: (_, _) =>
                             SizedBox(height: PrayerDimensions.space8),
                         itemBuilder: (context, index) {
                           final athan = AthanAudio.values[index];
