@@ -95,7 +95,7 @@ class SectionHeader extends StatelessWidget {
               ],
             ),
           ),
-          trailing?,
+          ?trailing,
         ],
       ),
     );
@@ -118,21 +118,17 @@ class AppChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bgColor = backgroundColor ?? (isDark ? AppColors.darkPrimaryContainer : AppColors.lightPrimaryContainer);
-    final fgColor = textColor ?? (isDark ? AppColors.darkPrimary : AppColors.lightPrimary);
-
     return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: AppSizes.paddingS.w,
-        vertical: AppSizes.paddingXS.h,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: AppSizes.paddingS.w, vertical: AppSizes.paddingXS.h),
       decoration: BoxDecoration(
-        color: bgColor,
-        borderRadius: BorderRadius.circular(AppSizes.radiusXS.r),
+        color: backgroundColor ?? (isDark ? AppColors.darkSurface : AppColors.lightSurface),
+        borderRadius: BorderRadius.circular(AppSizes.chipRadius.r),
       ),
       child: Text(
         label,
-        style: Theme.of(context).textTheme.labelSmall?.copyWith(color: fgColor),
+        style: Theme.of(context).textTheme.labelMedium?.copyWith(
+              color: textColor ?? (isDark ? AppColors.darkTextMain : AppColors.lightTextMain),
+            ),
       ),
     );
   }
