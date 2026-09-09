@@ -8,7 +8,7 @@ import '../../domain/repositories/quran_repository.dart';
 import '../datasources/quran_local_data_source.dart';
 
 /// Quran Repository Implementation — bridges domain and data layers
-/// All operations return Either<Failure, T> — no exceptions leak to domain
+/// All operations return `Either<Failure, T>` — no exceptions leak to domain
 class QuranRepositoryImpl implements QuranRepository {
   final QuranLocalDataSource _localDataSource;
 
