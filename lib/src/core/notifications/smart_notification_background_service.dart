@@ -77,7 +77,6 @@ class SmartNotificationBackgroundService {
   static Future<void> initialize() async {
     await Workmanager().initialize(
       smartNotificationCallbackDispatcher,
-      isInDebugMode: false,
     );
     await Workmanager().registerPeriodicTask(
       smartNotificationUniqueName,
