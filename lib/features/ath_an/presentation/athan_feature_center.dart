@@ -34,10 +34,6 @@ class AthanFeatureCenter extends StatelessWidget {
         _Feature('Zakat calculator', 'Estimate your annual Zakat', Icons.calculate_outlined, const ZakatCalculatorScreen()),
         _Feature('Hajj & Umrah', 'Step-by-step worship guides', Icons.flight_takeoff_rounded, const HajjUmrahGuideScreen()),
       ]),
-      _FeatureGroup('Explore', Icons.explore_outlined, [
-        _Feature('Halal finder', 'Search nearby halal places', Icons.restaurant_outlined, null, _openHalal),
-        _Feature('Daily content', 'Verse, Hadith and Dua', Icons.auto_awesome_outlined, null, _showDailyContent),
-      ]),
     ];
 
     return Scaffold(
@@ -72,20 +68,9 @@ class AthanFeatureCenter extends StatelessWidget {
   }
 
   static Future<void> _openMosques(BuildContext context) => _openSearch('mosques near me');
-  static Future<void> _openHalal(BuildContext context) => _openSearch('halal restaurants near me');
   static Future<void> _openSearch(String query) async {
     final uri = Uri.parse('https://www.google.com/maps/search/?api=1&query=${Uri.encodeComponent(query)}');
     await launchUrl(uri, mode: LaunchMode.externalApplication);
-  }
-  static void _showDailyContent(BuildContext context) {
-    showModalBottomSheet<void>(context: context, showDragHandle: true, builder: (context) => const Padding(
-      padding: EdgeInsets.fromLTRB(22, 4, 22, 30),
-      child: Column(mainAxisSize: MainAxisSize.min, crossAxisAlignment: CrossAxisAlignment.start, children: [
-        Text('Daily content', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800)),
-        SizedBox(height: 14),
-        Text('Use the existing Quran and Islamic Knowledge sections for the current daily verse, learning content and supplications.', style: TextStyle(fontSize: 15, height: 1.5)),
-      ]),
-    ));
   }
 }
 
