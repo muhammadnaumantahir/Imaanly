@@ -9,10 +9,6 @@ import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 
 /// Imaanly's daily Salah schedule.
-///
-/// The existing prayer engine remains the source of truth for calculation,
-/// adjustments, notifications and related prayer features. This page only
-/// provides the Imaanly presentation shell around that stable functionality.
 class PrayerTimePage extends StatefulWidget {
   const PrayerTimePage({super.key});
 
@@ -26,8 +22,6 @@ class _PrayerTimePageState extends State<PrayerTimePage> {
   @override
   void initState() {
     super.initState();
-    // Initialize local notification channels before the prayer UI can schedule
-    // alerts. No server, API key, or paid service is required.
     WahyNotificationService.instance.init().catchError((error) {
       debugPrint("[Imaanly] Prayer notification init failed: $error");
     });
@@ -52,26 +46,13 @@ class _PrayerTimePageState extends State<PrayerTimePage> {
         surfaceTintColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              "Prayer Times",
-              style: TextStyle(
-                fontWeight: FontWeight.w800,
-                fontSize: 18,
-                color: cs.onSurface,
-              ),
-            ),
-            Text(
-              "مواقيت الصلاة",
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 11,
-                color: cs.onSurfaceVariant,
-              ),
-            ),
-          ],
+        title: Text(
+          "Prayer Times",
+          style: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 18,
+            color: cs.onSurface,
+          ),
         ),
         leading: IconButton(
           onPressed: () => _scaffoldKey.currentState?.openDrawer(),
