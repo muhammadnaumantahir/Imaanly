@@ -12,10 +12,14 @@ class LanguageCubit extends Cubit<MyAppLocalization> {
                   element.locale.languageCode ==
                   initialLocale.locale.languageCode,
             ) ??
-            usedAppLanguageMap.first,
+            _english,
       );
 
   static const String _selectedLanguageCodeKey = "selectedLanguageCode";
+
+  static MyAppLocalization get _english => usedAppLanguageMap.firstWhere(
+        (element) => element.locale.languageCode == "en",
+      );
 
   Future<void> changeLanguage(MyAppLocalization localeInfo) async {
     final prefs = await SharedPreferences.getInstance();
@@ -25,12 +29,8 @@ class LanguageCubit extends Cubit<MyAppLocalization> {
     );
 
     emit(localeInfo);
-    
-    // Force app rebuild by emitting again after a short delay
     Future.delayed(const Duration(milliseconds: 100), () {
-      if (!isClosed) {
-        emit(localeInfo);
-      }
+      if (!isClosed) emit(localeInfo);
     });
   }
 
@@ -41,14 +41,12 @@ class LanguageCubit extends Cubit<MyAppLocalization> {
       return usedAppLanguageMap.firstOrNullWhere(
             (element) => element.locale.languageCode == languageCode,
           ) ??
-          usedAppLanguageMap.first;
+          _english;
     }
 
-    final deviceLanguageCode =
-        WidgetsBinding.instance.platformDispatcher.locale.languageCode;
-    return usedAppLanguageMap.firstOrNullWhere(
-          (element) => element.locale.languageCode == deviceLanguageCode,
-        ) ??
-        usedAppLanguageMap.first;
+    // Imaanly is an English-first app. Users can still switch to Arabic or
+    // another supported language from Settings; the device language should
+    // not silently turn the whole UI into Arabic on first launch.
+    return _english;
   }
 }
