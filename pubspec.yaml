@@ -1,6 +1,6 @@
 name: imaanly
 description: "Imaanly — a balanced Islamic companion for Salah, Quran, Dhikr, Qibla and daily worship."
-version: 2.1.0+2
+version: 2.2.0+3
 publish_to: none
 
 environment:
@@ -218,9 +218,12 @@ icons_launcher:
     linux:
       enable: true
       image_path: "assets/img/Quran_Logo_v3.png"
+
 flutter_native_splash:
   color: "#0B3025"
-  color_dark: "#0B3025"
+  color_dark: "#071E18"
   android_12:
     color: "#0B3025"
-    color_dark: "#0B3025"
+    color_dark: "#071E18"
+    icon_background_color: "#123D2F"
+    icon_background_color_dark: "#071E18"
