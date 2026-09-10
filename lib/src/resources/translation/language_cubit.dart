@@ -1,11 +1,9 @@
 import "package:imaanly/src/resources/translation/languages.dart";
-import "package:dartx/dartx.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:shared_preferences/shared_preferences.dart";
 
 class LanguageCubit extends Cubit<MyAppLocalization> {
-  LanguageCubit(MyAppLocalization initialLocale)
-    : super(_english);
+  LanguageCubit(MyAppLocalization initialLocale) : super(_english);
 
   static const String _selectedLanguageCodeKey = "selectedLanguageCode";
 
