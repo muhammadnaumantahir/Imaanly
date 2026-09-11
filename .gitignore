@@ -1,33 +1,169 @@
+# ============================================================
 # Flutter / Dart
+# ============================================================
+
 .dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
 .packages
+.pub/
 .pub-cache/
 build/
 coverage/
 
-# Android / Gradle
+# Generated Flutter/Dart files
+.flutter-plugins
+.flutter-plugins-dependencies
+.metadata
+
+# Generated code
+*.g.dart
+*.freezed.dart
+
+# ============================================================
+# Flutter platform files
+# ============================================================
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/ephemeral/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Runner/GeneratedPluginRegistrant.*
+
+# macOS
+macos/Pods/
+macos/.symlinks/
+macos/Flutter/ephemeral/
+macos/Flutter/GeneratedPluginRegistrant.*
+
+# Linux
+linux/flutter/ephemeral/
+linux/flutter/generated_plugin_registrant.cc
+linux/flutter/generated_plugins.cmake
+linux/flutter/generated_plugin_registrant.h
+
+# Windows
+windows/flutter/ephemeral/
+windows/flutter/generated_plugin_registrant.cc
+windows/flutter/generated_plugins.cmake
+windows/flutter/generated_plugin_registrant.h
+
+# Web generated files
+web/.dart_tool/
+
+# ============================================================
+# Android
+# ============================================================
+
+# Local Android SDK configuration
+android/local.properties
+
+# Gradle
 .gradle/
 android/.gradle/
-android/local.properties
-android/**/captures/
-android/**/generated/
+android/build/
+android/app/build/
+android/.cxx/
 
-# IDE
+# Generated Android files
+android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+
+# Signing / local secrets
+android/key.properties
+android/*.jks
+android/*.keystore
+*.jks
+*.keystore
+
+# ============================================================
+# IDE / Editors
+# ============================================================
+
 .idea/
-*.iml
 .vscode/
+*.iml
+*.ipr
+*.iws
 
-# Local environment
+# VS Code
+.history/
+
+# IntelliJ
+*.class
+
+# ============================================================
+# OS files
+# ============================================================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+
+# ============================================================
+# Logs / temporary files
+# ============================================================
+
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# ============================================================
+# Environment / secrets
+# ============================================================
+
 .env
 .env.*
 !.env.example
 
-# OS
-.DS_Store
-Thumbs.db
+# Firebase / Google service account secrets
+service-account*.json
+*-service-account*.json
 
-# Generated signing / keystore material
-*.jks
-*.keystore
+# ============================================================
+# Firebase local/emulator files
+# ============================================================
+
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Firebase emulator data
+emulator-data/
+
+# ============================================================
+# Generated reports / temporary exports
+# ============================================================
+
+*.bak
+*.backup
+*.old
+
+# ============================================================
+# Node / Web tooling (if used)
+# ============================================================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ============================================================
+# Temporary archives
+# ============================================================
+
+*.zip
+*.tar
+*.tar.gz
