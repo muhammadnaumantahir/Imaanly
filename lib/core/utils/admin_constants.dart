@@ -4,7 +4,7 @@ class AdminConstants {
 
   // ── Identity ──────────────────────────────────────────────
   static const adminEmail = 'idris.ghamid@gmail.com';
-  static const adminName = 'إدريس غامد';
+  static const adminName = 'Idris Ghamid';
   static const adminTitle = 'Founder & Software Architect';
   static const adminId = 'IDRISIUM_ADMIN';
   static const corpName = 'IDRISIUM Corp';

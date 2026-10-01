@@ -140,8 +140,8 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
       // Auto-select Default Tafsir Built-in
       final books = _getUniqueTafsirBooks();
       if (books.isNotEmpty) {
-        final sadi = books.where((b) => b.name.contains("سعدي")).toList();
-        final muyassar = books.where((b) => b.name.contains("ميسر")).toList();
+        final sadi = books.where((b) => b.name.contains("السعدي")).toList();
+        final muyassar = books.where((b) => b.name.contains("الميسر")).toList();
         if (muyassar.isNotEmpty) {
           _selectedTafsirBook = muyassar.first;
         } else if (sadi.isNotEmpty) {
@@ -242,7 +242,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text(
-              "النص طويل جداً لإضافة تفسير — الصورة هتكون أكبر من المسموح",
+              "The text is too long to add tafsir — the image would exceed the allowed size",
               textDirection: TextDirection.rtl,
             ),
             behavior: SnackBarBehavior.floating,
@@ -353,7 +353,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
       }
 
       if (_resolvedTafsirText != null) {
-        final tafsirName = _selectedTafsirBook?.name ?? "التفسير";
+        final tafsirName = _selectedTafsirBook?.name ?? "Tafsir";
         buffer.writeln();
         buffer.writeln("──────");
         buffer.writeln("$tafsirName:");
@@ -363,7 +363,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
       if (_showBranding) {
         buffer.writeln();
         buffer.writeln(
-          "تمت المشاركة من تطبيق الفرقان",
+          "Shared from the Imaanly app",
         );
         buffer.writeln("github.com/IDRISIUMCorp/imaanly-quran-flutter-app");
       }
@@ -415,7 +415,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                     child: Column(
                       children: [
                         Text(
-                          "مشاركة",
+                          "Share",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 18,
@@ -424,7 +424,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                           ),
                         ),
                         Text(
-                          "شارك الآيات كصورة أو نص",
+                          "Share ayahs as an image or text",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 11.5,
@@ -456,7 +456,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                   children: [
                     _buildTab(
                       1,
-                      "نص",
+                      "Text",
                       Icons.text_snippet_rounded,
                       primary,
                       _cardColor,
@@ -464,7 +464,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                     ),
                     _buildTab(
                       0,
-                      "صورة",
+                      "Image",
                       Icons.image_rounded,
                       primary,
                       _cardColor,
@@ -504,7 +504,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                             ],
                           ),
                           child: Directionality(
-                            textDirection: TextDirection.rtl,
+                            textDirection: TextDirection.ltr,
                             child: Row(
                               children: [
                                 // Surah
@@ -515,7 +515,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        "سورة",
+                                        "Surah",
                                         style: TextStyle(
                                           fontWeight: FontWeight.w700,
                                           fontSize: 13,
@@ -576,7 +576,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        "من",
+                                        "From",
                                         style: TextStyle(
                                           fontWeight: FontWeight.w700,
                                           fontSize: 13,
@@ -639,7 +639,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        "إلى",
+                                        "To",
                                         style: TextStyle(
                                           fontWeight: FontWeight.w700,
                                           fontSize: 13,
@@ -715,7 +715,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                   ],
                 ),
                 child: Directionality(
-                  textDirection: TextDirection.rtl,
+                  textDirection: TextDirection.ltr,
                   child: SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
@@ -732,7 +732,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                                         .document_page_bottom_center_24_regular,
                               color: _shareFullPage ? primary : null,
                             ),
-                            tooltip: 'مشاركة الصفحة كاملة',
+                            tooltip: 'Share the full page',
                             onPressed: () {
                               setState(() {
                                 _shareFullPage = !_shareFullPage;
@@ -764,7 +764,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                                 : FluentIcons.person_board_24_regular,
                             color: _showBranding ? primary : null,
                           ),
-                          tooltip: 'إظهار الهوية',
+                          tooltip: 'Show identity',
                           onPressed: () =>
                               setState(() => _showBranding = !_showBranding),
                         ),
@@ -806,7 +806,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                                   ? primary
                                   : null,
                             ),
-                            tooltip: 'اختيار الخط',
+                            tooltip: 'Choose font',
                             onPressed: _showFontGalleryModal,
                           ),
 
@@ -840,7 +840,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                           label: Text(
                             _selectedTafsirBook != null
                                 ? _selectedTafsirBook!.name
-                                : "تفسير",
+                                : "Tafsir",
                             style: const TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 11,
@@ -910,7 +910,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                         )
                       : const Icon(Icons.share_rounded),
                   label: Text(
-                    _isSharing ? "جاري التجهيز..." : "مشاركة",
+                    _isSharing ? "Preparing..." : "Share",
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w800,
@@ -940,16 +940,16 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
           setState(() {
             _shareMode = mode;
             if (_shareMode == 0 && _selectedTafsirBook != null) {
-              final isSadi = _selectedTafsirBook!.name.contains("سعدي");
-              final isMuyassar = _selectedTafsirBook!.name.contains("ميسر");
+              final isSadi = _selectedTafsirBook!.name.contains("السعدي");
+              final isMuyassar = _selectedTafsirBook!.name.contains("الميسر");
               
               if (!isSadi && !isMuyassar) {
                 final books = _getUniqueTafsirBooks();
-                final valid = books.where((b) => b.name.contains("ميسر") || b.name.contains("سعدي")).toList();
+                final valid = books.where((b) => b.name.contains("الميسر") || b.name.contains("السعدي")).toList();
                 _selectedTafsirBook = valid.isNotEmpty ? valid.first : null;
               } else if (isSadi && _fromVerse != _toVerse) {
                 final books = _getUniqueTafsirBooks();
-                final valid = books.where((b) => b.name.contains("ميسر")).toList();
+                final valid = books.where((b) => b.name.contains("الميسر")).toList();
                 _selectedTafsirBook = valid.isNotEmpty ? valid.first : null;
               }
             }
@@ -1015,7 +1015,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
         ? (_resolvedTafsirText!.length > 80
               ? '${_resolvedTafsirText!.substring(0, 80)}...'
               : _resolvedTafsirText!)
-        : 'معاينة نص التفسير';
+        : 'Tafsir text preview';
 
     // Auto-select Tafsir tab if tafsir is active
     final int initialTab = _resolvedTafsirText != null ? 1 : 0;
@@ -1038,7 +1038,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
               length: 2,
               initialIndex: initialTab,
               child: Directionality(
-                textDirection: TextDirection.rtl,
+                textDirection: TextDirection.ltr,
                 child: Column(
                   children: [
                     const SizedBox(height: 12),
@@ -1060,7 +1060,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                           Icon(Icons.font_download_rounded, color: primary),
                           const SizedBox(width: 8),
                           const Text(
-                            "اختر نوع الخط",
+                            "Choose font type",
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w900,
@@ -1075,11 +1075,11 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                       indicatorColor: primary,
                       tabs: [
                         const Tab(
-                          text: "خط الآية",
+                          text: "Ayah font",
                           icon: Icon(Icons.menu_book_rounded, size: 18),
                         ),
                         Tab(
-                          text: "خط التفسير",
+                          text: "Tafsir font",
                           icon: Icon(
                             Icons.auto_stories_rounded,
                             size: 18,
@@ -1102,7 +1102,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                             previewText: shortAyah,
                             selectedFont: _shareFontFamily,
                             isSelectedGoogle: _isShareFontGoogle,
-                            defaultLabel: 'خط المصحف (QCF)',
+                            defaultLabel: 'Mushaf font (QCF)',
                             onSelect: (fontId, isGoogle) {
                               setState(() {
                                 _shareFontFamily = fontId;
@@ -1128,7 +1128,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                                   previewText: tafsirPreview,
                                   selectedFont: _tafsirFontFamily,
                                   isSelectedGoogle: _isTafsirFontGoogle,
-                                  defaultLabel: 'الخط الافتراضي',
+                                  defaultLabel: 'Default font',
                                   onSelect: (fontId, isGoogle) {
                                     setState(() {
                                       _tafsirFontFamily = fontId;
@@ -1205,7 +1205,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
               onPressed: onReset,
               icon: Icon(Icons.restart_alt_rounded, color: primary, size: 18),
               label: Text(
-                "إعادة التعيين إلى الافتراضي",
+                "Reset to default",
                 style: TextStyle(color: primary),
               ),
             ),
@@ -1332,14 +1332,14 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
     if (!mounted) return;
 
     if (_shareMode == 0) {
-      books = books.where((b) => b.name.contains("ميسر") || b.name.contains("سعدي")).toList();
+      books = books.where((b) => b.name.contains("الميسر") || b.name.contains("السعدي")).toList();
     }
 
     if (books.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text(
-            "لا توجد تفاسير محملة.",
+            "No tafsirs downloaded.",
             textDirection: TextDirection.rtl,
           ),
         ),
@@ -1356,7 +1356,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
       ),
       builder: (ctx) {
         return Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: TextDirection.ltr,
           child: SafeArea(
             child: ListView(
               shrinkWrap: true,
@@ -1364,12 +1364,12 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                 const Padding(
                   padding: EdgeInsets.all(16),
                   child: Text(
-                    "اختر التفسير",
+                    "Choose tafsir",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
                   ),
                 ),
                 ListTile(
-                  title: const Text("بدون تفسير"),
+                  title: const Text("No tafsir"),
                   trailing: _selectedTafsirBook == null
                       ? const Icon(Icons.check_circle, color: Colors.green)
                       : null,
@@ -1383,7 +1383,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                 ),
                 ...books.map(
                   (b) {
-                    final bool disabledSadi = _shareMode == 0 && _fromVerse != _toVerse && b.name.contains("سعدي");
+                    final bool disabledSadi = _shareMode == 0 && _fromVerse != _toVerse && b.name.contains("السعدي");
                     return ListTile(
                       title: Text(
                         b.name,
@@ -1393,7 +1393,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                       ),
                       subtitle: disabledSadi
                           ? const Text(
-                              "مسموح لآية واحدة فقط (للمزيد، يرجى اختيار التفسير الميسر أو المشاركة كنص)",
+                              "Allowed for a single ayah only (for more, choose Tafsir al-Muyassar or share as text)",
                               style: TextStyle(color: Colors.redAccent, fontSize: 11),
                             )
                           : null,
@@ -1429,7 +1429,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
         border: Border.all(color: primary.withValues(alpha: 0.2), width: 1.5),
       ),
       child: Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -1488,7 +1488,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
               const Divider(),
               const SizedBox(height: 12),
               Text(
-                "التفسير:",
+                "Tafsir:",
                 style: TextStyle(color: primary, fontWeight: FontWeight.w800),
               ),
               const SizedBox(height: 8),
@@ -1515,7 +1515,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "تطبيق الفرقان",
+                            "Imaanly app",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w900,
@@ -1745,14 +1745,14 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
     }
 
     // Tafsir title styling (matches AyahImageGenerator)
-    final String tafsirTitle = _selectedTafsirBook?.name ?? "التفسير";
+    final String tafsirTitle = _selectedTafsirBook?.name ?? "Tafsir";
     final double titleFontSize = (44 - (tafsirTitle.length * 0.35)).clamp(
       36,
       44,
     );
 
     final Widget contentColumn = Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -1818,7 +1818,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "تطبيق الفرقان",
+                        "Imaanly app",
                         style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.w900,
@@ -1877,13 +1877,13 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
           context: context,
           builder: (context) => StatefulBuilder(
             builder: (context, setDialogState) => AlertDialog(
-              title: const Text("حجم الخط", textAlign: TextAlign.right),
+              title: const Text("Font size", textAlign: TextAlign.right),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const Gap(16),
                   const Text(
-                    "حجم اسم السورة",
+                    "Surah name size",
                     textAlign: TextAlign.right,
                   ),
                   Slider(
@@ -1898,7 +1898,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                     },
                   ),
                   const Gap(16),
-                  const Text("حجم البانر", textAlign: TextAlign.right),
+                  const Text("Banner size", textAlign: TextAlign.right),
                   Slider(
                     value: _bannerScale,
                     min: 0.5,
@@ -1913,7 +1913,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                   if (_selectedTafsirBook != null) ...[
                     const Gap(16),
                     const Text(
-                      "حجم التفسير",
+                      "Tafsir size",
                       textAlign: TextAlign.right,
                     ),
                     Slider(

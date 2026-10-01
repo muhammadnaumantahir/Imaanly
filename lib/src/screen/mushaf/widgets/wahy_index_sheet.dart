@@ -64,7 +64,7 @@ class WahyIndexSheetState extends State<WahyIndexSheet>
               controller: _searchController,
               textDirection: TextDirection.rtl,
               decoration: const InputDecoration(
-                hintText: "ابحث عن سورة…",
+                hintText: "Search for a surah…",
                 border: InputBorder.none,
               ),
               onChanged: (_) => setState(() {}),
@@ -101,7 +101,7 @@ class WahyIndexSheetState extends State<WahyIndexSheet>
     if (filtered.isEmpty) {
       return const Center(
         child: Text(
-          "مفيش نتائج",
+          "No results",
           style: TextStyle(
             fontWeight: FontWeight.w800,
             color: AppColors.lightTextMuted,
@@ -173,7 +173,7 @@ class WahyIndexSheetState extends State<WahyIndexSheet>
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        "الصفحة ${localizedNumber(context, page)} · ${localizedNumber(context, s.versesCount)} آية",
+                        "Page ${localizedNumber(context, page)} · ${localizedNumber(context, s.versesCount)} ayahs",
                         style: TextStyle(
                           fontWeight: FontWeight.w800,
                           color: AppColors.lightTextMuted,
@@ -219,7 +219,7 @@ class WahyIndexSheetState extends State<WahyIndexSheet>
             children: [
               Expanded(
                 child: Text(
-                  "الفهرس",
+                  "Index",
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.w900,
@@ -228,7 +228,7 @@ class WahyIndexSheetState extends State<WahyIndexSheet>
                 ),
               ),
               Text(
-                "السور والأربع",
+                "Surahs & the four",
                 style: TextStyle(
                   fontWeight: FontWeight.w800,
                   color: (Theme.of(context).brightness == Brightness.dark ? Colors.white : AppColors.lightTextMain)
@@ -272,8 +272,8 @@ class WahyIndexSheetState extends State<WahyIndexSheet>
                 fontWeight: FontWeight.w900,
               ),
               tabs: const [
-                Tab(text: "السور"),
-                Tab(text: "الأربع"),
+                Tab(text: "Surahs"),
+                Tab(text: "Four"),
               ],
             ),
           ),
@@ -354,7 +354,7 @@ class RubListView extends StatelessWidget {
         if (filtered.isEmpty) {
           return const Center(
             child: Text(
-              "مفيش نتائج",
+              "No results",
               style: TextStyle(
                 fontWeight: FontWeight.w800,
                 color: AppColors.lightTextMuted,
@@ -417,7 +417,7 @@ class RubListView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "ربع ${localizedNumber(context, rubNumber)}",
+                            "Quarter ${localizedNumber(context, rubNumber)}",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w900,
@@ -426,7 +426,7 @@ class RubListView extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "${getSurahNameArabic(surah)}: ${localizedNumber(context, verse)} · الصفحة ${localizedNumber(context, page)}",
+                            "${getSurahNameArabic(surah)}: ${localizedNumber(context, verse)} · Page ${localizedNumber(context, page)}",
                             style: const TextStyle(
                               fontWeight: FontWeight.w800,
                               color: AppColors.lightTextMuted,

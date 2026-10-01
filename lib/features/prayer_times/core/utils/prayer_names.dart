@@ -6,17 +6,17 @@ class PrayerNames {
   static String getArabicName(Prayer prayer) {
     switch (prayer) {
       case Prayer.fajr:
-        return 'الفجر';
+        return 'Fajr';
       case Prayer.sunrise:
-        return 'الشروق';
+        return 'Sunrise';
       case Prayer.dhuhr:
-        return 'الظهر';
+        return 'Dhuhr';
       case Prayer.asr:
-        return 'العصر';
+        return 'Asr';
       case Prayer.maghrib:
-        return 'المغرب';
+        return 'Maghrib';
       case Prayer.isha:
-        return 'العشاء';
+        return 'Isha';
       default:
         return '';
     }
@@ -46,17 +46,17 @@ class PrayerNames {
   static String getShortArabicName(Prayer prayer) {
     switch (prayer) {
       case Prayer.fajr:
-        return 'فجر';
+        return 'Fajr';
       case Prayer.sunrise:
-        return 'شروق';
+        return 'Sunrise';
       case Prayer.dhuhr:
-        return 'ظهر';
+        return 'Dhuhr';
       case Prayer.asr:
-        return 'عصر';
+        return 'Asr';
       case Prayer.maghrib:
-        return 'مغرب';
+        return 'Maghrib';
       case Prayer.isha:
-        return 'عشاء';
+        return 'Isha';
       default:
         return '';
     }
@@ -66,17 +66,17 @@ class PrayerNames {
   static String getArabicDescription(Prayer prayer) {
     switch (prayer) {
       case Prayer.fajr:
-        return 'صلاة الفجر - من طلوع الفجر إلى شروق الشمس';
+        return 'Fajr prayer - from dawn until sunrise';
       case Prayer.sunrise:
-        return 'وقت الشروق - بداية النهار';
+        return 'Sunrise time - start of the day';
       case Prayer.dhuhr:
-        return 'صلاة الظهر - من زوال الشمس إلى العصر';
+        return 'Dhuhr prayer - from the sun\'s zenith until Asr';
       case Prayer.asr:
-        return 'صلاة العصر - من منتصف النهار إلى المغرب';
+        return 'Asr prayer - from mid-afternoon until Maghrib';
       case Prayer.maghrib:
-        return 'صلاة المغرب - من غروب الشمس إلى العشاء';
+        return 'Maghrib prayer - from sunset until Isha';
       case Prayer.isha:
-        return 'صلاة العشاء - من مغيب الشفق إلى منتصف الليل';
+        return 'Isha prayer - from the disappearance of twilight until midnight';
       default:
         return '';
     }

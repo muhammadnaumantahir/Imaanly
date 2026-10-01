@@ -175,7 +175,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                 const Gap(10),
                 const Expanded(
                   child: Text(
-                    "الفُرقان",
+                    "Imaanly",
                     textDirection: TextDirection.rtl,
                     style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
                   ),
@@ -184,7 +184,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                   TextButton(
                     onPressed: _skip,
                     child: Text(
-                      "تخطي",
+                      "Skip",
                       style: TextStyle(
                         fontWeight: FontWeight.w800,
                         fontSize: 12,
@@ -247,7 +247,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
             size: 18,
           ),
           label: Text(
-            isLast ? "ابدأ الآن" : "التالي",
+            isLast ? "Get started" : "Next",
             style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 15),
           ),
           style: ElevatedButton.styleFrom(
@@ -298,7 +298,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
               .scaleXY(begin: 0.8, end: 1, curve: Curves.easeOut),
           const Gap(30),
           const Text(
-                "مرحبًا بك في الفُرقان",
+                "Welcome to Imaanly",
                 textDirection: TextDirection.rtl,
                 style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900),
               )
@@ -307,7 +307,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
               .slideY(begin: 0.15, end: 0),
           const Gap(12),
           Text(
-            "مصحف رقمي متكامل — صُمم بعناية ليكون رفيقك في تلاوة كتاب الله.",
+            "A complete digital Mushaf — carefully designed to be your companion in reciting the Book of Allah.",
             textDirection: TextDirection.rtl,
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -324,37 +324,37 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
             alignment: WrapAlignment.center,
             children: [
               _featurePill(
-                "تجويد ملوّن",
+                "Colored tajweed",
                 FluentIcons.color_24_filled,
                 themeState.primary,
                 isDark,
               ),
               _featurePill(
-                "+43 قارئ",
+                "+43 reciters",
                 FluentIcons.headphones_24_filled,
                 themeState.primary,
                 isDark,
               ),
               _featurePill(
-                "بحث ذكي",
+                "Smart search",
                 FluentIcons.search_24_filled,
                 themeState.primary,
                 isDark,
               ),
               _featurePill(
-                "تفسير متعدد",
+                "Multiple tafsirs",
                 FluentIcons.book_24_filled,
                 themeState.primary,
                 isDark,
               ),
               _featurePill(
-                "إعراب",
+                "I'rab (grammar)",
                 FluentIcons.text_grammar_wand_24_filled,
                 themeState.primary,
                 isDark,
               ),
               _featurePill(
-                "ختمة يومية",
+                "Daily Khatma",
                 FluentIcons.target_24_filled,
                 themeState.primary,
                 isDark,
@@ -401,7 +401,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _pageTitle("المظهر العام", "اختار الوضع واللون اللي يريحك."),
+          _pageTitle("Appearance", "Choose the mode and color that feel comfortable to you."),
           const Gap(20),
 
           // Dark / Light / System
@@ -411,7 +411,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                 themeState,
                 isDark,
                 mode: ThemeMode.system,
-                label: "تلقائي",
+                label: "Auto",
                 icon: FluentIcons.desktop_24_regular,
               ),
               const Gap(10),
@@ -419,7 +419,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                 themeState,
                 isDark,
                 mode: ThemeMode.dark,
-                label: "داكن",
+                label: "Dark",
                 icon: FluentIcons.weather_moon_24_regular,
               ),
               const Gap(10),
@@ -427,7 +427,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                 themeState,
                 isDark,
                 mode: ThemeMode.light,
-                label: "فاتح",
+                label: "Light",
                 icon: FluentIcons.weather_sunny_24_regular,
               ),
             ],
@@ -435,7 +435,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
           const Gap(24),
 
           // App Color Preview
-          _sectionLabel("لون التطبيق"),
+          _sectionLabel("App color"),
           const Gap(10),
           _buildColorPreview(isDark),
         ],
@@ -449,11 +449,11 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
     final bg = isDark ? const Color(0xFF343A40) : const Color(0xFFF5EBE0);
     return Row(
       children: [
-        _colorDot(primary, "الأساسي"),
+        _colorDot(primary, "Primary"),
         const Gap(12),
-        _colorDot(secondary, "الثانوي"),
+        _colorDot(secondary, "Secondary"),
         const Gap(12),
-        _colorDot(bg, "الخلفية"),
+        _colorDot(bg, "Background"),
       ],
     );
   }
@@ -548,14 +548,14 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               _pageTitle(
-                "ثيم المصحف",
-                "اختار خلفية المصحف اللي تريح عينك أثناء القراءة.",
+                "Mushaf theme",
+                "Choose the Mushaf background that's easy on your eyes while reading.",
               ),
               const Gap(20),
               _quranThemeGrid(themeState, isDark, qsState),
               const Gap(24),
               // Live Preview
-              _sectionLabel("معاينة"),
+              _sectionLabel("Preview"),
               const Gap(12),
               _quranThemePreview(qsState),
             ],
@@ -572,11 +572,11 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
   ) {
     final themes = [
       (QuranTheme.oled, "OLED", Colors.black, Colors.white),
-      (QuranTheme.sepia, "سيبيا", const Color(0xFFF4ECD8), Colors.black87),
-      (QuranTheme.cream, "كريمي", const Color(0xFFFFFDD0), Colors.black87),
+      (QuranTheme.sepia, "Sepia", const Color(0xFFF4ECD8), Colors.black87),
+      (QuranTheme.cream, "Cream", const Color(0xFFFFFDD0), Colors.black87),
       (
         QuranTheme.nightBlue,
-        "أزرق ليلي",
+        "Midnight blue",
         const Color(0xFF0F172A),
         Colors.white,
       ),
@@ -689,13 +689,13 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           _pageTitle(
-            "لون التظليل",
-            "اختار لون التظليل اللي يناسبك لإبراز الآيات أو الكلمات.",
+            "Highlight color",
+            "Choose a highlight color to emphasize ayahs or words.",
           ),
           const Gap(20),
 
           // Highlight Color
-          _sectionLabel("لون التظليل"),
+          _sectionLabel("Highlight color"),
           const Gap(10),
           Wrap(
             spacing: 10,
@@ -714,7 +714,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
           const Gap(24),
 
           // Preview
-          _sectionLabel("معاينة التظليل"),
+          _sectionLabel("Highlight preview"),
           const Gap(12),
           Container(
             padding: const EdgeInsets.all(16),
@@ -796,8 +796,8 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               _pageTitle(
-                "المحتوى والأدوات",
-                "اختار الأدوات اللي تحتاجها أثناء القراءة.",
+                "Content & tools",
+                "Choose the tools you need while reading.",
               ),
               const Gap(20),
 
@@ -812,7 +812,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           const Text(
-                            "التفسير الميسّر",
+                            "Al-Tafsir Al-Muyassar",
                             textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontSize: 15,
@@ -821,7 +821,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                           ),
                           const Gap(4),
                           Text(
-                            "تفسير مبسّط محمّل مع التطبيق — لا يحتاج إنترنت",
+                            "A simplified tafsir bundled with the app — no internet needed",
                             textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontSize: 12,
@@ -833,7 +833,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                     ),
                     const Gap(12),
                     Text(
-                      "مُفعّل تلقائياً",
+                      "Enabled automatically",
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w800,
@@ -856,7 +856,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           const Text(
-                            "الإعراب",
+                            "I'rab",
                             textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontSize: 15,
@@ -865,7 +865,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                           ),
                           const Gap(4),
                           Text(
-                            "إعراب الآيات — تقدر تفعله أو تلغيه في أي وقت",
+                            "I'rab of the ayahs — you can turn it on or off anytime",
                             textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontSize: 12,
@@ -877,7 +877,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                     ),
                     const Gap(12),
                     Text(
-                      "مُفعّل تلقائياً",
+                      "Enabled automatically",
                       style: TextStyle(
                         fontSize: 11,
                         fontWeight: FontWeight.w800,
@@ -903,7 +903,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                   children: [
                     Expanded(
                       child: Text(
-                        "تقدر تغيّر كل الإعدادات دي بعدين من الإعدادات.",
+                        "You can change all of these settings later from Settings.",
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
                           fontSize: 12,
@@ -937,13 +937,13 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          _pageTitle("الإشعارات", "فعّل التنبيهات اللي تفكّرك بالقرآن والذكر."),
+          _pageTitle("Notifications", "Turn on notifications that remind you of the Quran and dhikr."),
           const Gap(20),
           _notifToggle(
             themeState,
             isDark,
-            title: "تذكير الختمة",
-            subtitle: "تذكير يومي بورد القراءة",
+            title: "Khatma reminder",
+            subtitle: "Daily reading wird reminder",
             icon: FluentIcons.book_24_filled,
             value: _notifKhatma,
             onChanged: (v) => setState(() => _notifKhatma = v),
@@ -952,8 +952,8 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
           _notifToggle(
             themeState,
             isDark,
-            title: "آية اليوم",
-            subtitle: "آية عشوائية يومية مع تفسيرها",
+            title: "Ayah of the Day",
+            subtitle: "A random daily ayah with its tafsir",
             icon: FluentIcons.star_24_filled,
             value: _notifDailyVerse,
             onChanged: (v) => setState(() => _notifDailyVerse = v),
@@ -962,8 +962,8 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
           _notifToggle(
             themeState,
             isDark,
-            title: "أذكار الصباح",
-            subtitle: "تذكير بأذكار الصباح",
+            title: "Morning adhkar",
+            subtitle: "Morning adhkar reminder",
             icon: FluentIcons.weather_sunny_24_filled,
             value: _notifMorningAzkar,
             onChanged: (v) => setState(() => _notifMorningAzkar = v),
@@ -972,8 +972,8 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
           _notifToggle(
             themeState,
             isDark,
-            title: "أذكار المساء",
-            subtitle: "تذكير بأذكار المساء",
+            title: "Evening adhkar",
+            subtitle: "Evening adhkar reminder",
             icon: FluentIcons.weather_moon_24_filled,
             value: _notifEveningAzkar,
             onChanged: (v) => setState(() => _notifEveningAzkar = v),
@@ -992,7 +992,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
               children: [
                 Expanded(
                   child: Text(
-                    "تقدر تعدّل مواعيد وإعدادات الإشعارات بالتفصيل من شاشة الإعدادات.",
+                    "You can fine-tune notification times and settings from the Settings screen.",
                     textDirection: TextDirection.rtl,
                     style: TextStyle(
                       fontSize: 12,

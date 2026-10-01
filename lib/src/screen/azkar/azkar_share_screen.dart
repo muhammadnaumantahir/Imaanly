@@ -32,10 +32,10 @@ class _TabItem {
 // QUICK PRESETS
 
 enum SharePreset {
-  elegant('أنيق', 'dark_royal', 'royal', 28, true, false, true),
+  elegant('Elegant', 'dark_royal', 'royal', 28, true, false, true),
   minimal('مُبسّط', 'glass_light', 'minimalist', 24, false, false, false),
   viral('ستوري', 'sunset', 'insta_quote', 32, true, true, true),
-  classic('كلاسيكي', 'glass_dark', 'classic', 26, true, true, true),
+  classic('Classic', 'glass_dark', 'classic', 26, true, true, true),
   nature('هادئ', 'emerald_gradient', 'zen', 24, true, false, true);
 
   final String label;
@@ -268,23 +268,23 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
   // THEMES
 
   static const Map<String, _ThemePreview> _themes = {
-    'glass_dark':       _ThemePreview('زجاجي داكن', Color(0xFF0A0A0A), Colors.white, Icons.dark_mode_rounded),
+    'glass_dark':       _ThemePreview('Dark glass', Color(0xFF0A0A0A), Colors.white, Icons.dark_mode_rounded),
     'dark_royal':       _ThemePreview('ملكي ذهبي', Color(0xFF0A0806), Color(0xFFD4A746), Icons.auto_awesome),
     'midnight_blue':    _ThemePreview('ليلي أزرق', Color(0xFF0D1B2A), Color(0xFF64B5F6), Icons.nightlight_round),
-    'emerald_gradient': _ThemePreview('زمردي', Color(0xFF0A1F1A), Color(0xFF80CBC4), Icons.eco_rounded),
+    'emerald_gradient': _ThemePreview('Emerald', Color(0xFF0A1F1A), Color(0xFF80CBC4), Icons.eco_rounded),
     'sunset':           _ThemePreview('بنفسجي', Color(0xFF1A0A2E), Color(0xFFCE93D8), Icons.gradient_rounded),
-    'sand_dunes':       _ThemePreview('رملي', Color(0xFFEFEBE9), Color(0xFF8D6E63), Icons.landscape_rounded),
+    'sand_dunes':       _ThemePreview('Sandy', Color(0xFFEFEBE9), Color(0xFF8D6E63), Icons.landscape_rounded),
     'ocean_night':      _ThemePreview('محيط ليلي', Color(0xFF0A1628), Color(0xFF4DD0E1), Icons.water_rounded),
     'rose_gold':        _ThemePreview('روز جولد', Color(0xFFFBE9E7), Color(0xFFB76E79), Icons.local_florist_rounded),
     'forest_green':     _ThemePreview('غابة خضراء', Color(0xFF0B1F0E), Color(0xFF66BB6A), Icons.park_rounded),
-    'glass_light':      _ThemePreview('زجاجي فاتح', Color(0xFFFDFAF5), Color(0xFF1B1B1B), Icons.light_mode_rounded),
-    'custom':           _ThemePreview('مخصص', Color(0xFF141414), Color(0xFF33B18E), Icons.color_lens_rounded),
+    'glass_light':      _ThemePreview('Light glass', Color(0xFFFDFAF5), Color(0xFF1B1B1B), Icons.light_mode_rounded),
+    'custom':           _ThemePreview('Custom', Color(0xFF141414), Color(0xFF33B18E), Icons.color_lens_rounded),
   };
 
   // TABS STATE
   static const List<_TabItem> _tabs = [
     _TabItem('التصميم', Icons.palette_rounded),
-    _TabItem('العناصر', Icons.text_fields_rounded),
+    _TabItem('Items', Icons.text_fields_rounded),
     _TabItem('التنسيق', Icons.aspect_ratio_rounded),
     _TabItem('الهوية', Icons.verified_user_rounded),
   ];
@@ -660,9 +660,9 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
 
   Widget _buildImageFilterSelector(Color primary, Color cardColor, bool isDark) {
     final filters = [
-      ('none', 'بدون', null),
+      ('none', 'None', null),
       ('grayscale', 'أبيض وأسود', Colors.grey),
-      ('sepia', 'سيبيا', const Color(0xFF8B7355)),
+      ('sepia', 'Sepia', const Color(0xFF8B7355)),
       ('vintage', 'فينتج', const Color(0xFFD4A574)),
       ('cool', 'بارد', Colors.cyan),
       ('warm', 'دافئ', Colors.orange),
@@ -747,7 +747,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
             children: [
-              _buildTemplateOption('classic', 'كلاسيكي', Icons.crop_square_rounded, primary, cardColor, isDark),
+              _buildTemplateOption('classic', 'Classic', Icons.crop_square_rounded, primary, cardColor, isDark),
               _buildTemplateOption('minimalist', 'مُبسّط', Icons.view_agenda_rounded, primary, cardColor, isDark),
             ],
           ),
@@ -819,9 +819,9 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
             }),
             if (_backgroundImagePath != null) ...[
               const Gap(12),
-              _buildImageAction("تعديل", Icons.edit_attributes_rounded, primary, () => _showImageAdjuster()),
+              _buildImageAction("Edit", Icons.edit_attributes_rounded, primary, () => _showImageAdjuster()),
               const Gap(12),
-              _buildImageAction("حذف", Icons.delete_forever_rounded, Colors.redAccent, () => setState(() => _backgroundImagePath = null)),
+              _buildImageAction("Delete", Icons.delete_forever_rounded, Colors.redAccent, () => setState(() => _backgroundImagePath = null)),
             ],
           ],
         ),
@@ -839,7 +839,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
           const Gap(24),
           _buildSectionTitle("ألوان مخصصة", Icons.color_lens_rounded, primary, subtleColor),
           const Gap(16),
-          _buildColorOption("لون الخلفية", _customBgColor, (c) => setState(() => _customBgColor = c), textColor),
+          _buildColorOption("Background color", _customBgColor, (c) => setState(() => _customBgColor = c), textColor),
           const Gap(12),
           _buildToggle("خلفية متدرجة", _isGradientBg, (val) => setState(() => _isGradientBg = val), primary, textColor),
           if (_isGradientBg) ...[
@@ -874,7 +874,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
             style: TextStyle(fontSize: 12, color: subtleColor, height: 1.4),
           ),
           const Gap(16),
-          _buildSliderRow("الحجم", "${_fontSize.toInt()}", primary, textColor),
+          _buildSliderRow("Size", "${_fontSize.toInt()}", primary, textColor),
           Slider(
             value: _fontSize,
             min: 16,
@@ -968,13 +968,13 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
           const Gap(12),
           _buildFullColorPicker('category', _categoryColor, (c) => setState(() => _categoryColor = c), primary, textColor, isDark),
           const Gap(12),
-          _buildFontDropdown("خط العنوان", _categoryFont, (f) => setState(() => _categoryFont = f), primary),
+          _buildFontDropdown("Title font", _categoryFont, (f) => setState(() => _categoryFont = f), primary),
           const Gap(12),
           Text("ستايل العنوان:", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: textColor.withValues(alpha: 0.7))),
           const Gap(8),
           Row(
             children: [
-              _buildStyleChip('classic', 'كلاسيكي', _categoryStyleId == 'classic', primary),
+              _buildStyleChip('classic', 'Classic', _categoryStyleId == 'classic', primary),
               const Gap(8),
               _buildStyleChip('pill', 'كبسولة', _categoryStyleId == 'pill', primary),
               const Gap(8),
@@ -1147,7 +1147,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
           const Gap(12),
           _buildFullColorPicker('description', _descriptionColor, (c) => setState(() => _descriptionColor = c), primary, textColor, isDark),
           const Gap(12),
-          _buildFontDropdown("خط الوصف", _descriptionFont, (f) => setState(() => _descriptionFont = f), primary),
+          _buildFontDropdown("Description font", _descriptionFont, (f) => setState(() => _descriptionFont = f), primary),
           const Gap(12),
           _buildSliderRow("حجم خط الوصف", "${(_descriptionFontSize ?? _fontSize + 4).toInt()}", primary, textColor),
           Row(
@@ -1306,7 +1306,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                       ),
                       const Gap(12),
                       Text(
-                        currentColor != null ? "مخصص" : "اختيار لون",
+                        currentColor != null ? "Custom" : "اختيار لون",
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: currentColor != null ? FontWeight.bold : FontWeight.normal,
@@ -1418,7 +1418,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                                     ),
                                     const Gap(10),
                                     IconButton(
-                                      tooltip: 'نسخ',
+                                      tooltip: 'Copy',
                                       onPressed: () => Clipboard.setData(ClipboardData(text: _toHexAarrggbb(effective))),
                                       icon: Icon(Icons.copy_rounded, color: textColor.withValues(alpha: 0.7)),
                                     ),
@@ -1475,7 +1475,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
     final fontLabels = {
       null: 'افتراضي',
       'KFGQPC-Uthmanic-HAFS-Regular': 'عثماني',
-      'Amiri-Regular': 'أميري',
+      'Amiri-Regular': 'Amiri',
       'Cairo-Bold': 'Cairo Bold',
       'IDRISIUM': 'IDRISIUM',
       'AmiriQuran-Regular': 'أميري قرآن',
@@ -1557,7 +1557,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
         const Gap(24),
         
         // Text alignment
-        _buildSectionTitle("محاذاة النص", Icons.format_align_center_rounded, primary, subtleColor),
+        _buildSectionTitle("Text alignment", Icons.format_align_center_rounded, primary, subtleColor),
         const Gap(12),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -1670,7 +1670,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
     final fontLabels = {
       'IDRISIUM': 'IDRISIUM',
       'KFGQPC-Uthmanic-HAFS-Regular': 'عثماني',
-      'Amiri-Regular': 'أميري',
+      'Amiri-Regular': 'Amiri',
       'Cairo-Bold': 'Cairo Bold',
       'AmiriQuran-Regular': 'أميري قرآن',
       'Aref Ruqaa Bold': 'عارف رقعة',
@@ -1759,8 +1759,8 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                               title: const Text('حذف الخط'),
                               content: Text('هل تريد حذف الخط "$label"؟'),
                               actions: [
-                                TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('إلغاء')),
-                                TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('حذف')),
+                                TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
+                                TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Delete')),
                               ],
                             );
                           },
@@ -1891,13 +1891,13 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
               TextButton.icon(
                 onPressed: _saveImage,
                 icon: const Icon(Icons.download_rounded, size: 20),
-                label: const Text("حفظ", style: TextStyle(fontWeight: FontWeight.bold)),
+                label: const Text("Save", style: TextStyle(fontWeight: FontWeight.bold)),
                 style: TextButton.styleFrom(foregroundColor: primary),
               ),
               TextButton.icon(
                 onPressed: _shareImage,
                 icon: const Icon(Icons.ios_share_rounded, size: 20),
-                label: const Text("مشاركة", style: TextStyle(fontWeight: FontWeight.bold)),
+                label: const Text("Share", style: TextStyle(fontWeight: FontWeight.bold)),
                 style: TextButton.styleFrom(foregroundColor: primary),
               ),
             ],
@@ -2707,7 +2707,7 @@ class _ColorPickerDialogState extends State<_ColorPickerDialog> {
                 ),
                 const Gap(10),
                 IconButton(
-                  tooltip: 'نسخ',
+                  tooltip: 'Copy',
                   onPressed: () {
                     Clipboard.setData(ClipboardData(text: _toHex(_selectedColor)));
                   },
@@ -2821,7 +2821,7 @@ class _ColorPickerDialogState extends State<_ColorPickerDialog> {
               children: [
                 TextButton(
                   onPressed: () => Navigator.pop(context),
-                  child: const Text("إلغاء", style: TextStyle(color: Colors.white54)),
+                  child: const Text("Cancel", style: TextStyle(color: Colors.white54)),
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -2829,7 +2829,7 @@ class _ColorPickerDialogState extends State<_ColorPickerDialog> {
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                   ),
                   onPressed: () => Navigator.pop(context, _selectedColor),
-                  child: const Text("تطبيق", style: TextStyle(color: Colors.white)),
+                  child: const Text("Apply", style: TextStyle(color: Colors.white)),
                 ),
               ],
             ),

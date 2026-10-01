@@ -68,7 +68,7 @@ class RubListView extends StatelessWidget {
         if (filtered.isEmpty) {
           return const Center(
             child: Text(
-              "مفيش نتائج",
+              "No results",
               style: TextStyle(
                 fontWeight: FontWeight.w800,
                 color: Color(0xFF9C9C9C),
@@ -131,7 +131,7 @@ class RubListView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "ربع ${localizedNumber(context, rubNumber)}",
+                            "Quarter ${localizedNumber(context, rubNumber)}",
                             style: TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w900,
@@ -140,7 +140,7 @@ class RubListView extends StatelessWidget {
                           ),
                           const SizedBox(height: 4),
                           Text(
-                            "${getSurahNameArabic(surah)}: ${localizedNumber(context, verse)} · الصفحة ${localizedNumber(context, page)}",
+                            "${getSurahNameArabic(surah)}: ${localizedNumber(context, verse)} · Page ${localizedNumber(context, page)}",
                             style: const TextStyle(
                               fontWeight: FontWeight.w800,
                               color: Color(0xFF8F8F8F),

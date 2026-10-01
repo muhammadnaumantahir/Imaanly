@@ -122,14 +122,14 @@ class AyahOptionsSheet extends StatelessWidget {
     final green = themeState.primary;
 
     final colors = <String, ({String name, Color color})>{
-      "red": (name: "الأحمر", color: const Color(0xFFB3261E)),
-      "yellow": (name: "الأصفر", color: const Color(0xFFB68A00)),
-      "green": (name: "الأخضر", color: themeState.primary),
-      "blue": (name: "الأزرق", color: const Color(0xFF2962FF)),
+      "red": (name: "Red", color: const Color(0xFFB3261E)),
+      "yellow": (name: "Yellow", color: const Color(0xFFB68A00)),
+      "green": (name: "Green", color: themeState.primary),
+      "blue": (name: "Blue", color: const Color(0xFF2962FF)),
     };
 
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Container(
         decoration: BoxDecoration(
           color: bg,
@@ -220,11 +220,11 @@ class AyahOptionsSheet extends StatelessWidget {
                   children: [
                     _MenuItem(
                       title: (currentColor != null && currentColor.isNotEmpty)
-                          ? "إزالة الفاصل"
-                          : "فاصل تلقائي",
+                          ? "Remove divider"
+                          : "Auto divider",
                       subtitle: (currentColor != null && currentColor.isNotEmpty)
-                          ? "إزالة الفاصل من هذه الآية"
-                          : "يحط فاصل بسرعة بنفس النوع الافتراضي",
+                          ? "Remove divider from this ayah"
+                          : "Quickly places a divider of the default type",
                       trailing: Icon(
                         (currentColor != null && currentColor.isNotEmpty)
                             ? Icons.delete_outline_rounded
@@ -249,8 +249,8 @@ class AyahOptionsSheet extends StatelessWidget {
                       },
                     ),
                     _MenuItem(
-                      title: "اختيار نوع الفاصل",
-                      subtitle: "يفتح نافذة لاختيار لون/نوع الفاصل",
+                      title: "Choose divider type",
+                      subtitle: "Opens a window to choose the divider color/type",
                       trailing: const Icon(Icons.tune_rounded),
                       trailingColor: green,
                       onBg: onBg,
@@ -265,7 +265,7 @@ class AyahOptionsSheet extends StatelessWidget {
                                 backgroundColor: Colors.transparent,
                                 builder: (ctx) {
                                   return Directionality(
-                                    textDirection: TextDirection.rtl,
+                                    textDirection: TextDirection.ltr,
                                     child: Container(
                                       decoration: BoxDecoration(
                                         color: bg,
@@ -291,7 +291,7 @@ class AyahOptionsSheet extends StatelessWidget {
                                               ),
                                               const SizedBox(height: 10),
                                               Text(
-                                                "أنواع الفواصل",
+                                                "Divider types",
                                                 style: TextStyle(
                                                   fontSize: 18,
                                                   fontWeight: FontWeight.w800,
@@ -344,7 +344,7 @@ class AyahOptionsSheet extends StatelessWidget {
                   dividerColor: dividerColor,
                   children: [
                     _MenuItem(
-                      title: "تلاوة",
+                      title: "Recitation",
                       trailing: const Icon(Icons.play_arrow_rounded),
                       trailingColor: green,
                       onBg: onBg,
@@ -357,7 +357,7 @@ class AyahOptionsSheet extends StatelessWidget {
                             },
                     ),
                     _MenuItem(
-                      title: "تشغيل إلى...",
+                      title: "Play to...",
                       trailing: const Icon(Icons.playlist_play_rounded),
                       trailingColor: green,
                       onBg: onBg,
@@ -378,8 +378,8 @@ class AyahOptionsSheet extends StatelessWidget {
                   dividerColor: dividerColor,
                   children: [
                     _MenuItem(
-                      title: "المكتبة",
-                      subtitle: "التفسير ومعاني الكلمات",
+                      title: "Library",
+                      subtitle: "Tafsir and word meanings",
                       trailing: const Icon(Icons.menu_book_outlined),
                       trailingColor: green,
                       onBg: onBg,
@@ -392,8 +392,8 @@ class AyahOptionsSheet extends StatelessWidget {
                             },
                     ),
                     _MenuItem(
-                      title: "نطق الكلمات",
-                      subtitle: "عرض كلمات الآية وتشغيل نطق كل كلمة",
+                      title: "Word pronunciation",
+                      subtitle: "Show the ayah's words and play each word's pronunciation",
                       trailing: const Icon(Icons.record_voice_over_outlined),
                       trailingColor: green,
                       onBg: onBg,
@@ -414,7 +414,7 @@ class AyahOptionsSheet extends StatelessWidget {
                   dividerColor: dividerColor,
                   children: [
                     _MenuItem(
-                      title: "الملاحظات",
+                      title: "Notes",
                       trailing: const Icon(Icons.edit_outlined),
                       trailingColor: green,
                       onBg: onBg,

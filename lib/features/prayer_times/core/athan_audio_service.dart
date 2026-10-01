@@ -2,23 +2,23 @@ import 'package:just_audio/just_audio.dart';
 
 enum AthanAudio {
   dohaFajr(
-    'أذان الدوحة — الفجر',
+    'Doha Adhan — Fajr',
     'https://archive.org/download/adhan.recordings.from.doha.qatar/Adhan_Doha_Qatar_01_Fajr_Adhan.mp3',
   ),
   dohaDhuhr(
-    'أذان الدوحة — الظهر',
+    'Doha Adhan — Dhuhr',
     'https://archive.org/download/adhan.recordings.from.doha.qatar/Adhan_Doha_Qatar_02_Dhuhr_Adhan.mp3',
   ),
   dohaAsr(
-    'أذان الدوحة — العصر',
+    'Doha Adhan — Asr',
     'https://archive.org/download/adhan.recordings.from.doha.qatar/Adhan_Doha_Qatar_03_Asr_Adhan.mp3',
   ),
   dohaMaghrib(
-    'أذان الدوحة — المغرب',
+    'Doha Adhan — Maghrib',
     'https://archive.org/download/adhan.recordings.from.doha.qatar/Adhan_Doha_Qatar_04_Maghrib_Adhan.mp3',
   ),
   dohaIsha(
-    'أذان الدوحة — العشاء',
+    'Doha Adhan — Isha',
     'https://archive.org/download/adhan.recordings.from.doha.qatar/Adhan_Doha_Qatar_05_Isha_Adhan.mp3',
   );
 

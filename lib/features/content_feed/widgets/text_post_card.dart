@@ -117,7 +117,7 @@ class _TextPostCardState extends State<TextPostCard> {
                       child: Padding(
                         padding: const EdgeInsets.only(top: 6),
                         child: Text(
-                          'اقرأ المزيد',
+                          'Read more',
                           style: TextStyle(
                             fontSize: 13,
                             fontWeight: FontWeight.w600,

@@ -18,7 +18,7 @@ class AboutAppPage extends StatefulWidget {
 }
 
 class _AboutAppPageState extends State<AboutAppPage> {
-  String _appVersion = "جاري التحميل...";
+  String _appVersion = "Loading...";
 
   @override
   void initState() {
@@ -30,7 +30,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
     final info = await PackageInfo.fromPlatform();
     if (mounted) {
       setState(
-        () => _appVersion = "الإصدار ${info.version} (${info.buildNumber})",
+        () => _appVersion = "Version ${info.version} (${info.buildNumber})",
       );
     }
   }
@@ -209,7 +209,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
                               Icon(Icons.favorite_rounded, color: primary, size: 24),
                               const Gap(8),
                               const Text(
-                                "رسالة التطبيق",
+                                "App message",
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w900,
@@ -219,7 +219,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
                           ),
                           const Gap(12),
                           Text(
-                            "هذا العمل صدقة جارية خالصة لوجه الله تعالى. التطبيق مجاني بالكامل، لا يحتوي على إعلانات، ومتاح للجميع للنفع والانتفاع بكتاب الله.",
+                            "This work is a pure ongoing charity (sadaqah jariyah) for the sake of Allah. The app is completely free, has no ads, and is available to everyone to benefit from the Book of Allah.",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 15,
@@ -282,7 +282,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "الكود المصدري المفتوح",
+                                    "Open source code",
                                     style: TextStyle(
                                       fontSize: 17,
                                       fontWeight: FontWeight.w900,
@@ -317,7 +317,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
                     Align(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        "مميزات التطبيق",
+                        "App features",
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.w900,
@@ -328,12 +328,12 @@ class _AboutAppPageState extends State<AboutAppPage> {
                     const Gap(16),
                     _buildFeatureCategory(
                       icon: Icons.menu_book_rounded,
-                      title: "القراءة والتصفح",
+                      title: "Reading & browsing",
                       items: [
-                        "وضع المصحف المطابق للورقي",
-                        "تفاعل آية بآية المتقدم",
-                        "خطوط قرآنية (حفص، ورش، التجويد)",
-                        "بحث فوري بدقة تفاعلية",
+                        "Print-matching Mushaf mode",
+                        "Advanced ayah-by-ayah interaction",
+                        "Quranic fonts (Hafs, Warsh, Tajweed)",
+                        "Instant search with interactive precision",
                       ],
                       primary: primary,
                       isDark: isDark,
@@ -341,11 +341,11 @@ class _AboutAppPageState extends State<AboutAppPage> {
                     const Gap(16),
                     _buildFeatureCategory(
                       icon: Icons.headset_rounded,
-                      title: "الصوتيات والتلاوة",
+                      title: "Audio & recitation",
                       items: [
-                        "أكثر من 40 قارئاً معتمداً",
-                        "تلاوة للآيات أو الكلمات بتحديد ذكي",
-                        "تحميل السمعيات للعمل بدون إنترنت",
+                        "40+ verified reciters",
+                        "Recite ayahs or words with smart selection",
+                        "Download audio to use offline",
                       ],
                       primary: primary,
                       isDark: isDark,
@@ -353,11 +353,11 @@ class _AboutAppPageState extends State<AboutAppPage> {
                     const Gap(16),
                     _buildFeatureCategory(
                       icon: Icons.library_books_rounded,
-                      title: "الموارد والتفاسير",
+                      title: "Resources & tafsirs",
                       items: [
-                        "متعدد التفاسير (الميسر، ابن كثير للمختصين)",
-                        "إعراب وصرف متكامل للآيات",
-                        "تراجم بأكثر من لغة حية",
+                        "Multiple tafsirs (Muyassar, Ibn Kathir for specialists)",
+                        "Complete grammatical analysis of the ayahs",
+                        "Translations in many living languages",
                       ],
                       primary: primary,
                       isDark: isDark,
@@ -552,7 +552,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
           ),
           const Gap(20),
           const Text(
-            "إدريس غامد",
+            "Idris Ghamid",
             style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900),
             textDirection: TextDirection.rtl,
           ),

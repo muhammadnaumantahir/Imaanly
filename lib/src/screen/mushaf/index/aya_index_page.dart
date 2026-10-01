@@ -57,7 +57,7 @@ class _AyaIndexPageState extends State<AyaIndexPage>
       backgroundColor: cs.surface,
       appBar: widget.isEmbedded ? null : AppBar(
         title: Text(
-          "الفهرس",
+          "Index",
           style: TextStyle(
             color: cs.onSurface,
             fontWeight: FontWeight.bold,
@@ -117,11 +117,11 @@ class _AyaIndexPageState extends State<AyaIndexPage>
         indicatorWeight: 3,
         labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 11),
         tabs: const [
-          Tab(text: "ملاحظات", icon: Icon(Icons.sticky_note_2_rounded)),
-          Tab(text: "مميزة", icon: Icon(Icons.star_rounded)),
-          Tab(text: "الفواصل", icon: Icon(Icons.bookmark_rounded)),
-          Tab(text: "الختمة", icon: Icon(Icons.check_circle_rounded)),
-          Tab(text: "السور", icon: Icon(Icons.format_list_bulleted_rounded)),
+          Tab(text: "Notes", icon: Icon(Icons.sticky_note_2_rounded)),
+          Tab(text: "Featured", icon: Icon(Icons.star_rounded)),
+          Tab(text: "Dividers", icon: Icon(Icons.bookmark_rounded)),
+          Tab(text: "Khatma", icon: Icon(Icons.check_circle_rounded)),
+          Tab(text: "Surahs", icon: Icon(Icons.format_list_bulleted_rounded)),
         ],
       ),
         ),
@@ -164,7 +164,7 @@ class _AyaIndexPageState extends State<AyaIndexPage>
                 Icon(Icons.star_outline_rounded, size: 56, color: Colors.grey.withValues(alpha: 0.4)),
                 const SizedBox(height: 14),
                 Text(
-                  "لا توجد آيات مميزة بنجمة",
+                  "No starred ayahs",
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
                     fontSize: 16,
@@ -173,7 +173,7 @@ class _AyaIndexPageState extends State<AyaIndexPage>
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  "اضغط مطولاً على آية واختر ★ لتمييزها",
+                  "Long-press an ayah and choose ★ to highlight it",
                   style: TextStyle(
                     fontSize: 13,
                     color: cs.onSurface.withValues(alpha: 0.35),
@@ -211,7 +211,7 @@ class _AyaIndexPageState extends State<AyaIndexPage>
               contentPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               leading: const Icon(Icons.star_rounded, color: Color(0xFFFFB300), size: 28),
               title: Text(
-                "$surahName: الآية $verseText",
+                "$surahName: Ayah $verseText",
                 style: TextStyle(
                   color: cs.onSurface,
                   fontWeight: FontWeight.bold,
@@ -289,7 +289,7 @@ class _AyaIndexPageState extends State<AyaIndexPage>
         if (bookmarks.isEmpty) {
           return Center(
             child: Text(
-              "لا توجد فواصل محفظة",
+              "No saved dividers",
               style: TextStyle(
                 color: cs.onSurface.withValues(alpha: 0.5),
                 fontSize: 16,
@@ -328,7 +328,7 @@ class _AyaIndexPageState extends State<AyaIndexPage>
               contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
               leading: Icon(Icons.bookmark_rounded, color: iconColor, size: 28),
               title: Text(
-                "$surahName: الآية $verseNumber",
+                "$surahName: Ayah $verseNumber",
                 style: TextStyle(
                   color: cs.onSurface,
                   fontWeight: FontWeight.bold,

@@ -254,7 +254,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
             ),
             const Gap(16),
             Text(
-              'جاري إنشاء المعاينة...',
+              'Creating preview...',
               style: GoogleFonts.cairo(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
@@ -278,7 +278,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
             ),
             const Gap(16),
             Text(
-              'لا توجد معاينة',
+              'No preview',
               style: GoogleFonts.cairo(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
@@ -377,12 +377,12 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         unselectedLabelStyle: GoogleFonts.cairo(fontSize: 13, fontWeight: FontWeight.w600),
         padding: const EdgeInsets.all(6),
         tabs: const [
-          Tab(icon: Icon(Icons.palette_rounded, size: 20), text: 'الخلفية'),
-          Tab(icon: Icon(Icons.dashboard_rounded, size: 20), text: 'التخطيط'),
-          Tab(icon: Icon(Icons.text_fields_rounded, size: 20), text: 'النصوص'),
-          Tab(icon: Icon(Icons.widgets_rounded, size: 20), text: 'العناصر'),
-          Tab(icon: Icon(Icons.auto_awesome_rounded, size: 20), text: 'الزخارف'),
-          Tab(icon: Icon(Icons.photo_size_select_large_rounded, size: 20), text: 'الحجم'),
+          Tab(icon: Icon(Icons.palette_rounded, size: 20), text: 'Background'),
+          Tab(icon: Icon(Icons.dashboard_rounded, size: 20), text: 'Layout'),
+          Tab(icon: Icon(Icons.text_fields_rounded, size: 20), text: 'Texts'),
+          Tab(icon: Icon(Icons.widgets_rounded, size: 20), text: 'Items'),
+          Tab(icon: Icon(Icons.auto_awesome_rounded, size: 20), text: 'Ornaments'),
+          Tab(icon: Icon(Icons.photo_size_select_large_rounded, size: 20), text: 'Size'),
         ],
       ),
     );
@@ -398,7 +398,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
       children: [
         _buildSectionCard(
           isDark: isDark,
-          title: 'نوع الخلفية',
+          title: 'Background type',
           icon: Icons.layers_rounded,
           child: BackgroundTypeSelector(
             selected: _settings.backgroundType,
@@ -410,10 +410,10 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         if (_settings.backgroundType == BackgroundType.solid)
           _buildSectionCard(
             isDark: isDark,
-            title: 'لون الخلفية',
+            title: 'Background color',
             icon: Icons.color_lens_rounded,
             child: ColorPickerTile(
-              label: 'اللون',
+              label: 'Color',
               color: _settings.backgroundColor,
               onChanged: (color) => _updateSettings(_settings.copyWith(backgroundColor: color)),
               isDark: isDark,
@@ -422,19 +422,19 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         if (_settings.backgroundType == BackgroundType.gradient) ...[
           _buildSectionCard(
             isDark: isDark,
-            title: 'ألوان التدرج',
+            title: 'Gradient colors',
             icon: Icons.gradient_rounded,
             child: Column(
               children: [
                 ColorPickerTile(
-                  label: 'اللون الأول',
+                  label: 'First color',
                   color: _settings.gradientStartColor,
                   onChanged: (color) => _updateSettings(_settings.copyWith(gradientStartColor: color)),
                   isDark: isDark,
                 ),
                 const Gap(12),
                 ColorPickerTile(
-                  label: 'اللون الثاني',
+                  label: 'Second color',
                   color: _settings.gradientEndColor,
                   onChanged: (color) => _updateSettings(_settings.copyWith(gradientEndColor: color)),
                   isDark: isDark,
@@ -446,12 +446,12 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         if (_settings.backgroundType == BackgroundType.pattern) ...[
           _buildSectionCard(
             isDark: isDark,
-            title: 'النمط',
+            title: 'Style',
             icon: Icons.pattern_rounded,
             child: Column(
               children: [
                 ColorPickerTile(
-                  label: 'لون الخلفية',
+                  label: 'Background color',
                   color: _settings.backgroundColor,
                   onChanged: (color) => _updateSettings(_settings.copyWith(backgroundColor: color)),
                   isDark: isDark,
@@ -464,7 +464,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
                 ),
                 const Gap(16),
                 _buildSliderTile(
-                  label: 'شفافية النمط',
+                  label: 'Style opacity',
                   value: _settings.patternOpacity * 100,
                   min: 0,
                   max: 100,
@@ -488,7 +488,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
       children: [
         _buildSectionCard(
           isDark: isDark,
-          title: 'نمط التخطيط',
+          title: 'Layout style',
           icon: Icons.dashboard_customize_rounded,
           child: LayoutStyleSelector(
             selected: _settings.layoutStyle,
@@ -499,10 +499,10 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         const Gap(16),
         _buildSectionCard(
           isDark: isDark,
-          title: 'استدارة الزوايا',
+          title: 'Corner radius',
           icon: Icons.rounded_corner_rounded,
           child: _buildSliderTile(
-            label: 'الاستدارة',
+            label: 'Roundness',
             value: _settings.cardRadius,
             min: 0,
             max: 40,
@@ -515,10 +515,10 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         const Gap(16),
         _buildSectionCard(
           isDark: isDark,
-          title: 'المسافات',
+          title: 'Distances',
           icon: Icons.space_bar_rounded,
           child: _buildSliderTile(
-            label: 'المسافة الداخلية',
+            label: 'Inner spacing',
             value: _settings.cardPadding,
             min: 12,
             max: 48,
@@ -539,7 +539,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
       children: [
         _buildSectionCard(
           isDark: isDark,
-          title: 'نوع الخط',
+          title: 'Font type',
           icon: Icons.font_download_rounded,
           child: FontFamilySelector(
             selected: _settings.fontFamily,
@@ -550,12 +550,12 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         const Gap(16),
         _buildSectionCard(
           isDark: isDark,
-          title: 'خط العنوان',
+          title: 'Title font',
           icon: Icons.title_rounded,
           child: Column(
             children: [
               _buildSliderTile(
-                label: 'الحجم',
+                label: 'Size',
                 value: _settings.titleFontSize,
                 min: 20,
                 max: 48,
@@ -566,7 +566,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
               ),
               const Gap(12),
               ColorPickerTile(
-                label: 'اللون',
+                label: 'Color',
                 color: _settings.titleColor,
                 onChanged: (color) => _updateSettings(_settings.copyWith(titleColor: color)),
                 isDark: isDark,
@@ -577,12 +577,12 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         const Gap(16),
         _buildSectionCard(
           isDark: isDark,
-          title: 'خط الوصف',
+          title: 'Description font',
           icon: Icons.description_rounded,
           child: Column(
             children: [
               _buildSliderTile(
-                label: 'الحجم',
+                label: 'Size',
                 value: _settings.descriptionFontSize,
                 min: 14,
                 max: 32,
@@ -593,7 +593,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
               ),
               const Gap(12),
               ColorPickerTile(
-                label: 'اللون',
+                label: 'Color',
                 color: _settings.descriptionColor,
                 onChanged: (color) => _updateSettings(_settings.copyWith(descriptionColor: color)),
                 isDark: isDark,
@@ -604,12 +604,12 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         const Gap(16),
         _buildSectionCard(
           isDark: isDark,
-          title: 'خط الدليل',
+          title: 'Guide font',
           icon: Icons.menu_book_rounded,
           child: Column(
             children: [
               _buildSliderTile(
-                label: 'الحجم',
+                label: 'Size',
                 value: _settings.evidenceFontSize,
                 min: 12,
                 max: 24,
@@ -620,7 +620,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
               ),
               const Gap(12),
               ColorPickerTile(
-                label: 'اللون',
+                label: 'Color',
                 color: _settings.evidenceColor,
                 onChanged: (color) => _updateSettings(_settings.copyWith(evidenceColor: color)),
                 isDark: isDark,
@@ -639,10 +639,10 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
       children: [
         _buildSectionCard(
           isDark: isDark,
-          title: 'الهيدر',
+          title: 'Header',
           icon: Icons.view_headline_rounded,
           child: _buildSwitchTile(
-            title: 'إظهار الهيدر',
+            title: 'Show header',
             value: _settings.showHeader,
             onChanged: (value) => _updateSettings(_settings.copyWith(showHeader: value)),
             isDark: isDark,
@@ -651,12 +651,12 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         const Gap(16),
         _buildSectionCard(
           isDark: isDark,
-          title: 'البادج',
+          title: 'Badge',
           icon: Icons.label_rounded,
           child: Column(
             children: [
               _buildSwitchTile(
-                title: 'إظهار البادج',
+                title: 'Show badge',
                 value: _settings.showBadge,
                 onChanged: (value) => _updateSettings(_settings.copyWith(showBadge: value)),
                 isDark: isDark,
@@ -664,7 +664,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
               if (_settings.showBadge) ...[
                 const Gap(12),
                 ColorPickerTile(
-                  label: 'لون البادج',
+                  label: 'Badge color',
                   color: _settings.badgeColor,
                   onChanged: (color) => _updateSettings(_settings.copyWith(badgeColor: color)),
                   isDark: isDark,
@@ -676,12 +676,12 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         const Gap(16),
         _buildSectionCard(
           isDark: isDark,
-          title: 'الفوتر',
+          title: 'Footer',
           icon: Icons.view_agenda_rounded,
           child: Column(
             children: [
               _buildSwitchTile(
-                title: 'إظهار الفوتر',
+                title: 'Show footer',
                 value: _settings.showFooter,
                 onChanged: (value) => _updateSettings(_settings.copyWith(showFooter: value)),
                 isDark: isDark,
@@ -689,7 +689,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
               if (_settings.showFooter) ...[
                 const Gap(12),
                 ColorPickerTile(
-                  label: 'لون الفوتر',
+                  label: 'Footer color',
                   color: _settings.footerColor,
                   onChanged: (color) => _updateSettings(_settings.copyWith(footerColor: color)),
                   isDark: isDark,
@@ -709,19 +709,19 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
       children: [
         _buildSectionCard(
           isDark: isDark,
-          title: 'الزخارف',
+          title: 'Ornaments',
           icon: Icons.auto_awesome_rounded,
           child: Column(
             children: [
               _buildSwitchTile(
-                title: 'زخرفة علوية',
+                title: 'Top ornament',
                 value: _settings.showTopDecoration,
                 onChanged: (value) => _updateSettings(_settings.copyWith(showTopDecoration: value)),
                 isDark: isDark,
               ),
               const Gap(12),
               _buildSwitchTile(
-                title: 'زخرفة سفلية',
+                title: 'Bottom ornament',
                 value: _settings.showBottomDecoration,
                 onChanged: (value) => _updateSettings(_settings.copyWith(showBottomDecoration: value)),
                 isDark: isDark,
@@ -732,10 +732,10 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         const Gap(16),
         _buildSectionCard(
           isDark: isDark,
-          title: 'لون الزخرفة',
+          title: 'Ornament color',
           icon: Icons.color_lens_rounded,
           child: ColorPickerTile(
-            label: 'اللون',
+            label: 'Color',
             color: _settings.decorationColor,
             onChanged: (color) => _updateSettings(_settings.copyWith(decorationColor: color)),
             isDark: isDark,
@@ -752,7 +752,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
       children: [
         _buildSectionCard(
           isDark: isDark,
-          title: 'حجم الصورة',
+          title: 'Image size',
           icon: Icons.photo_size_select_large_rounded,
           child: ImageSizeSelector(
             selected: _settings.imageSize,
@@ -795,7 +795,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
               )
             : const Icon(Icons.share_rounded, size: 20),
         label: Text(
-          _isGenerating ? 'جاري الإنشاء...' : 'إنشاء ومشاركة',
+          _isGenerating ? 'Creating...' : 'Create & share',
           style: GoogleFonts.cairo(fontSize: 15, fontWeight: FontWeight.w700),
         ),
         style: ElevatedButton.styleFrom(
@@ -965,7 +965,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
           children: [
             const Icon(Icons.refresh_rounded, color: Colors.white),
             const Gap(12),
-            Text('تم إعادة تعيين الإعدادات', style: GoogleFonts.cairo(fontWeight: FontWeight.w700)),
+            Text('Settings reset', style: GoogleFonts.cairo(fontWeight: FontWeight.w700)),
           ],
         ),
         behavior: SnackBarBehavior.floating,
@@ -1000,7 +1000,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
                 const Gap(12),
                 Expanded(
                   child: Text(
-                    'تم إنشاء الصورة ومشاركتها بنجاح',
+                    'Image created and shared successfully',
                     style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
                   ),
                 ),
@@ -1021,7 +1021,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
                 const Icon(Icons.error_rounded, color: Colors.white),
                 const Gap(12),
                 Expanded(
-                  child: Text('حدث خطأ: ${e.toString()}', style: GoogleFonts.cairo(fontWeight: FontWeight.w700)),
+                  child: Text('An error occurred: ${e.toString()}', style: GoogleFonts.cairo(fontWeight: FontWeight.w700)),
                 ),
               ],
             ),
@@ -1059,7 +1059,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
                   Icon(Icons.dashboard_customize_rounded, color: SunnahTheme.gold),
                   const Gap(12),
                   Text(
-                    'قوالب جاهزة',
+                    'Ready-made templates',
                     style: GoogleFonts.cairo(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
@@ -1079,8 +1079,8 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
                   children: [
                     _buildTemplateCard(
                       isDark: isDark,
-                      title: 'كلاسيكي',
-                      description: 'تصميم تقليدي أنيق',
+                      title: 'Classic',
+                      description: 'Elegant traditional design',
                       icon: Icons.menu_book_rounded,
                       onTap: () {
                         _applyTemplate(_getClassicTemplate());
@@ -1090,8 +1090,8 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
                     const Gap(12),
                     _buildTemplateCard(
                       isDark: isDark,
-                      title: 'عصري',
-                      description: 'تصميم حديث وجذاب',
+                      title: 'Modern',
+                      description: 'Modern, eye-catching design',
                       icon: Icons.auto_awesome_rounded,
                       onTap: () {
                         _applyTemplate(_getModernTemplate());
@@ -1101,8 +1101,8 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
                     const Gap(12),
                     _buildTemplateCard(
                       isDark: isDark,
-                      title: 'بسيط',
-                      description: 'تصميم نظيف ومباشر',
+                      title: 'Simple',
+                      description: 'Clean, direct design',
                       icon: Icons.minimize_rounded,
                       onTap: () {
                         _applyTemplate(_getMinimalTemplate());
@@ -1112,8 +1112,8 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
                     const Gap(12),
                     _buildTemplateCard(
                       isDark: isDark,
-                      title: 'فاخر',
-                      description: 'تصميم راقي بألوان ذهبية',
+                      title: 'Luxury',
+                      description: 'Refined design in gold tones',
                       icon: Icons.diamond_rounded,
                       onTap: () {
                         _applyTemplate(_getLuxuryTemplate());
@@ -1204,7 +1204,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
           children: [
             const Icon(Icons.check_circle_rounded, color: Colors.white),
             const Gap(12),
-            Text('تم تطبيق القالب', style: GoogleFonts.cairo(fontWeight: FontWeight.w700)),
+            Text('Template applied', style: GoogleFonts.cairo(fontWeight: FontWeight.w700)),
           ],
         ),
         behavior: SnackBarBehavior.floating,

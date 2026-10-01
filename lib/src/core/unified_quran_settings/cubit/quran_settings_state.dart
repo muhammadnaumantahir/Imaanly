@@ -40,10 +40,10 @@ enum QuranFontFamily {
   /// Arabic display label
   String get label => switch (this) {
     QuranFontFamily.qpcHafs => "QPC Hafs",
-    QuranFontFamily.kfgqpcUthmanicHafs => "KFGQPC عثماني",
-    QuranFontFamily.uthmanTahaNaskh => "عثمان طه نسخ",
+    QuranFontFamily.kfgqpcUthmanicHafs => "KFGQPC Uthmani",
+    QuranFontFamily.uthmanTahaNaskh => "Uthman Taha Naskh",
     QuranFontFamily.alQuranNeo => "Al Quran Neo",
-    QuranFontFamily.indopakNastaleeq => "إندوباك نستعليق",
+    QuranFontFamily.indopakNastaleeq => "IndoPak Nastaliq",
     QuranFontFamily.meQuranVolt => "Me Quran Volt",
   };
 }

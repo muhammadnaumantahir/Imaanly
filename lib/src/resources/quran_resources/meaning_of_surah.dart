@@ -27,24 +27,24 @@ Future<void> loadMetaSurah() async {
 }
 
 String getSurahName(BuildContext context, int index) {
-  if (surahNameLocalization.isEmpty) return "سورة $index";
+  if (surahNameLocalization.isEmpty) return "Surah $index";
   final Locale locale = context.read<LanguageCubit>().state.locale;
   final data =
       surahNameLocalization[locale.languageCode] ??
       surahNameLocalization["en"] ??
       surahNameLocalization["ar"];
-  if (data == null) return "سورة $index";
+  if (data == null) return "Surah $index";
   final list = List<String>.from(data);
-  if (index < 1 || index > list.length) return "سورة $index";
+  if (index < 1 || index > list.length) return "Surah $index";
   return list[index - 1];
 }
 
 String getSurahNameArabic(int index) {
   if (surahNameLocalization.isEmpty || surahNameLocalization["ar"] == null) {
-    return "سورة $index";
+    return "Surah $index";
   }
   final list = List<String>.from(surahNameLocalization["ar"]);
-  if (index < 1 || index > list.length) return "سورة $index";
+  if (index < 1 || index > list.length) return "Surah $index";
   return list[index - 1];
 }
 

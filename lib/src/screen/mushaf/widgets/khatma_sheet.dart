@@ -13,7 +13,7 @@ Future<void> showKhatmaSheet({
     backgroundColor: Colors.transparent,
     builder: (ctx) {
       return Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: DraggableScrollableSheet(
           initialChildSize: 0.95,
           minChildSize: 0.5,
@@ -44,7 +44,7 @@ Future<void> showKhatmaSheet({
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        "الختمة",
+                        "Khatma",
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.w900,

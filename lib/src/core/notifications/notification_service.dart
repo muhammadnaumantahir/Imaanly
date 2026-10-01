@@ -23,8 +23,8 @@ class NotificationService {
         NotificationChannel(
           channelGroupKey: 'khatma_group',
           channelKey: khatmaChannelKey,
-          channelName: 'إشعارات الختمة الذكية',
-          channelDescription: 'تنبيهات لمتابعة الختمة الذكية',
+          channelName: 'Smart Khatma notifications',
+          channelDescription: 'Alerts to keep up with your Smart Khatma',
           defaultColor: const Color(0xFF0F8C69),
           ledColor: Colors.white,
           importance: NotificationImportance.High,
@@ -34,8 +34,8 @@ class NotificationService {
         NotificationChannel(
           channelGroupKey: 'werd_group',
           channelKey: werdChannelKey,
-          channelName: 'إشعارات الورد اليومي',
-          channelDescription: 'تذكير بقراءة الورد اليومي من القرآن',
+          channelName: 'Daily wird notifications',
+          channelDescription: 'Reminder to read your daily Quran wird',
           defaultColor: const Color(0xFF0F8C69),
           ledColor: Colors.white,
           importance: NotificationImportance.Default,
@@ -43,8 +43,8 @@ class NotificationService {
         NotificationChannel(
           channelGroupKey: 'contextual_worship_group',
           channelKey: smartChannelKey,
-          channelName: 'تذكيرات العبادة السياقية',
-          channelDescription: 'تذكيرات محلية هادئة مبنية على نشاطك اليومي',
+          channelName: 'Contextual worship reminders',
+          channelDescription: 'Gentle local reminders based on your daily activity',
           defaultColor: const Color(0xFF0F8C69),
           ledColor: Colors.white,
           importance: NotificationImportance.Default,
@@ -53,12 +53,12 @@ class NotificationService {
       ],
       channelGroups: [
         NotificationChannelGroup(
-            channelGroupKey: 'khatma_group', channelGroupName: 'الختمة الذكية'),
+            channelGroupKey: 'khatma_group', channelGroupName: 'Smart Khatma'),
         NotificationChannelGroup(
-            channelGroupKey: 'werd_group', channelGroupName: 'الورد اليومي'),
+            channelGroupKey: 'werd_group', channelGroupName: 'Daily wird'),
         NotificationChannelGroup(
           channelGroupKey: 'contextual_worship_group',
-          channelGroupName: 'التذكيرات السياقية',
+          channelGroupName: 'Contextual reminders',
         ),
       ],
       debug: false,
@@ -108,8 +108,8 @@ class NotificationService {
 
   Future<void> scheduleDailyWerdReminder({
     required TimeOfDay time,
-    String title = 'حان وقت الورد اليومي',
-    String body = 'لا تنسَ نصيبك من القرآن اليوم، نور قلبك بآياته.',
+    String title = 'Time for your daily wird',
+    String body = 'Don\'t forget your share of the Quran today — light up your heart with its ayahs.',
   }) async {
     await AwesomeNotifications().createNotification(
       content: NotificationContent(
@@ -133,8 +133,8 @@ class NotificationService {
   Future<void> scheduleKhatmaReminder({
     required int id,
     required DateTime scheduleTime,
-    String title = 'تذكير الختمة الذكية',
-    String body = 'موعد قراءة الجزء المخصص لختمتك',
+    String title = 'Smart Khatma reminder',
+    String body = 'Time to read the portion assigned for your Khatma',
   }) async {
     await AwesomeNotifications().createNotification(
       content: NotificationContent(

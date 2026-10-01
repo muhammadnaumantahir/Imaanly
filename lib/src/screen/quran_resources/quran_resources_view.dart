@@ -21,23 +21,23 @@ class _QuranResourcesViewState extends State<QuranResourcesView>
 
   static const List<_ResourceCategory> categories = [
     _ResourceCategory(
-      label: "الترجمات",
+      label: "Translations",
       icon: Icons.translate_rounded,
     ),
     _ResourceCategory(
-      label: "التفاسير",
+      label: "Tafsirs",
       icon: Icons.menu_book_rounded,
     ),
     _ResourceCategory(
-      label: "بيانات الكلمات",
+      label: "Word data",
       icon: Icons.spellcheck_rounded,
     ),
     _ResourceCategory(
-      label: "المتشابهات",
+      label: "Mutashabihat",
       icon: Icons.compare_arrows_rounded,
     ),
     _ResourceCategory(
-      label: "النطق اللاتيني",
+      label: "Latin transliteration",
       icon: Icons.abc_rounded,
     ),
   ];
@@ -79,7 +79,7 @@ class _QuranResourcesViewState extends State<QuranResourcesView>
               backgroundColor: bg,
               surfaceTintColor: Colors.transparent,
               title: Text(
-                "المكتبة",
+                "Library",
                 style: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w800,
@@ -99,7 +99,7 @@ class _QuranResourcesViewState extends State<QuranResourcesView>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "اختَر الموارد اللي محتاجها وحمّلها على جهازك",
+                        "Choose the resources you need and download them to your device",
                         style: TextStyle(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w500,

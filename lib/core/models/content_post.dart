@@ -45,12 +45,12 @@ enum ContentType {
 
 /// Content category used for filtering.
 enum ContentCategory {
-  tilawa('تلاوة'),
-  tafsir('تفسير'),
-  fiqh('فقه'),
-  duaa('دعاء'),
-  mawa3iz('مواعظ'),
-  general('عام');
+  tilawa('Recitation'),
+  tafsir('Tafsir'),
+  fiqh('Fiqh'),
+  duaa('Dua'),
+  mawa3iz('Sermons'),
+  general('General');
 
   const ContentCategory(this.arabicLabel);
 

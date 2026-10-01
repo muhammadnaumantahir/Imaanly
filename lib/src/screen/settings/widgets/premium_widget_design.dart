@@ -25,7 +25,7 @@ class PremiumWidgetDesign extends StatelessWidget {
   static const List<WidgetThemePreset> availableThemes = [
     WidgetThemePreset(
       id: "graphite_glass",
-      name: "زجاج جرافيتي",
+      name: "Graphite glass",
       isDark: true,
       backgroundColor: Color(0xFF1E1E1E), 
       textColor: Color(0xFFE3D5CA), 
@@ -35,7 +35,7 @@ class PremiumWidgetDesign extends StatelessWidget {
     ),
     WidgetThemePreset(
       id: "midnight_ocean",
-      name: "أعماق المحيط",
+      name: "Ocean depths",
       backgroundColor: Color(0xFF0F172A),
       textColor: Color(0xFFF8FAFC),
       surahColor: Color(0xFF94A3B8),
@@ -45,7 +45,7 @@ class PremiumWidgetDesign extends StatelessWidget {
     ),
     WidgetThemePreset(
       id: "graphite_glass_v2",
-      name: "ليلي زجاجي",
+      name: "Glass night",
       backgroundColor: Color(0xFF141414), // Very dark near-black
       textColor: Color(0xFFFAFAFA),
       surahColor: Color(0xFFA1A1AA),
@@ -55,7 +55,7 @@ class PremiumWidgetDesign extends StatelessWidget {
     ),
     WidgetThemePreset(
       id: "desert_sand",
-      name: "رمال صحراوية",
+      name: "Desert sands",
       isDark: false,
       backgroundColor: Color(0xFFF5EBE0), 
       textColor: Color(0xFF4A443A), 
@@ -65,7 +65,7 @@ class PremiumWidgetDesign extends StatelessWidget {
     ),
     WidgetThemePreset(
       id: "emerald_breeze",
-      name: "زمرد نقي",
+      name: "Pure emerald",
       isDark: true,
       backgroundColor: Color(0xFF064E3B),
       textColor: Color(0xFFECFDF5),
@@ -75,7 +75,7 @@ class PremiumWidgetDesign extends StatelessWidget {
     ),
     WidgetThemePreset(
       id: "ruby_sunset",
-      name: "غروب ياقوتي",
+      name: "Ruby sunset",
       isDark: true,
       backgroundColor: Color(0xFF450A0A),
       textColor: Color(0xFFFEF2F2),
@@ -85,7 +85,7 @@ class PremiumWidgetDesign extends StatelessWidget {
     ),
     WidgetThemePreset(
       id: "sapphire_glow",
-      name: "وهج الياقوت الأزرق",
+      name: "Sapphire glow",
       isDark: true,
       backgroundColor: Color(0xFF172554),
       textColor: Color(0xFFEFF6FF),
@@ -95,7 +95,7 @@ class PremiumWidgetDesign extends StatelessWidget {
     ),
     WidgetThemePreset(
       id: "amethyst_night",
-      name: "ليالي الجمشت",
+      name: "Amethyst nights",
       isDark: true,
       backgroundColor: Color(0xFF3B0764),
       textColor: Color(0xFFFAF5FF),
@@ -105,7 +105,7 @@ class PremiumWidgetDesign extends StatelessWidget {
     ),
     WidgetThemePreset(
       id: "coffee_mocha",
-      name: "موكا دافئة",
+      name: "Warm mocha",
       isDark: false,
       backgroundColor: Color(0xFFFFF7ED),
       textColor: Color(0xFF431407),
@@ -115,7 +115,7 @@ class PremiumWidgetDesign extends StatelessWidget {
     ),
     WidgetThemePreset(
       id: "light_crystal",
-      name: "بلور نقي",
+      name: "Pure crystal",
       isDark: false,
       backgroundColor: Color(0xFFFFFFFF),
       textColor: Color(0xFF18181B),
@@ -125,7 +125,7 @@ class PremiumWidgetDesign extends StatelessWidget {
     ),
     WidgetThemePreset(
       id: "mystic_forest",
-      name: "غابة صوفية",
+      name: "Mystic forest",
       isDark: true,
       backgroundColor: Color(0xFF14532D),
       textColor: Color(0xFFF0FDF4),
@@ -135,7 +135,7 @@ class PremiumWidgetDesign extends StatelessWidget {
     ),
     WidgetThemePreset(
       id: "olive_grove",
-      name: "بستان زيتون",
+      name: "Olive grove",
       isDark: false,
       backgroundColor: Color(0xFFF4F6F4), 
       textColor: Color(0xFF2A312B), 

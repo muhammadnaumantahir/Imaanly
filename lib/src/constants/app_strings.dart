@@ -7,10 +7,10 @@ class AppStrings {
 
   // ── App Identity ──
   static const String appName = 'Imaanly';
-  static const String appNameAr = 'الفُرقان';
+  static const String appNameAr = 'Imaanly';
   static const String publisher = 'IDRISIUM Corp';
   static const String founderName = 'Idris Ghamid';
-  static const String founderNameAr = 'إدريس غامد';
+  static const String founderNameAr = 'Idris Ghamid';
   static const String founderTitle = 'Founder & Software Architect';
   static const String tagline = 'Engineered with precision by IDRISIUM Corp';
 

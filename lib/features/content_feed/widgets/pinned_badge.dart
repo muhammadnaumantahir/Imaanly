@@ -36,7 +36,7 @@ class PinnedBadge extends StatelessWidget {
           ),
           const SizedBox(width: 5),
           Text(
-            'مثبت',
+            'Pinned',
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w700,

@@ -7,12 +7,12 @@ import 'package:flutter/material.dart';
 
 /// Visual styles for the update dialog.
 enum DialogStyle {
-  liquidGlass('بلور سائل'),
-  frostedGlass('زجاج مصنفر'),
+  liquidGlass('Liquid glass'),
+  frostedGlass('Frosted glass'),
   material3('Material 3'),
   amoled('AMOLED'),
-  minimal('بسيط'),
-  islamicGold('ذهبي إسلامي');
+  minimal('Simple'),
+  islamicGold('Islamic gold');
 
   const DialogStyle(this.arabicLabel);
   final String arabicLabel;
@@ -40,7 +40,7 @@ class UpdateConfig {
     this.isForce = false,
     this.currentVersion = '1.0.0',
     this.minRequiredVersion = '1.0.0',
-    this.title = 'تحديث جديد متاح',
+    this.title = 'New update available',
     this.description = '',
     this.changelogItems = const [],
     this.storeUrl = '',
@@ -92,7 +92,7 @@ class UpdateConfig {
       isForce: data['isForce'] as bool? ?? false,
       currentVersion: data['currentVersion'] as String? ?? '1.0.0',
       minRequiredVersion: data['minRequiredVersion'] as String? ?? '1.0.0',
-      title: data['title'] as String? ?? 'تحديث جديد متاح',
+      title: data['title'] as String? ?? 'New update available',
       description: data['description'] as String? ?? '',
       changelogItems: _parseStringList(data['changelogItems']),
       storeUrl: data['storeUrl'] as String? ?? '',

@@ -4,8 +4,8 @@ Map<String, List<Map<String, dynamic>>> mutashabihatResources = {
   "arabic": [
     {
       "language": "Arabic",
-      "name": "متشابهات القرآن الكريم",
-      "description": "الآيات المتشابهة في المعنى أو اللفظ أو السياق",
+      "name": "Mutashabihat of the Holy Quran",
+      "description": "Ayahs similar in meaning, wording, or context",
       "totalEntries": 5277,
       "score": 100,
       "full_path":
@@ -15,8 +15,8 @@ Map<String, List<Map<String, dynamic>>> mutashabihatResources = {
   "similar_ayah": [
     {
       "language": "Arabic",
-      "name": "الآيات المشابهة",
-      "description": "آيات ذات علاقة موضوعية أو معنوية ببعضها",
+      "name": "Similar ayahs",
+      "description": "Ayahs related in theme or meaning",
       "totalEntries": 4001,
       "score": 100,
       "full_path":

@@ -316,7 +316,7 @@ class _AddNoteWidgetState extends State<AddNoteWidget> {
                     autocorrect: true,
                     style: TextStyle(color: textColor, height: 1.5),
                     decoration: InputDecoration(
-                      hintText: "أكتب ملاحظتك هنا...",
+                      hintText: "Write your note here...",
                       hintStyle: TextStyle(color: subtitleColor),
                       border: InputBorder.none,
                     ),

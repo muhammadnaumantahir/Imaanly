@@ -99,7 +99,7 @@ extension _MushafPronunciationExtension on _MushafViewState {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      "تحضير ملفات النطق",
+                      "Preparing pronunciation files",
                       style: TextStyle(
                         fontWeight: FontWeight.w900,
                         fontSize: 16,
@@ -108,7 +108,7 @@ extension _MushafPronunciationExtension on _MushafViewState {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      "يتم تهيئة بيانات الكلمات لأول مرة فقط.\nهذا يحتاج اتصال بالإنترنت وقد يستغرق بضع ثوانٍ.",
+                      "Word data is only prepared the first time.\nThis needs an internet connection and may take a few seconds.",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 12.5,
@@ -320,7 +320,7 @@ extension _MushafPronunciationExtension on _MushafViewState {
                                             CrossAxisAlignment.start,
                                         children: [
                                           Text(
-                                            "نطق الكلمات",
+                                            "Word pronunciation",
                                             style: TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w900,
@@ -329,7 +329,7 @@ extension _MushafPronunciationExtension on _MushafViewState {
                                           ),
                                           const SizedBox(height: 2),
                                           Text(
-                                            "سورة ${getSurahNameArabic(surah)} • الآية $verse • ${words.length} كلمة",
+                                            "Surah ${getSurahNameArabic(surah)} • Ayah $verse • ${words.length} words",
                                             style: TextStyle(
                                               fontSize: 12,
                                               fontWeight: FontWeight.w600,
@@ -373,8 +373,8 @@ extension _MushafPronunciationExtension on _MushafViewState {
                                     ),
                                     label: Text(
                                       ayahModeActive
-                                          ? "إيقاف التشغيل"
-                                          : "تشغيل الآية كلمة كلمة",
+                                          ? "Turn off"
+                                          : "Play ayah word by word",
                                       style: const TextStyle(
                                         fontWeight: FontWeight.w800,
                                         fontSize: 14,
@@ -535,8 +535,8 @@ extension _MushafPronunciationExtension on _MushafViewState {
                                                           ),
                                                           Text(
                                                             isPlayingWord
-                                                                ? "شغال"
-                                                                : "نطق",
+                                                                ? "On"
+                                                                : "Pronunciation",
                                                             style: TextStyle(
                                                               fontSize: 11,
                                                               fontWeight:

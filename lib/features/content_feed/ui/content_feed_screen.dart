@@ -78,7 +78,7 @@ class _ContentFeedViewState extends State<_ContentFeedView> {
       if (post.hasTitle) post.title,
       if (post.hasBody) post.body,
       if (post.hasMedia) post.mediaUrl,
-      '\n— تطبيق الفُرقان 📖',
+      '\n— Imaanly app 📖',
     ].join('\n');
     SharePlus.instance.share(ShareParams(text: text));
     context.read<ContentFeedBloc>().add(ContentFeedPostShared(post.id));
@@ -210,7 +210,7 @@ class _ContentFeedViewState extends State<_ContentFeedView> {
 
           // Title
           Text(
-            'المحتوى',
+            'Content',
             style: TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.w900,
@@ -225,7 +225,7 @@ class _ContentFeedViewState extends State<_ContentFeedView> {
           const SizedBox(height: 4),
 
           Text(
-            'تابع أحدث المنشورات والمقاطع الإسلامية',
+            'Follow the latest Islamic posts and clips',
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w400,
@@ -329,7 +329,7 @@ class _ContentFeedViewState extends State<_ContentFeedView> {
             ),
             const SizedBox(height: 20),
             Text(
-              'لا يوجد محتوى حالياً',
+              'No content right now',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w700,
@@ -340,7 +340,7 @@ class _ContentFeedViewState extends State<_ContentFeedView> {
             ),
             const SizedBox(height: 6),
             Text(
-              'ترقبوا محتوى جديد قريباً إن شاء الله',
+              'New content coming soon, God willing',
               style: TextStyle(
                 fontSize: 14,
                 color: subtitleColor,
@@ -382,7 +382,7 @@ class _ContentFeedViewState extends State<_ContentFeedView> {
             ),
             const SizedBox(height: 20),
             Text(
-              'حدث خطأ في التحميل',
+              'An error occurred while loading',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
@@ -405,7 +405,7 @@ class _ContentFeedViewState extends State<_ContentFeedView> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Text(
-                  'إعادة المحاولة',
+                  'Retry',
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,

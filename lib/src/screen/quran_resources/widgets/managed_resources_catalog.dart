@@ -373,7 +373,7 @@ class _ManagedResourcesCatalogState extends State<ManagedResourcesCatalog> {
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Text(
-                            "مفعّل",
+                            "Enabled",
                             style: TextStyle(
                               fontSize: 9.sp,
                               fontWeight: FontWeight.w700,
@@ -383,7 +383,7 @@ class _ManagedResourcesCatalogState extends State<ManagedResourcesCatalog> {
                         ),
                       Text(
                         _loadingSizeIds.contains(item.id)
-                            ? "جاري جلب الحجم..."
+                            ? "Fetching size..."
                             : _formatBytes(_resolvedSizeBytes(item)),
                         style: TextStyle(
                           fontSize: 10.sp,
@@ -402,7 +402,7 @@ class _ManagedResourcesCatalogState extends State<ManagedResourcesCatalog> {
                       borderRadius: BorderRadius.circular(6),
                     ),
                     child: Text(
-                      "مفعّل",
+                      "Enabled",
                       style: TextStyle(
                         fontSize: 9.sp,
                         fontWeight: FontWeight.w700,

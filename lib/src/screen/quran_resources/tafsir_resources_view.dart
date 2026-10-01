@@ -96,19 +96,19 @@ class _TafsirResourcesViewState extends State<TafsirResourcesView> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text("حذف التفسير", textAlign: TextAlign.right),
+        title: const Text("Delete tafsir", textAlign: TextAlign.right),
         content: Text(
-          "سيتم حذف تفسير ${book.name} من الجهاز.",
+          "Tafsir ${book.name} will be deleted from the device.",
           textAlign: TextAlign.right,
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text("إلغاء"),
+            child: const Text("Cancel"),
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text("حذف", style: TextStyle(color: Colors.red)),
+            child: const Text("Delete", style: TextStyle(color: Colors.red)),
           ),
         ],
       ),
@@ -161,10 +161,10 @@ class _TafsirResourcesViewState extends State<TafsirResourcesView> {
     return BlocBuilder<ResourcesProgressCubit, ResourcesProgressCubitState>(
       builder: (context, state) {
         return ManagedResourcesCatalog(
-          title: "إدارة التفاسير",
+          title: "Manage tafsirs",
           description:
-              "فعّل أكثر من تفسير للمقارنة السريعة.",
-          emptyMessage: "لا توجد تفاسير.",
+              "Enable more than one tafsir for quick comparison.",
+          emptyMessage: "No tafsirs.",
           activationBehavior: ResourceActivationBehavior.multi,
           items: _buildItems(state),
           onRefresh: _loadData,

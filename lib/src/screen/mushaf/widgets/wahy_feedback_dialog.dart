@@ -99,7 +99,7 @@ class WahyFeedbackDialogState extends State<WahyFeedbackDialog> {
             padding: const EdgeInsets.all(28),
             child: SingleChildScrollView(
               child: Directionality(
-                textDirection: TextDirection.rtl,
+                textDirection: TextDirection.ltr,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,7 +117,7 @@ class WahyFeedbackDialogState extends State<WahyFeedbackDialog> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
-                              "إرسال ملاحظة",
+                              "Send feedback",
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.w900,
@@ -125,7 +125,7 @@ class WahyFeedbackDialogState extends State<WahyFeedbackDialog> {
                               ),
                             ),
                             Text(
-                              "شارك في تطوير التطبيق تؤجر بإذن الله",
+                              "Help develop the app and earn reward, God willing",
                               style: TextStyle(
                                 fontSize: 13,
                                 color: isDark ? Colors.white54 : Colors.black45,
@@ -140,8 +140,8 @@ class WahyFeedbackDialogState extends State<WahyFeedbackDialog> {
                     // Fields
                     _buildField(
                       controller: _name,
-                      label: "الاسم",
-                      hint: "اسمك الكريم",
+                      label: "Name",
+                      hint: "Your name",
                       icon: Icons.person_outline_rounded,
                       bg: inputBg,
                       border: borderColor,
@@ -149,8 +149,8 @@ class WahyFeedbackDialogState extends State<WahyFeedbackDialog> {
                     const SizedBox(height: 18),
                     _buildField(
                       controller: _contact,
-                      label: "التواصل",
-                      hint: "رقم أو إيميل (اختياري)",
+                      label: "Contact",
+                      hint: "Phone or email (optional)",
                       icon: Icons.alternate_email_rounded,
                       bg: inputBg,
                       border: borderColor,
@@ -158,8 +158,8 @@ class WahyFeedbackDialogState extends State<WahyFeedbackDialog> {
                     const SizedBox(height: 18),
                     _buildField(
                       controller: _message,
-                      label: "الرسالة",
-                      hint: "اكتب ملاحظتك أو اقتراحك هنا...",
+                      label: "Message",
+                      hint: "Write your note or suggestion here...",
                       icon: Icons.edit_note_rounded,
                       minLines: 4,
                       maxLines: 6,
@@ -182,7 +182,7 @@ class WahyFeedbackDialogState extends State<WahyFeedbackDialog> {
                                 ? null
                                 : () => Navigator.pop(context),
                             child: Text(
-                              "إلغاء",
+                              "Cancel",
                               style: TextStyle(
                                 fontWeight: FontWeight.w800,
                                 color: isDark
@@ -216,7 +216,7 @@ class WahyFeedbackDialogState extends State<WahyFeedbackDialog> {
                                     ),
                                   )
                                 : const Text(
-                                    "إرسال",
+                                    "Send",
                                     style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w900,
@@ -317,7 +317,7 @@ class WahyFeedbackDialogState extends State<WahyFeedbackDialog> {
       if (!canSend) {
         if (context.mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("إرسال تيليجرام غير مُفعّل حالياً")),
+            const SnackBar(content: Text("Telegram sending is not enabled right now")),
           );
         }
         return;
@@ -331,7 +331,7 @@ class WahyFeedbackDialogState extends State<WahyFeedbackDialog> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: Colors.green,
-            content: Text("تم إرسال رسالتك بنجاح، شكراً لك! 💎"),
+            content: Text("Your message was sent successfully. Thank you! 💎"),
           ),
         );
         return;
@@ -342,7 +342,7 @@ class WahyFeedbackDialogState extends State<WahyFeedbackDialog> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             backgroundColor: Colors.red,
-            content: Text("فشل إرسال الرسالة، يرجى المحاولة لاحقاً"),
+            content: Text("Failed to send the message. Please try again later."),
           ),
         );
       }

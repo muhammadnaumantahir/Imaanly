@@ -85,22 +85,22 @@ class KhatmaNotificationService {
     final box = await _openUserBox();
     final lastPage = box.get("wahy_last_page", defaultValue: 0) as int;
 
-    String body = "هذا إشعار تجريبي للختمة.";
+    String body = "This is a test Khatma notification.";
     if (lastPage > 0) {
-      body += "\nلقد توقفت عند الصفحة رقم $lastPage.";
+      body += "\nYou stopped at page number $lastPage.";
     }
 
     final bigTextStyleInformation = BigTextStyleInformation(
       body,
       htmlFormatBigText: true,
-      contentTitle: "تجربة الإشعارات",
+      contentTitle: "Try notifications",
       htmlFormatContentTitle: true,
     );
 
     try {
       await _plugin.show(
         999,
-        "تجربة الإشعارات",
+        "Try notifications",
         body,
         NotificationDetails(
           android: AndroidNotificationDetails(
@@ -125,24 +125,24 @@ class KhatmaNotificationService {
     final box = await _openUserBox();
     final lastPage = box.get("wahy_last_page", defaultValue: 0) as int;
 
-    String body = "افتح المصحف وأكمل وردك النهارده";
+    String body = "Open the Mushaf and complete your wird today";
     if (lastPage > 0) {
-      body += "\nلقد توقفت عند الصفحة رقم $lastPage.";
+      body += "\nYou stopped at page number $lastPage.";
     }
 
     final bigTextStyleInformation = BigTextStyleInformation(
       body,
       htmlFormatBigText: true,
-      contentTitle: "تذكير الختمة",
+      contentTitle: "Khatma reminder",
       htmlFormatContentTitle: true,
-      summaryText: "ورد اليوم",
+      summaryText: "Today's wird",
       htmlFormatSummaryText: true,
     );
 
     try {
       await _plugin.zonedSchedule(
         _dailyReminderId,
-        "تذكير الختمة",
+        "Khatma reminder",
         body,
         _nextInstanceOfTime(time),
         NotificationDetails(
@@ -165,7 +165,7 @@ class KhatmaNotificationService {
       try {
         await _plugin.zonedSchedule(
           _dailyReminderId,
-          "تذكير الختمة",
+          "Khatma reminder",
           body,
           _nextInstanceOfTime(time),
           NotificationDetails(

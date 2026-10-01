@@ -28,13 +28,13 @@ extension on _LibraryWordTab {
   String get label {
     switch (this) {
       case _LibraryWordTab.translation:
-        return "الترجمة";
+        return "Translation";
       case _LibraryWordTab.eerab:
-        return "الإعراب";
+        return "I'rab";
       case _LibraryWordTab.tasreef:
-        return "الصرف";
+        return "Morphology";
       case _LibraryWordTab.recitations:
-        return "القراءات";
+        return "Qira'at";
     }
   }
 
@@ -274,11 +274,11 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
   String _wordInfoLabel(WordInfoKind kind) {
     switch (kind) {
       case WordInfoKind.eerab:
-        return "الإعراب";
+        return "I'rab";
       case WordInfoKind.tasreef:
-        return "الصرف";
+        return "Morphology";
       case WordInfoKind.recitations:
-        return "القراءات";
+        return "Qira'at";
     }
   }
 
@@ -313,7 +313,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-            "تعذر تحميل ${_wordInfoLabel(kind)} الآن، حاول مرة أخرى.",
+            "Couldn't load ${_wordInfoLabel(kind)} right now. Please try again.",
           ),
         ),
       );
@@ -361,7 +361,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
   String _formatTafsirTitle(TafsirBookModel book) {
     final language = _normalizeWhitespace(book.language);
     final displayLanguage = language.toLowerCase() == "arabic"
-        ? "العربية"
+        ? "Arabic"
         : language;
     return language.isEmpty ? book.name : "${book.name} ($displayLanguage)";
   }
@@ -615,7 +615,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
             color: isDark ? Colors.white70 : Colors.black87,
           ),
           Text(
-            "المكتبة",
+            "Library",
             style: TextStyle(
               fontSize: 20.sp,
               fontWeight: FontWeight.w800,
@@ -633,7 +633,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
               setState(() {});
             },
             child: Text(
-              "تحرير",
+              "Edit",
               style: TextStyle(
                 fontSize: 16.sp,
                 fontWeight: FontWeight.w700,
@@ -794,7 +794,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
     return Padding(
       padding: EdgeInsets.fromLTRB(20.w, 4.h, 20.w, 10.h),
       child: Text(
-        "اضغط على أي كلمة من الآية لتظهر ترجمتها ومعلوماتها فقط، وستظهر التبويبات تلقائيًا.",
+        "Tap any word in the ayah to see its translation and info only; the tabs will appear automatically.",
         textAlign: TextAlign.right,
         style: TextStyle(
           fontSize: 12.sp,
@@ -915,7 +915,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               content: Text(
-                                "فعّل الإعراب والتحليل أولًا من إعدادات المصحف.",
+                                "Turn on i'rab and analysis first from Mushaf settings.",
                               ),
                             ),
                           );
@@ -1040,10 +1040,10 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
                   isDark: isDark,
                   themeState: themeState,
                   icon: Icons.lock_outline_rounded,
-                  title: "الإعراب غير مفعل",
+                  title: "I'rab is turned off",
                   message:
-                      "فعّل تبويب الإعراب والتحليل من إعدادات المصحف ليظهر هذا المحتوى مباشرة داخل المكتبة.",
-                  actionLabel: "تفعيل الآن",
+                      "Turn on the i'rab and analysis tab from Mushaf settings to show this content directly in the library.",
+                  actionLabel: "Enable now",
                   onAction: () {},
                 )
               : _buildWordInfoTab(
@@ -1087,7 +1087,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
               );
               if (text.isEmpty) return null;
               final title = translation.bookInfo == null
-                  ? "ترجمة الآية"
+                  ? "Ayah translation"
                   : "${translation.bookInfo!.name} (${translation.bookInfo!.language})";
               return _TranslationCardData(title: title, text: text);
             })
@@ -1101,7 +1101,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
               _buildInlineMessage(
                 isDark: isDark,
                 icon: Icons.translate_rounded,
-                message: "لا توجد ترجمات مفعّلة حاليًا.",
+                message: "No translations are enabled right now.",
               ),
               SizedBox(height: 8.h),
               FilledButton.tonal(
@@ -1121,7 +1121,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
                   ),
                 ),
                 child: Text(
-                  "اختيار ترجمة",
+                  "Choose translation",
                   style: TextStyle(
                     fontSize: 12.5.sp,
                     fontWeight: FontWeight.w800,
@@ -1368,7 +1368,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
           return _buildInlineMessage(
             isDark: isDark,
             icon: Icons.info_outline_rounded,
-            message: "لا توجد بيانات متاحة لهذه الكلمة في هذا التبويب.",
+            message: "No data available for this word in this tab.",
           );
         }
 
@@ -1377,7 +1377,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
           children: [
             if ((info?.word ?? "").trim().isNotEmpty) ...[
               Text(
-                "الكلمة: ${info!.word}",
+                "Word: ${info!.word}",
                 textAlign: TextAlign.right,
                 style: TextStyle(
                   fontSize: 12.sp,
@@ -1422,7 +1422,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            "جاري تجهيز ${_wordInfoLabel(kind)}",
+            "Preparing ${_wordInfoLabel(kind)}",
             textAlign: TextAlign.right,
             style: TextStyle(
               fontSize: 12.sp,
@@ -1442,7 +1442,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
           ),
           SizedBox(height: 12.h),
           Text(
-            "جاري التحميل... ${(progress * 100).toInt()}%",
+            "Loading... ${(progress * 100).toInt()}%",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 14.sp,
@@ -1453,7 +1453,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
           if (totalBytes != null && transferredBytes != null) ...[
             SizedBox(height: 8.h),
             Text(
-              "تم تحميل ${_formatFileSize(transferredBytes, fallback: "0 MB")} من ${_formatFileSize(totalBytes, fallback: _fallbackSizeLabel(kind))}",
+              "Downloaded ${_formatFileSize(transferredBytes, fallback: "0 MB")} of ${_formatFileSize(totalBytes, fallback: _fallbackSizeLabel(kind))}",
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 11.5.sp,
@@ -1463,7 +1463,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
             ),
             if (remainingBytes != null)
               Text(
-                "المتبقي ${_formatFileSize(remainingBytes, fallback: _fallbackSizeLabel(kind))}",
+                "${_formatFileSize(remainingBytes, fallback: _fallbackSizeLabel(kind))} remaining",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 11.5.sp,
@@ -1501,7 +1501,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        "تحميل ${_wordInfoLabel(kind)}",
+                        "Download ${_wordInfoLabel(kind)}",
                         style: TextStyle(
                           fontSize: 13.sp,
                           fontWeight: FontWeight.w800,
@@ -1586,10 +1586,10 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
           isDark: isDark,
           themeState: themeState,
           icon: Icons.menu_book_outlined,
-          title: "التفسير متوقف",
+          title: "Tafsir paused",
           message:
-              "فعّل عرض التفاسير من إعدادات المصحف ليظهر هذا القسم تلقائيًا في المكتبة.",
-          actionLabel: "تفعيل الآن",
+              "Turn on tafsir display from Mushaf settings to show this section automatically in the library.",
+          actionLabel: "Enable now",
           onAction: () {},
         ),
       );
@@ -1610,7 +1610,7 @@ class _WahyLibrarySheetViewState extends State<WahyLibrarySheetView> {
           return _buildInlineMessage(
             isDark: isDark,
             icon: Icons.menu_book_outlined,
-            message: "لا توجد تفاسير مفعلة أو محملة لهذه الآية حاليًا.",
+            message: "No enabled or downloaded tafsirs for this ayah right now.",
           );
         }
 

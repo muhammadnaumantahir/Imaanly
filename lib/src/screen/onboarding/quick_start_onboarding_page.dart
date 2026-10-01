@@ -120,13 +120,13 @@ class _QuickStartOnboardingPageState extends State<QuickStartOnboardingPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const Text(
-                  "ابدأ بسرعة",
+                  "Quick start",
                   textDirection: TextDirection.rtl,
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
                 ),
                 const Gap(6),
                 Text(
-                  "اختار النظام اللي يناسبك… وتقدر تغيّره بعدين من الهيدر فوق بسهولة.",
+                  "Choose the mode that suits you… you can easily change it later from the header at the top.",
                   textDirection: TextDirection.rtl,
                   style: TextStyle(
                     fontSize: 13,
@@ -139,15 +139,15 @@ class _QuickStartOnboardingPageState extends State<QuickStartOnboardingPage> {
                 _UsageCard(
                   themeState: themeState,
                   isSelected: _mode == QuickStartUsageMode.detailed,
-                  title: "الوضع المُفصل (آية بآية)",
-                  subtitle: "تدبر، بحث، تفسير، واستدلال — كل الأدوات جاهزة.",
-                  exampleTitle: "مثال لمستخدم:",
+                  title: "Detailed mode (ayah by ayah)",
+                  subtitle: "Reflect, search, tafsir, and evidence — all the tools are ready.",
+                  exampleTitle: "Example user:",
                   exampleBody:
-                      "أنا بدوّر على آية في موضوع معيّن، وبقرأ التفسير والترجمة وبشاركها — فعايز كل الأدوات تكون قدامي.",
+                      "I'm looking for an ayah on a specific topic, reading tafsir and translation, and sharing it — so I want all the tools in front of me.",
                   badges: const [
-                    _ModeBadge(label: "بحث سريع"),
-                    _ModeBadge(label: "تفسير"),
-                    _ModeBadge(label: "ترجمة"),
+                    _ModeBadge(label: "Quick search"),
+                    _ModeBadge(label: "Tafsir"),
+                    _ModeBadge(label: "Translation"),
                   ],
                   preview: const _ModePreviewDetailed(),
                   onTap: () => setState(() => _mode = QuickStartUsageMode.detailed),
@@ -156,14 +156,14 @@ class _QuickStartOnboardingPageState extends State<QuickStartOnboardingPage> {
                 _UsageCard(
                   themeState: themeState,
                   isSelected: _mode == QuickStartUsageMode.simple,
-                  title: "الوضع البسيط (قراءة) ",
-                  subtitle: "قراءة هادية بدون تشتيت — المصحف أول ما تفتح.",
-                  exampleTitle: "مثال لمستخدم:",
+                  title: "Simple mode (reading) ",
+                  subtitle: "Calm, distraction-free reading — the Mushaf as soon as you open.",
+                  exampleTitle: "Example user:",
                   exampleBody:
-                      "أنا بفتح اقرأ وردي اليومي بس، ومش عايز قوائم كتير ولا تفاصيل أثناء القراءة.",
+                      "I'm only opening Iqra for my daily wird, and I don't want lots of menus or details while reading.",
                   badges: const [
-                    _ModeBadge(label: "قراءة"),
-                    _ModeBadge(label: "بدون تشتيت"),
+                    _ModeBadge(label: "Reading"),
+                    _ModeBadge(label: "Distraction-free"),
                   ],
                   preview: const _ModePreviewSimple(),
                   onTap: () => setState(() => _mode = QuickStartUsageMode.simple),
@@ -197,7 +197,7 @@ class _QuickStartOnboardingPageState extends State<QuickStartOnboardingPage> {
                     },
                     icon: const Icon(FluentIcons.play_24_filled, size: 18),
                     label: const Text(
-                      "جرّب قبل ما تختار",
+                      "Try before you choose",
                       textDirection: TextDirection.rtl,
                       style: TextStyle(fontWeight: FontWeight.w900),
                     ),
@@ -216,7 +216,7 @@ class _QuickStartOnboardingPageState extends State<QuickStartOnboardingPage> {
         ),
         _PrimaryButton(
           themeState: themeState,
-          label: "متابعة",
+          label: "Continue",
           icon: FluentIcons.arrow_right_24_filled,
           onPressed: _continue,
         ),
@@ -235,13 +235,13 @@ class _QuickStartOnboardingPageState extends State<QuickStartOnboardingPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const Text(
-                  "اللمسة الأخيرة",
+                  "Final touch",
                   textDirection: TextDirection.rtl,
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w800),
                 ),
                 const Gap(6),
                 Text(
-                  "اختار الثيم اللي يريح عينك. تقدر تغيّره في أي وقت من الإعدادات.",
+                  "Choose the theme that's easy on your eyes. You can change it anytime in Settings.",
                   textDirection: TextDirection.rtl,
                   style: TextStyle(
                     fontSize: 13,
@@ -264,7 +264,7 @@ class _QuickStartOnboardingPageState extends State<QuickStartOnboardingPage> {
         ),
         _PrimaryButton(
           themeState: themeState,
-          label: "ابدأ الآن",
+          label: "Get started",
           icon: FluentIcons.checkmark_24_filled,
           onPressed: _finish,
         ),
@@ -323,13 +323,13 @@ class _TopHeader extends StatelessWidget {
               const Gap(10),
               const Expanded(
                 child: Text(
-                  "الفُرقان",
+                  "Imaanly",
                   textDirection: TextDirection.rtl,
                   style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
                 ),
               ),
               Text(
-                "إعداد سريع",
+                "Quick setup",
                 textDirection: TextDirection.rtl,
                 style: TextStyle(
                   fontSize: 12,
@@ -544,7 +544,7 @@ class _ModePreviewDetailed extends StatelessWidget {
             child: const Align(
               alignment: Alignment.center,
               child: Text(
-                "آية",
+                "Ayah",
                 textDirection: TextDirection.rtl,
                 style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900),
               ),
@@ -606,7 +606,7 @@ class _ModePreviewSimple extends StatelessWidget {
             child: const Align(
               alignment: Alignment.center,
               child: Text(
-                "مصحف",
+                "Mushaf",
                 textDirection: TextDirection.rtl,
                 style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900),
               ),
@@ -703,19 +703,19 @@ class _ThemeModePicker extends StatelessWidget {
       children: [
         item(
           mode: ThemeMode.system,
-          label: "تلقائي",
+          label: "Auto",
           icon: FluentIcons.desktop_24_regular,
         ),
         const Gap(10),
         item(
           mode: ThemeMode.dark,
-          label: "داكن",
+          label: "Dark",
           icon: FluentIcons.weather_moon_24_regular,
         ),
         const Gap(10),
         item(
           mode: ThemeMode.light,
-          label: "فاتح",
+          label: "Light",
           icon: FluentIcons.weather_sunny_24_regular,
         ),
       ],
@@ -734,12 +734,12 @@ class _SummaryCard extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     final title = mode == QuickStartUsageMode.detailed
-        ? "الوضع الحالي: مُفصل (آية بآية)"
-        : "الوضع الحالي: بسيط (قراءة)";
+        ? "Current mode: Detailed (ayah by ayah)"
+        : "Current mode: Simple (reading)";
 
     final desc = mode == QuickStartUsageMode.detailed
-        ? "افتراضيًا هتبدأ على آية بآية، وتقدر تقلب للمصحف من زر الهيدر فوق."
-        : "افتراضيًا هتبدأ على المصحف، وتقدر تقلب لآية بآية من زر الهيدر فوق.";
+        ? "By default you'll start in ayah by ayah, and you can switch to the Mushaf from the header button at the top."
+        : "By default you'll start in the Mushaf, and you can switch to ayah by ayah from the header button at the top.";
 
     return Container(
       padding: const EdgeInsets.all(14),

@@ -420,7 +420,7 @@ class AudioPlayerManager {
       );
     } catch (e) {
       debugPrint("❌ Failed to get audio source for $ayahKey: $e");
-      unawaited(_uiBridge?.showPlayerError("فشل تحميل الصوت لهذه الآية. تأكد من اتصال الإنترنت أو جرّب قارئ آخر.") ?? Future<void>.value());
+      unawaited(_uiBridge?.showPlayerError("Couldn't load audio for this ayah. Check your internet connection or try another reciter.") ?? Future<void>.value());
       return;
     }
 
@@ -447,7 +447,7 @@ class AudioPlayerManager {
       }
     } catch (e) {
       debugPrint("❌ Audio playback error for $ayahKey: $e");
-      unawaited(_uiBridge?.showPlayerError("فشل تشغيل الصوت. تأكد من اتصال الإنترنت أو جرّب قارئ آخر.") ?? Future<void>.value());
+      unawaited(_uiBridge?.showPlayerError("Audio playback failed. Check your internet connection or try another reciter.") ?? Future<void>.value());
     }
   }
 
@@ -554,7 +554,7 @@ class AudioPlayerManager {
       }
     } catch (e) {
       debugPrint("❌ Playlist playback error: $e");
-      unawaited(_uiBridge?.showPlayerError("فشل تشغيل القائمة. تأكد من اتصال الإنترنت أو جرّب قارئ آخر.") ?? Future<void>.value());
+      unawaited(_uiBridge?.showPlayerError("Couldn't play the playlist. Check your internet connection or try another reciter.") ?? Future<void>.value());
     }
   }
 

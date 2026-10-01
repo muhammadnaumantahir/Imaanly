@@ -60,7 +60,7 @@ class AyahWidgetDesign extends StatelessWidget {
   static const List<AyahWidgetThemePreset> availableThemes = [
     AyahWidgetThemePreset(
       id: "glass_dark",
-      name: "زجاجي داكن",
+      name: "Dark glass",
       isDark: true,
       primaryBackground: Color(0xFF08090B),
       secondaryBackground: Color(0xFF1A1D22),
@@ -71,7 +71,7 @@ class AyahWidgetDesign extends StatelessWidget {
     ),
     AyahWidgetThemePreset(
       id: "glass_light",
-      name: "زجاجي فاتح",
+      name: "Light glass",
       isDark: false,
       primaryBackground: Color(0xFFF6F1E9),
       secondaryBackground: Color(0xFFE7DECF),
@@ -82,7 +82,7 @@ class AyahWidgetDesign extends StatelessWidget {
     ),
     AyahWidgetThemePreset(
       id: "ocean_night",
-      name: "أوبسيديان",
+      name: "Obsidian",
       isDark: true,
       primaryBackground: Color(0xFF0B0D11),
       secondaryBackground: Color(0xFF161A20),
@@ -93,7 +93,7 @@ class AyahWidgetDesign extends StatelessWidget {
     ),
     AyahWidgetThemePreset(
       id: "dark_royal",
-      name: "رويال ملكي",
+      name: "Royal",
       isDark: true,
       primaryBackground: Color(0xFF120E12),
       secondaryBackground: Color(0xFF2A1826),
@@ -104,7 +104,7 @@ class AyahWidgetDesign extends StatelessWidget {
     ),
     AyahWidgetThemePreset(
       id: "midnight_blue",
-      name: "زفير",
+      name: "Zafir",
       isDark: true,
       primaryBackground: Color(0xFF09131F),
       secondaryBackground: Color(0xFF11314A),
@@ -115,7 +115,7 @@ class AyahWidgetDesign extends StatelessWidget {
     ),
     AyahWidgetThemePreset(
       id: "sunset",
-      name: "أميثست",
+      name: "Amethyst",
       isDark: true,
       primaryBackground: Color(0xFF150C1E),
       secondaryBackground: Color(0xFF30163B),
@@ -126,7 +126,7 @@ class AyahWidgetDesign extends StatelessWidget {
     ),
     AyahWidgetThemePreset(
       id: "emerald_gradient",
-      name: "زمردي",
+      name: "Emerald",
       isDark: true,
       primaryBackground: Color(0xFF081A16),
       secondaryBackground: Color(0xFF103229),
@@ -137,7 +137,7 @@ class AyahWidgetDesign extends StatelessWidget {
     ),
     AyahWidgetThemePreset(
       id: "sand",
-      name: "ذهبي",
+      name: "Gold",
       isDark: false,
       primaryBackground: Color(0xFFF3E8CF),
       secondaryBackground: Color(0xFFE1D0A5),

@@ -766,7 +766,7 @@ class AzkarShareDesign extends StatelessWidget {
             children: [
               Expanded(flex: 2, child: _bentoCell(categoryName, catHeaderStyle, accentColor)),
               const SizedBox(width: 20),
-              Expanded(child: _bentoCell("الفرقان", const TextStyle(color: Colors.white, fontWeight: FontWeight.bold), accentColor)),
+              Expanded(child: _bentoCell("Imaanly", const TextStyle(color: Colors.white, fontWeight: FontWeight.bold), accentColor)),
             ],
           ),
           const SizedBox(height: 20),
@@ -1012,7 +1012,7 @@ class AzkarShareDesign extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "الفرقان",
+                        "Imaanly",
                         style: TextStyle(
                           color: accentColor,
                           fontSize: 16,

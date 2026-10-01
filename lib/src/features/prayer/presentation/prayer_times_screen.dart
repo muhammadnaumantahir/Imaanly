@@ -29,7 +29,7 @@ class _PrayerTimesView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          Directionality.of(context) == TextDirection.rtl ? 'مواقيت الصلاة' : 'Prayer Times',
+          Directionality.of(context) == TextDirection.rtl ? 'Prayer times' : 'Prayer Times',
         ),
         elevation: 0,
       ),
@@ -124,12 +124,12 @@ class _NextPrayerCard extends StatelessWidget {
   String _prayerName(BuildContext context) {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
     return switch (prayer.type) {
-      PrayerType.fajr => isRtl ? 'الفجر' : 'Fajr',
-      PrayerType.sunrise => isRtl ? 'الشروق' : 'Sunrise',
-      PrayerType.dhuhr => isRtl ? 'الظهر' : 'Dhuhr',
-      PrayerType.asr => isRtl ? 'العصر' : 'Asr',
-      PrayerType.maghrib => isRtl ? 'المغرب' : 'Maghrib',
-      PrayerType.isha => isRtl ? 'العشاء' : 'Isha',
+      PrayerType.fajr => isRtl ? 'Fajr' : 'Fajr',
+      PrayerType.sunrise => isRtl ? 'Sunrise' : 'Sunrise',
+      PrayerType.dhuhr => isRtl ? 'Dhuhr' : 'Dhuhr',
+      PrayerType.asr => isRtl ? 'Asr' : 'Asr',
+      PrayerType.maghrib => isRtl ? 'Maghrib' : 'Maghrib',
+      PrayerType.isha => isRtl ? 'Isha' : 'Isha',
     };
   }
 
@@ -177,7 +177,7 @@ class _NextPrayerCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                Directionality.of(context) == TextDirection.rtl ? 'الصلاة القادمة' : 'Next Prayer',
+                Directionality.of(context) == TextDirection.rtl ? 'Next prayer' : 'Next Prayer',
                 style: Theme.of(context).textTheme.labelSmall?.copyWith(
                       color: Colors.white70,
                     ),
@@ -199,12 +199,12 @@ class _PrayerTimeCard extends StatelessWidget {
   String _prayerName(BuildContext context) {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
     return switch (prayer.type) {
-      PrayerType.fajr => isRtl ? 'الفجر' : 'Fajr',
-      PrayerType.sunrise => isRtl ? 'الشروق' : 'Sunrise',
-      PrayerType.dhuhr => isRtl ? 'الظهر' : 'Dhuhr',
-      PrayerType.asr => isRtl ? 'العصر' : 'Asr',
-      PrayerType.maghrib => isRtl ? 'المغرب' : 'Maghrib',
-      PrayerType.isha => isRtl ? 'العشاء' : 'Isha',
+      PrayerType.fajr => isRtl ? 'Fajr' : 'Fajr',
+      PrayerType.sunrise => isRtl ? 'Sunrise' : 'Sunrise',
+      PrayerType.dhuhr => isRtl ? 'Dhuhr' : 'Dhuhr',
+      PrayerType.asr => isRtl ? 'Asr' : 'Asr',
+      PrayerType.maghrib => isRtl ? 'Maghrib' : 'Maghrib',
+      PrayerType.isha => isRtl ? 'Isha' : 'Isha',
     };
   }
 

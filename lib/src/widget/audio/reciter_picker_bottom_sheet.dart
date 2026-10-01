@@ -50,7 +50,7 @@ class _ReciterPickerBottomSheetState extends State<ReciterPickerBottomSheet>
   int _categoryIdx = 0;
   late AnimationController _animCtrl;
 
-  static const _categories = ['الكل', 'مرتل', 'مجود', 'ورش', 'معلم'];
+  static const _categories = ['All', 'Murattal', 'Mujawwad', 'Warsh', 'Annotated'];
   static const _categoryKeys = ['', 'murattal', 'mujawwad', 'warsh', 'muallim'];
 
   // ─── Design Tokens (Unified Beige Palette) ───
@@ -197,7 +197,7 @@ class _ReciterPickerBottomSheetState extends State<ReciterPickerBottomSheet>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "اختيار القارئ",
+                            "Choose reciter",
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w800,
@@ -206,7 +206,7 @@ class _ReciterPickerBottomSheetState extends State<ReciterPickerBottomSheet>
                             ),
                           ),
                           Text(
-                            "${_filtered.length} قارئ",
+                            "${_filtered.length} reciters",
                             style: TextStyle(
                               fontSize: 12,
                               color: _sub(isDark),
@@ -236,7 +236,7 @@ class _ReciterPickerBottomSheetState extends State<ReciterPickerBottomSheet>
                     textDirection: TextDirection.rtl,
                     style: TextStyle(color: _text(isDark), fontSize: 14, fontWeight: FontWeight.w500),
                     decoration: InputDecoration(
-                      hintText: "ابحث عن قارئ...",
+                      hintText: "Search for a reciter...",
                       hintStyle: TextStyle(color: _sub(isDark), fontSize: 14),
                       prefixIcon: Icon(Icons.search_rounded, color: _sub(isDark), size: 20),
                       suffixIcon: _searchCtrl.text.isNotEmpty
@@ -261,7 +261,7 @@ class _ReciterPickerBottomSheetState extends State<ReciterPickerBottomSheet>
               SizedBox(
                 height: 38,
                 child: Directionality(
-                  textDirection: TextDirection.rtl,
+                  textDirection: TextDirection.ltr,
                   child: ListView.separated(
                     padding: const EdgeInsets.symmetric(horizontal: 22),
                     scrollDirection: Axis.horizontal,
@@ -318,7 +318,7 @@ class _ReciterPickerBottomSheetState extends State<ReciterPickerBottomSheet>
               // ─── List ───
               Expanded(
                 child: Directionality(
-                  textDirection: TextDirection.rtl,
+                  textDirection: TextDirection.ltr,
                   child: _filtered.isEmpty
                       ? Center(
                           child: Column(
@@ -327,7 +327,7 @@ class _ReciterPickerBottomSheetState extends State<ReciterPickerBottomSheet>
                               Icon(Icons.search_off_rounded,
                                   size: 40, color: _sub(isDark).withValues(alpha: 0.4)),
                               const Gap(8),
-                              Text("لا يوجد نتائج",
+                              Text("No results",
                                   style: TextStyle(color: _sub(isDark), fontSize: 14)),
                             ],
                           ),

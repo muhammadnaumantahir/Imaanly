@@ -29,7 +29,7 @@ class _AudioView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          Directionality.of(context) == TextDirection.rtl ? 'القراء' : 'Reciters',
+          Directionality.of(context) == TextDirection.rtl ? 'Reciters' : 'Reciters',
         ),
         elevation: 0,
       ),

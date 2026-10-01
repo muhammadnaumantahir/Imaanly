@@ -41,11 +41,11 @@ class _TafsirViewState extends State<TafsirView>
   late TabController _tabController;
 
   static const List<String> _tabLabels = [
-    "التفسير",
-    "الإعراب",
-    "الصرف",
-    "القراءات",
-    "المتشابهات",
+    "Tafsir",
+    "I'rab",
+    "Morphology",
+    "Qira'at",
+    "Mutashabihat",
   ];
 
   final WordInfoRepository _wordInfoRepo = WordInfoRepository();
@@ -253,14 +253,14 @@ class _TafsirViewState extends State<TafsirView>
                   Icon(Icons.touch_app_rounded, size: 11, color: isDark ? Colors.white24 : Colors.black26),
                   const Gap(3),
                   Text(
-                    "ضغطة مطولة = تثبيت",
+                    "Long press = pin",
                     style: TextStyle(fontSize: 9, fontWeight: FontWeight.w500, color: isDark ? Colors.white24 : Colors.black26),
                   ),
                   const Gap(10),
                   Icon(Icons.reorder_rounded, size: 11, color: isDark ? Colors.white24 : Colors.black26),
                   const Gap(3),
                   Text(
-                    "ترتيب = سحب",
+                    "Reorder = drag",
                     style: TextStyle(fontSize: 9, fontWeight: FontWeight.w500, color: isDark ? Colors.white24 : Colors.black26),
                   ),
                 ],
@@ -300,7 +300,7 @@ class _TafsirViewState extends State<TafsirView>
                           );
                         },
                   icon: const Icon(Icons.arrow_back_rounded),
-                  label: const Text("السابق"),
+                  label: const Text("Previous"),
                 ),
               ),
               const Gap(10),
@@ -323,7 +323,7 @@ class _TafsirViewState extends State<TafsirView>
                           );
                         },
                   icon: const Icon(Icons.arrow_forward_rounded),
-                  label: const Text("التالي"),
+                  label: const Text("Next"),
                 ),
               ),
             ],
@@ -355,7 +355,7 @@ class _TafsirViewState extends State<TafsirView>
               await _initBooks();
             },
             child: Text(
-              "تحرير",
+              "Edit",
               style: TextStyle(
                 fontWeight: FontWeight.w800,
                 color: themeState.primary,
@@ -366,7 +366,7 @@ class _TafsirViewState extends State<TafsirView>
             onPressed: _showReorderSheet,
             icon: Icon(Icons.reorder_rounded, size: 18, color: themeState.primary),
             label: Text(
-              "ترتيب",
+              "Reorder",
               style: TextStyle(
                 fontWeight: FontWeight.w800,
                 color: themeState.primary,
@@ -375,7 +375,7 @@ class _TafsirViewState extends State<TafsirView>
           ),
           const Spacer(),
           const Text(
-            "الموارد",
+            "Resources",
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
           ),
           const Spacer(),
@@ -438,7 +438,7 @@ class _TafsirViewState extends State<TafsirView>
                 child: Row(
                   children: [
                     Text(
-                      "ترتيب التبويبات",
+                      "Tab order",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w900,
@@ -451,7 +451,7 @@ class _TafsirViewState extends State<TafsirView>
                         setSheetState(() => workingOrder = [0, 1, 2, 3, 4, 5, 6, 7]);
                       },
                       child: Text(
-                        "إعادة تعيين",
+                        "Reset",
                         style: TextStyle(color: themeState.primary, fontWeight: FontWeight.w700),
                       ),
                     ),
@@ -472,7 +472,7 @@ class _TafsirViewState extends State<TafsirView>
                         _tabController.animateTo(_selectedTab);
                         Navigator.pop(context);
                       },
-                      child: const Text("تطبيق"),
+                      child: const Text("Apply"),
                     ),
                   ],
                 ),
@@ -551,7 +551,7 @@ class _TafsirViewState extends State<TafsirView>
                                 borderRadius: BorderRadius.circular(6),
                               ),
                               child: Text(
-                                isAyahLevel ? "آية" : "كلمة",
+                                isAyahLevel ? "Ayah" : "Word",
                                 style: TextStyle(
                                   fontSize: 9,
                                   fontWeight: FontWeight.w700,
@@ -640,7 +640,7 @@ class _TafsirViewState extends State<TafsirView>
                     ),
                     const Spacer(),
                     Text(
-                      isCollapsed ? "مطوي" : "مثبّت",
+                      isCollapsed ? "Collapsed" : "Pinned",
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w600,
@@ -669,14 +669,14 @@ class _TafsirViewState extends State<TafsirView>
     switch (tabIndex) {
       case 0: // التفسير
         final html = _removeBasmala(data.ayahTafsirHtml ?? "");
-        if (html.isEmpty) return _emptyResourceCard("لا يوجد تفسير لهذه الآية.");
-        return _sectionCard(title: "التفسير", html: html, shareTitle: "التفسير");
+        if (html.isEmpty) return _emptyResourceCard("There is no tafsir for this ayah.");
+        return _sectionCard(title: "Tafsir", html: html, shareTitle: "Tafsir");
       case 4: // المتشابهات
         if (data.mutashabihatEntries == null || data.mutashabihatEntries!.isEmpty) {
           return _emptyResourceCard(
             QuranMutashabihatFunction.getDownloadedMutashabihatBooks().isEmpty
-              ? "حمّل كتب المتشابهات من الموارد لعرض بيانات هذه الآية."
-              : "لا توجد متشابهات مسجّلة لهذه الآية في الكتب المحملة.",
+              ? "Download mutashabihat books from Resources to see data for this ayah."
+              : "No mutashabihat are recorded for this ayah in the downloaded books.",
           );
         }
         return Column(
@@ -760,56 +760,56 @@ class _TafsirViewState extends State<TafsirView>
 
             if (data.surahNamingHtml != null && data.surahNamingHtml!.trim().isNotEmpty)
               _sectionCard(
-                title: "التفسير (العربية)",
+                title: "Tafsir (Arabic)",
                 html: data.surahNamingHtml!,
-                shareTitle: "تسمية السورة",
+                shareTitle: "Surah labeling",
               ),
 
             if (data.surahObjectivesHtml != null &&
                 data.surahObjectivesHtml!.trim().isNotEmpty) ...[
               const Gap(12),
               _sectionCard(
-                title: "التفسير (العربية)",
+                title: "Tafsir (Arabic)",
                 html: data.surahObjectivesHtml!,
-                shareTitle: "مقاصد السورة",
+                shareTitle: "Objectives of the surah",
               ),
             ],
 
             const Gap(12),
             if (_selectedOriginalTab == 0)
               _sectionCard(
-                title: "التفسير (العربية)",
+                title: "Tafsir (Arabic)",
                 html: _removeBasmala(data.ayahTafsirHtml ?? ""),
-                shareTitle: "التفسير",
+                shareTitle: "Tafsir",
               ),
 
             if (_selectedOriginalTab == 1) ...[
               // Word-level Irab from WordInfoRepository (downloadable)
               if (data.eerabWords != null && data.eerabWords!.words.isNotEmpty)
                 for (final w in data.eerabWords!.words)
-                  _wordInfoCard(word: w.word, content: w.content, title: "الإعراب", hasKhilaf: w.hasKhilaf),
+                  _wordInfoCard(word: w.word, content: w.content, title: "I'rab", hasKhilaf: w.hasKhilaf),
               // Fallback to bundled Irab
               if (data.eerabWords == null || data.eerabWords!.words.isEmpty)
                 if (data.ayahTafsirHtml != null && data.ayahTafsirHtml!.isNotEmpty)
-                  _sectionCard(title: "إعراب القرآن (الدعاس)", html: data.ayahTafsirHtml!, shareTitle: "الإعراب"),
+                  _sectionCard(title: "I'rab al-Quran (Al-Daas)", html: data.ayahTafsirHtml!, shareTitle: "I'rab"),
               if ((data.eerabWords == null || data.eerabWords!.words.isEmpty) && (data.ayahTafsirHtml == null || data.ayahTafsirHtml!.isEmpty))
-                _emptyResourceCard("لا توجد بيانات إعراب لهذه الآية. حمّل الإعراب من الموارد."),
+                _emptyResourceCard("No i'rab data for this ayah. Download i'rab from Resources."),
             ],
 
             if (_selectedOriginalTab == 2) ...[
               if (data.tasreefWords != null && data.tasreefWords!.words.isNotEmpty)
                 for (final w in data.tasreefWords!.words)
-                  _wordInfoCard(word: w.word, content: w.content, title: "الصرف", hasKhilaf: w.hasKhilaf),
+                  _wordInfoCard(word: w.word, content: w.content, title: "Morphology", hasKhilaf: w.hasKhilaf),
               if (data.tasreefWords == null || data.tasreefWords!.words.isEmpty)
-                _emptyResourceCard("لا توجد بيانات صرف لهذه الآية. حمّل الصرف من الموارد."),
+                _emptyResourceCard("No morphology data for this ayah. Download morphology from Resources."),
             ],
 
             if (_selectedOriginalTab == 3) ...[
               if (data.qiraatWords != null && data.qiraatWords!.words.isNotEmpty)
                 for (final w in data.qiraatWords!.words)
-                  _wordInfoCard(word: w.word, content: w.content, title: "القراءات", hasKhilaf: w.hasKhilaf),
+                  _wordInfoCard(word: w.word, content: w.content, title: "Qira'at", hasKhilaf: w.hasKhilaf),
               if (data.qiraatWords == null || data.qiraatWords!.words.isEmpty)
-                _emptyResourceCard("لا توجد بيانات قراءات لهذه الآية. حمّل القراءات من الموارد."),
+                _emptyResourceCard("No qira'at data for this ayah. Download qira'at from Resources."),
             ],
 
             if (_selectedOriginalTab == 4) ...[
@@ -819,8 +819,8 @@ class _TafsirViewState extends State<TafsirView>
               if (data.mutashabihatEntries == null || data.mutashabihatEntries!.isEmpty)
                 _emptyResourceCard(
                   QuranMutashabihatFunction.getDownloadedMutashabihatBooks().isEmpty
-                    ? "حمّل كتب المتشابهات من الموارد لعرض بيانات هذه الآية."
-                    : "لا توجد متشابهات مسجّلة لهذه الآية في الكتب المحملة.",
+                    ? "Download mutashabihat books from Resources to see data for this ayah."
+                    : "No mutashabihat are recorded for this ayah in the downloaded books.",
                 ),
             ],
 
@@ -898,8 +898,8 @@ class _TafsirViewState extends State<TafsirView>
     }
 
     return _TafsirSectionsData(
-      surahNamingHtml: _extractSectionHtml(surahIntroTafsirHtml, "تسمية السورة"),
-      surahObjectivesHtml: _extractSectionHtml(surahIntroTafsirHtml, "من مقاصد السورة"),
+      surahNamingHtml: _extractSectionHtml(surahIntroTafsirHtml, "Surah labeling"),
+      surahObjectivesHtml: _extractSectionHtml(surahIntroTafsirHtml, "From the objectives of the surah"),
       ayahTafsirHtml: ayahTafsirHtml,
       eerabWords: eerabWords,
       tasreefWords: tasreefWords,
@@ -1149,7 +1149,7 @@ class _TafsirViewState extends State<TafsirView>
               );
             },
             icon: const Icon(Icons.download_rounded, size: 18),
-            label: const Text("تحميل الموارد"),
+            label: const Text("Download resources"),
             style: FilledButton.styleFrom(
               backgroundColor: themeState.primary.withValues(alpha: isDark ? 0.15 : 0.08),
               foregroundColor: themeState.primary,
@@ -1234,7 +1234,7 @@ extension _WordInfoCard on _TafsirViewState {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
-                      'خلاف',
+                      'Difference of opinion',
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.w700,
@@ -1316,14 +1316,14 @@ extension _MutashabihatCard on _TafsirViewState {
                 IconButton(
                   onPressed: () async {
                     await SharePlus.instance.share(
-                      ShareParams(text: text.isNotEmpty ? text : surah.isNotEmpty ? surah : 'متشابهات', subject: 'متشابهات'),
+                      ShareParams(text: text.isNotEmpty ? text : surah.isNotEmpty ? surah : 'Mutashabihat', subject: 'Mutashabihat'),
                     );
                   },
                   icon: Icon(Icons.share_rounded, color: themeState.primary),
                 ),
                 const Spacer(),
                 Text(
-                  surah.isNotEmpty ? surah : 'متشابهات',
+                  surah.isNotEmpty ? surah : 'Mutashabihat',
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
                     color: themeState.primary.withValues(alpha: 0.70),
@@ -1355,7 +1355,7 @@ extension _MutashabihatCard on _TafsirViewState {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Text(
-                'متشابهات: ${mutsDisplay.join("، ")}',
+                'Mutashabihat: ${mutsDisplay.join(", ")}',
                 textDirection: TextDirection.rtl,
                 style: TextStyle(
                   fontSize: 13,

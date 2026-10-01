@@ -205,11 +205,11 @@ extension AyahImageHeaderAlignExt on AyahImageHeaderAlign {
   String getDisplayName() {
     switch (this) {
       case AyahImageHeaderAlign.center:
-        return "وسط";
+        return "Center";
       case AyahImageHeaderAlign.right:
-        return "يمين";
+        return "Right";
       case AyahImageHeaderAlign.left:
-        return "يسار";
+        return "Left";
     }
   }
 
@@ -231,11 +231,11 @@ extension AyahImageTextAlignExt on AyahImageTextAlign {
   String getDisplayName() {
     switch (this) {
       case AyahImageTextAlign.center:
-        return "وسط";
+        return "Center";
       case AyahImageTextAlign.right:
-        return "يمين";
+        return "Right";
       case AyahImageTextAlign.justify:
-        return "ضبط";
+        return "Adjust";
     }
   }
 
@@ -313,7 +313,7 @@ extension AyahImageAspectRatioExt on AyahImageAspectRatio {
   String getDisplayName() {
     switch (this) {
       case AyahImageAspectRatio.auto:
-        return "تلقائي";
+        return "Auto";
       case AyahImageAspectRatio.square:
         return "1:1";
       case AyahImageAspectRatio.post:
@@ -355,11 +355,11 @@ extension AyahImageHeaderStyleExt on AyahImageHeaderStyle {
   String getDisplayName() {
     switch (this) {
       case AyahImageHeaderStyle.none:
-        return "إخفاء";
+        return "Hide";
       case AyahImageHeaderStyle.simple:
-        return "بسيط";
+        return "Simple";
       case AyahImageHeaderStyle.banner:
-        return "بانر";
+        return "Banner";
     }
   }
 }
@@ -493,13 +493,13 @@ extension AyahImageFontTypeExt on AyahImageFontType {
   String getDisplayName() {
     switch (this) {
       case AyahImageFontType.uthmanic:
-        return "خط عثماني";
+        return "Uthmani font";
       case AyahImageFontType.amiri:
-        return "أميري";
+        return "Amiri";
       case AyahImageFontType.noto:
-        return "نوتو نسخ";
+        return "Noto Naskh";
       case AyahImageFontType.scheherazade:
-        return "شهرزاد";
+        return "Shahrazad";
     }
   }
 }

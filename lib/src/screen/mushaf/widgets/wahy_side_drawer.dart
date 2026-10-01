@@ -97,7 +97,7 @@ class _WahySideDrawerState extends State<WahySideDrawer>
     int i = 0;
 
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Drawer(
         width: 310,
         backgroundColor: bg,
@@ -124,7 +124,7 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "الفرقان",
+                                      "Imaanly",
                                       style: TextStyle(
                                         fontSize: 24,
                                         fontWeight: FontWeight.w900,
@@ -167,7 +167,7 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                         physics: const BouncingScrollPhysics(),
                         children: [
                           // ── القسم الرئيسي ──
-                          _buildAnimItem(i++, _sectionLabel("الرئيسية", sectionLabelColor)),
+                          _buildAnimItem(i++, _sectionLabel("Home", sectionLabelColor)),
                           const SizedBox(height: 6),
                           _buildAnimItem(
                             i++,
@@ -177,8 +177,8 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                               chevronColor: chevronColor,
                               items: [
                                 _AyahDrawerItemData(
-                                  title: "المصحف المعلم",
-                                  subtitle: "تلاوة وتفسير",
+                                  title: "Annotated Mushaf",
+                                  subtitle: "Recitation & tafsir",
                                   icon: Icons.menu_book_rounded,
                                   primary: widget.primary,
                                   onTap: () => Navigator.pop(context),
@@ -189,7 +189,7 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                           const SizedBox(height: 18),
 
                           // ── الخدمات والمميزات ──
-                          _buildAnimItem(i++, _sectionLabel("الخدمات والمميزات", sectionLabelColor)),
+                          _buildAnimItem(i++, _sectionLabel("Services & features", sectionLabelColor)),
                           const SizedBox(height: 6),
                           _buildAnimItem(
                             i++,
@@ -199,50 +199,50 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                               chevronColor: chevronColor,
                               items: [
                                 _AyahDrawerItemData(
-                                  title: "المكتبة",
-                                  subtitle: "ترجمات وتفاسير ومصادر",
+                                  title: "Library",
+                                  subtitle: "Translations, tafsirs & sources",
                                   icon: Icons.library_books_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThenPush(context, const QuranResourcesView()),
                                 ),
                                 _AyahDrawerItemData(
-                                  title: "المشغّل الأوفلاين",
-                                  subtitle: "تحميل التلاوات",
+                                  title: "Offline player",
+                                  subtitle: "Download recitations",
                                   icon: Icons.download_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThenPush(context, const OfflinePlayerScreen()),
                                 ),
                                 _AyahDrawerItemData(
-                                  title: "مواقيت الصلاة",
-                                  subtitle: "مواعيد وتنبيهات",
+                                  title: "Prayer times",
+                                  subtitle: "Times & alerts",
                                   icon: Icons.access_time_filled_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThenPush(context, const PrayerTimePage()),
                                 ),
                                 _AyahDrawerItemData(
-                                  title: "اتجاه القبلة",
-                                  subtitle: "البوصلة الذكية",
+                                  title: "Qibla direction",
+                                  subtitle: "Smart compass",
                                   icon: Icons.explore_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThenPush(context, const QiblaDirection()),
                                 ),
                                 _AyahDrawerItemData(
-                                  title: "الأذكار",
-                                  subtitle: "أذكار الصباح والمساء",
+                                  title: "Adhkar",
+                                  subtitle: "Morning & evening adhkar",
                                   icon: Icons.auto_stories_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThenPush(context, const AzkarCategoriesScreen()),
                                 ),
                                 _AyahDrawerItemData(
-                                  title: "ويدجت آية اليوم",
-                                  subtitle: "تخصيص الشكل والتحديث",
+                                  title: "Ayah of the Day widget",
+                                  subtitle: "Customize look and refresh",
                                   icon: Icons.widgets_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThenPush(context, const HomeWidgetStudioScreen()),
                                 ),
                                 _AyahDrawerItemData(
-                                  title: "السنن",
-                                  subtitle: "سنن الصلاة والوضوء",
+                                  title: "Sunnahs",
+                                  subtitle: "Sunnahs of prayer & wudu",
                                   icon: Icons.favorite_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThenPush(context, const SunnahPrayerScreenV2()),
@@ -253,7 +253,7 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                           const SizedBox(height: 18),
 
                           // ─ـ الإدارة السريعة ──
-                          _buildAnimItem(i++, _sectionLabel("الإدارة السريعة", sectionLabelColor)),
+                          _buildAnimItem(i++, _sectionLabel("Quick management", sectionLabelColor)),
                           const SizedBox(height: 6),
                           _buildAnimItem(
                             i++,
@@ -263,29 +263,29 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                               chevronColor: chevronColor,
                               items: [
                                 _AyahDrawerItemData(
-                                  title: "الفهرس والانتقال",
-                                  subtitle: "سورة / آية / صفحة",
+                                  title: "Index & navigation",
+                                  subtitle: "Surah / Ayah / Page",
                                   icon: Icons.format_list_bulleted_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThen(context, widget.onOpenIndex),
                                 ),
                                 _AyahDrawerItemData(
-                                  title: "مساحة الختمة",
-                                  subtitle: "متابعة الحفظ",
+                                  title: "Khatma space",
+                                  subtitle: "Continue memorization",
                                   icon: Icons.auto_awesome_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThenPush(context, const SmartKhatmaPage()),
                                 ),
                                 _AyahDrawerItemData(
-                                  title: "إحصائيات القراءة",
-                                  subtitle: "صفحات وآيات وسلسلة",
+                                  title: "Reading statistics",
+                                  subtitle: "Pages, ayahs & streak",
                                   icon: Icons.bar_chart_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThenPush(context, const ReadingStatsScreen()),
                                 ),
                                 _AyahDrawerItemData(
-                                  title: "قوائم التشغيل",
-                                  subtitle: "إنشاء وتشغيل قوائم مخصصة",
+                                  title: "Playlists",
+                                  subtitle: "Create and play custom playlists",
                                   icon: Icons.queue_music_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThenPush(context, const CustomPlaylistScreen()),
@@ -306,7 +306,7 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                           const SizedBox(height: 18),
 
                           // ─ـ النظام ──
-                          _buildAnimItem(i++, _sectionLabel("النظام", sectionLabelColor)),
+                          _buildAnimItem(i++, _sectionLabel("System", sectionLabelColor)),
                           const SizedBox(height: 6),
                           _buildAnimItem(
                             i++,
@@ -316,22 +316,22 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                               chevronColor: chevronColor,
                               items: [
                                 _AyahDrawerItemData(
-                                  title: "الإعدادات",
-                                  subtitle: "تخصيص التطبيق",
+                                  title: "Settings",
+                                  subtitle: "Customize the app",
                                   icon: Icons.settings_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThenPush(context, const SettingsPage()),
                                 ),
                                 _AyahDrawerItemData(
-                                  title: "عن التطبيق",
-                                  subtitle: "الإصدار والمطور",
+                                  title: "About the app",
+                                  subtitle: "Version & developer",
                                   icon: Icons.info_outline_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThenPush(context, const AboutAppPage()),
                                 ),
                                 _AyahDrawerItemData(
-                                  title: "إرسال ملاحظة",
-                                  subtitle: "ساعدنا في التحسن",
+                                  title: "Send feedback",
+                                  subtitle: "Help us improve",
                                   icon: Icons.bug_report_rounded,
                                   primary: widget.primary,
                                   onTap: () {
@@ -340,7 +340,7 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                                     showGeneralDialog(
                                       context: context,
                                       barrierDismissible: true,
-                                      barrierLabel: "إغلاق الملاحظة",
+                                      barrierLabel: "Close note",
                                       transitionDuration: const Duration(milliseconds: 320),
                                       pageBuilder: (ctx, anim1, anim2) =>
                                           WahyFeedbackDialog(primary: primaryColor),

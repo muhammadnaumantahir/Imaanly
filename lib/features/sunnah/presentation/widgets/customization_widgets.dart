@@ -76,7 +76,7 @@ class ColorPickerTile extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          'اختر اللون',
+          'Choose a color',
           style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
         ),
         content: SingleChildScrollView(
@@ -340,17 +340,17 @@ class PatternSelector extends StatelessWidget {
   String _getPatternLabel(PatternType type) {
     switch (type) {
       case PatternType.none:
-        return 'بدون';
+        return 'None';
       case PatternType.geometric:
-        return 'هندسي';
+        return 'Geometric';
       case PatternType.islamic:
-        return 'إسلامي';
+        return 'Islamic';
       case PatternType.dots:
-        return 'نقاط';
+        return 'Points';
       case PatternType.lines:
-        return 'خطوط';
+        return 'Fonts';
       case PatternType.waves:
-        return 'موجات';
+        return 'Waves';
     }
   }
 }
@@ -457,7 +457,7 @@ class ImageSizeSelector extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog(
         title: Text(
-          'حجم مخصص',
+          'Custom size',
           style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
         ),
         content: Column(
@@ -467,7 +467,7 @@ class ImageSizeSelector extends StatelessWidget {
               controller: widthController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                labelText: 'العرض (px)',
+                labelText: 'Width (px)',
                 labelStyle: GoogleFonts.cairo(),
                 border: const OutlineInputBorder(),
               ),
@@ -477,7 +477,7 @@ class ImageSizeSelector extends StatelessWidget {
               controller: heightController,
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                labelText: 'الارتفاع (px)',
+                labelText: 'Height (px)',
                 labelStyle: GoogleFonts.cairo(),
                 border: const OutlineInputBorder(),
               ),
@@ -487,7 +487,7 @@ class ImageSizeSelector extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('إلغاء', style: GoogleFonts.cairo()),
+            child: Text('Cancel', style: GoogleFonts.cairo()),
           ),
           ElevatedButton(
             onPressed: () {
@@ -500,7 +500,7 @@ class ImageSizeSelector extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               backgroundColor: SunnahTheme.green,
             ),
-            child: Text('تطبيق', style: GoogleFonts.cairo()),
+            child: Text('Apply', style: GoogleFonts.cairo()),
           ),
         ],
       ),
@@ -572,7 +572,7 @@ class FontFamilySelector extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Text(
-                      'نموذج نص بخط $font',
+                      'Sample text in $font font',
                       style: GoogleFonts.getFont(
                         font.replaceAll(' ', ''),
                         fontSize: 16,

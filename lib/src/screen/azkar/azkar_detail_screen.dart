@@ -103,7 +103,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     if (widget.azkarList.isEmpty) return const Scaffold(body: Center(child: Text('No Adhkar available.')));
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Scaffold(
         appBar: AppBar(
           title: Text(widget.categoryName),
@@ -123,7 +123,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
             Padding(
               padding: const EdgeInsets.all(16),
               child: Text(
-                'الذكر ${_currentIndex + 1} من ${widget.azkarList.length} • المتبقي ${_counts[_currentIndex]}',
+                'Dhikr ${_currentIndex + 1} of ${widget.azkarList.length} • ${_counts[_currentIndex]} remaining',
                 style: const TextStyle(fontWeight: FontWeight.w800),
               ),
             ),

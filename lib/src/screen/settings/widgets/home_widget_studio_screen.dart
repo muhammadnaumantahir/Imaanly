@@ -60,7 +60,7 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
   Future<void> _generatePreviewData() async {
     if (_contentType == "azkar") {
       _previewAyahText = "سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ العَظِيمِ";
-      _previewSurahName = "ذكر مستحب";
+      _previewSurahName = "Recommended dhikr";
     } else {
       _previewAyahText = AyahOfTheDayService.formatAyahTextForWidget(
         getVerse(55, 13, verseEndSymbol: false), 
@@ -101,7 +101,7 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          "تخصيص الويدجيت",
+          "Customize widget",
           style: TextStyle(
             fontFamily: "Cairo-Bold",
             color: isDark ? Colors.white : Colors.black87,
@@ -118,8 +118,8 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
           indicatorWeight: 3,
           indicatorSize: TabBarIndicatorSize.tab,
           tabs: const [
-            Tab(text: "الآيات والأذكار"),
-            Tab(text: "مواقيت الصلاة"),
+            Tab(text: "Ayahs & adhkar"),
+            Tab(text: "Prayer times"),
           ],
         ),
       ),
@@ -144,19 +144,19 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
         _buildAyahLivePreview(bgColor),
         const SizedBox(height: 24),
         
-        _buildSectionTitle("المحتوى الأساسي", isDark),
+        _buildSectionTitle("Core content", isDark),
         _buildContentCard(cardColor, isDark),
         
         const SizedBox(height: 32),
-        _buildSectionTitle("حجم الخط", isDark),
+        _buildSectionTitle("Font size", isDark),
         _buildFontSizeCard(cardColor, isDark),
 
         const SizedBox(height: 32),
-        _buildSectionTitle("الخط العربي", isDark),
+        _buildSectionTitle("Arabic font", isDark),
         _buildFontCard(cardColor, isDark),
         
         const SizedBox(height: 32),
-        _buildSectionTitle("المظهر الجمالي", isDark),
+        _buildSectionTitle("Visual style", isDark),
         _buildThemesGrid(),
         
         const SizedBox(height: 40),
@@ -173,11 +173,11 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
         _buildPrayerLivePreview(bgColor, isDark),
         const SizedBox(height: 24),
         
-        _buildSectionTitle("طريقة العرض", isDark),
+        _buildSectionTitle("Display mode", isDark),
         _buildPrayerCard(cardColor, isDark),
         
         const SizedBox(height: 32),
-        _buildSectionTitle("المظهر الجمالي", isDark),
+        _buildSectionTitle("Visual style", isDark),
         _buildThemesGrid(),
         
         const SizedBox(height: 40),
@@ -214,12 +214,12 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
 
   Widget _buildPrayerLivePreview(Color bgColor, bool isDark) {
     final mockTimes = {
-      "الفجر": "٠٤:٣٠ ص",
-      "الشروق": "٠٦:٠٥ ص",
-      "الظهر": "١٢:٠٠ م",
-      "العصر": "٠٣:٣٠ م",
-      "المغرب": "٠٦:١٥ م",
-      "العشاء": "٠٧:٤٠ م",
+      "Fajr": "04:30 AM",
+      "Sunrise": "06:05 AM",
+      "Dhuhr": "12:00 PM",
+      "Asr": "03:30 PM",
+      "Maghrib": "06:15 PM",
+      "Isha": "07:40 PM",
     };
     
     return AnimatedSwitcher(
@@ -238,7 +238,7 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
               themeId: _themeId,
               prayerDisplayMode: _prayerDisplayMode,
               prayerTimes: mockTimes,
-              nextPrayerName: "العصر",
+              nextPrayerName: "Asr",
               isDark: isDark,
             ),
           ),
@@ -268,7 +268,7 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
         children: [
           _buildOptionTile(
             icon: Icons.menu_book_rounded,
-            title: "آية من القرآن الكريم",
+            title: "An ayah from the Holy Quran",
             isSelected: _contentType == "quran",
             onTap: () async {
               HapticFeedback.selectionClick();
@@ -280,7 +280,7 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
           _divider(isDark),
           _buildOptionTile(
             icon: Icons.auto_awesome_rounded,
-            title: "ذكر مستحب / ورد يومي",
+            title: "Recommended dhikr / daily wird",
             isSelected: _contentType == "azkar",
             onTap: () async {
               HapticFeedback.selectionClick();
@@ -330,7 +330,7 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
         children: [
           _buildOptionTile(
             icon: Icons.access_time_rounded,
-            title: "إظهار الصلاة القادمة فقط",
+            title: "Show next prayer only",
             isSelected: _prayerDisplayMode == "next",
             onTap: () {
               HapticFeedback.selectionClick();
@@ -341,7 +341,7 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
           _divider(isDark),
           _buildOptionTile(
             icon: Icons.view_column_rounded,
-            title: "إظهار كافة مواقيت الصلاة",
+            title: "Show all prayer times",
             isSelected: _prayerDisplayMode == "all",
             onTap: () {
               HapticFeedback.selectionClick();
@@ -352,7 +352,7 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
           _divider(isDark),
           _buildOptionTile(
             icon: Icons.visibility_off_rounded,
-            title: "تخفي",
+            title: "Hide",
             isSelected: _prayerDisplayMode == "none",
             onTap: () {
               HapticFeedback.selectionClick();
@@ -423,11 +423,11 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
 
   Widget _buildFontCard(Color cardColor, bool isDark) {
     final Map<String, String> fonts = {
-      "": "تلقائي (حسب المحتوى)",
-      AppFonts.uthmanicHafs: "عثماني حفص المطور",
-      AppFonts.qpcHafs: "مجمع الملك فهد",
-      "AmiriQuran-Regular": "الخط الأميري",
-      AppFonts.alQuranNeo: "خط أحمد حسني",
+      "": "Auto (by content)",
+      AppFonts.uthmanicHafs: "Enhanced Uthmani Hafs",
+      AppFonts.qpcHafs: "King Fahd Complex",
+      "AmiriQuran-Regular": "Amiri font",
+      AppFonts.alQuranNeo: "Ahmed Hosny font",
     };
 
     return Container(

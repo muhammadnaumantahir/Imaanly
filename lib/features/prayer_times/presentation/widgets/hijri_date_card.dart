@@ -74,7 +74,7 @@ class HijriDateCard extends StatelessWidget {
                       children: [
                         // Label
                         Text(
-                          'التاريخ الهجري',
+                          'Hijri date',
                           style: PrayerTextStyles.arabicCaption(
                             color: PrayerThemeColors.getTextColor(
                               'secondary',
@@ -116,7 +116,7 @@ class HijriDateCard extends StatelessWidget {
                         
                         // Hijri Year
                         Text(
-                          '${hijriDate.hYear} هـ',
+                          '${hijriDate.hYear} AH',
                           style: PrayerTextStyles.arabicBody(
                             color: PrayerThemeColors.getTextColor(
                               'secondary',
@@ -221,7 +221,7 @@ class HijriDateCard extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        'عرض التقويم',
+                        'View calendar',
                         style: PrayerTextStyles.arabicCaption(
                           color: PrayerThemeColors.gold,
                         ),
@@ -244,18 +244,18 @@ class HijriDateCard extends StatelessWidget {
 
   String _getHijriMonthName(int month) {
     const months = [
-      'محرم',
-      'صفر',
-      'ربيع الأول',
-      'ربيع الآخر',
-      'جمادى الأولى',
-      'جمادى الآخرة',
-      'رجب',
-      'شعبان',
-      'رمضان',
-      'شوال',
-      'ذو القعدة',
-      'ذو الحجة',
+      'Muharram',
+      'Safar',
+      'Rabi\' al-Awwal',
+      'Rabi\' al-Thani',
+      'Jumada al-Ula',
+      'Jumada al-Thani',
+      'Rajab',
+      'Sha\'ban',
+      'Ramadan',
+      'Shawwal',
+      'Dhul Qa\'dah',
+      'Dhul Hijjah',
     ];
     
     return months[month - 1];

@@ -41,10 +41,10 @@ class _DuaFavoritesScreenState extends State<DuaFavoritesScreen> {
     final primary = Theme.of(context).colorScheme.primary;
 
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('المفضلة', style: TextStyle(fontWeight: FontWeight.w900)),
+          title: const Text('Favorites', style: TextStyle(fontWeight: FontWeight.w900)),
           centerTitle: true,
         ),
         body: favorites.isEmpty
@@ -56,10 +56,10 @@ class _DuaFavoritesScreenState extends State<DuaFavoritesScreen> {
                     children: [
                       Icon(Icons.star_border_rounded, size: 72, color: primary.withValues(alpha: .45)),
                       const SizedBox(height: 16),
-                      const Text('لا توجد أذكار محفوظة', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
+                      const Text('No saved adhkar', style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
                       const SizedBox(height: 8),
                       Text(
-                        'اضغط على نجمة الحفظ داخل الذكر لإضافته إلى المفضلة.',
+                        'Tap the memorization star inside a dhikr to add it to favorites.',
                         textAlign: TextAlign.center,
                         style: TextStyle(color: isDark ? Colors.white70 : Colors.black54),
                       ),
@@ -74,7 +74,7 @@ class _DuaFavoritesScreenState extends State<DuaFavoritesScreen> {
                 itemBuilder: (context, index) {
                   final item = favorites[index];
                   final text = item['zekr']?.toString() ?? '';
-                  final category = item['category']?.toString() ?? 'دعاء';
+                  final category = item['category']?.toString() ?? 'Dua';
                   final reference = item['reference']?.toString() ?? '';
                   return Card(
                     elevation: 0,
@@ -89,7 +89,7 @@ class _DuaFavoritesScreenState extends State<DuaFavoritesScreen> {
                                 child: Text(category, style: TextStyle(color: primary, fontWeight: FontWeight.w900)),
                               ),
                               IconButton(
-                                tooltip: 'إزالة من المفضلة',
+                                tooltip: 'Remove from favorites',
                                 onPressed: () => _remove(index),
                                 icon: Icon(Icons.star_rounded, color: primary),
                               ),

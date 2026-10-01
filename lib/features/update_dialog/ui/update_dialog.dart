@@ -235,7 +235,7 @@ class UpdateDialog extends StatelessWidget {
           border: Border.all(color: const Color(0xFFC9A84C).withValues(alpha: 0.3)),
         ),
         child: Text(
-          'الإصدار ${config.currentVersion}',
+          'Version ${config.currentVersion}',
           style: const TextStyle(fontSize: 12, color: Color(0xFFE8D48B), fontWeight: FontWeight.w600),
         ),
       );
@@ -248,7 +248,7 @@ class UpdateDialog extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
-        'الإصدار ${config.currentVersion}',
+        'Version ${config.currentVersion}',
         style: TextStyle(fontSize: 12, color: textColor, fontWeight: FontWeight.w600),
       ),
     );
@@ -311,7 +311,7 @@ class UpdateDialog extends StatelessWidget {
             onPressed: _openStore,
             style: DialogStyleBuilder.primaryButton(style, config),
             child: const Text(
-              'تحديث الآن',
+              'Update now',
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
             ),
           ),
@@ -336,7 +336,7 @@ class UpdateDialog extends StatelessWidget {
         if (isForced) ...[
           const SizedBox(height: 12),
           Text(
-            'هذا التحديث إجباري لاستمرار استخدام التطبيق',
+            'This update is required to keep using the app',
             style: TextStyle(
               fontSize: 11,
               color: style == DialogStyle.islamicGold

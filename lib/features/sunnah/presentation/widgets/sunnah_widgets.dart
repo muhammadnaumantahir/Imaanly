@@ -108,7 +108,7 @@ class SunnahImportanceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      label: 'فضل الصلاة',
+      label: 'Virtue of prayer',
       child: Container(
         padding: EdgeInsets.all(SunnahTheme.space20),
         decoration: BoxDecoration(
@@ -139,7 +139,7 @@ class SunnahImportanceCard extends StatelessWidget {
                 SizedBox(width: SunnahTheme.space12),
                 Expanded(
                   child: Text(
-                    'فضل الصلاة',
+                    'Virtue of prayer',
                     style: GoogleFonts.cairo(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w900,
@@ -152,7 +152,7 @@ class SunnahImportanceCard extends StatelessWidget {
             SizedBox(height: SunnahTheme.space16),
             _buildHadithBox(
               'عن أبي هريرة رضي الله عنه قال: سمعت رسول الله ﷺ يقول: "أرأيتم لو أن نهراً بباب أحدكم يغتسل منه كل يوم خمس مرات، هل يبقى من درنه شيء؟" قالوا: لا يبقى من درنه شيء. قال: "فذلك مثل الصلوات الخمس، يمحو الله بهن الخطايا"',
-              'متفق عليه',
+              'Agreed upon',
               isDark,
             ),
           ],
@@ -184,7 +184,7 @@ class SunnahImportanceCard extends StatelessWidget {
               ),
               SizedBox(width: SunnahTheme.space8),
               Text(
-                "حديث شريف",
+                "Hadith",
                 style: GoogleFonts.cairo(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w800,
@@ -398,13 +398,13 @@ class SunnahStepCard extends StatelessWidget {
                 // Share Button
                 Semantics(
                   button: true,
-                  label: 'مشاركة $title',
+                  label: 'Share $title',
                   child: IconButton(
                     onPressed: onShare,
                     icon: const Icon(Icons.share_rounded),
                     iconSize: SunnahTheme.iconMedium,
                     color: SunnahTheme.success,
-                    tooltip: "مشاركة",
+                    tooltip: "Share",
                     constraints: BoxConstraints(
                       minWidth: SunnahTheme.touchTarget,
                       minHeight: SunnahTheme.touchTarget,

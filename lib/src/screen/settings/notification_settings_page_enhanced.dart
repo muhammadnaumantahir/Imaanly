@@ -64,7 +64,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
                   ),
                 ),
           child: Directionality(
-            textDirection: TextDirection.rtl,
+            textDirection: TextDirection.ltr,
             child: child!,
           ),
         );
@@ -76,7 +76,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
   String _formatTime(TimeOfDay t) {
     final h = t.hourOfPeriod == 0 ? 12 : t.hourOfPeriod;
     final m = t.minute.toString().padLeft(2, "0");
-    final period = t.period == DayPeriod.am ? "ص" : "م";
+    final period = t.period == DayPeriod.am ? "AM" : "PM";
     return "$h:$m $period";
   }
 
@@ -91,13 +91,13 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
     final borderColor = isDark ? Colors.white.withValues(alpha: 0.1) : Colors.black.withValues(alpha: 0.06);
 
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Scaffold(
         backgroundColor: bg,
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           title: Text(
-            "الإشعارات",
+            "Notifications",
             style: GoogleFonts.cairo(fontWeight: FontWeight.w900, color: textColor),
           ),
           backgroundColor: Colors.transparent,
@@ -116,13 +116,13 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
             physics: const BouncingScrollPhysics(),
             children: [
               // Basic Notifications
-              _buildSectionHeader("الإشعارات الأساسية", Icons.notifications_rounded, primary, textColor),
+              _buildSectionHeader("Core notifications", Icons.notifications_rounded, primary, textColor),
               const SizedBox(height: 12),
               _buildNotifCard(
                 icon: Icons.menu_book_rounded,
                 iconColor: const Color(0xFF1B8A6B),
-                title: "تذكير الختمة",
-                subtitle: "تذكير يومي بورد القراءة",
+                title: "Khatma reminder",
+                subtitle: "Daily reading wird reminder",
                 enabled: _khatmaEnabled,
                 time: _khatmaTime,
                 cardBg: cardBg,
@@ -152,8 +152,8 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
               _buildNotifCard(
                 icon: Icons.auto_awesome_rounded,
                 iconColor: const Color(0xFFC18D3E),
-                title: "آية اليوم",
-                subtitle: "آية عشوائية يومياً مع تفسيرها",
+                title: "Ayah of the Day",
+                subtitle: "A random ayah daily with its tafsir",
                 enabled: _dailyVerseEnabled,
                 time: _dailyVerseTime,
                 cardBg: cardBg,
@@ -183,8 +183,8 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
               _buildNotifCard(
                 icon: Icons.wb_sunny_rounded,
                 iconColor: const Color(0xFFFF9800),
-                title: "أذكار الصباح",
-                subtitle: "تذكير بأذكار الصباح يومياً",
+                title: "Morning adhkar",
+                subtitle: "Daily morning adhkar reminder",
                 enabled: _morningAzkarEnabled,
                 time: _morningAzkarTime,
                 cardBg: cardBg,
@@ -214,8 +214,8 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
               _buildNotifCard(
                 icon: Icons.nights_stay_rounded,
                 iconColor: const Color(0xFF5C6BC0),
-                title: "أذكار المساء",
-                subtitle: "تذكير بأذكار المساء يومياً",
+                title: "Evening adhkar",
+                subtitle: "Daily evening adhkar reminder",
                 enabled: _eveningAzkarEnabled,
                 time: _eveningAzkarTime,
                 cardBg: cardBg,
@@ -252,7 +252,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(
-                  "تم إرسال إشعار تجريبي ✅",
+                  "Test notification sent ✅",
                   textDirection: TextDirection.rtl,
                   style: GoogleFonts.cairo(fontWeight: FontWeight.w800),
                 ),
@@ -265,7 +265,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
           backgroundColor: primary,
           icon: const Icon(Icons.notifications_active_rounded, color: Colors.white),
           label: Text(
-            "جرب الإشعار",
+            "Try notification",
             style: GoogleFonts.cairo(fontWeight: FontWeight.w900, color: Colors.white),
           ),
         ),
@@ -394,7 +394,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
                               Icon(Icons.access_time_rounded, color: primary, size: 20),
                               const SizedBox(width: 10),
                               Text(
-                                "الوقت: ${_formatTime(time)}",
+                                "Time: ${_formatTime(time)}",
                                 style: GoogleFonts.cairo(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w800,

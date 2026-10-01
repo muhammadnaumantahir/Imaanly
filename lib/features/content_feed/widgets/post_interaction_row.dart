@@ -26,8 +26,8 @@ class PostInteractionRow extends StatelessWidget {
 
   String _viewsLabel() {
     if (post.viewCount == 0) return '';
-    if (post.viewCount < 1000) return '${post.viewCount} مشاهدة';
-    return '${(post.viewCount / 1000).toStringAsFixed(1)}k مشاهدة';
+    if (post.viewCount < 1000) return '${post.viewCount} views';
+    return '${(post.viewCount / 1000).toStringAsFixed(1)}k views';
   }
 
   @override

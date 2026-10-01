@@ -90,7 +90,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
                 
                 Expanded(
                   child: Text(
-                    "مشاركة السنة",
+                    "Share Sunnah",
                     style: GoogleFonts.cairo(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w700,
@@ -109,7 +109,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
             // Share Options
             _ShareOptionButton(
               icon: Icons.text_fields_rounded,
-              label: "مشاركة كنص",
+              label: "Share as text",
               color: SunnahTheme.info,
               isDark: isDark,
               onTap: () => _shareAsText(context),
@@ -122,7 +122,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
             
             _ShareOptionButton(
               icon: Icons.image_rounded,
-              label: "مشاركة كصورة",
+              label: "Share as image",
               color: const Color(0xFFEC4899),
               isDark: isDark,
               onTap: () => _shareAsImage(context),
@@ -135,7 +135,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
             
             _ShareOptionButton(
               icon: Icons.send_rounded,
-              label: "مشاركة مباشرة",
+              label: "Direct share",
               color: SunnahTheme.success,
               isDark: isDark,
               onTap: () => _shareDirect(context),
@@ -163,7 +163,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              "تم نسخ النص بنجاح ✓",
+              "Text copied successfully ✓",
               style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
             ),
             behavior: SnackBarBehavior.floating,
@@ -177,7 +177,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              "حدث خطأ أثناء النسخ",
+              "An error occurred while copying",
               style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
             ),
             behavior: SnackBarBehavior.floating,
@@ -210,7 +210,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
               ),
               SizedBox(height: SunnahTheme.space16),
               Text(
-                "جاري إنشاء الصورة...",
+                "Creating image...",
                 style: GoogleFonts.cairo(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w700,
@@ -239,7 +239,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              "تم إنشاء الصورة بنجاح ✓",
+              "Image created successfully ✓",
               style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
             ),
             behavior: SnackBarBehavior.floating,
@@ -253,7 +253,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              "حدث خطأ أثناء إنشاء الصورة",
+              "An error occurred while creating the image",
               style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
             ),
             behavior: SnackBarBehavior.floating,
@@ -281,7 +281,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              "حدث خطأ أثناء المشاركة",
+              "An error occurred while sharing",
               style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
             ),
             behavior: SnackBarBehavior.floating,

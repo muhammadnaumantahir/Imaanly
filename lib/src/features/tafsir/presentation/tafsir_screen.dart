@@ -30,7 +30,7 @@ class _TafsirView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          Directionality.of(context) == TextDirection.rtl ? 'التفسير' : 'Tafsir',
+          Directionality.of(context) == TextDirection.rtl ? 'Tafsir' : 'Tafsir',
         ),
         elevation: 0,
       ),

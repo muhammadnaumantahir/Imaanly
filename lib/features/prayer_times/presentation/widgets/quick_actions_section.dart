@@ -39,14 +39,14 @@ class QuickActionsSection extends StatelessWidget {
       children: [
         _QuickActionButton(
           icon: Icons.explore_rounded,
-          label: 'اتجاه القبلة',
+          label: 'Qibla direction',
           color: PrayerThemeColors.green,
           onTap: onQiblaTap,
           isDark: isDark,
         ),
         _QuickActionButton(
           icon: Icons.volume_up_rounded,
-          label: 'الأذان',
+          label: 'Adhan',
           color: PrayerThemeColors.gold,
           onTap: onAdhanTap,
           isDark: isDark,
@@ -54,14 +54,14 @@ class QuickActionsSection extends StatelessWidget {
         ),
         _QuickActionButton(
           icon: Icons.calendar_month_rounded,
-          label: 'التقويم الإسلامي',
+          label: 'Islamic calendar',
           color: PrayerThemeColors.info,
           onTap: onCalendarTap,
           isDark: isDark,
         ),
         _QuickActionButton(
           icon: Icons.settings_rounded,
-          label: 'إعدادات الصلاة',
+          label: 'Prayer settings',
           color: PrayerThemeColors.getTextColor('secondary', isDark),
           onTap: onSettingsTap,
           isDark: isDark,
@@ -120,7 +120,7 @@ class _QuickActionButtonState extends State<_QuickActionButton>
       await _showAthanPicker(context);
       return;
     }
-    if (widget.label == 'إعدادات الصلاة') {
+    if (widget.label == 'Prayer settings') {
       await _ensureExactAlarmAccess(context);
     }
     widget.onTap?.call();
@@ -142,7 +142,7 @@ class _QuickActionButtonState extends State<_QuickActionButton>
               SizedBox(width: PrayerDimensions.space8),
               Expanded(
                 child: Text(
-                  'تفعيل التنبيهات الدقيقة',
+                  'Enable precise alerts',
                   style: PrayerTextStyles.arabicLabel(
                     color: PrayerThemeColors.getTextColor('primary', isDark),
                   ),
@@ -151,7 +151,7 @@ class _QuickActionButtonState extends State<_QuickActionButton>
             ],
           ),
           content: Text(
-            'للحصول على تنبيهات الصلاة في وقتها بدقة على Android، اسمح لـ Imaanly بإرسال المنبهات والتذكيرات من إعدادات النظام. إذا لم تمنح الإذن، سيستمر التطبيق باستخدام تنبيهات غير دقيقة عند الحاجة.',
+            'For precise prayer alerts on Android, allow Imaanly to send alarms and reminders from system settings. If you don\'t grant the permission, the app will keep using inexact alerts when needed.',
             textAlign: TextAlign.right,
             style: PrayerTextStyles.arabicBody(
               color: PrayerThemeColors.getTextColor('secondary', isDark),
@@ -161,7 +161,7 @@ class _QuickActionButtonState extends State<_QuickActionButton>
             TextButton(
               onPressed: () => Navigator.pop(dialogContext),
               child: Text(
-                'لاحقاً',
+                'Later',
                 style: PrayerTextStyles.arabicLabel(
                   color: PrayerThemeColors.textMuted,
                 ),
@@ -175,14 +175,14 @@ class _QuickActionButtonState extends State<_QuickActionButton>
                 if (!granted && context.mounted) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
-                      content: Text('لم يتم تفعيل صلاحية التنبيهات الدقيقة.'),
+                      content: Text('Exact alarm permission has not been enabled.'),
                     ),
                   );
                 }
               },
               icon: const Icon(Icons.open_in_new_rounded),
               label: Text(
-                'تفعيل',
+                'Enable',
                 style: PrayerTextStyles.arabicLabel(color: Colors.white),
               ),
               style: ElevatedButton.styleFrom(
@@ -248,7 +248,7 @@ class _QuickActionButtonState extends State<_QuickActionButton>
                           SizedBox(width: PrayerDimensions.space12),
                           Expanded(
                             child: Text(
-                              'اختيار صوت الأذان',
+                              'Choose adhan sound',
                               style: PrayerTextStyles.arabicHeadline(
                                 color: PrayerThemeColors.getTextColor(
                                   'primary',
@@ -265,7 +265,7 @@ class _QuickActionButtonState extends State<_QuickActionButton>
                                 return const SizedBox.shrink();
                               }
                               return IconButton(
-                                tooltip: 'إيقاف',
+                                tooltip: 'Stop',
                                 onPressed: service.stop,
                                 icon: const Icon(Icons.stop_circle_outlined),
                               );
@@ -281,7 +281,7 @@ class _QuickActionButtonState extends State<_QuickActionButton>
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: Text(
-                          'اضغط على أي خيار لتشغيل التسجيل مباشرة',
+                          'Tap any option to play the recording directly',
                           style: PrayerTextStyles.arabicCaption(
                             color: PrayerThemeColors.textMuted,
                           ),
@@ -341,7 +341,7 @@ class _QuickActionButtonState extends State<_QuickActionButton>
                                 if (!context.mounted) return;
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: Text('تعذر تشغيل الأذان: $error'),
+                                    content: Text('Couldn\'t play the adhan: $error'),
                                   ),
                                 );
                               }
@@ -366,7 +366,7 @@ class _QuickActionButtonState extends State<_QuickActionButton>
                             ),
                           ),
                           child: Text(
-                            'إغلاق',
+                            'Close',
                             style: PrayerTextStyles.arabicLabel(
                               color: PrayerThemeColors.green,
                             ),

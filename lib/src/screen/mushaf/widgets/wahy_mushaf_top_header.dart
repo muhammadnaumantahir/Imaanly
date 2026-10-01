@@ -76,7 +76,7 @@ class WahyMushafTopHeader extends StatelessWidget {
                     ),
                   ),
                   child: Directionality(
-                    textDirection: TextDirection.rtl,
+                    textDirection: TextDirection.ltr,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -145,48 +145,48 @@ class WahyMushafMoreMenuButton extends StatelessWidget {
     (
       action: WahyMushafMenuAction.offlinePlayer,
       icon: Icons.download_rounded,
-      label: "المشغّل الأوفلاين",
+      label: "Offline player",
     ),
     (
       action: WahyMushafMenuAction.library,
       icon: Icons.library_books_rounded,
-      label: "المكتبة",
+      label: "Library",
     ),
     (
       action: WahyMushafMenuAction.quranSettings,
       icon: Icons.auto_awesome_rounded,
-      label: "إعدادات المصحف",
+      label: "Mushaf settings",
     ),
     (
       action: WahyMushafMenuAction.azkar,
       icon: Icons.auto_stories_rounded,
-      label: "أذكار المسلم",
+      label: "Muslim Adhkar",
     ),
     (
       action: WahyMushafMenuAction.prayerTimes,
       icon: Icons.access_time_filled_rounded,
-      label: "مواقيت الصلاة",
+      label: "Prayer times",
     ),
     (
       action: WahyMushafMenuAction.qibla,
       icon: Icons.explore_rounded,
-      label: "القبلة",
+      label: "Qibla",
     ),
     // ── النظام ──
     (
       action: WahyMushafMenuAction.settings,
       icon: Icons.settings_rounded,
-      label: "الإعدادات",
+      label: "Settings",
     ),
     (
       action: WahyMushafMenuAction.about,
       icon: Icons.info_outline_rounded,
-      label: "عن التطبيق",
+      label: "About the app",
     ),
     (
       action: WahyMushafMenuAction.feedback,
       icon: Icons.bug_report_rounded,
-      label: "إرسال ملاحظة",
+      label: "Send feedback",
     ),
   ];
 
@@ -198,7 +198,7 @@ class WahyMushafMoreMenuButton extends StatelessWidget {
       value: entry.action,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
       child: Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: Row(
           children: [
             Container(

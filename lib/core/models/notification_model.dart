@@ -148,11 +148,11 @@ class NotificationStats {
 // ─────────────────────────────────────────────────────────────
 
 enum NotificationAudience {
-  all('الكل'),
-  topic('موضوع'),
-  individual('فرد'),
-  newUsers('مستخدمون جدد'),
-  activeUsers('مستخدمون نشطون');
+  all('All'),
+  topic('Topic'),
+  individual('Single'),
+  newUsers('New users'),
+  activeUsers('Active users');
 
   const NotificationAudience(this.arabicLabel);
   final String arabicLabel;

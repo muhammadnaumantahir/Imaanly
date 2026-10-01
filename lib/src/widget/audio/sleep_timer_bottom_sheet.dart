@@ -46,13 +46,13 @@ class SleepTimerBottomSheet extends StatelessWidget {
 
               // ─── Title ───
               Directionality(
-                textDirection: TextDirection.rtl,
+                textDirection: TextDirection.ltr,
                 child: Row(
                   children: [
                     Icon(Icons.bedtime_rounded, color: accent, size: 22),
                     const Gap(10),
                     Text(
-                      "مؤقت النوم",
+                      "Sleep timer",
                       style: TextStyle(
                         color: isDark ? const Color(0xFFF8F9FA) : const Color(0xFF212529),
                         fontWeight: FontWeight.w800,
@@ -76,9 +76,9 @@ class SleepTimerBottomSheet extends StatelessWidget {
 
               // ─── Preset Buttons ───
               Directionality(
-                textDirection: TextDirection.rtl,
+                textDirection: TextDirection.ltr,
                 child: Text(
-                  "اختر الوقت",
+                  "Choose time",
                   style: TextStyle(
                     color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057),
                     fontWeight: FontWeight.w600,
@@ -98,7 +98,7 @@ class SleepTimerBottomSheet extends StatelessWidget {
                       state.isActive;
                   return _presetChip(
                     context: context,
-                    label: "$m دقيقة",
+                    label: "$m min",
                     isSelected: isSelected,
                     accent: accent,
                     isDark: isDark,
@@ -129,12 +129,12 @@ class SleepTimerBottomSheet extends StatelessWidget {
 
     String label;
     if (state.mode == SleepTimerMode.endOfSurah) {
-      label = "نهاية السورة الحالية";
+      label = "End of the current surah";
     } else {
       final mins = state.remainingMinutes;
       final hrs = mins ~/ 60;
       final rem = mins % 60;
-      label = hrs > 0 ? "$hrs ساعة ${rem > 0 ? 'و $rem دقيقة' : ''}" : "$mins دقيقة";
+      label = hrs > 0 ? "$hrs hr ${rem > 0 ? '$rem min' : ''}" : "$mins min";
     }
 
     return Container(
@@ -145,7 +145,7 @@ class SleepTimerBottomSheet extends StatelessWidget {
         border: Border.all(color: accent.withValues(alpha: 0.25)),
       ),
       child: Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: Row(
           children: [
             Icon(Icons.timer_rounded, color: accent, size: 20),
@@ -155,12 +155,12 @@ class SleepTimerBottomSheet extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "المؤقت نشط",
+                    "Timer active",
                     style: TextStyle(color: accent, fontWeight: FontWeight.w700, fontSize: 14),
                   ),
                   const Gap(2),
                   Text(
-                    "متبقي: $label",
+                    "Remaining: $label",
                     style: TextStyle(color: sub, fontSize: 13),
                   ),
                 ],
@@ -254,14 +254,14 @@ class SleepTimerBottomSheet extends StatelessWidget {
           ),
         ),
         child: Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: TextDirection.ltr,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(Icons.stop_circle_rounded, color: isActive ? accent : isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057), size: 18),
               const Gap(8),
               Text(
-                "نهاية السورة الحالية",
+                "End of the current surah",
                 style: TextStyle(
                   color: isActive ? accent : isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057),
                   fontWeight: isActive ? FontWeight.w700 : FontWeight.w500,
@@ -286,7 +286,7 @@ class SleepTimerBottomSheet extends StatelessWidget {
           border: Border.all(color: Colors.red.withValues(alpha: 0.3)),
         ),
         child: const Text(
-          "إلغاء",
+          "Cancel",
           style: TextStyle(color: Colors.red, fontWeight: FontWeight.w600, fontSize: 12),
         ),
       ),

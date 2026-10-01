@@ -152,7 +152,7 @@ class SunnahPrayerPage extends StatelessWidget {
               const Gap(12),
               Expanded(
                 child: Text(
-                  "فضل الصلاة",
+                  "Virtue of prayer",
                   style: GoogleFonts.cairo(
                     fontSize: 18,
                     fontWeight: FontWeight.w900,
@@ -165,7 +165,7 @@ class SunnahPrayerPage extends StatelessWidget {
           const Gap(16),
           _buildHadithBox(
             'عن أبي هريرة رضي الله عنه قال: سمعت رسول الله ﷺ يقول: "أرأيتم لو أن نهراً بباب أحدكم يغتسل منه كل يوم خمس مرات، هل يبقى من درنه شيء؟" قالوا: لا يبقى من درنه شيء. قال: "فذلك مثل الصلوات الخمس، يمحو الله بهن الخطايا"',
-            'متفق عليه',
+            'Agreed upon',
             isDark,
           ),
         ],
@@ -304,12 +304,12 @@ class SunnahPrayerPage extends StatelessWidget {
                   title: step.title,
                   description: step.description,
                   evidence: step.evidence,
-                  type: "سنن الصلاة",
+                  type: "Sunnahs of prayer",
                 ),
                 icon: const Icon(Icons.share_rounded),
                 iconSize: 20,
                 color: const Color(0xFF10B981),
-                tooltip: "مشاركة",
+                tooltip: "Share",
               ),
             ],
           ),
@@ -406,7 +406,7 @@ class SunnahPrayerPage extends StatelessWidget {
                   const Gap(12),
                   Expanded(
                     child: Text(
-                      "مشاركة السنة",
+                      "Share Sunnah",
                       style: GoogleFonts.cairo(
                         fontSize: 20,
                         fontWeight: FontWeight.w900,
@@ -421,7 +421,7 @@ class SunnahPrayerPage extends StatelessWidget {
               // Share as Text
               _shareOptionButton(
                 icon: Icons.text_fields_rounded,
-                label: "مشاركة كنص",
+                label: "Share as text",
                 subtitle: "نسخ النص ومشاركته",
                 color: const Color(0xFF3B82F6),
                 isDark: isDark,
@@ -461,7 +461,7 @@ class SunnahPrayerPage extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            "حدث خطأ أثناء المشاركة",
+                            "An error occurred while sharing",
                             style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
                           ),
                           behavior: SnackBarBehavior.floating,
@@ -477,7 +477,7 @@ class SunnahPrayerPage extends StatelessWidget {
               // Share as Image
               _shareOptionButton(
                 icon: Icons.image_rounded,
-                label: "مشاركة كصورة",
+                label: "Share as image",
                 subtitle: "تخصيص وإنشاء صورة احترافية",
                 color: const Color(0xFFEC4899),
                 isDark: isDark,
@@ -646,7 +646,7 @@ class SunnahPrayerPage extends StatelessWidget {
               ),
               const Gap(8),
               Text(
-                "حديث شريف",
+                "Hadith",
                 style: GoogleFonts.cairo(
                   fontSize: 13,
                   fontWeight: FontWeight.w800,
@@ -867,25 +867,25 @@ final List<PrayerStep> _prayerSteps = [
     title: 'رفع اليدين عند التكبير',
     description: 'يرفع يديه حذو منكبيه أو إلى فروع أذنيه عند تكبيرة الإحرام، وعند الركوع، وعند الرفع منه، وعند القيام من التشهد الأول.',
     evidence: 'كان النبي ﷺ يرفع يديه في هذه المواضع - متفق عليه',
-    type: 'سنة',
+    type: 'Sunnah',
   ),
   const PrayerStep(
     title: 'وضع اليمنى على اليسرى',
     description: 'يضع يده اليمنى على اليسرى على صدره بعد تكبيرة الإحرام.',
     evidence: 'كان النبي ﷺ إذا قام في الصلاة وضع يده اليمنى على اليسرى - رواه البخاري',
-    type: 'سنة',
+    type: 'Sunnah',
   ),
   const PrayerStep(
     title: 'دعاء الاستفتاح',
     description: 'يقول بعد تكبيرة الإحرام: "سبحانك اللهم وبحمدك، وتبارك اسمك، وتعالى جدك، ولا إله غيرك".',
     evidence: 'كان النبي ﷺ يستفتح الصلاة بهذا الدعاء - رواه مسلم',
-    type: 'سنة',
+    type: 'Sunnah',
   ),
   const PrayerStep(
     title: 'الاستعاذة والبسملة',
     description: 'يستعيذ بالله من الشيطان الرجيم، ثم يبسمل سراً في الصلاة الجهرية والسرية.',
     evidence: 'قال الله تعالى: "فَإِذَا قَرَأْتَ الْقُرْآنَ فَاسْتَعِذْ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ" [النحل: 98]',
-    type: 'سنة',
+    type: 'Sunnah',
   ),
   const PrayerStep(
     title: 'قراءة الفاتحة',
@@ -897,13 +897,13 @@ final List<PrayerStep> _prayerSteps = [
     title: 'قول آمين',
     description: 'يقول "آمين" بعد الفاتحة، يجهر بها في الصلاة الجهرية ويسر بها في السرية.',
     evidence: 'قال النبي ﷺ: "إذا أمّن الإمام فأمّنوا، فإنه من وافق تأمينه تأمين الملائكة غفر له ما تقدم من ذنبه" - متفق عليه',
-    type: 'سنة',
+    type: 'Sunnah',
   ),
   const PrayerStep(
     title: 'قراءة سورة بعد الفاتحة',
     description: 'يقرأ سورة أو آيات من القرآن بعد الفاتحة في الركعتين الأوليين من كل صلاة.',
     evidence: 'كان النبي ﷺ يقرأ في الركعتين الأوليين بفاتحة الكتاب وسورة - متفق عليه',
-    type: 'سنة',
+    type: 'Sunnah',
   ),
   const PrayerStep(
     title: 'الركوع',
@@ -915,7 +915,7 @@ final List<PrayerStep> _prayerSteps = [
     title: 'التسبيح في الركوع',
     description: 'يقول في ركوعه: "سبحان ربي العظيم" ثلاث مرات أو أكثر.',
     evidence: 'قال النبي ﷺ: "أما الركوع فعظموا فيه الرب" - رواه مسلم',
-    type: 'سنة',
+    type: 'Sunnah',
   ),
   const PrayerStep(
     title: 'الرفع من الركوع',
@@ -933,7 +933,7 @@ final List<PrayerStep> _prayerSteps = [
     title: 'التسبيح في السجود',
     description: 'يقول في سجوده: "سبحان ربي الأعلى" ثلاث مرات أو أكثر.',
     evidence: 'قال النبي ﷺ: "وأما السجود فاجتهدوا في الدعاء، فقمن أن يستجاب لكم" - رواه مسلم',
-    type: 'سنة',
+    type: 'Sunnah',
   ),
   const PrayerStep(
     title: 'الجلسة بين السجدتين',
@@ -969,7 +969,7 @@ final List<PrayerStep> _prayerSteps = [
     title: 'الخشوع في الصلاة',
     description: 'الخشوع هو حضور القلب وخضوعه لله تعالى، وهو روح الصلاة ولبها.',
     evidence: 'قال الله تعالى: "قَدْ أَفْلَحَ الْمُؤْمِنُونَ * الَّذِينَ هُمْ فِي صَلَاتِهِمْ خَاشِعُونَ" [المؤمنون: 1-2]',
-    type: 'سنة',
+    type: 'Sunnah',
   ),
 ];
 

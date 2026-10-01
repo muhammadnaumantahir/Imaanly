@@ -465,7 +465,7 @@ class QuranTafsirFunction {
           name: "downloadResources",
         );
         cubit.failure(
-          "المورد غير متاح حالياً على السيرفر — جرب لاحقاً",
+          "This resource is currently unavailable on the server — try again later",
           activeResourceId: tafsirBook.fullPath,
         );
         if (tafsirBox.isOpen) await tafsirBox.close();

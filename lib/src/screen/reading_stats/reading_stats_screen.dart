@@ -22,12 +22,12 @@ class ReadingStatsScreen extends StatelessWidget {
     final sub = isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057);
 
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Scaffold(
         backgroundColor: bg,
         appBar: AppBar(
           backgroundColor: bg,
-          title: Text("إحصائيات القراءة", style: TextStyle(color: text, fontWeight: FontWeight.w800)),
+          title: Text("Reading statistics", style: TextStyle(color: text, fontWeight: FontWeight.w800)),
           leading: IconButton(icon: Icon(Icons.arrow_back_ios_rounded, color: text), onPressed: () => Navigator.pop(context)),
         ),
         body: BlocBuilder<ReadingStatsCubit, ReadingStatsState>(
@@ -56,12 +56,12 @@ class ReadingStatsScreen extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              state.streak > 0 ? "${state.streak} يوم متتالي" : "ابدأ سلسلتك!",
+                              state.streak > 0 ? "${state.streak} day streak" : "Start your streak!",
                               style: TextStyle(color: text, fontWeight: FontWeight.w800, fontSize: 20),
                             ),
                             const Gap(4),
                             Text(
-                              state.streak > 0 ? "استمر! كل يوم بيعد سلسلتك" : "اقرأ صفحة واحدة اليوم",
+                              state.streak > 0 ? "Keep going! Every day extends your streak" : "Read one page today",
                               style: TextStyle(color: sub, fontSize: 13),
                             ),
                           ],
@@ -79,7 +79,7 @@ class ReadingStatsScreen extends StatelessWidget {
                 const Gap(16),
 
                 // ─── Today Stats ───
-                Text("اليوم", style: TextStyle(color: sub, fontWeight: FontWeight.w700, fontSize: 16)),
+                Text("Today", style: TextStyle(color: sub, fontWeight: FontWeight.w700, fontSize: 16)),
                 const Gap(10),
                 Row(
                   children: [
@@ -89,7 +89,7 @@ class ReadingStatsScreen extends StatelessWidget {
                         isDark: isDark,
                         accent: accent,
                         icon: Icons.menu_book_rounded,
-                        label: "صفحات",
+                        label: "Pages",
                         value: "${state.pagesToday}",
                       ),
                     ),
@@ -100,7 +100,7 @@ class ReadingStatsScreen extends StatelessWidget {
                         isDark: isDark,
                         accent: accent,
                         icon: Icons.format_list_numbered_rounded,
-                        label: "آيات",
+                        label: "Ayahs",
                         value: "${state.ayahsToday}",
                       ),
                     ),
@@ -111,7 +111,7 @@ class ReadingStatsScreen extends StatelessWidget {
                         isDark: isDark,
                         accent: accent,
                         icon: Icons.timer_rounded,
-                        label: "وقت",
+                        label: "Time",
                         value: state.formattedTimeToday,
                       ),
                     ),
@@ -121,7 +121,7 @@ class ReadingStatsScreen extends StatelessWidget {
                 const Gap(16),
 
                 // ─── All Time Stats ───
-                Text("الإجمالي", style: TextStyle(color: sub, fontWeight: FontWeight.w700, fontSize: 16)),
+                Text("Total", style: TextStyle(color: sub, fontWeight: FontWeight.w700, fontSize: 16)),
                 const Gap(10),
                 Row(
                   children: [
@@ -131,7 +131,7 @@ class ReadingStatsScreen extends StatelessWidget {
                         isDark: isDark,
                         accent: accent,
                         icon: Icons.book_rounded,
-                        label: "إجمالي الصفحات",
+                        label: "Total pages",
                         value: "${state.totalPagesAllTime}",
                       ),
                     ),
@@ -142,7 +142,7 @@ class ReadingStatsScreen extends StatelessWidget {
                         isDark: isDark,
                         accent: accent,
                         icon: Icons.text_fields_rounded,
-                        label: "إجمالي الآيات",
+                        label: "Total ayahs",
                         value: "${state.totalAyahsAllTime}",
                       ),
                     ),
@@ -152,7 +152,7 @@ class ReadingStatsScreen extends StatelessWidget {
                 const Gap(24),
 
                 // ─── Khatma Completion ───
-                Text("إنجاز الختمة", style: TextStyle(color: sub, fontWeight: FontWeight.w700, fontSize: 16)),
+                Text("Khatma progress", style: TextStyle(color: sub, fontWeight: FontWeight.w700, fontSize: 16)),
                 const Gap(10),
                 _statCard(
                   surface: surface,
@@ -168,8 +168,8 @@ class ReadingStatsScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   state.totalPagesAllTime >= 604
-                                      ? "تمت الختمة! 🎉"
-                                      : "تقدم الختمة",
+                                      ? "Khatma completed! 🎉"
+                                      : "Khatma progress",
                                   style: TextStyle(
                                     color: state.totalPagesAllTime >= 604 ? accent : text,
                                     fontWeight: FontWeight.w700,
@@ -178,7 +178,7 @@ class ReadingStatsScreen extends StatelessWidget {
                                 ),
                                 const Gap(4),
                                 Text(
-                                  "${state.totalPagesAllTime} من 604 صفحة",
+                                  "${state.totalPagesAllTime} of 604 pages",
                                   style: TextStyle(color: sub, fontSize: 13),
                                 ),
                               ],
@@ -216,7 +216,7 @@ class ReadingStatsScreen extends StatelessWidget {
                 const Gap(24),
 
                 // ─── Daily Goal ───
-                Text("الورد اليومي", style: TextStyle(color: sub, fontWeight: FontWeight.w700, fontSize: 16)),
+                Text("Daily wird", style: TextStyle(color: sub, fontWeight: FontWeight.w700, fontSize: 16)),
                 const Gap(10),
                 _statCard(
                   surface: surface,
@@ -229,7 +229,7 @@ class ReadingStatsScreen extends StatelessWidget {
                           children: [
                             Expanded(
                               child: Text(
-                                state.goalReached ? "🎉 تم الورد!" : "تقدم الورد",
+                                state.goalReached ? "🎉 Wird complete!" : "Wird progress",
                                 style: TextStyle(
                                   color: state.goalReached ? accent : text,
                                   fontWeight: FontWeight.w700,
@@ -260,13 +260,13 @@ class ReadingStatsScreen extends StatelessWidget {
                         const Gap(8),
                         Text(
                           state.dailyGoalPages > 0
-                              ? "${state.pagesToday} / ${state.dailyGoalPages} صفحة"
-                              : "${state.ayahsToday} / ${state.dailyGoalAyahs} آية",
+                              ? "${state.pagesToday} / ${state.dailyGoalPages} pages"
+                              : "${state.ayahsToday} / ${state.dailyGoalAyahs} ayahs",
                           style: TextStyle(color: sub, fontSize: 13),
                         ),
                       ] else ...[
                         Text(
-                          "حدد وردك اليومي عشان تتابع تقدمك",
+                          "Set your daily wird to track your progress",
                           style: TextStyle(color: sub, fontSize: 14),
                         ),
                       ],
@@ -300,7 +300,7 @@ class ReadingStatsScreen extends StatelessWidget {
               border: Border.all(color: isSelected ? accent : Colors.transparent, width: 1.5),
             ),
             child: Text(
-              "$pages صفحات",
+              "$pages pages",
               style: TextStyle(
                 color: isSelected ? accent : sub,
                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,

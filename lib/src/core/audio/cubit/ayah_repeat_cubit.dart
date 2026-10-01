@@ -60,18 +60,18 @@ class AyahRepeatState {
   bool get isInfinite => repeatCount == 0;
 
   String get label {
-    if (!isActive) return "إيقاف";
+    if (!isActive) return "Stop";
     switch (mode) {
       case AyahRepeatMode.off:
-        return "إيقاف";
+        return "Stop";
       case AyahRepeatMode.singleAyah:
         return isInfinite
-            ? "تكرار الآية ∞"
-            : "تكرار الآية $currentRepetition/$repeatCount";
+            ? "Repeat ayah ∞"
+            : "Repeat ayah $currentRepetition/$repeatCount";
       case AyahRepeatMode.range:
         return isInfinite
-            ? "تكرار النطاق ∞"
-            : "تكرار النطاق $currentRepetition/$repeatCount";
+            ? "Repeat range ∞"
+            : "Repeat range $currentRepetition/$repeatCount";
     }
   }
 }

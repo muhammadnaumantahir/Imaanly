@@ -70,7 +70,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
   Duration _timeUntilNext = Duration.zero;
   
   // Location data
-  String _locationName = 'القاهرة، مصر';
+  String _locationName = 'Cairo, Egypt';
   bool _isLoadingLocation = false;
   
   // Scroll state
@@ -237,7 +237,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       
                       // Section Header - Prayer Times
                       _buildSectionHeader(
-                        'مواقيت الصلاة',
+                        'Prayer times',
                         Icons.access_time_rounded,
                         isDark,
                       ),
@@ -262,7 +262,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       
                       // Forbidden Times Section
                       _buildSectionHeader(
-                        'أوقات النهي عن الصلاة',
+                        'Prohibited prayer times',
                         Icons.block_rounded,
                         isDark,
                       ),
@@ -301,7 +301,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       
                       // Quick Actions
                       _buildSectionHeader(
-                        'إجراءات سريعة',
+                        'Quick actions',
                         Icons.flash_on_rounded,
                         isDark,
                       ),
@@ -458,7 +458,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
               SizedBox(width: PrayerDimensions.space8),
               Expanded(
                 child: Text(
-                  'طريقة الحساب: الهيئة المصرية العامة للمساحة',
+                  'Calculation method: Egyptian General Authority of Survey',
                   style: PrayerTextStyles.arabicCaption(
                     color: PrayerThemeColors.getTextColor('secondary', isDark),
                   ),
@@ -477,7 +477,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
               SizedBox(width: PrayerDimensions.space8),
               Expanded(
                 child: Text(
-                  'يتم حساب المواقيت بناءً على موقعك الحالي',
+                  'Times are calculated based on your current location',
                   style: PrayerTextStyles.arabicCaption(
                     color: PrayerThemeColors.getTextColor('secondary', isDark),
                   ),
@@ -576,7 +576,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                     ),
                     SizedBox(width: PrayerDimensions.space12),
                     Text(
-                      'اختر الموقع',
+                      'Choose location',
                       style: PrayerTextStyles.arabicHeadline(
                         color: PrayerThemeColors.getTextColor('primary', isDark),
                       ),
@@ -592,7 +592,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                 ),
                 child: TextField(
                   decoration: InputDecoration(
-                    hintText: 'ابحث عن مدينة...',
+                    hintText: 'Search for a city...',
                     hintStyle: PrayerTextStyles.arabicBody(
                       color: PrayerThemeColors.textMuted,
                     ),
@@ -626,7 +626,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    'مدن مشهورة',
+                    'Popular cities',
                     style: PrayerTextStyles.arabicLabel(
                       color: PrayerThemeColors.textSecondary,
                     ),
@@ -652,26 +652,26 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
   List<Widget> _buildCityList(bool isDark) {
     // Popular Islamic cities with coordinates
     const cities = [
-      ('القاهرة، مصر', 30.0444, 31.2357),
-      ('مكة المكرمة', 21.4225, 39.8262),
-      ('المدينة المنورة', 24.4672, 39.6024),
-      ('الإسكندرية، مصر', 31.2001, 29.9187),
-      ('جدة، السعودية', 21.5433, 39.1728),
-      ('الرياض، السعودية', 24.7136, 46.6753),
-      ('الدوحة، قطر', 25.2854, 51.5310),
-      ('دبي، الإمارات', 25.2048, 55.2708),
-      ('الكويت، الكويت', 29.3759, 47.9774),
-      ('المنامة، البحرين', 26.2285, 50.5860),
-      ('مسقط، عمان', 23.5880, 58.3829),
-      ('الرباط، المغرب', 34.0209, -6.8416),
-      ('تونس، تونس', 36.8065, 10.1815),
-      ('الجزائر، الجزائر', 36.7538, 3.0588),
-      ('إسطنبول، تركيا', 41.0082, 28.9784),
-      ('جاكرتا، إندونيسيا', -6.2088, 106.8456),
-      ('كوالالمبور، ماليزيا', 3.1390, 101.6869),
-      ('لندن، بريطانيا', 51.5074, -0.1278),
-      ('باريس، فرنسا', 48.8566, 2.3522),
-      ('نيويورك، أمريكا', 40.7128, -74.0060),
+      ('Cairo, Egypt', 30.0444, 31.2357),
+      ('Makkah', 21.4225, 39.8262),
+      ('Madinah', 24.4672, 39.6024),
+      ('Alexandria, Egypt', 31.2001, 29.9187),
+      ('Jeddah, Saudi Arabia', 21.5433, 39.1728),
+      ('Riyadh, Saudi Arabia', 24.7136, 46.6753),
+      ('Doha, Qatar', 25.2854, 51.5310),
+      ('Dubai, UAE', 25.2048, 55.2708),
+      ('Kuwait City, Kuwait', 29.3759, 47.9774),
+      ('Manama, Bahrain', 26.2285, 50.5860),
+      ('Muscat, Oman', 23.5880, 58.3829),
+      ('Rabat, Morocco', 34.0209, -6.8416),
+      ('Tunis, Tunisia', 36.8065, 10.1815),
+      ('Algiers, Algeria', 36.7538, 3.0588),
+      ('Istanbul, Turkey', 41.0082, 28.9784),
+      ('Jakarta, Indonesia', -6.2088, 106.8456),
+      ('Kuala Lumpur, Malaysia', 3.1390, 101.6869),
+      ('London, UK', 51.5074, -0.1278),
+      ('Paris, France', 48.8566, 2.3522),
+      ('New York, USA', 40.7128, -74.0060),
     ];
 
     return cities.map((city) {
@@ -798,22 +798,22 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                   child: Column(
                     children: [
                       _buildDetailRow(
-                        'الوصف',
+                        'Description',
                         PrayerNames.getArabicDescription(prayer),
                         Icons.info_outline_rounded,
                         isDark,
                       ),
                       SizedBox(height: PrayerDimensions.space12),
                       _buildDetailRow(
-                        'النوع',
-                        isObligatory ? 'فرض - صلاة واجبة' : 'وقت شروق',
+                        'Type',
+                        isObligatory ? 'Fard - obligatory prayer' : 'Sunrise time',
                         Icons.mosque_rounded,
                         isDark,
                       ),
                       SizedBox(height: PrayerDimensions.space12),
                       _buildDetailRow(
-                        'الترتيب',
-                        '${PrayerNames.getPrayerOrder(prayer)} من 6',
+                        'Order',
+                        '${PrayerNames.getPrayerOrder(prayer)} of 6',
                         Icons.format_list_numbered_rounded,
                         isDark,
                       ),
@@ -839,7 +839,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       ),
                     ),
                     child: Text(
-                      'إغلاق',
+                      'Close',
                       style: PrayerTextStyles.arabicLabel(
                         color: PrayerThemeColors.green,
                       ),
@@ -914,7 +914,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
 
   void _showAdhanSettings() {
     bool adhanEnabled = true;
-    String selectedAdhan = 'أذان مكة';
+    String selectedAdhan = 'Makkah Adhan';
     bool fajrOnly = false;
 
     showModalBottomSheet(
@@ -964,7 +964,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                         ),
                         SizedBox(width: PrayerDimensions.space12),
                         Text(
-                          'إعدادات الأذان',
+                          'Adhan settings',
                           style: PrayerTextStyles.arabicHeadline(
                             color: PrayerThemeColors.getTextColor(
                               'primary',
@@ -985,7 +985,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       value: adhanEnabled,
                       onChanged: (v) => setSheetState(() => adhanEnabled = v),
                       title: Text(
-                        'تفعيل أذان التنبيه',
+                        'Enable reminder adhan',
                         style: PrayerTextStyles.arabicBody(
                           color: PrayerThemeColors.getTextColor(
                             'primary',
@@ -1012,7 +1012,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       value: fajrOnly,
                       onChanged: (v) => setSheetState(() => fajrOnly = v),
                       title: Text(
-                        'أذان الفجر فقط',
+                        'Fajr adhan only',
                         style: PrayerTextStyles.arabicBody(
                           color: PrayerThemeColors.getTextColor(
                             'primary',
@@ -1039,7 +1039,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        'صوت الأذان',
+                        'Adhan sound',
                         style: PrayerTextStyles.arabicLabel(
                           color: PrayerThemeColors.textSecondary,
                         ),
@@ -1054,33 +1054,33 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       ),
                       children: [
                         _AdhanOption(
-                          title: 'أذان مكة',
-                          isSelected: selectedAdhan == 'أذان مكة',
+                          title: 'Makkah Adhan',
+                          isSelected: selectedAdhan == 'Makkah Adhan',
                           isDark: isDark,
                           onTap: () =>
-                              setSheetState(() => selectedAdhan = 'أذان مكة'),
+                              setSheetState(() => selectedAdhan = 'Makkah Adhan'),
                         ),
                         _AdhanOption(
-                          title: 'أذان المدينة',
-                          isSelected: selectedAdhan == 'أذان المدينة',
+                          title: 'Madinah Adhan',
+                          isSelected: selectedAdhan == 'Madinah Adhan',
                           isDark: isDark,
                           onTap: () => setSheetState(
-                            () => selectedAdhan = 'أذان المدينة',
+                            () => selectedAdhan = 'Madinah Adhan',
                           ),
                         ),
                         _AdhanOption(
-                          title: 'أذان مصر',
-                          isSelected: selectedAdhan == 'أذان مصر',
+                          title: 'Egypt Adhan',
+                          isSelected: selectedAdhan == 'Egypt Adhan',
                           isDark: isDark,
                           onTap: () =>
-                              setSheetState(() => selectedAdhan = 'أذان مصر'),
+                              setSheetState(() => selectedAdhan = 'Egypt Adhan'),
                         ),
                         _AdhanOption(
-                          title: 'تنبيه صامت',
-                          isSelected: selectedAdhan == 'تنبيه صامت',
+                          title: 'Silent alert',
+                          isSelected: selectedAdhan == 'Silent alert',
                           isDark: isDark,
                           onTap: () => setSheetState(
-                            () => selectedAdhan = 'تنبيه صامت',
+                            () => selectedAdhan = 'Silent alert',
                           ),
                         ),
                       ],
@@ -1103,7 +1103,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                           ),
                         ),
                         child: Text(
-                          'حفظ الإعدادات',
+                          'Save settings',
                           style: PrayerTextStyles.arabicLabel(
                             color: Colors.white,
                           ),
@@ -1126,11 +1126,11 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
     final double ishaAngle = 17.5;
 
     final calculationMethods = [
-      ('الهيئة المصرية', CalculationMethod.egyptian),
-      ('أمريكا الشمالية (ISNA)', CalculationMethod.northAmerica),
-      ('الجامعة الإسلامية أم القرى', CalculationMethod.ummAlQura),
-      ('رابطة العالم الإسلامي', CalculationMethod.muslimWorldLeague),
-      ('معهد جاكرتا', CalculationMethod.karachi),
+      ('Egyptian General Authority', CalculationMethod.egyptian),
+      ('North America (ISNA)', CalculationMethod.northAmerica),
+      ('Umm al-Qura University, Makkah', CalculationMethod.ummAlQura),
+      ('Muslim World League', CalculationMethod.muslimWorldLeague),
+      ('Jakarta Institute', CalculationMethod.karachi),
     ];
 
     showModalBottomSheet(
@@ -1180,7 +1180,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                         ),
                         SizedBox(width: PrayerDimensions.space12),
                         Text(
-                          'إعدادات المواقيت',
+                          'Prayer time settings',
                           style: PrayerTextStyles.arabicHeadline(
                             color: PrayerThemeColors.getTextColor(
                               'primary',
@@ -1200,7 +1200,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Text(
-                        'طريقة الحساب',
+                        'Calculation method',
                         style: PrayerTextStyles.arabicLabel(
                           color: PrayerThemeColors.textSecondary,
                         ),
@@ -1237,7 +1237,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'زاوية الفجر',
+                                'Fajr angle',
                                 style: PrayerTextStyles.arabicCaption(
                                   color: PrayerThemeColors.textSecondary,
                                 ),
@@ -1257,7 +1257,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'زاوية العشاء',
+                                'Isha angle',
                                 style: PrayerTextStyles.arabicCaption(
                                   color: PrayerThemeColors.textSecondary,
                                 ),
@@ -1297,7 +1297,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                           ),
                         ),
                         child: Text(
-                          'تطبيق',
+                          'Apply',
                           style: PrayerTextStyles.arabicLabel(
                             color: Colors.white,
                           ),
@@ -1360,7 +1360,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                     ),
                     SizedBox(width: PrayerDimensions.space12),
                     Text(
-                      'التقويم الإسلامي',
+                      'Islamic calendar',
                       style: PrayerTextStyles.arabicHeadline(
                         color: PrayerThemeColors.getTextColor('primary', isDark),
                       ),
@@ -1390,14 +1390,14 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                   child: Column(
                     children: [
                       Text(
-                        'اليوم',
+                        'Today',
                         style: PrayerTextStyles.arabicCaption(
                           color: PrayerThemeColors.green,
                         ),
                       ),
                       SizedBox(height: PrayerDimensions.space8),
                       Text(
-                        DateFormat('EEEE، d MMMM yyyy', 'ar').format(now),
+                        DateFormat('EEEE, d MMMM yyyy').format(now),
                         style: PrayerTextStyles.arabicTitle(
                           color: PrayerThemeColors.greenDark,
                         ),
@@ -1423,7 +1423,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    'الأشهر الهجرية',
+                    'Hijri months',
                     style: PrayerTextStyles.arabicLabel(
                       color: PrayerThemeColors.textSecondary,
                     ),
@@ -1437,18 +1437,18 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                     horizontal: PrayerDimensions.pagePadding,
                   ),
                   children: const [
-                    'محرم',
-                    'صفر',
-                    'ربيع الأول',
-                    'ربيع الثاني',
-                    'جمادى الأولى',
-                    'جمادى الآخرة',
-                    'رجب',
-                    'شعبان',
-                    'رمضان',
-                    'شوال',
-                    'ذو القعدة',
-                    'ذو الحجة',
+                    'Muharram',
+                    'Safar',
+                    'Rabi\' al-Awwal',
+                    'Rabi\' al-Thani',
+                    'Jumada al-Ula',
+                    'Jumada al-Thani',
+                    'Rajab',
+                    'Sha\'ban',
+                    'Ramadan',
+                    'Shawwal',
+                    'Dhul Qa\'dah',
+                    'Dhul Hijjah',
                   ].asMap().entries.map((e) {
                     return Padding(
                       padding: EdgeInsets.only(
@@ -1518,7 +1518,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                                   ),
                                 ),
                                 child: Text(
-                                  'رمضان',
+                                  'Ramadan',
                                   style: PrayerTextStyles.arabicCaption(
                                     color: PrayerThemeColors.goldDark,
                                   ),
@@ -1548,7 +1548,7 @@ class _PrayerTimesScreenState extends State<PrayerTimesScreen>
                       ),
                     ),
                     child: Text(
-                      'إغلاق',
+                      'Close',
                       style: PrayerTextStyles.arabicLabel(
                         color: PrayerThemeColors.info,
                       ),

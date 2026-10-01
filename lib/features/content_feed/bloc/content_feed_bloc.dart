@@ -93,7 +93,7 @@ class ContentFeedBloc extends Bloc<ContentFeedEvent, ContentFeedState> {
       ));
     } catch (e, st) {
       log('ContentFeedBloc._onLoad: $e', stackTrace: st);
-      emit(ContentFeedError('فشل تحميل المحتوى: $e'));
+      emit(ContentFeedError('Failed to load content: $e'));
     }
   }
 
@@ -223,7 +223,7 @@ class ContentFeedBloc extends Bloc<ContentFeedEvent, ContentFeedState> {
             ));
           }
         } catch (e2) {
-          emit(ContentFeedError('فشل تحميل المحتوى: $e2'));
+          emit(ContentFeedError('Failed to load content: $e2'));
         }
       }
     }
@@ -262,7 +262,7 @@ class ContentFeedBloc extends Bloc<ContentFeedEvent, ContentFeedState> {
       ));
     } catch (e, st) {
       log('ContentFeedBloc._onRefresh: $e', stackTrace: st);
-      emit(ContentFeedError('فشل تحميل المحتوى: $e'));
+      emit(ContentFeedError('Failed to load content: $e'));
     }
   }
 

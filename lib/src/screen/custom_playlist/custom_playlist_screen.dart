@@ -24,12 +24,12 @@ class CustomPlaylistScreen extends StatelessWidget {
     final sub = isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057);
 
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Scaffold(
         backgroundColor: bg,
         appBar: AppBar(
           backgroundColor: bg,
-          title: Text("قوائم التشغيل", style: TextStyle(color: text, fontWeight: FontWeight.w800)),
+          title: Text("Playlists", style: TextStyle(color: text, fontWeight: FontWeight.w800)),
           leading: IconButton(icon: Icon(Icons.arrow_back_ios_rounded, color: text), onPressed: () => Navigator.pop(context)),
           actions: [
             IconButton(
@@ -47,9 +47,9 @@ class CustomPlaylistScreen extends StatelessWidget {
                   children: [
                     Icon(Icons.playlist_add_rounded, size: 64, color: sub.withValues(alpha: 0.4)),
                     const Gap(16),
-                    Text("لا توجد قوائم تشغيل", style: TextStyle(color: sub, fontWeight: FontWeight.w600, fontSize: 18)),
+                    Text("No playlists", style: TextStyle(color: sub, fontWeight: FontWeight.w600, fontSize: 18)),
                     const Gap(8),
-                    Text("اضغط + لإنشاء قائمة جديدة", style: TextStyle(color: sub.withValues(alpha: 0.7), fontSize: 14)),
+                    Text("Tap + to create a new playlist", style: TextStyle(color: sub.withValues(alpha: 0.7), fontSize: 14)),
                   ],
                 ).animate().fadeIn(duration: 300.ms),
               );
@@ -96,7 +96,7 @@ class CustomPlaylistScreen extends StatelessWidget {
             borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           ),
           child: Directionality(
-            textDirection: TextDirection.rtl,
+            textDirection: TextDirection.ltr,
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -104,14 +104,14 @@ class CustomPlaylistScreen extends StatelessWidget {
                   const Gap(12),
                   Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(2))),
                   const Gap(16),
-                  Text("قائمة تشغيل جديدة", style: TextStyle(color: text, fontWeight: FontWeight.w800, fontSize: 18)),
+                  Text("New playlist", style: TextStyle(color: text, fontWeight: FontWeight.w800, fontSize: 18)),
                   const Gap(16),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: TextField(
                       controller: nameCtrl,
                       decoration: InputDecoration(
-                        hintText: "اسم القائمة",
+                        hintText: "Playlist name",
                         filled: true,
                         fillColor: isDark ? const Color(0xFF495057).withValues(alpha: 0.3) : const Color(0xFFE3D5CA).withValues(alpha: 0.4),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
@@ -122,7 +122,7 @@ class CustomPlaylistScreen extends StatelessWidget {
                   const Gap(16),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text("اختر السور:", style: TextStyle(color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057), fontWeight: FontWeight.w600)),
+                    child: Text("Choose surahs:", style: TextStyle(color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057), fontWeight: FontWeight.w600)),
                   ),
                   const Gap(8),
                   Padding(
@@ -180,7 +180,7 @@ class CustomPlaylistScreen extends StatelessWidget {
                               );
                           Navigator.pop(ctx);
                         },
-                        child: const Text("إنشاء", style: TextStyle(fontWeight: FontWeight.w700)),
+                        child: const Text("Create", style: TextStyle(fontWeight: FontWeight.w700)),
                       ),
                     ),
                   ),
@@ -201,21 +201,21 @@ class CustomPlaylistScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (ctx) => Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: AlertDialog(
-          title: Text("تعديل الاسم", style: TextStyle(color: text, fontWeight: FontWeight.w800)),
+          title: Text("Edit name", style: TextStyle(color: text, fontWeight: FontWeight.w800)),
           content: TextField(
             controller: nameCtrl,
             style: TextStyle(color: text),
             decoration: InputDecoration(
-              hintText: "اسم القائمة",
+              hintText: "Playlist name",
               filled: true,
               fillColor: isDark ? const Color(0xFF495057).withValues(alpha: 0.3) : const Color(0xFFE3D5CA).withValues(alpha: 0.4),
               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
             ),
           ),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(ctx), child: Text("إلغاء", style: TextStyle(color: accent))),
+            TextButton(onPressed: () => Navigator.pop(ctx), child: Text("Cancel", style: TextStyle(color: accent))),
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: accent, foregroundColor: Colors.white),
               onPressed: () {
@@ -224,7 +224,7 @@ class CustomPlaylistScreen extends StatelessWidget {
                 }
                 Navigator.pop(ctx);
               },
-              child: const Text("حفظ"),
+              child: const Text("Save"),
             ),
           ],
         ),
@@ -239,19 +239,19 @@ class CustomPlaylistScreen extends StatelessWidget {
     showDialog(
       context: context,
       builder: (ctx) => Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: AlertDialog(
-          title: Text("حذف القائمة؟", style: TextStyle(color: text, fontWeight: FontWeight.w800)),
-          content: Text("هل تريد حذف \"${playlist.name}\"؟", style: TextStyle(color: text)),
+          title: Text("Delete playlist?", style: TextStyle(color: text, fontWeight: FontWeight.w800)),
+          content: Text("Do you want to delete \"${playlist.name}\"?", style: TextStyle(color: text)),
           actions: [
-            TextButton(onPressed: () => Navigator.pop(ctx), child: Text("إلغاء", style: TextStyle(color: accent))),
+            TextButton(onPressed: () => Navigator.pop(ctx), child: Text("Cancel", style: TextStyle(color: accent))),
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white),
               onPressed: () {
                 context.read<CustomPlaylistCubit>().deletePlaylist(playlist.id);
                 Navigator.pop(ctx);
               },
-              child: const Text("حذف"),
+              child: const Text("Delete"),
             ),
           ],
         ),
@@ -338,7 +338,7 @@ class _PlaylistCard extends StatelessWidget {
                   children: [
                     Text(playlist.name, style: TextStyle(color: text, fontWeight: FontWeight.w800, fontSize: 16)),
                     const Gap(2),
-                    Text("${playlist.surahNumbers.length} سورة • ${playlist.reciter.name}", style: TextStyle(color: sub, fontSize: 12)),
+                    Text("${playlist.surahNumbers.length} surahs • ${playlist.reciter.name}", style: TextStyle(color: sub, fontSize: 12)),
                   ],
                 ),
               ),
@@ -369,12 +369,12 @@ class _PlaylistCard extends StatelessWidget {
               TextButton.icon(
                 onPressed: onEdit,
                 icon: Icon(Icons.edit_rounded, size: 16, color: sub),
-                label: Text("تعديل", style: TextStyle(color: sub, fontSize: 12)),
+                label: Text("Edit", style: TextStyle(color: sub, fontSize: 12)),
               ),
               TextButton.icon(
                 onPressed: onDelete,
                 icon: Icon(Icons.delete_outline_rounded, size: 16, color: Colors.red.withValues(alpha: 0.7)),
-                label: Text("حذف", style: TextStyle(color: Colors.red.withValues(alpha: 0.7), fontSize: 12)),
+                label: Text("Delete", style: TextStyle(color: Colors.red.withValues(alpha: 0.7), fontSize: 12)),
               ),
             ],
           ),

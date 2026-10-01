@@ -66,9 +66,9 @@ class DownloadedSurahInfo {
 
   String get surahName {
     try {
-      return metaDataSurah[surahNumber.toString()]?["name"] ?? "سورة $surahNumber";
+      return metaDataSurah[surahNumber.toString()]?["name"] ?? "Surah $surahNumber";
     } catch (_) {
-      return "سورة $surahNumber";
+      return "Surah $surahNumber";
     }
   }
 
@@ -180,7 +180,7 @@ class OfflineAudioService {
         ));
       }
 
-      final errorMsg = skipped404 > 0 ? "تخطي $skipped404 آية غير متاحة" : null;
+      final errorMsg = skipped404 > 0 ? "Skipped $skipped404 unavailable ayahs" : null;
       controller.add(SurahDownloadProgress(
         surahNumber: surahNumber,
         totalAyahs: totalAyahs,

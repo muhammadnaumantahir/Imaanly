@@ -66,7 +66,7 @@ class ForbiddenTimesSection extends StatelessWidget {
                 SizedBox(width: PrayerDimensions.space12),
                 Expanded(
                   child: Text(
-                    'أوقات يُكره فيها الصلاة',
+                    'Times when prayer is disliked',
                     style: PrayerTextStyles.arabicBody(
                       color: PrayerThemeColors.getTextColor('primary', isDark),
                     ),
@@ -88,8 +88,8 @@ class ForbiddenTimesSection extends StatelessWidget {
               children: [
                 _buildForbiddenTimeItem(
                   context,
-                  'من بعد طلوع الشمس',
-                  'حتى ارتفاعها قيد رمح',
+                  'After sunrise',
+                  'Until it rises a spear\'s length',
                   sunriseTime,
                   sunriseEnd,
                   'assets/img/sunrise_forbidden_time.png',
@@ -100,8 +100,8 @@ class ForbiddenTimesSection extends StatelessWidget {
                 
                 _buildForbiddenTimeItem(
                   context,
-                  'عند استواء الشمس',
-                  'حتى تزول عن وسط السماء',
+                  'At solar noon',
+                  'Until it passes the middle of the sky',
                   noonStart,
                   noonEnd,
                   'assets/img/noon_forbidden_time.png',
@@ -112,8 +112,8 @@ class ForbiddenTimesSection extends StatelessWidget {
                 
                 _buildForbiddenTimeItem(
                   context,
-                  'من بعد صلاة العصر',
-                  'حتى غروب الشمس',
+                  'After Asr prayer',
+                  'Until sunset',
                   sunsetStart,
                   sunsetTime,
                   'assets/img/sunset_forbidden_time.png',
@@ -143,7 +143,7 @@ class ForbiddenTimesSection extends StatelessWidget {
                 SizedBox(width: PrayerDimensions.space8),
                 Expanded(
                   child: Text(
-                    'يُستثنى من ذلك الصلوات ذات الأسباب كتحية المسجد وصلاة الكسوف',
+                    'Exceptions: prayers with a reason, such as Tahiyyat al-Masjid and the eclipse prayer',
                     style: PrayerTextStyles.arabicCaption(
                       color: PrayerThemeColors.getTextColor('muted', isDark),
                     ),

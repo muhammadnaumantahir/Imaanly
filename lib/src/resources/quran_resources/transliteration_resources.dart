@@ -4,8 +4,8 @@ Map<String, List<Map<String, dynamic>>> transliterationResources = {
   "ayah": [
     {
       "language": "Arabic",
-      "name": "نطق الآيات باللاتيني",
-      "description": "نطق كامل لكل آية بالحروف اللاتينية",
+      "name": "Latin pronunciation of ayahs",
+      "description": "Full Latin-letter pronunciation of each ayah",
       "totalEntries": 6236,
       "score": 100,
       "full_path":
@@ -15,8 +15,8 @@ Map<String, List<Map<String, dynamic>>> transliterationResources = {
   "word": [
     {
       "language": "Arabic",
-      "name": "نطق الكلمات باللاتيني",
-      "description": "نطق كلمة بكلمة بالحروف اللاتينية",
+      "name": "Latin word pronunciation",
+      "description": "Word-by-word Latin-letter pronunciation",
       "totalEntries": 77429,
       "score": 100,
       "full_path":

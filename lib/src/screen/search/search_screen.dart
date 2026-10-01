@@ -147,7 +147,7 @@ class _SearchScreenState extends State<SearchScreen> {
       backgroundColor: Colors.transparent,
       builder: (ctx) {
         return Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: TextDirection.ltr,
           child: Container(
             height: MediaQuery.of(ctx).size.height * 0.7,
             decoration: const BoxDecoration(
@@ -165,7 +165,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 const Padding(
                   padding: EdgeInsets.all(16),
                   child: Text(
-                    "تخصيص نطاق البحث",
+                    "Customize search scope",
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
                   ),
                 ),
@@ -175,7 +175,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     itemBuilder: (context, i) {
                       final isAll = i == 0;
                       final surahId = isAll ? null : i;
-                      final surahName = isAll ? "القرآن الكريم كاملاً" : "${qcf.getSurahNameArabic(surahId!)} ($surahId)";
+                      final surahName = isAll ? "The entire Holy Quran" : "${qcf.getSurahNameArabic(surahId!)} ($surahId)";
                       final isSelected = _filterSurahIdVN.value == surahId;
                       return ListTile(
                         leading: isAll ? const Icon(Icons.menu_book) : null,
@@ -231,7 +231,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     final themeState = context.watch<ThemeCubit>().state;
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Padding(
@@ -367,16 +367,16 @@ class _SearchScreenState extends State<SearchScreen> {
             children: [
               Icon(FluentIcons.search_24_regular, size: 56, color: const Color(0xFF8B7355).withValues(alpha: 0.4)),
               const Gap(16),
-              const Text("ابحث في آيات القرآن الكريم", style: TextStyle(color: Color(0xFF8B7355), fontSize: 17, fontWeight: FontWeight.w800)),
+              const Text("Search the ayahs of the Holy Quran", style: TextStyle(color: Color(0xFF8B7355), fontSize: 17, fontWeight: FontWeight.w800)),
               const Gap(8),
               const Text(
-                "يمكنك البحث بأي كلمة أو جملة",
+                "You can search by any word or phrase",
                 style: TextStyle(color: Color(0xFFB0A89D), fontSize: 13),
               ),
               if (_searchHistory.isNotEmpty) ...[
                 const Gap(28),
                 const Text(
-                  "عمليات بحثت عنها مؤخراً",
+                  "Recent searches",
                   style: TextStyle(color: Color(0xFF8B7355), fontSize: 14, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 16),
@@ -409,10 +409,10 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
                 child: Column(
                   children: const [
-                    Text("💡 نصائح", style: TextStyle(color: Color(0xFF8B7355), fontSize: 14, fontWeight: FontWeight.w800)),
+                    Text("💡 Tips", style: TextStyle(color: Color(0xFF8B7355), fontSize: 14, fontWeight: FontWeight.w800)),
                     Gap(8),
                     Text(
-                      "• فعّل \"بحث مطابق\" للبحث عن جملة بالضبط\n• اضغط مطولاً على نتيجة لنسخها أو مشاركتها\n• استخدم أيقونة الفلترة لتحديد سورة معينة",
+                      "• Turn on \"Exact match\" to search for an exact phrase\n• Long-press a result to copy or share it\n• Use the filter icon to limit the search to a specific surah",
                       style: TextStyle(color: Color(0xFF7E7B74), fontSize: 12, height: 1.8),
                       textAlign: TextAlign.right,
                     ),
@@ -458,7 +458,7 @@ class _SearchScreenState extends State<SearchScreen> {
             children: [
               if (results.isNotEmpty)
                 Text(
-                  "السور: $surahsCount, الآيات: $ayahsCount (تكرار الكلمة: $occurrences)",
+                  "Surahs: $surahsCount, Ayahs: $ayahsCount (word repeats: $occurrences)",
                   style: const TextStyle(color: Color(0xFF555555), fontSize: 11, fontWeight: FontWeight.w700),
                 )
               else
@@ -474,7 +474,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     ),
                     const Gap(6),
                     Text(
-                      "بحث مطابق",
+                      "Exact match",
                       style: TextStyle(
                         color: isExactSearch ? Colors.black : const Color(0xFF555555),
                         fontWeight: FontWeight.w800,
@@ -556,7 +556,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       } else if (hasSearched && results.isEmpty) {
                         child = Center(
                           child: Text(
-                            "لا توجد نتائج",
+                            "No results",
                             style: TextStyle(color: Color(0xFF8B7355), fontSize: 16, fontWeight: FontWeight.w800),
                           ),
                         );
@@ -662,12 +662,12 @@ class _SearchScreenState extends State<SearchScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "الآيات ${localizedNumber(context, verseCount)}",
+                "${localizedNumber(context, verseCount)} ayahs",
                 style: const TextStyle(color: Color(0xFFD6C8A6), fontSize: 13, fontWeight: FontWeight.w800),
               ),
               const Gap(6),
               Text(
-                "الصفحة ${localizedNumber(context, qcf.getPageNumber(surahNum, 1))}",
+                "Page ${localizedNumber(context, qcf.getPageNumber(surahNum, 1))}",
                 style: const TextStyle(color: Color(0xFFD6C8A6), fontSize: 13, fontWeight: FontWeight.w800),
               ),
             ],
@@ -778,7 +778,7 @@ class _VerseResultCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "الصفحة $pageNumber",
+                      "Page $pageNumber",
                       style: const TextStyle(color: Color(0xFFC0B6A7), fontSize: 12, fontWeight: FontWeight.w800),
                     ),
                     Row(
@@ -810,7 +810,7 @@ class _VerseResultCard extends StatelessWidget {
     Clipboard.setData(ClipboardData(text: ayahText));
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: const Text("تم نسخ الآية ✓", style: TextStyle(fontWeight: FontWeight.w700)),
+        content: const Text("Ayah copied ✓", style: TextStyle(fontWeight: FontWeight.w700)),
         backgroundColor: const Color(0xFF4C8F5B),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -841,7 +841,7 @@ class _VerseResultCard extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(20),
           child: Directionality(
-            textDirection: TextDirection.rtl,
+            textDirection: TextDirection.ltr,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -852,13 +852,13 @@ class _VerseResultCard extends StatelessWidget {
                 ),
                 const Gap(16),
                 Text(
-                  "$surahName — آية $ayahNumber",
+                  "$surahName — Ayah $ayahNumber",
                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Color(0xFF333333)),
                 ),
                 const Gap(16),
                 ListTile(
                   leading: const Icon(Icons.copy_rounded, color: Color(0xFF4C8F5B)),
-                  title: const Text("نسخ الآية", style: TextStyle(fontWeight: FontWeight.w700)),
+                  title: const Text("Copy ayah", style: TextStyle(fontWeight: FontWeight.w700)),
                   onTap: () {
                     Navigator.pop(ctx);
                     _copyAyah(context);
@@ -866,7 +866,7 @@ class _VerseResultCard extends StatelessWidget {
                 ),
                 ListTile(
                   leading: const Icon(Icons.share_outlined, color: Color(0xFF1B82A6)),
-                  title: const Text("مشاركة الآية", style: TextStyle(fontWeight: FontWeight.w700)),
+                  title: const Text("Share ayah", style: TextStyle(fontWeight: FontWeight.w700)),
                   onTap: () {
                     Navigator.pop(ctx);
                     _shareAyah(context);
@@ -874,7 +874,7 @@ class _VerseResultCard extends StatelessWidget {
                 ),
                 ListTile(
                   leading: const Icon(Icons.arrow_forward_rounded, color: Color(0xFF6EAE7E)),
-                  title: const Text("الذهاب للآية في المصحف", style: TextStyle(fontWeight: FontWeight.w700)),
+                  title: const Text("Go to ayah in Mushaf", style: TextStyle(fontWeight: FontWeight.w700)),
                   onTap: () {
                     Navigator.pop(ctx);
                     onTap();

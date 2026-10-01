@@ -104,7 +104,7 @@ class PrayerTimesAppBar extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  'الموقع',
+                                  'Location',
                                   style: PrayerTextStyles.arabicCaption(
                                     color: PrayerThemeColors.getTextColor(
                                       'secondary',

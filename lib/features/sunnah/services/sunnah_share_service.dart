@@ -140,13 +140,13 @@ class SunnahShareService {
     
     if (evidence != null && evidence.isNotEmpty) {
       buffer.writeln();
-      buffer.writeln('📖 الدليل:');
+      buffer.writeln('📖 Guide:');
       buffer.writeln(evidence);
     }
     
     buffer.writeln();
     buffer.writeln('━━━━━━━━━━━━━━━');
-    buffer.writeln('تطبيق الفرقان للقرآن الكريم');
+    buffer.writeln('Imaanly Quran app');
     
     return buffer.toString();
   }
@@ -293,7 +293,7 @@ class SunnahShareService {
     
     final badgeTextPainter = TextPainter(
       text: TextSpan(
-        text: badgeText ?? 'سنة',
+        text: badgeText ?? 'Sunnah',
         style: GoogleFonts.cairo(
           fontSize: badgeTextSize,
           fontWeight: FontWeight.w700,

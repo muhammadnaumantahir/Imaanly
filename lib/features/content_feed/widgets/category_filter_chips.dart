@@ -42,7 +42,7 @@ class CategoryFilterChips extends StatelessWidget {
         itemBuilder: (context, index) {
           final cat = categories[index];
           final isActive = cat == activeCategory;
-          final label = cat?.arabicLabel ?? 'الكل';
+          final label = cat?.arabicLabel ?? 'All';
 
           return GestureDetector(
             onTap: () => onChanged(cat),

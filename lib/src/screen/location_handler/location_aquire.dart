@@ -62,7 +62,7 @@ class _LocationAcquireState extends State<LocationAcquire> {
                   ),
                   const Gap(32),
                   Text(
-                    "مواقيت الصلاة واتجاه القبلة",
+                    "Prayer times & Qibla direction",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 26,
@@ -72,7 +72,7 @@ class _LocationAcquireState extends State<LocationAcquire> {
                   ),
                   const Gap(16),
                   Text(
-                    "لتجربة متكاملة، يرجى تزويدنا بموقعك الجغرافي. سنقوم بحساب أوقات الصلاة بدقة فائقة وتحديد اتجاه القبلة لمكانك الحالي.",
+                    "For the full experience, please share your location. We'll calculate prayer times accurately and determine the Qibla direction for where you are.",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 15,
@@ -132,7 +132,7 @@ class _LocationAcquireState extends State<LocationAcquire> {
                             )
                           : const Icon(Icons.my_location_rounded),
                       label: Text(
-                        "تحديد الموقع تلقائياً",
+                        "Detect location automatically",
                         style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -145,7 +145,7 @@ class _LocationAcquireState extends State<LocationAcquire> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16),
                           child: Text(
-                            "أو",
+                            "or",
                             style: TextStyle(
                               fontSize: 14,
                               color: isDark ? Colors.white38 : Colors.black38,
@@ -185,7 +185,7 @@ class _LocationAcquireState extends State<LocationAcquire> {
                     ),
                     icon: const Icon(Icons.location_city_rounded),
                     label: Text(
-                      "اختيار المدينة يدوياً",
+                      "Choose city manually",
                       style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -204,7 +204,7 @@ class _LocationAcquireState extends State<LocationAcquire> {
                         const Gap(12),
                         Expanded(
                           child: Text(
-                            "نحتاج للموقع فقط لحساب المواقيت واتجاه القبلة، ولا يتم مشاركته مع أي جهة خارجية.",
+                            "We only need your location to calculate prayer times and the Qibla direction, and it isn't shared with any third party.",
                             style: TextStyle(
                               fontSize: 12,
                               height: 1.5,

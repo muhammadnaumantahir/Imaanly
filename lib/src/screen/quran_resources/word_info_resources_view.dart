@@ -49,11 +49,11 @@ class _WordInfoResourcesViewState extends State<WordInfoResourcesView> {
   String _label(WordInfoKind kind) {
     switch (kind) {
       case WordInfoKind.eerab:
-        return "الإعراب";
+        return "I'rab";
       case WordInfoKind.tasreef:
-        return "الصرف";
+        return "Morphology";
       case WordInfoKind.recitations:
-        return "القراءات";
+        return "Qira'at";
     }
   }
 
@@ -101,11 +101,11 @@ class _WordInfoResourcesViewState extends State<WordInfoResourcesView> {
       cubit.success(activeResourceId: kind.name);
       if (mounted) setState(() {});
     } catch (_) {
-      cubit.failure("تعذر تحميل ${_label(kind)}", activeResourceId: kind.name);
+      cubit.failure("Couldn't load ${_label(kind)}", activeResourceId: kind.name);
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text("تعذر تحميل ${_label(kind)} الآن، حاول مرة أخرى."),
+          content: Text("Couldn't load ${_label(kind)} right now. Please try again."),
         ),
       );
     }
@@ -115,19 +115,19 @@ class _WordInfoResourcesViewState extends State<WordInfoResourcesView> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        title: const Text("حذف المورد", textAlign: TextAlign.right),
+        title: const Text("Delete resource", textAlign: TextAlign.right),
         content: Text(
-          "سيتم حذف ${_label(kind)} من الجهاز.",
+          "${_label(kind)} will be deleted from the device.",
           textAlign: TextAlign.right,
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text("إلغاء"),
+            child: const Text("Cancel"),
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text("حذف", style: TextStyle(color: Colors.red)),
+            child: const Text("Delete", style: TextStyle(color: Colors.red)),
           ),
         ],
       ),
@@ -149,7 +149,7 @@ class _WordInfoResourcesViewState extends State<WordInfoResourcesView> {
       return ManagedResourceItem(
         id: kind.name,
         title: _label(kind),
-        group: "الموارد اللغوية",
+        group: "Language resources",
         subtitle: null,
         badges: const [],
         isDownloaded: downloaded,
@@ -171,10 +171,10 @@ class _WordInfoResourcesViewState extends State<WordInfoResourcesView> {
     return BlocBuilder<ResourcesProgressCubit, ResourcesProgressCubitState>(
       builder: (context, state) {
         return ManagedResourcesCatalog(
-          title: "معلومات الكلمات",
+          title: "Word info",
           description:
-              "مصادر لغوية تضيف الإعراب والصرف والقراءات للكلمة المختارة.",
-          emptyMessage: "لا توجد نتائج.",
+              "Linguistic sources that add i'rab, morphology, and qira'at for the selected word.",
+          emptyMessage: "No results.",
           activationBehavior: ResourceActivationBehavior.none,
           items: _buildItems(state),
           onRefresh: () async => setState(() {}),

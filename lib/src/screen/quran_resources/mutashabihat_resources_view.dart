@@ -102,19 +102,19 @@ class _MutashabihatResourcesViewState
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
         backgroundColor: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF1E1E1E) : Colors.white,
-        title: const Text("حذف المورد", textAlign: TextAlign.right),
+        title: const Text("Delete resource", textAlign: TextAlign.right),
         content: Text(
-          "سيتم حذف ${book.name} من الجهاز.",
+          "${book.name} will be deleted from the device.",
           textAlign: TextAlign.right,
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: const Text("إلغاء"),
+            child: const Text("Cancel"),
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: const Text("حذف", style: TextStyle(color: Colors.red)),
+            child: const Text("Delete", style: TextStyle(color: Colors.red)),
           ),
         ],
       ),
@@ -140,7 +140,7 @@ class _MutashabihatResourcesViewState
         subtitle: book.description.isNotEmpty ? book.description : null,
         badges: downloaded
             ? []
-            : ["${book.totalEntries} مدخل"],
+            : ["${book.totalEntries} entries"],
         isDownloaded: downloaded,
         isActive: _isSelected(book),
         isBusy: busy,
@@ -172,10 +172,10 @@ class _MutashabihatResourcesViewState
     return BlocBuilder<ResourcesProgressCubit, ResourcesProgressCubitState>(
       builder: (context, state) {
         return ManagedResourcesCatalog(
-          title: "إدارة المتشابهات",
+          title: "Manage mutashabihat",
           description:
-              "آيات متشابهة في المعنى أو اللفظ — فعّل أكثر من مصدر للمقارنة.",
-          emptyMessage: "لا توجد متشابهات.",
+              "Ayahs similar in meaning or wording — enable more than one source to compare.",
+          emptyMessage: "No mutashabihat.",
           activationBehavior: ResourceActivationBehavior.multi,
           items: _buildItems(state),
           onRefresh: _loadData,

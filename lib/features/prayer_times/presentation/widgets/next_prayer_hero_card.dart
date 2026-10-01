@@ -68,7 +68,7 @@ class NextPrayerHeroCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Header - "الصلاة القادمة"
+                    // Header - "Next prayer"
                     Row(
                       children: [
                         // Animated Pulse Indicator
@@ -97,7 +97,7 @@ class NextPrayerHeroCard extends StatelessWidget {
                         SizedBox(width: PrayerDimensions.space12),
                         
                         Text(
-                          'الصلاة القادمة',
+                          'Next prayer',
                           style: PrayerTextStyles.arabicBody(
                             color: PrayerThemeColors.getTextColor(
                               'secondary',
@@ -183,7 +183,7 @@ class NextPrayerHeroCard extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'متبقي',
+                            'Remaining',
                             style: PrayerTextStyles.arabicCaption(
                               color: PrayerThemeColors.getTextColor(
                                 'secondary',

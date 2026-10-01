@@ -25,7 +25,7 @@ Future<void> showNotesSheet({
     backgroundColor: Colors.transparent,
     builder: (ctx) {
       return Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: Container(
           decoration: BoxDecoration(
             color: bg,
@@ -61,7 +61,7 @@ Future<void> showNotesSheet({
                           children: [
                             Expanded(
                               child: Text(
-                                "الملاحظات",
+                                "Notes",
                                 style: TextStyle(
                                   fontSize: 28,
                                   fontWeight: FontWeight.w900,
@@ -81,7 +81,7 @@ Future<void> showNotesSheet({
                                 }
                               },
                               child: Text(
-                                "إضافة",
+                                "Add",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w900,
                                   color: themeState.primary,
@@ -96,7 +96,7 @@ Future<void> showNotesSheet({
                         child: notes.isEmpty
                             ? const Center(
                                 child: Text(
-                                  "لا توجد ملاحظات",
+                                  "No notes",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w800,
                                     color: AppColors.lightTextMuted,
@@ -134,7 +134,7 @@ Future<void> showNotesSheet({
                                       ),
                                     ),
                                     subtitle: Text(
-                                      "${text.isEmpty ? preview : text}\nالصفحة ${localizedNumber(ctx, page)}",
+                                      "${text.isEmpty ? preview : text}\nPage ${localizedNumber(ctx, page)}",
                                       maxLines: 3,
                                       overflow: TextOverflow.ellipsis,
                                     ),

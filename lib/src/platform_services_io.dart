@@ -18,7 +18,7 @@ Future<void> initializePlatform() async {
   if (Platform.isLinux || Platform.isWindows || Platform.isMacOS) {
     await windowManager.ensureInitialized();
     const windowOptions = WindowOptions(
-      title: "الفُرقان",
+      title: "Imaanly",
       minimumSize: Size(400, 600),
       center: true,
       backgroundColor: Colors.transparent,

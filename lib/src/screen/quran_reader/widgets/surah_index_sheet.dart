@@ -265,7 +265,7 @@ class _SurahIndexSheetState extends State<SurahIndexSheet>
               ),
             ),
             subtitle: Text(
-              "${surah.revelationPlace == "makkah" ? "مكية" : "مدنية"} • ${localizedNumber(context, surah.versesCount)} آية",
+              "${surah.revelationPlace == "makkah" ? "Meccan" : "Medinan"} • ${localizedNumber(context, surah.versesCount)} ayahs",
               style: TextStyle(
                 fontSize: 12,
                 color: isDark ? Colors.white60 : Colors.black54,
@@ -329,7 +329,7 @@ class _SurahIndexSheetState extends State<SurahIndexSheet>
               ),
             ),
             title: Text(
-              "الجزء ${localizedNumber(context, juzNumber)}",
+              "Juz ${localizedNumber(context, juzNumber)}",
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 16,
@@ -389,7 +389,7 @@ class _SurahIndexSheetState extends State<SurahIndexSheet>
               ),
             ),
             title: Text(
-              "الحزب ${localizedNumber(context, hizbNumber)}",
+              "Hizb ${localizedNumber(context, hizbNumber)}",
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 fontSize: 16,

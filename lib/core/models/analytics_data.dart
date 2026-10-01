@@ -119,10 +119,10 @@ class RealtimeAnalytics {
 
 /// Convenience enum for the admin dashboard date range picker.
 enum AnalyticsDateRange {
-  today('اليوم'),
-  week('أسبوع'),
-  month('شهر'),
-  allTime('كل الوقت');
+  today('Today'),
+  week('Week'),
+  month('Month'),
+  allTime('All time');
 
   const AnalyticsDateRange(this.arabicLabel);
   final String arabicLabel;

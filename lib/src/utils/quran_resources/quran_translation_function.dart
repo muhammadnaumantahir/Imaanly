@@ -408,7 +408,7 @@ class QuranTranslationFunction {
           name: "downloadResources",
         );
         cubit.failure(
-          "المورد غير متاح حالياً على السيرفر — جرب لاحقاً",
+          "This resource is currently unavailable on the server — try again later",
           activeResourceId: translationBook.fullPath,
         );
         if (newTranslationBox.isOpen) await newTranslationBox.close();

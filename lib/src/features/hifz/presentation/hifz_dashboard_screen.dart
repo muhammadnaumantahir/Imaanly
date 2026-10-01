@@ -34,7 +34,7 @@ class _HifzDashboardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Directionality.of(context) == TextDirection.rtl ? 'الحفظ' : 'Hifz'),
+        title: Text(Directionality.of(context) == TextDirection.rtl ? 'Memorization' : 'Hifz'),
         elevation: 0,
         actions: [
           IconButton(
@@ -117,13 +117,13 @@ class _HifzContent extends StatelessWidget {
             MaterialPageRoute(builder: (_) => const HifzNewMemorizationScreen()),
           ),
           icon: const Icon(Icons.add_rounded),
-          label: Text(isRtl ? 'بدء حفظ جديد' : 'Start new memorization'),
+          label: Text(isRtl ? 'Start new memorization' : 'Start new memorization'),
         ),
         SizedBox(height: AppSizes.paddingM.h),
         if (state.dueForReview.isNotEmpty) ...[
           SectionHeader(
-            title: isRtl ? 'مراجعة اليوم' : 'Due for Review',
-            subtitle: '${state.dueForReview.length} ${isRtl ? 'سور' : 'surahs'}',
+            title: isRtl ? 'Today\'s review' : 'Due for Review',
+            subtitle: '${state.dueForReview.length} ${isRtl ? 'surahs' : 'surahs'}',
           ),
           ...state.dueForReview.map((progress) => _ProgressCard(
                 progress: progress,
@@ -132,8 +132,8 @@ class _HifzContent extends StatelessWidget {
           SizedBox(height: AppSizes.paddingM.h),
         ],
         SectionHeader(
-          title: isRtl ? 'كل التقدم' : 'All Progress',
-          subtitle: '${state.allProgress.length} ${isRtl ? 'سور' : 'surahs'}',
+          title: isRtl ? 'All progress' : 'All Progress',
+          subtitle: '${state.allProgress.length} ${isRtl ? 'surahs' : 'surahs'}',
         ),
         if (state.allProgress.isEmpty)
           const EmptyStateWidget(title: 'No progress yet', icon: Icons.menu_book_outlined)

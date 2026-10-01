@@ -59,7 +59,7 @@ class PrayerWidgetDesign extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "الصلاة القادمة: $nextPrayerName",
+                "Next prayer: $nextPrayerName",
                 style: TextStyle(
                   fontFamily: "Cairo-SemiBold",
                   fontSize: 32,
@@ -79,7 +79,7 @@ class PrayerWidgetDesign extends StatelessWidget {
         ],
       );
     } else if (prayerDisplayMode == "all" && prayerTimes != null) {
-      final orderedPrayers = ["الفجر", "الشروق", "الظهر", "العصر", "المغرب", "العشاء"];
+      final orderedPrayers = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"];
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         textDirection: TextDirection.rtl,

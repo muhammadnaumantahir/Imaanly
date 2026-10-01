@@ -13,7 +13,7 @@ class QuranIrabFunction {
 
   static const Map<String, dynamic> defaultIrabMeta = {
     "language": "Arabic",
-    "name": "إعراب القرآن (Alrab Al-Quran li-Da'as)",
+    "name": "I'rab al-Quran (Alrab Al-Quran li-Da'as)",
     "source": "alrab-al-quran-li-da-as",
   };
 

@@ -7,7 +7,7 @@ class CountdownDismissButton extends StatefulWidget {
     super.key,
     required this.seconds,
     required this.onDismiss,
-    this.label = 'لاحقاً',
+    this.label = 'Later',
     this.showCountdown = true,
     this.color,
   });

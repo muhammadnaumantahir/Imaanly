@@ -51,7 +51,7 @@ class AyahOfTheDayService {
   }
 
   static String buildWidgetSurahName(int surah, int verse) {
-    return "سورة ${getSurahNameArabic(surah)} - آية ${_toArabicDigits(verse.toString())}";
+    return "Surah ${getSurahNameArabic(surah)} - Ayah ${_toArabicDigits(verse.toString())}";
   }
 
   static Future<Map<String, String>?> _getRandomZekr({String? category}) async {
@@ -63,11 +63,11 @@ class AyahOfTheDayService {
       List<dynamic> filteredAzkar = azkarList;
       if (category != null && category != 'random') {
         final categoryMap = {
-          'morning': 'أذكار الصباح',
-          'evening': 'أذكار المساء',
-          'sleep': 'أذكار النوم',
-          'wakeup': 'أذكار الاستيقاظ من النوم',
-          'prayer': 'أذكار الصلاة',
+          'morning': 'Morning adhkar',
+          'evening': 'Evening adhkar',
+          'sleep': 'Sleep adhkar',
+          'wakeup': 'Waking-up adhkar',
+          'prayer': 'Prayer adhkar',
         };
         final categoryName = categoryMap[category] ?? category;
         filteredAzkar = azkarList.where((z) => z['category'] == categoryName).toList();
@@ -136,33 +136,32 @@ class AyahOfTheDayService {
       );
       
       String formatTime(DateTime? time) {
-        if (time == null) return "٠٠:٠٠";
+        if (time == null) return "00:00";
         final f = DateFormat('hh:mm a', 'en'); // en layout so we can format AM/PM manually 
         String raw = f.format(time);
-        raw = raw.replaceAll("AM", "ص").replaceAll("PM", "م");
-        return _toArabicDigits(raw);
+        return raw;
       }
 
       final prayerNames = {
-        Prayer.fajr: "الفجر",
-        Prayer.sunrise: "الشروق",
-        Prayer.dhuhr: "الظهر",
-        Prayer.asr: "العصر",
-        Prayer.maghrib: "المغرب",
-        Prayer.isha: "العشاء",
+        Prayer.fajr: "Fajr",
+        Prayer.sunrise: "Sunrise",
+        Prayer.dhuhr: "Dhuhr",
+        Prayer.asr: "Asr",
+        Prayer.maghrib: "Maghrib",
+        Prayer.isha: "Isha",
       };
 
       final Map<String, String> formattedTimes = {
-        "الفجر": formatTime(prayerTimes.fajr),
-        "الشروق": formatTime(prayerTimes.sunrise),
-        "الظهر": formatTime(prayerTimes.dhuhr),
-        "العصر": formatTime(prayerTimes.asr),
-        "المغرب": formatTime(prayerTimes.maghrib),
-        "العشاء": formatTime(prayerTimes.isha),
+        "Fajr": formatTime(prayerTimes.fajr),
+        "Sunrise": formatTime(prayerTimes.sunrise),
+        "Dhuhr": formatTime(prayerTimes.dhuhr),
+        "Asr": formatTime(prayerTimes.asr),
+        "Maghrib": formatTime(prayerTimes.maghrib),
+        "Isha": formatTime(prayerTimes.isha),
       };
 
       final next = prayerTimes.nextPrayer(date: date);
-      String nextPrayerStr = prayerNames[next] ?? "الفجر";
+      String nextPrayerStr = prayerNames[next] ?? "Fajr";
       
       if (date.isAfter(prayerTimes.isha)) {
         // If all prayers passed, next is Fajr tomorrow
@@ -173,8 +172,8 @@ class AyahOfTheDayService {
           calculationParameters: params, 
           precision: true
         );
-        formattedTimes["الفجر"] = formatTime(tomorrowTimes.fajr); 
-        nextPrayerStr = "الفجر";
+        formattedTimes["Fajr"] = formatTime(tomorrowTimes.fajr); 
+        nextPrayerStr = "Fajr";
       }
 
       return {
@@ -240,11 +239,11 @@ class AyahOfTheDayService {
         contentText = zekrData['text']!;
         final count = zekrData['count']!;
         contentReference = count != "1" 
-            ? "${zekrData['reference']!} (${_toArabicDigits(count)} مرات)"
+            ? "${zekrData['reference']!} (${_toArabicDigits(count)} times)"
             : zekrData['reference']!;
       } else {
         contentText = "سبحان الله وبحمده، سبحان الله العظيم";
-        contentReference = "ذكر عشوائي";
+        contentReference = "Random dhikr";
       }
     } else {
       if (surah == null || verse == null) {

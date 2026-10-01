@@ -209,7 +209,7 @@ Future<void> syncWahyNoteToCollection(String ayahKey, String text, [String? cate
   
   for (var value in box.values) {
     final col = NoteCollectionModel.fromJson(Map<String, dynamic>.from(value as Map));
-    if (col.name == "ملاحظات الآيات") {
+    if (col.name == "Ayah notes" || col.name == "ملاحظات الآيات") {
       targetCollection = col;
       break;
     }
@@ -218,7 +218,7 @@ Future<void> syncWahyNoteToCollection(String ayahKey, String text, [String? cate
   final now = DateTime.now();
   targetCollection ??= NoteCollectionModel(
     id: "wahy_notes_col_${now.millisecondsSinceEpoch}",
-    name: "ملاحظات الآيات",
+    name: "Ayah notes",
     notes: [],
     createdAt: now,
     updatedAt: now,

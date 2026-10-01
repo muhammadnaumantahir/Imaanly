@@ -272,9 +272,9 @@ class _ARQiblaScreenState extends State<ARQiblaScreen> {
 
                         if (supportSnapshot.data == false) {
                           return _buildUnavailableOverlay(
-                            title: "حساسات القبلة غير مدعومة",
+                            title: "Qibla sensors not supported",
                             subtitle:
-                                "هذا الجهاز لا يوفّر حساس اتجاه مناسب لقراءة قبلة دقيقة.",
+                                "This device doesn't provide a suitable orientation sensor for an accurate Qibla reading.",
                           );
                         }
 
@@ -283,7 +283,7 @@ class _ARQiblaScreenState extends State<ARQiblaScreen> {
                           builder: (context, snapshot) {
                             if (snapshot.hasError) {
                               return _buildUnavailableOverlay(
-                                title: "تعذر قراءة البوصلة",
+                                title: "Couldn't read the compass",
                                 subtitle: l10n.unableToGetCompassData,
                               );
                             }
@@ -291,7 +291,7 @@ class _ARQiblaScreenState extends State<ARQiblaScreen> {
                             final rawHeading = snapshot.data?.direction;
                             if (rawHeading == null || !rawHeading.isFinite) {
                               return _buildUnavailableOverlay(
-                                title: "الحساسات غير متاحة",
+                                title: "Sensors unavailable",
                                 subtitle: l10n.deviceDoesNotHaveSensors,
                               );
                             }
@@ -507,7 +507,7 @@ class _ARQiblaScreenState extends State<ARQiblaScreen> {
                                 ],
                               ),
                               child: const Text(
-                                "القبلة في المنتصف",
+                                "Qibla is centered",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w800,
@@ -578,8 +578,8 @@ class _ARQiblaScreenState extends State<ARQiblaScreen> {
                       const Gap(8),
                       Text(
                         guidance.isAligned
-                            ? "ثبّت الهاتف قليلًا، والرمز الموجود أمامك هو اتجاه القبلة الآن."
-                            : "حرّك الهاتف ببطء نحو ${guidance.turn == QiblaTurn.right ? "اليمين" : "اليسار"} حتى يختفي الفرق ويقترب الرمز من المنتصف.",
+                            ? "Hold the phone steady — the symbol in front of you is the Qibla direction now."
+                            : "Slowly move the phone to the ${guidance.turn == QiblaTurn.right ? "Right" : "Left"} until the difference disappears and the symbol sits near the center.",
                         textAlign: TextAlign.right,
                         style: const TextStyle(
                           fontSize: 13,
@@ -593,19 +593,19 @@ class _ARQiblaScreenState extends State<ARQiblaScreen> {
                         children: [
                           Expanded(
                             child: _buildBottomMetric(
-                              title: "فرق الزاوية",
+                              title: "Angle difference",
                               value: "${guidance.absoluteDifference.round()}°",
                             ),
                           ),
                           const Gap(10),
                           Expanded(
                             child: _buildBottomMetric(
-                              title: "الحالة",
+                              title: "Status",
                               value: guidance.isAligned
-                                  ? "مطابق"
+                                  ? "Matching"
                                   : guidance.isClose
-                                  ? "قريب"
-                                  : "اضبط الاتجاه",
+                                  ? "Close"
+                                  : "Adjust direction",
                             ),
                           ),
                         ],
@@ -726,10 +726,10 @@ class _ARQiblaScreenState extends State<ARQiblaScreen> {
       ),
       child: Text(
         guidance.isAligned
-            ? "مطابق"
+            ? "Matching"
             : guidance.isClose
-            ? "قريب"
-            : "وجّه الهاتف",
+            ? "Close"
+            : "Point the phone",
         style: TextStyle(
           fontSize: 12.5,
           fontWeight: FontWeight.w800,
@@ -787,9 +787,9 @@ class _ARQiblaScreenState extends State<ARQiblaScreen> {
 
   String _guidanceLabel(QiblaGuidance guidance) {
     if (guidance.isAligned) {
-      return "القبلة أمامك مباشرة";
+      return "Qibla is straight ahead";
     }
-    final direction = guidance.turn == QiblaTurn.right ? "اليمين" : "اليسار";
-    return "اتجه إلى $direction ${math.max(1, guidance.absoluteDifference.round())}°";
+    final direction = guidance.turn == QiblaTurn.right ? "Right" : "Left";
+    return "Turn to $direction ${math.max(1, guidance.absoluteDifference.round())}°";
   }
 }

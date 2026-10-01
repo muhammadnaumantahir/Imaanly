@@ -85,9 +85,9 @@ class ReadingStatsState {
     final mins = secondsToday ~/ 60;
     final hrs = mins ~/ 60;
     final remMins = mins % 60;
-    if (hrs > 0) return "$hrs ساعة $remMins دقيقة";
-    if (mins > 0) return "$mins دقيقة";
-    return "$secondsToday ثانية";
+    if (hrs > 0) return "$hrs hr $remMins min";
+    if (mins > 0) return "$mins min";
+    return "$secondsToday sec";
   }
 }
 

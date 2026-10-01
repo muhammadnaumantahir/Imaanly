@@ -90,7 +90,7 @@ class QuranSettingsBottomSheet extends StatelessWidget {
                             Column(
                               children: [
                                 Text(
-                                  "إعدادات المصحف",
+                                  "Mushaf settings",
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w800,
@@ -98,7 +98,7 @@ class QuranSettingsBottomSheet extends StatelessWidget {
                                   ),
                                 ),
                                 Text(
-                                  "تحكم في القراءة والمظهر",
+                                  "Control reading and appearance",
                                   style: TextStyle(
                                     fontSize: 12.5,
                                     fontWeight: FontWeight.w600,
@@ -127,8 +127,8 @@ class QuranSettingsBottomSheet extends StatelessWidget {
                         ),
                         const Gap(18),
                         _SectionCard(
-                          title: "خلفيات المصحف",
-                          subtitle: "اختر من الخلفيات الجاهزة أو أضف خلفيتك الخاصة.",
+                          title: "Mushaf backgrounds",
+                          subtitle: "Choose from ready-made backgrounds or add your own.",
                           icon: FluentIcons.color_background_24_regular,
                           child: _UnifiedBackgroundsSection(
                             state: state,
@@ -138,9 +138,9 @@ class QuranSettingsBottomSheet extends StatelessWidget {
                         ),
                         const Gap(14),
                         _SectionCard(
-                          title: "لون التظليل",
+                          title: "Highlight color",
                           subtitle:
-                              "لون إبراز الكلمة أو الآية أثناء التفاعل أو الاستماع.",
+                              "Highlight color for the word or ayah during interaction or listening.",
                           icon: FluentIcons.highlight_24_regular,
                           child: _HighlightColorSection(
                             state: state,
@@ -150,12 +150,12 @@ class QuranSettingsBottomSheet extends StatelessWidget {
                         ),
                         const Gap(14),
                         _SectionCard(
-                          title: "القراءة",
+                          title: "Reading",
                           subtitle:
-                              "تكبير الخط يوسّع الإحساس البصري للصفحة.",
+                              "Larger text widens the visual feel of the page.",
                           icon: FluentIcons.text_font_size_24_regular,
                           child: _SliderSettingCard(
-                            label: "حجم الخط",
+                            label: "Font size",
                             valueLabel: state.fontSize.toStringAsFixed(0),
                             icon: FluentIcons.text_font_size_24_regular,
                             min: 18,
@@ -171,8 +171,8 @@ class QuranSettingsBottomSheet extends StatelessWidget {
                         ),
                         const Gap(14),
                         _SectionCard(
-                          title: "طريقة العرض",
-                          subtitle: "اختر كيف تظهر صفحات المصحف أثناء القراءة.",
+                          title: "Display mode",
+                          subtitle: "Choose how Mushaf pages appear while reading.",
                           icon: FluentIcons.document_landscape_24_regular,
                           child: _LayoutModeSection(
                             state: state,
@@ -182,8 +182,8 @@ class QuranSettingsBottomSheet extends StatelessWidget {
                         ),
                         const Gap(14),
                         _SectionCard(
-                          title: "خط القرآن",
-                          subtitle: "اختر خط عرض النص القرآني في وضع الآيات.",
+                          title: "Quran font",
+                          subtitle: "Choose the Quran text display width in ayah mode.",
                           icon: FluentIcons.text_font_24_regular,
                           child: _FontFamilySection(
                             state: state,
@@ -193,15 +193,15 @@ class QuranSettingsBottomSheet extends StatelessWidget {
                         ),
                         const Gap(14),
                         _SectionCard(
-                          title: "أدوات القراءة",
-                          subtitle: "كل مفتاح هنا ينعكس مباشرة داخل المصحف.",
+                          title: "Reading tools",
+                          subtitle: "Every switch here is reflected directly inside the Mushaf.",
                           icon: FluentIcons.book_open_24_regular,
                           child: Column(
                             children: [
                               _SwitchTile(
                                 icon: FluentIcons.number_symbol_24_regular,
-                                title: "أرقام الآيات",
-                                subtitle: "إظهار رموز أرقام الآيات وعلاماتها.",
+                                title: "Ayah numbers",
+                                subtitle: "Show ayah number symbols and markers.",
                                 value: state.showVerseNumbers,
                                 onChanged: (value) => context
                                     .read<QuranSettingsCubit>()
@@ -212,8 +212,8 @@ class QuranSettingsBottomSheet extends StatelessWidget {
                               const Gap(10),
                               _SwitchTile(
                                 icon: FluentIcons.document_header_24_regular,
-                                title: "زخرفة السورة",
-                                subtitle: "إظهار عنوان السورة في بداية الصفحة.",
+                                title: "Surah ornament",
+                                subtitle: "Show the surah title at the top of the page.",
                                 value: state.showSurahHeader,
                                 onChanged: (value) => context
                                     .read<QuranSettingsCubit>()
@@ -225,8 +225,8 @@ class QuranSettingsBottomSheet extends StatelessWidget {
                               _SwitchTile(
                                 icon:
                                     FluentIcons.text_bullet_list_ltr_24_regular,
-                                title: "معلومات الصفحة",
-                                subtitle: "اسم السورة والجزء والصفحة والحزب.",
+                                title: "Page info",
+                                subtitle: "Surah name, juz, page, and hizb.",
                                 value: state.showPageInfo,
                                 onChanged: (value) => context
                                     .read<QuranSettingsCubit>()
@@ -237,8 +237,8 @@ class QuranSettingsBottomSheet extends StatelessWidget {
                               const Gap(10),
                               _SwitchTile(
                                 icon: Icons.short_text_rounded,
-                                title: "البسملة",
-                                subtitle: "إظهار البسملة في مواضعها المعتادة.",
+                                title: "Basmala",
+                                subtitle: "Show Basmala in its usual positions.",
                                 value: state.showBasmala,
                                 onChanged: (value) => context
                                     .read<QuranSettingsCubit>()
@@ -296,7 +296,7 @@ class _PreviewCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            "سورة الفاتحة • آية ٦",
+            "Surah Al-Fatihah • Ayah 6",
             textAlign: TextAlign.center,
             style: TextStyle(
               color: state.textColor.withValues(alpha: 0.55),
@@ -739,7 +739,7 @@ class _HighlightColorSectionState extends State<_HighlightColorSection> {
                       icon: const Icon(Icons.close_rounded),
                     ),
                     Text(
-                      "اختر لون التظليل",
+                      "Choose highlight color",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w800,
@@ -839,7 +839,7 @@ Future<Color?> showAlFurkanColorPicker(
   BuildContext context,
   Color currentColor, {
   bool allowOpacity = false,
-  String heading = "اختر اللون",
+  String heading = "Choose a color",
 }) async {
   Color newColor = currentColor;
   final confirmed = await ColorPicker(
@@ -854,7 +854,7 @@ Future<Color?> showAlFurkanColorPicker(
       style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
     ),
     wheelSubheading: const Text(
-      "الاختيار الحر",
+      "Free selection",
       textDirection: TextDirection.rtl,
       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
     ),
@@ -1131,7 +1131,7 @@ class _UnifiedBackgroundsSectionContentState extends State<_UnifiedBackgroundsSe
 
       allBackgrounds.add(
         _BackgroundCard(
-          label: "مخصصة ${i + 1}",
+          label: "Custom ${i + 1}",
           backgroundColor: color,
           textColor: textColor,
           isSelected: isSelected,
@@ -1148,16 +1148,16 @@ class _UnifiedBackgroundsSectionContentState extends State<_UnifiedBackgroundsSe
                 textDirection: TextDirection.rtl,
                 child: AlertDialog(
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-                  title: const Text("تأكيد الحذف"),
-                  content: const Text("هل تريد حذف هذه الخلفية؟"),
+                  title: const Text("Confirm deletion"),
+                  content: const Text("Do you want to delete this background?"),
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context, false),
-                      child: const Text("إلغاء"),
+                      child: const Text("Cancel"),
                     ),
                     TextButton(
                       onPressed: () => Navigator.pop(context, true),
-                      child: const Text("حذف"),
+                      child: const Text("Delete"),
                     ),
                   ],
                 ),
@@ -1216,7 +1216,7 @@ class _UnifiedBackgroundsSectionContentState extends State<_UnifiedBackgroundsSe
                       icon: const Icon(Icons.close_rounded),
                     ),
                     Text(
-                      "اختر لون الخلفية",
+                      "Choose background color",
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w800,
@@ -1297,7 +1297,7 @@ class _UnifiedBackgroundsSectionContentState extends State<_UnifiedBackgroundsSe
                 ),
                 const Gap(8),
                 Text(
-                  _showColorPicker ? "إلغاء" : "إضافة خلفية مخصصة",
+                  _showColorPicker ? "Cancel" : "Add custom background",
                   style: TextStyle(
                     fontSize: 13.5,
                     fontWeight: FontWeight.w800,
@@ -1432,23 +1432,23 @@ extension on QuranTheme {
       case QuranTheme.oled:
         return "OLED";
       case QuranTheme.charcoal:
-        return "فحمي";
+        return "Charcoal";
       case QuranTheme.nightBlue:
-        return "أزرق ليلي";
+        return "Midnight blue";
       case QuranTheme.custom:
-        return "مخصص";
+        return "Custom";
       case QuranTheme.graphite:
-        return "جرافيت";
+        return "Graphite";
       case QuranTheme.midnightPurple:
-        return "ليلي بنفسجي";
+        return "Violet night";
       case QuranTheme.sepia:
-        return "سيبيا";
+        return "Sepia";
       case QuranTheme.cream:
-        return "كريمي";
+        return "Cream";
       case QuranTheme.paperWhite:
-        return "ورقي أبيض";
+        return "Paper white";
       case QuranTheme.sand:
-        return "رملي";
+        return "Sandy";
     }
   }
 
@@ -1498,11 +1498,11 @@ extension on MushafLayoutMode {
   String get label {
     switch (this) {
       case MushafLayoutMode.singlePage:
-        return "صفحة واحدة";
+        return "One page";
       case MushafLayoutMode.doublePage:
-        return "صفحتان";
+        return "Two pages";
       case MushafLayoutMode.continuousScroll:
-        return "سكرول متواصل";
+        return "Continuous scroll";
     }
   }
 

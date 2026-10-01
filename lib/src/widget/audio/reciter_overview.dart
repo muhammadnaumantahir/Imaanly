@@ -97,7 +97,7 @@ Widget getReciterWidget({
                 const Icon(Icons.arrow_drop_down_rounded, size: 30),
               ],
             ),
-            Text('أسلوب: $translatedStyle'),
+            Text('Style: $translatedStyle'),
             Text(l10n.source(audioTabScreenState.source ?? "")),
             if (audioTabScreenState.bio != null)
               Row(

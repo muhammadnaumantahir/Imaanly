@@ -22,7 +22,7 @@ Future<void> showStarredSheet({
     backgroundColor: Colors.transparent,
     builder: (ctx) {
       return Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: Container(
           decoration: BoxDecoration(
             color: bg,
@@ -56,7 +56,7 @@ Future<void> showStarredSheet({
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: Text(
-                            "مميزة بنجمة",
+                            "Starred",
                             style: TextStyle(
                               fontSize: 28,
                               fontWeight: FontWeight.w900,
@@ -70,7 +70,7 @@ Future<void> showStarredSheet({
                         child: starred.isEmpty
                             ? const Center(
                                 child: Text(
-                                  "لا توجد آيات مميزة بنجمة",
+                                  "No starred ayahs",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w800,
                                     color: AppColors.lightTextMuted,
@@ -106,7 +106,7 @@ Future<void> showStarredSheet({
                                       ),
                                     ),
                                     subtitle: Text(
-                                      "${preview.isEmpty ? key : preview}\nالصفحة ${localizedNumber(ctx, page)}",
+                                      "${preview.isEmpty ? key : preview}\nPage ${localizedNumber(ctx, page)}",
                                       maxLines: 3,
                                       overflow: TextOverflow.ellipsis,
                                     ),

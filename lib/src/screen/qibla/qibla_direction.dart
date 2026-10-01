@@ -100,7 +100,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(
-                "تمت المعايرة بنجاح!",
+                "Calibration successful!",
                 style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
               ),
               behavior: SnackBarBehavior.floating,
@@ -126,7 +126,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
     if (!mounted) return;
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text("تم تحديث الموقع واتجاه القبلة."),
+        content: Text("Location and Qibla direction updated."),
         behavior: SnackBarBehavior.floating,
       ),
     );
@@ -228,7 +228,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
         leading: IconButton(
           onPressed: () => _scaffoldKey.currentState?.openDrawer(),
           icon: Icon(Icons.menu_rounded, color: cs.primary),
-          tooltip: "القائمة الرئيسية",
+          tooltip: "Main menu",
         ),
         actions: [
           IconButton(
@@ -239,7 +239,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
               );
             },
             icon: Icon(Icons.view_in_ar_rounded, color: cs.primary),
-            tooltip: "القبلة بالواقع المعزز",
+            tooltip: "AR Qibla",
           ),
           const Gap(4),
         ],
@@ -264,7 +264,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                   if (snapshot.hasError) {
                     return _buildUnavailableState(
                       icon: Icons.explore_off_rounded,
-                      title: "تعذر قراءة بيانات البوصلة",
+                      title: "Couldn't read compass data",
                       subtitle: l10n.unableToGetCompassData,
                     );
                   }
@@ -273,7 +273,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                   if (direction == null || !direction.isFinite) {
                     return _buildUnavailableState(
                       icon: Icons.sensors_off_rounded,
-                      title: "الحساسات غير متاحة",
+                      title: "Sensors unavailable",
                       subtitle: l10n.deviceDoesNotHaveSensors,
                     );
                   }
@@ -380,7 +380,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "⚠️ تنبيه مهم",
+                          "⚠️ Important notice",
                           style: GoogleFonts.cairo(
                             fontSize: 16,
                             fontWeight: FontWeight.w900,
@@ -389,7 +389,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                         ),
                         const Gap(4),
                         Text(
-                          "البوصلة الإلكترونية قد تحتوي على أخطاء",
+                          "The digital compass may contain errors",
                           style: GoogleFonts.cairo(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
@@ -412,7 +412,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      "• لا تعتمد عليها بشكل كامل في تحديد اتجاه القبلة",
+                      "• Don't rely on it entirely to determine the Qibla direction",
                       style: GoogleFonts.cairo(
                         fontSize: 12,
                         height: 1.7,
@@ -422,7 +422,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     ),
                     const Gap(6),
                     Text(
-                      "• استخدم وسائل أخرى للتأكد من الاتجاه الصحيح",
+                      "• Use other means to confirm the correct direction",
                       style: GoogleFonts.cairo(
                         fontSize: 12,
                         height: 1.7,
@@ -432,7 +432,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     ),
                     const Gap(6),
                     Text(
-                      "• سيتم تحسين الدقة في التحديثات القادمة إن شاء الله، إن كان لإدريس عُمر في الدنيا",
+                      "• Accuracy will be improved in upcoming updates, God willing",
                       style: GoogleFonts.cairo(
                         fontSize: 12,
                         height: 1.7,
@@ -568,7 +568,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        "الدقة",
+                        "Accuracy",
                         style: GoogleFonts.cairo(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
@@ -605,7 +605,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
           children: [
             Expanded(
               child: _buildStatCard(
-                title: "زاوية القبلة",
+                title: "Qibla angle",
                 value: "${guidance.bearing.round()}°",
                 subtitle: _getCardinalDirection(guidance.bearing),
                 icon: Icons.explore_rounded,
@@ -616,7 +616,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
             const Gap(10),
             Expanded(
               child: _buildStatCard(
-                title: "اتجاه الهاتف",
+                title: "Phone direction",
                 value: "${guidance.heading.round()}°",
                 subtitle: _getCardinalDirection(guidance.heading),
                 icon: Icons.phone_android_rounded,
@@ -627,9 +627,9 @@ class _QiblaDirectionState extends State<QiblaDirection> {
             const Gap(10),
             Expanded(
               child: _buildStatCard(
-                title: "الفرق الحالي",
+                title: "Current difference",
                 value: "${guidance.absoluteDifference.round()}°",
-                subtitle: guidance.isAligned ? "مطابق ✓" : "قابل للتحسين",
+                subtitle: guidance.isAligned ? "Matching ✓" : "Needs improvement",
                 icon: Icons.compare_arrows_rounded,
                 color: statusColor,
                 isDark: isDark,
@@ -643,8 +643,8 @@ class _QiblaDirectionState extends State<QiblaDirection> {
             Expanded(
               child: _buildActionCard(
                 icon: Icons.autorenew_rounded,
-                title: "معايرة البوصلة",
-                subtitle: "تحسين الدقة",
+                title: "Compass calibration",
+                subtitle: "Improve accuracy",
                 color: const Color(0xFF3B82F6),
                 onTap: () => _startCalibration(),
                 isDark: isDark,
@@ -654,8 +654,8 @@ class _QiblaDirectionState extends State<QiblaDirection> {
             Expanded(
               child: _buildActionCard(
                 icon: Icons.my_location_rounded,
-                title: "تحديث الموقع",
-                subtitle: "إعادة حساب القبلة",
+                title: "Update location",
+                subtitle: "Recalculate Qibla",
                 color: const Color(0xFF10B981),
                 onTap: () => _refreshLocation(),
                 isDark: isDark,
@@ -669,8 +669,8 @@ class _QiblaDirectionState extends State<QiblaDirection> {
             Expanded(
               child: _buildActionCard(
                 icon: Icons.view_in_ar_rounded,
-                title: "وضع AR",
-                subtitle: "رؤية إرشادية مباشرة",
+                title: "AR mode",
+                subtitle: "Direct guidance view",
                 color: statusColor,
                 onTap: () {
                   Navigator.push(
@@ -710,7 +710,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     Icon(Icons.analytics_rounded, color: themeState.primary, size: 20),
                     const Gap(10),
                     Text(
-                      "إحصائيات متقدمة",
+                      "Advanced statistics",
                       style: GoogleFonts.cairo(
                         fontSize: 16,
                         fontWeight: FontWeight.w900,
@@ -732,7 +732,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                   children: [
                     Expanded(
                       child: _buildMiniStat(
-                        "دقة البوصلة",
+                        "Compass accuracy",
                         "${_compassAccuracy.toStringAsFixed(1)}%",
                         Icons.speed_rounded,
                         themeState.primary,
@@ -742,7 +742,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     const Gap(10),
                     Expanded(
                       child: _buildMiniStat(
-                        "مرات المحاذاة",
+                        "Alignment count",
                         "$_alignmentCount",
                         Icons.check_circle_rounded,
                         const Color(0xFF10B981),
@@ -754,8 +754,8 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                 const Gap(10),
                 if (_showDistance)
                   _buildMiniStat(
-                    "المسافة إلى الكعبة",
-                    "${_distanceToKaaba.toStringAsFixed(0)} كم",
+                    "Distance to the Kaaba",
+                    "${_distanceToKaaba.toStringAsFixed(0)} km",
                     Icons.social_distance_rounded,
                     const Color(0xFFC6922D),
                     isDark,
@@ -763,7 +763,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                 if (_lastAlignmentTime != null) ...[
                   const Gap(10),
                   _buildMiniStat(
-                    "آخر محاذاة",
+                    "Last alignment",
                     _formatTimeSince(_lastAlignmentTime!),
                     Icons.access_time_rounded,
                     const Color(0xFF3B82F6),
@@ -772,7 +772,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                 ],
                 const Gap(10),
                 _buildMiniStat(
-                  "سرعة التحديث",
+                  "Refresh rate",
                   "${_updateFrequency.toStringAsFixed(1)} Hz",
                   Icons.speed_rounded,
                   const Color(0xFF8B5CF6),
@@ -807,7 +807,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                   Icon(Icons.settings_rounded, color: themeState.primary, size: 20),
                   const Gap(10),
                   Text(
-                    "إعدادات البوصلة",
+                    "Compass settings",
                     style: GoogleFonts.cairo(
                       fontSize: 16,
                       fontWeight: FontWeight.w900,
@@ -818,7 +818,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
               ),
               const Gap(14),
               _buildSettingRow(
-                "اهتزاز تلقائي عند المحاذاة",
+                "Auto-vibrate when aligned",
                 _autoVibrate,
                 (value) => setState(() => _autoVibrate = value),
                 Icons.vibration_rounded,
@@ -826,7 +826,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
               ),
               const Gap(10),
               _buildSettingRow(
-                "عرض المسافة إلى الكعبة",
+                "Show distance to the Kaaba",
                 _showDistance,
                 (value) => setState(() => _showDistance = value),
                 Icons.social_distance_rounded,
@@ -834,7 +834,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
               ),
               const Gap(10),
               _buildSettingRow(
-                "عرض الإحصائيات المتقدمة",
+                "View advanced statistics",
                 _showAdvancedStats,
                 (value) => setState(() => _showAdvancedStats = value),
                 Icons.analytics_rounded,
@@ -842,7 +842,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
               ),
               const Gap(10),
               _buildSettingRow(
-                "قفل البوصلة (منع الدوران)",
+                "Lock compass (prevent rotation)",
                 _compassLocked,
                 (value) => setState(() => _compassLocked = value),
                 Icons.lock_rounded,
@@ -850,7 +850,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
               ),
               const Gap(10),
               _buildSettingRow(
-                "تأثيرات صوتية عند المحاذاة",
+                "Sound effects on alignment",
                 _soundEffects,
                 (value) => setState(() => _soundEffects = value),
                 Icons.volume_up_rounded,
@@ -873,7 +873,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                       ),
                       icon: const Icon(Icons.share_rounded, size: 18),
                       label: Text(
-                        "مشاركة",
+                        "Share",
                         style: GoogleFonts.cairo(
                           fontSize: 13,
                           fontWeight: FontWeight.w800,
@@ -895,7 +895,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                       ),
                       icon: const Icon(Icons.refresh_rounded, size: 18),
                       label: Text(
-                        "إعادة تعيين",
+                        "Reset",
                         style: GoogleFonts.cairo(
                           fontSize: 13,
                           fontWeight: FontWeight.w800,
@@ -934,7 +934,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
               const Gap(12),
               Expanded(
                 child: Text(
-                  "تم تحسين البوصلة بخوارزميات متقدمة لأفضل دقة وسرعة استجابة",
+                  "Compass improved with advanced algorithms for best accuracy and responsiveness",
                   style: GoogleFonts.cairo(
                     fontSize: 12,
                     height: 1.6,
@@ -957,17 +957,17 @@ class _QiblaDirectionState extends State<QiblaDirection> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          "معلومات القبلة:\n"
-          "الموقع: $latitude, $longitude\n"
-          "زاوية القبلة: ${guidance.bearing.round()}°\n"
-          "المسافة: ${_distanceToKaaba.toStringAsFixed(0)} كم\n"
-          "الدقة: ${_compassAccuracy.toStringAsFixed(1)}%",
+          "Qibla info:\n"
+          "Location: $latitude, $longitude\n"
+          "Qibla angle: ${guidance.bearing.round()}°\n"
+          "Distance: ${_distanceToKaaba.toStringAsFixed(0)} km\n"
+          "Accuracy: ${_compassAccuracy.toStringAsFixed(1)}%",
           style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
         ),
         behavior: SnackBarBehavior.floating,
         duration: const Duration(seconds: 5),
         action: SnackBarAction(
-          label: "نسخ",
+          label: "Copy",
           onPressed: () {},
         ),
       ),
@@ -985,7 +985,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          "تم إعادة تعيين الإحصائيات بنجاح",
+          "Statistics reset successfully",
           style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
         ),
         behavior: SnackBarBehavior.floating,
@@ -1071,11 +1071,11 @@ class _QiblaDirectionState extends State<QiblaDirection> {
   String _formatTimeSince(DateTime time) {
     final diff = DateTime.now().difference(time);
     if (diff.inSeconds < 60) {
-      return "منذ ${diff.inSeconds} ثانية";
+      return "${diff.inSeconds} seconds ago";
     } else if (diff.inMinutes < 60) {
-      return "منذ ${diff.inMinutes} دقيقة";
+      return "${diff.inMinutes} minutes ago";
     } else {
-      return "منذ ${diff.inHours} ساعة";
+      return "${diff.inHours} hours ago";
     }
   }
 
@@ -1166,7 +1166,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     Icons.close_rounded,
                     color: isDark ? Colors.white54 : Colors.black45,
                   ),
-                  tooltip: "إخفاء النصائح",
+                  tooltip: "Hide tips",
                 ),
             ],
           ),
@@ -1199,7 +1199,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                 const Gap(8),
                 Expanded(
                   child: Text(
-                    "موقعك: $latitude, $longitude",
+                    "Your location: $latitude, $longitude",
                     style: GoogleFonts.dmMono(
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
@@ -1424,31 +1424,31 @@ class _QiblaDirectionState extends State<QiblaDirection> {
   String _statusLabel(QiblaGuidance guidance) {
     switch (guidance.alignment) {
       case QiblaAlignment.aligned:
-        return "محاذاة ممتازة";
+        return "Perfect alignment";
       case QiblaAlignment.close:
-        return "قريب جدًا";
+        return "Very close";
       case QiblaAlignment.adjusting:
-        return "يحتاج ضبط";
+        return "Needs adjustment";
     }
   }
 
   String _guidanceText(QiblaGuidance guidance) {
     if (guidance.isAligned) {
-      return "القبلة أمامك الآن";
+      return "Qibla is ahead of you now";
     }
     if (guidance.turn == QiblaTurn.right) {
-      return "لف يمين ${guidance.absoluteDifference.round()}°";
+      return "Turn right ${guidance.absoluteDifference.round()}°";
     }
     if (guidance.turn == QiblaTurn.left) {
-      return "لف يسار ${guidance.absoluteDifference.round()}°";
+      return "Turn left ${guidance.absoluteDifference.round()}°";
     }
-    return "ثبّت الهاتف";
+    return "Hold the phone steady";
   }
   
   String _getCardinalDirection(double degrees) {
     const directions = [
-      "شمال", "شمال شرقي", "شرق", "جنوب شرقي",
-      "جنوب", "جنوب غربي", "غرب", "شمال غربي"
+      "North", "Northeast", "East", "Southeast",
+      "South", "Southwest", "West", "Northwest"
     ];
     final int index = ((degrees + 22.5) / 45).floor() % 8;
     return directions[index];

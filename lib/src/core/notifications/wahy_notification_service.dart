@@ -77,8 +77,8 @@ class WahyNotificationService {
       [
         NotificationChannel(
           channelKey: kKhatmaChannel,
-          channelName: "تذكير الختمة",
-          channelDescription: "تذكير يومي بورد الختمة",
+          channelName: "Khatma reminder",
+          channelDescription: "Daily Khatma wird reminder",
           importance: NotificationImportance.High,
           defaultPrivacy: NotificationPrivacy.Public,
           enableVibration: true,
@@ -88,8 +88,8 @@ class WahyNotificationService {
         ),
         NotificationChannel(
           channelKey: kPrayerChannel,
-          channelName: "مواقيت الصلاة",
-          channelDescription: "تنبيهات قبل دخول وقت الصلاة",
+          channelName: "Prayer times",
+          channelDescription: "Alerts before the prayer time begins",
           importance: NotificationImportance.Max,
           defaultPrivacy: NotificationPrivacy.Public,
           enableVibration: true,
@@ -99,8 +99,8 @@ class WahyNotificationService {
         ),
         NotificationChannel(
           channelKey: kDailyVerseChannel,
-          channelName: "آية اليوم",
-          channelDescription: "آية عشوائية يومية مع تفسيرها",
+          channelName: "Ayah of the Day",
+          channelDescription: "A random daily ayah with its tafsir",
           importance: NotificationImportance.Default,
           defaultPrivacy: NotificationPrivacy.Public,
           enableVibration: false,
@@ -110,8 +110,8 @@ class WahyNotificationService {
         ),
         NotificationChannel(
           channelKey: kMorningAzkarChannel,
-          channelName: "أذكار الصباح",
-          channelDescription: "تذكير بأذكار الصباح",
+          channelName: "Morning adhkar",
+          channelDescription: "Morning adhkar reminder",
           importance: NotificationImportance.High,
           defaultPrivacy: NotificationPrivacy.Public,
           enableVibration: true,
@@ -121,8 +121,8 @@ class WahyNotificationService {
         ),
         NotificationChannel(
           channelKey: kEveningAzkarChannel,
-          channelName: "أذكار المساء",
-          channelDescription: "تذكير بأذكار المساء",
+          channelName: "Evening adhkar",
+          channelDescription: "Evening adhkar reminder",
           importance: NotificationImportance.High,
           defaultPrivacy: NotificationPrivacy.Public,
           enableVibration: true,
@@ -223,16 +223,16 @@ class WahyNotificationService {
     final box = Hive.box(_kBox);
     final lastPage = box.get("wahy_last_page", defaultValue: 0) as int;
 
-    String body = "هذا إشعار تجريبي من نظام الإشعارات الجديد";
+    String body = "This is a test notification from the new notification system";
     if (lastPage > 0) {
-      body += "\nتوقفت عند الصفحة $lastPage";
+      body += "\nYou stopped at page $lastPage";
     }
 
     await AwesomeNotifications().createNotification(
       content: NotificationContent(
         id: 999,
         channelKey: kKhatmaChannel,
-        title: "🔔 اختبار الإشعارات",
+        title: "🔔 Notification test",
         body: body,
         notificationLayout: NotificationLayout.BigText,
         wakeUpScreen: true,
@@ -241,11 +241,11 @@ class WahyNotificationService {
       actionButtons: [
         NotificationActionButton(
           key: kActionOpenMushaf,
-          label: "📖 افتح المصحف",
+          label: "📖 Open the Mushaf",
         ),
         NotificationActionButton(
           key: kActionSnooze,
-          label: "⏰ تأجيل ٣٠ دقيقة",
+          label: "⏰ Snooze 30 minutes",
           actionType: ActionType.SilentBackgroundAction,
         ),
       ],
@@ -265,9 +265,9 @@ class WahyNotificationService {
     final box = Hive.box(_kBox);
     final lastPage = box.get("wahy_last_page", defaultValue: 0) as int;
 
-    String body = "📖 افتح المصحف وأكمل وردك اليوم";
+    String body = "📖 Open the Mushaf and complete your wird today";
     if (lastPage > 0) {
-      body += "\nآخر صفحة: $lastPage";
+      body += "\nLast page: $lastPage";
     }
 
     final String localTimeZone = await AwesomeNotifications()
@@ -277,7 +277,7 @@ class WahyNotificationService {
       content: NotificationContent(
         id: kKhatmaId,
         channelKey: kKhatmaChannel,
-        title: "📿 تذكير الختمة",
+        title: "📿 Khatma reminder",
         body: body,
         notificationLayout: NotificationLayout.BigText,
         wakeUpScreen: true,
@@ -295,11 +295,11 @@ class WahyNotificationService {
       actionButtons: [
         NotificationActionButton(
           key: kActionOpenMushaf,
-          label: "📖 ابدأ القراءة",
+          label: "📖 Start reading",
         ),
         NotificationActionButton(
           key: kActionMarkRead,
-          label: "تم",
+          label: "Done",
           actionType: ActionType.DismissAction,
         ),
       ],
@@ -333,8 +333,8 @@ class WahyNotificationService {
       content: NotificationContent(
         id: kDailyVerseId,
         channelKey: kDailyVerseChannel,
-        title: "✨ آية اليوم",
-        body: "﴿ إِنَّ مَعَ الْعُسْرِ يُسْرًا ﴾\n📍 الشرح: ٦",
+        title: "✨ Ayah of the Day",
+        body: "﴿ إِنَّ مَعَ الْعُسْرِ يُسْرًا ﴾\n📍 Ash-Sharh: 6",
         notificationLayout: NotificationLayout.BigText,
         wakeUpScreen: false,
         category: NotificationCategory.Recommendation,
@@ -350,7 +350,7 @@ class WahyNotificationService {
       actionButtons: [
         NotificationActionButton(
           key: kActionOpenMushaf,
-          label: "📖 اقرأ المزيد",
+          label: "📖 Read more",
         ),
       ],
     );
@@ -383,8 +383,8 @@ class WahyNotificationService {
       content: NotificationContent(
         id: kMorningAzkarId,
         channelKey: kMorningAzkarChannel,
-        title: "🌅 أذكار الصباح",
-        body: "☀️ حان وقت أذكار الصباح. ابدأ يومك بذكر الله.",
+        title: "🌅 Morning adhkar",
+        body: "☀️ It's time for the morning adhkar. Start your day with the remembrance of Allah.",
         notificationLayout: NotificationLayout.BigText,
         wakeUpScreen: true,
         category: NotificationCategory.Reminder,
@@ -428,8 +428,8 @@ class WahyNotificationService {
       content: NotificationContent(
         id: kEveningAzkarId,
         channelKey: kEveningAzkarChannel,
-        title: "🌙 أذكار المساء",
-        body: "🌟 حان وقت أذكار المساء. اختم يومك بذكر الله.",
+        title: "🌙 Evening adhkar",
+        body: "🌟 It's time for the evening adhkar. End your day with the remembrance of Allah.",
         notificationLayout: NotificationLayout.BigText,
         wakeUpScreen: true,
         category: NotificationCategory.Reminder,
@@ -504,21 +504,21 @@ class WahyNotificationService {
             ? [
                 NotificationActionButton(
                   key: "SUNNAH_WUDU",
-                  label: "سنن الوضوء",
+                  label: "Sunnahs of wudu",
                 ),
                 NotificationActionButton(
                   key: "SUNNAH_PRAYER",
-                  label: "سنن الصلاة",
+                  label: "Sunnahs of prayer",
                 ),
               ]
             : [
                 NotificationActionButton(
                   key: kActionOpenMushaf,
-                  label: "افتح التطبيق",
+                  label: "Open the app",
                 ),
                 NotificationActionButton(
                   key: kActionSnooze,
-                  label: "تأجيل 30 دقيقة",
+                  label: "Snooze 30 minutes",
                   actionType: ActionType.SilentBackgroundAction,
                 ),
               ],
@@ -685,17 +685,17 @@ class WahyNotificationService {
   String _prayerTitle(Prayer prayer) {
     switch (prayer) {
       case Prayer.fajr:
-        return "تنبيه صلاة الفجر";
+        return "Fajr prayer alert";
       case Prayer.dhuhr:
-        return "تنبيه صلاة الظهر";
+        return "Dhuhr prayer alert";
       case Prayer.asr:
-        return "تنبيه صلاة العصر";
+        return "Asr prayer alert";
       case Prayer.maghrib:
-        return "تنبيه صلاة المغرب";
+        return "Maghrib prayer alert";
       case Prayer.isha:
-        return "تنبيه صلاة العشاء";
+        return "Isha prayer alert";
       default:
-        return "تنبيه الصلاة";
+        return "Prayer alert";
     }
   }
 
@@ -706,28 +706,28 @@ class WahyNotificationService {
   }) {
     final suffix = locationLabel == null || locationLabel.trim().isEmpty
         ? ""
-        : "\nالموقع: $locationLabel";
+        : "\nLocation: $locationLabel";
     if (minutesBefore <= 0) {
-      return "حان الآن وقت ${_prayerName(prayer)}.$suffix".trim();
+      return "It's now time for ${_prayerName(prayer)}.$suffix".trim();
     }
-    return "باقي $minutesBefore دقيقة على ${_prayerName(prayer)}.$suffix"
+    return "$minutesBefore minutes left until ${_prayerName(prayer)}.$suffix"
         .trim();
   }
 
   String _prayerName(Prayer prayer) {
     switch (prayer) {
       case Prayer.fajr:
-        return "صلاة الفجر";
+        return "Fajr prayer";
       case Prayer.dhuhr:
-        return "صلاة الظهر";
+        return "Dhuhr prayer";
       case Prayer.asr:
-        return "صلاة العصر";
+        return "Asr prayer";
       case Prayer.maghrib:
-        return "صلاة المغرب";
+        return "Maghrib prayer";
       case Prayer.isha:
-        return "صلاة العشاء";
+        return "Isha prayer";
       default:
-        return "الصلاة";
+        return "Prayer";
     }
   }
 }

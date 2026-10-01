@@ -32,7 +32,7 @@ class _QiblaView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          Directionality.of(context) == TextDirection.rtl ? 'القبلة' : 'Qibla',
+          Directionality.of(context) == TextDirection.rtl ? 'Qibla' : 'Qibla',
         ),
         elevation: 0,
       ),
@@ -119,7 +119,7 @@ class _QiblaCompass extends StatelessWidget {
             Padding(
               padding: EdgeInsets.all(AppSizes.paddingM.w),
               child: Text(
-                '${qiblaInfo.qiblaBearing.toStringAsFixed(1)}\u00b0 ${Directionality.of(context) == TextDirection.rtl ? "من الشمال" : "from North"}',
+                '${qiblaInfo.qiblaBearing.toStringAsFixed(1)}\u00b0 ${Directionality.of(context) == TextDirection.rtl ? "from North" : "from North"}',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(color: accentColor),
               ),
             ),

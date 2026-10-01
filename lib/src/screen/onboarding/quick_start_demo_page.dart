@@ -44,7 +44,7 @@ class _QuickStartDemoPageState extends State<QuickStartDemoPage> {
           isDark ? Theme.of(context).scaffoldBackgroundColor : const Color(0xFFF3EDE2),
       appBar: AppBar(
         title: const Text(
-          "جرّب قبل ما تختار",
+          "Try before you choose",
           textDirection: TextDirection.rtl,
           style: TextStyle(fontWeight: FontWeight.w900),
         ),
@@ -98,7 +98,7 @@ class _QuickStartDemoPageState extends State<QuickStartDemoPage> {
                   },
                   icon: const Icon(FluentIcons.checkmark_24_filled, size: 18),
                   label: const Text(
-                    "اختار ده",
+                    "Choose this",
                     textDirection: TextDirection.rtl,
                     style: TextStyle(fontWeight: FontWeight.w900),
                   ),
@@ -185,13 +185,13 @@ class _ModeSegmented extends StatelessWidget {
       children: [
         item(
           mode: QuickStartDemoUsageMode.detailed,
-          label: "مُفصل",
+          label: "Detailed",
           icon: FluentIcons.document_one_page_24_regular,
         ),
         const Gap(10),
         item(
           mode: QuickStartDemoUsageMode.simple,
-          label: "بسيط",
+          label: "Simple",
           icon: FluentIcons.book_open_24_regular,
         ),
       ],
@@ -238,13 +238,13 @@ class _DetailedDemo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const Text(
-          "الوضع المُفصل (آية بآية)",
+          "Detailed mode (ayah by ayah)",
           textDirection: TextDirection.rtl,
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
         ),
         const Gap(6),
         Text(
-          "ده مناسب لو بتحب تدور وتقرأ تفسير وترجمة وتستخدم أدوات الآية كتير.",
+          "This suits you if you like to search, read tafsir and translation, and use ayah tools often.",
           textDirection: TextDirection.rtl,
           style: TextStyle(
             fontWeight: FontWeight.w700,
@@ -256,18 +256,18 @@ class _DetailedDemo extends StatelessWidget {
         const Gap(14),
         _BigPreview(
           themeState: themeState,
-          title: "آية 255",
+          title: "Ayah 255",
           body: "اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...",
           footerLeft: const Icon(FluentIcons.search_24_regular, size: 18),
           footerCenter: const Icon(FluentIcons.book_24_regular, size: 18),
           footerRight: const Icon(FluentIcons.share_24_regular, size: 18),
         ),
         const Gap(14),
-        line("الافتراضي: آية بآية — تقدر تقلب للمصحف من الهيدر فوق"),
+        line("Default: ayah by ayah — you can switch to Mushaf from the header above"),
         const Gap(8),
-        line("التفسير والترجمة والبحث بيكونوا أقرب وأسهل"),
+        line("Tafsir, translation, and search become closer and easier"),
         const Gap(8),
-        line("مناسب للدراسة، الاستدلال، وتجهيز مشاركة آية"),
+        line("Good for study, evidence, and preparing an ayah to share"),
       ],
     );
   }
@@ -312,13 +312,13 @@ class _SimpleDemo extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const Text(
-          "الوضع البسيط (قراءة)",
+          "Simple mode (reading)",
           textDirection: TextDirection.rtl,
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
         ),
         const Gap(6),
         Text(
-          "ده مناسب لو هدفك قراءة هادية وورد يومي بدون تشتيت.",
+          "This suits you if your goal is calm reading and a daily wird without distraction.",
           textDirection: TextDirection.rtl,
           style: TextStyle(
             fontWeight: FontWeight.w700,
@@ -330,18 +330,18 @@ class _SimpleDemo extends StatelessWidget {
         const Gap(14),
         _BigPreview(
           themeState: themeState,
-          title: "المصحف",
+          title: "Mushaf",
           body: "...\n...\n...",
           footerLeft: const SizedBox.shrink(),
           footerCenter: const Icon(FluentIcons.book_open_24_regular, size: 18),
           footerRight: const SizedBox.shrink(),
         ),
         const Gap(14),
-        line("الافتراضي: المصحف — وتقدر تقلب لآية بآية من الهيدر فوق"),
+        line("Default: Mushaf — you can switch to ayah by ayah from the header above"),
         const Gap(8),
-        line("واجهة أهدى وأقل أدوات أثناء القراءة"),
+        line("A calmer interface with fewer tools while reading"),
         const Gap(8),
-        line("مناسب للورد اليومي والتركيز"),
+        line("Good for daily wird and focus"),
       ],
     );
   }

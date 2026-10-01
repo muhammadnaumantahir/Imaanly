@@ -47,13 +47,13 @@ class AyahRepeatBottomSheet extends StatelessWidget {
 
               // ─── Title ───
               Directionality(
-                textDirection: TextDirection.rtl,
+                textDirection: TextDirection.ltr,
                 child: Row(
                   children: [
                     Icon(Icons.repeat_rounded, color: accent, size: 22),
                     const Gap(10),
                     Text(
-                      "تكرار التلاوة",
+                      "Repeat recitation",
                       style: TextStyle(
                         color: isDark ? const Color(0xFFF8F9FA) : const Color(0xFF212529),
                         fontWeight: FontWeight.w800,
@@ -77,9 +77,9 @@ class AyahRepeatBottomSheet extends StatelessWidget {
 
               // ─── Repeat Single Ayah ───
               Directionality(
-                textDirection: TextDirection.rtl,
+                textDirection: TextDirection.ltr,
                 child: Text(
-                  "تكرار الآية الحالية",
+                  "Repeat current ayah",
                   style: TextStyle(
                     color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057),
                     fontWeight: FontWeight.w600,
@@ -99,7 +99,7 @@ class AyahRepeatBottomSheet extends StatelessWidget {
                       state.isActive;
                   return _presetChip(
                     context: context,
-                    label: count == 0 ? "∞" : "$count مرات",
+                    label: count == 0 ? "∞" : "$count times",
                     isSelected: isSelected,
                     accent: accent,
                     isDark: isDark,
@@ -112,9 +112,9 @@ class AyahRepeatBottomSheet extends StatelessWidget {
 
               // ─── Repeat Current Surah Range ───
               Directionality(
-                textDirection: TextDirection.rtl,
+                textDirection: TextDirection.ltr,
                 child: Text(
-                  "تكرار السورة الحالية",
+                  "Repeat current surah",
                   style: TextStyle(
                     color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057),
                     fontWeight: FontWeight.w600,
@@ -136,7 +136,7 @@ class AyahRepeatBottomSheet extends StatelessWidget {
                       state.isActive;
                   return _presetChip(
                     context: context,
-                    label: count == 0 ? "∞" : "$count مرات",
+                    label: count == 0 ? "∞" : "$count times",
                     isSelected: isSelected,
                     accent: accent,
                     isDark: isDark,
@@ -170,7 +170,7 @@ class AyahRepeatBottomSheet extends StatelessWidget {
         border: Border.all(color: accent.withValues(alpha: 0.25)),
       ),
       child: Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: Row(
           children: [
             Icon(Icons.repeat_one_rounded, color: accent, size: 20),
@@ -180,7 +180,7 @@ class AyahRepeatBottomSheet extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "التكرار نشط",
+                    "Repeat on",
                     style: TextStyle(color: accent, fontWeight: FontWeight.w700, fontSize: 14),
                   ),
                   const Gap(2),
@@ -245,7 +245,7 @@ class AyahRepeatBottomSheet extends StatelessWidget {
           border: Border.all(color: Colors.red.withValues(alpha: 0.3)),
         ),
         child: const Text(
-          "إلغاء",
+          "Cancel",
           style: TextStyle(color: Colors.red, fontWeight: FontWeight.w600, fontSize: 12),
         ),
       ),

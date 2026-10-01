@@ -332,7 +332,7 @@ class SunnahWuduPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: Text(
-                    "سنة",
+                    "Sunnah",
                     style: GoogleFonts.cairo(
                       fontSize: 11,
                       fontWeight: FontWeight.w800,
@@ -347,12 +347,12 @@ class SunnahWuduPage extends StatelessWidget {
                   title: step.title,
                   description: step.description,
                   evidence: step.evidence,
-                  type: "سنن الوضوء",
+                  type: "Sunnahs of wudu",
                 ),
                 icon: const Icon(Icons.share_rounded),
                 iconSize: 20,
                 color: const Color(0xFF10B981),
-                tooltip: "مشاركة",
+                tooltip: "Share",
               ),
             ],
           ),
@@ -449,7 +449,7 @@ class SunnahWuduPage extends StatelessWidget {
                   const Gap(12),
                   Expanded(
                     child: Text(
-                      "مشاركة السنة",
+                      "Share Sunnah",
                       style: GoogleFonts.cairo(
                         fontSize: 20,
                         fontWeight: FontWeight.w900,
@@ -464,7 +464,7 @@ class SunnahWuduPage extends StatelessWidget {
               // Share as Text
               _shareOptionButton(
                 icon: Icons.text_fields_rounded,
-                label: "مشاركة كنص",
+                label: "Share as text",
                 subtitle: "نسخ النص ومشاركته",
                 color: const Color(0xFF3B82F6),
                 isDark: isDark,
@@ -504,7 +504,7 @@ class SunnahWuduPage extends StatelessWidget {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                            "حدث خطأ أثناء المشاركة",
+                            "An error occurred while sharing",
                             style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
                           ),
                           behavior: SnackBarBehavior.floating,
@@ -520,7 +520,7 @@ class SunnahWuduPage extends StatelessWidget {
               // Share as Image
               _shareOptionButton(
                 icon: Icons.image_rounded,
-                label: "مشاركة كصورة",
+                label: "Share as image",
                 subtitle: "تخصيص وإنشاء صورة احترافية",
                 color: const Color(0xFFEC4899),
                 isDark: isDark,
@@ -690,7 +690,7 @@ class SunnahWuduPage extends StatelessWidget {
               ),
               const Gap(8),
               Text(
-                "حديث شريف",
+                "Hadith",
                 style: GoogleFonts.cairo(
                   fontSize: 13,
                   fontWeight: FontWeight.w800,

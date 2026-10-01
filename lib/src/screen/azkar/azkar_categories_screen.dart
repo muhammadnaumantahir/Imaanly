@@ -57,7 +57,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
         _allAzkar = list;
         _categories = categories;
         _isLoading = false;
-        _errorMessage = categories.isEmpty ? 'لا توجد أذكار متاحة حالياً' : null;
+        _errorMessage = categories.isEmpty ? 'No adhkar available right now' : null;
       });
 
       final target = widget.initialCategory;
@@ -72,7 +72,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
       if (!mounted) return;
       setState(() {
         _isLoading = false;
-        _errorMessage = 'حصل خطأ أثناء تحميل الأذكار';
+        _errorMessage = 'An error occurred while loading adhkar';
       });
     }
   }
@@ -114,7 +114,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
     final filtered = _filteredCategories;
 
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Scaffold(
         backgroundColor: background,
         body: _isLoading
@@ -148,7 +148,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
                                 ),
                                 const SizedBox(width: 10),
                                 Text(
-                                  _query.isEmpty ? 'جميع الأذكار' : 'نتائج البحث',
+                                  _query.isEmpty ? 'All adhkar' : 'Search results',
                                   style: TextStyle(
                                     color: text,
                                     fontSize: 20,
@@ -157,7 +157,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
                                 ),
                                 const Spacer(),
                                 Text(
-                                  '${filtered.length} مجموعة',
+                                  '${filtered.length} groups',
                                   style: TextStyle(color: muted, fontSize: 12, fontWeight: FontWeight.w700),
                                 ),
                               ],
@@ -169,7 +169,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
                             hasScrollBody: false,
                             child: Center(
                               child: Text(
-                                'لم نجد ذكراً بهذا الاسم',
+                                'No adhkar found with that name',
                                 style: TextStyle(color: muted, fontWeight: FontWeight.w700),
                               ),
                             ),
@@ -245,7 +245,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
                   ),
                   const Spacer(),
                   IconButton(
-                    tooltip: 'رجوع',
+                    tooltip: 'Back',
                     onPressed: () => Navigator.maybePop(context),
                     icon: const Icon(Icons.arrow_forward_rounded, color: Colors.white),
                   ),
@@ -253,20 +253,20 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
               ),
               const SizedBox(height: 18),
               const Text(
-                'أذكار المسلم',
+                'Muslim Adhkar',
                 style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.w900),
               ),
               const SizedBox(height: 5),
               Text(
-                'اذكر الله بقلب حاضر، وفي كل وقت.',
+                'Remember Allah with a present heart, at all times.',
                 style: TextStyle(color: Colors.white.withValues(alpha: 0.82), fontSize: 14, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 18),
               Row(
                 children: [
-                  _heroStat(Icons.menu_book_rounded, '${_allAzkar.length}', 'ذكر'),
+                  _heroStat(Icons.menu_book_rounded, '${_allAzkar.length}', 'Dhikr'),
                   const SizedBox(width: 22),
-                  _heroStat(Icons.category_rounded, '${_categories.length}', 'مجموعة'),
+                  _heroStat(Icons.category_rounded, '${_categories.length}', 'Group'),
                 ],
               ),
             ],
@@ -297,7 +297,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
         textDirection: TextDirection.rtl,
         style: TextStyle(color: text, fontWeight: FontWeight.w600),
         decoration: InputDecoration(
-          hintText: 'ابحث في مجموعات الأذكار...',
+          hintText: 'Search adhkar groups...',
           hintStyle: TextStyle(color: muted, fontSize: 13),
           prefixIcon: Icon(Icons.search_rounded, color: primary),
           suffixIcon: _query.isEmpty
@@ -382,7 +382,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
                     children: [
                       Text(category, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: text, fontWeight: FontWeight.w900, fontSize: 15)),
                       const SizedBox(height: 5),
-                      Text('${_countFor(category)} أذكار', style: TextStyle(color: muted, fontSize: 12, fontWeight: FontWeight.w600)),
+                      Text('${_countFor(category)} adhkar', style: TextStyle(color: muted, fontSize: 12, fontWeight: FontWeight.w600)),
                     ],
                   ),
                 ),
@@ -441,7 +441,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
                 style: TextStyle(color: text, fontSize: 15, fontWeight: FontWeight.w900),
               ),
               const SizedBox(height: 4),
-              Text('$count ذكر', style: TextStyle(color: tint, fontSize: 11, fontWeight: FontWeight.w800)),
+              Text('$count dhikr', style: TextStyle(color: tint, fontSize: 11, fontWeight: FontWeight.w800)),
             ],
           ),
         ),
@@ -484,7 +484,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
           children: [
             Icon(Icons.auto_awesome_rounded, color: primary, size: 58),
             const SizedBox(height: 16),
-            Text(_errorMessage ?? 'تعذر تحميل الأذكار', textAlign: TextAlign.center, style: TextStyle(color: text, fontSize: 17, fontWeight: FontWeight.w800)),
+            Text(_errorMessage ?? 'Couldn\'t load adhkar', textAlign: TextAlign.center, style: TextStyle(color: text, fontSize: 17, fontWeight: FontWeight.w800)),
             const SizedBox(height: 18),
             FilledButton.icon(
               onPressed: () {
@@ -492,7 +492,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
                 _loadAzkarData();
               },
               icon: const Icon(Icons.refresh_rounded),
-              label: const Text('إعادة المحاولة'),
+              label: const Text('Retry'),
               style: FilledButton.styleFrom(backgroundColor: primary, foregroundColor: Colors.white),
             ),
           ],

@@ -152,7 +152,7 @@ class _SmartKhatmaPageState extends State<SmartKhatmaPage> {
       initialTime: _reminderTime,
       builder: (ctx, child) {
         return Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: TextDirection.ltr,
           child: child ?? const SizedBox.shrink(),
         );
       },
@@ -214,7 +214,7 @@ class _SmartKhatmaPageState extends State<SmartKhatmaPage> {
     final bool? confirm = await showDialog<bool>(
       context: context,
       builder: (ctx) => Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: AlertDialog(
           backgroundColor: Theme.of(context).colorScheme.surface,
           title: const Text("Ã˜Â­Ã˜Â°Ã™Â Ã˜Â§Ã™â€žÃ˜Â®Ã˜ÂªÃ™â€¦Ã˜Â©", style: TextStyle(fontWeight: FontWeight.bold)),

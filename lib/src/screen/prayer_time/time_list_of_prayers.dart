@@ -319,7 +319,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text("تم تحديث الموقع ومواقيت الصلاة."),
+          content: Text("Location and prayer times updated."),
           behavior: SnackBarBehavior.floating,
         ),
       );
@@ -472,7 +472,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                     Text(
                       locationName?.isNotEmpty == true
                           ? locationName!
-                          : "جاري تحديد اسم الموقع...",
+                          : "Detecting location name...",
                       style: GoogleFonts.cairo(
                         fontSize: 16,
                         fontWeight: FontWeight.w900,
@@ -499,7 +499,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               Expanded(
                 child: _modernActionPill(
                   icon: Icons.explore_rounded,
-                  label: "القبلة",
+                  label: "Qibla",
                   color: _primaryGreen,
                   isDark: isDark,
                   onTap: () {
@@ -514,7 +514,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               Expanded(
                 child: _modernActionPill(
                   icon: Icons.refresh_rounded,
-                  label: "تحديث",
+                  label: "Refresh",
                   color: const Color(0xFF3B82F6),
                   isDark: isDark,
                   onTap: () => _refreshLocation(),
@@ -655,7 +655,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "الصلاة القادمة",
+                      "Next prayer",
                       style: GoogleFonts.cairo(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
@@ -694,17 +694,17 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _timeUnit(hours.toString().padLeft(2, '0'), "ساعة")
+                _timeUnit(hours.toString().padLeft(2, '0'), "Hour")
                     .animate().fadeIn(duration: 400.ms, delay: 200.ms).scale(begin: const Offset(0.8, 0.8)),
                 _timeSeparator()
                     .animate(onPlay: (controller) => controller.repeat())
                     .fadeOut(duration: 500.ms).then().fadeIn(duration: 500.ms),
-                _timeUnit(minutes.toString().padLeft(2, '0'), "دقيقة")
+                _timeUnit(minutes.toString().padLeft(2, '0'), "Minute")
                     .animate().fadeIn(duration: 400.ms, delay: 250.ms).scale(begin: const Offset(0.8, 0.8)),
                 _timeSeparator()
                     .animate(onPlay: (controller) => controller.repeat())
                     .fadeOut(duration: 500.ms).then().fadeIn(duration: 500.ms),
-                _timeUnit(seconds.toString().padLeft(2, '0'), "ثانية")
+                _timeUnit(seconds.toString().padLeft(2, '0'), "Second")
                     .animate().fadeIn(duration: 400.ms, delay: 300.ms).scale(begin: const Offset(0.8, 0.8)),
               ],
             ),
@@ -845,7 +845,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               ),
               const Gap(12),
               Text(
-                "إعدادات الحساب",
+                "Account settings",
                 style: GoogleFonts.cairo(
                   fontSize: 16,
                   fontWeight: FontWeight.w900,
@@ -891,7 +891,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "المذهب الفقهي",
+                          "School of fiqh",
                           style: GoogleFonts.cairo(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
@@ -900,7 +900,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         ),
                         const Gap(2),
                         Text(
-                          state.madhab == Madhab.shafi ? "شافعي" : "حنفي",
+                          state.madhab == Madhab.shafi ? "Shafi'i" : "Hanafi",
                           style: GoogleFonts.cairo(
                             fontSize: 16,
                             fontWeight: FontWeight.w900,
@@ -957,7 +957,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "طريقة الحساب",
+                          "Calculation method",
                           style: GoogleFonts.cairo(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
@@ -1018,7 +1018,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             ),
             const Gap(20),
             Text(
-              "اختر المذهب الفقهي",
+              "Choose your school of fiqh",
               style: GoogleFonts.cairo(
                 fontSize: 20,
                 fontWeight: FontWeight.w900,
@@ -1027,7 +1027,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             ),
             const Gap(8),
             Text(
-              "يؤثر على حساب وقت صلاة العصر",
+              "Affects the calculation of Asr prayer time",
               style: GoogleFonts.cairo(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
@@ -1036,16 +1036,16 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             ),
             const Gap(24),
             _madhabOption(
-              title: "المذهب الشافعي",
-              subtitle: "العصر عندما يصبح ظل الشيء مثله",
+              title: "Shafi'i school",
+              subtitle: "Asr when an object's shadow equals its height",
               value: Madhab.shafi,
               selected: state.madhab == Madhab.shafi,
               isDark: isDark,
             ),
             const Gap(12),
             _madhabOption(
-              title: "المذهب الحنفي",
-              subtitle: "العصر عندما يصبح ظل الشيء مثليه",
+              title: "Hanafi school",
+              subtitle: "Asr when an object's shadow is twice its height",
               value: Madhab.hanafi,
               selected: state.madhab == Madhab.hanafi,
               isDark: isDark,
@@ -1155,7 +1155,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             ),
             const Gap(20),
             Text(
-              "اختر طريقة الحساب",
+              "Choose calculation method",
               style: GoogleFonts.cairo(
                 fontSize: 20,
                 fontWeight: FontWeight.w900,
@@ -1164,7 +1164,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             ),
             const Gap(8),
             Text(
-              "تختلف طرق حساب أوقات الصلاة حسب المنطقة",
+              "Prayer time calculation methods differ by region",
               style: GoogleFonts.cairo(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
@@ -1252,7 +1252,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
-                  "محدد",
+                  "Selected",
                   style: GoogleFonts.cairo(
                     fontSize: 11,
                     fontWeight: FontWeight.w800,
@@ -1317,7 +1317,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "تنبيهات الصلوات",
+                      "Prayer alerts",
                       style: GoogleFonts.cairo(
                         fontSize: 16,
                         fontWeight: FontWeight.w900,
@@ -1327,10 +1327,10 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                     const Gap(2),
                     Text(
                       _syncing
-                          ? "جاري تحديث المواعيد..."
+                          ? "Updating times..."
                           : _notifEnabled
-                          ? "مفعلة"
-                          : "معطلة",
+                          ? "Enabled"
+                          : "Disabled",
                       style: GoogleFonts.cairo(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
@@ -1389,7 +1389,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       ),
                       const Gap(8),
                       Text(
-                        "توقيت التنبيه",
+                        "Alert timing",
                         style: GoogleFonts.cairo(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
@@ -1405,7 +1405,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                     children: [0, 10, 20, 30]
                         .map(
                           (minutes) => _selectablePill(
-                            label: minutes == 0 ? "عند الوقت" : "قبل $minutes د",
+                            label: minutes == 0 ? "On time" : "$minutes min before",
                             selected: _leadMinutes == minutes,
                             isDark: isDark,
                             color: _primaryGreen,
@@ -1452,7 +1452,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       ),
                       const Gap(8),
                       Text(
-                        "الصلوات المفعلة",
+                        "Enabled prayers",
                         style: GoogleFonts.cairo(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
@@ -1461,7 +1461,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       ),
                       const Spacer(),
                       Text(
-                        "${_selectedAlerts.length} من ${_prayers.length}",
+                        "${_selectedAlerts.length} of ${_prayers.length}",
                         style: GoogleFonts.cairo(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
@@ -1532,7 +1532,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   const Gap(8),
                   Expanded(
                     child: Text(
-                      "سيتم إرسال التنبيهات للصلوات المحددة حسب التوقيت المختار",
+                      "Alerts will be sent for the selected prayers at the chosen timing",
                       style: GoogleFonts.cairo(
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
@@ -1593,7 +1593,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               const Gap(12),
               Expanded(
                 child: Text(
-                  "المساجد القريبة",
+                  "Nearby mosques",
                   style: GoogleFonts.cairo(
                     fontSize: 16,
                     fontWeight: FontWeight.w900,
@@ -1652,7 +1652,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "إضافة مسجد جديد",
+                          "Add new mosque",
                           style: GoogleFonts.cairo(
                             fontSize: 15,
                             fontWeight: FontWeight.w900,
@@ -1661,7 +1661,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         ),
                         const Gap(4),
                         Text(
-                          "احفظ موقع المسجد وأوقات الإقامة",
+                          "Save the mosque location and iqama times",
                           style: GoogleFonts.cairo(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
@@ -1718,7 +1718,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "مساجدي المحفوظة",
+                          "My saved mosques",
                           style: GoogleFonts.cairo(
                             fontSize: 15,
                             fontWeight: FontWeight.w900,
@@ -1727,7 +1727,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         ),
                         const Gap(4),
                         Text(
-                          "عرض وإدارة المساجد المحفوظة",
+                          "View and manage saved mosques",
                           style: GoogleFonts.cairo(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
@@ -1784,7 +1784,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "عرض الخريطة",
+                          "View map",
                           style: GoogleFonts.cairo(
                             fontSize: 15,
                             fontWeight: FontWeight.w900,
@@ -1793,7 +1793,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         ),
                         const Gap(4),
                         Text(
-                          "شاهد المساجد على الخريطة",
+                          "View mosques on the map",
                           style: GoogleFonts.cairo(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
@@ -1865,7 +1865,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 const Gap(12),
                 Expanded(
                   child: Text(
-                    "إضافة مسجد جديد",
+                    "Add new mosque",
                     style: GoogleFonts.cairo(
                       fontSize: 20,
                       fontWeight: FontWeight.w900,
@@ -1893,8 +1893,8 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           controller: nameController,
           textAlign: TextAlign.right,
           decoration: InputDecoration(
-            labelText: "اسم المسجد",
-            hintText: "مثال: مسجد النور",
+            labelText: "Mosque name",
+            hintText: "Example: Al-Noor Mosque",
             filled: true,
             fillColor: isDark
                 ? Colors.white.withValues(alpha: 0.05)
@@ -1912,8 +1912,8 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           textAlign: TextAlign.right,
           maxLines: 2,
           decoration: InputDecoration(
-            labelText: "العنوان",
-            hintText: "أدخل عنوان المسجد",
+            labelText: "Title",
+            hintText: "Enter the mosque address",
             filled: true,
             fillColor: isDark
                 ? Colors.white.withValues(alpha: 0.05)
@@ -1935,7 +1935,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(
-                        "سيتم فتح الخريطة لتحديد الموقع",
+                        "The map will open to select the location",
                         style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
                       ),
                       behavior: SnackBarBehavior.floating,
@@ -1945,7 +1945,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 },
                 icon: const Icon(Icons.map_rounded),
                 label: Text(
-                  "تحديد على الخريطة",
+                  "Select on map",
                   style: GoogleFonts.cairo(fontWeight: FontWeight.w800),
                 ),
                 style: OutlinedButton.styleFrom(
@@ -1969,7 +1969,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
-                          'تم إضافة "${nameController.text.trim()}" بنجاح',
+                          '"${nameController.text.trim()}" added successfully',
                           style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
                         ),
                         behavior: SnackBarBehavior.floating,
@@ -1980,7 +1980,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 },
                 icon: const Icon(Icons.check_rounded),
                 label: Text(
-                  "حفظ المسجد",
+                  "Save mosque",
                   style: GoogleFonts.cairo(fontWeight: FontWeight.w900),
                 ),
                 style: FilledButton.styleFrom(
@@ -2044,7 +2044,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       const Gap(12),
                       Expanded(
                         child: Text(
-                          "مساجدي المحفوظة",
+                          "My saved mosques",
                           style: GoogleFonts.cairo(
                             fontSize: 20,
                             fontWeight: FontWeight.w900,
@@ -2063,10 +2063,10 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 itemCount: 3, // Demo data
                 itemBuilder: (context, index) {
                   return _buildMosqueCard(
-                    name: "مسجد ${['النور', 'الرحمن', 'الهدى'][index]}",
-                    address: "شارع ${['الملك فهد', 'العليا', 'الروضة'][index]}",
+                    name: "${['Al-Noor', 'Al-Rahman', 'Al-Huda'][index]} Mosque",
+                    address: "${['King Fahd', 'Olaya', 'Rawdah'][index]} Street",
                     rating: [4.5, 4.8, 4.2][index],
-                    distance: "${[0.5, 1.2, 2.1][index]} كم",
+                    distance: "${[0.5, 1.2, 2.1][index]} km",
                     isDark: isDark,
                     index: index,
                   );
@@ -2253,7 +2253,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               ).animate().scale(duration: 400.ms, curve: Curves.easeOutBack),
               const Gap(16),
               Text(
-                "تقييم $mosqueName",
+                "Rate $mosqueName",
                 textAlign: TextAlign.center,
                 style: GoogleFonts.cairo(
                   fontWeight: FontWeight.w900,
@@ -2281,7 +2281,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               ),
               const Gap(12),
               Text(
-                rating == 5.0 ? "ممتاز!" : rating >= 4.0 ? "جيد جداً" : rating >= 3.0 ? "جيد" : "مقبول",
+                rating == 5.0 ? "Excellent!" : rating >= 4.0 ? "Very good" : rating >= 3.0 ? "Good" : "Acceptable",
                 style: GoogleFonts.cairo(
                   fontSize: 18,
                   fontWeight: FontWeight.w900,
@@ -2294,7 +2294,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             TextButton(
               onPressed: () => Navigator.pop(ctx),
               child: Text(
-                "إلغاء",
+                "Cancel",
                 style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
               ),
             ),
@@ -2304,7 +2304,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                     content: Text(
-                      'تم تقييم $mosqueName بـ $rating نجوم',
+                      '$mosqueName rated $rating stars',
                       style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
                     ),
                     behavior: SnackBarBehavior.floating,
@@ -2319,7 +2319,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 ),
               ),
               child: Text(
-                "تقييم",
+                "Rate",
                 style: GoogleFonts.cairo(fontWeight: FontWeight.w800),
               ),
             ),
@@ -2375,7 +2375,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       const Gap(12),
                       Expanded(
                         child: Text(
-                          "خريطة المساجد",
+                          "Mosque map",
                           style: GoogleFonts.cairo(
                             fontSize: 20,
                             fontWeight: FontWeight.w900,
@@ -2409,7 +2409,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       ).animate().scale(duration: 600.ms, curve: Curves.easeOutBack),
                       const Gap(16),
                       Text(
-                        "سيتم عرض الخريطة هنا",
+                        "The map will be shown here",
                         style: GoogleFonts.cairo(
                           fontSize: 16,
                           fontWeight: FontWeight.w800,
@@ -2418,7 +2418,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       ).animate().fadeIn(duration: 400.ms, delay: 200.ms),
                       const Gap(8),
                       Text(
-                        "يمكنك تحديد موقع المساجد على الخريطة",
+                        "You can mark mosque locations on the map",
                         style: GoogleFonts.cairo(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
@@ -2462,7 +2462,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               ),
               const Gap(10),
               Text(
-                "جدول الصلوات اليومية",
+                "Daily prayer schedule",
                 style: GoogleFonts.cairo(
                   fontSize: 18,
                   fontWeight: FontWeight.w900,
@@ -2632,7 +2632,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Text(
-                                      "الآن",
+                                      "Now",
                                       style: GoogleFonts.cairo(
                                         fontSize: 11,
                                         fontWeight: FontWeight.w800,
@@ -2648,7 +2648,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Text(
-                                      "القادمة",
+                                      "Upcoming",
                                       style: GoogleFonts.cairo(
                                         fontSize: 11,
                                         fontWeight: FontWeight.w800,
@@ -2669,7 +2669,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                                   ),
                                 if (hasNotification) const Gap(6),
                                 Text(
-                                  hasNotification ? "التنبيه مفعّل" : "بدون تنبيه",
+                                  hasNotification ? "Alert on" : "No alert",
                                   style: GoogleFonts.cairo(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
@@ -2736,7 +2736,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       Expanded(
                         child: _modernActionButton(
                           icon: Icons.tune_rounded,
-                          label: "تعديل",
+                          label: "Edit",
                           color: prayerColor,
                           isDark: isDark,
                           onTap: () => _editPrayerAdjustment(prayer, isDark, themeState),
@@ -2746,7 +2746,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       Expanded(
                         child: _modernActionButton(
                           icon: Icons.timer_rounded,
-                          label: "الإقامة",
+                          label: "Iqama",
                           color: prayerColor,
                           isDark: isDark,
                           onTap: () => _editIqamahTime(prayer, isDark, themeState),
@@ -2757,7 +2757,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         Expanded(
                           child: _modernActionButton(
                             icon: Icons.menu_book_rounded,
-                            label: "السنن",
+                            label: "Sunnahs",
                             color: const Color(0xFF0F766E),
                             isDark: isDark,
                             onTap: () {
@@ -2841,7 +2841,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           ),
           const Gap(20),
           Text(
-            "السنن والآداب",
+            "Sunnahs & etiquette",
             style: GoogleFonts.cairo(
               fontSize: 20,
               fontWeight: FontWeight.w900,
@@ -2851,8 +2851,8 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           const Gap(20),
           _sunnahOption(
             icon: Icons.water_drop_rounded,
-            title: "سنن الوضوء",
-            subtitle: "تعلم كيفية الوضوء الصحيح",
+            title: "Sunnahs of wudu",
+            subtitle: "Learn how to perform wudu correctly",
             color: const Color(0xFF0EA5E9),
             isDark: isDark,
             onTap: () {
@@ -2866,8 +2866,8 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           const Gap(12),
           _sunnahOption(
             icon: Icons.book_rounded,
-            title: "سنن الصلاة",
-            subtitle: "تعلم سنن وآداب الصلاة",
+            title: "Sunnahs of prayer",
+            subtitle: "Learn the sunnahs and etiquette of prayer",
             color: const Color(0xFF10B981),
             isDark: isDark,
             onTap: () {
@@ -2961,11 +2961,11 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           builder: (context, setDialogState) {
             return AlertDialog(
               backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-              title: Text("تعديل وقت الأذان", textAlign: TextAlign.right, style: _titleStyle(isDark)),
+              title: Text("Adjust adhan time", textAlign: TextAlign.right, style: _titleStyle(isDark)),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text("يمكنك تقديم أو تأخير الأذان بالدقائق ليتوافق مع المسجد.", textAlign: TextAlign.right, style: _mutedStyle(isDark)),
+                  Text("You can move the adhan earlier or later by minutes to match your mosque.", textAlign: TextAlign.right, style: _mutedStyle(isDark)),
                   const Gap(20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -2976,7 +2976,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         color: themeState.primary,
                       ),
                       const Gap(12),
-                      Text("$tempAdj دقيقة", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black87)),
+                      Text("$tempAdj min", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black87)),
                       const Gap(12),
                       IconButton(
                         onPressed: () => setDialogState(() => tempAdj++),
@@ -2988,8 +2988,8 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 ],
               ),
               actions: [
-                TextButton(onPressed: () => Navigator.pop(ctx), child: const Text("إلغاء")),
-                FilledButton(onPressed: () => Navigator.pop(ctx, tempAdj), child: const Text("حفظ")),
+                TextButton(onPressed: () => Navigator.pop(ctx), child: const Text("Cancel")),
+                FilledButton(onPressed: () => Navigator.pop(ctx, tempAdj), child: const Text("Save")),
               ],
             );
           },
@@ -3014,11 +3014,11 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           builder: (context, setDialogState) {
             return AlertDialog(
               backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-              title: Text("وقت الإقامة", textAlign: TextAlign.right, style: _titleStyle(isDark)),
+              title: Text("Iqama time", textAlign: TextAlign.right, style: _titleStyle(isDark)),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text("كم دقيقة بين الأذان والإقامة؟", textAlign: TextAlign.right, style: _mutedStyle(isDark)),
+                  Text("How many minutes between adhan and iqama?", textAlign: TextAlign.right, style: _mutedStyle(isDark)),
                   const Gap(20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -3029,7 +3029,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         color: themeState.primary,
                       ),
                       const Gap(12),
-                      Text("$tempIqamah دقيقة", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black87)),
+                      Text("$tempIqamah min", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: isDark ? Colors.white : Colors.black87)),
                       const Gap(12),
                       IconButton(
                         onPressed: () => setDialogState(() => tempIqamah++),
@@ -3041,8 +3041,8 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 ],
               ),
               actions: [
-                TextButton(onPressed: () => Navigator.pop(ctx), child: const Text("إلغاء")),
-                FilledButton(onPressed: () => Navigator.pop(ctx, tempIqamah), child: const Text("حفظ")),
+                TextButton(onPressed: () => Navigator.pop(ctx), child: const Text("Cancel")),
+                FilledButton(onPressed: () => Navigator.pop(ctx, tempIqamah), child: const Text("Save")),
               ],
             );
           },
@@ -3118,7 +3118,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
       children: [
         Expanded(
           child: _extraTile(
-            "انتهاء السحور",
+            "Suhoor ends",
             today.fajr.subtract(const Duration(minutes: 1)),
             const Color(0xFF0F766E),
             isDark,
@@ -3127,7 +3127,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
         const Gap(10),
         Expanded(
           child: _extraTile(
-            "بداية الإفطار",
+            "Iftar begins",
             today.maghrib,
             const Color(0xFFC2410C),
             isDark,
@@ -3136,7 +3136,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
         const Gap(10),
         Expanded(
           child: _extraTile(
-            "بداية التهجد",
+            "Tahajjud begins",
             today.tahajjud,
             const Color(0xFF7C3AED),
             isDark,

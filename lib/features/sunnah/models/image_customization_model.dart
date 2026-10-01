@@ -121,7 +121,7 @@ class ImageCustomizationSettings {
     
     // Footer defaults
     this.showFooter = true,
-    this.footerText = 'تطبيق الفرقان للقرآن الكريم',
+    this.footerText = 'Imaanly Quran app',
     this.footerColor = const Color(0xFF9B9B9B),
     this.footerFontSize = 14.0,
     
@@ -352,20 +352,20 @@ extension ImageSizeExtension on ImageSize {
   String get label {
     switch (this) {
       case ImageSize.square1080:
-        return 'مربع متوسط (1080×1080)';
+        return 'Medium square (1080×1080)';
       case ImageSize.square800:
-        return 'مربع صغير (800×800)';
+        return 'Small square (800×800)';
       case ImageSize.square1200:
-        return 'مربع كبير (1200×1200)';
+        return 'Large square (1200×1200)';
       case ImageSize.instagram:
-        return 'إنستجرام (1080×1920)';
+        return 'Instagram (1080×1920)';
       case ImageSize.facebook:
-        return 'فيسبوك (1200×630)';
+        return 'Facebook (1200×630)';
       case ImageSize.twitter:
-        return 'تويتر (1200×675)';
+        return 'Twitter (1200×675)';
       case ImageSize.custom:
         final s = _customSize;
-        return 'مخصص (${s.width.toInt()}×${s.height.toInt()})';
+        return 'Custom (${s.width.toInt()}×${s.height.toInt()})';
     }
   }
   
@@ -389,13 +389,13 @@ extension BackgroundTypeExtension on BackgroundType {
   String get label {
     switch (this) {
       case BackgroundType.solid:
-        return 'لون واحد';
+        return 'Single color';
       case BackgroundType.gradient:
-        return 'تدرج لوني';
+        return 'Color gradient';
       case BackgroundType.pattern:
-        return 'نمط';
+        return 'Style';
       case BackgroundType.image:
-        return 'صورة';
+        return 'Image';
     }
   }
 }
@@ -404,17 +404,17 @@ extension LayoutStyleExtension on LayoutStyle {
   String get label {
     switch (this) {
       case LayoutStyle.modern:
-        return 'عصري';
+        return 'Modern';
       case LayoutStyle.classic:
-        return 'كلاسيكي';
+        return 'Classic';
       case LayoutStyle.minimal:
-        return 'بسيط';
+        return 'Simple';
       case LayoutStyle.elegant:
-        return 'أنيق';
+        return 'Elegant';
       case LayoutStyle.bold:
-        return 'جريء';
+        return 'Bold';
       case LayoutStyle.card:
-        return 'بطاقة';
+        return 'Card';
     }
   }
 }

@@ -89,7 +89,7 @@ class SearchSheetState extends State<SearchSheet> {
     final query = widget.controller.text.trim();
 
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Padding(
         padding: EdgeInsets.only(
           bottom: MediaQuery.of(context).viewInsets.bottom,
@@ -129,7 +129,7 @@ class SearchSheetState extends State<SearchSheet> {
                         child: Column(
                           children: [
                             Text(
-                              "بحث داخل المصحف",
+                              "Search in the Mushaf",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: 18,
@@ -138,7 +138,7 @@ class SearchSheetState extends State<SearchSheet> {
                               ),
                             ),
                             Text(
-                              "ابحث عن أي مقطع ثم انتقل مباشرة إلى الآية",
+                              "Search for any passage, then jump straight to the ayah",
                               style: TextStyle(
                                 fontSize: 11.5,
                                 fontWeight: FontWeight.w600,
@@ -184,7 +184,7 @@ class SearchSheetState extends State<SearchSheet> {
                               fontWeight: FontWeight.w600,
                             ),
                             decoration: InputDecoration(
-                              hintText: "اكتب كلمة أو جزءًا من الآية...",
+                              hintText: "Type a word or part of the ayah...",
                               hintStyle: TextStyle(color: _mutedColor),
                               border: InputBorder.none,
                             ),
@@ -205,7 +205,7 @@ class SearchSheetState extends State<SearchSheet> {
                     Padding(
                       padding: const EdgeInsets.only(top: 24, bottom: 16),
                       child: Text(
-                        "اكتب حرفين أو أكثر لعرض النتائج",
+                        "Type two or more characters to see results",
                         style: TextStyle(
                           fontWeight: FontWeight.w800,
                           color: _mutedColor,
@@ -232,7 +232,7 @@ class SearchSheetState extends State<SearchSheet> {
                             ),
                             const SizedBox(height: 10),
                             Text(
-                              "ابحث باسم كلمة أو بجزء من النص، وستظهر لك أقرب النتائج فورًا.",
+                              "Search by a word or part of the text and the closest results appear instantly.",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: _textColor,
@@ -268,7 +268,7 @@ class SearchSheetState extends State<SearchSheet> {
                               padding: const EdgeInsets.only(top: 26),
                               child: Center(
                                 child: Text(
-                                  "لا توجد نتائج مطابقة الآن",
+                                  "No matching results right now",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w800,
                                     color: _mutedColor,
@@ -297,7 +297,7 @@ class SearchSheetState extends State<SearchSheet> {
                                   ),
                                 ),
                                 child: Text(
-                                  "تم العثور على ${localizedNumber(context, results.length)} نتيجة",
+                                  "Found ${localizedNumber(context, results.length)} results",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w800,
@@ -388,7 +388,7 @@ class SearchSheetState extends State<SearchSheet> {
                                                               ),
                                                         ),
                                                         child: Text(
-                                                          "الآية ${localizedNumber(context, result.verse)}",
+                                                          "Ayah ${localizedNumber(context, result.verse)}",
                                                           style: TextStyle(
                                                             color: _mutedColor,
                                                             fontWeight:

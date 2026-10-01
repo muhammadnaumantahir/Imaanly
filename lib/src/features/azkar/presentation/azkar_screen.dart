@@ -30,7 +30,7 @@ class _AzkarCategoriesView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          Directionality.of(context) == TextDirection.rtl ? 'الأذكار' : 'Azkar',
+          Directionality.of(context) == TextDirection.rtl ? 'Adhkar' : 'Azkar',
         ),
         elevation: 0,
       ),
@@ -49,10 +49,10 @@ class _AzkarCategoriesView extends StatelessWidget {
               if (state.categories.isEmpty) {
                 return EmptyStateWidget(
                   title: Directionality.of(context) == TextDirection.rtl
-                      ? 'لا توجد أذكار'
+                      ? 'No adhkar'
                       : 'No azkar found',
                   subtitle: Directionality.of(context) == TextDirection.rtl
-                      ? 'سيتم إضافة أذكار قريباً'
+                      ? 'Adhkar will be added soon'
                       : 'Azkar will be added soon',
                   icon: Icons.menu_book_outlined,
                 );
@@ -117,14 +117,14 @@ class _TypeFilterChip extends StatelessWidget {
   String _label(BuildContext context) {
     final isRtl = Directionality.of(context) == TextDirection.rtl;
     return switch (type) {
-      AzkarType.morning => isRtl ? 'الصباح' : 'Morning',
-      AzkarType.evening => isRtl ? 'المساء' : 'Evening',
-      AzkarType.prayer => isRtl ? 'الصلاة' : 'Prayer',
-      AzkarType.sleep => isRtl ? 'النوم' : 'Sleep',
-      AzkarType.wakeup => isRtl ? 'الاستيقاظ' : 'Wakeup',
-      AzkarType.general => isRtl ? 'عامة' : 'General',
-      AzkarType.quran => isRtl ? 'القرآن' : 'Quran',
-      AzkarType.ruqyah => isRtl ? 'الرقية' : 'Ruqyah',
+      AzkarType.morning => isRtl ? 'Morning' : 'Morning',
+      AzkarType.evening => isRtl ? 'Evening' : 'Evening',
+      AzkarType.prayer => isRtl ? 'Prayer' : 'Prayer',
+      AzkarType.sleep => isRtl ? 'Sleep' : 'Sleep',
+      AzkarType.wakeup => isRtl ? 'Waking up' : 'Wakeup',
+      AzkarType.general => isRtl ? 'General' : 'General',
+      AzkarType.quran => isRtl ? 'Quran' : 'Quran',
+      AzkarType.ruqyah => isRtl ? 'Ruqyah' : 'Ruqyah',
     };
   }
 
@@ -276,7 +276,7 @@ class AzkarItemsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(Directionality.of(context) == TextDirection.rtl ? 'الأذكار' : 'Azkar'),
+        title: Text(Directionality.of(context) == TextDirection.rtl ? 'Adhkar' : 'Azkar'),
         elevation: 0,
         actions: [
           IconButton(

@@ -174,10 +174,10 @@ class _AudioControllerUiState extends State<AudioControllerUi>
                               const Gap(1),
                               Text(
                                 isLoading
-                                    ? "جاري التحميل..."
+                                    ? "Loading..."
                                     : playerState.isPlaying
-                                        ? "يتم التشغيل"
-                                        : "متوقف",
+                                        ? "Playing"
+                                        : "Paused",
                                 style: TextStyle(
                                   fontSize: 11,
                                   color: isLoading ? _sub(isDark) : accent,
@@ -419,14 +419,14 @@ class _AudioControllerUiState extends State<AudioControllerUi>
                       children: [
                         _bottomBtn(
                           icon: Icons.skip_previous_rounded,
-                          label: "السابقة",
+                          label: "Previous",
                           isDark: isDark,
                           accent: accent,
                           onTap: () => _playPreviousSurah(context),
                         ),
                         _bottomBtn(
                           icon: Icons.playlist_play_rounded,
-                          label: "قائمة",
+                          label: "List",
                           isDark: isDark,
                           accent: accent,
                           isActive: uiState.isPlayList,
@@ -434,14 +434,14 @@ class _AudioControllerUiState extends State<AudioControllerUi>
                         ),
                         _bottomBtn(
                           icon: Icons.record_voice_over_rounded,
-                          label: "القارئ",
+                          label: "Reciter",
                           isDark: isDark,
                           accent: accent,
                           onTap: () => _openReciterPicker(),
                         ),
                         _bottomBtn(
                           icon: Icons.skip_next_rounded,
-                          label: "التالية",
+                          label: "Next",
                           isDark: isDark,
                           accent: accent,
                           onTap: () => _playNextSurah(context),
@@ -458,7 +458,7 @@ class _AudioControllerUiState extends State<AudioControllerUi>
                       children: [
                         _bottomBtn(
                           icon: Icons.bedtime_rounded,
-                          label: "مؤقت",
+                          label: "Timer",
                           isDark: isDark,
                           accent: accent,
                           isActive: context.watch<SleepTimerCubit>().state.isActive,
@@ -466,7 +466,7 @@ class _AudioControllerUiState extends State<AudioControllerUi>
                         ),
                         _bottomBtn(
                           icon: Icons.repeat_rounded,
-                          label: "تكرار",
+                          label: "Repeat",
                           isDark: isDark,
                           accent: accent,
                           onTap: () => _openRepeatPicker(context),

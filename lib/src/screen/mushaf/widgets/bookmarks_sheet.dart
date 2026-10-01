@@ -26,10 +26,10 @@ Future<void> showBookmarksSheet({
     builder: (ctx) {
       const card = AppColors.lightCard;
       final colors = <String, ({String name, Color color})>{
-        "red": (name: "الأحمر", color: const Color(0xFFB3261E)),
-        "yellow": (name: "الأصفر", color: const Color(0xFFB68A00)),
-        "green": (name: "الأخضر", color: themeState.primary),
-        "blue": (name: "الأزرق", color: const Color(0xFF2962FF)),
+        "red": (name: "Red", color: const Color(0xFFB3261E)),
+        "yellow": (name: "Yellow", color: const Color(0xFFB68A00)),
+        "green": (name: "Green", color: themeState.primary),
+        "blue": (name: "Blue", color: const Color(0xFF2962FF)),
       };
 
       String formatTime(String iso) {
@@ -38,12 +38,12 @@ Future<void> showBookmarksSheet({
         final hourOfPeriod = dt.hour % 12;
         final h = hourOfPeriod == 0 ? 12 : hourOfPeriod;
         final mm = dt.minute.toString().padLeft(2, "0");
-        final suffix = dt.hour < 12 ? "ص" : "م";
+        final suffix = dt.hour < 12 ? "AM" : "PM";
         return "${localizedNumber(ctx, h)}:$mm $suffix";
       }
 
       return Directionality(
-        textDirection: TextDirection.rtl,
+        textDirection: TextDirection.ltr,
         child: Container(
           decoration: BoxDecoration(
             color: bg,
@@ -96,11 +96,11 @@ Future<void> showBookmarksSheet({
                       final parsed = parseKey(key);
                       final time = formatTime((e["createdAt"] as String?) ?? "");
                       if (parsed != null && time.isNotEmpty) {
-                        subtitle = "$time ${getSurahNameArabic(parsed.surah)}: ${localizedNumber(ctx, parsed.verse)} - الصفحة ${localizedNumber(ctx, page)}";
+                        subtitle = "$time ${getSurahNameArabic(parsed.surah)}: ${localizedNumber(ctx, parsed.verse)} - Page ${localizedNumber(ctx, page)}";
                       } else if (parsed != null) {
-                        subtitle = "${getSurahNameArabic(parsed.surah)}: ${localizedNumber(ctx, parsed.verse)} - الصفحة ${localizedNumber(ctx, page)}";
+                        subtitle = "${getSurahNameArabic(parsed.surah)}: ${localizedNumber(ctx, parsed.verse)} - Page ${localizedNumber(ctx, page)}";
                       } else {
-                        subtitle = "الصفحة ${localizedNumber(ctx, page)}";
+                        subtitle = "Page ${localizedNumber(ctx, page)}";
                       }
                     }
 
@@ -157,7 +157,7 @@ Future<void> showBookmarksSheet({
                             const Padding(
                               padding: EdgeInsets.only(bottom: 14),
                               child: Text(
-                                "لا توجد فواصل",
+                                "No dividers",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w800,
                                   color: AppColors.lightTextMuted,
@@ -182,7 +182,7 @@ Future<void> showBookmarksSheet({
                                   ),
                                 ),
                                 subtitle: Text(
-                                  "${preview.isEmpty ? key : preview}\nالصفحة ${localizedNumber(ctx, page)}",
+                                  "${preview.isEmpty ? key : preview}\nPage ${localizedNumber(ctx, page)}",
                                   maxLines: 3,
                                   overflow: TextOverflow.ellipsis,
                                 ),
@@ -225,7 +225,7 @@ Future<void> showBookmarksSheet({
                         children: [
                           Expanded(
                             child: Text(
-                              "الفواصل",
+                              "Dividers",
                               style: TextStyle(
                                 fontSize: 28,
                                 fontWeight: FontWeight.w900,
@@ -240,7 +240,7 @@ Future<void> showBookmarksSheet({
                               });
                             },
                             child: Text(
-                              "تحرير",
+                              "Edit",
                               style: TextStyle(
                                 fontWeight: FontWeight.w900,
                                 color: themeState.primary,

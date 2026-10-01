@@ -185,7 +185,7 @@ class _MushafRootState extends State<_MushafRoot> {
     showGeneralDialog(
       context: context,
       barrierDismissible: true,
-      barrierLabel: "إغلاق الفهرس",
+      barrierLabel: "Close index",
       barrierColor: Colors.black.withValues(alpha: 0.4),
       transitionDuration: const Duration(milliseconds: 380),
       pageBuilder: (ctx, anim1, anim2) => Align(
@@ -311,7 +311,7 @@ class _MushafRootState extends State<_MushafRoot> {
         showGeneralDialog(
           context: context,
           barrierDismissible: true,
-          barrierLabel: "إغلاق الملاحظة",
+          barrierLabel: "Close note",
           transitionDuration: const Duration(milliseconds: 320),
           pageBuilder: (ctx, anim1, anim2) =>
               WahyFeedbackDialog(primary: primaryColor),
@@ -550,10 +550,10 @@ class _MushafViewState extends State<MushafView> {
     final themeState = context.read<ThemeCubit>().state;
     const card = Color(0xFFF5EBE0);
     final colors = <String, ({String name, Color color})>{
-      "red": (name: "الأحمر", color: const Color(0xFFB3261E)),
-      "yellow": (name: "الأصفر", color: const Color(0xFFB68A00)),
-      "green": (name: "الأخضر", color: themeState.primary),
-      "blue": (name: "الأزرق", color: const Color(0xFF2962FF)),
+      "red": (name: "Red", color: const Color(0xFFB3261E)),
+      "yellow": (name: "Yellow", color: const Color(0xFFB68A00)),
+      "green": (name: "Green", color: themeState.primary),
+      "blue": (name: "Blue", color: const Color(0xFF2962FF)),
     };
 
     await showModalBottomSheet(
@@ -562,7 +562,7 @@ class _MushafViewState extends State<MushafView> {
       backgroundColor: Colors.transparent,
       builder: (sheet) {
         return Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: TextDirection.ltr,
           child: Container(
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.surface,
@@ -628,36 +628,36 @@ class _MushafViewState extends State<MushafView> {
 
   String _arabicOrdinalLocal(BuildContext context, int n) {
     const ord = [
-      "الأول",
-      "الثاني",
-      "الثالث",
-      "الرابع",
-      "الخامس",
-      "السادس",
-      "السابع",
-      "الثامن",
-      "التاسع",
-      "العاشر",
-      "الحادي عشر",
-      "الثاني عشر",
-      "الثالث عشر",
-      "الرابع عشر",
-      "الخامس عشر",
-      "السادس عشر",
-      "السابع عشر",
-      "الثامن عشر",
-      "التاسع عشر",
-      "العشرون",
-      "الحادي والعشرون",
-      "الثاني والعشرون",
-      "الثالث والعشرون",
-      "الرابع والعشرون",
-      "الخامس والعشرون",
-      "السادس والعشرون",
-      "السابع والعشرون",
-      "الثامن والعشرون",
-      "التاسع والعشرون",
-      "الثلاثون",
+      "First",
+      "Second",
+      "Third",
+      "Fourth",
+      "Fifth",
+      "Sixth",
+      "Seventh",
+      "Eighth",
+      "Ninth",
+      "Tenth",
+      "Eleventh",
+      "Twelfth",
+      "Thirteenth",
+      "Fourteenth",
+      "Fifteenth",
+      "Sixteenth",
+      "Seventeenth",
+      "Eighteenth",
+      "Nineteenth",
+      "Twentieth",
+      "Twenty-first",
+      "Twenty-second",
+      "Twenty-third",
+      "Twenty-fourth",
+      "Twenty-fifth",
+      "Twenty-sixth",
+      "Twenty-seventh",
+      "Twenty-eighth",
+      "Twenty-ninth",
+      "Thirtieth",
     ];
     if (n >= 1 && n <= ord.length) return ord[n - 1];
     return localizedNumber(context, n);
@@ -1368,7 +1368,7 @@ class _MushafViewState extends State<MushafView> {
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(getSurahNameArabic(surahNumber), textDirection: TextDirection.rtl),
-                                    Text("الجزء ${_arabicOrdinalLocal(context, juzNumber)}", textDirection: TextDirection.rtl),
+                                    Text("Juz ${_arabicOrdinalLocal(context, juzNumber)}", textDirection: TextDirection.rtl),
                                   ],
                                 ),
                               ),
@@ -1381,19 +1381,19 @@ class _MushafViewState extends State<MushafView> {
                         if (!qSettings.showPageInfo) return const SizedBox.shrink();
                         final pageLabel = localizedNumber(context, pageNumber);
                         final hizbNumber = _hizbNumberFor(surahNumber, startVerse);
-                        final hizbLabel = "الحزب ${localizedNumber(context, hizbNumber)}";
+                        final hizbLabel = "Hizb ${localizedNumber(context, hizbNumber)}";
                         final showHizb = _isHizbStart(surahNumber, startVerse);
                         // ── Rub (quarter) info ──
                         final quarterNum = _quarterNumberFor(surahNumber, startVerse);
                         final rubInHizb = ((quarterNum - 1) % 4) + 1;
-                        final rubLabels = ["", "الربع", "النصف", "الثلث"];
+                        final rubLabels = ["", "Quarter", "Half", "One-third"];
                         final rubLabel = rubInHizb >= 1 && rubInHizb <= 3
                             ? "${rubLabels[rubInHizb]} ${localizedNumber(context, hizbNumber)}"
                             : null;
                         return IgnorePointer(
                           ignoring: true,
                           child: Directionality(
-                            textDirection: TextDirection.rtl,
+                            textDirection: TextDirection.ltr,
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
@@ -1573,7 +1573,7 @@ class _MushafViewState extends State<MushafView> {
       appBar: AppBar(
         backgroundColor: bg,
         title: Text(
-          "المصحف",
+          "Mushaf",
           style: TextStyle(
             color: themeState.primary,
             fontWeight: FontWeight.w700,

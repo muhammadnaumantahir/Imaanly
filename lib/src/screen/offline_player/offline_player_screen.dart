@@ -64,7 +64,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
         backgroundColor: _bg(isDark),
         centerTitle: true,
         title: Text(
-          "المشغّل",
+          "Player",
           style: TextStyle(
             fontWeight: FontWeight.w800,
             fontSize: 20,
@@ -81,9 +81,9 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
           labelStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
           unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
           tabs: const [
-            Tab(text: "المحمّل"),
-            Tab(text: "حمّل سورة"),
-            Tab(text: "إدارة المساحة"),
+            Tab(text: "Downloaded"),
+            Tab(text: "Download a surah"),
+            Tab(text: "Manage storage"),
           ],
         ),
         actions: [
@@ -122,12 +122,12 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                 Icon(Icons.cloud_download_outlined, size: 64, color: _sub(isDark).withValues(alpha: 0.3)),
                 const Gap(16),
                 Text(
-                  "لا توجد تلاوات محمّلة",
+                  "No downloaded recitations",
                   style: TextStyle(color: _sub(isDark), fontSize: 16, fontWeight: FontWeight.w600),
                 ),
                 const Gap(8),
                 Text(
-                  "حمّل سور من تاب \"حمّل سورة\" للاستماع أوفلاين",
+                  "Download surahs from the \"Download a surah\" tab to listen offline",
                   style: TextStyle(color: _sub(isDark).withValues(alpha: 0.7), fontSize: 13),
                   textAlign: TextAlign.center,
                 ),
@@ -142,7 +142,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                       border: Border.all(color: accent.withValues(alpha: 0.3)),
                     ),
                     child: Text(
-                      "حمّل الآن",
+                      "Download now",
                       style: TextStyle(color: accent, fontWeight: FontWeight.w700, fontSize: 14),
                     ),
                   ),
@@ -155,7 +155,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
         final byReciter = state.byReciter;
 
         return Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: TextDirection.ltr,
           child: ListView.builder(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 100),
             itemCount: byReciter.length,
@@ -187,7 +187,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                                 ),
                               ),
                               Text(
-                                "${surahs.length} سورة · ${OfflineAudioService.formatBytes(surahs.fold(0, (sum, s) => sum + s.sizeBytes))}",
+                                "${surahs.length} surahs · ${OfflineAudioService.formatBytes(surahs.fold(0, (sum, s) => sum + s.sizeBytes))}",
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: _sub(isDark),
@@ -265,8 +265,8 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                     const Gap(2),
                     Text(
                       isFullyDownloaded
-                          ? "${info.ayahCount} آية · ${OfflineAudioService.formatBytes(info.sizeBytes)}"
-                          : "غير مكتمل (${info.ayahCount}/$ayahCount)",
+                          ? "${info.ayahCount} ayahs · ${OfflineAudioService.formatBytes(info.sizeBytes)}"
+                          : "Incomplete (${info.ayahCount}/$ayahCount)",
                       style: TextStyle(
                         fontSize: 11,
                         color: isFullyDownloaded ? _sub(isDark) : Colors.orange.shade400,
@@ -319,7 +319,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "القارئ الحالي",
+                            "Current reciter",
                             style: TextStyle(fontSize: 11, color: _sub(isDark), fontWeight: FontWeight.w500),
                           ),
                           const Gap(2),
@@ -364,7 +364,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                       Icon(Icons.download_for_offline_rounded, color: accent, size: 20),
                       const Gap(8),
                       Text(
-                        "حمّل كل السور",
+                        "Download all surahs",
                         style: TextStyle(
                           color: accent,
                           fontWeight: FontWeight.w700,
@@ -381,7 +381,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
             // ─── Surah Grid ───
             Expanded(
               child: Directionality(
-                textDirection: TextDirection.rtl,
+                textDirection: TextDirection.ltr,
                 child: GridView.builder(
                   padding: const EdgeInsets.fromLTRB(16, 4, 16, 100),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -507,7 +507,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
         final surahCount = state.downloadedSurahs.length;
 
         return Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: TextDirection.ltr,
           child: ListView(
             padding: const EdgeInsets.fromLTRB(16, 20, 16, 100),
             children: [
@@ -534,17 +534,17 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                     ),
                     const Gap(4),
                     Text(
-                      "إجمالي المساحة المستخدمة",
+                      "Total space used",
                       style: TextStyle(fontSize: 13, color: _sub(isDark)),
                     ),
                     const Gap(16),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        _statItem("سور محمّلة", "$surahCount", isDark),
+                        _statItem("Downloaded surahs", "$surahCount", isDark),
                         Container(width: 1, height: 30, color: _border(isDark)),
                         _statItem(
-                          "قراء",
+                          "Reciters",
                           "${state.byReciter.length}",
                           isDark,
                         ),
@@ -558,7 +558,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
               // ─── Per-Reciter Breakdown ───
               if (state.byReciter.isNotEmpty) ...[
                 Text(
-                  "تفاصيل القراء",
+                  "Reciter details",
                   style: TextStyle(
                     fontWeight: FontWeight.w700,
                     fontSize: 16,
@@ -590,7 +590,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                                 style: TextStyle(fontWeight: FontWeight.w600, fontSize: 13, color: _text(isDark)),
                               ),
                               Text(
-                                "${entry.value.length} سورة · ${OfflineAudioService.formatBytes(totalBytes)}",
+                                "${entry.value.length} surahs · ${OfflineAudioService.formatBytes(totalBytes)}",
                                 style: TextStyle(fontSize: 11, color: _sub(isDark)),
                               ),
                             ],
@@ -623,7 +623,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                         Icon(Icons.warning_amber_rounded, color: Colors.red.shade400, size: 20),
                         const Gap(8),
                         Text(
-                          "منطقة الخطر",
+                          "Danger zone",
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 14,
@@ -638,7 +638,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                       child: OutlinedButton.icon(
                         icon: Icon(Icons.delete_forever_rounded, size: 18, color: Colors.red.shade400),
                         label: Text(
-                          "حذف جميع التلاوات المحمّلة",
+                          "Delete all downloaded recitations",
                           style: TextStyle(color: Colors.red.shade400, fontWeight: FontWeight.w600),
                         ),
                         style: OutlinedButton.styleFrom(
@@ -723,16 +723,16 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
         
-        title: Text("تحميل كل السور؟", style: TextStyle(color: _text(isDark), fontWeight: FontWeight.w800)),
+        title: Text("Download all surahs?", style: TextStyle(color: _text(isDark), fontWeight: FontWeight.w800)),
         content: Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: TextDirection.ltr,
           child: Text(
-            "سيتم تحميل 114 سورة للقارئ ${reciter.name}. قد يستغرق ذلك وقتاً ومساحة كبيرة.",
+            "114 surahs will be downloaded for ${reciter.name}. This may take a while and use a lot of space.",
             style: TextStyle(color: _sub(isDark)),
           ),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: Text("إلغاء", style: TextStyle(color: _sub(isDark)))),
+          TextButton(onPressed: () => Navigator.pop(ctx), child: Text("Cancel", style: TextStyle(color: _sub(isDark)))),
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
@@ -742,7 +742,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                     surahNumbers: surahNumbers,
                   );
             },
-            child: Text("حمّل الكل", style: TextStyle(color: context.read<ThemeCubit>().state.primary, fontWeight: FontWeight.w700)),
+            child: Text("Download all", style: TextStyle(color: context.read<ThemeCubit>().state.primary, fontWeight: FontWeight.w700)),
           ),
         ],
       ),
@@ -766,21 +766,21 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
         backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
         
         title: Directionality(
-          textDirection: TextDirection.rtl,
-          child: Text("تشغيل السورة", style: TextStyle(color: _text(isDark), fontWeight: FontWeight.w800)),
+          textDirection: TextDirection.ltr,
+          child: Text("Play surah", style: TextStyle(color: _text(isDark), fontWeight: FontWeight.w800)),
         ),
         content: Directionality(
-          textDirection: TextDirection.rtl,
-          child: Text("عايز تروح للسورة وتشغلها من أولها، ولا تشغلها من مكانك الحالي؟", style: TextStyle(color: _sub(isDark))),
+          textDirection: TextDirection.ltr,
+          child: Text("Do you want to go to the surah and play it from the start, or play it from your current position?", style: TextStyle(color: _sub(isDark))),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx, false),
-            child: Text("شغّل هنا", style: TextStyle(color: accent, fontWeight: FontWeight.w700)),
+            child: Text("Play here", style: TextStyle(color: accent, fontWeight: FontWeight.w700)),
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            child: Text("روح للسورة", style: TextStyle(color: _text(isDark))),
+            child: Text("Soul of the surah", style: TextStyle(color: _text(isDark))),
           ),
         ],
       ),
@@ -831,13 +831,13 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
         
-        title: Text("حذف السورة؟", style: TextStyle(color: _text(isDark))),
+        title: Text("Delete surah?", style: TextStyle(color: _text(isDark))),
         content: Text(
-          "سيتم حذف سورة ${qcf.getSurahNameArabic(info.surahNumber)} للقارئ ${info.reciterLabel} من التخزين",
+          "Surah ${qcf.getSurahNameArabic(info.surahNumber)} by ${info.reciterLabel} will be deleted from storage",
           style: TextStyle(color: _sub(isDark)),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: Text("إلغاء", style: TextStyle(color: _sub(isDark)))),
+          TextButton(onPressed: () => Navigator.pop(ctx), child: Text("Cancel", style: TextStyle(color: _sub(isDark)))),
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
@@ -846,7 +846,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                     surahNumber: info.surahNumber,
                   );
             },
-            child: Text("حذف", style: TextStyle(color: Colors.red.shade400)),
+            child: Text("Delete", style: TextStyle(color: Colors.red.shade400)),
           ),
         ],
       ),
@@ -861,13 +861,13 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
         
-        title: Text("حذف السورة؟", style: TextStyle(color: _text(isDark))),
+        title: Text("Delete surah?", style: TextStyle(color: _text(isDark))),
         content: Text(
-          "سيتم حذف سورة ${qcf.getSurahNameArabic(surahNum)} من التخزين",
+          "Surah ${qcf.getSurahNameArabic(surahNum)} will be deleted from storage",
           style: TextStyle(color: _sub(isDark)),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: Text("إلغاء", style: TextStyle(color: _sub(isDark)))),
+          TextButton(onPressed: () => Navigator.pop(ctx), child: Text("Cancel", style: TextStyle(color: _sub(isDark)))),
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
@@ -876,7 +876,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                     surahNumber: surahNum,
                   );
             },
-            child: Text("حذف", style: TextStyle(color: Colors.red.shade400)),
+            child: Text("Delete", style: TextStyle(color: Colors.red.shade400)),
           ),
         ],
       ),
@@ -890,19 +890,19 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
         
-        title: Text("حذف جميع سور القارئ؟", style: TextStyle(color: _text(isDark))),
+        title: Text("Delete all of this reciter's surahs?", style: TextStyle(color: _text(isDark))),
         content: Text(
-          "سيتم حذف جميع السور المحمّلة للقارئ ${reciter.name}",
+          "All downloaded surahs for ${reciter.name} will be deleted",
           style: TextStyle(color: _sub(isDark)),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: Text("إلغاء", style: TextStyle(color: _sub(isDark)))),
+          TextButton(onPressed: () => Navigator.pop(ctx), child: Text("Cancel", style: TextStyle(color: _sub(isDark)))),
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
               context.read<OfflineDownloadCubit>().deleteReciter(reciter);
             },
-            child: Text("حذف الكل", style: TextStyle(color: Colors.red.shade400)),
+            child: Text("Delete all", style: TextStyle(color: Colors.red.shade400)),
           ),
         ],
       ),
@@ -916,19 +916,19 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
         
-        title: Text("حذف جميع التلاوات؟", style: TextStyle(color: _text(isDark), fontWeight: FontWeight.w800)),
+        title: Text("Delete all recitations?", style: TextStyle(color: _text(isDark), fontWeight: FontWeight.w800)),
         content: Text(
-          "سيتم حذف جميع التلاوات المحمّلة من التخزين. لا يمكن التراجع عن هذا الإجراء.",
+          "All downloaded recitations will be deleted from storage. This action can't be undone.",
           style: TextStyle(color: _sub(isDark)),
         ),
         actions: [
-          TextButton(onPressed: () => Navigator.pop(ctx), child: Text("إلغاء", style: TextStyle(color: _sub(isDark)))),
+          TextButton(onPressed: () => Navigator.pop(ctx), child: Text("Cancel", style: TextStyle(color: _sub(isDark)))),
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
               context.read<OfflineDownloadCubit>().deleteAll();
             },
-            child: Text("حذف الكل", style: TextStyle(color: Colors.red.shade400, fontWeight: FontWeight.w700)),
+            child: Text("Delete all", style: TextStyle(color: Colors.red.shade400, fontWeight: FontWeight.w700)),
           ),
         ],
       ),
@@ -945,29 +945,29 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
           children: [
             Icon(Icons.info_outline_rounded, color: accent),
             const Gap(8),
-            Text("المشغّل الأوفلاين", style: TextStyle(color: _text(isDark), fontWeight: FontWeight.w800)),
+            Text("Offline player", style: TextStyle(color: _text(isDark), fontWeight: FontWeight.w800)),
           ],
         ),
         content: Directionality(
-          textDirection: TextDirection.rtl,
+          textDirection: TextDirection.ltr,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _infoRow(Icons.download_rounded, "حمّل سور أي قارئ للاستماع بدون إنترنت", isDark),
+              _infoRow(Icons.download_rounded, "Download any reciter's surahs to listen without internet", isDark),
               const Gap(8),
-              _infoRow(Icons.play_circle_rounded, "شغّل السور المحمّلة مباشرة من التخزين", isDark),
+              _infoRow(Icons.play_circle_rounded, "Play downloaded surahs directly from storage", isDark),
               const Gap(8),
-              _infoRow(Icons.delete_outline_rounded, "تحكّم في المساحة واحذف اللي مش محتاجه", isDark),
+              _infoRow(Icons.delete_outline_rounded, "Manage space and delete what you don't need", isDark),
               const Gap(8),
-              _infoRow(Icons.graphic_eq_rounded, "التظليل كلمة بكلمة يعمل أوتوماتك لو متاح", isDark),
+              _infoRow(Icons.graphic_eq_rounded, "Word-by-word highlighting works automatically when available", isDark),
             ],
           ),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text("فهمت", style: TextStyle(color: accent, fontWeight: FontWeight.w700)),
+            child: Text("Got it", style: TextStyle(color: accent, fontWeight: FontWeight.w700)),
           ),
         ],
       ),

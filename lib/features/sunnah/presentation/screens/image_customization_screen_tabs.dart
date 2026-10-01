@@ -16,7 +16,7 @@ extension ImageCustomizationTabs on State {
     return ListView(
       padding: const EdgeInsets.all(SunnahTheme.space24),
       children: [
-        buildSectionTitle('نوع الخط', Icons.font_download_rounded, isDark),
+        buildSectionTitle('Font type', Icons.font_download_rounded, isDark),
         const Gap(16),
         FontFamilySelector(
           selected: settings.fontFamily,
@@ -25,10 +25,10 @@ extension ImageCustomizationTabs on State {
         ),
         
         const Gap(24),
-        buildSectionTitle('أحجام النصوص', Icons.format_size_rounded, isDark),
+        buildSectionTitle('Text sizes', Icons.format_size_rounded, isDark),
         const Gap(16),
         buildSlider(
-          'حجم العنوان',
+          'Title size',
           settings.titleFontSize,
           20.0,
           60.0,
@@ -37,7 +37,7 @@ extension ImageCustomizationTabs on State {
         ),
         const Gap(16),
         buildSlider(
-          'حجم الوصف',
+          'Description size',
           settings.descriptionFontSize,
           14.0,
           32.0,
@@ -46,7 +46,7 @@ extension ImageCustomizationTabs on State {
         ),
         const Gap(16),
         buildSlider(
-          'حجم الدليل',
+          'Guide size',
           settings.evidenceFontSize,
           12.0,
           24.0,
@@ -55,31 +55,31 @@ extension ImageCustomizationTabs on State {
         ),
         
         const Gap(24),
-        buildSectionTitle('ألوان النصوص', Icons.palette_rounded, isDark),
+        buildSectionTitle('Text colors', Icons.palette_rounded, isDark),
         const Gap(16),
         ColorPickerTile(
-          label: 'لون العنوان',
+          label: 'Title color',
           color: settings.titleColor,
           onChanged: (color) => onUpdate(settings.copyWith(titleColor: color)),
           isDark: isDark,
         ),
         const Gap(16),
         ColorPickerTile(
-          label: 'لون الوصف',
+          label: 'Description color',
           color: settings.descriptionColor,
           onChanged: (color) => onUpdate(settings.copyWith(descriptionColor: color)),
           isDark: isDark,
         ),
         const Gap(16),
         ColorPickerTile(
-          label: 'لون الدليل',
+          label: 'Guide color',
           color: settings.evidenceColor,
           onChanged: (color) => onUpdate(settings.copyWith(evidenceColor: color)),
           isDark: isDark,
         ),
         
         const Gap(24),
-        buildSectionTitle('محاذاة النص', Icons.format_align_right_rounded, isDark),
+        buildSectionTitle('Text alignment', Icons.format_align_right_rounded, isDark),
         const Gap(16),
         buildTextAlignSelector(
           settings.textAlign,
@@ -88,10 +88,10 @@ extension ImageCustomizationTabs on State {
         ),
         
         const Gap(24),
-        buildSectionTitle('تباعد الأسطر', Icons.format_line_spacing_rounded, isDark),
+        buildSectionTitle('Line spacing', Icons.format_line_spacing_rounded, isDark),
         const Gap(16),
         buildSlider(
-          'المسافة بين الأسطر',
+          'Line spacing',
           settings.lineHeight,
           1.0,
           2.5,
@@ -111,10 +111,10 @@ extension ImageCustomizationTabs on State {
     return ListView(
       padding: const EdgeInsets.all(SunnahTheme.space24),
       children: [
-        buildSectionTitle('الرأسية (Header)', Icons.title_rounded, isDark),
+        buildSectionTitle('Header', Icons.title_rounded, isDark),
         const Gap(16),
         buildSwitch(
-          'إظهار الرأسية',
+          'Show header',
           settings.showHeader,
           (value) => onUpdate(settings.copyWith(showHeader: value)),
           isDark,
@@ -128,7 +128,7 @@ extension ImageCustomizationTabs on State {
           ),
           const Gap(16),
           ColorPickerTile(
-            label: 'لون الرأسية',
+            label: 'Header color',
             color: settings.headerColor,
             onChanged: (color) => onUpdate(settings.copyWith(headerColor: color)),
             isDark: isDark,
@@ -136,10 +136,10 @@ extension ImageCustomizationTabs on State {
         ],
         
         const Gap(24),
-        buildSectionTitle('الأيقونة', Icons.emoji_emotions_rounded, isDark),
+        buildSectionTitle('Icon', Icons.emoji_emotions_rounded, isDark),
         const Gap(16),
         buildSwitch(
-          'إظهار الأيقونة',
+          'Show icon',
           settings.showIcon,
           (value) => onUpdate(settings.copyWith(showIcon: value)),
           isDark,
@@ -154,10 +154,10 @@ extension ImageCustomizationTabs on State {
         ],
         
         const Gap(24),
-        buildSectionTitle('الشارة (Badge)', Icons.label_rounded, isDark),
+        buildSectionTitle('Badge', Icons.label_rounded, isDark),
         const Gap(16),
         buildSwitch(
-          'إظهار الشارة',
+          'Show badge',
           settings.showBadge,
           (value) => onUpdate(settings.copyWith(showBadge: value)),
           isDark,
@@ -171,7 +171,7 @@ extension ImageCustomizationTabs on State {
           ),
           const Gap(16),
           ColorPickerTile(
-            label: 'لون الشارة',
+            label: 'Badge color',
             color: settings.badgeColor,
             onChanged: (color) => onUpdate(settings.copyWith(badgeColor: color)),
             isDark: isDark,
@@ -179,10 +179,10 @@ extension ImageCustomizationTabs on State {
         ],
         
         const Gap(24),
-        buildSectionTitle('التذييل (Footer)', Icons.text_fields_rounded, isDark),
+        buildSectionTitle('Footer', Icons.text_fields_rounded, isDark),
         const Gap(16),
         buildSwitch(
-          'إظهار التذييل',
+          'Show footer',
           settings.showFooter,
           (value) => onUpdate(settings.copyWith(showFooter: value)),
           isDark,
@@ -190,21 +190,21 @@ extension ImageCustomizationTabs on State {
         if (settings.showFooter) ...[
           const Gap(16),
           buildTextField(
-            'نص التذييل',
+            'Footer text',
             settings.footerText,
             (text) => onUpdate(settings.copyWith(footerText: text)),
             isDark,
           ),
           const Gap(16),
           ColorPickerTile(
-            label: 'لون التذييل',
+            label: 'Footer color',
             color: settings.footerColor,
             onChanged: (color) => onUpdate(settings.copyWith(footerColor: color)),
             isDark: isDark,
           ),
           const Gap(16),
           buildSlider(
-            'حجم خط التذييل',
+            'Footer font size',
             settings.footerFontSize,
             10.0,
             20.0,
@@ -225,20 +225,20 @@ extension ImageCustomizationTabs on State {
     return ListView(
       padding: const EdgeInsets.all(SunnahTheme.space24),
       children: [
-        buildSectionTitle('الزخرفة العلوية', Icons.auto_awesome_rounded, isDark),
+        buildSectionTitle('Top ornament', Icons.auto_awesome_rounded, isDark),
         const Gap(16),
         buildSwitch(
-          'إظهار الزخرفة العلوية',
+          'Show top ornament',
           settings.showTopDecoration,
           (value) => onUpdate(settings.copyWith(showTopDecoration: value)),
           isDark,
         ),
         
         const Gap(24),
-        buildSectionTitle('الزخرفة السفلية', Icons.auto_awesome_rounded, isDark),
+        buildSectionTitle('Bottom ornament', Icons.auto_awesome_rounded, isDark),
         const Gap(16),
         buildSwitch(
-          'إظهار الزخرفة السفلية',
+          'Show bottom ornament',
           settings.showBottomDecoration,
           (value) => onUpdate(settings.copyWith(showBottomDecoration: value)),
           isDark,
@@ -246,7 +246,7 @@ extension ImageCustomizationTabs on State {
         
         if (settings.showTopDecoration || settings.showBottomDecoration) ...[
           const Gap(24),
-          buildSectionTitle('نوع الزخرفة', Icons.category_rounded, isDark),
+          buildSectionTitle('Ornament type', Icons.category_rounded, isDark),
           const Gap(16),
           buildDecorationTypeSelector(
             settings.decorationType,
@@ -255,7 +255,7 @@ extension ImageCustomizationTabs on State {
           ),
           const Gap(16),
           ColorPickerTile(
-            label: 'لون الزخرفة',
+            label: 'Ornament color',
             color: settings.decorationColor,
             onChanged: (color) => onUpdate(settings.copyWith(decorationColor: color)),
             isDark: isDark,
@@ -281,7 +281,7 @@ extension ImageCustomizationTabs on State {
               ),
               const Gap(12),
               Text(
-                'الزخارف تضيف لمسة جمالية إسلامية للصورة',
+                'Ornaments add an Islamic decorative touch to the image',
                 style: GoogleFonts.cairo(
                   fontSize: 14,
                   fontWeight: FontWeight.w700,
@@ -306,7 +306,7 @@ extension ImageCustomizationTabs on State {
     return ListView(
       padding: const EdgeInsets.all(SunnahTheme.space24),
       children: [
-        buildSectionTitle('حجم الصورة', Icons.photo_size_select_large_rounded, isDark),
+        buildSectionTitle('Image size', Icons.photo_size_select_large_rounded, isDark),
         const Gap(16),
         ImageSizeSelector(
           selected: settings.imageSize,
@@ -315,7 +315,7 @@ extension ImageCustomizationTabs on State {
         ),
         
         const Gap(24),
-        buildSectionTitle('جودة الصورة', Icons.high_quality_rounded, isDark),
+        buildSectionTitle('Image quality', Icons.high_quality_rounded, isDark),
         const Gap(16),
         buildQualitySelector(
           settings.imageQuality,
@@ -347,7 +347,7 @@ extension ImageCustomizationTabs on State {
               ),
               const Gap(12),
               Text(
-                'نصيحة',
+                'Tip',
                 style: GoogleFonts.cairo(
                   fontSize: 16,
                   fontWeight: FontWeight.w900,
@@ -356,7 +356,7 @@ extension ImageCustomizationTabs on State {
               ),
               const Gap(8),
               Text(
-                'استخدم حجم إنستجرام للقصص، ومربع للمنشورات العادية',
+                'Use the Instagram size for stories, and square for regular posts',
                 style: GoogleFonts.cairo(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -806,67 +806,67 @@ extension ImageCustomizationTabs on State {
   String _getHeaderStyleLabel(HeaderStyle style) {
     switch (style) {
       case HeaderStyle.simple:
-        return 'بسيط';
+        return 'Simple';
       case HeaderStyle.gradient:
-        return 'متدرج';
+        return 'Gradient';
       case HeaderStyle.outlined:
-        return 'محدد';
+        return 'Selected';
       case HeaderStyle.filled:
-        return 'ممتلئ';
+        return 'Full';
     }
   }
 
   String _getIconStyleLabel(IconStyle style) {
     switch (style) {
       case IconStyle.filled:
-        return 'ممتلئ';
+        return 'Full';
       case IconStyle.outlined:
-        return 'محدد';
+        return 'Selected';
       case IconStyle.gradient:
-        return 'متدرج';
+        return 'Gradient';
       case IconStyle.none:
-        return 'بدون';
+        return 'None';
     }
   }
 
   String _getBadgeStyleLabel(BadgeStyle style) {
     switch (style) {
       case BadgeStyle.rounded:
-        return 'دائري';
+        return 'Circular';
       case BadgeStyle.square:
-        return 'مربع';
+        return 'Square';
       case BadgeStyle.pill:
-        return 'حبة';
+        return 'Grain';
       case BadgeStyle.minimal:
-        return 'بسيط';
+        return 'Simple';
     }
   }
 
   String _getDecorationTypeLabel(DecorationType type) {
     switch (type) {
       case DecorationType.none:
-        return 'بدون';
+        return 'None';
       case DecorationType.islamic:
-        return 'إسلامي';
+        return 'Islamic';
       case DecorationType.floral:
-        return 'زهري';
+        return 'Pink';
       case DecorationType.geometric:
-        return 'هندسي';
+        return 'Geometric';
       case DecorationType.simple:
-        return 'بسيط';
+        return 'Simple';
     }
   }
 
   String _getQualityLabel(ImageQuality quality) {
     switch (quality) {
       case ImageQuality.low:
-        return 'منخفضة (سريعة)';
+        return 'Low (fast)';
       case ImageQuality.medium:
-        return 'متوسطة';
+        return 'Medium';
       case ImageQuality.high:
-        return 'عالية (موصى بها)';
+        return 'High (recommended)';
       case ImageQuality.ultra:
-        return 'فائقة الجودة';
+        return 'Ultra quality';
     }
   }
 }

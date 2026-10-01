@@ -270,7 +270,7 @@ class AyahImageGenerator {
     );
 
     final String tafsirBody = (tafsirText == null || tafsirText.trim().isEmpty)
-        ? "لا يوجد تفسير لهذه الآية في المصدر المحدد."
+        ? "There is no tafsir for this ayah in the selected source."
         : tafsirText.trim();
 
     final int charCount = tafsirBody.length;

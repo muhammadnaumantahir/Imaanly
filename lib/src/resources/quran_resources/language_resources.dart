@@ -228,7 +228,7 @@ Map<String, String> languageNativeNames = {
   "tamil": "தமிழ்",
   "swedish": "Svenska",
   "maranao": "Maranao",
-  "arabic": "العربية",
+  "arabic": "Arabic",
   "greek": "Ελληνικά",
   "latvian": "Latviešu",
   "estonian": "Eesti",

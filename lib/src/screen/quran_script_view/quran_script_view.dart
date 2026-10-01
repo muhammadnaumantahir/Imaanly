@@ -543,7 +543,7 @@ class _QuranScriptViewState extends State<QuranScriptView> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Text(
-                        "آية $ayahNumber",
+                        "Ayah $ayahNumber",
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w800,

@@ -115,14 +115,14 @@ class _SunnahPrayerScreenV2State extends State<SunnahPrayerScreenV2>
       leading: IconButton(
         icon: const Icon(Icons.menu_rounded),
         onPressed: () => _scaffoldKey.currentState?.openDrawer(),
-        tooltip: 'القائمة الرئيسية',
+        tooltip: 'Main menu',
         iconSize: SunnahTheme.iconLarge,
       ),
       actions: [
         IconButton(
           icon: const Icon(Icons.share_rounded),
           onPressed: () => _shareScreen(),
-          tooltip: 'مشاركة',
+          tooltip: 'Share',
           iconSize: SunnahTheme.iconLarge,
         ),
         SizedBox(width: SunnahTheme.space8),
@@ -332,7 +332,7 @@ class _SunnahPrayerScreenV2State extends State<SunnahPrayerScreenV2>
         title: step.title,
         description: step.description,
         evidence: step.evidence,
-        type: "سنن الصلاة",
+        type: "Sunnahs of prayer",
         badgeText: step.type,
         badgeColor: step.type == 'ركن' 
             ? SunnahTheme.badgeRukn 
@@ -345,7 +345,7 @@ class _SunnahPrayerScreenV2State extends State<SunnahPrayerScreenV2>
     SunnahShareService.shareAsText(
       title: "سنن الصلاة وآدابها",
       description: "دليل شامل لأركان الصلاة وسننها وآدابها",
-      type: "سنن الصلاة",
+      type: "Sunnahs of prayer",
     );
   }
 }
@@ -401,19 +401,19 @@ final List<PrayerStep> _prayerSteps = [
     title: 'رفع اليدين عند التكبير',
     description: 'يرفع يديه حذو منكبيه أو إلى فروع أذنيه عند تكبيرة الإحرام، وعند الركوع، وعند الرفع منه، وعند القيام من التشهد الأول.',
     evidence: 'كان النبي ﷺ يرفع يديه في هذه المواضع - متفق عليه',
-    type: 'سنة',
+    type: 'Sunnah',
   ),
   const PrayerStep(
     title: 'وضع اليمنى على اليسرى',
     description: 'يضع يده اليمنى على اليسرى على صدره بعد تكبيرة الإحرام.',
     evidence: 'كان النبي ﷺ إذا قام في الصلاة وضع يده اليمنى على اليسرى - رواه البخاري',
-    type: 'سنة',
+    type: 'Sunnah',
   ),
   const PrayerStep(
     title: 'دعاء الاستفتاح',
     description: 'يقول بعد تكبيرة الإحرام: "سبحانك اللهم وبحمدك، وتبارك اسمك، وتعالى جدك، ولا إله غيرك".',
     evidence: 'كان النبي ﷺ يستفتح الصلاة بهذا الدعاء - رواه مسلم',
-    type: 'سنة',
+    type: 'Sunnah',
   ),
   const PrayerStep(
     title: 'قراءة الفاتحة',

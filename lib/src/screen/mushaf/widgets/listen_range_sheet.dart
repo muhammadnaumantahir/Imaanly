@@ -31,7 +31,7 @@ Future<void> showListenRangeSheet({
           final themeState = context.read<ThemeCubit>().state;
 
           return Directionality(
-            textDirection: TextDirection.rtl,
+            textDirection: TextDirection.ltr,
             child: Padding(
               padding: EdgeInsets.only(
                 bottom: MediaQuery.of(ctx).viewInsets.bottom,
@@ -61,7 +61,7 @@ Future<void> showListenRangeSheet({
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          "تشغيل",
+                          "Play",
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.w800,
@@ -92,7 +92,7 @@ Future<void> showListenRangeSheet({
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "من",
+                                      "From",
                                       style: TextStyle(
                                         fontWeight: FontWeight.w800,
                                         color: isDark
@@ -152,7 +152,7 @@ Future<void> showListenRangeSheet({
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "إلى",
+                                      "To",
                                       style: TextStyle(
                                         fontWeight: FontWeight.w800,
                                         color: isDark
@@ -239,7 +239,7 @@ Future<void> showListenRangeSheet({
                             },
                             icon: const Icon(Icons.play_arrow_rounded),
                             label: const Text(
-                              "تشغيل",
+                              "Play",
                               style: TextStyle(fontWeight: FontWeight.w900),
                             ),
                           ),

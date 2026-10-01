@@ -172,7 +172,7 @@ class _CollectionContentViewState extends State<CollectionContentView> {
                       vertical: 4,
                     ),
                     title: Text(
-                      "$surahName: الآية $verseNum",
+                      "$surahName: Ayah $verseNum",
                       style: textTheme.labelLarge?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
