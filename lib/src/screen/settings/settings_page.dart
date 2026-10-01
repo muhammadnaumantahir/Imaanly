@@ -56,7 +56,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
             
             return Scaffold(
               extendBodyBehindAppBar: true,
-              backgroundColor: isDark ? Theme.of(context).colorScheme.surface : const Color(0xFFF7F1E7),
+              backgroundColor: isDark ? Theme.of(context).colorScheme.surface : const Color(0xFFF3F8F5),
               appBar: AppBar(
                 title: Text(
                   l10n.settings,
@@ -72,7 +72,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                     end: Alignment.bottomCenter,
                     colors: isDark
                         ? [Theme.of(context).colorScheme.surface, Theme.of(context).colorScheme.surface]
-                        : [const Color(0xFFF7F1E7), const Color(0xFFFBF8F1)],
+                        : [const Color(0xFFF3F8F5), const Color(0xFFF8FBF9)],
                   ),
                 ),
                 child: SafeArea(
@@ -501,7 +501,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                 child: Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(2))),
               ),
               const Gap(16),
-              Text("Memorization mode settings", style: TextStyle(color: isDark ? const Color(0xFFF8F9FA) : const Color(0xFF212529), fontWeight: FontWeight.w800, fontSize: 18)),
+              Text("Memorization mode settings", style: TextStyle(color: isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A), fontWeight: FontWeight.w800, fontSize: 18)),
               const Gap(16),
               Text("Hiding level:", style: TextStyle(color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057), fontWeight: FontWeight.w600)),
               const Gap(8),
@@ -524,7 +524,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
               const Gap(16),
               BlocBuilder<HifzCubit, HifzState>(
                 builder: (context, state) => SwitchListTile(
-                  title: Text("Test mode", style: TextStyle(color: isDark ? const Color(0xFFF8F9FA) : const Color(0xFF212529), fontWeight: FontWeight.w600)),
+                  title: Text("Test mode", style: TextStyle(color: isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A), fontWeight: FontWeight.w600)),
                   subtitle: Text("Tap the ayah to reveal it", style: TextStyle(color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057), fontSize: 12)),
                   value: state.isTestMode,
                   activeThumbColor: themeState.primary,
@@ -556,7 +556,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                 child: Container(width: 40, height: 4, decoration: BoxDecoration(color: Colors.grey, borderRadius: BorderRadius.circular(2))),
               ),
               const Gap(16),
-              Text("Night mode settings", style: TextStyle(color: isDark ? const Color(0xFFF8F9FA) : const Color(0xFF212529), fontWeight: FontWeight.w800, fontSize: 18)),
+              Text("Night mode settings", style: TextStyle(color: isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A), fontWeight: FontWeight.w800, fontSize: 18)),
               const Gap(16),
               BlocBuilder<NightReadingCubit, NightReadingState>(
                 builder: (context, state) => Column(
@@ -576,7 +576,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                     ),
                     const Gap(8),
                     SwitchListTile(
-                      title: Text("Auto-enable at sunset", style: TextStyle(color: isDark ? const Color(0xFFF8F9FA) : const Color(0xFF212529), fontWeight: FontWeight.w600)),
+                      title: Text("Auto-enable at sunset", style: TextStyle(color: isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A), fontWeight: FontWeight.w600)),
                       value: state.autoAtSunset,
                       activeThumbColor: themeState.primary,
                       onChanged: (_) => context.read<NightReadingCubit>().setAutoAtSunset(!state.autoAtSunset),
@@ -614,7 +614,7 @@ class _SettingsSectionCard extends StatelessWidget {
       padding: EdgeInsets.all(18.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(26),
-        color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+        color: isDark ? const Color(0xFF11332A) : Colors.white,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.06),
@@ -622,7 +622,7 @@ class _SettingsSectionCard extends StatelessWidget {
             offset: const Offset(0, 8),
           ),
         ],
-        border: Border.all(color: Colors.grey.withValues(alpha: 0.15)),
+        border: Border.all(color: isDark ? const Color(0xFF1F4538) : const Color(0xFFD3E2DA)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,

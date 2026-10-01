@@ -26,7 +26,7 @@ class ImagePostCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final cardBg = isDark ? const Color(0xFF222222) : Colors.white;
-    final textColor = isDark ? const Color(0xFFF5F0EB) : const Color(0xFF212529);
+    final textColor = isDark ? const Color(0xFFF5F0EB) : const Color(0xFF0E1F1A);
     final borderColor = isDark
         ? Colors.white.withValues(alpha: 0.06)
         : Colors.black.withValues(alpha: 0.05);
@@ -70,7 +70,7 @@ class ImagePostCard extends StatelessWidget {
                         ),
                         errorWidget: (_, _, _) => Container(
                           color: isDark
-                              ? const Color(0xFF2A2A2A)
+                              ? const Color(0xFF17392F)
                               : const Color(0xFFF0F0F0),
                           child: Icon(
                             Icons.image_not_supported_outlined,
@@ -83,7 +83,7 @@ class ImagePostCard extends StatelessWidget {
                       )
                     : Container(
                         color: isDark
-                            ? const Color(0xFF2A2A2A)
+                            ? const Color(0xFF17392F)
                             : const Color(0xFFF0F0F0),
                         child: Icon(
                           Icons.image_outlined,

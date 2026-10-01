@@ -507,7 +507,7 @@ class _TafsirViewState extends State<TafsirView>
                       decoration: BoxDecoration(
                         color: isSelected
                             ? themeState.primary.withValues(alpha: isDark ? 0.15 : 0.08)
-                            : isDark ? const Color(0xFF2A2A2A) : const Color(0xFFF5F0E8),
+                            : isDark ? const Color(0xFF17392F) : const Color(0xFFF5F0E8),
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
                           color: isSelected

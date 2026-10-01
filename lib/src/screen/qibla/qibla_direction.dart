@@ -458,7 +458,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
         Container(
           padding: const EdgeInsets.all(28),
           decoration: BoxDecoration(
-            color: isDark ? const Color(0xFF1F2937) : Colors.white,
+            color: isDark ? const Color(0xFF11332A) : Colors.white,
             borderRadius: BorderRadius.circular(32),
             border: Border.all(
               color: statusColor.withValues(alpha: 0.2),
@@ -693,8 +693,8 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: isDark
-                    ? [const Color(0xFF1A1F26), const Color(0xFF0F1419)]
-                    : [const Color(0xFFF8F9FA), Colors.white],
+                    ? [const Color(0xFF0E2E25), const Color(0xFF071E18)]
+                    : [const Color(0xFFF3F8F5), Colors.white],
               ),
               borderRadius: BorderRadius.circular(24),
               border: Border.all(
@@ -790,8 +790,8 @@ class _QiblaDirectionState extends State<QiblaDirection> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: isDark
-                  ? [const Color(0xFF1A1F26), const Color(0xFF0F1419)]
-                  : [Colors.white, const Color(0xFFF8F9FA)],
+                  ? [const Color(0xFF0E2E25), const Color(0xFF071E18)]
+                  : [Colors.white, const Color(0xFFF3F8F5)],
             ),
             borderRadius: BorderRadius.circular(24),
             border: Border.all(
@@ -1097,7 +1097,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
           end: Alignment.bottomLeft,
           colors: isDark
               ? [
-                  const Color(0xFF1A1F26),
+                  const Color(0xFF0E2E25),
                   statusColor.withValues(alpha: 0.15),
                 ]
               : [

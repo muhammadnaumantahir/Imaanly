@@ -446,7 +446,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
   Widget _buildColorPreview(bool isDark) {
     final primary = isDark ? const Color(0xFF839788) : const Color(0xFF5D7263);
     final secondary = isDark ? const Color(0xFFB8A080) : const Color(0xFF8B7355);
-    final bg = isDark ? const Color(0xFF343A40) : const Color(0xFFF5EBE0);
+    final bg = isDark ? const Color(0xFF343A40) : const Color(0xFFEAF2EE);
     return Row(
       children: [
         _colorDot(primary, "Primary"),

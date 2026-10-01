@@ -61,7 +61,7 @@ class _JumpToAyahViewState extends State<JumpToAyahView> {
   Widget build(BuildContext context) {
     final ThemeState themeState = context.read<ThemeCubit>().state;
     final bool isDark = Theme.of(context).brightness == Brightness.dark;
-    final Color headerColor = isDark ? const Color(0xFF2A2A2A) : themeState.primaryShade100;
+    final Color headerColor = isDark ? const Color(0xFF17392F) : themeState.primaryShade100;
 
     final List<SurahInfoModel> filteredSurah = getFilteredSurah(
       context,
@@ -71,7 +71,7 @@ class _JumpToAyahViewState extends State<JumpToAyahView> {
 
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+        color: isDark ? const Color(0xFF11332A) : Colors.white,
         borderRadius: BorderRadius.circular(roundedRadius),
       ),
 

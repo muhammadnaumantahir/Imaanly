@@ -83,9 +83,9 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bg = isDark ? Theme.of(context).colorScheme.surface : const Color(0xFFF7F1E6);
+    final bg = isDark ? Theme.of(context).colorScheme.surface : const Color(0xFFF3F8F5);
     final cardBg = isDark ? const Color(0xFF0A0A0A) : Colors.white;
-    final textColor = isDark ? Colors.white : const Color(0xFF1B1B1B);
+    final textColor = isDark ? Colors.white : const Color(0xFF0E2E25);
     final subtitleColor = isDark ? Colors.grey.shade400 : Colors.grey.shade600;
     final primary = context.read<ThemeCubit>().state.primary;
     final borderColor = isDark ? Colors.white.withValues(alpha: 0.1) : Colors.black.withValues(alpha: 0.06);

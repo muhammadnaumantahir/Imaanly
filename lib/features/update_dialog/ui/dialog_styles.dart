@@ -74,7 +74,7 @@ class DialogStyleBuilder {
       DialogStyle.minimal => const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w800,
-          color: Color(0xFF1E1E1E),
+          color: Color(0xFF11332A),
           fontFamily: 'Cairo-Bold',
         ),
       DialogStyle.islamicGold => const TextStyle(
@@ -134,7 +134,7 @@ class DialogStyleBuilder {
           padding: const EdgeInsets.symmetric(vertical: 14),
         ),
       DialogStyle.minimal => ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF1E1E1E),
+          backgroundColor: const Color(0xFF11332A),
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           padding: const EdgeInsets.symmetric(vertical: 14),
@@ -201,7 +201,7 @@ class DialogStyleBuilder {
   static BoxDecoration _frostedGlass(UpdateConfig config) {
     return BoxDecoration(
       borderRadius: BorderRadius.circular(config.cornerRadius),
-      color: const Color(0xFF1E1E1E).withValues(alpha: 0.75),
+      color: const Color(0xFF11332A).withValues(alpha: 0.75),
       border: Border.all(
         color: Colors.white.withValues(alpha: 0.1),
         width: 1,

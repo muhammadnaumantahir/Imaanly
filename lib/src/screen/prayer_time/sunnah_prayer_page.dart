@@ -8,10 +8,10 @@ import '../../../features/sunnah/presentation/screens/image_customization_screen
 // Design System Colors (Wahy + Ayah Hybrid)
 const _primaryGreen = Color(0xFF4A7C59);  // من وحي - أهدأ
 const _accentGold = Color(0xFFC9A84C);    // من وحي
-const _darkBg = Color(0xFF1A1F26);
-const _cardDark = Color(0xFF242933);
+const _darkBg = Color(0xFF0E2E25);
+const _cardDark = Color(0xFF11332A);
 const _cardLight = Color(0xFFFFFFFF);     // أبيض نقي
-const _textLight = Color(0xFFF8F9FA);
+const _textLight = Color(0xFFF3F8F5);
 const _textDark = Color(0xFF2C2C2C);      // من وحي
 const _mutedLight = Color(0xFFB8BCC2);
 const _mutedDark = Color(0xFF6B6B6B);     // من وحي
@@ -24,7 +24,7 @@ class SunnahPrayerPage extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     
     return Scaffold(
-      backgroundColor: isDark ? _darkBg : const Color(0xFFF8F9FA),
+      backgroundColor: isDark ? _darkBg : const Color(0xFFF3F8F5),
       appBar: AppBar(
         title: Text(
           'سنن الصلاة وآدابها',

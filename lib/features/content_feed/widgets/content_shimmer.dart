@@ -11,7 +11,7 @@ class ContentFeedShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final baseColor = isDark ? const Color(0xFF2A2A2A) : const Color(0xFFEEEEEE);
+    final baseColor = isDark ? const Color(0xFF17392F) : const Color(0xFFEEEEEE);
     final highlightColor = isDark ? const Color(0xFF333333) : const Color(0xFFF8F8F8);
 
     return SliverList(
@@ -134,7 +134,7 @@ class CategoryChipsShimmer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final baseColor = isDark ? const Color(0xFF2A2A2A) : const Color(0xFFEEEEEE);
+    final baseColor = isDark ? const Color(0xFF17392F) : const Color(0xFFEEEEEE);
     final highlightColor = isDark ? const Color(0xFF333333) : const Color(0xFFF8F8F8);
 
     return SizedBox(

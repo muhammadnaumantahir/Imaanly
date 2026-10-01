@@ -721,7 +721,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+        backgroundColor: isDark ? const Color(0xFF11332A) : Colors.white,
         
         title: Text("Download all surahs?", style: TextStyle(color: _text(isDark), fontWeight: FontWeight.w800)),
         content: Directionality(
@@ -763,7 +763,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+        backgroundColor: isDark ? const Color(0xFF11332A) : Colors.white,
         
         title: Directionality(
           textDirection: TextDirection.ltr,
@@ -829,7 +829,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+        backgroundColor: isDark ? const Color(0xFF11332A) : Colors.white,
         
         title: Text("Delete surah?", style: TextStyle(color: _text(isDark))),
         content: Text(
@@ -859,7 +859,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+        backgroundColor: isDark ? const Color(0xFF11332A) : Colors.white,
         
         title: Text("Delete surah?", style: TextStyle(color: _text(isDark))),
         content: Text(
@@ -888,7 +888,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+        backgroundColor: isDark ? const Color(0xFF11332A) : Colors.white,
         
         title: Text("Delete all of this reciter's surahs?", style: TextStyle(color: _text(isDark))),
         content: Text(
@@ -914,7 +914,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+        backgroundColor: isDark ? const Color(0xFF11332A) : Colors.white,
         
         title: Text("Delete all recitations?", style: TextStyle(color: _text(isDark), fontWeight: FontWeight.w800)),
         content: Text(
@@ -940,7 +940,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+        backgroundColor: isDark ? const Color(0xFF11332A) : Colors.white,
         title: Row(
           children: [
             Icon(Icons.info_outline_rounded, color: accent),

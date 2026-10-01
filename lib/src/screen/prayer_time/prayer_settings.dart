@@ -514,7 +514,7 @@ class _PrayerSettingsState extends State<PrayerSettings> {
                         child: DropdownButton<PrayerReminderType>(
                           value: currentReminderType,
                           dropdownColor: isDark
-                              ? const Color(0xFF1E1E1E)
+                              ? const Color(0xFF11332A)
                               : Colors.white,
                           icon: Icon(
                             Icons.keyboard_arrow_down_rounded,

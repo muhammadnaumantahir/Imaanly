@@ -87,14 +87,14 @@ class _ContentFeedViewState extends State<_ContentFeedView> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final bgColor = isDark ? const Color(0xFF1A1A1A) : const Color(0xFFFAF9F7);
+    final bgColor = isDark ? const Color(0xFF0C281F) : const Color(0xFFFAF9F7);
 
     return Scaffold(
       backgroundColor: bgColor,
       body: SafeArea(
         child: RefreshIndicator(
           color: isDark ? const Color(0xFF839788) : const Color(0xFF73877B),
-          backgroundColor: isDark ? const Color(0xFF2A2A2A) : Colors.white,
+          backgroundColor: isDark ? const Color(0xFF17392F) : Colors.white,
           onRefresh: () async {
             context.read<ContentFeedBloc>().add(const ContentFeedRefreshRequested());
             await Future<void>.delayed(const Duration(milliseconds: 800));
@@ -175,7 +175,7 @@ class _ContentFeedViewState extends State<_ContentFeedView> {
   // ── Header ────────────────────────────────────────────────
 
   Widget _buildHeader(bool isDark) {
-    final headerColor = isDark ? const Color(0xFFF5F0EB) : const Color(0xFF212529);
+    final headerColor = isDark ? const Color(0xFFF5F0EB) : const Color(0xFF0E1F1A);
     final subtitleColor = isDark ? const Color(0xFF8A8A8A) : const Color(0xFF9E9E9E);
 
     return Padding(
@@ -318,7 +318,7 @@ class _ContentFeedViewState extends State<_ContentFeedView> {
               decoration: BoxDecoration(
                 color: isDark
                     ? Colors.white.withValues(alpha: 0.04)
-                    : const Color(0xFFF5EBE0),
+                    : const Color(0xFFEAF2EE),
                 borderRadius: BorderRadius.circular(24),
               ),
               child: Icon(

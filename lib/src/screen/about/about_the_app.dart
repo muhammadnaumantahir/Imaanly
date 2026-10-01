@@ -487,7 +487,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
     return Container(
       padding: const EdgeInsets.all(28),
       decoration: BoxDecoration(
-        color: isDark ? const Color(0xFF141414) : Colors.white,
+        color: isDark ? const Color(0xFF0A241C) : Colors.white,
         borderRadius: BorderRadius.circular(32),
         border: Border.all(
           color: themeState.primary.withValues(alpha: 0.2),

@@ -23,7 +23,7 @@ class SleepTimerBottomSheet extends StatelessWidget {
       builder: (context, state) {
         return Container(
           decoration: BoxDecoration(
-            color: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF1E1E1E) : Colors.white,
+            color: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF11332A) : Colors.white,
             borderRadius: BorderRadius.circular(24),
           ),
           child: Padding(
@@ -54,7 +54,7 @@ class SleepTimerBottomSheet extends StatelessWidget {
                     Text(
                       "Sleep timer",
                       style: TextStyle(
-                        color: isDark ? const Color(0xFFF8F9FA) : const Color(0xFF212529),
+                        color: isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A),
                         fontWeight: FontWeight.w800,
                         fontSize: 18,
                       ),
@@ -124,7 +124,7 @@ class SleepTimerBottomSheet extends StatelessWidget {
   }
 
   Widget _activeTimerCard(SleepTimerState state, Color accent, bool isDark) {
-    final text = isDark ? const Color(0xFFF8F9FA) : const Color(0xFF212529);
+    final text = isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A);
     final sub = isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057);
 
     String label;
@@ -216,7 +216,7 @@ class SleepTimerBottomSheet extends StatelessWidget {
               ? accent.withValues(alpha: 0.15)
               : isDark
                   ? const Color(0xFF495057).withValues(alpha: 0.5)
-                  : const Color(0xFFE3D5CA).withValues(alpha: 0.5),
+                  : const Color(0xFFD3E2DA).withValues(alpha: 0.5),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isSelected ? accent : Colors.transparent,
@@ -246,7 +246,7 @@ class SleepTimerBottomSheet extends StatelessWidget {
               ? accent.withValues(alpha: 0.15)
               : isDark
                   ? const Color(0xFF495057).withValues(alpha: 0.5)
-                  : const Color(0xFFE3D5CA).withValues(alpha: 0.5),
+                  : const Color(0xFFD3E2DA).withValues(alpha: 0.5),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: isActive ? accent : Colors.transparent,

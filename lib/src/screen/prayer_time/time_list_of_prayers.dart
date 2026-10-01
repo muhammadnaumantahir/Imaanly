@@ -30,14 +30,14 @@ import "sunnah_wudu_page.dart";
 import "sunnah_prayer_page.dart";
 
 // Design System Colors
-const _primaryGreen = Color(0xFF2D7A5F);
-const _accentGold = Color(0xFFD4AF37);
-const _cardDark = Color(0xFF1A1F26);
-const _cardLight = Color(0xFFFFFCF7);
-const _textLight = Color(0xFFF8F9FA);
-const _textDark = Color(0xFF1A1F26);
+const _primaryGreen = Color(0xFF0F7A5C);
+const _accentGold = Color(0xFFE2BC6B);
+const _cardDark = Color(0xFF11332A);
+const _cardLight = Color(0xFFFFFFFF);
+const _textLight = Color(0xFFF3F8F5);
+const _textDark = Color(0xFF0E1F1A);
 const _mutedLight = Color(0xFFB8BCC2);
-const _mutedDark = Color(0xFF6B7280);
+const _mutedDark = Color(0xFF6B7F77);
 
 class TimeListOfPrayers extends StatefulWidget {
   const TimeListOfPrayers({super.key});
@@ -77,15 +77,15 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
   Color _prayerColor(Prayer prayer, bool isDark) {
     switch (prayer) {
       case Prayer.fajr:
-        return const Color(0xFF6366F1); // Indigo
+        return const Color(0xFF4C5FD5); // Dawn blue
       case Prayer.dhuhr:
-        return const Color(0xFFF59E0B); // Amber
+        return const Color(0xFFD08A1E); // Midday gold
       case Prayer.asr:
-        return const Color(0xFF10B981); // Emerald
+        return const Color(0xFF12906A); // Afternoon emerald
       case Prayer.maghrib:
-        return const Color(0xFFEC4899); // Pink
+        return const Color(0xFFD9573A); // Sunset coral
       case Prayer.isha:
-        return const Color(0xFF8B5CF6); // Purple
+        return const Color(0xFF6A4FC4); // Night violet
       default:
         return _primaryGreen;
     }
@@ -373,6 +373,8 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           themeState,
         ).animate().fadeIn(duration: 320.ms).slideY(begin: 0.03),
         const Gap(12),
+        _buildPrayerRows(today, current, next, themeState, isDark),
+        const Gap(12),
         _buildSettingsCard(state, themeState, isDark),
         const Gap(12),
         _buildNotificationsCard(
@@ -387,8 +389,6 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
         const Gap(12),
         _buildFeaturesCard(today, locationName, themeState, isDark)
             .animate().fadeIn(duration: 380.ms).slideY(begin: 0.03),
-        const Gap(12),
-        _buildPrayerRows(today, current, next, themeState, isDark),
         const Gap(12),
         _buildForbiddenCard(today, l10n, themeState, isDark),
         const Gap(12),
@@ -418,7 +418,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 ]
               : [
                   _cardLight,
-                  const Color(0xFFFFF8E7),
+                  const Color(0xFFE8F4EE),
                 ],
         ),
         borderRadius: BorderRadius.circular(28),
@@ -616,9 +616,8 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
           colors: [
-            _prayerColor(next, isDark).withValues(alpha: 0.9),
-            _prayerColor(next, isDark).withValues(alpha: 0.7),
-            _prayerColor(next, isDark).withValues(alpha: 0.5),
+            _prayerColor(next, isDark),
+            Color.lerp(_prayerColor(next, isDark), const Color(0xFF04261C), 0.55)!,
           ],
         ),
         borderRadius: BorderRadius.circular(32),
@@ -721,7 +720,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   minHeight: 10,
                   value: progress,
                   backgroundColor: Colors.white.withValues(alpha: 0.2),
-                  valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
+                  valueColor: const AlwaysStoppedAnimation<Color>(_accentGold),
                 ),
               ).animate().fadeIn(duration: 600.ms, delay: 300.ms).slideX(begin: -0.2),
               const Gap(12),
@@ -2960,7 +2959,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
         return StatefulBuilder(
           builder: (context, setDialogState) {
             return AlertDialog(
-              backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+              backgroundColor: isDark ? const Color(0xFF11332A) : Colors.white,
               title: Text("Adjust adhan time", textAlign: TextAlign.right, style: _titleStyle(isDark)),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -3013,7 +3012,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
         return StatefulBuilder(
           builder: (context, setDialogState) {
             return AlertDialog(
-              backgroundColor: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+              backgroundColor: isDark ? const Color(0xFF11332A) : Colors.white,
               title: Text("Iqama time", textAlign: TextAlign.right, style: _titleStyle(isDark)),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -3150,7 +3149,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? const Color(0xFF171717) : const Color(0xFFFFFCF7),
+        color: isDark ? const Color(0xFF0E2E25) : const Color(0xFFFFFFFF),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
           color: isDark ? Colors.white10 : Colors.black.withValues(alpha: 0.05),

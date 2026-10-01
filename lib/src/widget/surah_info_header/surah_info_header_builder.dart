@@ -34,7 +34,7 @@ class SurahInfoHeaderBuilder extends StatelessWidget {
     final AppLocalizations l10n = AppLocalizations.of(context);
 
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final onSurface = isDark ? Colors.white : const Color(0xFF1B1B1B);
+    final onSurface = isDark ? Colors.white : const Color(0xFF0E2E25);
     final onSurfaceMuted = onSurface.withValues(alpha: 0.65);
 
     final Widget surahInfoHeader = Container(
@@ -289,7 +289,7 @@ class SurahInfoHeaderBuilder extends StatelessWidget {
                       height: state.lineHeight,
                       color: Theme.of(context).brightness == Brightness.dark
                           ? Colors.white
-                          : const Color(0xFF1B1B1B),
+                          : const Color(0xFF0E2E25),
                     ),
                     textAlign: TextAlign.center,
                     textDirection: TextDirection.rtl,

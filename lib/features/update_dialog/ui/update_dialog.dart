@@ -196,7 +196,7 @@ class UpdateDialog extends StatelessWidget {
           child: Icon(iconData, size: 26, color: config.primaryColor),
         ),
 
-      DialogStyle.minimal => Icon(iconData, size: 40, color: const Color(0xFF1E1E1E)),
+      DialogStyle.minimal => Icon(iconData, size: 40, color: const Color(0xFF11332A)),
 
       DialogStyle.islamicGold => Container(
           width: 64,

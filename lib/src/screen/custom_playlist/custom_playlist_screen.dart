@@ -18,9 +18,9 @@ class CustomPlaylistScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final accent = context.read<ThemeCubit>().state.primary;
-    final bg = isDark ? const Color(0xFF212529) : const Color(0xFFF7F1E6);
-    final surface = isDark ? const Color(0xFF343A40) : const Color(0xFFF5EBE0);
-    final text = isDark ? const Color(0xFFF8F9FA) : const Color(0xFF212529);
+    final bg = isDark ? const Color(0xFF0E1F1A) : const Color(0xFFF3F8F5);
+    final surface = isDark ? const Color(0xFF343A40) : const Color(0xFFEAF2EE);
+    final text = isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A);
     final sub = isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057);
 
     return Directionality(
@@ -82,7 +82,7 @@ class CustomPlaylistScreen extends StatelessWidget {
   void _showCreatePlaylistDialog(BuildContext context, Color accent, bool isDark) {
     final nameCtrl = TextEditingController();
     final selectedSurahs = <int>[];
-    final text = isDark ? const Color(0xFFF8F9FA) : const Color(0xFF212529);
+    final text = isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A);
 
     showModalBottomSheet(
       context: context,
@@ -92,7 +92,7 @@ class CustomPlaylistScreen extends StatelessWidget {
         builder: (ctx, setModalState) => Container(
           padding: EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
           decoration: BoxDecoration(
-            color: isDark ? const Color(0xFF343A40) : const Color(0xFFF8F9FA),
+            color: isDark ? const Color(0xFF343A40) : const Color(0xFFF3F8F5),
             borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           ),
           child: Directionality(
@@ -113,7 +113,7 @@ class CustomPlaylistScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: "Playlist name",
                         filled: true,
-                        fillColor: isDark ? const Color(0xFF495057).withValues(alpha: 0.3) : const Color(0xFFE3D5CA).withValues(alpha: 0.4),
+                        fillColor: isDark ? const Color(0xFF495057).withValues(alpha: 0.3) : const Color(0xFFD3E2DA).withValues(alpha: 0.4),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
                       ),
                       style: TextStyle(color: text),
@@ -146,7 +146,7 @@ class CustomPlaylistScreen extends StatelessWidget {
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
-                              color: isSelected ? accent.withValues(alpha: 0.15) : isDark ? const Color(0xFF495057).withValues(alpha: 0.2) : const Color(0xFFE3D5CA).withValues(alpha: 0.3),
+                              color: isSelected ? accent.withValues(alpha: 0.15) : isDark ? const Color(0xFF495057).withValues(alpha: 0.2) : const Color(0xFFD3E2DA).withValues(alpha: 0.3),
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(color: isSelected ? accent : Colors.transparent, width: 1.5),
                             ),
@@ -196,7 +196,7 @@ class CustomPlaylistScreen extends StatelessWidget {
 
   void _showEditPlaylistDialog(BuildContext context, CustomPlaylist playlist, Color accent, bool isDark) {
     final nameCtrl = TextEditingController(text: playlist.name);
-    final text = isDark ? const Color(0xFFF8F9FA) : const Color(0xFF212529);
+    final text = isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A);
 
     showDialog(
       context: context,
@@ -210,7 +210,7 @@ class CustomPlaylistScreen extends StatelessWidget {
             decoration: InputDecoration(
               hintText: "Playlist name",
               filled: true,
-              fillColor: isDark ? const Color(0xFF495057).withValues(alpha: 0.3) : const Color(0xFFE3D5CA).withValues(alpha: 0.4),
+              fillColor: isDark ? const Color(0xFF495057).withValues(alpha: 0.3) : const Color(0xFFD3E2DA).withValues(alpha: 0.4),
               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
             ),
           ),
@@ -234,7 +234,7 @@ class CustomPlaylistScreen extends StatelessWidget {
 
   void _confirmDelete(BuildContext context, CustomPlaylist playlist, Color accent) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final text = isDark ? const Color(0xFFF8F9FA) : const Color(0xFF212529);
+    final text = isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A);
 
     showDialog(
       context: context,

@@ -29,7 +29,7 @@ class _TextPostCardState extends State<TextPostCard> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final textColor = isDark ? const Color(0xFFF5F0EB) : const Color(0xFF212529);
+    final textColor = isDark ? const Color(0xFFF5F0EB) : const Color(0xFF0E1F1A);
     final accentColor = isDark ? const Color(0xFF839788) : const Color(0xFF73877B);
 
     final cardBg = isDark ? const Color(0xFF222222) : Colors.white;

@@ -65,8 +65,8 @@ class _SurahListViewState extends State<SurahListView> {
     final Color secondaryTextColor =
         brightness == Brightness.light ? Colors.grey.shade600 : Colors.grey.shade400;
     final Color cardColor = brightness == Brightness.dark
-        ? const Color(0xFF1E1E1E)
-        : const Color(0xFFF8F9FA);
+        ? const Color(0xFF11332A)
+        : const Color(0xFFF3F8F5);
     final Color borderColor =
         context.read<ThemeCubit>().state.primaryShade200.withValues(alpha: 0.65);
     final List<SurahInfoModel> filteredSurah = getFilteredSurah(

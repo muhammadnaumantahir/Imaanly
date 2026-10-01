@@ -296,7 +296,7 @@ class _SmartKhatmaPageState extends State<SmartKhatmaPage> {
     return Container(
       margin: const EdgeInsets.fromLTRB(16, 10, 16, 0),
       decoration: BoxDecoration(
-        color: isDark ? const Color(0xFF1E1E1E) : AppColors.lightCard,
+        color: isDark ? const Color(0xFF11332A) : AppColors.lightCard,
         borderRadius: BorderRadius.circular(18),
         border: Border.all(
           color: isDark ? Colors.white10 : Colors.black.withValues(alpha: 0.06),

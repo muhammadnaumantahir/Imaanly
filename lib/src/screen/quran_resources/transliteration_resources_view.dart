@@ -104,7 +104,7 @@ class _TransliterationResourcesViewState
       context: context,
       builder: (ctx) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-        backgroundColor: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF1E1E1E) : Colors.white,
+        backgroundColor: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF11332A) : Colors.white,
         title: const Text("Delete resource", textAlign: TextAlign.right),
         content: Text(
           "${book.name} will be deleted from the device.",

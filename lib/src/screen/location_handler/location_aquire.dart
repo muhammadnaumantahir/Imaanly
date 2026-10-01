@@ -37,7 +37,7 @@ class _LocationAcquireState extends State<LocationAcquire> {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ) : null,
-      backgroundColor: isDark ? const Color(0xFF111111) : const Color(0xFFF9F6F0),
+      backgroundColor: isDark ? const Color(0xFF081F18) : const Color(0xFFF9F6F0),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

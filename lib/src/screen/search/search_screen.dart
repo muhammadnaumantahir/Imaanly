@@ -41,13 +41,13 @@ class _SearchScreenState extends State<SearchScreen> {
 
   bool get _isDark => Theme.of(context).brightness == Brightness.dark;
   Color get _pageBg =>
-      _isDark ? const Color(0xFF121212) : const Color(0xFFF7F1E6);
+      _isDark ? const Color(0xFF121212) : const Color(0xFFF3F8F5);
   Color get _cardBg =>
       _isDark ? Colors.white.withValues(alpha: 0.05) : const Color(0xFFFFFBF5);
   Color get _cardBorder => _isDark
       ? Colors.white.withValues(alpha: 0.08)
       : Colors.black.withValues(alpha: 0.06);
-  Color get _textPrimary => _isDark ? Colors.white : const Color(0xFF1A1A1A);
+  Color get _textPrimary => _isDark ? Colors.white : const Color(0xFF0C281F);
 
   @override
   void initState() {
