@@ -104,9 +104,9 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
   }
 
   PrayerTimes _times(LocationQiblaPrayerDataState state, DateTime date) {
-    final method = state.calculationMethod?.method ?? CalculationMethod.egyptian;
+    final method = state.calculationMethod?.method ?? CalculationMethod.karachi;
     final parameters = getCalculationParameters(fromLibraryEnum(method));
-    parameters.madhab = state.madhab ?? Madhab.shafi;
+    parameters.madhab = state.madhab ?? Madhab.hanafi;
 
     return PrayerTimes(
       coordinates: Coordinates(state.latLon!.latitude, state.latLon!.longitude),

@@ -189,9 +189,9 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
 
   CalculationParameters _params(LocationQiblaPrayerDataState state) {
     final method =
-        state.calculationMethod?.method ?? CalculationMethod.egyptian;
+        state.calculationMethod?.method ?? CalculationMethod.karachi;
     final params = getCalculationParameters(fromLibraryEnum(method));
-    params.madhab = state.madhab ?? Madhab.shafi;
+    params.madhab = state.madhab ?? Madhab.hanafi;
     params.adjustments[adhan.Prayer.fajr] = _adjustments[Prayer.fajr] ?? 0;
     params.adjustments[adhan.Prayer.dhuhr] = _adjustments[Prayer.dhuhr] ?? 0;
     params.adjustments[adhan.Prayer.asr] = _adjustments[Prayer.asr] ?? 0;
@@ -967,7 +967,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         const Gap(2),
                         Text(
                           fromLibraryEnum(
-                            state.calculationMethod?.method ?? CalculationMethod.egyptian,
+                            state.calculationMethod?.method ?? CalculationMethod.karachi,
                           ).fullName,
                           style: GoogleFonts.cairo(
                             fontSize: 14,
@@ -1177,7 +1177,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               child: ListView(
                 children: CalculationMethodEnum.values.map((method) {
                   final selected = fromLibraryEnum(
-                    state.calculationMethod?.method ?? CalculationMethod.egyptian,
+                    state.calculationMethod?.method ?? CalculationMethod.karachi,
                   ) == method;
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 12),

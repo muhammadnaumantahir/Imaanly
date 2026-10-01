@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📖 Imaanly — الفُرقان
+# 📖 Imaanly
 
 **One of the most advanced open-source Quran apps built with Flutter, combining BLoC, Clean Architecture, and precise Uthmanic script rendering with audio, Tafsir, and daily Islamic tools.**
 

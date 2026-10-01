@@ -12,6 +12,7 @@ import 'package:workmanager/workmanager.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:adhan_dart/adhan_dart.dart';
+import 'package:imaanly/src/screen/prayer_time/models/calculation_method_enum.dart';
 import 'package:intl/intl.dart';
 
 @pragma('vm:entry-point')
@@ -120,11 +121,17 @@ class AyahOfTheDayService {
 
       final coordinates = Coordinates(lat, lng);
       
-      // Egyptian default
-      final params = CalculationParameters(
-        fajrAngle: 19.5,
-        ishaAngle: 17.5,
-        method: CalculationMethod.egyptian,
+      // Use the same method/madhab the user picked in the app (default: Karachi, Hanafi)
+      final methodName = prefs.getString("selected_calculation_method");
+      final methodEnum = CalculationMethodEnum.values.firstWhere(
+        (e) => e.name == methodName,
+        orElse: () => CalculationMethodEnum.karachi,
+      );
+      final params = getCalculationParameters(methodEnum);
+      final madhabName = prefs.getString("selected_madhab");
+      params.madhab = Madhab.values.firstWhere(
+        (e) => e.name == madhabName,
+        orElse: () => Madhab.hanafi,
       );
       
       final date = DateTime.now();

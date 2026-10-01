@@ -96,12 +96,12 @@ class LocationQiblaPrayerDataCubit extends Cubit<LocationQiblaPrayerDataState> {
               (element) => element.name == calculationMethodJson,
             ),
           )
-        : getCalculationParameters(CalculationMethodEnum.egyptian);
+        : getCalculationParameters(CalculationMethodEnum.karachi);
 
     final madhabJson = sharedPreferences.getString("selected_madhab");
     final madhab = madhabJson != null
         ? Madhab.values.firstWhere((element) => element.name == madhabJson)
-        : Madhab.shafi;
+        : Madhab.hanafi;
 
     return LocationQiblaPrayerDataState(
       latLon: latLong,

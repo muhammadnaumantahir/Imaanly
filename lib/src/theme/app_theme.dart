@@ -35,8 +35,8 @@ class AppTheme {
         surfaceTintColor: Colors.transparent,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: const BorderSide(color: AppColors.lightBorder, width: 0.5),
+          borderRadius: BorderRadius.circular(20),
+          side: const BorderSide(color: AppColors.lightBorderSubtle, width: 1),
         ),
       ),
       dialogTheme: DialogThemeData(
@@ -58,8 +58,10 @@ class AppTheme {
         textStyle: const TextStyle(color: AppColors.lightTextMain),
       ),
       appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.lightSurface,
+        backgroundColor: AppColors.lightBackground,
         foregroundColor: AppColors.lightTextMain,
+        centerTitle: true,
+        scrolledUnderElevation: 0,
         elevation: 0,
         surfaceTintColor: Colors.transparent,
       ),
@@ -78,6 +80,42 @@ class AppTheme {
           borderRadius: BorderRadius.all(Radius.circular(14)),
           borderSide: BorderSide(color: AppColors.lightPrimary, width: 1.5),
         ),
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: AppColors.lightSurface,
+        surfaceTintColor: Colors.transparent,
+        elevation: 0,
+        height: 68,
+        indicatorColor: AppColors.lightPrimaryContainer,
+        indicatorShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        labelTextStyle: WidgetStateProperty.resolveWith((states) => TextStyle(
+              fontSize: 12,
+              fontWeight: states.contains(WidgetState.selected) ? FontWeight.w700 : FontWeight.w500,
+              color: states.contains(WidgetState.selected) ? AppColors.lightPrimary : AppColors.lightTextMuted,
+            )),
+        iconTheme: WidgetStateProperty.resolveWith((states) => IconThemeData(
+              color: states.contains(WidgetState.selected) ? AppColors.lightPrimary : AppColors.lightTextMuted,
+            )),
+      ),
+      switchTheme: SwitchThemeData(
+        thumbColor: WidgetStateProperty.resolveWith((states) =>
+            states.contains(WidgetState.selected) ? Colors.white : AppColors.lightTextMuted),
+        trackColor: WidgetStateProperty.resolveWith((states) =>
+            states.contains(WidgetState.selected) ? AppColors.lightPrimary : AppColors.lightSurfaceSecondary),
+        trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
+      ),
+      snackBarTheme: SnackBarThemeData(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: AppColors.lightTextMain,
+        contentTextStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      ),
+      tabBarTheme: TabBarThemeData(
+        labelColor: AppColors.lightPrimary,
+        unselectedLabelColor: AppColors.lightTextMuted,
+        indicatorColor: AppColors.lightPrimary,
+        dividerColor: Colors.transparent,
+        labelStyle: const TextStyle(fontWeight: FontWeight.w700),
       ),
       chipTheme: ChipThemeData(
         backgroundColor: AppColors.lightPrimaryLight,
@@ -98,7 +136,9 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.lightPrimary,
           foregroundColor: Colors.white,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
+          textStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
         ),
       ),
     );
@@ -137,8 +177,8 @@ class AppTheme {
         surfaceTintColor: Colors.transparent,
         elevation: 0,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: AppColors.darkBorder.withValues(alpha: 0.5), width: 0.5),
+          borderRadius: BorderRadius.circular(20),
+          side: const BorderSide(color: AppColors.darkBorderSubtle, width: 1),
         ),
       ),
       dialogTheme: DialogThemeData(
@@ -160,8 +200,10 @@ class AppTheme {
         textStyle: const TextStyle(color: AppColors.darkTextMain),
       ),
       appBarTheme: const AppBarTheme(
-        backgroundColor: AppColors.darkSurface,
+        backgroundColor: AppColors.darkBackground,
         foregroundColor: AppColors.darkTextMain,
+        centerTitle: true,
+        scrolledUnderElevation: 0,
         elevation: 0,
         surfaceTintColor: Colors.transparent,
       ),
@@ -180,6 +222,42 @@ class AppTheme {
           borderRadius: BorderRadius.all(Radius.circular(14)),
           borderSide: BorderSide(color: AppColors.darkPrimary, width: 1.5),
         ),
+      ),
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: AppColors.darkSurface,
+        surfaceTintColor: Colors.transparent,
+        elevation: 0,
+        height: 68,
+        indicatorColor: AppColors.darkPrimaryContainer,
+        indicatorShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        labelTextStyle: WidgetStateProperty.resolveWith((states) => TextStyle(
+              fontSize: 12,
+              fontWeight: states.contains(WidgetState.selected) ? FontWeight.w700 : FontWeight.w500,
+              color: states.contains(WidgetState.selected) ? AppColors.darkPrimary : AppColors.darkTextMuted,
+            )),
+        iconTheme: WidgetStateProperty.resolveWith((states) => IconThemeData(
+              color: states.contains(WidgetState.selected) ? AppColors.darkPrimary : AppColors.darkTextMuted,
+            )),
+      ),
+      switchTheme: SwitchThemeData(
+        thumbColor: WidgetStateProperty.resolveWith((states) =>
+            states.contains(WidgetState.selected) ? AppColors.darkBackground : AppColors.darkTextMuted),
+        trackColor: WidgetStateProperty.resolveWith((states) =>
+            states.contains(WidgetState.selected) ? AppColors.darkPrimary : AppColors.darkSurfaceSecondary),
+        trackOutlineColor: WidgetStateProperty.all(Colors.transparent),
+      ),
+      snackBarTheme: SnackBarThemeData(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: AppColors.darkElevated,
+        contentTextStyle: TextStyle(color: AppColors.darkTextMain, fontWeight: FontWeight.w500),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      ),
+      tabBarTheme: TabBarThemeData(
+        labelColor: AppColors.darkPrimary,
+        unselectedLabelColor: AppColors.darkTextMuted,
+        indicatorColor: AppColors.darkPrimary,
+        dividerColor: Colors.transparent,
+        labelStyle: const TextStyle(fontWeight: FontWeight.w700),
       ),
       chipTheme: ChipThemeData(
         backgroundColor: AppColors.darkPrimaryLight,
@@ -200,7 +278,9 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.darkPrimary,
           foregroundColor: AppColors.darkBackground,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 14),
+          textStyle: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
         ),
       ),
     );
