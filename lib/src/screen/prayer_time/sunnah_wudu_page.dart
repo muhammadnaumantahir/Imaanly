@@ -6,15 +6,15 @@ import '../../../features/sunnah/services/sunnah_share_service.dart';
 import '../../../features/sunnah/presentation/screens/image_customization_screen.dart';
 
 // Design System Colors (Wahy + Ayah Hybrid)
-const _primaryGreen = Color(0xFF4A7C59);  // من وحي - أهدأ
-const _accentGold = Color(0xFFC9A84C);    // من وحي
+const _primaryGreen = Color(0xFF4A7C59);
+const _accentGold = Color(0xFFC9A84C);
 const _darkBg = Color(0xFF0E2E25);
 const _cardDark = Color(0xFF11332A);
-const _cardLight = Color(0xFFFFFFFF);     // أبيض نقي
+const _cardLight = Color(0xFFFFFFFF);
 const _textLight = Color(0xFFF3F8F5);
-const _textDark = Color(0xFF2C2C2C);      // من وحي
+const _textDark = Color(0xFF2C2C2C);  
 const _mutedLight = Color(0xFFB8BCC2);
-const _mutedDark = Color(0xFF6B6B6B);     // من وحي
+const _mutedDark = Color(0xFF6B6B6B); 
 
 class SunnahWuduPage extends StatelessWidget {
   const SunnahWuduPage({super.key});
@@ -27,7 +27,7 @@ class SunnahWuduPage extends StatelessWidget {
       backgroundColor: isDark ? _darkBg : const Color(0xFFF3F8F5),
       appBar: AppBar(
         title: Text(
-          'سنن الوضوء وآدابه',
+          'Sunnahs & Etiquette of Wudu',
           style: GoogleFonts.cairo(
             fontWeight: FontWeight.w900,
           ),
@@ -48,7 +48,7 @@ class SunnahWuduPage extends StatelessWidget {
           const Gap(16),
           
           // Sunnah Steps
-          _buildSectionHeader("خطوات الوضوء بالسنن", Icons.format_list_numbered_rounded, isDark),
+          _buildSectionHeader("Sunnah Steps of Wudu", Icons.format_list_numbered_rounded, isDark),
           const Gap(12),
           ..._wuduSteps.asMap().entries.map((entry) {
             return Padding(
@@ -65,7 +65,7 @@ class SunnahWuduPage extends StatelessWidget {
           const Gap(16),
           
           // Scholarly Statements
-          _buildSectionHeader("أقوال العلماء", Icons.school_rounded, isDark),
+          _buildSectionHeader("Scholars' Statements", Icons.school_rounded, isDark),
           const Gap(12),
           ..._scholarStatements.map((statement) {
             return Padding(
@@ -77,7 +77,7 @@ class SunnahWuduPage extends StatelessWidget {
           const Gap(16),
           
           // Additional Benefits
-          _buildSectionHeader("فوائد إضافية", Icons.lightbulb_rounded, isDark),
+          _buildSectionHeader("Additional Benefits", Icons.lightbulb_rounded, isDark),
           const Gap(12),
           ..._additionalBenefits.map((benefit) {
             return Padding(
@@ -129,7 +129,7 @@ class SunnahWuduPage extends StatelessWidget {
               const Gap(12),
               Expanded(
                 child: Text(
-                  "الوضوء طهارة وعبادة",
+                  "Wudu: Purification and Worship",
                   style: GoogleFonts.cairo(
                     fontSize: 20,
                     fontWeight: FontWeight.w900,
@@ -141,7 +141,7 @@ class SunnahWuduPage extends StatelessWidget {
           ),
           const Gap(16),
           Text(
-            "الوضوء شرط من شروط صحة الصلاة، وهو طهارة مخصوصة بأعضاء مخصوصة. وقد حث النبي ﷺ على إسباغ الوضوء وإتقانه، وجعل الله تعالى له فضلاً عظيماً.",
+            "Wudu is one of the conditions for the validity of prayer, and it is a specific purification performed on specific parts of the body. The Prophet ﷺ urged performing wudu thoroughly and perfectly, and Allah the Almighty made great reward for it.",
             style: GoogleFonts.cairo(
               fontSize: 14,
               fontWeight: FontWeight.w600,
@@ -168,7 +168,7 @@ class SunnahWuduPage extends StatelessWidget {
                 const Gap(10),
                 Expanded(
                   child: Text(
-                    'قال الله تعالى: "يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا قُمْتُمْ إِلَى الصَّلَاةِ فَاغْسِلُوا وُجُوهَكُمْ وَأَيْدِيَكُمْ إِلَى الْمَرَافِقِ..." [المائدة: 6]',
+                    'Allah the Almighty said: "يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا قُمْتُمْ إِلَى الصَّلَاةِ فَاغْسِلُوا وُجُوهَكُمْ وَأَيْدِيَكُمْ إِلَى الْمَرَافِقِ..." [Al-Ma\'idah 5:6]',
                     style: GoogleFonts.cairo(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
@@ -215,7 +215,7 @@ class SunnahWuduPage extends StatelessWidget {
               const Gap(12),
               Expanded(
                 child: Text(
-                  "فضل الوضوء",
+                  "The Virtue of Wudu",
                   style: GoogleFonts.cairo(
                     fontSize: 18,
                     fontWeight: FontWeight.w900,
@@ -227,8 +227,8 @@ class SunnahWuduPage extends StatelessWidget {
           ),
           const Gap(16),
           _buildHadithBox(
-            'عن أبي هريرة رضي الله عنه أن رسول الله ﷺ قال: "إذا توضأ العبد المسلم أو المؤمن فغسل وجهه خرج من وجهه كل خطيئة نظر إليها بعينيه مع الماء أو مع آخر قطر الماء، فإذا غسل يديه خرج من يديه كل خطيئة كان بطشتها يداه مع الماء أو مع آخر قطر الماء، فإذا غسل رجليه خرجت كل خطيئة مشتها رجلاه مع الماء أو مع آخر قطر الماء حتى يخرج نقياً من الذنوب"',
-            'رواه مسلم',
+            'Narrated by Abu Hurairah (may Allah be pleased with him) that the Messenger of Allah ﷺ said: "When a Muslim or believing servant performs wudu and washes his face, every sin he looked at with his eyes leaves his face with the water, or with the last drop of water. When he washes his hands, every sin his hands committed leaves his hands with the water, or with the last drop of water. When he washes his feet, every sin his feet walked toward leaves with the water, or with the last drop of water, until he comes out cleansed of sins."',
+            'Narrated by Muslim',
             isDark,
           ),
         ],
@@ -465,7 +465,7 @@ class SunnahWuduPage extends StatelessWidget {
               _shareOptionButton(
                 icon: Icons.text_fields_rounded,
                 label: "Share as text",
-                subtitle: "نسخ النص ومشاركته",
+                subtitle: "Copy and share the text",
                 color: const Color(0xFF3B82F6),
                 isDark: isDark,
                 onTap: () async {
@@ -486,7 +486,7 @@ class SunnahWuduPage extends StatelessWidget {
                               const Gap(12),
                               Expanded(
                                 child: Text(
-                                  "تم نسخ النص ومشاركته بنجاح",
+                                  "The text was copied and shared successfully",
                                   style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
                                 ),
                               ),
@@ -521,7 +521,7 @@ class SunnahWuduPage extends StatelessWidget {
               _shareOptionButton(
                 icon: Icons.image_rounded,
                 label: "Share as image",
-                subtitle: "تخصيص وإنشاء صورة احترافية",
+                subtitle: "Customize and create a professional image",
                 color: const Color(0xFFEC4899),
                 isDark: isDark,
                 onTap: () async {
@@ -873,115 +873,115 @@ class ScholarStatement {
 // Data
 final List<WuduStep> _wuduSteps = [
   const WuduStep(
-    title: 'النية',
-    description: 'محلها القلب، ولا يُشرع التلفظ بها. والنية شرط لصحة الوضوء.',
-    evidence: 'قال النبي ﷺ: "إنما الأعمال بالنيات" - متفق عليه',
+    title: 'The Intention (Niyyah)',
+    description: 'Its place is the heart, and it is not prescribed to utter it aloud. The intention is a condition for the validity of wudu.',
+    evidence: 'The Prophet ﷺ said: "Actions are judged only by intentions." — Agreed upon (Bukhari & Muslim)',
     isSunnah: false,
   ),
   const WuduStep(
-    title: 'التسمية',
-    description: 'يقول: "بسم الله" في أول الوضوء. وهي سنة مؤكدة عند جمهور العلماء.',
-    evidence: 'قال النبي ﷺ: "لا وضوء لمن لم يذكر اسم الله عليه" - رواه أبو داود وحسنه الألباني',
+    title: 'Saying Bismillah',
+    description: 'He says: "Bismillah" (In the name of Allah) at the beginning of wudu. It is a confirmed sunnah according to the majority of scholars.',
+    evidence: 'The Prophet ﷺ said: "There is no wudu for one who does not mention the name of Allah upon it." — Narrated by Abu Dawud and graded hasan by Al-Albani',
     isSunnah: true,
   ),
   const WuduStep(
-    title: 'غسل الكفين ثلاثاً',
-    description: 'يغسل كفيه ثلاث مرات في بداية الوضوء قبل إدخالهما في الإناء.',
-    evidence: 'كان النبي ﷺ يبدأ بغسل كفيه ثلاثاً - متفق عليه',
+    title: 'Washing the Hands Three Times',
+    description: 'He washes both hands three times at the beginning of wudu, before putting them into the vessel.',
+    evidence: 'The Prophet ﷺ used to begin by washing his hands three times. — Agreed upon (Bukhari & Muslim)',
     isSunnah: true,
   ),
   const WuduStep(
-    title: 'المضمضة والاستنشاق',
-    description: 'يتمضمض ثلاثاً ويستنشق ثلاثاً، ويبالغ فيهما إلا إذا كان صائماً.',
-    evidence: 'قال النبي ﷺ: "وبالغ في الاستنشاق إلا أن تكون صائماً" - رواه الترمذي وصححه الألباني',
+    title: 'Rinsing the Mouth and Nose',
+    description: 'He rinses his mouth three times and sniffs water into his nose three times, doing so thoroughly unless he is fasting.',
+    evidence: 'The Prophet ﷺ said: "And be thorough in sniffing water into the nose, unless you are fasting." — Narrated by At-Tirmidhi and graded sahih by Al-Albani',
     isSunnah: false,
   ),
   const WuduStep(
-    title: 'غسل الوجه',
-    description: 'يغسل وجهه ثلاث مرات من منابت شعر الرأس إلى أسفل الذقن، ومن الأذن إلى الأذن.',
-    evidence: 'قال الله تعالى: "فَاغْسِلُوا وُجُوهَكُمْ" [المائدة: 6]',
+    title: 'Washing the Face',
+    description: 'He washes his face three times, from where the hair of the head grows down to the bottom of the chin, and from ear to ear.',
+    evidence: 'Allah the Almighty said: "فَاغْسِلُوا وُجُوهَكُمْ" [Al-Ma\'idah 5:6]',
     isSunnah: false,
   ),
   const WuduStep(
-    title: 'تخليل اللحية',
-    description: 'يخلل اللحية الكثيفة بالماء ليصل إلى أصول الشعر.',
-    evidence: 'كان النبي ﷺ يخلل لحيته في الوضوء - رواه الترمذي وصححه الألباني',
+    title: 'Running Water Through the Beard',
+    description: 'He runs water through a thick beard so that it reaches the roots of the hair.',
+    evidence: 'The Prophet ﷺ used to run water through his beard during wudu. — Narrated by At-Tirmidhi and graded sahih by Al-Albani',
     isSunnah: true,
   ),
   const WuduStep(
-    title: 'غسل اليدين إلى المرفقين',
-    description: 'يغسل يديه مع المرفقين ثلاث مرات، يبدأ باليمنى ثم اليسرى.',
-    evidence: 'قال الله تعالى: "وَأَيْدِيَكُمْ إِلَى الْمَرَافِقِ" [المائدة: 6]',
+    title: 'Washing the Arms up to the Elbows',
+    description: 'He washes his arms including the elbows three times, starting with the right and then the left.',
+    evidence: 'Allah the Almighty said: "وَأَيْدِيَكُمْ إِلَى الْمَرَافِقِ" [Al-Ma\'idah 5:6]',
     isSunnah: false,
   ),
   const WuduStep(
-    title: 'تخليل الأصابع',
-    description: 'يخلل أصابع اليدين والرجلين ليصل الماء إلى ما بينها.',
-    evidence: 'قال النبي ﷺ: "وخلل بين الأصابع" - رواه الترمذي وصححه الألباني',
+    title: 'Running Water Between the Fingers and Toes',
+    description: 'He runs water between the fingers of the hands and the toes so that water reaches between them.',
+    evidence: 'The Prophet ﷺ said: "And run water between the fingers." — Narrated by At-Tirmidhi and graded sahih by Al-Albani',
     isSunnah: true,
   ),
   const WuduStep(
-    title: 'مسح الرأس',
-    description: 'يمسح رأسه مرة واحدة، يبدأ من مقدم رأسه إلى قفاه ثم يرد يديه إلى المقدم.',
-    evidence: 'قال الله تعالى: "وَامْسَحُوا بِرُءُوسِكُمْ" [المائدة: 6]',
+    title: 'Wiping the Head',
+    description: 'He wipes his head once, starting from the front of the head to the back of the neck, then returns his hands to the front.',
+    evidence: 'Allah the Almighty said: "وَامْسَحُوا بِرُءُوسِكُمْ" [Al-Ma\'idah 5:6]',
     isSunnah: false,
   ),
   const WuduStep(
-    title: 'مسح الأذنين',
-    description: 'يمسح أذنيه مرة واحدة، ظاهرهما وباطنهما بماء جديد.',
-    evidence: 'قال النبي ﷺ: "الأذنان من الرأس" - رواه الترمذي وصححه الألباني',
+    title: 'Wiping the Ears',
+    description: 'He wipes his ears once, the outside and the inside, with fresh water.',
+    evidence: 'The Prophet ﷺ said: "The ears are part of the head." — Narrated by At-Tirmidhi and graded sahih by Al-Albani',
     isSunnah: true,
   ),
   const WuduStep(
-    title: 'غسل الرجلين إلى الكعبين',
-    description: 'يغسل رجليه مع الكعبين ثلاث مرات، يبدأ باليمنى ثم اليسرى.',
-    evidence: 'قال الله تعالى: "وَأَرْجُلَكُمْ إِلَى الْكَعْبَيْنِ" [المائدة: 6]',
+    title: 'Washing the Feet up to the Ankles',
+    description: 'He washes his feet including the ankles three times, starting with the right and then the left.',
+    evidence: 'Allah the Almighty said: "وَأَرْجُلَكُمْ إِلَى الْكَعْبَيْنِ" [Al-Ma\'idah 5:6]',
     isSunnah: false,
   ),
   const WuduStep(
-    title: 'الترتيب والموالاة',
-    description: 'يرتب أعضاء الوضوء كما ذكرها الله، ويوالي بينها فلا يؤخر غسل عضو حتى ينشف الذي قبله.',
-    evidence: 'وصف الصحابة وضوء النبي ﷺ مرتباً متوالياً - متفق عليه',
+    title: 'Order and Continuity',
+    description: 'He performs the parts of wudu in the order Allah mentioned them, and continuously, not delaying the washing of one part until the previous one has dried.',
+    evidence: 'The Companions described the wudu of the Prophet ﷺ as ordered and continuous. — Agreed upon (Bukhari & Muslim)',
     isSunnah: false,
   ),
   const WuduStep(
-    title: 'الدعاء بعد الوضوء',
-    description: 'يقول بعد الفراغ من الوضوء: "أشهد أن لا إله إلا الله وحده لا شريك له، وأشهد أن محمداً عبده ورسوله".',
-    evidence: 'قال النبي ﷺ: "من توضأ فأحسن الوضوء ثم قال: أشهد أن لا إله إلا الله... فتحت له أبواب الجنة الثمانية يدخل من أيها شاء" - رواه مسلم',
+    title: 'The Supplication After Wudu',
+    description: 'After finishing wudu he says: "أشهد أن لا إله إلا الله وحده لا شريك له، وأشهد أن محمداً عبده ورسوله" (I bear witness that there is no god but Allah alone, with no partner, and I bear witness that Muhammad is His servant and Messenger).',
+    evidence: 'The Prophet ﷺ said: "Whoever performs wudu well and then says: \'I bear witness that there is no god but Allah…\' the eight gates of Paradise are opened for him, and he may enter from whichever he wishes." — Narrated by Muslim',
     isSunnah: true,
   ),
 ];
 
 final List<ScholarStatement> _scholarStatements = [
   const ScholarStatement(
-    scholar: 'الإمام النووي',
-    title: 'رحمه الله (المتوفى 676هـ)',
-    statement: 'قال في المجموع: "إسباغ الوضوء من تمام الإيمان، وهو إكمال غسل الأعضاء وإيصال الماء إلى جميع ما يجب غسله، والمبالغة في ذلك من غير إسراف".',
+    scholar: 'Imam An-Nawawi',
+    title: 'may Allah have mercy on him (d. 676 AH)',
+    statement: 'He said in Al-Majmu\': "Perfecting wudu is part of the completion of faith. It means completing the washing of the limbs and making the water reach everything that must be washed, being thorough in that without extravagance."',
   ),
   const ScholarStatement(
-    scholar: 'ابن القيم',
-    title: 'رحمه الله (المتوفى 751هـ)',
-    statement: 'قال في زاد المعاد: "كان النبي ﷺ يتوضأ لكل صلاة في غالب أحيانه، وربما صلى الصلوات بوضوء واحد، وكان يتوضأ بالمد تارة وبثلثيه تارة وبأزيد منه تارة".',
+    scholar: 'Ibn Al-Qayyim',
+    title: 'may Allah have mercy on him (d. 751 AH)',
+    statement: 'He said in Zad Al-Ma\'ad: "The Prophet ﷺ would perform wudu for every prayer most of the time, and sometimes he prayed several prayers with a single wudu. He performed wudu sometimes with one mudd of water, sometimes with two-thirds of it, and sometimes with more."',
   ),
   const ScholarStatement(
-    scholar: 'الشيخ ابن عثيمين',
-    title: 'رحمه الله (المتوفى 1421هـ)',
-    statement: 'قال: "الوضوء عبادة عظيمة، وهو مفتاح الصلاة، فينبغي للمسلم أن يحرص على إتقانه وإحسانه، وأن يتعلم صفته الصحيحة كما جاءت عن النبي ﷺ".',
+    scholar: 'Shaykh Ibn Uthaymeen',
+    title: 'may Allah have mercy on him (d. 1421 AH)',
+    statement: 'He said: "Wudu is a great act of worship and the key to prayer. A Muslim should be keen to master it and perform it well, and to learn its correct description as it came from the Prophet ﷺ."',
   ),
   const ScholarStatement(
-    scholar: 'الشيخ ابن باز',
-    title: 'رحمه الله (المتوفى 1420هـ)',
-    statement: 'قال: "من أهم ما ينبغي للمسلم العناية به: إسباغ الوضوء وإتقانه، فإن كثيراً من الناس يتساهلون في ذلك، وقد يخل بعضهم بواجب من واجباته فيبطل وضوؤه".',
+    scholar: 'Shaykh Ibn Baz',
+    title: 'may Allah have mercy on him (d. 1420 AH)',
+    statement: 'He said: "Among the most important things a Muslim should take care of is perfecting wudu and doing it well. Many people are lax about this, and some of them neglect an obligatory part of it, which invalidates their wudu."',
   ),
 ];
 
 final List<String> _additionalBenefits = [
-  'الوضوء نور للمؤمن يوم القيامة، قال النبي ﷺ: "إن أمتي يدعون يوم القيامة غراً محجلين من آثار الوضوء" - متفق عليه',
-  'الوضوء يكفر الذنوب والخطايا كما جاء في الحديث الصحيح',
-  'المحافظة على الوضوء من علامات الإيمان وحسن الإسلام',
-  'الوضوء سبب لمحبة الله تعالى، قال تعالى: "إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ وَيُحِبُّ الْمُتَطَهِّرِينَ" [البقرة: 222]',
-  'من نام على وضوء كان في حفظ الله ورعايته تلك الليلة',
-  'الوضوء يطفئ غضب الرب ويزيل الهم والحزن',
-  'استحباب تجديد الوضوء لكل صلاة وإن لم ينتقض',
-  'الاقتصاد في الماء سنة، والإسراف فيه مكروه حتى لو كان على نهر جار',
+  'Wudu is a light for the believer on the Day of Resurrection. The Prophet ﷺ said: "On the Day of Resurrection my Ummah will be called \'those with shining faces and limbs\' from the traces of wudu." — Agreed upon (Bukhari & Muslim)',
+  'Wudu expiates sins and wrongdoings, as stated in the authentic hadith',
+  'Keeping up wudu is a sign of faith and of good Islam',
+  'Wudu is a cause of Allah\'s love. Allah the Almighty said: "إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ وَيُحِبُّ الْمُتَطَهِّرِينَ" [Al-Baqarah 2:222]',
+  'Whoever sleeps in a state of wudu is under Allah\'s protection and care that night',
+  'Wudu extinguishes the Lord\'s anger and removes worry and sadness',
+  'It is recommended to renew wudu for every prayer even if it has not been broken',
+  'Moderation in water is a sunnah, and wastefulness is disliked even at a flowing river',
 ];

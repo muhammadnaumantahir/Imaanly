@@ -151,7 +151,7 @@ class SunnahImportanceCard extends StatelessWidget {
             ),
             SizedBox(height: SunnahTheme.space16),
             _buildHadithBox(
-              'عن أبي هريرة رضي الله عنه قال: سمعت رسول الله ﷺ يقول: "أرأيتم لو أن نهراً بباب أحدكم يغتسل منه كل يوم خمس مرات، هل يبقى من درنه شيء؟" قالوا: لا يبقى من درنه شيء. قال: "فذلك مثل الصلوات الخمس، يمحو الله بهن الخطايا"',
+              'Abu Hurairah (may Allah be pleased with him) said: I heard the Messenger of Allah ﷺ say: "Do you think that if there were a river at the door of one of you in which he bathed five times every day, any dirt would remain on him?" They said: "No dirt would remain on him." He said: "That is like the five daily prayers; Allah wipes away sins through them."',
               'Agreed upon',
               isDark,
             ),

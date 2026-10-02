@@ -33,10 +33,10 @@ class _TabItem {
 
 enum SharePreset {
   elegant('Elegant', 'dark_royal', 'royal', 28, true, false, true),
-  minimal('مُبسّط', 'glass_light', 'minimalist', 24, false, false, false),
-  viral('ستوري', 'sunset', 'insta_quote', 32, true, true, true),
+  minimal('Minimal', 'glass_light', 'minimalist', 24, false, false, false),
+  viral('Story', 'sunset', 'insta_quote', 32, true, true, true),
   classic('Classic', 'glass_dark', 'classic', 26, true, true, true),
-  nature('هادئ', 'emerald_gradient', 'zen', 24, true, false, true);
+  nature('Calm', 'emerald_gradient', 'zen', 24, true, false, true);
 
   final String label;
   final String themeId;
@@ -269,24 +269,24 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
 
   static const Map<String, _ThemePreview> _themes = {
     'glass_dark':       _ThemePreview('Dark glass', Color(0xFF0A0A0A), Colors.white, Icons.dark_mode_rounded),
-    'dark_royal':       _ThemePreview('ملكي ذهبي', Color(0xFF0A0806), Color(0xFFD4A746), Icons.auto_awesome),
-    'midnight_blue':    _ThemePreview('ليلي أزرق', Color(0xFF0D1B2A), Color(0xFF64B5F6), Icons.nightlight_round),
+    'dark_royal':       _ThemePreview('Royal Gold', Color(0xFF0A0806), Color(0xFFD4A746), Icons.auto_awesome),
+    'midnight_blue':    _ThemePreview('Midnight Blue', Color(0xFF0D1B2A), Color(0xFF64B5F6), Icons.nightlight_round),
     'emerald_gradient': _ThemePreview('Emerald', Color(0xFF0A1F1A), Color(0xFF80CBC4), Icons.eco_rounded),
-    'sunset':           _ThemePreview('بنفسجي', Color(0xFF1A0A2E), Color(0xFFCE93D8), Icons.gradient_rounded),
+    'sunset':           _ThemePreview('Violet', Color(0xFF1A0A2E), Color(0xFFCE93D8), Icons.gradient_rounded),
     'sand_dunes':       _ThemePreview('Sandy', Color(0xFFEFEBE9), Color(0xFF8D6E63), Icons.landscape_rounded),
-    'ocean_night':      _ThemePreview('محيط ليلي', Color(0xFF0A1628), Color(0xFF4DD0E1), Icons.water_rounded),
-    'rose_gold':        _ThemePreview('روز جولد', Color(0xFFFBE9E7), Color(0xFFB76E79), Icons.local_florist_rounded),
-    'forest_green':     _ThemePreview('غابة خضراء', Color(0xFF0B1F0E), Color(0xFF66BB6A), Icons.park_rounded),
+    'ocean_night':      _ThemePreview('Ocean Night', Color(0xFF0A1628), Color(0xFF4DD0E1), Icons.water_rounded),
+    'rose_gold':        _ThemePreview('Rose Gold', Color(0xFFFBE9E7), Color(0xFFB76E79), Icons.local_florist_rounded),
+    'forest_green':     _ThemePreview('Forest Green', Color(0xFF0B1F0E), Color(0xFF66BB6A), Icons.park_rounded),
     'glass_light':      _ThemePreview('Light glass', Color(0xFFFDFAF5), Color(0xFF1B1B1B), Icons.light_mode_rounded),
     'custom':           _ThemePreview('Custom', Color(0xFF141414), Color(0xFF33B18E), Icons.color_lens_rounded),
   };
 
   // TABS STATE
   static const List<_TabItem> _tabs = [
-    _TabItem('التصميم', Icons.palette_rounded),
+    _TabItem('Design', Icons.palette_rounded),
     _TabItem('Items', Icons.text_fields_rounded),
-    _TabItem('التنسيق', Icons.aspect_ratio_rounded),
-    _TabItem('الهوية', Icons.verified_user_rounded),
+    _TabItem('Layout', Icons.aspect_ratio_rounded),
+    _TabItem('Branding', Icons.verified_user_rounded),
   ];
 
   // Custom fonts
@@ -527,7 +527,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('تم إضافة الخط: $fontFamilyName'),
+            content: Text('Font added: $fontFamilyName'),
             backgroundColor: Colors.green.shade700,
             behavior: SnackBarBehavior.floating,
           ),
@@ -537,7 +537,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('فشل إضافة الخط: $e'),
+            content: Text('Failed to add font: $e'),
             backgroundColor: Colors.red,
             behavior: SnackBarBehavior.floating,
           ),
@@ -607,13 +607,13 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
       final bytes = await _capturePngBytes();
       if (share) {
         final file = await _writeTempPng(bytes);
-        await SharePlus.instance.share(ShareParams(text: 'مشاركة من أذكار المسلم', files: [XFile(file.path)]));
+        await SharePlus.instance.share(ShareParams(text: 'Shared from Muslim Adhkar', files: [XFile(file.path)]));
       } else {
         await Gal.putImageBytes(bytes, album: 'AlFurkan');
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: const Text("تم حفظ الصورة في المعرض", textDirection: TextDirection.rtl),
+              content: const Text("Image saved to gallery"),
               backgroundColor: Colors.green.shade700,
               behavior: SnackBarBehavior.floating,
             ),
@@ -624,7 +624,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text("حصل خطأ: $e", textDirection: TextDirection.rtl),
+            content: Text("An error occurred: $e"),
             backgroundColor: Colors.red,
             behavior: SnackBarBehavior.floating,
           ),
@@ -661,15 +661,15 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
   Widget _buildImageFilterSelector(Color primary, Color cardColor, bool isDark) {
     final filters = [
       ('none', 'None', null),
-      ('grayscale', 'أبيض وأسود', Colors.grey),
+      ('grayscale', 'Black & white', Colors.grey),
       ('sepia', 'Sepia', const Color(0xFF8B7355)),
-      ('vintage', 'فينتج', const Color(0xFFD4A574)),
-      ('cool', 'بارد', Colors.cyan),
-      ('warm', 'دافئ', Colors.orange),
-      ('dramatic', 'درامي', Colors.purple),
-      ('fade', 'باهت', Colors.grey),
-      ('contrast', 'تباين', Colors.black),
-      ('bright', 'ساطع', Colors.yellow),
+      ('vintage', 'Vintage', const Color(0xFFD4A574)),
+      ('cool', 'Cool', Colors.cyan),
+      ('warm', 'Warm', Colors.orange),
+      ('dramatic', 'Dramatic', Colors.purple),
+      ('fade', 'Faded', Colors.grey),
+      ('contrast', 'Contrast', Colors.black),
+      ('bright', 'Bright', Colors.yellow),
     ];
     
     return SizedBox(
@@ -739,7 +739,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildSectionTitle("قوالب التصميم (ستوري/بوست)", Icons.dashboard_customize_rounded, primary, subtleColor),
+        _buildSectionTitle("Design templates (Story/Post)", Icons.dashboard_customize_rounded, primary, subtleColor),
         const Gap(12),
         SizedBox(
           height: 120,
@@ -748,12 +748,12 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
             physics: const BouncingScrollPhysics(),
             children: [
               _buildTemplateOption('classic', 'Classic', Icons.crop_square_rounded, primary, cardColor, isDark),
-              _buildTemplateOption('minimalist', 'مُبسّط', Icons.view_agenda_rounded, primary, cardColor, isDark),
+              _buildTemplateOption('minimalist', 'Minimal', Icons.view_agenda_rounded, primary, cardColor, isDark),
             ],
           ),
         ),
         const Gap(24),
-        _buildSectionTitle("الثيمات", Icons.palette_rounded, primary, subtleColor),
+        _buildSectionTitle("Themes", Icons.palette_rounded, primary, subtleColor),
         const Gap(12),
         SizedBox(
           height: 100,
@@ -808,11 +808,11 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
           ),
         ),
         const Gap(24),
-        _buildSectionTitle("خلفية صورة", Icons.image_rounded, primary, subtleColor),
+        _buildSectionTitle("Background image", Icons.image_rounded, primary, subtleColor),
         const Gap(12),
         Row(
           children: [
-            _buildImageAction("اختيار صورة", Icons.add_photo_alternate_rounded, primary, () async {
+            _buildImageAction("Choose image", Icons.add_photo_alternate_rounded, primary, () async {
               final ImagePicker picker = ImagePicker();
               final XFile? image = await picker.pickImage(source: ImageSource.gallery);
               if (image != null) setState(() => _backgroundImagePath = image.path);
@@ -827,29 +827,29 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
         ),
         if (_backgroundImagePath != null) ...[
           const Gap(16),
-          _buildAdjustmentSlider("تمويه الخلفية (Blur)", _imageBlur, (v) => setState(() => _imageBlur = v), 0, 20, primary, textColor),
+          _buildAdjustmentSlider("Background blur", _imageBlur, (v) => setState(() => _imageBlur = v), 0, 20, primary, textColor),
           const Gap(12),
-          _buildAdjustmentSlider("تعتيم الطبقة (Opacity)", _imageOverlayOpacity, (v) => setState(() => _imageOverlayOpacity = v), 0, 1, primary, textColor),
+          _buildAdjustmentSlider("Overlay opacity", _imageOverlayOpacity, (v) => setState(() => _imageOverlayOpacity = v), 0, 1, primary, textColor),
           const Gap(12),
-          _buildSectionTitle("فلتر الصورة", Icons.filter_alt_rounded, primary, subtleColor),
+          _buildSectionTitle("Image filter", Icons.filter_alt_rounded, primary, subtleColor),
           const Gap(12),
           _buildImageFilterSelector(primary, cardColor, isDark),
         ],
         if (_themeId == 'custom') ...[
           const Gap(24),
-          _buildSectionTitle("ألوان مخصصة", Icons.color_lens_rounded, primary, subtleColor),
+          _buildSectionTitle("Custom colors", Icons.color_lens_rounded, primary, subtleColor),
           const Gap(16),
           _buildColorOption("Background color", _customBgColor, (c) => setState(() => _customBgColor = c), textColor),
           const Gap(12),
-          _buildToggle("خلفية متدرجة", _isGradientBg, (val) => setState(() => _isGradientBg = val), primary, textColor),
+          _buildToggle("Gradient background", _isGradientBg, (val) => setState(() => _isGradientBg = val), primary, textColor),
           if (_isGradientBg) ...[
             const Gap(12),
-            _buildColorOption("لون الخلفية 2", _customBgColor2, (c) => setState(() => _customBgColor2 = c), textColor),
+            _buildColorOption("Background color 2", _customBgColor2, (c) => setState(() => _customBgColor2 = c), textColor),
           ],
           const Gap(12),
-          _buildColorOption("لون النص", _customTextColor, (c) => setState(() => _customTextColor = c), textColor),
+          _buildColorOption("Text color", _customTextColor, (c) => setState(() => _customTextColor = c), textColor),
           const Gap(12),
-          _buildColorOption("لون التمييز", _customAccentColor, (c) => setState(() => _customAccentColor = c), textColor),
+          _buildColorOption("Accent color", _customAccentColor, (c) => setState(() => _customAccentColor = c), textColor),
         ],
       ],
     );
@@ -861,16 +861,16 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildSectionTitle("خط عام", Icons.font_download_rounded, primary, subtleColor),
+          _buildSectionTitle("Global font", Icons.font_download_rounded, primary, subtleColor),
           const Gap(12),
           _buildFontSelector(primary, cardColor, isDark),
           const Gap(8),
 
           // Global font
-          _buildSectionTitle("تفاصيل الخط", Icons.font_download_rounded, primary, subtleColor),
+          _buildSectionTitle("Font details", Icons.font_download_rounded, primary, subtleColor),
           const Gap(12),
           Text(
-            "اختيار الخط هنا بيأثر على النص الرئيسي (لو ماحددتش خطوط مختلفة لكل عنصر تحت).",
+            "Choosing a font here affects the main text (unless you set different fonts for each element below).",
             style: TextStyle(fontSize: 12, color: subtleColor, height: 1.4),
           ),
           const Gap(16),
@@ -889,13 +889,13 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
           const Gap(24),
           
           // Zekr
-          _buildSectionTitle("نص الذكر", Icons.text_fields_rounded, primary, subtleColor),
+          _buildSectionTitle("Dhikr text", Icons.text_fields_rounded, primary, subtleColor),
           const Gap(12),
           _buildFullColorPicker('zekr', _zekrColor, (c) => setState(() => _zekrColor = c), primary, textColor, isDark),
           const Gap(12),
-          _buildFontDropdown("خط الذكر", _zekrFont, (f) => setState(() => _zekrFont = f), primary),
+          _buildFontDropdown("Dhikr font", _zekrFont, (f) => setState(() => _zekrFont = f), primary),
           const Gap(12),
-          _buildSliderRow("حجم خط الذكر", "${(_zekrFontSize ?? _fontSize + 16).toInt()}", primary, textColor),
+          _buildSliderRow("Dhikr font size", "${(_zekrFontSize ?? _fontSize + 16).toInt()}", primary, textColor),
           Slider(
             value: _zekrFontSize ?? _fontSize + 16,
             min: 20,
@@ -908,7 +908,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
             },
           ),
           const Gap(8),
-          _buildSliderRow("إزاحة أفقي", "${_zekrOffsetX.toInt()}", primary, textColor),
+          _buildSliderRow("Horizontal offset", "${_zekrOffsetX.toInt()}", primary, textColor),
           Row(
             children: [
               Expanded(
@@ -930,12 +930,12 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                   _saveState();
                   setState(() => _zekrOffsetX = 0.0);
                 },
-                tooltip: "إعادة ضبط",
+                tooltip: "Reset",
               ),
             ],
           ),
           const Gap(8),
-          _buildSliderRow("إزاحة رأسي", "${_zekrOffsetY.toInt()}", primary, textColor),
+          _buildSliderRow("Vertical offset", "${_zekrOffsetY.toInt()}", primary, textColor),
           Row(
             children: [
               Expanded(
@@ -957,32 +957,32 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                   _saveState();
                   setState(() => _zekrOffsetY = 0.0);
                 },
-                tooltip: "إعادة ضبط",
+                tooltip: "Reset",
               ),
             ],
           ),
           const Gap(24),
           
           // Category
-          _buildSectionTitle("عنوان القسم", Icons.category_rounded, primary, subtleColor),
+          _buildSectionTitle("Section title", Icons.category_rounded, primary, subtleColor),
           const Gap(12),
           _buildFullColorPicker('category', _categoryColor, (c) => setState(() => _categoryColor = c), primary, textColor, isDark),
           const Gap(12),
           _buildFontDropdown("Title font", _categoryFont, (f) => setState(() => _categoryFont = f), primary),
           const Gap(12),
-          Text("ستايل العنوان:", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: textColor.withValues(alpha: 0.7))),
+          Text("Title style:", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: textColor.withValues(alpha: 0.7))),
           const Gap(8),
           Row(
             children: [
               _buildStyleChip('classic', 'Classic', _categoryStyleId == 'classic', primary),
               const Gap(8),
-              _buildStyleChip('pill', 'كبسولة', _categoryStyleId == 'pill', primary),
+              _buildStyleChip('pill', 'Pill', _categoryStyleId == 'pill', primary),
               const Gap(8),
-              _buildStyleChip('modern', 'مودرن', _categoryStyleId == 'modern', primary),
+              _buildStyleChip('modern', 'Modern', _categoryStyleId == 'modern', primary),
             ],
           ),
           const Gap(12),
-          _buildSliderRow("حجم خط العنوان", "${(_categoryFontSize ?? _fontSize + 12).toInt()}", primary, textColor),
+          _buildSliderRow("Title font size", "${(_categoryFontSize ?? _fontSize + 12).toInt()}", primary, textColor),
           Slider(
             value: _categoryFontSize ?? _fontSize + 12,
             min: 14,
@@ -995,7 +995,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
             },
           ),
           const Gap(8),
-          _buildSliderRow("إزاحة أفقي", "${_categoryOffsetX.toInt()}", primary, textColor),
+          _buildSliderRow("Horizontal offset", "${_categoryOffsetX.toInt()}", primary, textColor),
           Row(
             children: [
               Expanded(
@@ -1017,12 +1017,12 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                   _saveState();
                   setState(() => _categoryOffsetX = 0.0);
                 },
-                tooltip: "إعادة ضبط",
+                tooltip: "Reset",
               ),
             ],
           ),
           const Gap(8),
-          _buildSliderRow("إزاحة رأسي", "${_categoryOffsetY.toInt()}", primary, textColor),
+          _buildSliderRow("Vertical offset", "${_categoryOffsetY.toInt()}", primary, textColor),
           Row(
             children: [
               Expanded(
@@ -1045,19 +1045,19 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                     _saveState();
                     setState(() => _categoryOffsetY = 0.0);
                   },
-                  tooltip: "إعادة ضبط",
+                  tooltip: "Reset",
                 ),
             ],
           ),
           const Gap(24),
           
           // Reference
-          _buildSectionTitle("المصدر", Icons.bookmark_rounded, primary, subtleColor),
+          _buildSectionTitle("Source", Icons.bookmark_rounded, primary, subtleColor),
           _buildFullColorPicker('reference', _referenceColor, (c) => setState(() => _referenceColor = c), primary, textColor, isDark),
           const Gap(12),
-          _buildFontDropdown("خط المصدر", _referenceFont, (f) => setState(() => _referenceFont = f), primary),
+          _buildFontDropdown("Source font", _referenceFont, (f) => setState(() => _referenceFont = f), primary),
           const Gap(12),
-          _buildSliderRow("حجم خط المصدر", "${(_referenceFontSize ?? _fontSize - 4).toInt()}", primary, textColor),
+          _buildSliderRow("Source font size", "${(_referenceFontSize ?? _fontSize - 4).toInt()}", primary, textColor),
           Row(
             children: [
               Expanded(
@@ -1080,12 +1080,12 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                     _saveState();
                     setState(() => _referenceFontSize = null);
                   },
-                  tooltip: "إعادة ضبط",
+                  tooltip: "Reset",
                 ),
             ],
           ),
           const Gap(8),
-          _buildSliderRow("إزاحة أفقي", "${_referenceOffsetX.toInt()}", primary, textColor),
+          _buildSliderRow("Horizontal offset", "${_referenceOffsetX.toInt()}", primary, textColor),
           Row(
             children: [
               Expanded(
@@ -1108,12 +1108,12 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                     _saveState();
                     setState(() => _referenceOffsetX = 0.0);
                   },
-                  tooltip: "إعادة ضبط",
+                  tooltip: "Reset",
                 ),
             ],
           ),
           const Gap(8),
-          _buildSliderRow("إزاحة رأسي", "${_referenceOffsetY.toInt()}", primary, textColor),
+          _buildSliderRow("Vertical offset", "${_referenceOffsetY.toInt()}", primary, textColor),
           Row(
             children: [
               Expanded(
@@ -1136,20 +1136,20 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                     _saveState();
                     setState(() => _referenceOffsetY = 0.0);
                   },
-                  tooltip: "إعادة ضبط",
+                  tooltip: "Reset",
                 ),
             ],
           ),
           const Gap(24),
           
           // Description
-          _buildSectionTitle("وصف إضافي", Icons.star_rounded, primary, subtleColor),
+          _buildSectionTitle("Extra description", Icons.star_rounded, primary, subtleColor),
           const Gap(12),
           _buildFullColorPicker('description', _descriptionColor, (c) => setState(() => _descriptionColor = c), primary, textColor, isDark),
           const Gap(12),
           _buildFontDropdown("Description font", _descriptionFont, (f) => setState(() => _descriptionFont = f), primary),
           const Gap(12),
-          _buildSliderRow("حجم خط الوصف", "${(_descriptionFontSize ?? _fontSize + 4).toInt()}", primary, textColor),
+          _buildSliderRow("Description font size", "${(_descriptionFontSize ?? _fontSize + 4).toInt()}", primary, textColor),
           Row(
             children: [
               Expanded(
@@ -1172,12 +1172,12 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                     _saveState();
                     setState(() => _descriptionFontSize = null);
                   },
-                  tooltip: "إعادة ضبط",
+                  tooltip: "Reset",
                 ),
             ],
           ),
           const Gap(8),
-          _buildSliderRow("إزاحة أفقي", "${_descriptionOffsetX.toInt()}", primary, textColor),
+          _buildSliderRow("Horizontal offset", "${_descriptionOffsetX.toInt()}", primary, textColor),
           Row(
             children: [
               Expanded(
@@ -1200,12 +1200,12 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                     _saveState();
                     setState(() => _descriptionOffsetX = 0.0);
                   },
-                  tooltip: "إعادة ضبط",
+                  tooltip: "Reset",
                 ),
             ],
           ),
           const Gap(8),
-          _buildSliderRow("إزاحة رأسي", "${_descriptionOffsetY.toInt()}", primary, textColor),
+          _buildSliderRow("Vertical offset", "${_descriptionOffsetY.toInt()}", primary, textColor),
           Row(
             children: [
               Expanded(
@@ -1228,7 +1228,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                     _saveState();
                     setState(() => _descriptionOffsetY = 0.0);
                   },
-                  tooltip: "إعادة ضبط",
+                  tooltip: "Reset",
                 ),
             ],
           ),
@@ -1306,7 +1306,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                       ),
                       const Gap(12),
                       Text(
-                        currentColor != null ? "Custom" : "اختيار لون",
+                        currentColor != null ? "Custom" : "Choose color",
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: currentColor != null ? FontWeight.bold : FontWeight.normal,
@@ -1423,7 +1423,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                                       icon: Icon(Icons.copy_rounded, color: textColor.withValues(alpha: 0.7)),
                                     ),
                                     IconButton(
-                                      tooltip: 'لصق',
+                                      tooltip: 'Paste',
                                       onPressed: () async {
                                         final data = await Clipboard.getData('text/plain');
                                         final t = data?.text;
@@ -1473,19 +1473,19 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
     ];
     
     final fontLabels = {
-      null: 'افتراضي',
-      'KFGQPC-Uthmanic-HAFS-Regular': 'عثماني',
+      null: 'Default',
+      'KFGQPC-Uthmanic-HAFS-Regular': 'Uthmani',
       'Amiri-Regular': 'Amiri',
       'Cairo-Bold': 'Cairo Bold',
       'IDRISIUM': 'IDRISIUM',
-      'AmiriQuran-Regular': 'أميري قرآن',
-      'Aref Ruqaa Bold': 'عارف رقعة',
+      'AmiriQuran-Regular': 'Amiri Quran',
+      'Aref Ruqaa Bold': 'Aref Ruqaa',
       'Cairo-Regular': 'Cairo',
       'Cairo-Light': 'Cairo Light',
       'Cairo-SemiBold': 'Cairo SemiBold',
       'Cairo-Black': 'Cairo Black',
-      'al-majd': 'المجد',
-      'bader-lamsat': 'بدر لمسات',
+      'al-majd': 'Al-Majd',
+      'bader-lamsat': 'Bader Lamsat',
       'Afsaneh-Font': 'Afsaneh',
     };
     
@@ -1503,7 +1503,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
             itemBuilder: (context, index) {
               final font = fonts[index];
               final isSelected = currentFont == font;
-              final label = fontLabels[font] ?? 'خط';
+              final label = fontLabels[font] ?? 'Font';
               return GestureDetector(
                 onTap: () {
                   _saveState();
@@ -1545,13 +1545,13 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // Output mode
-        _buildSectionTitle("نمط الإخراج", Icons.aspect_ratio_rounded, primary, subtleColor),
+        _buildSectionTitle("Output style", Icons.aspect_ratio_rounded, primary, subtleColor),
         const Gap(12),
         Row(
           children: [
-            _buildPatternOption(false, Icons.crop_square_rounded, "بوست (1:1)", primary),
+            _buildPatternOption(false, Icons.crop_square_rounded, "Post (1:1)", primary),
             const Gap(12),
-            _buildPatternOption(true, Icons.phone_android_rounded, "ستوري (9:16)", primary),
+            _buildPatternOption(true, Icons.phone_android_rounded, "Story (9:16)", primary),
           ],
         ),
         const Gap(24),
@@ -1570,9 +1570,9 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
         const Gap(24),
         
         // Layout tuning
-        _buildSectionTitle("إعدادات التنسيق", Icons.tune_rounded, primary, subtleColor),
+        _buildSectionTitle("Layout settings", Icons.tune_rounded, primary, subtleColor),
         const Gap(12),
-        _buildSliderRow("تباعد السطور", _lineHeight.toStringAsFixed(1), primary, textColor),
+        _buildSliderRow("Line spacing", _lineHeight.toStringAsFixed(1), primary, textColor),
         Slider(
           value: _lineHeight,
           min: 1.0,
@@ -1585,7 +1585,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
             setState(() => _lineHeight = val);
           },
         ),
-        _buildSliderRow("المساحة الداخلية", "${_padding.toInt()}", primary, textColor),
+        _buildSliderRow("Inner padding", "${_padding.toInt()}", primary, textColor),
         Slider(
           value: _padding,
           min: 20,
@@ -1598,7 +1598,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
             setState(() => _padding = val);
           },
         ),
-        _buildSliderRow("تدوير الحواف", "${_borderRadius.toInt()}", primary, textColor),
+        _buildSliderRow("Corner radius", "${_borderRadius.toInt()}", primary, textColor),
         Slider(
           value: _borderRadius,
           min: 0,
@@ -1611,7 +1611,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
             setState(() => _borderRadius = val);
           },
         ),
-        _buildSliderRow("شفافية الخلفية", _bgOpacity.toStringAsFixed(2), primary, textColor),
+        _buildSliderRow("Background opacity", _bgOpacity.toStringAsFixed(2), primary, textColor),
         Slider(
           value: _bgOpacity,
           min: 0.0,
@@ -1633,11 +1633,11 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildSectionTitle("الهوية", Icons.verified_user_rounded, primary, subtleColor),
+        _buildSectionTitle("Branding", Icons.verified_user_rounded, primary, subtleColor),
         const Gap(16),
-        _buildToggle("إظهار عنوان القسم", _showCategoryHeader, (val) => setState(() => _showCategoryHeader = val), primary, textColor),
+        _buildToggle("Show section title", _showCategoryHeader, (val) => setState(() => _showCategoryHeader = val), primary, textColor),
         const Gap(8),
-        _buildToggle("إظهار الهوية (شعار/نص)", _showBranding, (val) => setState(() => _showBranding = val), primary, textColor),
+        _buildToggle("Show branding (logo/text)", _showBranding, (val) => setState(() => _showBranding = val), primary, textColor),
       ],
     );
   }
@@ -1669,17 +1669,17 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
     
     final fontLabels = {
       'IDRISIUM': 'IDRISIUM',
-      'KFGQPC-Uthmanic-HAFS-Regular': 'عثماني',
+      'KFGQPC-Uthmanic-HAFS-Regular': 'Uthmani',
       'Amiri-Regular': 'Amiri',
       'Cairo-Bold': 'Cairo Bold',
-      'AmiriQuran-Regular': 'أميري قرآن',
-      'Aref Ruqaa Bold': 'عارف رقعة',
+      'AmiriQuran-Regular': 'Amiri Quran',
+      'Aref Ruqaa Bold': 'Aref Ruqaa',
       'Cairo-Regular': 'Cairo',
       'Cairo-Light': 'Cairo Light',
       'Cairo-SemiBold': 'Cairo SemiBold',
       'Cairo-Black': 'Cairo Black',
-      'al-majd': 'المجد',
-      'bader-lamsat': 'بدر لمسات',
+      'al-majd': 'Al-Majd',
+      'bader-lamsat': 'Bader Lamsat',
       'Afsaneh-Font': 'Afsaneh',
       'Abd-ElRady-Regular': 'Abd ElRady',
       'al-hadaribold': 'Hadari',
@@ -1731,7 +1731,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                         Icon(Icons.add_rounded, size: 16, color: primary),
                         const Gap(4),
                         Text(
-                          'إضافة خط',
+                          'Add font',
                           style: TextStyle(
                             fontSize: 12,
                             color: primary,
@@ -1746,7 +1746,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
               
               final font = allFonts[index];
               final isSelected = _fontFamily == font;
-              final label = allLabels[font] ?? 'خط';
+              final label = allLabels[font] ?? 'Font';
               final isCustom = customFamilyToPath.containsKey(font);
               
               return GestureDetector(
@@ -1756,8 +1756,8 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                           context: context,
                           builder: (ctx) {
                             return AlertDialog(
-                              title: const Text('حذف الخط'),
-                              content: Text('هل تريد حذف الخط "$label"؟'),
+                              title: const Text('Delete font'),
+                              content: Text('Do you want to delete the font "$label"?'),
                               actions: [
                                 TextButton(onPressed: () => Navigator.pop(ctx, false), child: const Text('Cancel')),
                                 TextButton(onPressed: () => Navigator.pop(ctx, true), child: const Text('Delete')),
@@ -1857,13 +1857,13 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final primary = themeState.primary;
     
-    final bg = isDark ? const Color(0xFF0F0F0F) : const Color(0xFFF7F1E6);
-    final cardColor = isDark ? const Color(0xFF1A1A1A) : Colors.white;
+    final bg = isDark ? const Color(0xFF071E18) : const Color(0xFFF3F8F5);
+    final cardColor = isDark ? const Color(0xFF11332A) : Colors.white;
     final textColor = isDark ? Colors.white : const Color(0xFF1B1B1B);
     final subtleColor = isDark ? Colors.white.withValues(alpha: 0.5) : Colors.black.withValues(alpha: 0.4);
 
     return Directionality(
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
       child: Scaffold(
         backgroundColor: bg,
         appBar: AppBar(
@@ -1876,7 +1876,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
           title: FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              "مشاركة الذكر",
+              "Share dhikr",
               style: TextStyle(color: textColor, fontWeight: FontWeight.w900, fontSize: 18),
             ),
           ),
@@ -2541,7 +2541,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text("تعديل مكان الصورة / زوم", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
+                    const Text("Adjust image position / zoom", style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
                     IconButton(icon: const Icon(Icons.check_circle, color: Colors.greenAccent, size: 30), onPressed: () => Navigator.pop(context)),
                   ],
                 ),
@@ -2575,7 +2575,7 @@ class _AzkarShareScreenState extends State<AzkarShareScreen> with TickerProvider
               const Padding(
                 padding: EdgeInsets.all(30),
                 child: Text(
-                  "كبر وصغر واسحب الصورة لمكان مناسب. التعديل بيتحفظ تلقائيًا بعد ما تسيب الزوم.",
+                  "Pinch and drag the image to a suitable spot. Changes are saved automatically when you release the zoom.",
                   style: TextStyle(color: Colors.white70, fontSize: 14),
                   textAlign: TextAlign.center,
                 ),
@@ -2714,7 +2714,7 @@ class _ColorPickerDialogState extends State<_ColorPickerDialog> {
                   icon: const Icon(Icons.copy_rounded, color: Colors.white70),
                 ),
                 IconButton(
-                  tooltip: 'لصق',
+                  tooltip: 'Paste',
                   onPressed: () async {
                     final data = await Clipboard.getData('text/plain');
                     final text = data?.text;

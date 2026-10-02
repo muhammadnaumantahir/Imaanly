@@ -102,12 +102,12 @@ class _SunnahPrayerScreenV2State extends State<SunnahPrayerScreenV2>
   PreferredSizeWidget _buildAppBar(bool isDark, ColorScheme cs) {
     return AppBar(
       title: Text(
-        'سنن الصلاة وآدابها',
+        'Sunnahs & Etiquette of Prayer',
         style: GoogleFonts.cairo(
           fontWeight: FontWeight.w900,
           fontSize: 20.sp,
         ),
-        semanticsLabel: 'سنن الصلاة وآدابها',
+        semanticsLabel: 'Sunnahs & Etiquette of Prayer',
       ),
       centerTitle: true,
       backgroundColor: SunnahTheme.getSurfaceColor(isDark),
@@ -145,8 +145,8 @@ class _SunnahPrayerScreenV2State extends State<SunnahPrayerScreenV2>
             // Intro Card
             SunnahIntroCard(
               icon: Icons.book_rounded,
-              title: "الصلاة عماد الدين",
-              description: "الصلاة هي الركن الثاني من أركان الإسلام، وهي أول ما يحاسب عليه العبد يوم القيامة. وقد أمر الله تعالى بإقامتها وحث النبي ﷺ على إتقانها وإحسانها.",
+              title: "Prayer: the Pillar of Religion",
+              description: "Prayer is the second pillar of Islam and the first thing a servant will be held accountable for on the Day of Resurrection. Allah the Almighty commanded establishing it, and the Prophet ﷺ urged performing it well and perfectly.",
               isDark: isDark,
             )
                 .animate()
@@ -172,7 +172,7 @@ class _SunnahPrayerScreenV2State extends State<SunnahPrayerScreenV2>
             
             // Section: أركان الصلاة وسننها
             SunnahSectionHeader(
-              title: "أركان الصلاة وسننها",
+              title: "Pillars and Sunnahs of Prayer",
               icon: Icons.format_list_numbered_rounded,
               isDark: isDark,
             )
@@ -192,7 +192,7 @@ class _SunnahPrayerScreenV2State extends State<SunnahPrayerScreenV2>
             
             // Section: أقوال العلماء
             SunnahSectionHeader(
-              title: "أقوال العلماء",
+              title: "Scholars' Statements",
               icon: Icons.school_rounded,
               isDark: isDark,
             )
@@ -211,7 +211,7 @@ class _SunnahPrayerScreenV2State extends State<SunnahPrayerScreenV2>
             
             // Section: فوائد وآداب
             SunnahSectionHeader(
-              title: "فوائد وآداب",
+              title: "Benefits & Etiquette",
               icon: Icons.lightbulb_rounded,
               isDark: isDark,
             )
@@ -246,7 +246,7 @@ class _SunnahPrayerScreenV2State extends State<SunnahPrayerScreenV2>
           description: step.description,
           evidence: step.evidence,
           badgeText: step.type,
-          badgeColor: step.type == 'ركن' 
+          badgeColor: step.type == 'Pillar' 
               ? SunnahTheme.badgeRukn 
               : SunnahTheme.badgeSunnah,
           isDark: isDark,
@@ -314,7 +314,7 @@ class _SunnahPrayerScreenV2State extends State<SunnahPrayerScreenV2>
       child: FloatingActionButton(
         onPressed: _scrollToTop,
         backgroundColor: SunnahTheme.green,
-        tooltip: 'العودة للأعلى',
+        tooltip: 'Back to top',
         child: const Icon(
           Icons.arrow_upward_rounded,
           color: Colors.white,
@@ -334,7 +334,7 @@ class _SunnahPrayerScreenV2State extends State<SunnahPrayerScreenV2>
         evidence: step.evidence,
         type: "Sunnahs of prayer",
         badgeText: step.type,
-        badgeColor: step.type == 'ركن' 
+        badgeColor: step.type == 'Pillar' 
             ? SunnahTheme.badgeRukn 
             : SunnahTheme.badgeSunnah,
       ),
@@ -343,8 +343,8 @@ class _SunnahPrayerScreenV2State extends State<SunnahPrayerScreenV2>
 
   void _shareScreen() {
     SunnahShareService.shareAsText(
-      title: "سنن الصلاة وآدابها",
-      description: "دليل شامل لأركان الصلاة وسننها وآدابها",
+      title: "Sunnahs & Etiquette of Prayer",
+      description: "A complete guide to the pillars, sunnahs and etiquette of prayer",
       type: "Sunnahs of prayer",
     );
   }
@@ -386,89 +386,89 @@ class ScholarStatement {
 
 final List<PrayerStep> _prayerSteps = [
   const PrayerStep(
-    title: 'القيام مع القدرة',
-    description: 'القيام في الصلاة المفروضة ركن من أركانها لمن قدر عليه، فإن لم يستطع صلى قاعداً، فإن لم يستطع فعلى جنب.',
-    evidence: 'قال النبي ﷺ لعمران بن حصين: "صل قائماً، فإن لم تستطع فقاعداً، فإن لم تستطع فعلى جنب" - رواه البخاري',
-    type: 'ركن',
+    title: 'Standing, if able',
+    description: 'Standing in the obligatory prayer is a pillar of the prayer for whoever is able. If he cannot, he prays sitting; if he cannot, then on his side.',
+    evidence: 'The Prophet ﷺ said to Imran ibn Husayn: "Pray standing; if you cannot, then sitting; if you cannot, then on your side." — Narrated by Al-Bukhari',
+    type: 'Pillar',
   ),
   const PrayerStep(
-    title: 'تكبيرة الإحرام',
-    description: 'يقول: "الله أكبر" وهي ركن من أركان الصلاة، ولا تنعقد الصلاة بدونها.',
-    evidence: 'قال النبي ﷺ: "مفتاح الصلاة الطهور، وتحريمها التكبير، وتحليلها التسليم" - رواه أبو داود وصححه الألباني',
-    type: 'ركن',
+    title: 'Takbirat al-Ihram (Opening Takbeer)',
+    description: 'He says: "Allahu Akbar" (Allah is the Greatest). It is a pillar of the prayer, and the prayer does not begin without it.',
+    evidence: 'The Prophet ﷺ said: "The key to prayer is purification, its beginning is the takbeer, and its conclusion is the taslim." — Narrated by Abu Dawud and graded sahih by Al-Albani',
+    type: 'Pillar',
   ),
   const PrayerStep(
-    title: 'رفع اليدين عند التكبير',
-    description: 'يرفع يديه حذو منكبيه أو إلى فروع أذنيه عند تكبيرة الإحرام، وعند الركوع، وعند الرفع منه، وعند القيام من التشهد الأول.',
-    evidence: 'كان النبي ﷺ يرفع يديه في هذه المواضع - متفق عليه',
+    title: 'Raising the Hands with the Takbeer',
+    description: 'He raises his hands level with his shoulders or the tips of his ears at the opening takbeer, at ruku, when rising from it, and when standing up from the first tashahhud.',
+    evidence: 'The Prophet ﷺ used to raise his hands in these places. — Agreed upon (Bukhari & Muslim)',
     type: 'Sunnah',
   ),
   const PrayerStep(
-    title: 'وضع اليمنى على اليسرى',
-    description: 'يضع يده اليمنى على اليسرى على صدره بعد تكبيرة الإحرام.',
-    evidence: 'كان النبي ﷺ إذا قام في الصلاة وضع يده اليمنى على اليسرى - رواه البخاري',
+    title: 'Placing the Right Hand over the Left',
+    description: 'He places his right hand over his left on his chest after the opening takbeer.',
+    evidence: 'When the Prophet ﷺ stood in prayer, he would place his right hand over his left. — Narrated by Al-Bukhari',
     type: 'Sunnah',
   ),
   const PrayerStep(
-    title: 'دعاء الاستفتاح',
-    description: 'يقول بعد تكبيرة الإحرام: "سبحانك اللهم وبحمدك، وتبارك اسمك، وتعالى جدك، ولا إله غيرك".',
-    evidence: 'كان النبي ﷺ يستفتح الصلاة بهذا الدعاء - رواه مسلم',
+    title: 'The Opening Supplication',
+    description: 'After the opening takbeer he says: "سبحانك اللهم وبحمدك، وتبارك اسمك، وتعالى جدك، ولا إله غيرك" (Glory and praise be to You, O Allah; blessed is Your name, exalted is Your majesty, and there is no god but You).',
+    evidence: 'The Prophet ﷺ used to open the prayer with this supplication. — Narrated by Muslim',
     type: 'Sunnah',
   ),
   const PrayerStep(
-    title: 'قراءة الفاتحة',
-    description: 'يقرأ سورة الفاتحة في كل ركعة، وهي ركن من أركان الصلاة.',
-    evidence: 'قال النبي ﷺ: "لا صلاة لمن لم يقرأ بفاتحة الكتاب" - متفق عليه',
-    type: 'ركن',
+    title: 'Reciting Al-Fatihah',
+    description: 'He recites Surah Al-Fatihah in every rak\'ah; it is a pillar of the prayer.',
+    evidence: 'The Prophet ﷺ said: "There is no prayer for one who does not recite the Opening of the Book." — Agreed upon (Bukhari & Muslim)',
+    type: 'Pillar',
   ),
   const PrayerStep(
-    title: 'الركوع',
-    description: 'يركع مكبراً، ويجعل رأسه حيال ظهره، ويضع يديه على ركبتيه مفرجتي الأصابع.',
-    evidence: 'كان النبي ﷺ إذا ركع لم يشخص رأسه ولم يصوبه، ولكن بين ذلك - رواه مسلم',
-    type: 'ركن',
+    title: 'Ruku (Bowing)',
+    description: 'He bows saying the takbeer, keeps his head level with his back, and places his hands on his knees with fingers spread.',
+    evidence: 'When the Prophet ﷺ bowed, he neither raised his head nor lowered it, but kept it in between. — Narrated by Muslim',
+    type: 'Pillar',
   ),
   const PrayerStep(
-    title: 'السجود',
-    description: 'يسجد على سبعة أعظم: الجبهة مع الأنف، والكفين، والركبتين، وأطراف القدمين.',
-    evidence: 'قال النبي ﷺ: "أمرت أن أسجد على سبعة أعظم" - متفق عليه',
-    type: 'ركن',
+    title: 'Sujud (Prostration)',
+    description: 'He prostrates on seven bones: the forehead together with the nose, the two palms, the two knees, and the tips of the feet.',
+    evidence: 'The Prophet ﷺ said: "I was commanded to prostrate on seven bones." — Agreed upon (Bukhari & Muslim)',
+    type: 'Pillar',
   ),
   const PrayerStep(
-    title: 'التشهد الأخير',
-    description: 'يجلس للتشهد الأخير ويقرأ التحيات والصلاة الإبراهيمية.',
-    evidence: 'قال النبي ﷺ: "إذا تشهد أحدكم فليستعذ بالله من أربع..." - رواه مسلم',
-    type: 'ركن',
+    title: 'The Final Tashahhud',
+    description: 'He sits for the final tashahhud and recites At-Tahiyyat and the Ibrahimi prayer (salawat upon the Prophet ﷺ).',
+    evidence: 'The Prophet ﷺ said: "When one of you finishes the tashahhud, let him seek refuge in Allah from four things…" — Narrated by Muslim',
+    type: 'Pillar',
   ),
   const PrayerStep(
-    title: 'التسليم',
-    description: 'يسلم عن يمينه وشماله قائلاً: "السلام عليكم ورحمة الله".',
-    evidence: 'كان النبي ﷺ يسلم عن يمينه وعن شماله - رواه مسلم',
-    type: 'ركن',
+    title: 'The Taslim',
+    description: 'He gives salam to his right and left, saying: "السلام عليكم ورحمة الله" (Peace and the mercy of Allah be upon you).',
+    evidence: 'The Prophet ﷺ used to give salam to his right and to his left. — Narrated by Muslim',
+    type: 'Pillar',
   ),
 ];
 
 final List<ScholarStatement> _scholarStatements = [
   const ScholarStatement(
-    scholar: 'الإمام ابن القيم',
-    title: 'رحمه الله (المتوفى 751هـ)',
-    statement: 'قال في كتاب الصلاة: "الصلاة قرة عيون المحبين، وسرور أرواح الموحدين، ولذة نفوس العارفين، وبستان العابدين، ولذة نفوس الخاشعين، وهي محك أحوال الصادقين".',
+    scholar: 'Imam Ibn Al-Qayyim',
+    title: 'may Allah have mercy on him (d. 751 AH)',
+    statement: 'He said in his book on prayer: "Prayer is the delight of the eyes of those who love Allah, the joy of the souls of the monotheists, the pleasure of the souls of those who know Him, the garden of the worshippers, the pleasure of the humble souls, and the touchstone of the states of the truthful."',
   ),
   const ScholarStatement(
-    scholar: 'الإمام النووي',
-    title: 'رحمه الله (المتوفى 676هـ)',
-    statement: 'قال في المجموع: "ينبغي للمصلي أن يحضر قلبه في جميع أقوال الصلاة وأفعالها، ويتدبر ما يقوله ويفعله، فإن ذلك روح الصلاة ولبها".',
+    scholar: 'Imam An-Nawawi',
+    title: 'may Allah have mercy on him (d. 676 AH)',
+    statement: 'He said in Al-Majmu\': "The one praying should bring his heart to all the words and actions of the prayer and reflect on what he says and does, for that is the soul and essence of prayer."',
   ),
   const ScholarStatement(
-    scholar: 'الشيخ ابن عثيمين',
-    title: 'رحمه الله (المتوفى 1421هـ)',
-    statement: 'قال: "الصلاة عمود الإسلام، وهي الصلة بين العبد وربه، فينبغي للمسلم أن يعتني بها غاية العناية، وأن يؤديها على الوجه الذي شرعه الله تعالى".',
+    scholar: 'Shaykh Ibn Uthaymeen',
+    title: 'may Allah have mercy on him (d. 1421 AH)',
+    statement: 'He said: "Prayer is the pillar of Islam and the link between the servant and his Lord. A Muslim should take the utmost care of it and perform it in the way Allah the Almighty prescribed."',
   ),
 ];
 
 final List<String> _additionalBenefits = [
-  'الصلاة نور للمؤمن في الدنيا والآخرة، قال النبي ﷺ: "الصلاة نور" - رواه مسلم',
-  'الصلاة تنهى عن الفحشاء والمنكر، قال تعالى: "إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ" [العنكبوت: 45]',
-  'الصلاة كفارة للذنوب والخطايا، قال النبي ﷺ: "الصلوات الخمس، والجمعة إلى الجمعة، كفارات لما بينهن ما لم تغش الكبائر" - رواه مسلم',
-  'الصلاة سبب لدخول الجنة، قال النبي ﷺ: "من صلى البردين دخل الجنة" - متفق عليه',
-  'الصلاة في جماعة أفضل من صلاة الفذ بسبع وعشرين درجة - متفق عليه',
+  'Prayer is a light for the believer in this world and the next. The Prophet ﷺ said: "Prayer is light." — Narrated by Muslim',
+  'Prayer forbids immorality and wrongdoing. Allah the Almighty said: "إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ" [Al-Ankabut 29:45]',
+  'Prayer expiates sins and wrongdoings. The Prophet ﷺ said: "The five daily prayers, and Friday to Friday, are expiation for what is between them, as long as major sins are avoided." — Narrated by Muslim',
+  'Prayer is a cause of entering Paradise. The Prophet ﷺ said: "Whoever prays the two cool prayers (Fajr and Asr) will enter Paradise." — Agreed upon (Bukhari & Muslim)',
+  'Prayer in congregation is better than praying alone by twenty-seven degrees. — Agreed upon (Bukhari & Muslim)',
 ];
