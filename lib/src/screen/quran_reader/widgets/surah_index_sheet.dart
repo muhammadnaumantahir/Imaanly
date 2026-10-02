@@ -115,10 +115,8 @@ class _SurahIndexSheetState extends State<SurahIndexSheet>
                 child: TextField(
                   controller: _searchController,
                   onChanged: (value) => setState(() => _searchQuery = value),
-                  textDirection: TextDirection.rtl,
                   decoration: InputDecoration(
                     hintText: l10n.searchForASurah,
-                    hintTextDirection: TextDirection.rtl,
                     prefixIcon: Icon(
                       FluentIcons.search_24_regular,
                       color: themeState.primary,

@@ -1890,7 +1890,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
       children: [
         TextField(
           controller: nameController,
-          textAlign: TextAlign.right,
+          textAlign: TextAlign.start,
           decoration: InputDecoration(
             labelText: "Mosque name",
             hintText: "Example: Al-Noor Mosque",
@@ -1908,7 +1908,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
         const Gap(16),
         TextField(
           controller: addressController,
-          textAlign: TextAlign.right,
+          textAlign: TextAlign.start,
           maxLines: 2,
           decoration: InputDecoration(
             labelText: "Title",
@@ -2960,11 +2960,11 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           builder: (context, setDialogState) {
             return AlertDialog(
               backgroundColor: isDark ? const Color(0xFF11332A) : Colors.white,
-              title: Text("Adjust adhan time", textAlign: TextAlign.right, style: _titleStyle(isDark)),
+              title: Text("Adjust adhan time", textAlign: TextAlign.start, style: _titleStyle(isDark)),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text("You can move the adhan earlier or later by minutes to match your mosque.", textAlign: TextAlign.right, style: _mutedStyle(isDark)),
+                  Text("You can move the adhan earlier or later by minutes to match your mosque.", textAlign: TextAlign.start, style: _mutedStyle(isDark)),
                   const Gap(20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -3013,11 +3013,11 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           builder: (context, setDialogState) {
             return AlertDialog(
               backgroundColor: isDark ? const Color(0xFF11332A) : Colors.white,
-              title: Text("Iqama time", textAlign: TextAlign.right, style: _titleStyle(isDark)),
+              title: Text("Iqama time", textAlign: TextAlign.start, style: _titleStyle(isDark)),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text("How many minutes between adhan and iqama?", textAlign: TextAlign.right, style: _mutedStyle(isDark)),
+                  Text("How many minutes between adhan and iqama?", textAlign: TextAlign.start, style: _mutedStyle(isDark)),
                   const Gap(20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -3220,7 +3220,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           Expanded(
             child: Text(
               title,
-              textAlign: TextAlign.right,
+              textAlign: TextAlign.start,
               style: _titleStyle(isDark),
             ),
           ),
@@ -3247,7 +3247,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
         children: [
           Text(
             title,
-            textAlign: TextAlign.right,
+            textAlign: TextAlign.start,
             style: TextStyle(
               color: color,
               fontWeight: FontWeight.w800,
@@ -3257,7 +3257,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           const Gap(10),
           Text(
             formatTimeOfDay(context, TimeOfDay.fromDateTime(time)),
-            textAlign: TextAlign.right,
+            textAlign: TextAlign.start,
             style: TextStyle(
               color: isDark ? Colors.white : Colors.black87,
               fontWeight: FontWeight.w900,

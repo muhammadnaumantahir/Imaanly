@@ -413,7 +413,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     Text(
                       "• Turn on \"Exact match\" to search for an exact phrase\n• Long-press a result to copy or share it\n• Use the filter icon to limit the search to a specific surah",
                       style: TextStyle(color: Color(0xFF6B7F77), fontSize: 12, height: 1.8),
-                      textAlign: TextAlign.right,
+                      textAlign: TextAlign.start,
                     ),
                   ],
                 ),

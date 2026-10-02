@@ -83,7 +83,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bg = isDark ? Theme.of(context).colorScheme.surface : const Color(0xFFF3F8F5);
-    final cardBg = isDark ? const Color(0xFF0A0A0A) : Colors.white;
+    final cardBg = isDark ? const Color(0xFF0E2E25) : Colors.white;
     final textColor = isDark ? Colors.white : const Color(0xFF0E2E25);
     final subtitleColor = isDark ? Colors.grey.shade400 : Colors.grey.shade600;
     final primary = context.read<ThemeCubit>().state.primary;
@@ -119,7 +119,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
               const SizedBox(height: 12),
               _buildNotifCard(
                 icon: Icons.menu_book_rounded,
-                iconColor: const Color(0xFF1B8A6B),
+                iconColor: const Color(0xFF0F7A5C),
                 title: "Khatma reminder",
                 subtitle: "Daily reading wird reminder",
                 enabled: _khatmaEnabled,
@@ -150,7 +150,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
               const SizedBox(height: 10),
               _buildNotifCard(
                 icon: Icons.auto_awesome_rounded,
-                iconColor: const Color(0xFFC18D3E),
+                iconColor: const Color(0xFFC9A24B),
                 title: "Ayah of the Day",
                 subtitle: "A random ayah daily with its tafsir",
                 enabled: _dailyVerseEnabled,
@@ -181,7 +181,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
               const SizedBox(height: 10),
               _buildNotifCard(
                 icon: Icons.wb_sunny_rounded,
-                iconColor: const Color(0xFFFF9800),
+                iconColor: const Color(0xFFD08A1E),
                 title: "Morning adhkar",
                 subtitle: "Daily morning adhkar reminder",
                 enabled: _morningAzkarEnabled,
@@ -212,7 +212,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
               const SizedBox(height: 10),
               _buildNotifCard(
                 icon: Icons.nights_stay_rounded,
-                iconColor: const Color(0xFF5C6BC0),
+                iconColor: const Color(0xFF4C5FD5),
                 title: "Evening adhkar",
                 subtitle: "Daily evening adhkar reminder",
                 enabled: _eveningAzkarEnabled,
@@ -252,7 +252,6 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
               SnackBar(
                 content: Text(
                   "Test notification sent ✅",
-                  textDirection: TextDirection.rtl,
                   style: AppFonts.body(fontWeight: FontWeight.w800),
                 ),
                 backgroundColor: primary,

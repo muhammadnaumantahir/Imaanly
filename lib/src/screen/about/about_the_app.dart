@@ -44,7 +44,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
     final primary = themeState.primary;
 
     return Scaffold(
-      backgroundColor: isDark ? Theme.of(context).colorScheme.surface : const Color(0xFFF9F6F0),
+      backgroundColor: isDark ? Theme.of(context).colorScheme.surface : const Color(0xFFF3F8F5),
       body: Stack(
         children: [
           // ── Premium Animated Background ──
@@ -248,7 +248,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
                           gradient: LinearGradient(
                             colors: [
                               isDark ? const Color(0xFF17392F) : const Color(0xFFFFFFFF),
-                              isDark ? const Color(0xFF1F1F1F) : const Color(0xFFF0F0F0),
+                              isDark ? const Color(0xFF11332A) : const Color(0xFFE3EEE8),
                             ],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
@@ -554,7 +554,6 @@ class _AboutAppPageState extends State<AboutAppPage> {
           const Text(
             "Idris Ghamid",
             style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900),
-            textDirection: TextDirection.rtl,
           ),
           const Gap(4),
           Text(

@@ -176,7 +176,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                 const Expanded(
                   child: Text(
                     "Imaanly",
-                    textDirection: TextDirection.rtl,
                     style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16),
                   ),
                 ),
@@ -243,7 +242,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
           icon: Icon(
             isLast
                 ? FluentIcons.checkmark_24_filled
-                : FluentIcons.arrow_left_24_filled,
+                : FluentIcons.arrow_right_24_filled,
             size: 18,
           ),
           label: Text(
@@ -299,7 +298,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
           const Gap(30),
           const Text(
                 "Welcome to Imaanly",
-                textDirection: TextDirection.rtl,
                 style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900),
               )
               .animate()
@@ -308,7 +306,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
           const Gap(12),
           Text(
             "A complete digital Mushaf — carefully designed to be your companion in reciting the Book of Allah.",
-            textDirection: TextDirection.rtl,
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 14,
@@ -522,7 +519,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
               const Gap(8),
               Text(
                 label,
-                textDirection: TextDirection.rtl,
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w900,
@@ -626,7 +622,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                       ),
                     Text(
                       t.$2,
-                      textDirection: TextDirection.rtl,
                       style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w900,
@@ -730,7 +725,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
               ),
             ),
             child: RichText(
-              textDirection: TextDirection.rtl,
               textAlign: TextAlign.center,
               text: TextSpan(
                 style: TextStyle(
@@ -813,7 +807,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                         children: [
                           const Text(
                             "Al-Tafsir Al-Muyassar",
-                            textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w900,
@@ -822,7 +815,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                           const Gap(4),
                           Text(
                             "A simplified tafsir bundled with the app — no internet needed",
-                            textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontSize: 12,
                               color: isDark ? Colors.white60 : Colors.black45,
@@ -857,7 +849,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                         children: [
                           const Text(
                             "I'rab",
-                            textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.w900,
@@ -866,7 +857,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                           const Gap(4),
                           Text(
                             "I'rab of the ayahs — you can turn it on or off anytime",
-                            textDirection: TextDirection.rtl,
                             style: TextStyle(
                               fontSize: 12,
                               color: isDark ? Colors.white60 : Colors.black45,
@@ -904,7 +894,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                     Expanded(
                       child: Text(
                         "You can change all of these settings later from Settings.",
-                        textDirection: TextDirection.rtl,
                         style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
@@ -993,7 +982,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                 Expanded(
                   child: Text(
                     "You can fine-tune notification times and settings from the Settings screen.",
-                    textDirection: TextDirection.rtl,
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
@@ -1039,7 +1027,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                     children: [
                       Text(
                         title,
-                        textDirection: TextDirection.rtl,
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w900,
@@ -1048,7 +1035,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                       const Gap(2),
                       Text(
                         subtitle,
-                        textDirection: TextDirection.rtl,
                         style: TextStyle(
                           fontSize: 11,
                           color: isDark ? Colors.white60 : Colors.black45,
@@ -1090,13 +1076,11 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
       children: [
         Text(
           title,
-          textDirection: TextDirection.rtl,
           style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w900),
         ),
         const Gap(6),
         Text(
           subtitle,
-          textDirection: TextDirection.rtl,
           style: TextStyle(
             fontSize: 13,
             height: 1.5,
@@ -1113,7 +1097,6 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
       alignment: AlignmentDirectional.centerEnd,
       child: Text(
         label,
-        textDirection: TextDirection.rtl,
         style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w900),
       ),
     );

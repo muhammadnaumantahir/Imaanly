@@ -215,10 +215,12 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
         gradient: LinearGradient(
           begin: Alignment.topRight,
           end: Alignment.bottomLeft,
-          colors: [primary, primary.withValues(alpha: 0.72)],
+          colors: isDark
+              ? const [Color(0xFF14604A), Color(0xFF082B22)]
+              : const [Color(0xFF0F7A5C), Color(0xFF063D2E)],
         ),
         boxShadow: [
-          BoxShadow(color: primary.withValues(alpha: 0.24), blurRadius: 28, offset: const Offset(0, 12)),
+          BoxShadow(color: const Color(0xFF063D2E).withValues(alpha: 0.28), blurRadius: 28, offset: const Offset(0, 12)),
         ],
       ),
       child: Stack(
@@ -233,6 +235,12 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
             children: [
               Row(
                 children: [
+                  IconButton(
+                    tooltip: 'Back',
+                    onPressed: () => Navigator.maybePop(context),
+                    icon: const Icon(Icons.arrow_back_rounded, color: Colors.white),
+                  ),
+                  const Spacer(),
                   Container(
                     width: 46,
                     height: 46,
@@ -241,13 +249,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
                       shape: BoxShape.circle,
                       border: Border.all(color: Colors.white.withValues(alpha: 0.22)),
                     ),
-                    child: const Icon(Icons.auto_awesome_rounded, color: Colors.white, size: 24),
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    tooltip: 'Back',
-                    onPressed: () => Navigator.maybePop(context),
-                    icon: const Icon(Icons.arrow_forward_rounded, color: Colors.white),
+                    child: const Icon(Icons.auto_awesome_rounded, color: Color(0xFFE2BC6B), size: 24),
                   ),
                 ],
               ),
@@ -294,7 +296,6 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
       child: TextField(
         controller: _searchController,
         onChanged: (value) => setState(() => _query = value),
-        textDirection: TextDirection.rtl,
         style: TextStyle(color: text, fontWeight: FontWeight.w600),
         decoration: InputDecoration(
           hintText: 'Search adhkar groups...',
