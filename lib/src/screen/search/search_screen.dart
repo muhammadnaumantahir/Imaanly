@@ -41,9 +41,9 @@ class _SearchScreenState extends State<SearchScreen> {
 
   bool get _isDark => Theme.of(context).brightness == Brightness.dark;
   Color get _pageBg =>
-      _isDark ? const Color(0xFF121212) : const Color(0xFFF3F8F5);
+      _isDark ? const Color(0xFF071E18) : const Color(0xFFF3F8F5);
   Color get _cardBg =>
-      _isDark ? Colors.white.withValues(alpha: 0.05) : const Color(0xFFFFFBF5);
+      _isDark ? Colors.white.withValues(alpha: 0.05) : const Color(0xFFFFFFFF);
   Color get _cardBorder => _isDark
       ? Colors.white.withValues(alpha: 0.08)
       : Colors.black.withValues(alpha: 0.06);
@@ -151,7 +151,7 @@ class _SearchScreenState extends State<SearchScreen> {
           child: Container(
             height: MediaQuery.of(ctx).size.height * 0.7,
             decoration: const BoxDecoration(
-              color: Color(0xFFF6F3E9),
+              color: Color(0xFFF3F8F5),
               borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
             ),
             child: Column(
@@ -182,12 +182,12 @@ class _SearchScreenState extends State<SearchScreen> {
                         title: Text(
                           surahName,
                           style: TextStyle(
-                            color: isSelected ? const Color(0xFF4C8F5B) : Colors.black,
+                            color: isSelected ? const Color(0xFF0F7A5C) : Colors.black,
                             fontWeight: isSelected ? FontWeight.w900 : FontWeight.w600,
                             fontFamily: "QPC_Hafs",
                           ),
                         ),
-                        trailing: isSelected ? const Icon(Icons.check, color: Color(0xFF4C8F5B)) : null,
+                        trailing: isSelected ? const Icon(Icons.check, color: Color(0xFF0F7A5C)) : null,
                         onTap: () {
                           _filterSurahIdVN.value = surahId;
                           _performSearch(_searchController.text);
@@ -272,7 +272,7 @@ class _SearchScreenState extends State<SearchScreen> {
             children: [
               IconButton(
                 onPressed: () => Navigator.pop(context),
-                icon: const Icon(Icons.close, color: Color(0xFF8B7355), size: 28),
+                icon: const Icon(Icons.close, color: Color(0xFF4B6B5E), size: 28),
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
               ),
@@ -288,7 +288,6 @@ class _SearchScreenState extends State<SearchScreen> {
                   child: TextField(
                     controller: _searchController,
                     focusNode: _searchFocus,
-                    textDirection: TextDirection.rtl,
                     textAlign: TextAlign.center,
                     textInputAction: TextInputAction.search,
                     enableSuggestions: false,
@@ -310,11 +309,11 @@ class _SearchScreenState extends State<SearchScreen> {
                               child: SizedBox(
                                 width: 16,
                                 height: 16,
-                                child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF6EAE7E)),
+                                child: CircularProgressIndicator(strokeWidth: 2, color: Color(0xFF1FA37A)),
                               ),
                             );
                           }
-                          return const Icon(FluentIcons.search_24_regular, color: Color(0xFF6EAE7E), size: 24);
+                          return const Icon(FluentIcons.search_24_regular, color: Color(0xFF1FA37A), size: 24);
                         },
                       ),
                       suffixIcon: ValueListenableBuilder<TextEditingValue>(
@@ -322,7 +321,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         builder: (context, value, _) {
                           if (value.text.isEmpty) return const SizedBox.shrink();
                           return IconButton(
-                            icon: const Icon(Icons.close, color: Color(0xFFB0A89D), size: 22),
+                            icon: const Icon(Icons.close, color: Color(0xFF86A094), size: 22),
                             onPressed: () {
                               _searchController.clear();
                               _performSearch("");
@@ -345,7 +344,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     icon: Icon(
                       surahId == null ? Icons.tune : Icons.filter_alt_off_rounded,
                       size: 28,
-                      color: surahId == null ? const Color(0xFF8B7355) : const Color(0xFF4C8F5B),
+                      color: surahId == null ? const Color(0xFF4B6B5E) : const Color(0xFF0F7A5C),
                     ),
                   );
                 },
@@ -365,19 +364,19 @@ class _SearchScreenState extends State<SearchScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(FluentIcons.search_24_regular, size: 56, color: const Color(0xFF8B7355).withValues(alpha: 0.4)),
+              Icon(FluentIcons.search_24_regular, size: 56, color: const Color(0xFF4B6B5E).withValues(alpha: 0.4)),
               const Gap(16),
-              const Text("Search the ayahs of the Holy Quran", style: TextStyle(color: Color(0xFF8B7355), fontSize: 17, fontWeight: FontWeight.w800)),
+              const Text("Search the ayahs of the Holy Quran", style: TextStyle(color: Color(0xFF4B6B5E), fontSize: 17, fontWeight: FontWeight.w800)),
               const Gap(8),
               const Text(
                 "You can search by any word or phrase",
-                style: TextStyle(color: Color(0xFFB0A89D), fontSize: 13),
+                style: TextStyle(color: Color(0xFF86A094), fontSize: 13),
               ),
               if (_searchHistory.isNotEmpty) ...[
                 const Gap(28),
                 const Text(
                   "Recent searches",
-                  style: TextStyle(color: Color(0xFF8B7355), fontSize: 14, fontWeight: FontWeight.w700),
+                  style: TextStyle(color: Color(0xFF4B6B5E), fontSize: 14, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 16),
                 Wrap(
@@ -388,12 +387,12 @@ class _SearchScreenState extends State<SearchScreen> {
                     return InputChip(
                       onPressed: () => _applySuggestion(query),
                       onDeleted: () => _removeFromHistory(query),
-                      deleteIcon: const Icon(Icons.close, size: 16, color: Color(0xFFB0A89D)),
+                      deleteIcon: const Icon(Icons.close, size: 16, color: Color(0xFF86A094)),
                       label: Text(
                         query,
-                        style: const TextStyle(color: Color(0xFF333333), fontWeight: FontWeight.w700, fontSize: 13),
+                        style: const TextStyle(color: Color(0xFF0E1F1A), fontWeight: FontWeight.w700, fontSize: 13),
                       ),
-                      backgroundColor: const Color(0xFFEFE8D6),
+                      backgroundColor: const Color(0xFFE3EEE8),
                       side: BorderSide.none,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                     );
@@ -404,16 +403,16 @@ class _SearchScreenState extends State<SearchScreen> {
               Container(
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFEFE8D6).withValues(alpha: 0.5),
+                  color: const Color(0xFFE3EEE8).withValues(alpha: 0.5),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: Column(
                   children: const [
-                    Text("💡 Tips", style: TextStyle(color: Color(0xFF8B7355), fontSize: 14, fontWeight: FontWeight.w800)),
+                    Text("💡 Tips", style: TextStyle(color: Color(0xFF4B6B5E), fontSize: 14, fontWeight: FontWeight.w800)),
                     Gap(8),
                     Text(
                       "• Turn on \"Exact match\" to search for an exact phrase\n• Long-press a result to copy or share it\n• Use the filter icon to limit the search to a specific surah",
-                      style: TextStyle(color: Color(0xFF7E7B74), fontSize: 12, height: 1.8),
+                      style: TextStyle(color: Color(0xFF6B7F77), fontSize: 12, height: 1.8),
                       textAlign: TextAlign.right,
                     ),
                   ],
@@ -459,7 +458,7 @@ class _SearchScreenState extends State<SearchScreen> {
               if (results.isNotEmpty)
                 Text(
                   "Surahs: $surahsCount, Ayahs: $ayahsCount (word repeats: $occurrences)",
-                  style: const TextStyle(color: Color(0xFF555555), fontSize: 11, fontWeight: FontWeight.w700),
+                  style: const TextStyle(color: Color(0xFF3C524A), fontSize: 11, fontWeight: FontWeight.w700),
                 )
               else
                 const SizedBox.shrink(),
@@ -469,14 +468,14 @@ class _SearchScreenState extends State<SearchScreen> {
                   children: [
                     Icon(
                       isExactSearch ? Icons.radio_button_checked : Icons.radio_button_unchecked,
-                      color: isExactSearch ? const Color(0xFF4C8F5B) : const Color(0xFF8B7355),
+                      color: isExactSearch ? const Color(0xFF0F7A5C) : const Color(0xFF4B6B5E),
                       size: 18,
                     ),
                     const Gap(6),
                     Text(
                       "Exact match",
                       style: TextStyle(
-                        color: isExactSearch ? Colors.black : const Color(0xFF555555),
+                        color: isExactSearch ? Colors.black : const Color(0xFF3C524A),
                         fontWeight: FontWeight.w800,
                         fontSize: 13,
                       ),
@@ -551,13 +550,13 @@ class _SearchScreenState extends State<SearchScreen> {
                         child = const SizedBox.shrink();
                       } else if (isSearching) {
                         child = const Center(
-                          child: CircularProgressIndicator(color: Color(0xFF6EAE7E)),
+                          child: CircularProgressIndicator(color: Color(0xFF1FA37A)),
                         );
                       } else if (hasSearched && results.isEmpty) {
                         child = Center(
                           child: Text(
                             "No results",
-                            style: TextStyle(color: Color(0xFF8B7355), fontSize: 16, fontWeight: FontWeight.w800),
+                            style: TextStyle(color: Color(0xFF4B6B5E), fontSize: 16, fontWeight: FontWeight.w800),
                           ),
                         );
                       } else if (hasSearched && results.isNotEmpty) {
@@ -646,7 +645,7 @@ class _SearchScreenState extends State<SearchScreen> {
         children: [
           Row(
             children: [
-              _IslamicStar(number: surahNum, color: const Color(0xFF6EAE7E)),
+              _IslamicStar(number: surahNum, color: const Color(0xFF1FA37A)),
               const Gap(16),
               Text(
                 qcf.getSurahNameArabic(surahNum),
@@ -663,12 +662,12 @@ class _SearchScreenState extends State<SearchScreen> {
             children: [
               Text(
                 "${localizedNumber(context, verseCount)} ayahs",
-                style: const TextStyle(color: Color(0xFFD6C8A6), fontSize: 13, fontWeight: FontWeight.w800),
+                style: const TextStyle(color: Color(0xFF86A094), fontSize: 13, fontWeight: FontWeight.w800),
               ),
               const Gap(6),
               Text(
                 "Page ${localizedNumber(context, qcf.getPageNumber(surahNum, 1))}",
-                style: const TextStyle(color: Color(0xFFD6C8A6), fontSize: 13, fontWeight: FontWeight.w800),
+                style: const TextStyle(color: Color(0xFF86A094), fontSize: 13, fontWeight: FontWeight.w800),
               ),
             ],
           ),
@@ -676,11 +675,11 @@ class _SearchScreenState extends State<SearchScreen> {
             children: [
               Container(
                 padding: const EdgeInsets.all(6),
-                decoration: const BoxDecoration(color: Color(0xFFF3F7F4), shape: BoxShape.circle),
+                decoration: const BoxDecoration(color: Color(0xFFE3EEE8), shape: BoxShape.circle),
                 child: Transform(
                   alignment: Alignment.center,
                   transform: Matrix4.rotationZ(3.1415),
-                  child: const Icon(Icons.send_rounded, color: Color(0xFF6EAE7E), size: 16),
+                  child: const Icon(Icons.send_rounded, color: Color(0xFF1FA37A), size: 16),
                 ),
               ),
               const Gap(12),
@@ -718,8 +717,8 @@ class _VerseResultCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final cardBg = isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white;
-    final cardBorder = isDark ? Colors.white.withValues(alpha: 0.08) : const Color(0xFFEBE5D9);
-    final textPrimary = isDark ? Colors.white : const Color(0xFF333333);
+    final cardBorder = isDark ? Colors.white.withValues(alpha: 0.08) : const Color(0xFFD3E2DA);
+    final textPrimary = isDark ? Colors.white : const Color(0xFF0E1F1A);
 
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
@@ -753,18 +752,18 @@ class _VerseResultCard extends StatelessWidget {
                           height: 1.7,
                           color: textPrimary,
                         ),
-                        highlightColor: const Color(0xFF1B82A6),
+                        highlightColor: const Color(0xFF2F9BB5),
                       ),
                     ),
                     const Gap(16),
                     Column(
                       children: [
-                        _IslamicStar(number: ayahNumber, color: const Color(0xFF6EAE7E)),
+                        _IslamicStar(number: ayahNumber, color: const Color(0xFF1FA37A)),
                         const Gap(6),
                         Text(
                           "$surahNumber. $surahName",
                           style: const TextStyle(
-                            color: Color(0xFF7A7A7A),
+                            color: Color(0xFF6B7F77),
                             fontSize: 12,
                             fontWeight: FontWeight.w800,
                           ),
@@ -779,19 +778,19 @@ class _VerseResultCard extends StatelessWidget {
                   children: [
                     Text(
                       "Page $pageNumber",
-                      style: const TextStyle(color: Color(0xFFC0B6A7), fontSize: 12, fontWeight: FontWeight.w800),
+                      style: const TextStyle(color: Color(0xFF86A094), fontSize: 12, fontWeight: FontWeight.w800),
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         GestureDetector(
                           onTap: () => _copyAyah(context),
-                          child: const Icon(Icons.copy_rounded, size: 18, color: Color(0xFFC0B6A7)),
+                          child: const Icon(Icons.copy_rounded, size: 18, color: Color(0xFF86A094)),
                         ),
                         const Gap(16),
                         GestureDetector(
                           onTap: () => _shareAyah(context),
-                          child: const Icon(Icons.share_outlined, size: 18, color: Color(0xFFC0B6A7)),
+                          child: const Icon(Icons.share_outlined, size: 18, color: Color(0xFF86A094)),
                         ),
                       ],
                     ),
@@ -811,7 +810,7 @@ class _VerseResultCard extends StatelessWidget {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: const Text("Ayah copied ✓", style: TextStyle(fontWeight: FontWeight.w700)),
-        backgroundColor: const Color(0xFF4C8F5B),
+        backgroundColor: const Color(0xFF0F7A5C),
         behavior: SnackBarBehavior.floating,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         duration: const Duration(seconds: 2),
@@ -836,7 +835,7 @@ class _VerseResultCard extends StatelessWidget {
       builder: (ctx) {
         return Container(
           decoration: const BoxDecoration(
-            color: Color(0xFFF6F3E9),
+            color: Color(0xFFF3F8F5),
             borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
           ),
           padding: const EdgeInsets.all(20),
@@ -853,11 +852,11 @@ class _VerseResultCard extends StatelessWidget {
                 const Gap(16),
                 Text(
                   "$surahName — Ayah $ayahNumber",
-                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Color(0xFF333333)),
+                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: Color(0xFF0E1F1A)),
                 ),
                 const Gap(16),
                 ListTile(
-                  leading: const Icon(Icons.copy_rounded, color: Color(0xFF4C8F5B)),
+                  leading: const Icon(Icons.copy_rounded, color: Color(0xFF0F7A5C)),
                   title: const Text("Copy ayah", style: TextStyle(fontWeight: FontWeight.w700)),
                   onTap: () {
                     Navigator.pop(ctx);
@@ -865,7 +864,7 @@ class _VerseResultCard extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  leading: const Icon(Icons.share_outlined, color: Color(0xFF1B82A6)),
+                  leading: const Icon(Icons.share_outlined, color: Color(0xFF2F9BB5)),
                   title: const Text("Share ayah", style: TextStyle(fontWeight: FontWeight.w700)),
                   onTap: () {
                     Navigator.pop(ctx);
@@ -873,7 +872,7 @@ class _VerseResultCard extends StatelessWidget {
                   },
                 ),
                 ListTile(
-                  leading: const Icon(Icons.arrow_forward_rounded, color: Color(0xFF6EAE7E)),
+                  leading: const Icon(Icons.arrow_forward_rounded, color: Color(0xFF1FA37A)),
                   title: const Text("Go to ayah in Mushaf", style: TextStyle(fontWeight: FontWeight.w700)),
                   onTap: () {
                     Navigator.pop(ctx);

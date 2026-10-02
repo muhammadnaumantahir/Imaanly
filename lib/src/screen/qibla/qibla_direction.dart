@@ -104,7 +104,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                 style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
               ),
               behavior: SnackBarBehavior.floating,
-              backgroundColor: const Color(0xFF10B981),
+              backgroundColor: const Color(0xFF12906A),
             ),
           );
         }
@@ -341,12 +341,12 @@ class _QiblaDirectionState extends State<QiblaDirection> {
             ),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: const Color(0xFFF59E0B),
+              color: const Color(0xFFD08A1E),
               width: 2,
             ),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFFF59E0B).withValues(alpha: 0.2),
+                color: const Color(0xFFD08A1E).withValues(alpha: 0.2),
                 blurRadius: 12,
                 offset: const Offset(0, 4),
               ),
@@ -359,11 +359,11 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                   Container(
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFF59E0B),
+                      color: const Color(0xFFD08A1E),
                       borderRadius: BorderRadius.circular(14),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFF59E0B).withValues(alpha: 0.3),
+                          color: const Color(0xFFD08A1E).withValues(alpha: 0.3),
                           blurRadius: 8,
                         ),
                       ],
@@ -620,7 +620,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                 value: "${guidance.heading.round()}°",
                 subtitle: _getCardinalDirection(guidance.heading),
                 icon: Icons.phone_android_rounded,
-                color: const Color(0xFF3B82F6),
+                color: const Color(0xFF2F9BB5),
                 isDark: isDark,
               ),
             ),
@@ -645,7 +645,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                 icon: Icons.autorenew_rounded,
                 title: "Compass calibration",
                 subtitle: "Improve accuracy",
-                color: const Color(0xFF3B82F6),
+                color: const Color(0xFF2F9BB5),
                 onTap: () => _startCalibration(),
                 isDark: isDark,
               ),
@@ -656,7 +656,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                 icon: Icons.my_location_rounded,
                 title: "Update location",
                 subtitle: "Recalculate Qibla",
-                color: const Color(0xFF10B981),
+                color: const Color(0xFF12906A),
                 onTap: () => _refreshLocation(),
                 isDark: isDark,
               ),
@@ -745,7 +745,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                         "Alignment count",
                         "$_alignmentCount",
                         Icons.check_circle_rounded,
-                        const Color(0xFF10B981),
+                        const Color(0xFF12906A),
                         isDark,
                       ),
                     ),
@@ -757,7 +757,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     "Distance to the Kaaba",
                     "${_distanceToKaaba.toStringAsFixed(0)} km",
                     Icons.social_distance_rounded,
-                    const Color(0xFFC6922D),
+                    const Color(0xFFC9A24B),
                     isDark,
                   ),
                 if (_lastAlignmentTime != null) ...[
@@ -766,7 +766,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     "Last alignment",
                     _formatTimeSince(_lastAlignmentTime!),
                     Icons.access_time_rounded,
-                    const Color(0xFF3B82F6),
+                    const Color(0xFF2F9BB5),
                     isDark,
                   ),
                 ],
@@ -775,7 +775,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                   "Refresh rate",
                   "${_updateFrequency.toStringAsFixed(1)} Hz",
                   Icons.speed_rounded,
-                  const Color(0xFF8B5CF6),
+                  const Color(0xFF6A4FC4),
                   isDark,
                 ),
               ],
@@ -915,20 +915,20 @@ class _QiblaDirectionState extends State<QiblaDirection> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                const Color(0xFF3B82F6).withValues(alpha: 0.08),
-                const Color(0xFF3B82F6).withValues(alpha: 0.03),
+                const Color(0xFF2F9BB5).withValues(alpha: 0.08),
+                const Color(0xFF2F9BB5).withValues(alpha: 0.03),
               ],
             ),
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-              color: const Color(0xFF3B82F6).withValues(alpha: 0.2),
+              color: const Color(0xFF2F9BB5).withValues(alpha: 0.2),
             ),
           ),
           child: Row(
             children: [
               Icon(
                 Icons.info_outline_rounded,
-                color: const Color(0xFF3B82F6),
+                color: const Color(0xFF2F9BB5),
                 size: 20,
               ),
               const Gap(12),
@@ -989,7 +989,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
           style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
         ),
         behavior: SnackBarBehavior.floating,
-        backgroundColor: const Color(0xFF10B981),
+        backgroundColor: const Color(0xFF12906A),
       ),
     );
   }
@@ -1415,7 +1415,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
       case QiblaAlignment.aligned:
         return themeState.primary;
       case QiblaAlignment.close:
-        return const Color(0xFFC6922D);
+        return const Color(0xFFC9A24B);
       case QiblaAlignment.adjusting:
         return const Color(0xFF6B7280);
     }
@@ -1469,158 +1469,161 @@ class _CompassPainter extends CustomPainter {
     required this.appLocalizations,
   });
 
+  static const Color _gold = Color(0xFFE2BC6B);
+  static const Color _cream = Color(0xFFCFE3D9);
+  static const Color _north = Color(0xFFE5543A);
+
   @override
   void paint(Canvas canvas, Size size) {
     final Offset center = Offset(size.width / 2, size.height / 2);
     canvas.translate(center.dx, center.dy);
 
-    final Paint degreeAnglePaint = Paint();
-    final Color grayColor = Theme.of(context).brightness != Brightness.light
-        ? Colors.grey.shade500
-        : Colors.grey.shade700;
+    final double radius = size.width / 2;
+    final double edge = radius - 5;
+    final Rect dialRect = Rect.fromCircle(center: Offset.zero, radius: radius);
 
-    // Draw center circle
+    // Dial disc
     canvas.drawCircle(
-      const Offset(0, 0),
-      25,
-      degreeAnglePaint..color = grayColor,
+      Offset.zero,
+      radius,
+      Paint()
+        ..shader = const RadialGradient(
+          colors: [Color(0xFF14604A), Color(0xFF082B22), Color(0xFF05201A)],
+          stops: [0.0, 0.72, 1.0],
+        ).createShader(dialRect),
     );
 
-    final double degreeDistanceFromCenter = size.width / 2;
+    // Outer gold ring and inner keyline
+    canvas.drawCircle(
+      Offset.zero,
+      radius - 1.5,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 3
+        ..color = _gold,
+    );
+    canvas.drawCircle(
+      Offset.zero,
+      radius - 72,
+      Paint()
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = 1
+        ..color = _gold.withValues(alpha: 0.28),
+    );
 
-    // Draw kaaba direction line with glow effect
-    final double radian = vector.radians(kaabaAngle);
-    final double maxX = math.sin(radian) * (degreeDistanceFromCenter - 30);
-    final double maxY = -math.cos(radian) * (degreeDistanceFromCenter - 30);
-
-    // Glow effect
+    // Qibla pointer: glow, shaft and arrowhead
+    final double qiblaRadian = vector.radians(kaabaAngle);
+    canvas.save();
+    canvas.rotate(qiblaRadian);
     canvas.drawLine(
-      Offset(maxX, maxY),
-      const Offset(0, 0),
-      degreeAnglePaint
-        ..color = themeState.primary.withValues(alpha: 0.3)
-        ..strokeWidth = 8
+      const Offset(0, -34),
+      Offset(0, -(edge - 56)),
+      Paint()
+        ..color = _gold.withValues(alpha: 0.30)
+        ..strokeWidth = 10
         ..strokeCap = StrokeCap.round
-        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 4),
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5),
     );
-
-    // Main line
     canvas.drawLine(
-      Offset(maxX, maxY),
-      const Offset(0, 0),
-      degreeAnglePaint
-        ..color = themeState.primary
+      const Offset(0, -34),
+      Offset(0, -(edge - 56)),
+      Paint()
+        ..color = _gold
         ..strokeWidth = 4
-        ..strokeCap = StrokeCap.round
-        ..maskFilter = null,
+        ..strokeCap = StrokeCap.round,
     );
+    final Path arrow = Path()
+      ..moveTo(0, -(edge - 28))
+      ..lineTo(-11, -(edge - 58))
+      ..lineTo(11, -(edge - 58))
+      ..close();
+    canvas.drawPath(arrow, Paint()..color = _gold);
+    canvas.restore();
 
-    // Draw angle lines and labels
+    // North marker
+    final Path northMarker = Path()
+      ..moveTo(0, -(edge - 7))
+      ..lineTo(-7, -(edge + 3))
+      ..lineTo(7, -(edge + 3))
+      ..close();
+    canvas.drawPath(northMarker, Paint()..color = _north);
+
+    // Degree ticks, labels and cardinal directions
     for (int degree = 0; degree < 360; degree++) {
-      if (degree % 2 == 0) {
-        final bool is30 = degree % 30 == 0;
-        final bool is90 = degree % 90 == 0;
-        double length = 5;
+      if (degree % 2 != 0) continue;
+      final bool is30 = degree % 30 == 0;
+      final bool is90 = degree % 90 == 0;
+      double length = 5;
+      Color color = Colors.white.withValues(alpha: 0.32);
+      double width = 1;
 
-        degreeAnglePaint
-          ..color = grayColor
-          ..strokeCap = StrokeCap.round
-          ..strokeWidth = 1;
-
-        if (is30) {
-          length = 10;
-          degreeAnglePaint
-            ..color = themeState.primary
-            ..strokeWidth = 2;
-        }
-
-        if (is90) {
-          degreeAnglePaint
-            ..color = themeState.primary
-            ..strokeWidth = 3;
-          length = 15;
-        }
-
-        final double radian = vector.radians(degree.toDouble());
-        final double maxX = math.sin(radian) * degreeDistanceFromCenter;
-        final double maxY = -math.cos(radian) * degreeDistanceFromCenter;
-        final double minX = math.sin(radian) * (degreeDistanceFromCenter - length);
-        final double minY = -math.cos(radian) * (degreeDistanceFromCenter - length);
-
-        canvas.drawLine(
-          Offset(maxX, maxY),
-          Offset(minX, minY),
-          degreeAnglePaint,
-        );
-
-        if (is30) {
-          canvas.save();
-
-          // Draw angle text
-          TextPainter textPainter = TextPainter(
-            text: TextSpan(
-              text: localizedNumber(context, degree),
-              style: TextStyle(
-                fontSize: is90 ? 14 : 12,
-                color: is90 ? themeState.primary : grayColor,
-                fontWeight: is90 ? FontWeight.bold : FontWeight.normal,
-              ),
-            ),
-            textAlign: TextAlign.center,
-            textDirection: TextDirection.ltr,
-          );
-
-          textPainter.layout();
-          canvas.rotate(radian);
-          textPainter.paint(
-            canvas,
-            Offset(
-              -textPainter.width / 2,
-              -(degreeDistanceFromCenter - 25),
-            ),
-          );
-
-          // Draw cardinal directions [N, E, S, W]
-          if (is90) {
-            final List<String> directionList = [
-              appLocalizations.north,
-              appLocalizations.east,
-              appLocalizations.south,
-              appLocalizations.west,
-            ];
-            final String direction = directionList[(degree / 90).toInt()];
-
-            textPainter = TextPainter(
-              text: TextSpan(
-                text: direction,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: themeState.primary,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-              textAlign: TextAlign.center,
-              textDirection: TextDirection.ltr,
-            );
-
-            textPainter.layout();
-            textPainter.paint(
-              canvas,
-              Offset(
-                -textPainter.width / 2,
-                -(degreeDistanceFromCenter - 50),
-              ),
-            );
-          }
-
-          canvas.restore();
-        }
+      if (is30) {
+        length = 10;
+        color = _gold.withValues(alpha: 0.9);
+        width = 2;
       }
+      if (is90) {
+        length = 15;
+        color = _gold;
+        width = 3;
+      }
+
+      final double radian = vector.radians(degree.toDouble());
+      final Paint tickPaint = Paint()
+        ..color = color
+        ..strokeCap = StrokeCap.round
+        ..strokeWidth = width;
+      canvas.drawLine(
+        Offset(math.sin(radian) * edge, -math.cos(radian) * edge),
+        Offset(math.sin(radian) * (edge - length), -math.cos(radian) * (edge - length)),
+        tickPaint,
+      );
+
+      if (!is30) continue;
+      canvas.save();
+      canvas.rotate(radian);
+
+      TextPainter textPainter = TextPainter(
+        text: TextSpan(
+          text: localizedNumber(context, degree),
+          style: TextStyle(
+            fontSize: is90 ? 14 : 11,
+            color: is90 ? _gold : _cream.withValues(alpha: 0.75),
+            fontWeight: is90 ? FontWeight.bold : FontWeight.w500,
+          ),
+        ),
+        textAlign: TextAlign.center,
+        textDirection: TextDirection.ltr,
+      )..layout();
+      textPainter.paint(canvas, Offset(-textPainter.width / 2, -(edge - 26)));
+
+      if (is90) {
+        final List<String> directionList = [
+          appLocalizations.north,
+          appLocalizations.east,
+          appLocalizations.south,
+          appLocalizations.west,
+        ];
+        textPainter = TextPainter(
+          text: TextSpan(
+            text: directionList[(degree / 90).toInt()],
+            style: TextStyle(
+              fontSize: 18,
+              color: degree == 0 ? _north : Colors.white,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+          textAlign: TextAlign.center,
+          textDirection: TextDirection.ltr,
+        )..layout();
+        textPainter.paint(canvas, Offset(-textPainter.width / 2, -(edge - 50)));
+      }
+      canvas.restore();
     }
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
+    return oldDelegate is! _CompassPainter || oldDelegate.kaabaAngle != kaabaAngle;
   }
 }
