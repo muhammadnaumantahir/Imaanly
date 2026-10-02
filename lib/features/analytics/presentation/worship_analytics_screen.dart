@@ -4,6 +4,7 @@ import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:imaanly/features/worship/data/worship_activity_repository.dart';
 import 'package:imaanly/src/core/storage/app_boxes.dart';
 import '../services/worship_analytics_service.dart';
+import 'package:imaanly/src/theme/app_widgets.dart';
 
 class WorshipAnalyticsScreen extends StatefulWidget {
   const WorshipAnalyticsScreen({super.key});
@@ -126,19 +127,12 @@ class _SummaryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
     final score = (report.averageScore * 100).round();
     return Card(
       clipBehavior: Clip.antiAlias,
-      child: Container(
+      child: HeroCard(
+        radius: 0,
         padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [scheme.primaryContainer, scheme.surfaceContainerHighest],
-          ),
-        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -182,7 +176,7 @@ class _StatChip extends StatelessWidget {
   Widget build(BuildContext context) {
     return DecoratedBox(
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface.withValues(alpha: 0.72),
+        color: Colors.white.withValues(alpha: 0.14),
         borderRadius: BorderRadius.circular(14),
       ),
       child: Padding(

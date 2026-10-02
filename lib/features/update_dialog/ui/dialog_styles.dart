@@ -144,7 +144,7 @@ class DialogStyleBuilder {
           foregroundColor: const Color(0xFFE8D48B),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
-            side: const BorderSide(color: Color(0xFFC9A84C), width: 1.5),
+            side: const BorderSide(color: Color(0xFFC9A24B), width: 1.5),
           ),
           padding: const EdgeInsets.symmetric(vertical: 14),
         ),
@@ -159,7 +159,7 @@ class DialogStyleBuilder {
       DialogStyle.material3 => Colors.grey.shade600,
       DialogStyle.amoled => Colors.grey.shade500,
       DialogStyle.minimal => Colors.grey.shade500,
-      DialogStyle.islamicGold => const Color(0xFFC9A84C),
+      DialogStyle.islamicGold => const Color(0xFFC9A24B),
     };
   }
 
@@ -288,11 +288,11 @@ class DialogStyleBuilder {
       ),
       border: Border.all(
         width: 1.5,
-        color: const Color(0xFFC9A84C).withValues(alpha: 0.4),
+        color: const Color(0xFFC9A24B).withValues(alpha: 0.4),
       ),
       boxShadow: [
         BoxShadow(
-          color: const Color(0xFFC9A84C).withValues(alpha: 0.12),
+          color: const Color(0xFFC9A24B).withValues(alpha: 0.12),
           blurRadius: 30,
           spreadRadius: -5,
         ),

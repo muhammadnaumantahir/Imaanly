@@ -19,9 +19,9 @@ class CustomPlaylistScreen extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final accent = context.read<ThemeCubit>().state.primary;
     final bg = isDark ? const Color(0xFF0E1F1A) : const Color(0xFFF3F8F5);
-    final surface = isDark ? const Color(0xFF343A40) : const Color(0xFFEAF2EE);
+    final surface = isDark ? const Color(0xFF11332A) : const Color(0xFFEAF2EE);
     final text = isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A);
-    final sub = isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057);
+    final sub = isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A);
 
     return Directionality(
       textDirection: TextDirection.ltr,
@@ -92,7 +92,7 @@ class CustomPlaylistScreen extends StatelessWidget {
         builder: (ctx, setModalState) => Container(
           padding: EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
           decoration: BoxDecoration(
-            color: isDark ? const Color(0xFF343A40) : const Color(0xFFF3F8F5),
+            color: isDark ? const Color(0xFF11332A) : const Color(0xFFF3F8F5),
             borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
           ),
           child: Directionality(
@@ -113,7 +113,7 @@ class CustomPlaylistScreen extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: "Playlist name",
                         filled: true,
-                        fillColor: isDark ? const Color(0xFF495057).withValues(alpha: 0.3) : const Color(0xFFD3E2DA).withValues(alpha: 0.4),
+                        fillColor: isDark ? const Color(0xFF3C524A).withValues(alpha: 0.3) : const Color(0xFFD3E2DA).withValues(alpha: 0.4),
                         border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
                       ),
                       style: TextStyle(color: text),
@@ -122,7 +122,7 @@ class CustomPlaylistScreen extends StatelessWidget {
                   const Gap(16),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text("Choose surahs:", style: TextStyle(color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057), fontWeight: FontWeight.w600)),
+                    child: Text("Choose surahs:", style: TextStyle(color: isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A), fontWeight: FontWeight.w600)),
                   ),
                   const Gap(8),
                   Padding(
@@ -146,14 +146,14 @@ class CustomPlaylistScreen extends StatelessWidget {
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
-                              color: isSelected ? accent.withValues(alpha: 0.15) : isDark ? const Color(0xFF495057).withValues(alpha: 0.2) : const Color(0xFFD3E2DA).withValues(alpha: 0.3),
+                              color: isSelected ? accent.withValues(alpha: 0.15) : isDark ? const Color(0xFF3C524A).withValues(alpha: 0.2) : const Color(0xFFD3E2DA).withValues(alpha: 0.3),
                               borderRadius: BorderRadius.circular(8),
                               border: Border.all(color: isSelected ? accent : Colors.transparent, width: 1.5),
                             ),
                             child: Text(
                               "$surahNum",
                               style: TextStyle(
-                                color: isSelected ? accent : isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057),
+                                color: isSelected ? accent : isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A),
                                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
                                 fontSize: 12,
                               ),
@@ -210,7 +210,7 @@ class CustomPlaylistScreen extends StatelessWidget {
             decoration: InputDecoration(
               hintText: "Playlist name",
               filled: true,
-              fillColor: isDark ? const Color(0xFF495057).withValues(alpha: 0.3) : const Color(0xFFD3E2DA).withValues(alpha: 0.4),
+              fillColor: isDark ? const Color(0xFF3C524A).withValues(alpha: 0.3) : const Color(0xFFD3E2DA).withValues(alpha: 0.4),
               border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
             ),
           ),
@@ -315,7 +315,7 @@ class _PlaylistCard extends StatelessWidget {
         color: surface,
         borderRadius: BorderRadius.circular(18),
         border: Border.all(
-          color: isDark ? const Color(0xFFADB5BD).withValues(alpha: 0.1) : const Color(0xFFD6CCC2).withValues(alpha: 0.3),
+          color: isDark ? const Color(0xFF86A094).withValues(alpha: 0.1) : const Color(0xFFC9DBD1).withValues(alpha: 0.3),
         ),
       ),
       child: Column(

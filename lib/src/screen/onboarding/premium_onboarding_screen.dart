@@ -92,7 +92,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
         return Scaffold(
           backgroundColor: isDark
               ? Theme.of(context).scaffoldBackgroundColor
-              : const Color(0xFFF8F5EE),
+              : const Color(0xFFF3F8F5),
           body: SafeArea(
             child: Column(
               children: [
@@ -444,9 +444,9 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
   }
 
   Widget _buildColorPreview(bool isDark) {
-    final primary = isDark ? const Color(0xFF839788) : const Color(0xFF5D7263);
-    final secondary = isDark ? const Color(0xFFB8A080) : const Color(0xFF8B7355);
-    final bg = isDark ? const Color(0xFF343A40) : const Color(0xFFEAF2EE);
+    final primary = isDark ? const Color(0xFF34C792) : const Color(0xFF0F7A5C);
+    final secondary = isDark ? const Color(0xFFE2BC6B) : const Color(0xFFB8892B);
+    final bg = isDark ? const Color(0xFF11332A) : const Color(0xFFEAF2EE);
     return Row(
       children: [
         _colorDot(primary, "Primary"),

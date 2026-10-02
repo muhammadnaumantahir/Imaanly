@@ -514,12 +514,12 @@ class SunnahScholarCard extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.all(SunnahTheme.space12),
                   decoration: BoxDecoration(
-                    color: const Color(0xFF8B5CF6).withValues(alpha: 0.15),
+                    color: const Color(0xFF6A4FC4).withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(SunnahTheme.radiusMedium),
                   ),
                   child: const Icon(
                     Icons.person_rounded,
-                    color: Color(0xFF8B5CF6),
+                    color: Color(0xFF6A4FC4),
                     size: 20,
                   ),
                 ),

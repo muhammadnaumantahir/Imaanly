@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:math' as math;
 import 'dart:ui' show FontFeature;
 
 import 'package:adhan_dart/adhan_dart.dart';
@@ -18,6 +17,7 @@ import '../../../src/screen/prayer_time/prayer_time_page.dart';
 import '../../../src/screen/qibla/qibla_direction.dart';
 import '../../../src/screen/settings/settings_page.dart';
 import '../../../src/theme/app_colors.dart';
+import '../../../src/theme/app_widgets.dart';
 
 /// Imaanly home: a gradient "next prayer" hero, today's prayer timeline and
 /// quick access tiles.
@@ -347,7 +347,7 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
           children: [
             Positioned.fill(
               child: CustomPaint(
-                painter: _StarPatternPainter(Colors.white.withValues(alpha: 0.07)),
+                painter: StarPatternPainter(Colors.white.withValues(alpha: 0.07)),
               ),
             ),
             Positioned(
@@ -747,49 +747,4 @@ class _MoreRow extends StatelessWidget {
       ),
     );
   }
-}
-
-/// Faint tiled eight-pointed stars (rub el hizb) used as a hero texture.
-class _StarPatternPainter extends CustomPainter {
-  const _StarPatternPainter(this.color);
-
-  final Color color;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.2;
-    const step = 56.0;
-    var row = 0;
-    for (double y = 0; y < size.height + step; y += step) {
-      final offsetX = row.isEven ? 0.0 : step / 2;
-      for (double x = offsetX; x < size.width + step; x += step) {
-        canvas.drawPath(_octagram(Offset(x, y), 18), paint);
-      }
-      row++;
-    }
-  }
-
-  Path _octagram(Offset c, double r) {
-    final path = Path();
-    for (var i = 0; i < 16; i++) {
-      final angle = -math.pi / 2 + i * math.pi / 8;
-      final radius = i.isEven ? r : r * 0.7654;
-      final x = c.dx + radius * math.cos(angle);
-      final y = c.dy + radius * math.sin(angle);
-      if (i == 0) {
-        path.moveTo(x, y);
-      } else {
-        path.lineTo(x, y);
-      }
-    }
-    path.close();
-    return path;
-  }
-
-  @override
-  bool shouldRepaint(covariant _StarPatternPainter oldDelegate) =>
-      oldDelegate.color != color;
 }

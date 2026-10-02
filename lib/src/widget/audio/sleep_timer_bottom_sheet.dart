@@ -38,8 +38,8 @@ class SleepTimerBottomSheet extends StatelessWidget {
                 margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(
                   color: isDark
-                      ? const Color(0xFFADB5BD).withValues(alpha: 0.3)
-                      : const Color(0xFFD6CCC2),
+                      ? const Color(0xFF86A094).withValues(alpha: 0.3)
+                      : const Color(0xFFC9DBD1),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -80,7 +80,7 @@ class SleepTimerBottomSheet extends StatelessWidget {
                 child: Text(
                   "Choose time",
                   style: TextStyle(
-                    color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057),
+                    color: isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A),
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -125,7 +125,7 @@ class SleepTimerBottomSheet extends StatelessWidget {
 
   Widget _activeTimerCard(SleepTimerState state, Color accent, bool isDark) {
     final text = isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A);
-    final sub = isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057);
+    final sub = isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A);
 
     String label;
     if (state.mode == SleepTimerMode.endOfSurah) {
@@ -215,7 +215,7 @@ class SleepTimerBottomSheet extends StatelessWidget {
           color: isSelected
               ? accent.withValues(alpha: 0.15)
               : isDark
-                  ? const Color(0xFF495057).withValues(alpha: 0.5)
+                  ? const Color(0xFF3C524A).withValues(alpha: 0.5)
                   : const Color(0xFFD3E2DA).withValues(alpha: 0.5),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
@@ -226,7 +226,7 @@ class SleepTimerBottomSheet extends StatelessWidget {
         child: Text(
           label,
           style: TextStyle(
-            color: isSelected ? accent : isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057),
+            color: isSelected ? accent : isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A),
             fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
             fontSize: 14,
           ),
@@ -245,7 +245,7 @@ class SleepTimerBottomSheet extends StatelessWidget {
           color: isActive
               ? accent.withValues(alpha: 0.15)
               : isDark
-                  ? const Color(0xFF495057).withValues(alpha: 0.5)
+                  ? const Color(0xFF3C524A).withValues(alpha: 0.5)
                   : const Color(0xFFD3E2DA).withValues(alpha: 0.5),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
@@ -258,12 +258,12 @@ class SleepTimerBottomSheet extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.stop_circle_rounded, color: isActive ? accent : isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057), size: 18),
+              Icon(Icons.stop_circle_rounded, color: isActive ? accent : isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A), size: 18),
               const Gap(8),
               Text(
                 "End of the current surah",
                 style: TextStyle(
-                  color: isActive ? accent : isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057),
+                  color: isActive ? accent : isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A),
                   fontWeight: isActive ? FontWeight.w700 : FontWeight.w500,
                   fontSize: 14,
                 ),

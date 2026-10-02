@@ -111,10 +111,10 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
         centerTitle: true,
         bottom: TabBar(
           controller: _tabController,
-          labelColor: const Color(0xFF33B18E),
+          labelColor: const Color(0xFF1FA37A),
           unselectedLabelColor: Colors.grey,
           labelStyle: const TextStyle(fontFamily: "Cairo-Bold", fontSize: 16),
-          indicatorColor: const Color(0xFF33B18E),
+          indicatorColor: const Color(0xFF1FA37A),
           indicatorWeight: 3,
           indicatorSize: TabBarIndicatorSize.tab,
           tabs: const [
@@ -306,7 +306,7 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
               value: _fontSizeMultiplier,
               min: 0.6,
               max: 2.0,
-              activeColor: const Color(0xFF33B18E),
+              activeColor: const Color(0xFF1FA37A),
               inactiveColor: isDark ? Colors.white24 : Colors.black12,
               onChanged: (val) {
                 setState(() => _fontSizeMultiplier = val);
@@ -393,11 +393,11 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
               color: theme.backgroundColor,
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: isSelected ? const Color(0xFF33B18E) : theme.borderColor,
+                color: isSelected ? const Color(0xFF1FA37A) : theme.borderColor,
                 width: isSelected ? 3 : 1,
               ),
               boxShadow: isSelected
-                  ? [BoxShadow(color: const Color(0xFF33B18E).withValues(alpha: 0.2), blurRadius: 10)]
+                  ? [BoxShadow(color: const Color(0xFF1FA37A).withValues(alpha: 0.2), blurRadius: 10)]
                   : [],
             ),
             child: Row(
@@ -472,7 +472,7 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Row(
             children: [
-              Icon(icon, size: 20, color: isSelected ? const Color(0xFF33B18E) : Colors.grey),
+              Icon(icon, size: 20, color: isSelected ? const Color(0xFF1FA37A) : Colors.grey),
               const SizedBox(width: 16),
               Expanded(
                 child: AnimatedDefaultTextStyle(
@@ -489,7 +489,7 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
                 duration: const Duration(milliseconds: 200),
                 scale: isSelected ? 1.0 : 0.8,
                 child: isSelected
-                  ? const Icon(Icons.check_circle_rounded, color: Color(0xFF33B18E), size: 22)
+                  ? const Icon(Icons.check_circle_rounded, color: Color(0xFF1FA37A), size: 22)
                   : Icon(Icons.circle_outlined, color: isDark ? Colors.white24 : Colors.black12, size: 22),
               )
             ],

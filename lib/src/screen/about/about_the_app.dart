@@ -247,7 +247,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                             colors: [
-                              isDark ? const Color(0xFF2C2C2C) : const Color(0xFFFFFFFF),
+                              isDark ? const Color(0xFF17392F) : const Color(0xFFFFFFFF),
                               isDark ? const Color(0xFF1F1F1F) : const Color(0xFFF0F0F0),
                             ],
                             begin: Alignment.topLeft,

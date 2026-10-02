@@ -176,7 +176,7 @@ class _ContentFeedViewState extends State<_ContentFeedView> {
 
   Widget _buildHeader(bool isDark) {
     final headerColor = isDark ? const Color(0xFFF5F0EB) : const Color(0xFF0E1F1A);
-    final subtitleColor = isDark ? const Color(0xFF8A8A8A) : const Color(0xFF9E9E9E);
+    final subtitleColor = isDark ? const Color(0xFF8A8A8A) : const Color(0xFF86A094);
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
@@ -302,9 +302,9 @@ class _ContentFeedViewState extends State<_ContentFeedView> {
   // ── Empty state ─────────────────────────────────────────
 
   Widget _buildEmptySliver(bool isDark) {
-    final iconColor = isDark ? const Color(0xFF4A4A4A) : const Color(0xFFD6CCC2);
-    final titleColor = isDark ? const Color(0xFF8A8A8A) : const Color(0xFF6B6B6B);
-    final subtitleColor = isDark ? const Color(0xFF5A5A5A) : const Color(0xFF9E9E9E);
+    final iconColor = isDark ? const Color(0xFF4A4A4A) : const Color(0xFFC9DBD1);
+    final titleColor = isDark ? const Color(0xFF8A8A8A) : const Color(0xFF6B7F77);
+    final subtitleColor = isDark ? const Color(0xFF5A5A5A) : const Color(0xFF86A094);
 
     return SliverFillRemaining(
       hasScrollBody: false,
@@ -386,7 +386,7 @@ class _ContentFeedViewState extends State<_ContentFeedView> {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
-                color: isDark ? const Color(0xFF8A8A8A) : const Color(0xFF6B6B6B),
+                color: isDark ? const Color(0xFF8A8A8A) : const Color(0xFF6B7F77),
                 fontFamily: 'Cairo-Bold',
               ),
               textDirection: TextDirection.rtl,

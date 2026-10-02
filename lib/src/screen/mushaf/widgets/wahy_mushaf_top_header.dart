@@ -193,7 +193,7 @@ class WahyMushafMoreMenuButton extends StatelessWidget {
   PopupMenuItem<WahyMushafMenuAction> _buildMenuItem(
     ({WahyMushafMenuAction action, IconData icon, String label}) entry,
   ) {
-    final textColor = isDark ? Colors.white : const Color(0xFF1E1E1E);
+    final textColor = isDark ? Colors.white : const Color(0xFF0E1F1A);
     return PopupMenuItem<WahyMushafMenuAction>(
       value: entry.action,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
@@ -205,7 +205,7 @@ class WahyMushafMoreMenuButton extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: isDark
-                    ? const Color(0xFF2A2A2A)
+                    ? const Color(0xFF17392F)
                     : primaryColor.withValues(alpha: 0.12),
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
@@ -239,7 +239,7 @@ class WahyMushafMoreMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bgColor = isDark ? Theme.of(context).colorScheme.surface : const Color(0xFFF7F5EC);
+    final bgColor = isDark ? Theme.of(context).colorScheme.surface : const Color(0xFFF3F8F5);
 
     return Theme(
       data: Theme.of(context).copyWith(
@@ -250,7 +250,7 @@ class WahyMushafMoreMenuButton extends StatelessWidget {
             side: BorderSide(
               color: isDark
                   ? Colors.white.withValues(alpha: 0.1)
-                  : const Color(0xFFE5E0CF),
+                  : const Color(0xFFD3E2DA),
               width: 1,
             ),
           ),
@@ -265,7 +265,7 @@ class WahyMushafMoreMenuButton extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
               color: isDark
-                  ? const Color(0xFF222222)
+                  ? const Color(0xFF11332A)
                   : primaryColor.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(20),
               border: Border.all(

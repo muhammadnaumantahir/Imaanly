@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../analytics/presentation/worship_analytics_screen.dart';
 import '../data/daily_goals_repository.dart';
 import '../domain/daily_goals.dart';
+import 'package:imaanly/src/theme/app_widgets.dart';
 
 class DailyGoalsScreen extends StatefulWidget {
   const DailyGoalsScreen({super.key});
@@ -77,13 +78,22 @@ class _DailyGoalsScreenState extends State<DailyGoalsScreen> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.all(18),
-              child: Text(
-                'Set small, sustainable worship targets. These goals are stored locally on this device.',
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
+          HeroCard(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Icon(Icons.flag_rounded, color: Color(0xFFE2BC6B), size: 30),
+                const SizedBox(height: 12),
+                Text(
+                  'Daily goals',
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  'Set small, sustainable worship targets. These goals are stored locally on this device.',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 12),
@@ -169,15 +179,33 @@ class _GoalTile extends StatelessWidget {
   final VoidCallback onEdit;
 
   @override
-  Widget build(BuildContext context) => Card(
-        child: ListTile(
-          leading: Icon(icon),
-          title: Text(title),
-          subtitle: Text(value == 0 ? 'Disabled' : '$value per day'),
-          trailing: IconButton(
-            icon: const Icon(Icons.edit_rounded),
-            tooltip: 'Edit goal',
-            onPressed: onEdit,
+  Widget build(BuildContext context) => Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: SoftCard(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          child: Row(
+            children: [
+              IconBadge(icon: icon, size: 44),
+              const SizedBox(width: 14),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)),
+                    const SizedBox(height: 2),
+                    Text(
+                      value == 0 ? 'Disabled' : '$value per day',
+                      style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant, fontSize: 13),
+                    ),
+                  ],
+                ),
+              ),
+              IconButton.filledTonal(
+                icon: const Icon(Icons.edit_rounded, size: 18),
+                tooltip: 'Edit goal',
+                onPressed: onEdit,
+              ),
+            ],
           ),
         ),
       );

@@ -118,7 +118,7 @@ class _AddNoteWidgetState extends State<AddNoteWidget> {
     final bool isDark = widget.isDark;
 
     final Color cardColor = isDark ? const Color(0xFF11332A) : Colors.white;
-    final Color inputBgColor = isDark ? const Color(0xFF2C2C2C) : Colors.grey.shade100;
+    final Color inputBgColor = isDark ? const Color(0xFF17392F) : Colors.grey.shade100;
     final Color textColor = isDark ? Colors.white : Colors.black87;
     final Color subtitleColor = isDark ? Colors.grey.shade400 : Colors.grey.shade600;
 

@@ -17,9 +17,9 @@ class ReadingStatsScreen extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final accent = context.read<ThemeCubit>().state.primary;
     final bg = isDark ? const Color(0xFF0E1F1A) : const Color(0xFFF3F8F5);
-    final surface = isDark ? const Color(0xFF343A40) : const Color(0xFFEAF2EE);
+    final surface = isDark ? const Color(0xFF11332A) : const Color(0xFFEAF2EE);
     final text = isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A);
-    final sub = isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057);
+    final sub = isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A);
 
     return Directionality(
       textDirection: TextDirection.ltr,
@@ -295,7 +295,7 @@ class ReadingStatsScreen extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
             decoration: BoxDecoration(
-              color: isSelected ? accent.withValues(alpha: 0.15) : isDark ? const Color(0xFF495057).withValues(alpha: 0.3) : const Color(0xFFD3E2DA).withValues(alpha: 0.4),
+              color: isSelected ? accent.withValues(alpha: 0.15) : isDark ? const Color(0xFF3C524A).withValues(alpha: 0.3) : const Color(0xFFD3E2DA).withValues(alpha: 0.4),
               borderRadius: BorderRadius.circular(10),
               border: Border.all(color: isSelected ? accent : Colors.transparent, width: 1.5),
             ),
@@ -325,7 +325,7 @@ class ReadingStatsScreen extends StatelessWidget {
         color: surface,
         borderRadius: BorderRadius.circular(18),
         border: Border.all(
-          color: isDark ? const Color(0xFFADB5BD).withValues(alpha: 0.1) : const Color(0xFFD6CCC2).withValues(alpha: 0.3),
+          color: isDark ? const Color(0xFF86A094).withValues(alpha: 0.1) : const Color(0xFFC9DBD1).withValues(alpha: 0.3),
         ),
       ),
       child: child,
@@ -341,7 +341,7 @@ class ReadingStatsScreen extends StatelessWidget {
     required String value,
   }) {
     final text = isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A);
-    final sub = isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057);
+    final sub = isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A);
 
     return Container(
       padding: const EdgeInsets.all(14),
@@ -349,7 +349,7 @@ class ReadingStatsScreen extends StatelessWidget {
         color: surface,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: isDark ? const Color(0xFFADB5BD).withValues(alpha: 0.1) : const Color(0xFFD6CCC2).withValues(alpha: 0.3),
+          color: isDark ? const Color(0xFF86A094).withValues(alpha: 0.1) : const Color(0xFFC9DBD1).withValues(alpha: 0.3),
         ),
       ),
       child: Column(

@@ -8,13 +8,14 @@ import '../../../src/screen/prayer_time/prayer_time_page.dart';
 import '../../../src/features/quran/presentation/quran_reader_screen.dart';
 import '../../../src/screen/azkar/azkar_categories_screen.dart';
 import '../../../src/screen/qibla/qibla_direction.dart';
+import '../../../src/theme/app_colors.dart';
+import '../../../src/theme/app_widgets.dart';
 
 class AthanFeatureCenter extends StatelessWidget {
   const AthanFeatureCenter({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final cs = Theme.of(context).colorScheme;
     final groups = <_FeatureGroup>[
       _FeatureGroup('Prayer & Qibla', Icons.mosque_rounded, [
         _Feature('Prayer times', 'Live Salah schedule and settings', Icons.access_time_rounded, const PrayerTimePage()),
@@ -41,14 +42,9 @@ class AthanFeatureCenter extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 36),
         children: [
-          Container(
-            padding: const EdgeInsets.all(22),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(28),
-              gradient: LinearGradient(begin: Alignment.topLeft, end: Alignment.bottomRight, colors: [cs.primary, cs.primaryContainer]),
-            ),
-            child: const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Icon(Icons.auto_awesome_rounded, color: Colors.white, size: 30),
+          const HeroCard(
+            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Icon(Icons.auto_awesome_rounded, color: AppColors.gold, size: 30),
               SizedBox(height: 14),
               Text('Your complete Islamic companion', style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.w800)),
               SizedBox(height: 7),
@@ -81,12 +77,15 @@ class _FeatureTile extends StatelessWidget {
   const _FeatureTile({required this.feature}); final _Feature feature;
   @override Widget build(BuildContext context) {
     final cs = Theme.of(context).colorScheme;
-    return Card(elevation: 0, child: InkWell(borderRadius: BorderRadius.circular(18), onTap: () { if (feature.page != null) { Navigator.of(context).push(MaterialPageRoute(builder: (_) => feature.page!)); } else if (feature.action != null) { feature.action!(context); } }, child: Padding(padding: const EdgeInsets.all(16), child: Row(children: [
-      Container(width: 46, height: 46, decoration: BoxDecoration(color: cs.primaryContainer, borderRadius: BorderRadius.circular(14)), child: Icon(feature.icon, color: cs.primary)),
-      const SizedBox(width: 14),
-      Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(feature.title, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)), const SizedBox(height: 4), Text(feature.subtitle, style: TextStyle(color: cs.onSurfaceVariant, fontSize: 12.5, height: 1.3))])),
-      Icon(Icons.chevron_right_rounded, color: cs.onSurfaceVariant),
-    ]))));
+    return SoftCard(
+      onTap: () { if (feature.page != null) { Navigator.of(context).push(MaterialPageRoute(builder: (_) => feature.page!)); } else if (feature.action != null) { feature.action!(context); } },
+      child: Row(children: [
+        IconBadge(icon: feature.icon),
+        const SizedBox(width: 14),
+        Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text(feature.title, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)), const SizedBox(height: 4), Text(feature.subtitle, style: TextStyle(color: cs.onSurfaceVariant, fontSize: 12.5, height: 1.3))])),
+        Icon(Icons.chevron_right_rounded, color: cs.onSurfaceVariant),
+      ]),
+    );
   }
 }
 

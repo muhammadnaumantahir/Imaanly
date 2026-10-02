@@ -107,10 +107,10 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
     final theme = Theme.of(context);
     final primary = context.read<ThemeCubit>().state.primary;
     final isDark = theme.brightness == Brightness.dark;
-    final background = isDark ? const Color(0xFF0B0F0E) : const Color(0xFFF7F5F0);
-    final surface = isDark ? const Color(0xFF151B19) : Colors.white;
-    final text = isDark ? Colors.white : const Color(0xFF17201D);
-    final muted = isDark ? Colors.white60 : const Color(0xFF68736F);
+    final background = isDark ? const Color(0xFF071E18) : const Color(0xFFF3F8F5);
+    final surface = isDark ? const Color(0xFF0E2E25) : Colors.white;
+    final text = isDark ? Colors.white : const Color(0xFF0E1F1A);
+    final muted = isDark ? Colors.white60 : const Color(0xFF6B7F77);
     final filtered = _filteredCategories;
 
     return Directionality(
@@ -465,12 +465,12 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
 
   Color _accentFor(int index, Color primary) {
     const accents = [
-      Color(0xFF3F7D68),
-      Color(0xFFB7832F),
-      Color(0xFF5C6BC0),
-      Color(0xFF8B5E83),
-      Color(0xFF3E7C9A),
-      Color(0xFF9A6A43),
+      Color(0xFF0F7A5C),
+      Color(0xFFC9A24B),
+      Color(0xFF4C5FD5),
+      Color(0xFF8A5A9E),
+      Color(0xFF2F9BB5),
+      Color(0xFFB07A4A),
     ];
     return index < accents.length ? accents[index] : primary;
   }

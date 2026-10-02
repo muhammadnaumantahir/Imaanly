@@ -36,7 +36,7 @@ class LinkPreviewCard extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final cardBg = isDark ? const Color(0xFF222222) : Colors.white;
     final textColor = isDark ? const Color(0xFFF5F0EB) : const Color(0xFF0E1F1A);
-    final subtitleColor = isDark ? const Color(0xFF8A8A8A) : const Color(0xFF9E9E9E);
+    final subtitleColor = isDark ? const Color(0xFF8A8A8A) : const Color(0xFF86A094);
     final accentColor = isDark ? const Color(0xFF839788) : const Color(0xFF73877B);
     final borderColor = isDark
         ? Colors.white.withValues(alpha: 0.06)

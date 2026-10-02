@@ -39,8 +39,8 @@ class AyahRepeatBottomSheet extends StatelessWidget {
                 margin: const EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(
                   color: isDark
-                      ? const Color(0xFFADB5BD).withValues(alpha: 0.3)
-                      : const Color(0xFFD6CCC2),
+                      ? const Color(0xFF86A094).withValues(alpha: 0.3)
+                      : const Color(0xFFC9DBD1),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -81,7 +81,7 @@ class AyahRepeatBottomSheet extends StatelessWidget {
                 child: Text(
                   "Repeat current ayah",
                   style: TextStyle(
-                    color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057),
+                    color: isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A),
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -116,7 +116,7 @@ class AyahRepeatBottomSheet extends StatelessWidget {
                 child: Text(
                   "Repeat current surah",
                   style: TextStyle(
-                    color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057),
+                    color: isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A),
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -160,7 +160,7 @@ class AyahRepeatBottomSheet extends StatelessWidget {
   }
 
   Widget _activeRepeatCard(AyahRepeatState state, Color accent, bool isDark) {
-    final sub = isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057);
+    final sub = isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A);
 
     return Container(
       padding: const EdgeInsets.all(16),
@@ -214,7 +214,7 @@ class AyahRepeatBottomSheet extends StatelessWidget {
           color: isSelected
               ? accent.withValues(alpha: 0.15)
               : isDark
-                  ? const Color(0xFF495057).withValues(alpha: 0.5)
+                  ? const Color(0xFF3C524A).withValues(alpha: 0.5)
                   : const Color(0xFFD3E2DA).withValues(alpha: 0.5),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
@@ -225,7 +225,7 @@ class AyahRepeatBottomSheet extends StatelessWidget {
         child: Text(
           label,
           style: TextStyle(
-            color: isSelected ? accent : isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057),
+            color: isSelected ? accent : isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A),
             fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
             fontSize: 14,
           ),

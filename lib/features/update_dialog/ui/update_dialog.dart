@@ -204,11 +204,11 @@ class UpdateDialog extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             gradient: const LinearGradient(
-              colors: [Color(0xFFC9A84C), Color(0xFFE8D48B)],
+              colors: [Color(0xFFC9A24B), Color(0xFFE8D48B)],
             ),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFFC9A84C).withValues(alpha: 0.3),
+                color: const Color(0xFFC9A24B).withValues(alpha: 0.3),
                 blurRadius: 16,
               ),
             ],
@@ -232,7 +232,7 @@ class UpdateDialog extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: const Color(0xFFC9A84C).withValues(alpha: 0.3)),
+          border: Border.all(color: const Color(0xFFC9A24B).withValues(alpha: 0.3)),
         ),
         child: Text(
           'Version ${config.currentVersion}',
@@ -270,7 +270,7 @@ class UpdateDialog extends StatelessWidget {
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: style == DialogStyle.islamicGold
-              ? const Color(0xFFC9A84C).withValues(alpha: 0.15)
+              ? const Color(0xFFC9A24B).withValues(alpha: 0.15)
               : Colors.white.withValues(alpha: 0.06),
         ),
       ),
@@ -325,7 +325,7 @@ class UpdateDialog extends StatelessWidget {
             onDismiss: onDismiss ?? () {},
             showCountdown: config.showCountdown,
             color: style == DialogStyle.islamicGold
-                ? const Color(0xFFC9A84C).withValues(alpha: 0.6)
+                ? const Color(0xFFC9A24B).withValues(alpha: 0.6)
                 : (style == DialogStyle.minimal || style == DialogStyle.material3)
                     ? Colors.grey.shade500
                     : Colors.white.withValues(alpha: 0.4),
@@ -340,7 +340,7 @@ class UpdateDialog extends StatelessWidget {
             style: TextStyle(
               fontSize: 11,
               color: style == DialogStyle.islamicGold
-                  ? const Color(0xFFC9A84C).withValues(alpha: 0.5)
+                  ? const Color(0xFFC9A24B).withValues(alpha: 0.5)
                   : Colors.red.shade300.withValues(alpha: 0.7),
             ),
             textAlign: TextAlign.center,

@@ -33,7 +33,7 @@ class PostInteractionRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final mutedColor = isDark ? const Color(0xFF6B6B6B) : const Color(0xFFAAAAAA);
+    final mutedColor = isDark ? const Color(0xFF6B7F77) : const Color(0xFFAAAAAA);
     final accentColor = isDark ? const Color(0xFF839788) : const Color(0xFF73877B);
     final dividerColor = isDark
         ? Colors.white.withValues(alpha: 0.05)

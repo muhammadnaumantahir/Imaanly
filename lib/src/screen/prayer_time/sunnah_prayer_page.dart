@@ -6,15 +6,15 @@ import '../../../features/sunnah/services/sunnah_share_service.dart';
 import '../../../features/sunnah/presentation/screens/image_customization_screen.dart';
 
 // Design System Colors (Wahy + Ayah Hybrid)
-const _primaryGreen = Color(0xFF4A7C59);
-const _accentGold = Color(0xFFC9A84C);
+const _primaryGreen = Color(0xFF0F7A5C);
+const _accentGold = Color(0xFFC9A24B);
 const _darkBg = Color(0xFF0E2E25);
 const _cardDark = Color(0xFF11332A);
 const _cardLight = Color(0xFFFFFFFF);
 const _textLight = Color(0xFFF3F8F5);
-const _textDark = Color(0xFF2C2C2C);  
+const _textDark = Color(0xFF17392F);  
 const _mutedLight = Color(0xFFB8BCC2);
-const _mutedDark = Color(0xFF6B6B6B); 
+const _mutedDark = Color(0xFF6B7F77); 
 
 class SunnahPrayerPage extends StatelessWidget {
   const SunnahPrayerPage({super.key});
@@ -308,7 +308,7 @@ class SunnahPrayerPage extends StatelessWidget {
                 ),
                 icon: const Icon(Icons.share_rounded),
                 iconSize: 20,
-                color: const Color(0xFF10B981),
+                color: const Color(0xFF12906A),
                 tooltip: "Share",
               ),
             ],
@@ -386,12 +386,12 @@ class SunnahPrayerPage extends StatelessWidget {
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [const Color(0xFF10B981), const Color(0xFF10B981).withValues(alpha: 0.7)],
+                        colors: [const Color(0xFF12906A), const Color(0xFF12906A).withValues(alpha: 0.7)],
                       ),
                       borderRadius: BorderRadius.circular(14),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF10B981).withValues(alpha: 0.3),
+                          color: const Color(0xFF12906A).withValues(alpha: 0.3),
                           blurRadius: 8,
                           offset: const Offset(0, 2),
                         ),
@@ -423,7 +423,7 @@ class SunnahPrayerPage extends StatelessWidget {
                 icon: Icons.text_fields_rounded,
                 label: "Share as text",
                 subtitle: "Copy and share the text",
-                color: const Color(0xFF3B82F6),
+                color: const Color(0xFF2F9BB5),
                 isDark: isDark,
                 onTap: () async {
                   Navigator.pop(context);
@@ -450,7 +450,7 @@ class SunnahPrayerPage extends StatelessWidget {
                             ],
                           ),
                           behavior: SnackBarBehavior.floating,
-                          backgroundColor: const Color(0xFF3B82F6),
+                          backgroundColor: const Color(0xFF2F9BB5),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                           duration: const Duration(seconds: 2),
                         ),
@@ -479,7 +479,7 @@ class SunnahPrayerPage extends StatelessWidget {
                 icon: Icons.image_rounded,
                 label: "Share as image",
                 subtitle: "Customize and create a professional image",
-                color: const Color(0xFFEC4899),
+                color: const Color(0xFFD9573A),
                 isDark: isDark,
                 onTap: () async {
                   Navigator.pop(context);
@@ -715,12 +715,12 @@ class SunnahPrayerPage extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF8B5CF6).withValues(alpha: 0.15),
+                  color: const Color(0xFF6A4FC4).withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(
                   Icons.person_rounded,
-                  color: Color(0xFF8B5CF6),
+                  color: Color(0xFF6A4FC4),
                   size: 20,
                 ),
               ),
@@ -795,12 +795,12 @@ class SunnahPrayerPage extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(6),
             decoration: BoxDecoration(
-              color: const Color(0xFF10B981).withValues(alpha: 0.15),
+              color: const Color(0xFF12906A).withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(8),
             ),
             child: const Icon(
               Icons.check_circle_rounded,
-              color: Color(0xFF10B981),
+              color: Color(0xFF12906A),
               size: 18,
             ),
           ),

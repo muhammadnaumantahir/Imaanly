@@ -515,7 +515,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 child: _modernActionPill(
                   icon: Icons.refresh_rounded,
                   label: "Refresh",
-                  color: const Color(0xFF3B82F6),
+                  color: const Color(0xFF2F9BB5),
                   isDark: isDark,
                   onTap: () => _refreshLocation(),
                 ),
@@ -1579,7 +1579,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [const Color(0xFFEC4899), const Color(0xFFEC4899).withValues(alpha: 0.7)],
+                    colors: [const Color(0xFFD9573A), const Color(0xFFD9573A).withValues(alpha: 0.7)],
                   ),
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -1615,13 +1615,13 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                    const Color(0xFFEC4899).withValues(alpha: 0.15),
-                    const Color(0xFFEC4899).withValues(alpha: 0.08),
+                    const Color(0xFFD9573A).withValues(alpha: 0.15),
+                    const Color(0xFFD9573A).withValues(alpha: 0.08),
                   ],
                 ),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: const Color(0xFFEC4899).withValues(alpha: 0.3),
+                  color: const Color(0xFFD9573A).withValues(alpha: 0.3),
                 ),
               ),
               child: Row(
@@ -1629,11 +1629,11 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFEC4899),
+                      color: const Color(0xFFD9573A),
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFFEC4899).withValues(alpha: 0.3),
+                          color: const Color(0xFFD9573A).withValues(alpha: 0.3),
                           blurRadius: 8,
                           offset: const Offset(0, 4),
                         ),
@@ -1673,7 +1673,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   Icon(
                     Icons.arrow_forward_ios_rounded,
                     size: 18,
-                    color: const Color(0xFFEC4899),
+                    color: const Color(0xFFD9573A),
                   ),
                 ],
               ),
@@ -1694,7 +1694,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                     : Colors.black.withValues(alpha: 0.03),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: const Color(0xFF8B5CF6).withValues(alpha: 0.3),
+                  color: const Color(0xFF6A4FC4).withValues(alpha: 0.3),
                 ),
               ),
               child: Row(
@@ -1702,12 +1702,12 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF8B5CF6).withValues(alpha: 0.15),
+                      color: const Color(0xFF6A4FC4).withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Icon(
                       Icons.list_rounded,
-                      color: Color(0xFF8B5CF6),
+                      color: Color(0xFF6A4FC4),
                       size: 24,
                     ),
                   ),
@@ -1739,7 +1739,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   Icon(
                     Icons.arrow_forward_ios_rounded,
                     size: 18,
-                    color: const Color(0xFF8B5CF6),
+                    color: const Color(0xFF6A4FC4),
                   ),
                 ],
               ),
@@ -1760,7 +1760,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                     : Colors.black.withValues(alpha: 0.03),
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(
-                  color: const Color(0xFF10B981).withValues(alpha: 0.3),
+                  color: const Color(0xFF12906A).withValues(alpha: 0.3),
                 ),
               ),
               child: Row(
@@ -1768,12 +1768,12 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: const Color(0xFF10B981).withValues(alpha: 0.15),
+                      color: const Color(0xFF12906A).withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Icon(
                       Icons.map_rounded,
-                      color: Color(0xFF10B981),
+                      color: Color(0xFF12906A),
                       size: 24,
                     ),
                   ),
@@ -1805,7 +1805,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   Icon(
                     Icons.arrow_forward_ios_rounded,
                     size: 18,
-                    color: const Color(0xFF10B981),
+                    color: const Color(0xFF12906A),
                   ),
                 ],
               ),
@@ -1851,7 +1851,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [const Color(0xFFEC4899), const Color(0xFFEC4899).withValues(alpha: 0.7)],
+                      colors: [const Color(0xFFD9573A), const Color(0xFFD9573A).withValues(alpha: 0.7)],
                     ),
                     borderRadius: BorderRadius.circular(14),
                   ),
@@ -1938,7 +1938,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         style: AppFonts.body(fontWeight: FontWeight.w700),
                       ),
                       behavior: SnackBarBehavior.floating,
-                      backgroundColor: const Color(0xFF10B981),
+                      backgroundColor: const Color(0xFF12906A),
                     ),
                   );
                 },
@@ -2030,7 +2030,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
-                            colors: [const Color(0xFF8B5CF6), const Color(0xFF8B5CF6).withValues(alpha: 0.7)],
+                            colors: [const Color(0xFF6A4FC4), const Color(0xFF6A4FC4).withValues(alpha: 0.7)],
                           ),
                           borderRadius: BorderRadius.circular(14),
                         ),
@@ -2187,7 +2187,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF10B981).withValues(alpha: 0.15),
+                  color: const Color(0xFF12906A).withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
@@ -2196,7 +2196,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                     Icon(
                       Icons.near_me_rounded,
                       size: 14,
-                      color: const Color(0xFF10B981),
+                      color: const Color(0xFF12906A),
                     ),
                     const Gap(4),
                     Text(
@@ -2204,7 +2204,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       style: AppFonts.body(
                         fontSize: 12,
                         fontWeight: FontWeight.w800,
-                        color: const Color(0xFF10B981),
+                        color: const Color(0xFF12906A),
                       ),
                     ),
                   ],
@@ -2215,7 +2215,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 onPressed: () => _showRateMosqueDialog(name, isDark),
                 icon: const Icon(Icons.edit_rounded),
                 iconSize: 20,
-                color: const Color(0xFF8B5CF6),
+                color: const Color(0xFF6A4FC4),
               ),
             ],
           ),
@@ -2361,7 +2361,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
-                            colors: [const Color(0xFF10B981), const Color(0xFF10B981).withValues(alpha: 0.7)],
+                            colors: [const Color(0xFF12906A), const Color(0xFF12906A).withValues(alpha: 0.7)],
                           ),
                           borderRadius: BorderRadius.circular(14),
                         ),
@@ -2404,7 +2404,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       Icon(
                         Icons.map_outlined,
                         size: 64,
-                        color: const Color(0xFF10B981),
+                        color: const Color(0xFF12906A),
                       ).animate().scale(duration: 600.ms, curve: Curves.easeOutBack),
                       const Gap(16),
                       Text(
@@ -2867,7 +2867,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             icon: Icons.book_rounded,
             title: "Sunnahs of prayer",
             subtitle: "Learn the sunnahs and etiquette of prayer",
-            color: const Color(0xFF10B981),
+            color: const Color(0xFF12906A),
             isDark: isDark,
             onTap: () {
               Navigator.pop(context);

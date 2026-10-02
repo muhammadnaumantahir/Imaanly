@@ -251,13 +251,13 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       decoration: BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            const Color(0xFF3B82F6).withValues(alpha: 0.15),
-            const Color(0xFF8B5CF6).withValues(alpha: 0.15),
+            const Color(0xFF2F9BB5).withValues(alpha: 0.15),
+            const Color(0xFF6A4FC4).withValues(alpha: 0.15),
           ],
         ),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: const Color(0xFF3B82F6).withValues(alpha: 0.3),
+          color: const Color(0xFF2F9BB5).withValues(alpha: 0.3),
           width: 2,
         ),
       ),
@@ -266,12 +266,12 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
           Container(
             padding: EdgeInsets.all(12.w),
             decoration: BoxDecoration(
-              color: const Color(0xFF3B82F6).withValues(alpha: 0.2),
+              color: const Color(0xFF2F9BB5).withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(14),
             ),
             child: const Icon(
               Icons.translate_rounded,
-              color: Color(0xFF3B82F6),
+              color: Color(0xFF2F9BB5),
               size: 28,
             ),
           ),
@@ -285,7 +285,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                   style: AppFonts.body(
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w900,
-                    color: const Color(0xFF3B82F6),
+                    color: const Color(0xFF2F9BB5),
                   ),
                 ),
                 Gap(4.h),
@@ -300,7 +300,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
               ],
             ),
           ),
-          Icon(Icons.arrow_forward_ios_rounded, color: const Color(0xFF3B82F6), size: 18),
+          Icon(Icons.arrow_forward_ios_rounded, color: const Color(0xFF2F9BB5), size: 18),
         ],
       ),
     );
@@ -310,7 +310,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 6.h),
       decoration: BoxDecoration(
-        color: const Color(0xFF3B82F6).withValues(alpha: 0.1),
+        color: const Color(0xFF2F9BB5).withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(
@@ -318,7 +318,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
         style: AppFonts.body(
           fontSize: 11.sp,
           fontWeight: FontWeight.w800,
-          color: const Color(0xFF3B82F6),
+          color: const Color(0xFF2F9BB5),
         ),
       ),
     );
@@ -502,7 +502,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
               const Gap(16),
               Text("Memorization mode settings", style: TextStyle(color: isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A), fontWeight: FontWeight.w800, fontSize: 18)),
               const Gap(16),
-              Text("Hiding level:", style: TextStyle(color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057), fontWeight: FontWeight.w600)),
+              Text("Hiding level:", style: TextStyle(color: isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A), fontWeight: FontWeight.w600)),
               const Gap(8),
               BlocBuilder<HifzCubit, HifzState>(
                 builder: (context, state) => Wrap(
@@ -524,7 +524,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
               BlocBuilder<HifzCubit, HifzState>(
                 builder: (context, state) => SwitchListTile(
                   title: Text("Test mode", style: TextStyle(color: isDark ? const Color(0xFFF3F8F5) : const Color(0xFF0E1F1A), fontWeight: FontWeight.w600)),
-                  subtitle: Text("Tap the ayah to reveal it", style: TextStyle(color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057), fontSize: 12)),
+                  subtitle: Text("Tap the ayah to reveal it", style: TextStyle(color: isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A), fontSize: 12)),
                   value: state.isTestMode,
                   activeThumbColor: themeState.primary,
                   onChanged: (_) => context.read<HifzCubit>().toggleTestMode(),
@@ -560,14 +560,14 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
               BlocBuilder<NightReadingCubit, NightReadingState>(
                 builder: (context, state) => Column(
                   children: [
-                    Text("Warmth: ${(state.warmth * 100).round()}%", style: TextStyle(color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057), fontWeight: FontWeight.w600)),
+                    Text("Warmth: ${(state.warmth * 100).round()}%", style: TextStyle(color: isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A), fontWeight: FontWeight.w600)),
                     Slider(
                       value: state.warmth,
                       activeColor: themeState.primary,
                       onChanged: (v) => context.read<NightReadingCubit>().setWarmth(v),
                     ),
                     const Gap(8),
-                    Text("Dimming: ${(state.dimLevel * 100).round()}%", style: TextStyle(color: isDark ? const Color(0xFFADB5BD) : const Color(0xFF495057), fontWeight: FontWeight.w600)),
+                    Text("Dimming: ${(state.dimLevel * 100).round()}%", style: TextStyle(color: isDark ? const Color(0xFF86A094) : const Color(0xFF3C524A), fontWeight: FontWeight.w600)),
                     Slider(
                       value: state.dimLevel,
                       activeColor: themeState.primary,

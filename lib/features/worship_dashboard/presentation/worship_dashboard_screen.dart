@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:imaanly/src/theme/app_widgets.dart';
 
 class WorshipDashboardScreen extends StatefulWidget {
   const WorshipDashboardScreen({super.key});
@@ -254,7 +255,6 @@ class _HeroCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
     final completed = summary.prayersCompleted > 0 ||
         summary.quranPages > 0 ||
         summary.dhikrCompleted > 0;
@@ -266,15 +266,8 @@ class _HeroCard extends StatelessWidget {
 
     return Card(
       clipBehavior: Clip.antiAlias,
-      child: Container(
-        padding: const EdgeInsets.all(22),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [scheme.primaryContainer, scheme.surfaceContainerHighest],
-          ),
-        ),
+      child: HeroCard(
+        radius: 0,
         child: Row(
           children: [
             Expanded(
