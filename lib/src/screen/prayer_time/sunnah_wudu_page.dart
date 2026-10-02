@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:imaanly/src/theme/app_fonts.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../../features/sunnah/services/sunnah_share_service.dart';
@@ -28,7 +28,7 @@ class SunnahWuduPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           'Sunnahs & Etiquette of Wudu',
-          style: GoogleFonts.cairo(
+          style: AppFonts.body(
             fontWeight: FontWeight.w900,
           ),
         ),
@@ -130,7 +130,7 @@ class SunnahWuduPage extends StatelessWidget {
               Expanded(
                 child: Text(
                   "Wudu: Purification and Worship",
-                  style: GoogleFonts.cairo(
+                  style: AppFonts.body(
                     fontSize: 20,
                     fontWeight: FontWeight.w900,
                     color: isDark ? _textLight : _textDark,
@@ -142,7 +142,7 @@ class SunnahWuduPage extends StatelessWidget {
           const Gap(16),
           Text(
             "Wudu is one of the conditions for the validity of prayer, and it is a specific purification performed on specific parts of the body. The Prophet ﷺ urged performing wudu thoroughly and perfectly, and Allah the Almighty made great reward for it.",
-            style: GoogleFonts.cairo(
+            style: AppFonts.body(
               fontSize: 14,
               fontWeight: FontWeight.w600,
               color: isDark ? _mutedLight : _mutedDark,
@@ -169,7 +169,7 @@ class SunnahWuduPage extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'Allah the Almighty said: "يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا قُمْتُمْ إِلَى الصَّلَاةِ فَاغْسِلُوا وُجُوهَكُمْ وَأَيْدِيَكُمْ إِلَى الْمَرَافِقِ..." [Al-Ma\'idah 5:6]',
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
                       color: _primaryGreen,
@@ -216,7 +216,7 @@ class SunnahWuduPage extends StatelessWidget {
               Expanded(
                 child: Text(
                   "The Virtue of Wudu",
-                  style: GoogleFonts.cairo(
+                  style: AppFonts.body(
                     fontSize: 18,
                     fontWeight: FontWeight.w900,
                     color: isDark ? _textLight : _textDark,
@@ -256,7 +256,7 @@ class SunnahWuduPage extends StatelessWidget {
         const Gap(8),
         Text(
           title,
-          style: GoogleFonts.cairo(
+          style: AppFonts.body(
             fontSize: 20,
             fontWeight: FontWeight.w900,
             color: isDark ? _textLight : _textDark,
@@ -305,7 +305,7 @@ class SunnahWuduPage extends StatelessWidget {
                 child: Center(
                   child: Text(
                     '$number',
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 18,
                       fontWeight: FontWeight.w900,
                       color: Colors.white,
@@ -317,7 +317,7 @@ class SunnahWuduPage extends StatelessWidget {
               Expanded(
                 child: Text(
                   step.title,
-                  style: GoogleFonts.cairo(
+                  style: AppFonts.body(
                     fontSize: 16,
                     fontWeight: FontWeight.w900,
                     color: isDark ? _textLight : _textDark,
@@ -333,7 +333,7 @@ class SunnahWuduPage extends StatelessWidget {
                   ),
                   child: Text(
                     "Sunnah",
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 11,
                       fontWeight: FontWeight.w800,
                       color: _accentGold,
@@ -359,7 +359,7 @@ class SunnahWuduPage extends StatelessWidget {
           const Gap(12),
           Text(
             step.description,
-            style: GoogleFonts.cairo(
+            style: AppFonts.body(
               fontSize: 14,
               fontWeight: FontWeight.w600,
               color: isDark ? _mutedLight : _mutedDark,
@@ -450,7 +450,7 @@ class SunnahWuduPage extends StatelessWidget {
                   Expanded(
                     child: Text(
                       "Share Sunnah",
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 20,
                         fontWeight: FontWeight.w900,
                         color: isDark ? _textLight : _textDark,
@@ -487,7 +487,7 @@ class SunnahWuduPage extends StatelessWidget {
                               Expanded(
                                 child: Text(
                                   "The text was copied and shared successfully",
-                                  style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+                                  style: AppFonts.body(fontWeight: FontWeight.w700),
                                 ),
                               ),
                             ],
@@ -505,7 +505,7 @@ class SunnahWuduPage extends StatelessWidget {
                         SnackBar(
                           content: Text(
                             "An error occurred while sharing",
-                            style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+                            style: AppFonts.body(fontWeight: FontWeight.w700),
                           ),
                           behavior: SnackBarBehavior.floating,
                           backgroundColor: const Color(0xFFEF4444),
@@ -600,7 +600,7 @@ class SunnahWuduPage extends StatelessWidget {
                     children: [
                       Text(
                         label,
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 16,
                           fontWeight: FontWeight.w900,
                           color: isDark ? _textLight : _textDark,
@@ -609,7 +609,7 @@ class SunnahWuduPage extends StatelessWidget {
                       const Gap(2),
                       Text(
                         subtitle,
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
                           color: isDark ? _mutedLight : _mutedDark,
@@ -653,7 +653,7 @@ class SunnahWuduPage extends StatelessWidget {
           Expanded(
             child: Text(
               evidence,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 12,
                 fontWeight: FontWeight.w600,
                 color: _primaryGreen,
@@ -691,7 +691,7 @@ class SunnahWuduPage extends StatelessWidget {
               const Gap(8),
               Text(
                 "Hadith",
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 13,
                   fontWeight: FontWeight.w800,
                   color: _accentGold,
@@ -702,7 +702,7 @@ class SunnahWuduPage extends StatelessWidget {
           const Gap(12),
           Text(
             hadith,
-            style: GoogleFonts.cairo(
+            style: AppFonts.body(
               fontSize: 14,
               fontWeight: FontWeight.w600,
               color: isDark ? _textLight : _textDark,
@@ -718,7 +718,7 @@ class SunnahWuduPage extends StatelessWidget {
             ),
             child: Text(
               source,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 12,
                 fontWeight: FontWeight.w700,
                 color: _accentGold,
@@ -764,7 +764,7 @@ class SunnahWuduPage extends StatelessWidget {
                   children: [
                     Text(
                       statement.scholar,
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 15,
                         fontWeight: FontWeight.w900,
                         color: isDark ? _textLight : _textDark,
@@ -774,7 +774,7 @@ class SunnahWuduPage extends StatelessWidget {
                       const Gap(2),
                       Text(
                         statement.title!,
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 11,
                           fontWeight: FontWeight.w600,
                           color: isDark ? _mutedLight : _mutedDark,
@@ -789,7 +789,7 @@ class SunnahWuduPage extends StatelessWidget {
           const Gap(12),
           Text(
             statement.statement,
-            style: GoogleFonts.cairo(
+            style: AppFonts.body(
               fontSize: 14,
               fontWeight: FontWeight.w600,
               color: isDark ? _mutedLight : _mutedDark,
@@ -830,7 +830,7 @@ class SunnahWuduPage extends StatelessWidget {
           Expanded(
             child: Text(
               benefit,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
                 color: isDark ? _mutedLight : _mutedDark,

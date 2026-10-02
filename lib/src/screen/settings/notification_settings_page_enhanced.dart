@@ -2,8 +2,7 @@ import "dart:ui" as ui;
 
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:google_fonts/google_fonts.dart";
-
+import 'package:imaanly/src/theme/app_fonts.dart';
 import "../../core/notifications/wahy_notification_service.dart";
 import "../../theme/controller/theme_cubit.dart";
 
@@ -98,7 +97,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
         appBar: AppBar(
           title: Text(
             "Notifications",
-            style: GoogleFonts.cairo(fontWeight: FontWeight.w900, color: textColor),
+            style: AppFonts.body(fontWeight: FontWeight.w900, color: textColor),
           ),
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -254,7 +253,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
                 content: Text(
                   "Test notification sent ✅",
                   textDirection: TextDirection.rtl,
-                  style: GoogleFonts.cairo(fontWeight: FontWeight.w800),
+                  style: AppFonts.body(fontWeight: FontWeight.w800),
                 ),
                 backgroundColor: primary,
                 behavior: SnackBarBehavior.floating,
@@ -266,7 +265,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
           icon: const Icon(Icons.notifications_active_rounded, color: Colors.white),
           label: Text(
             "Try notification",
-            style: GoogleFonts.cairo(fontWeight: FontWeight.w900, color: Colors.white),
+            style: AppFonts.body(fontWeight: FontWeight.w900, color: Colors.white),
           ),
         ),
       ),
@@ -290,7 +289,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
         const SizedBox(width: 12),
         Text(
           title,
-          style: GoogleFonts.cairo(
+          style: AppFonts.body(
             fontSize: 18,
             fontWeight: FontWeight.w900,
             color: textColor,
@@ -350,7 +349,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
                     children: [
                       Text(
                         title,
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 15,
                           fontWeight: FontWeight.w900,
                           color: textColor,
@@ -358,7 +357,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
                       ),
                       Text(
                         subtitle,
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
                           color: subtitleColor,
@@ -395,7 +394,7 @@ class _NotificationSettingsPageEnhancedState extends State<NotificationSettingsP
                               const SizedBox(width: 10),
                               Text(
                                 "Time: ${_formatTime(time)}",
-                                style: GoogleFonts.cairo(
+                                style: AppFonts.body(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w800,
                                   color: primary,

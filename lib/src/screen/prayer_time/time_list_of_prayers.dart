@@ -21,7 +21,7 @@ import "package:flutter/material.dart";
 import "package:flutter_animate/flutter_animate.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:gap/gap.dart";
-import "package:google_fonts/google_fonts.dart";
+import 'package:imaanly/src/theme/app_fonts.dart';
 import "package:permission_handler/permission_handler.dart";
 import "package:url_launcher/url_launcher.dart";
 
@@ -473,7 +473,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       locationName?.isNotEmpty == true
                           ? locationName!
                           : "Detecting location name...",
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 16,
                         fontWeight: FontWeight.w900,
                         color: isDark ? _textLight : _textDark,
@@ -482,7 +482,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                     const Gap(4),
                     Text(
                       hijriDate(context),
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                         color: isDark ? _mutedLight : _mutedDark,
@@ -542,7 +542,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 const Gap(6),
                 Text(
                   locationHint,
-                  style: GoogleFonts.dmMono(
+                  style: AppFonts.mono(
                     fontSize: 11,
                     fontWeight: FontWeight.w600,
                     color: isDark ? _mutedLight : _mutedDark,
@@ -583,7 +583,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             const Gap(8),
             Text(
               label,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 13,
                 fontWeight: FontWeight.w800,
                 color: color,
@@ -655,7 +655,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   children: [
                     Text(
                       "Next prayer",
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
                         color: Colors.white.withValues(alpha: 0.9),
@@ -664,7 +664,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                     const Gap(2),
                     Text(
                       PrayerTimeHelper.localizedPrayerName(context, next) ?? "-",
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 28,
                         fontWeight: FontWeight.w900,
                         color: Colors.white,
@@ -749,7 +749,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
       children: [
         Text(
           value,
-          style: GoogleFonts.dmMono(
+          style: AppFonts.mono(
             fontSize: 36,
             fontWeight: FontWeight.w900,
             color: Colors.white,
@@ -759,7 +759,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
         const Gap(4),
         Text(
           label,
-          style: GoogleFonts.cairo(
+          style: AppFonts.body(
             fontSize: 11,
             fontWeight: FontWeight.w600,
             color: Colors.white.withValues(alpha: 0.8),
@@ -772,7 +772,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
   Widget _timeSeparator() {
     return Text(
       ":",
-      style: GoogleFonts.dmMono(
+      style: AppFonts.mono(
         fontSize: 32,
         fontWeight: FontWeight.w900,
         color: Colors.white.withValues(alpha: 0.6),
@@ -786,7 +786,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
       children: [
         Text(
           title,
-          style: GoogleFonts.cairo(
+          style: AppFonts.body(
             fontSize: 12,
             fontWeight: FontWeight.w700,
             color: Colors.white.withValues(alpha: 0.9),
@@ -794,7 +794,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
         ),
         Text(
           time,
-          style: GoogleFonts.dmMono(
+          style: AppFonts.mono(
             fontSize: 11,
             fontWeight: FontWeight.w600,
             color: Colors.white.withValues(alpha: 0.7),
@@ -845,7 +845,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               const Gap(12),
               Text(
                 "Account settings",
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 16,
                   fontWeight: FontWeight.w900,
                   color: isDark ? _textLight : _textDark,
@@ -891,7 +891,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       children: [
                         Text(
                           "School of fiqh",
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
                             color: isDark ? _mutedLight : _mutedDark,
@@ -900,7 +900,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         const Gap(2),
                         Text(
                           state.madhab == Madhab.shafi ? "Shafi'i" : "Hanafi",
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 16,
                             fontWeight: FontWeight.w900,
                             color: isDark ? _textLight : _textDark,
@@ -957,7 +957,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       children: [
                         Text(
                           "Calculation method",
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
                             color: isDark ? _mutedLight : _mutedDark,
@@ -968,7 +968,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                           fromLibraryEnum(
                             state.calculationMethod?.method ?? CalculationMethod.karachi,
                           ).fullName,
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 14,
                             fontWeight: FontWeight.w900,
                             color: isDark ? _textLight : _textDark,
@@ -1018,7 +1018,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             const Gap(20),
             Text(
               "Choose your school of fiqh",
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 20,
                 fontWeight: FontWeight.w900,
                 color: isDark ? _textLight : _textDark,
@@ -1027,7 +1027,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             const Gap(8),
             Text(
               "Affects the calculation of Asr prayer time",
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
                 color: isDark ? _mutedLight : _mutedDark,
@@ -1106,7 +1106,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 children: [
                   Text(
                     title,
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 16,
                       fontWeight: FontWeight.w900,
                       color: selected ? _primaryGreen : (isDark ? _textLight : _textDark),
@@ -1115,7 +1115,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   const Gap(4),
                   Text(
                     subtitle,
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                       color: isDark ? _mutedLight : _mutedDark,
@@ -1155,7 +1155,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             const Gap(20),
             Text(
               "Choose calculation method",
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 20,
                 fontWeight: FontWeight.w900,
                 color: isDark ? _textLight : _textDark,
@@ -1164,7 +1164,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             const Gap(8),
             Text(
               "Prayer time calculation methods differ by region",
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
                 color: isDark ? _mutedLight : _mutedDark,
@@ -1236,7 +1236,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             Expanded(
               child: Text(
                 method.fullName,
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 14,
                   fontWeight: FontWeight.w800,
                   color: selected ? _primaryGreen : (isDark ? _textLight : _textDark),
@@ -1252,7 +1252,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 ),
                 child: Text(
                   "Selected",
-                  style: GoogleFonts.cairo(
+                  style: AppFonts.body(
                     fontSize: 11,
                     fontWeight: FontWeight.w800,
                     color: Colors.white,
@@ -1317,7 +1317,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   children: [
                     Text(
                       "Prayer alerts",
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 16,
                         fontWeight: FontWeight.w900,
                         color: isDark ? _textLight : _textDark,
@@ -1330,7 +1330,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                           : _notifEnabled
                           ? "Enabled"
                           : "Disabled",
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 12,
                         fontWeight: FontWeight.w600,
                         color: _syncing
@@ -1389,7 +1389,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       const Gap(8),
                       Text(
                         "Alert timing",
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
                           color: isDark ? _textLight : _textDark,
@@ -1452,7 +1452,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       const Gap(8),
                       Text(
                         "Enabled prayers",
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
                           color: isDark ? _textLight : _textDark,
@@ -1461,7 +1461,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       const Spacer(),
                       Text(
                         "${_selectedAlerts.length} of ${_prayers.length}",
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 12,
                           fontWeight: FontWeight.w700,
                           color: _primaryGreen,
@@ -1532,7 +1532,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   Expanded(
                     child: Text(
                       "Alerts will be sent for the selected prayers at the chosen timing",
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
                         color: _primaryGreen,
@@ -1593,7 +1593,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               Expanded(
                 child: Text(
                   "Nearby mosques",
-                  style: GoogleFonts.cairo(
+                  style: AppFonts.body(
                     fontSize: 16,
                     fontWeight: FontWeight.w900,
                     color: isDark ? _textLight : _textDark,
@@ -1652,7 +1652,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       children: [
                         Text(
                           "Add new mosque",
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 15,
                             fontWeight: FontWeight.w900,
                             color: isDark ? _textLight : _textDark,
@@ -1661,7 +1661,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         const Gap(4),
                         Text(
                           "Save the mosque location and iqama times",
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
                             color: isDark ? _mutedLight : _mutedDark,
@@ -1718,7 +1718,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       children: [
                         Text(
                           "My saved mosques",
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 15,
                             fontWeight: FontWeight.w900,
                             color: isDark ? _textLight : _textDark,
@@ -1727,7 +1727,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         const Gap(4),
                         Text(
                           "View and manage saved mosques",
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
                             color: isDark ? _mutedLight : _mutedDark,
@@ -1784,7 +1784,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       children: [
                         Text(
                           "View map",
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 15,
                             fontWeight: FontWeight.w900,
                             color: isDark ? _textLight : _textDark,
@@ -1793,7 +1793,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         const Gap(4),
                         Text(
                           "View mosques on the map",
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
                             color: isDark ? _mutedLight : _mutedDark,
@@ -1865,7 +1865,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 Expanded(
                   child: Text(
                     "Add new mosque",
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 20,
                       fontWeight: FontWeight.w900,
                       color: isDark ? _textLight : _textDark,
@@ -1935,7 +1935,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                     SnackBar(
                       content: Text(
                         "The map will open to select the location",
-                        style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+                        style: AppFonts.body(fontWeight: FontWeight.w700),
                       ),
                       behavior: SnackBarBehavior.floating,
                       backgroundColor: const Color(0xFF10B981),
@@ -1945,7 +1945,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 icon: const Icon(Icons.map_rounded),
                 label: Text(
                   "Select on map",
-                  style: GoogleFonts.cairo(fontWeight: FontWeight.w800),
+                  style: AppFonts.body(fontWeight: FontWeight.w800),
                 ),
                 style: OutlinedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 14),
@@ -1969,7 +1969,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       SnackBar(
                         content: Text(
                           '"${nameController.text.trim()}" added successfully',
-                          style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+                          style: AppFonts.body(fontWeight: FontWeight.w700),
                         ),
                         behavior: SnackBarBehavior.floating,
                         backgroundColor: _primaryGreen,
@@ -1980,7 +1980,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 icon: const Icon(Icons.check_rounded),
                 label: Text(
                   "Save mosque",
-                  style: GoogleFonts.cairo(fontWeight: FontWeight.w900),
+                  style: AppFonts.body(fontWeight: FontWeight.w900),
                 ),
                 style: FilledButton.styleFrom(
                   backgroundColor: _primaryGreen,
@@ -2044,7 +2044,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       Expanded(
                         child: Text(
                           "My saved mosques",
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 20,
                             fontWeight: FontWeight.w900,
                             color: isDark ? _textLight : _textDark,
@@ -2124,7 +2124,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   children: [
                     Text(
                       name,
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 16,
                         fontWeight: FontWeight.w900,
                         color: isDark ? _textLight : _textDark,
@@ -2141,7 +2141,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         const Gap(4),
                         Text(
                           address,
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
                             color: isDark ? _mutedLight : _mutedDark,
@@ -2174,7 +2174,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                     const Gap(4),
                     Text(
                       rating.toString(),
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 12,
                         fontWeight: FontWeight.w800,
                         color: _accentGold,
@@ -2201,7 +2201,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                     const Gap(4),
                     Text(
                       distance,
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 12,
                         fontWeight: FontWeight.w800,
                         color: const Color(0xFF10B981),
@@ -2254,7 +2254,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               Text(
                 "Rate $mosqueName",
                 textAlign: TextAlign.center,
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontWeight: FontWeight.w900,
                   color: isDark ? _textLight : _textDark,
                 ),
@@ -2281,7 +2281,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               const Gap(12),
               Text(
                 rating == 5.0 ? "Excellent!" : rating >= 4.0 ? "Very good" : rating >= 3.0 ? "Good" : "Acceptable",
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 18,
                   fontWeight: FontWeight.w900,
                   color: _accentGold,
@@ -2294,7 +2294,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               onPressed: () => Navigator.pop(ctx),
               child: Text(
                 "Cancel",
-                style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+                style: AppFonts.body(fontWeight: FontWeight.w700),
               ),
             ),
             FilledButton(
@@ -2304,7 +2304,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   SnackBar(
                     content: Text(
                       '$mosqueName rated $rating stars',
-                      style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+                      style: AppFonts.body(fontWeight: FontWeight.w700),
                     ),
                     behavior: SnackBarBehavior.floating,
                     backgroundColor: _accentGold,
@@ -2319,7 +2319,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               ),
               child: Text(
                 "Rate",
-                style: GoogleFonts.cairo(fontWeight: FontWeight.w800),
+                style: AppFonts.body(fontWeight: FontWeight.w800),
               ),
             ),
           ],
@@ -2375,7 +2375,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       Expanded(
                         child: Text(
                           "Mosque map",
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 20,
                             fontWeight: FontWeight.w900,
                             color: isDark ? _textLight : _textDark,
@@ -2409,7 +2409,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       const Gap(16),
                       Text(
                         "The map will be shown here",
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 16,
                           fontWeight: FontWeight.w800,
                           color: isDark ? _mutedLight : _mutedDark,
@@ -2418,7 +2418,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                       const Gap(8),
                       Text(
                         "You can mark mosque locations on the map",
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 13,
                           fontWeight: FontWeight.w600,
                           color: isDark ? _mutedLight : _mutedDark,
@@ -2462,7 +2462,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
               const Gap(10),
               Text(
                 "Daily prayer schedule",
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 18,
                   fontWeight: FontWeight.w900,
                   color: isDark ? _textLight : _textDark,
@@ -2616,7 +2616,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                               children: [
                                 Text(
                                   PrayerTimeHelper.localizedPrayerName(context, prayer) ?? "-",
-                                  style: GoogleFonts.cairo(
+                                  style: AppFonts.body(
                                     fontSize: 18,
                                     fontWeight: FontWeight.w900,
                                     color: isDark ? _textLight : _textDark,
@@ -2632,7 +2632,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                                     ),
                                     child: Text(
                                       "Now",
-                                      style: GoogleFonts.cairo(
+                                      style: AppFonts.body(
                                         fontSize: 11,
                                         fontWeight: FontWeight.w800,
                                         color: Colors.white,
@@ -2648,7 +2648,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                                     ),
                                     child: Text(
                                       "Upcoming",
-                                      style: GoogleFonts.cairo(
+                                      style: AppFonts.body(
                                         fontSize: 11,
                                         fontWeight: FontWeight.w800,
                                         color: Colors.white,
@@ -2669,7 +2669,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                                 if (hasNotification) const Gap(6),
                                 Text(
                                   hasNotification ? "Alert on" : "No alert",
-                                  style: GoogleFonts.cairo(
+                                  style: AppFonts.body(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
                                     color: isDark ? _mutedLight : _mutedDark,
@@ -2687,7 +2687,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                         children: [
                           Text(
                             formatTimeOfDay(context, TimeOfDay.fromDateTime(time)),
-                            style: GoogleFonts.dmMono(
+                            style: AppFonts.mono(
                               fontSize: 24,
                               fontWeight: FontWeight.w900,
                               color: isDark ? _textLight : _textDark,
@@ -2712,7 +2712,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                                   const Gap(4),
                                   Text(
                                     formatTimeOfDay(context, TimeOfDay.fromDateTime(iqamahTime)),
-                                    style: GoogleFonts.dmMono(
+                                    style: AppFonts.mono(
                                       fontSize: 11,
                                       fontWeight: FontWeight.w700,
                                       color: prayerColor,
@@ -2808,7 +2808,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
             const Gap(6),
             Text(
               label,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 12,
                 fontWeight: FontWeight.w800,
                 color: color,
@@ -2841,7 +2841,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
           const Gap(20),
           Text(
             "Sunnahs & etiquette",
-            style: GoogleFonts.cairo(
+            style: AppFonts.body(
               fontSize: 20,
               fontWeight: FontWeight.w900,
               color: isDark ? _textLight : _textDark,
@@ -2921,7 +2921,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                 children: [
                   Text(
                     title,
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 16,
                       fontWeight: FontWeight.w800,
                       color: isDark ? _textLight : _textDark,
@@ -2930,7 +2930,7 @@ class _TimeListOfPrayersState extends State<TimeListOfPrayers> {
                   const Gap(2),
                   Text(
                     subtitle,
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                       color: isDark ? _mutedLight : _mutedDark,

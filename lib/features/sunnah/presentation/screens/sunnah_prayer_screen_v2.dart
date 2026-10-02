@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:imaanly/src/theme/app_fonts.dart';
 import 'package:imaanly/src/screen/mushaf/widgets/wahy_side_drawer.dart';
 import '../../core/theme/sunnah_theme.dart';
 import '../../services/sunnah_share_service.dart';
@@ -103,7 +103,7 @@ class _SunnahPrayerScreenV2State extends State<SunnahPrayerScreenV2>
     return AppBar(
       title: Text(
         'Sunnahs & Etiquette of Prayer',
-        style: GoogleFonts.cairo(
+        style: AppFonts.body(
           fontWeight: FontWeight.w900,
           fontSize: 20.sp,
         ),

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:imaanly/src/theme/app_fonts.dart';
 import '../models/image_customization_model.dart';
 
 /// خدمة مشاركة السنن
@@ -204,7 +204,7 @@ class SunnahShareService {
     final titlePainter = TextPainter(
       text: TextSpan(
         text: title,
-        style: GoogleFonts.cairo(
+        style: AppFonts.body(
           fontSize: titleSize,
           fontWeight: FontWeight.w700,
           color: titleColor,
@@ -222,7 +222,7 @@ class SunnahShareService {
     final descPainter = TextPainter(
       text: TextSpan(
         text: description,
-        style: GoogleFonts.cairo(
+        style: AppFonts.body(
           fontSize: descSize,
           fontWeight: FontWeight.w500,
           color: descColor,
@@ -242,7 +242,7 @@ class SunnahShareService {
       final evidencePainter = TextPainter(
         text: TextSpan(
           text: evidence,
-          style: GoogleFonts.cairo(
+          style: AppFonts.body(
             fontSize: evidenceSize,
             fontWeight: FontWeight.w600,
             color: badgeColorFinal,
@@ -294,7 +294,7 @@ class SunnahShareService {
     final badgeTextPainter = TextPainter(
       text: TextSpan(
         text: badgeText ?? 'Sunnah',
-        style: GoogleFonts.cairo(
+        style: AppFonts.body(
           fontSize: badgeTextSize,
           fontWeight: FontWeight.w700,
           color: Colors.white,
@@ -316,7 +316,7 @@ class SunnahShareService {
     final badgeLabelPainter = TextPainter(
       text: TextSpan(
         text: type,
-        style: GoogleFonts.cairo(
+        style: AppFonts.body(
           fontSize: badgeLabelSize,
           fontWeight: FontWeight.w700,
           color: titleColor,
@@ -347,7 +347,7 @@ class SunnahShareService {
       final evidencePainter = TextPainter(
         text: TextSpan(
           text: evidence,
-          style: GoogleFonts.cairo(
+          style: AppFonts.body(
             fontSize: evidenceSize,
             fontWeight: FontWeight.w600,
             color: badgeColorFinal,

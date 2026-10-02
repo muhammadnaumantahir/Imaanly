@@ -12,8 +12,7 @@ import "package:flutter_screenutil/flutter_screenutil.dart";
 import "package:gap/gap.dart";
 import "package:imaanly/src/core/hifz/hifz_cubit.dart";
 import "package:imaanly/src/core/night_mode/night_reading_cubit.dart";
-import "package:google_fonts/google_fonts.dart";
-
+import 'package:imaanly/src/theme/app_fonts.dart';
 import "../../theme/controller/theme_cubit.dart";
 import "../../theme/controller/theme_state.dart";
 
@@ -60,7 +59,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
               appBar: AppBar(
                 title: Text(
                   l10n.settings,
-                  style: GoogleFonts.cairo(fontWeight: FontWeight.w900),
+                  style: AppFonts.body(fontWeight: FontWeight.w900),
                 ),
                 actions: [themeIconButton(context)],
                 backgroundColor: Colors.transparent,
@@ -283,7 +282,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
               children: [
                 Text(
                   "💡 Suggestion",
-                  style: GoogleFonts.cairo(
+                  style: AppFonts.body(
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w900,
                     color: const Color(0xFF3B82F6),
@@ -292,7 +291,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                 Gap(4.h),
                 Text(
                   "It looks like you're using ${currentLang.native}. Do you want to enable the library for this language?",
-                  style: GoogleFonts.cairo(
+                  style: AppFonts.body(
                     fontSize: 12.sp,
                     height: 1.6,
                     color: isDark ? Colors.white70 : Colors.black87,
@@ -316,7 +315,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
       ),
       child: Text(
         lang.native,
-        style: GoogleFonts.cairo(
+        style: AppFonts.body(
           fontSize: 11.sp,
           fontWeight: FontWeight.w800,
           color: const Color(0xFF3B82F6),
@@ -408,7 +407,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
             Gap(4.h),
             Text(
               label,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 11.sp,
                 fontWeight: FontWeight.w800,
                 color: isSelected ? Colors.white : (isDark ? Colors.white60 : Colors.black54),
@@ -431,7 +430,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                 children: [
                   Text(
                     "Enable auto-scroll",
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w800,
                       color: isDark ? Colors.white : Colors.black87,
@@ -440,7 +439,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                   Gap(4.h),
                   Text(
                     "Auto-scroll while reading is always on",
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 11.sp,
                       color: isDark ? Colors.white54 : Colors.black54,
                     ),
@@ -470,7 +469,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                 Expanded(
                   child: Text(
                     "Auto-scroll is on and running smoothly",
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w700,
                       color: themeState.primary,
@@ -646,7 +645,7 @@ class _SettingsSectionCard extends StatelessWidget {
               Gap(12.w),
               Text(
                 title,
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 17.sp,
                   fontWeight: FontWeight.w900,
                   color: isDark ? Colors.white : Colors.black87,
@@ -732,7 +731,7 @@ class _SettingsShortcutTile extends StatelessWidget {
                       Expanded(
                         child: Text(
                           title,
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 15.sp,
                             fontWeight: FontWeight.w900,
                             color: isDark ? Colors.white : Colors.black87,
@@ -744,7 +743,7 @@ class _SettingsShortcutTile extends StatelessWidget {
                   Gap(6.h),
                   Text(
                     subtitle,
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 12.sp,
                       height: 1.6,
                       color: isDark ? Colors.white60 : Colors.black54,

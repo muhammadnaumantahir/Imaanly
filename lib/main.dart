@@ -152,7 +152,7 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 TextTheme getTextTheme(Locale locale, bool isDarkMode) {
   final textTheme = isDarkMode ? ThemeData.dark().textTheme : ThemeData.light().textTheme;
-  return textTheme.apply(fontFamily: "NotoSans");
+  return textTheme.apply(fontFamily: "Poppins", fontFamilyFallback: const ["NotoSans", "Cairo-Regular"]);
 }
 
 class MyApp extends StatelessWidget {

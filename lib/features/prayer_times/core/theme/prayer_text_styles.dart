@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-
+import 'package:imaanly/src/theme/app_fonts.dart';
 /// ✍️ نظام Typography - من آية (Ayah)
 /// 
 /// الفلسفة:
@@ -144,7 +143,7 @@ class PrayerTextStyles {
   // ═══════════════════════════════════════════
   
   /// Display - Large headers
-  static TextStyle display({Color? color}) => GoogleFonts.inter(
+  static TextStyle display({Color? color}) => AppFonts.body(
         fontSize: 24.sp,
         fontWeight: FontWeight.w700,
         height: 1.2,
@@ -153,7 +152,7 @@ class PrayerTextStyles {
       );
   
   /// Headline - Section headers
-  static TextStyle headline({Color? color}) => GoogleFonts.inter(
+  static TextStyle headline({Color? color}) => AppFonts.body(
         fontSize: 20.sp,
         fontWeight: FontWeight.w600,
         height: 1.3,
@@ -162,7 +161,7 @@ class PrayerTextStyles {
       );
   
   /// Title - Card titles
-  static TextStyle title({Color? color}) => GoogleFonts.inter(
+  static TextStyle title({Color? color}) => AppFonts.body(
         fontSize: 16.sp,
         fontWeight: FontWeight.w600,
         height: 1.4,
@@ -171,7 +170,7 @@ class PrayerTextStyles {
       );
   
   /// Body Large - Large body text
-  static TextStyle bodyLarge({Color? color}) => GoogleFonts.inter(
+  static TextStyle bodyLarge({Color? color}) => AppFonts.body(
         fontSize: 16.sp,
         fontWeight: FontWeight.w400,
         height: 1.5,
@@ -180,7 +179,7 @@ class PrayerTextStyles {
       );
   
   /// Body - Standard body text (آية: 15sp, وحي: 14sp)
-  static TextStyle body({Color? color}) => GoogleFonts.inter(
+  static TextStyle body({Color? color}) => AppFonts.body(
         fontSize: 15.sp,
         fontWeight: FontWeight.w400,
         height: 1.5,
@@ -189,7 +188,7 @@ class PrayerTextStyles {
       );
   
   /// Label - Button labels (آية: 13sp, وحي: 12sp)
-  static TextStyle label({Color? color}) => GoogleFonts.inter(
+  static TextStyle label({Color? color}) => AppFonts.body(
         fontSize: 13.sp,
         fontWeight: FontWeight.w500,
         height: 1.3,
@@ -198,7 +197,7 @@ class PrayerTextStyles {
       );
   
   /// Caption - Small text
-  static TextStyle caption({Color? color}) => GoogleFonts.inter(
+  static TextStyle caption({Color? color}) => AppFonts.body(
         fontSize: 12.sp,
         fontWeight: FontWeight.w400,
         height: 1.4,
@@ -211,7 +210,7 @@ class PrayerTextStyles {
   // ═══════════════════════════════════════════
   
   /// Time Display - For digital clock style
-  static TextStyle timeDisplay({Color? color}) => GoogleFonts.inter(
+  static TextStyle timeDisplay({Color? color}) => AppFonts.body(
         fontSize: 48.sp,
         fontWeight: FontWeight.w700,
         height: 1.0,
@@ -221,7 +220,7 @@ class PrayerTextStyles {
       );
   
   /// Time Small - For compact time display
-  static TextStyle timeSmall({Color? color}) => GoogleFonts.inter(
+  static TextStyle timeSmall({Color? color}) => AppFonts.body(
         fontSize: 16.sp,
         fontWeight: FontWeight.w600,
         height: 1.2,
@@ -231,7 +230,7 @@ class PrayerTextStyles {
       );
   
   /// Number Display - For countdown and statistics
-  static TextStyle numberDisplay({Color? color}) => GoogleFonts.inter(
+  static TextStyle numberDisplay({Color? color}) => AppFonts.body(
         fontSize: 32.sp,
         fontWeight: FontWeight.w700,
         height: 1.0,

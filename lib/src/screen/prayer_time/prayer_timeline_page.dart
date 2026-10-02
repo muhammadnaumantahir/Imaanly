@@ -13,7 +13,7 @@ import "package:imaanly/src/screen/prayer_time/prayer_time_functions/prayer_time
 import "package:imaanly/src/utils/format_time_of_day.dart";
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
-import "package:google_fonts/google_fonts.dart";
+import 'package:imaanly/src/theme/app_fonts.dart';
 import "package:hive_ce_flutter/hive_flutter.dart";
 
 /// A focused visual timeline for the five daily prayers.
@@ -146,7 +146,7 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
               const SizedBox(height: 20),
               Text(
                 "Today's Salah",
-                style: GoogleFonts.cairo(fontSize: 20, fontWeight: FontWeight.w900),
+                style: AppFonts.body(fontSize: 20, fontWeight: FontWeight.w900),
               ),
               const SizedBox(height: 12),
               ...schedule.map(
@@ -192,7 +192,7 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
         children: [
           Text(
             "NEXT PRAYER",
-            style: GoogleFonts.dmMono(
+            style: AppFonts.mono(
               fontSize: 12,
               fontWeight: FontWeight.w700,
               color: cs.onPrimary.withValues(alpha: 0.78),
@@ -201,18 +201,18 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
           const SizedBox(height: 8),
           Text(
             PrayerTimeHelper.localizedPrayerName(context, next.prayer) ?? next.prayer.name,
-            style: GoogleFonts.cairo(fontSize: 28, fontWeight: FontWeight.w900, color: cs.onPrimary),
+            style: AppFonts.body(fontSize: 28, fontWeight: FontWeight.w900, color: cs.onPrimary),
           ),
           const SizedBox(height: 12),
           Text(
             "$hours:$minutes:$seconds",
-            style: GoogleFonts.dmMono(fontSize: 34, fontWeight: FontWeight.w900, color: cs.onPrimary),
+            style: AppFonts.mono(fontSize: 34, fontWeight: FontWeight.w900, color: cs.onPrimary),
           ),
           if (current != null) ...[
             const SizedBox(height: 8),
             Text(
               "Current: ${PrayerTimeHelper.localizedPrayerName(context, current.prayer) ?? current.prayer.name}",
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 13,
                 fontWeight: FontWeight.w700,
                 color: cs.onPrimary.withValues(alpha: 0.82),
@@ -271,7 +271,7 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
                     Flexible(
                       child: Text(
                         PrayerTimeHelper.localizedPrayerName(context, prayer) ?? prayer.name,
-                        style: GoogleFonts.cairo(fontSize: 17, fontWeight: FontWeight.w900),
+                        style: AppFonts.body(fontSize: 17, fontWeight: FontWeight.w900),
                       ),
                     ),
                     if (isCurrent || isNext || isCompleted) ...[
@@ -281,7 +281,7 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
                         decoration: BoxDecoration(color: accent, borderRadius: BorderRadius.circular(8)),
                         child: Text(
                           isCompleted ? "DONE" : isCurrent ? "NOW" : "NEXT",
-                          style: GoogleFonts.dmMono(fontSize: 9, fontWeight: FontWeight.w800, color: Colors.white),
+                          style: AppFonts.mono(fontSize: 9, fontWeight: FontWeight.w800, color: Colors.white),
                         ),
                       ),
                     ],
@@ -296,7 +296,7 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
                           : isNext
                               ? "Prepare for Salah"
                               : "Daily prayer",
-                  style: GoogleFonts.cairo(fontSize: 11, fontWeight: FontWeight.w600, color: cs.onSurfaceVariant),
+                  style: AppFonts.body(fontSize: 11, fontWeight: FontWeight.w600, color: cs.onSurfaceVariant),
                 ),
               ],
             ),
@@ -307,7 +307,7 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
             children: [
               Text(
                 formatTimeOfDay(context, TimeOfDay.fromDateTime(time)),
-                style: GoogleFonts.dmMono(fontSize: 20, fontWeight: FontWeight.w900),
+                style: AppFonts.mono(fontSize: 20, fontWeight: FontWeight.w900),
               ),
               const SizedBox(height: 6),
               if (isCompleted)
@@ -348,7 +348,7 @@ class _PrayerTimelinePageState extends State<PrayerTimelinePage> {
                 const SizedBox(height: 2),
                 Text(
                   formatTimeOfDay(context, TimeOfDay.fromDateTime(time)),
-                  style: GoogleFonts.dmMono(fontSize: 18, fontWeight: FontWeight.w800),
+                  style: AppFonts.mono(fontSize: 18, fontWeight: FontWeight.w800),
                 ),
               ],
             ),

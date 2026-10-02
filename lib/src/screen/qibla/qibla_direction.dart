@@ -16,7 +16,7 @@ import "package:flutter_compass_v2/flutter_compass_v2.dart";
 import "package:flutter_svg/flutter_svg.dart";
 import "package:gap/gap.dart";
 import "package:vibration/vibration.dart";
-import "package:google_fonts/google_fonts.dart";
+import 'package:imaanly/src/theme/app_fonts.dart';
 import "package:vector_math/vector_math.dart" as vector;
 
 class QiblaDirection extends StatefulWidget {
@@ -101,7 +101,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
             SnackBar(
               content: Text(
                 "Calibration successful!",
-                style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+                style: AppFonts.body(fontWeight: FontWeight.w700),
               ),
               behavior: SnackBarBehavior.floating,
               backgroundColor: const Color(0xFF12906A),
@@ -381,7 +381,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                       children: [
                         Text(
                           "⚠️ Important notice",
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 16,
                             fontWeight: FontWeight.w900,
                             color: const Color(0xFF92400E),
@@ -390,7 +390,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                         const Gap(4),
                         Text(
                           "The digital compass may contain errors",
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFF92400E),
@@ -413,7 +413,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                   children: [
                     Text(
                       "• Don't rely on it entirely to determine the Qibla direction",
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 12,
                         height: 1.7,
                         fontWeight: FontWeight.w600,
@@ -423,7 +423,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     const Gap(6),
                     Text(
                       "• Use other means to confirm the correct direction",
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 12,
                         height: 1.7,
                         fontWeight: FontWeight.w600,
@@ -433,7 +433,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     const Gap(6),
                     Text(
                       "• Accuracy will be improved in upcoming updates, God willing",
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 12,
                         height: 1.7,
                         fontWeight: FontWeight.w700,
@@ -551,7 +551,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                 child: Text(
                   _guidanceText(guidance),
                   textAlign: TextAlign.center,
-                  style: GoogleFonts.cairo(
+                  style: AppFonts.body(
                     fontSize: 18,
                     fontWeight: FontWeight.w900,
                     color: Colors.white,
@@ -569,7 +569,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     children: [
                       Text(
                         "Accuracy",
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 13,
                           fontWeight: FontWeight.w700,
                           color: isDark ? Colors.white70 : Colors.black54,
@@ -577,7 +577,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                       ),
                       Text(
                         "${(guidance.progress * 100).toInt()}%",
-                        style: GoogleFonts.dmMono(
+                        style: AppFonts.mono(
                           fontSize: 13,
                           fontWeight: FontWeight.w900,
                           color: statusColor,
@@ -711,7 +711,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     const Gap(10),
                     Text(
                       "Advanced statistics",
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 16,
                         fontWeight: FontWeight.w900,
                         color: isDark ? Colors.white : Colors.black87,
@@ -808,7 +808,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                   const Gap(10),
                   Text(
                     "Compass settings",
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 16,
                       fontWeight: FontWeight.w900,
                       color: isDark ? Colors.white : Colors.black87,
@@ -874,7 +874,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                       icon: const Icon(Icons.share_rounded, size: 18),
                       label: Text(
                         "Share",
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 13,
                           fontWeight: FontWeight.w800,
                         ),
@@ -896,7 +896,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                       icon: const Icon(Icons.refresh_rounded, size: 18),
                       label: Text(
                         "Reset",
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 13,
                           fontWeight: FontWeight.w800,
                         ),
@@ -935,7 +935,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
               Expanded(
                 child: Text(
                   "Compass improved with advanced algorithms for best accuracy and responsiveness",
-                  style: GoogleFonts.cairo(
+                  style: AppFonts.body(
                     fontSize: 12,
                     height: 1.6,
                     fontWeight: FontWeight.w600,
@@ -962,7 +962,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
           "Qibla angle: ${guidance.bearing.round()}°\n"
           "Distance: ${_distanceToKaaba.toStringAsFixed(0)} km\n"
           "Accuracy: ${_compassAccuracy.toStringAsFixed(1)}%",
-          style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+          style: AppFonts.body(fontWeight: FontWeight.w700),
         ),
         behavior: SnackBarBehavior.floating,
         duration: const Duration(seconds: 5),
@@ -986,7 +986,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
       SnackBar(
         content: Text(
           "Statistics reset successfully",
-          style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+          style: AppFonts.body(fontWeight: FontWeight.w700),
         ),
         behavior: SnackBarBehavior.floating,
         backgroundColor: const Color(0xFF12906A),
@@ -1014,7 +1014,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
               Expanded(
                 child: Text(
                   title,
-                  style: GoogleFonts.cairo(
+                  style: AppFonts.body(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
                     color: isDark ? Colors.white70 : Colors.black54,
@@ -1027,7 +1027,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
           Text(
             value,
             textAlign: TextAlign.center,
-            style: GoogleFonts.dmMono(
+            style: AppFonts.mono(
               fontSize: 18,
               fontWeight: FontWeight.w900,
               color: color,
@@ -1052,7 +1052,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
         Expanded(
           child: Text(
             title,
-            style: GoogleFonts.cairo(
+            style: AppFonts.body(
               fontSize: 13,
               fontWeight: FontWeight.w700,
               color: isDark ? Colors.white : Colors.black87,
@@ -1149,7 +1149,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     const Gap(6),
                     Text(
                       _statusLabel(guidance),
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 13,
                         fontWeight: FontWeight.w900,
                         color: Colors.white,
@@ -1173,7 +1173,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
           const Gap(14),
           Text(
             _guidanceText(guidance),
-            style: GoogleFonts.cairo(
+            style: AppFonts.body(
               fontSize: 24,
               fontWeight: FontWeight.w900,
               color: isDark ? Colors.white : Colors.black87,
@@ -1200,7 +1200,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                 Expanded(
                   child: Text(
                     "Your location: $latitude, $longitude",
-                    style: GoogleFonts.dmMono(
+                    style: AppFonts.mono(
                       fontSize: 12,
                       fontWeight: FontWeight.w700,
                       color: isDark ? Colors.white70 : Colors.black54,
@@ -1257,7 +1257,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
               Expanded(
                 child: Text(
                   title,
-                  style: GoogleFonts.cairo(
+                  style: AppFonts.body(
                     fontSize: 11,
                     fontWeight: FontWeight.w700,
                     color: isDark ? Colors.white70 : Colors.black54,
@@ -1270,7 +1270,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
           Text(
             value,
             textAlign: TextAlign.center,
-            style: GoogleFonts.dmMono(
+            style: AppFonts.mono(
               fontSize: 22,
               fontWeight: FontWeight.w900,
               color: color,
@@ -1280,7 +1280,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
           Text(
             subtitle,
             textAlign: TextAlign.center,
-            style: GoogleFonts.cairo(
+            style: AppFonts.body(
               fontSize: 10,
               fontWeight: FontWeight.w700,
               color: isDark ? Colors.white60 : Colors.black45,
@@ -1345,7 +1345,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                   children: [
                     Text(
                       title,
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 14,
                         fontWeight: FontWeight.w900,
                         color: isDark ? Colors.white : Colors.black87,
@@ -1354,7 +1354,7 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     const Gap(4),
                     Text(
                       subtitle,
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 11,
                         fontWeight: FontWeight.w600,
                         color: isDark ? Colors.white60 : Colors.black54,

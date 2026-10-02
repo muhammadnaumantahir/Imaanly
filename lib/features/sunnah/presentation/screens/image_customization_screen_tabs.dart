@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:imaanly/src/theme/app_fonts.dart';
 import 'package:gap/gap.dart';
 import '../../core/theme/sunnah_theme.dart';
 import '../../models/image_customization_model.dart';
@@ -282,7 +282,7 @@ extension ImageCustomizationTabs on State {
               const Gap(12),
               Text(
                 'Ornaments add an Islamic decorative touch to the image',
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 14,
                   fontWeight: FontWeight.w700,
                   color: SunnahTheme.green,
@@ -348,7 +348,7 @@ extension ImageCustomizationTabs on State {
               const Gap(12),
               Text(
                 'Tip',
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 16,
                   fontWeight: FontWeight.w900,
                   color: SunnahTheme.green,
@@ -357,7 +357,7 @@ extension ImageCustomizationTabs on State {
               const Gap(8),
               Text(
                 'Use the Instagram size for stories, and square for regular posts',
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   color: SunnahTheme.getTextSecondaryColor(isDark),
@@ -383,7 +383,7 @@ extension ImageCustomizationTabs on State {
         const Gap(12),
         Text(
           title,
-          style: GoogleFonts.cairo(
+          style: AppFonts.body(
             fontSize: 18,
             fontWeight: FontWeight.w900,
             color: SunnahTheme.getTextPrimaryColor(isDark),
@@ -409,7 +409,7 @@ extension ImageCustomizationTabs on State {
           children: [
             Text(
               label,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14,
                 fontWeight: FontWeight.w700,
                 color: SunnahTheme.getTextSecondaryColor(isDark),
@@ -417,7 +417,7 @@ extension ImageCustomizationTabs on State {
             ),
             Text(
               value.toStringAsFixed(1),
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14,
                 fontWeight: FontWeight.w900,
                 color: SunnahTheme.green,
@@ -458,7 +458,7 @@ extension ImageCustomizationTabs on State {
         children: [
           Text(
             label,
-            style: GoogleFonts.cairo(
+            style: AppFonts.body(
               fontSize: 16,
               fontWeight: FontWeight.w700,
               color: SunnahTheme.getTextPrimaryColor(isDark),
@@ -485,7 +485,7 @@ extension ImageCustomizationTabs on State {
       children: [
         Text(
           label,
-          style: GoogleFonts.cairo(
+          style: AppFonts.body(
             fontSize: 14,
             fontWeight: FontWeight.w700,
             color: SunnahTheme.getTextSecondaryColor(isDark),
@@ -495,7 +495,7 @@ extension ImageCustomizationTabs on State {
         TextField(
           controller: TextEditingController(text: value),
           onChanged: onChanged,
-          style: GoogleFonts.cairo(
+          style: AppFonts.body(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
@@ -607,7 +607,7 @@ extension ImageCustomizationTabs on State {
             ),
             child: Text(
               _getHeaderStyleLabel(style),
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14,
                 fontWeight: isSelected ? FontWeight.w900 : FontWeight.w600,
                 color: isSelected
@@ -649,7 +649,7 @@ extension ImageCustomizationTabs on State {
             ),
             child: Text(
               _getIconStyleLabel(style),
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14,
                 fontWeight: isSelected ? FontWeight.w900 : FontWeight.w600,
                 color: isSelected
@@ -691,7 +691,7 @@ extension ImageCustomizationTabs on State {
             ),
             child: Text(
               _getBadgeStyleLabel(style),
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14,
                 fontWeight: isSelected ? FontWeight.w900 : FontWeight.w600,
                 color: isSelected
@@ -733,7 +733,7 @@ extension ImageCustomizationTabs on State {
             ),
             child: Text(
               _getDecorationTypeLabel(type),
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14,
                 fontWeight: isSelected ? FontWeight.w900 : FontWeight.w600,
                 color: isSelected
@@ -778,7 +778,7 @@ extension ImageCustomizationTabs on State {
                   Expanded(
                     child: Text(
                       _getQualityLabel(quality),
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 16,
                         fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
                         color: isSelected

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:imaanly/src/theme/app_fonts.dart';
 import '../../core/theme/sunnah_theme.dart';
 import '../../services/sunnah_share_service.dart';
 
@@ -91,7 +91,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
                 Expanded(
                   child: Text(
                     "Share Sunnah",
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w700,
                       color: SunnahTheme.getTextPrimaryColor(isDark),
@@ -164,7 +164,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
           SnackBar(
             content: Text(
               "Text copied successfully ✓",
-              style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+              style: AppFonts.body(fontWeight: FontWeight.w700),
             ),
             behavior: SnackBarBehavior.floating,
             backgroundColor: SunnahTheme.success,
@@ -178,7 +178,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
           SnackBar(
             content: Text(
               "An error occurred while copying",
-              style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+              style: AppFonts.body(fontWeight: FontWeight.w700),
             ),
             behavior: SnackBarBehavior.floating,
             backgroundColor: SunnahTheme.error,
@@ -211,7 +211,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
               SizedBox(height: SunnahTheme.space16),
               Text(
                 "Creating image...",
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 16.sp,
                   fontWeight: FontWeight.w700,
                 ),
@@ -240,7 +240,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
           SnackBar(
             content: Text(
               "Image created successfully ✓",
-              style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+              style: AppFonts.body(fontWeight: FontWeight.w700),
             ),
             behavior: SnackBarBehavior.floating,
             backgroundColor: SunnahTheme.success,
@@ -254,7 +254,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
           SnackBar(
             content: Text(
               "An error occurred while creating the image",
-              style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+              style: AppFonts.body(fontWeight: FontWeight.w700),
             ),
             behavior: SnackBarBehavior.floating,
             backgroundColor: SunnahTheme.error,
@@ -282,7 +282,7 @@ class SunnahShareBottomSheet extends StatelessWidget {
           SnackBar(
             content: Text(
               "An error occurred while sharing",
-              style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+              style: AppFonts.body(fontWeight: FontWeight.w700),
             ),
             behavior: SnackBarBehavior.floating,
             backgroundColor: SunnahTheme.error,
@@ -348,7 +348,7 @@ class _ShareOptionButton extends StatelessWidget {
               Expanded(
                 child: Text(
                   label,
-                  style: GoogleFonts.cairo(
+                  style: AppFonts.body(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w700,
                     color: SunnahTheme.getTextPrimaryColor(isDark),

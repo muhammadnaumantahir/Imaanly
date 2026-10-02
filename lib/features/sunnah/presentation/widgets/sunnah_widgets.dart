@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:imaanly/src/theme/app_fonts.dart';
 import '../../core/theme/sunnah_theme.dart';
 
 /// 📦 مجموعة ويدجتس السنن
@@ -67,7 +67,7 @@ class SunnahIntroCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     title,
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w900,
                       color: SunnahTheme.getTextPrimaryColor(isDark),
@@ -79,7 +79,7 @@ class SunnahIntroCard extends StatelessWidget {
             SizedBox(height: SunnahTheme.space16),
             Text(
               description,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
                 color: SunnahTheme.getTextSecondaryColor(isDark),
@@ -140,7 +140,7 @@ class SunnahImportanceCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'Virtue of prayer',
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w900,
                       color: SunnahTheme.getTextPrimaryColor(isDark),
@@ -185,7 +185,7 @@ class SunnahImportanceCard extends StatelessWidget {
               SizedBox(width: SunnahTheme.space8),
               Text(
                 "Hadith",
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 13.sp,
                   fontWeight: FontWeight.w800,
                   color: SunnahTheme.gold,
@@ -196,7 +196,7 @@ class SunnahImportanceCard extends StatelessWidget {
           SizedBox(height: SunnahTheme.space12),
           Text(
             hadith,
-            style: GoogleFonts.cairo(
+            style: AppFonts.body(
               fontSize: 14.sp,
               fontWeight: FontWeight.w600,
               color: SunnahTheme.getTextPrimaryColor(isDark),
@@ -215,7 +215,7 @@ class SunnahImportanceCard extends StatelessWidget {
             ),
             child: Text(
               source,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w700,
                 color: SunnahTheme.gold,
@@ -269,7 +269,7 @@ class SunnahSectionHeader extends StatelessWidget {
           Expanded(
             child: Text(
               title,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.w900,
                 color: SunnahTheme.getTextPrimaryColor(isDark),
@@ -350,7 +350,7 @@ class SunnahStepCard extends StatelessWidget {
                   child: Center(
                     child: Text(
                       '$number',
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w900,
                         color: Colors.white,
@@ -364,7 +364,7 @@ class SunnahStepCard extends StatelessWidget {
                 Expanded(
                   child: Text(
                     title,
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 16.sp,
                       fontWeight: FontWeight.w900,
                       color: SunnahTheme.getTextPrimaryColor(isDark),
@@ -385,7 +385,7 @@ class SunnahStepCard extends StatelessWidget {
                     ),
                     child: Text(
                       badgeText!,
-                      style: GoogleFonts.cairo(
+                      style: AppFonts.body(
                         fontSize: 11.sp,
                         fontWeight: FontWeight.w800,
                         color: badgeColor ?? SunnahTheme.gold,
@@ -418,7 +418,7 @@ class SunnahStepCard extends StatelessWidget {
             // Description
             Text(
               description,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
                 color: SunnahTheme.getTextSecondaryColor(isDark),
@@ -460,7 +460,7 @@ class SunnahStepCard extends StatelessWidget {
           Expanded(
             child: Text(
               evidence,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 12.sp,
                 fontWeight: FontWeight.w600,
                 color: SunnahTheme.green,
@@ -530,7 +530,7 @@ class SunnahScholarCard extends StatelessWidget {
                     children: [
                       Text(
                         scholarName,
-                        style: GoogleFonts.cairo(
+                        style: AppFonts.body(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w900,
                           color: SunnahTheme.getTextPrimaryColor(isDark),
@@ -540,7 +540,7 @@ class SunnahScholarCard extends StatelessWidget {
                         SizedBox(height: 2.h),
                         Text(
                           scholarTitle!,
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 11.sp,
                             fontWeight: FontWeight.w600,
                             color: SunnahTheme.getTextSecondaryColor(isDark),
@@ -555,7 +555,7 @@ class SunnahScholarCard extends StatelessWidget {
             SizedBox(height: SunnahTheme.space12),
             Text(
               statement,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
                 color: SunnahTheme.getTextSecondaryColor(isDark),
@@ -616,7 +616,7 @@ class SunnahBenefitCard extends StatelessWidget {
             Expanded(
               child: Text(
                 benefit,
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 14.sp,
                   fontWeight: FontWeight.w600,
                   color: SunnahTheme.getTextSecondaryColor(isDark),

@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:imaanly/src/theme/app_fonts.dart';
 import 'package:gap/gap.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import '../../core/theme/sunnah_theme.dart';
@@ -255,7 +255,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
             const Gap(16),
             Text(
               'Creating preview...',
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
                 color: isDark ? Colors.white70 : Colors.black54,
@@ -279,7 +279,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
             const Gap(16),
             Text(
               'No preview',
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
                 color: isDark ? Colors.white70 : Colors.black54,
@@ -373,8 +373,8 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         dividerColor: Colors.transparent,
         labelColor: SunnahTheme.green,
         unselectedLabelColor: isDark ? Colors.white60 : Colors.black54,
-        labelStyle: GoogleFonts.cairo(fontSize: 13, fontWeight: FontWeight.w700),
-        unselectedLabelStyle: GoogleFonts.cairo(fontSize: 13, fontWeight: FontWeight.w600),
+        labelStyle: AppFonts.body(fontSize: 13, fontWeight: FontWeight.w700),
+        unselectedLabelStyle: AppFonts.body(fontSize: 13, fontWeight: FontWeight.w600),
         padding: const EdgeInsets.all(6),
         tabs: const [
           Tab(icon: Icon(Icons.palette_rounded, size: 20), text: 'Background'),
@@ -796,7 +796,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
             : const Icon(Icons.share_rounded, size: 20),
         label: Text(
           _isGenerating ? 'Creating...' : 'Create & share',
-          style: GoogleFonts.cairo(fontSize: 15, fontWeight: FontWeight.w700),
+          style: AppFonts.body(fontSize: 15, fontWeight: FontWeight.w700),
         ),
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 16),
@@ -848,7 +848,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
               const Gap(12),
               Text(
                 title,
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 15,
                   fontWeight: FontWeight.w700,
                   color: isDark ? Colors.white : const Color(0xFF1A1F2E),
@@ -881,7 +881,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
           children: [
             Text(
               label,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 13,
                 fontWeight: FontWeight.w700,
                 color: isDark ? Colors.white70 : Colors.black87,
@@ -895,7 +895,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
               ),
               child: Text(
                 '${value.toInt()}$unit',
-                style: GoogleFonts.cairo(
+                style: AppFonts.body(
                   fontSize: 13,
                   fontWeight: FontWeight.w700,
                   color: SunnahTheme.green,
@@ -936,7 +936,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
         Expanded(
           child: Text(
             title,
-            style: GoogleFonts.cairo(
+            style: AppFonts.body(
               fontSize: 14,
               fontWeight: FontWeight.w700,
               color: isDark ? Colors.white : const Color(0xFF1A1F2E),
@@ -965,7 +965,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
           children: [
             const Icon(Icons.refresh_rounded, color: Colors.white),
             const Gap(12),
-            Text('Settings reset', style: GoogleFonts.cairo(fontWeight: FontWeight.w700)),
+            Text('Settings reset', style: AppFonts.body(fontWeight: FontWeight.w700)),
           ],
         ),
         behavior: SnackBarBehavior.floating,
@@ -1001,7 +1001,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
                 Expanded(
                   child: Text(
                     'Image created and shared successfully',
-                    style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+                    style: AppFonts.body(fontWeight: FontWeight.w700),
                   ),
                 ),
               ],
@@ -1021,7 +1021,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
                 const Icon(Icons.error_rounded, color: Colors.white),
                 const Gap(12),
                 Expanded(
-                  child: Text('An error occurred: ${e.toString()}', style: GoogleFonts.cairo(fontWeight: FontWeight.w700)),
+                  child: Text('An error occurred: ${e.toString()}', style: AppFonts.body(fontWeight: FontWeight.w700)),
                 ),
               ],
             ),
@@ -1060,7 +1060,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
                   const Gap(12),
                   Text(
                     'Ready-made templates',
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
                       color: isDark ? Colors.white : const Color(0xFF1A1F2E),
@@ -1166,7 +1166,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
                 children: [
                   Text(
                     title,
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
                       color: isDark ? Colors.white : const Color(0xFF1A1F2E),
@@ -1175,7 +1175,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
                   const Gap(4),
                   Text(
                     description,
-                    style: GoogleFonts.cairo(
+                    style: AppFonts.body(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,
                       color: isDark ? Colors.white60 : Colors.black54,
@@ -1204,7 +1204,7 @@ class _ImageCustomizationScreenState extends State<ImageCustomizationScreen>
           children: [
             const Icon(Icons.check_circle_rounded, color: Colors.white),
             const Gap(12),
-            Text('Template applied', style: GoogleFonts.cairo(fontWeight: FontWeight.w700)),
+            Text('Template applied', style: AppFonts.body(fontWeight: FontWeight.w700)),
           ],
         ),
         behavior: SnackBarBehavior.floating,

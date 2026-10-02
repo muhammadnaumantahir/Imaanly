@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:imaanly/src/theme/app_fonts.dart';
 import 'package:gap/gap.dart';
 import '../../core/theme/sunnah_theme.dart';
 import '../../models/image_customization_model.dart';
@@ -36,7 +37,7 @@ class ColorPickerTile extends StatelessWidget {
           Expanded(
             child: Text(
               label,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 16,
                 fontWeight: FontWeight.w700,
                 color: SunnahTheme.getTextPrimaryColor(isDark),
@@ -77,7 +78,7 @@ class ColorPickerTile extends StatelessWidget {
       builder: (context) => AlertDialog(
         title: Text(
           'Choose a color',
-          style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+          style: AppFonts.body(fontWeight: FontWeight.w700),
         ),
         content: SingleChildScrollView(
           child: Wrap(
@@ -178,7 +179,7 @@ class BackgroundTypeSelector extends StatelessWidget {
             ),
             child: Text(
               type.label,
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14,
                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
                 color: isSelected
@@ -250,7 +251,7 @@ class LayoutStyleSelector extends StatelessWidget {
                 const Gap(8),
                 Text(
                   style.label,
-                  style: GoogleFonts.cairo(
+                  style: AppFonts.body(
                     fontSize: 12,
                     fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
                     color: isSelected
@@ -323,7 +324,7 @@ class PatternSelector extends StatelessWidget {
             ),
             child: Text(
               _getPatternLabel(type),
-              style: GoogleFonts.cairo(
+              style: AppFonts.body(
                 fontSize: 14,
                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
                 color: isSelected
@@ -413,7 +414,7 @@ class ImageSizeSelector extends StatelessWidget {
                       children: [
                         Text(
                           size.label,
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 16,
                             fontWeight: isSelected ? FontWeight.w700 : FontWeight.w700,
                             color: isSelected
@@ -424,7 +425,7 @@ class ImageSizeSelector extends StatelessWidget {
                         const Gap(4),
                         Text(
                           '${size.dimensions.width.toInt()} × ${size.dimensions.height.toInt()}',
-                          style: GoogleFonts.cairo(
+                          style: AppFonts.body(
                             fontSize: 12,
                             fontWeight: FontWeight.w600,
                             color: SunnahTheme.getTextSecondaryColor(isDark),
@@ -458,7 +459,7 @@ class ImageSizeSelector extends StatelessWidget {
       builder: (context) => AlertDialog(
         title: Text(
           'Custom size',
-          style: GoogleFonts.cairo(fontWeight: FontWeight.w700),
+          style: AppFonts.body(fontWeight: FontWeight.w700),
         ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
@@ -468,7 +469,7 @@ class ImageSizeSelector extends StatelessWidget {
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 labelText: 'Width (px)',
-                labelStyle: GoogleFonts.cairo(),
+                labelStyle: AppFonts.body(),
                 border: const OutlineInputBorder(),
               ),
             ),
@@ -478,7 +479,7 @@ class ImageSizeSelector extends StatelessWidget {
               keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 labelText: 'Height (px)',
-                labelStyle: GoogleFonts.cairo(),
+                labelStyle: AppFonts.body(),
                 border: const OutlineInputBorder(),
               ),
             ),
@@ -487,7 +488,7 @@ class ImageSizeSelector extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Cancel', style: GoogleFonts.cairo()),
+            child: Text('Cancel', style: AppFonts.body()),
           ),
           ElevatedButton(
             onPressed: () {
@@ -500,7 +501,7 @@ class ImageSizeSelector extends StatelessWidget {
             style: ElevatedButton.styleFrom(
               backgroundColor: SunnahTheme.green,
             ),
-            child: Text('Apply', style: GoogleFonts.cairo()),
+            child: Text('Apply', style: AppFonts.body()),
           ),
         ],
       ),
