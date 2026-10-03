@@ -8,6 +8,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:imaanly/features/dhikr/domain/dhikr_progress.dart';
 import 'package:imaanly/features/worship/data/worship_activity_repository.dart';
 import 'package:imaanly/src/screen/azkar/azkar_share_screen.dart';
+import 'package:imaanly/src/theme/app_colors.dart';
 
 class AzkarDetailScreen extends StatefulWidget {
   const AzkarDetailScreen({super.key, required this.categoryName, required this.azkarList, required this.primary});
@@ -101,6 +102,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final cs = Theme.of(context).colorScheme;
     if (widget.azkarList.isEmpty) return const Scaffold(body: Center(child: Text('No Adhkar available.')));
     return Directionality(
       textDirection: TextDirection.ltr,
@@ -113,18 +115,41 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
               icon: const Icon(Icons.text_fields),
             ),
           ],
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(4),
-            child: LinearProgressIndicator(value: (_currentIndex + 1) / widget.azkarList.length),
-          ),
         ),
         body: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(16),
-              child: Text(
-                'Dhikr ${_currentIndex + 1} of ${widget.azkarList.length} • ${_counts[_currentIndex]} remaining',
-                style: const TextStyle(fontWeight: FontWeight.w800),
+              padding: const EdgeInsets.fromLTRB(20, 14, 20, 4),
+              child: Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    decoration: BoxDecoration(
+                      color: cs.primaryContainer.withValues(alpha: 0.7),
+                      borderRadius: BorderRadius.circular(999),
+                    ),
+                    child: Text(
+                      'Dhikr ${_currentIndex + 1} of ${widget.azkarList.length}',
+                      style: TextStyle(color: cs.primary, fontWeight: FontWeight.w800, fontSize: 12.5),
+                    ),
+                  ),
+                  const Spacer(),
+                  Text(
+                    '${_counts[_currentIndex]} remaining',
+                    style: TextStyle(color: cs.onSurfaceVariant, fontWeight: FontWeight.w600, fontSize: 13),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(999),
+                child: LinearProgressIndicator(
+                  value: (_currentIndex + 1) / widget.azkarList.length,
+                  minHeight: 6,
+                  backgroundColor: cs.primaryContainer.withValues(alpha: 0.5),
+                ),
               ),
             ),
             Expanded(
@@ -134,49 +159,111 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
                 onPageChanged: (index) => setState(() => _currentIndex = index),
                 itemBuilder: (context, index) {
                   final item = widget.azkarList[index];
+                  final total = int.tryParse(item['count']?.toString() ?? '') ?? 1;
+                  final remaining = _counts[index];
+                  final progress = total <= 0 ? 1.0 : (1 - remaining / total).clamp(0.0, 1.0).toDouble();
+                  final done = remaining == 0;
                   return Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(22),
-                        child: Column(
-                          children: [
-                            Expanded(
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    Text(
-                                      item['zekr']?.toString() ?? '',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(fontSize: _fontSize, height: 1.8, fontWeight: FontWeight.w700, color: isDark ? Colors.white : null),
+                    padding: const EdgeInsets.fromLTRB(16, 12, 16, 16),
+                    child: Container(
+                      padding: const EdgeInsets.fromLTRB(22, 22, 22, 14),
+                      decoration: BoxDecoration(
+                        color: cs.surfaceContainer,
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(color: cs.outlineVariant.withValues(alpha: 0.6)),
+                      ),
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  Text(
+                                    item['zekr']?.toString() ?? '',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(fontSize: _fontSize, height: 1.9, fontWeight: FontWeight.w700, color: cs.onSurface),
+                                  ),
+                                  if (item['description']?.toString().isNotEmpty == true)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 18),
+                                      child: Text(
+                                        item['description'].toString(),
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(color: cs.onSurfaceVariant, height: 1.5),
+                                      ),
                                     ),
-                                    if (item['description']?.toString().isNotEmpty == true)
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 18),
-                                        child: Text(item['description'].toString(), textAlign: TextAlign.center),
+                                  if (item['reference']?.toString().isNotEmpty == true)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 14),
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFFE2BC6B).withValues(alpha: 0.18),
+                                          borderRadius: BorderRadius.circular(999),
+                                        ),
+                                        child: Text(
+                                          item['reference'].toString(),
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(fontSize: 12, color: cs.onSurfaceVariant, fontWeight: FontWeight.w600),
+                                        ),
                                       ),
-                                    if (item['reference']?.toString().isNotEmpty == true)
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 14),
-                                        child: Text(item['reference'].toString(), textAlign: TextAlign.center, style: Theme.of(context).textTheme.bodySmall),
-                                      ),
-                                  ],
-                                ),
+                                    ),
+                                ],
                               ),
                             ),
-                            const SizedBox(height: 18),
-                            GestureDetector(
-                              onTap: index == _currentIndex ? _onTap : null,
-                              child: Container(
-                                width: 120,
-                                height: 120,
-                                decoration: BoxDecoration(color: widget.primary, shape: BoxShape.circle),
-                                child: Center(
-                                  child: Text('${_counts[index]}', style: const TextStyle(color: Colors.white, fontSize: 38, fontWeight: FontWeight.w900)),
-                                ),
+                          ),
+                          const SizedBox(height: 14),
+                          GestureDetector(
+                            onTap: index == _currentIndex ? _onTap : null,
+                            child: SizedBox(
+                              width: 148,
+                              height: 148,
+                              child: Stack(
+                                alignment: Alignment.center,
+                                children: [
+                                  SizedBox(
+                                    width: 148,
+                                    height: 148,
+                                    child: CircularProgressIndicator(
+                                      value: progress,
+                                      strokeWidth: 6,
+                                      backgroundColor: cs.primaryContainer.withValues(alpha: 0.6),
+                                      valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFFC9A24B)),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 122,
+                                    height: 122,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      gradient: AppColors.heroGradient(isDark),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: const Color(0xFF063D2E).withValues(alpha: 0.30),
+                                          blurRadius: 18,
+                                          offset: const Offset(0, 8),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Center(
+                                      child: done
+                                          ? const Icon(Icons.check_rounded, color: Colors.white, size: 54)
+                                          : Text(
+                                              '$remaining',
+                                              style: const TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.w800),
+                                            ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            const SizedBox(height: 16),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            done ? 'Completed' : 'Tap to count',
+                            style: TextStyle(color: cs.onSurfaceVariant, fontSize: 12.5, fontWeight: FontWeight.w600),
+                          ),
+                          const SizedBox(height: 4),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
@@ -192,8 +279,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                        ],
                       ),
                     ),
                   );

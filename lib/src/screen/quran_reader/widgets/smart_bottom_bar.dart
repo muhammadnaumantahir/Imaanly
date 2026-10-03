@@ -61,8 +61,8 @@ class SmartBottomBar extends StatelessWidget {
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           color: Theme.of(context).brightness == Brightness.dark
-              ? Colors.grey.shade900.withValues(alpha: 0.95)
-              : Colors.white.withValues(alpha: 0.95),
+              ? const Color(0xFF0E2E25).withValues(alpha: 0.96)
+              : Colors.white.withValues(alpha: 0.96),
           borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
@@ -179,15 +179,13 @@ class SmartBottomBar extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
-            colors: [
-              themeState.primary,
-              themeState.primary.withValues(alpha: 0.8),
-            ],
+            colors: const [Color(0xFF0F7A5C), Color(0xFF063D2E)],
           ),
           shape: BoxShape.circle,
+          border: Border.all(color: const Color(0xFFE2BC6B), width: 2),
           boxShadow: [
             BoxShadow(
-              color: themeState.primary.withValues(alpha: 0.4),
+              color: const Color(0xFF063D2E).withValues(alpha: 0.45),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),
