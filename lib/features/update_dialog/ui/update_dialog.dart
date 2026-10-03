@@ -98,7 +98,6 @@ class UpdateDialog extends StatelessWidget {
                   config.title,
                   style: DialogStyleBuilder.titleStyle(style, config),
                   textAlign: TextAlign.center,
-                  textDirection: TextDirection.rtl,
                 )
                     .animate()
                     .fadeIn(duration: 400.ms, delay: 100.ms),
@@ -109,7 +108,6 @@ class UpdateDialog extends StatelessWidget {
                     config.description,
                     style: DialogStyleBuilder.bodyStyle(style),
                     textAlign: TextAlign.center,
-                    textDirection: TextDirection.rtl,
                   )
                       .animate()
                       .fadeIn(duration: 400.ms, delay: 150.ms),
@@ -281,7 +279,6 @@ class UpdateDialog extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 3),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
-              textDirection: TextDirection.rtl,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(top: 4),
@@ -289,7 +286,7 @@ class UpdateDialog extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Expanded(
-                  child: Text(item, style: textStyle, textDirection: TextDirection.rtl),
+                  child: Text(item, style: textStyle),
                 ),
               ],
             ),
@@ -344,7 +341,6 @@ class UpdateDialog extends StatelessWidget {
                   : Colors.red.shade300.withValues(alpha: 0.7),
             ),
             textAlign: TextAlign.center,
-            textDirection: TextDirection.rtl,
           ),
         ],
       ],

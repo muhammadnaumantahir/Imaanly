@@ -110,10 +110,25 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                 child: Column(
                   children: [
                     // ── Header ──
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 24, 20, 16),
+                    Container(
+                      margin: const EdgeInsets.fromLTRB(16, 16, 16, 14),
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        gradient: AppColors.heroGradient(isDark),
+                        borderRadius: BorderRadius.circular(24),
+                      ),
                       child: Row(
                         children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(14),
+                            child: Image.asset(
+                              "assets/img/Quran_Logo_v3.png",
+                              width: 48,
+                              height: 48,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          const SizedBox(width: 12),
                           Expanded(
                             child: InkWell(
                               onTap: () => _closeThenPush(context, const AboutAppPage()),
@@ -122,24 +137,24 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                                 padding: const EdgeInsets.symmetric(vertical: 4),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
+                                  children: const [
                                     Text(
                                       "Imaanly",
                                       style: TextStyle(
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w900,
-                                        color: onBg,
-                                        letterSpacing: -0.5,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.w800,
+                                        color: Colors.white,
+                                        letterSpacing: -0.3,
                                       ),
                                     ),
-                                    const SizedBox(height: 2),
+                                    SizedBox(height: 2),
                                     Text(
-                                      "IDRISIUM STANDARD",
+                                      "QURAN  \u2022  PRAYER  \u2022  DHIKR",
                                       style: TextStyle(
-                                        fontSize: 9,
-                                        letterSpacing: 2.5,
+                                        fontSize: 9.5,
+                                        letterSpacing: 1.6,
                                         fontWeight: FontWeight.w700,
-                                        color: widget.primary,
+                                        color: Color(0xFFE2BC6B),
                                       ),
                                     ),
                                   ],
@@ -150,9 +165,9 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                           IconButton(
                             onPressed: () => Navigator.pop(context),
                             icon: const Icon(Icons.close_rounded, size: 20),
-                            color: widget.primary,
+                            color: Colors.white,
                             style: IconButton.styleFrom(
-                              backgroundColor: widget.primary.withValues(alpha: 0.1),
+                              backgroundColor: Colors.white.withValues(alpha: 0.14),
                               minimumSize: const Size(36, 36),
                               padding: EdgeInsets.zero,
                             ),

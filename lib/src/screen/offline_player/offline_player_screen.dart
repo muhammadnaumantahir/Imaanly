@@ -31,12 +31,12 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
   late TabController _tabController;
 
   // ─── Design Tokens ────────────────────────────────────────
-  Color _bg(bool d) => d ? const Color(0xFF1C1C1E) : const Color(0xFFFAF6EF);
-  Color _card(bool d) => d ? const Color(0xFF2C2C2E) : Colors.white;
-  Color _text(bool d) => d ? const Color(0xFFF5F5F7) : const Color(0xFF1C1C1E);
-  Color _sub(bool d) => d ? const Color(0xFF8E8E93) : const Color(0xFF8E8E93);
+  Color _bg(bool d) => d ? const Color(0xFF071E18) : const Color(0xFFF3F8F5);
+  Color _card(bool d) => d ? const Color(0xFF11332A) : Colors.white;
+  Color _text(bool d) => d ? const Color(0xFFF2F8F5) : const Color(0xFF0E1F1A);
+  Color _sub(bool d) => d ? const Color(0xFF86A094) : const Color(0xFF6B7F77);
   Color _border(bool d) =>
-      d ? Colors.white.withValues(alpha: 0.06) : Colors.black.withValues(alpha: 0.05);
+      d ? Colors.white.withValues(alpha: 0.08) : const Color(0xFFD3E2DA);
 
   @override
   void initState() {

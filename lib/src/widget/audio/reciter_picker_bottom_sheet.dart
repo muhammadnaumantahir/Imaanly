@@ -56,8 +56,8 @@ class _ReciterPickerBottomSheetState extends State<ReciterPickerBottomSheet>
   // ─── Design Tokens (Unified Beige Palette) ───
   Color _bg(bool d) => d ? AppColors.darkSurface : AppColors.lightAudioPlayerBg;
   Color _surface(bool d) => d ? AppColors.darkCard : AppColors.lightCard;
-  Color _surfaceHigh(bool d) => d ? const Color(0xFF3A3A3C) : AppColors.lightSurface;
-  Color _text(bool d) => d ? const Color(0xFFF5F5F7) : AppColors.lightTextMain;
+  Color _surfaceHigh(bool d) => d ? const Color(0xFF17392F) : AppColors.lightSurface;
+  Color _text(bool d) => d ? const Color(0xFFF2F8F5) : AppColors.lightTextMain;
   Color _sub(bool d) => d ? const Color(0xFF98989D) : AppColors.lightTextMuted;
   Color _border(bool d) =>
       d ? Colors.white.withValues(alpha: 0.08) : AppColors.lightBorder.withValues(alpha: 0.6);
