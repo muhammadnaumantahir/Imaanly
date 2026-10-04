@@ -1,19 +1,15 @@
 <div align="center">
 
-# 📖 Imaanly
+<img src="docs/branding/imaanly-icon.png" width="132" alt="Imaanly app icon" />
 
-**One of the most advanced open-source Quran apps built with Flutter, combining BLoC, Clean Architecture, and precise Uthmanic script rendering with audio, Tafsir, and daily Islamic tools.**
+# Imaanly
 
-<p align="center">
-  <img src="assets/img/Quran_Logo_v3.png" width="120" style="border-radius: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.1); margin-bottom: 20px;" /><br>
-  <b>تطبيق قرآني متكامل صُمم بأحدث التقنيات مع واجهة استخدام حديثة</b>
-</p>
+**A beautiful, offline-first Islamic companion for Quran, Salah, Qibla, Dhikr and daily worship — built with Flutter.**
 
+[![Flutter](https://img.shields.io/badge/Built_with-Flutter-02569B?logo=flutter&logoColor=white&style=for-the-badge)](https://flutter.dev)
 [![Platform](https://img.shields.io/badge/Platform-Android-3DDC84?logo=android&logoColor=white&style=for-the-badge)](https://developer.android.com)
-[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-brightgreen?style=for-the-badge)](https://github.com/IDRISIUMCorp/imaanly-quran-flutter-app)
-[![Built with Flutter](https://img.shields.io/badge/Built_with-Flutter-02569B?logo=flutter&logoColor=white&style=for-the-badge)](https://flutter.dev)
-[![License](https://img.shields.io/badge/License-Waqf_(Charity)-red?style=for-the-badge)](LICENSE)
-[![Developer](https://img.shields.io/badge/Developed_By-IDRISIUM_Corp-8B5CF6?style=for-the-badge)](https://github.com/IDRISIUM)
+[![Architecture](https://img.shields.io/badge/Architecture-BLoC_%2B_Clean-0F7A5C?style=for-the-badge)](#architecture)
+[![License](https://img.shields.io/badge/License-Apache_2.0_%2B_Waqf_condition-C9A24B?style=for-the-badge)](#license--waqf-condition)
 
 </div>
 
@@ -21,707 +17,223 @@
 
 ## About
 
-Imaanly is a **production-ready, cross-platform Flutter Quran app** — not a demo, not a UI showcase, but a **real Islamic application** built with **BLoC + Clean Architecture** and **Uthmanic (QCF) script rendering** that feels close to reading from a physical Mushaf.
+Imaanly is a cross-platform Flutter app for daily Islamic life. It brings an interactive Uthmanic Mushaf, a deep ayah library (tafsir, translation, grammar, morphology, qira'at), accurate prayer times, a Qibla compass, azkar, a digital tasbih and personal goals into one calm, modern interface in deep emerald and gold.
 
-It is designed for **daily reading, deep study, memorization, and personalization** — combining an interactive mushaf, 61 tafsirs in 25 languages, 209+ translations in 50+ languages, a word-level Ayah library with 7 analysis tabs, 56 reciters with advanced audio controls, prayer times, qibla, azkar, khatma tracking, smart notifications, and a fully customizable **"Ayah of the Day"** home widget — all in one app.
-
-> _Whether you are a daily Quran reader, a student of knowledge, a hafiz, or a Flutter developer building a serious product… Imaanly is made to serve you._
+It is designed for **daily reading, study, memorization and reflection**, works largely **without internet**, and needs **no API keys** to run.
 
 ### Why Imaanly?
 
-- **Not just text + audio** — QCF Uthmanic Mushaf + Word-level Ayah Library + Resource Management
-- **BLoC + Clean Architecture** — not random state scattered inside screens; testable, scalable, maintainable
-- **Offline-first** — core features work without internet using `hive_ce`; no API keys required
-- **61 Tafsirs & 209+ Translations** — the largest resource library in any open-source Quran app
-- **56 Reciters with multiple Qira'at** — Hafs, Warsh, Qalun, with word-by-word audio tracking
-- **Customizable Home Widget** — "Ayah of the Day" with live preview, 20+ Arabic fonts, theme customization
-- **Production-grade performance** — lazy font loading, deferred initialization, bundle size optimization
+- **More than text and audio** — QCF Uthmanic Mushaf, word-level ayah analysis and a full resource manager.
+- **Offline-first** — core features run from local storage (`hive_ce`) and downloaded resources.
+- **Huge resource library** — 60+ tafsir books, 200+ translations in 50+ languages and 50+ reciters with multiple riwayat.
+- **Designed to be used every day** — prayer countdown with a time-of-day sky, verse of the day, tasbih, goals and widgets.
+- **Clean, testable code** — BLoC, Clean Architecture and dependency injection with GetIt.
 
 ---
 
 ## Screenshots
 
+> Screenshots of the redesigned interface will be added to `docs/screenshots/`. The app icon and splash artwork are below.
+
 <p align="center">
-  <img src="assets/img/ScreenSH (1).png" width="22%" style="border-radius: 12px; margin: 4px;" />
-  <img src="assets/img/ScreenSH (2).png" width="22%" style="border-radius: 12px; margin: 4px;" />
-  <img src="assets/img/ScreenSH (3).png" width="22%" style="border-radius: 12px; margin: 4px;" />
-  <img src="assets/img/ScreenSH (4).png" width="22%" style="border-radius: 12px; margin: 4px;" />
-</p>
-<p align="center">
-  <img src="assets/img/ScreenSH (5).png" width="22%" style="border-radius: 12px; margin: 4px;" />
-  <img src="assets/img/ScreenSH (6).png" width="22%" style="border-radius: 12px; margin: 4px;" />
-  <img src="assets/img/ScreenSH (7).png" width="22%" style="border-radius: 12px; margin: 4px;" />
-  <img src="assets/img/ScreenSH (8).png" width="22%" style="border-radius: 12px; margin: 4px;" />
+  <img src="docs/branding/imaanly-icon.png" width="22%" alt="App icon" />
+  &nbsp;&nbsp;
+  <img src="docs/branding/imaanly-splash.png" width="22%" alt="Splash screen" />
 </p>
 
-## 👨‍💻 Built By
-
-<div align="center">
-
-تبني وتصميم واجهة المستخدم، وتطوير سائر تقنيات التطبيق، والخروج بنسخة المشروع النهائية بواسطة:  
-**IDRISIUM Corp | المهندس إدريس غامد**
-
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/IDRISIUM)
-[![Instagram](https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/idris.ghamid)
-[![TikTok](https://img.shields.io/badge/TikTok-000000?style=for-the-badge&logo=tiktok&logoColor=white)](https://tiktok.com/@idris.ghamid)
-[![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/IDRV72)
-[![Portfolio](https://img.shields.io/badge/Website-00B2FF?style=for-the-badge&logo=react&logoColor=white)](http://idrisium.linkpc.net/)
-
-</div>
-
-## ✨ Features (المزايا الحالية داخل التطبيق)
-
-## 🚀 Core Highlights
-
-- 📖 **Advanced Uthmanic (QCF) Quran rendering engine** — محرك عرض قرآني متقدم بالرسم العثماني
-- 🧠 **Word-level Ayah analysis** — تحليل لغوي متقدم على مستوى الكلمة (linguistics + tafsir + grammar)
-- ⚡ **Production-ready BLoC + Clean Architecture** — معمارية احترافية قابلة للتوسع والصيانة
-- 🕌 **All-in-one Islamic toolkit** — مجموعة أدوات إسلامية متكاملة (Quran + Prayer Times + Qibla + Azkar + Khatma)
-- 🎨 **Modern UI/UX with Organic Minimalism** — واجهة مستخدم عصرية بتصميم نظيف وأنيق (Quiet Luxury)
-- 📦 **61 Tafsirs & 209+ Translations** — 61 تفسيراً بـ 25 لغة و 209+ ترجمة بأكثر من 50 لغة
-- 🎙️ **56 Reciters with Advanced Audio Controls** — 56 قارئاً بروايات متعددة (حفص، ورش، قالون) مع تحكم صوتي متقدم
-- 🔔 **Smart Notification System** — نظام إشعارات ذكي للختمة والأذكار وآية اليوم
-- 📱 **Customizable Home Widget** — ويدجت قابل للتخصيص بالكامل لآية اليوم
-- 🌙 **Ayah-Inspired Light/Dark Theme** — وضع داكن/فاتح بألوان مستوحاة من تطبيق آية (Sage Green + Warm Beige)
-- 📐 **3 Mushaf Layout Modes** — 3 تخطيطات مصحف: صفحة واحدة، صفحة مزدوجة، تمرير مستمر
-- 🔤 **6 Quran Fonts** — 6 خطوط قرآنية: QPC Hafs، KFGQPC Uthmanic، Uthman Taha Naskh، AlQuranNeo، Indopak Nastaleeq، MeQuranVolt
-- 🧠 **Hifz/Memorization Mode** — وضع الحفظ مع 3 مستويات إخفاء (مرئي/مضبب/مخفي) + وضع الاختبار
-- 📴 **Offline Audio Player** — مشغل صوتي أوفلاين مع تحميل سور كاملة وإدارة التخزين
-- 🌙 **Night Reading Mode** — وضع القراءة الليلية بألوان كهرمانية + تفعيل تلقائي عند الغروب
----
-
-## 📖 تجربة قراءة المصحف | Mushaf Reading Experience
-
-### محرك العرض القرآني المتقدم
-- **مصحف QCF تفاعلي** بالخط العثماني (Uthmanic Script) مع تجربة قريبة جداً من المصحف الورقي
-- **3 تخطيطات عرض للمصحف**: صفحة واحدة (PageView)، صفحة مزدوجة (DoublePage)، تمرير مستمر (ContinuousScroll)
-- **6 خطوط قرآنية**: QPC Hafs، KFGQPC Uthmanic-HAFS، Uthman Taha Naskh، AlQuranNeo، Indopak Nastaleeq، MeQuranVolt
-- **نص عثماني + نص تجويد ملون** + QCF Glyph-based rendering (604 صفحة)
-- **وضع القراءة الليلية** — ألوان كهرمانية مريحة + تقليل إضاءة + تفعيل تلقائي عند الغروب
-- **دعم كامل للوضع الداكن والفاتح** مع ألوان ديناميكية وتباين محسّن
-- **Typography متجاوبة** تضبط الخطوط تلقائياً لمئات أحجام الشاشات
-- **حل جذري لمشاكل قص التشكيل** (Font Clipping) مع عرض مثالي للحركات
-
-### التنقل الذكي والبحث
-- **بحث قرآني سريع ودقيق** داخل النص مع تمييز النتائج
-- **فهرس متعدد المستويات**: السور، الأجزاء، الأحزاب، الأرباع، الركوعات، الصفحات
-- **انتقال مباشر** للسورة/الآية/الصفحة/الجزء/الحزب
-- **تنقل سريع بين الآيات** مع أزرار التالي/السابق
-- **حفظ آخر موضع قراءة** تلقائياً مع إمكانية العودة إليه
-
-### التفاعل مع الآيات
-- **وضع القراءة آية بآية** مع عرض واضح ومريح
-- **الضغط على أي آية** لفتح مكتبة الآية المتقدمة
-- **الضغط المطول على الآية** لخيارات سريعة (نسخ، مشاركة، إضافة لمجموعة)
-- **تمييز الآيات** بألوان مختلفة للمراجعة والحفظ
-- **إضافة ملاحظات** على أي آية مع إمكانية البحث فيها لاحقاً
-
-### 🧠 وضع الحفظ (Hifz/Memorization Mode)
-- **3 مستويات إخفاء**: مرئي (visible)، مضبب (blurred)، مخفي (hidden)
-- **كشف الآية بالضغط** — اضغط لإظهار الآية ثم إخفاؤها مرة أخرى
-- **وضع الاختبار** — اختبار تقدم الحفظ
-- **تتبع تقدم الحفظ** — خريطة سورة → عدد آيات محفوظة
-- **تكرار الآية/النطاق أثناء الحفظ** — تكرار ∞ أو N مرة
+<!--
+Suggested screenshots (phone, light and dark):
+home.png · prayer-times.png · qibla.png · tasbih.png · azkar.png · mushaf.png · ayah-library.png · explore.png
+Then reference them here, e.g. <img src="docs/screenshots/home.png" width="22%" />
+-->
 
 ---
 
-## 🧠 مكتبة الآية المتقدمة | Advanced Ayah Library
+## Features
 
-### تحليل لغوي على مستوى الكلمة
-- **مكتبة مدمجة داخل المصحف** تُفتح بضغطة واحدة على أي آية
-- **اختيار كلمة محددة** من الآية لعرض بياناتها اللغوية فقط
-- **عرض الآية كاملة** مع إمكانية التنقل بين الآيات داخل المكتبة
-- **واجهة نظيفة ومنظمة** مع تبويبات واضحة لكل نوع من المعلومات
+### Home
+- **Next-prayer hero** with a live countdown, progress bar, Hijri date and a sky that changes with the upcoming prayer (dawn, midday, afternoon, sunset, night with stars) over a mosque skyline.
+- **Today's prayers** timeline with the next prayer highlighted and passed prayers checked.
+- **Verse of the Day** — a rotating well-known ayah, shown with its reference; tap to enlarge, copy or open the Quran.
+- **Quick access** to Quran, Qibla, Tasbih and Azkar.
+- **Coming up** — countdown to the next major Islamic date (Islamic New Year, Ashura, Ramadan, Eid al-Fitr, Arafah, Eid al-Adha). Dates follow the calculated Hijri calendar, so local moon sighting may differ by a day.
 
-### تبويبات المكتبة الشاملة (7 تبويبات)
+### Quran and Mushaf
+- **Interactive QCF Mushaf** in Uthmanic script with a print-like feel (604 pages).
+- **Three layouts**: single page, double page and continuous scroll.
+- **Six Quran fonts** plus plain Uthmani, colored **tajweed** and IndoPak text styles.
+- **Night reading mode** with warm amber tones and optional automatic activation at sunset.
+- **Smart navigation**: surah, juz, hizb, rub, page and ayah jumps; fast search with highlighted results; last-read position is remembered.
+- **Ayah-by-ayah mode**, highlighting, notes, favorites and custom collections.
+- **Hifz (memorization) mode** with three hiding levels (visible, blurred, hidden), tap-to-reveal, a test mode, progress tracking and repeat.
 
-#### 📝 الترجمة (Word-by-Word Translation)
-- **ترجمة كلمة بكلمة** لكل كلمة في الآية
-- **دعم متعدد اللغات** مع إمكانية تحميل ترجمات إضافية
-- **عرض الترجمة الكاملة للآية** من الترجمات المفعّلة
+### Ayah Library
+Open any ayah to study it in depth, with tabs for:
+- **Translation**, including word-by-word translation
+- **I'rab** (grammatical analysis)
+- **Morphology** and word roots
+- **Qira'at** with differences between readings
+- **Mutashabihat** (similar ayahs)
+- **Topics**
+- **Latin transliteration** for non-Arabic readers
 
-#### 🔤 الإعراب (Grammar Analysis)
-- **إعراب تفصيلي** لكل كلمة في الآية
-- **شرح القواعد النحوية** بشكل واضح ومبسط
-- **تحديد نوع الكلمة** (اسم، فعل، حرف) ووظيفتها النحوية
+Share an ayah as text or as a customizable, designed image.
 
-#### 📚 الصرف (Morphology)
-- **التحليل الصرفي الكامل** للكلمة
-- **الجذر اللغوي** والوزن الصرفي
-- **التصريفات المختلفة** والمشتقات
+### Audio
+- **50+ reciters** with multiple riwayat (Hafs, Warsh, Qalun and more).
+- **Word-by-word highlighting** while audio plays, and single-word playback.
+- **Smart repeat** for an ayah, a range or a whole surah, plus listening to a custom ayah range.
+- **Speed control**, background playback with a notification, and a **sleep timer**.
+- **Offline player**: download surahs, manage storage and build **custom playlists**.
 
-#### 🎵 القراءات (Qira'at)
-- **القراءات العشر** للكلمة المختارة
-- **الفروق بين القراءات** مع الشرح
-- **أسماء القراء** ورواياتهم
-- **hasKhilaf badge** — علامة عند وجود خلاف بين القراءات
+### Prayer, Qibla and Worship
+- **Accurate prayer times** from your location with several calculation methods (default **Karachi, Hanafi Asr**) and adjustable adhan and iqama timing.
+- **Qibla compass** with a gold-ringed dial, distance to the Kaaba, calibration help and a glow when you are aligned.
+- **Digital Tasbih** with six dhikr, targets of 33, 99, 100 or none, round counting, vibration feedback, daily and all-time totals, undo and reset.
+- **Azkar** — morning, evening, sleep, prayer and more, each with a ring-style counter and references.
+- **Sunnah guides** for prayer and wudu with evidence and scholars' statements.
+- **Islamic calendar**, **prayer tracker**, **fasting tools**, **Zakat calculator**, **99 Names of Allah** and a **Hajj & Umrah** guide.
+- **Daily goals**, **Khatma** planning, reading statistics and a worship dashboard.
 
-#### 📖 المتشابهات (Mutashabihat)
-- **الآيات المتشابهة** في القرآن الكريم
-- **الربط بين الآيات المشتركة** في الألفاظ والمعاني
+### Notifications and Widgets
+- Prayer alerts, Khatma and daily wird reminders, morning and evening azkar reminders, and Ayah of the Day, all individually configurable.
+- **Android home-screen widgets**: Ayah of the Day, Prayer times and Word, with live preview and customization (fonts, colors, themes).
 
-#### 📑 الموضوعات (Topics)
-- **تصنيف الآيات حسب الموضوعات** (العقيدة، العبادات، الأخلاق، وغيرها)
-
-#### 🔤 النطق اللاتيني (Transliteration)
-- **النطق اللاتيني** لكل آية لمساعدة غير الناطقين بالعربية
-
-### مشاركة وتصدير
-- **مشاركة الآية كنص** مع التفسير والترجمة
-- **مشاركة كصورة** بتصميم احترافي قابل للتخصيص
-- **نسخ سريع** للآية أو الترجمة أو التفسير
-
----
-
-## 📚 نظام إدارة الموارد القرآنية | Resource Management System
-
-### مكتبة موارد شاملة
-- **61 تفسيراً** موزعة على 25 لغة:
-  - **12 تفسيراً عربياً**: الطبري، ابن كثير، القرطبي، السعدي، الميسر، البغوي، الوسيط، المختصر، السراج، تنوير المقباس، الجلالين، أسباب النزول (الواحدي)
-  - **5 تفاسير بنغالية**: فتح المجيد، ابن كثير، أبو بكر زكريا، أحسن البيان، وغيرها
-  - **10 تفاسير إنجليزية**: ابن كثير المختصر، تذكير القرآن، معارف القرآن، المختصر، الجلالين، ابن عباس (تنوير المقباس)، أسباب النزول، القرطبي، الطبري، البغوي
-  - **7 تفاسير أردية**: بيان القرآن، السعدي، تذكير القرآن، ابن كثير، الجلالين، القرطبي، معارف القرآن
-  - **4 تفاسير روسية**: السعدي، المختصر، ابن كثير، الجلالين
-  - **4 تفاسير إندونيسية**: المختصر، ابن كثير، الجلالين، القرطبي
-  - **3 تفاسير تركية**: المختصر، ابن كثير، الجلالين
-  - **3 تفاسير فارسية**: المختصر، ابن كثير، الجلالين
-  - **2 تفسير ماليزي**: ابن كثير، الجلالين
-  - **تفاسير بـ 8 لغات أخرى**: بوسنية، إسبانية، إيطالية، صينية، كردية، مالايالامية، فرنسية، أسامية، يابانية، ألبانية، خميرية، سواحيلية، هوسا، أمهرية
-- **209+ ترجمة** بأكثر من 50 لغة:
-  - **25 ترجمة إنجليزية**: Saheeh International، Pickthall، Yusuf Ali، Muhsin Khan، Asad، وغيرها
-  - **11 ترجمة أردية**: تفهيم القرآن، فتح محمد جالندهري، محمد جوناگڑھی، وغيرها
-  - **6 ترجمات إسبانية، فرنسية، أوزبكية**
-  - **5 ترجمات بنغالية، روسية، تركية**
-  - **ترجمات بـ 40+ لغة أخرى**: عربية، صينية، يابانية، كورية، فيتنامية، إندونيسية، ملايو، تايلاندية، هندية، فارسية، كردية، أمازيغية، سواحيلية، هوسا، يوروبا، صومالية، وغيرها الكثير
-- **موارد كلمة بكلمة** (Word-by-Word) بلغات متعددة
-- **معلومات لغوية متقدمة** (إعراب، صرف، قراءات، جذور الكلمات)
-
-### إدارة ذكية للتحميلات
-- **عرض حجم الملف قبل التحميل** لكل مورد
-- **تتبع حالة التحميل** مع شريط تقدم دقيق
-- **إدارة التخزين** مع عرض المساحة المستخدمة لكل مورد
-- **حذف فردي أو جماعي** للموارد المحملة
-- **تحديث تلقائي** للموارد عند توفر إصدارات جديدة
-
-### واجهات منفصلة ومنظمة
-- **شاشة المكتبة المعاد تصميمها** — NestedScrollView مع SliverAppBar + TabBar مدور بـ indicator متحرك
-- **كروت موارد بورقية** — ألوان AppColors + badge "مفعّل" + أنيميشن fade+slide سلسة
-- **شاشة مستقلة للترجمات** مع تصنيف حسب اللغة
-- **شاشة مستقلة للتفاسير** مع معلومات عن كل مفسر
-- **شاشة موارد الكلمات** لإدارة البيانات اللغوية
-- **اختيار متعدد** لتفعيل أكثر من ترجمة أو تفسير في نفس الوقت
-- **نظام Fallback CDN** — تحميل تلقائي من مصادر بديلة لو السيرفر الأساسي مش شغال
+### Resources
+- **Tafsir, translations and word data** downloaded on demand, with sizes shown, progress tracking, storage management and automatic fallback sources.
+- Multiple tafsirs or translations can be enabled at once.
 
 ---
 
-## 🎙️ نظام الصوتيات المتقدم | Advanced Audio System
+## What's New in the Redesign
 
-### مكتبة قراء ضخمة
-- **56 قارئاً** من مختلف أنحاء العالم الإسلامي:
-  - **قراء مشهورون**: عبد الباسط عبد الصمد، محمود خليل الحصري، مشاري راشد العفاسي، سعد الغامدي، ماهر المعيقلي، محمد صديق المنشاوي، ياسر الدوسري، عبد الرحمن السديس، أبو بكر الشاطري، وغيرهم
-- **روايات متعددة**: حفص عن عاصم، ورش عن نافع، قالون، الدوري، وغيرها
-- **جودات صوتية**: من 40kbps إلى 192kbps حسب الاحتياج
-
-### تحكم صوتي احترافي
-- **شريط تحكم عائم** يظهر أثناء التشغيل مع معلومات الآية الحالية
-- **تشغيل مستمر** للسورة كاملة أو نطاق محدد من الآيات
-- **التكرار الذكي**: تكرار آية واحدة، نطاق آيات، أو السورة كاملة (∞ أو N مرة)
-- **تتبع كلمة بكلمة أثناء التشغيل** (Audio Segments Highlighting) — تمييز الكلمة الحالية
-- **تشغيل كلمة واحدة صوتياً** + تشغيل تسلسل كلمات مع callback لكل كلمة
-- **سرعة التشغيل القابلة للتعديل** (0.5x إلى 2x)
-- **التشغيل في الخلفية** مع إشعار تحكم في شريط الإشعارات
-- **الإيقاف التلقائي** بعد مدة محددة (Sleep Timer) — دقائق أو نهاية السورة
-- **الاستماع لنطاق آيات** — من آية X إلى آية Y
-
-### تحميل وإدارة الصوتيات
-- **تحميل السور** بشكل فردي أو جماعي (Offline Audio)
-- **مشغل أوفلاين كامل** — 3 تبويبات: محتوى محمل، تحميل جديد، إدارة التخزين
-- **قوائم تشغيل مخصصة** — إنشاء/حذف/إعادة تسمية/إضافة سور
-- **تشغيل أوفلاين تلقائي** — يكتشف الملف المحلي تلقائياً
-- **عرض حجم الملف** قبل التحميل
-- **إدارة التخزين** مع إمكانية حذف السور المحملة
-- **تشغيل مباشر** من الإنترنت بدون تحميل (Streaming)
+- **New identity**: emerald-and-gold palette, new app icon and splash screen, and the **Poppins** typeface throughout.
+- **English interface** across all screens, with Quran text and supplications kept in Arabic.
+- **Time-of-day hero**, entrance animations, soft bordered cards, rounded navigation and consistent hero cards across Explore, Goals, Analytics and the dashboard.
+- **New features**: Digital Tasbih, Verse of the Day, Islamic-date countdown, Qibla alignment glow.
+- **Smarter defaults**: device location with Karachi method and Hanafi Asr, and widget prayer times that follow the method chosen in the app.
 
 ---
 
-## 🕌 أدوات المسلم اليومية | Daily Muslim Utilities
-
-### مواقيت الصلاة الدقيقة
-- **حساب دقيق** لمواقيت الصلاة حسب الموقع الجغرافي
-- **طرق حساب متعددة**: الهيئة العامة المصرية، رابطة العالم الإسلامي، أم القرى، الجامعة الإسلامية بكراتشي، وغيرها
-- **تنبيهات قبل الأذان** بوقت قابل للتخصيص
-- **عرض الوقت المتبقي** للصلاة القادمة
-- **تقويم شهري** يعرض أوقات الصلاة لكل يوم
-- **تحديد تلقائي للموقع** أو إدخال يدوي للمدينة
-
-### اتجاه القبلة
-- **بوصلة دقيقة** تحدد اتجاه القبلة باستخدام GPS والبوصلة المغناطيسية
-- **عرض المسافة** بينك وبين الكعبة المشرفة
-- **واجهة ثلاثية الأبعاد** مع رسوم توضيحية للكعبة
-- **معايرة البوصلة** لضمان الدقة
-
-### أذكار المسلم الشاملة
-- **أذكار الصباح والمساء** كاملة مع عدادات للتكرار
-- **أذكار النوم والاستيقاظ**
-- **أذكار الصلاة** (بعد كل صلاة)
-- **أذكار متنوعة**: دخول المسجد، الخروج من المنزل، الطعام، السفر، وغيرها
-- **عداد تلقائي** لكل ذكر مع إمكانية إعادة التعيين
-- **تصميم جميل** مع خلفيات متدرجة وخطوط واضحة
-
-### دليل السنن النبوية
-- **سنن يومية** مصنفة حسب الوقت والمناسبة
-- **شرح مختصر** لكل سنة مع الدليل الشرعي
-- **تصنيفات متعددة**: سنن الصلاة، الصيام، الذكر، الآداب، وغيرها
-- **واجهة تفاعلية** مع بطاقات منظمة وسهلة التصفح
-
-### مساحة الختمة الذكية
-- **خطط ختم متعددة**: ختمة شهرية، أسبوعية، أو مخصصة
-- **تتبع التقدم** مع رسوم بيانية توضح نسبة الإنجاز
-- **تذكيرات يومية** للورد المحدد
-- **إحصائيات تفصيلية**: عدد الصفحات المقروءة، الوقت المستغرق، معدل القراءة
-- **سجل الختمات** السابقة مع التواريخ
-
----
-
-## 🔔 نظام الإشعارات المتقدم | Advanced Notification System
-
-### إشعارات قابلة للتخصيص بالكامل
-- **تذكير الختمة اليومي** بوقت محدد مع إمكانية تخصيص الرسالة
-- **آية اليوم** بإشعار يومي مع عرض الآية والترجمة
-- **تذكير أذكار الصباح** بوقت قابل للتعديل
-- **تذكير أذكار المساء** بوقت قابل للتعديل
-- **إشعارات مواقيت الصلاة** مع خيارات متعددة (قبل الأذان، عند الأذان، بعد الأذان)
-- **إشعار تجريبي** لاختبار النظام والتأكد من عمل الإشعارات
-
-### تحكم متقدم
-- **تفعيل/تعطيل** كل نوع من الإشعارات بشكل منفصل
-- **اختيار نغمة الإشعار** من مكتبة الأصوات أو من جهازك
-- **أولوية الإشعارات** (عالية، متوسطة، منخفضة)
-- **إشعارات صامتة** للقراءة بدون صوت
-- **جدولة ذكية** تتجنب الأوقات غير المناسبة
-
----
-
-## 📱 التخصيص والإنتاجية | Personalization & Productivity
-
-### ويدجت آية اليوم المتقدم
-- **ويدجت للشاشة الرئيسية** يعرض آية مختارة يومياً
-- **معاينة مباشرة (Live Preview)** للتغييرات قبل التطبيق
-- **تخصيص كامل للخط**: اختيار من 20+ خط عربي (عثماني، نسخ، كوفي، ديواني، وغيرها)
-- **تخصيص حجم الخط** بدقة عالية
-- **اختيار الثيم**: فاتح، داكن، أو مخصص
-- **ألوان قابلة للتخصيص**: لون النص، لون الخلفية، لون الحدود
-- **خلفية متدرجة** مع اختيار لونين للتدرج
-- **تثبيت آية معينة** أو اختيار عشوائي يومي
-- **تحديث فوري** للويدجت من داخل التطبيق
-
-### إعدادات المصحف المتقدمة
-- **اختيار خط القرآن**: 6 خطوط قرآنية (QPC Hafs، KFGQPC Uthmanic، Uthman Taha Naskh، AlQuranNeo، Indopak Nastaleeq، MeQuranVolt)
-- **اختيار تخطيط المصحف**: صفحة واحدة، صفحة مزدوجة، تمرير مستمر
-- **اختيار نمط النص**: عثماني، تجويد ملون، إندوباك
-- **حجم الخط** قابل للتعديل بدقة
-- **تباعد الأسطر** للراحة البصرية
-- **ألوان مخصصة** للنص والخلفية والتشكيل
-- **إظهار/إخفاء**: رقم الآية، اسم السورة، رقم الصفحة، رقم الجزء
-- **وضع القراءة الليلي** مع سطوع قابل للتعديل + تفعيل تلقائي عند الغروب
-
-### الثيمات والمظهر
-- **ألوان مستوحاة من تطبيق آية**: Light Mode (Warm Beige + Sage Green) و Dark Mode (Deep Slate + Lighter Sage)
-- **نظام ألوان مركزي** — تغيير لون واحد في `AppColors` ينعكس على كل التطبيق
-- **وضع فاتح/داكن/تلقائي** بدون تعقيد FlexScheme — بساطة وأناقة
-- **تأثيرات Glassmorphism** مع شفافية وتمويه
-- **كروت بورقية ناعمة** مع ظلال خفيفة وborders رفيعة
-- **رسوم متحركة سلسة** (Flutter Animate) للانتقالات — 300-500ms، easeInOut
-
-### المجموعات والمفضلات
-- **إنشاء مجموعات مخصصة** للآيات (للحفظ، للمراجعة، للتدبر، وغيرها)
-- **إضافة آيات للمفضلة** بضغطة واحدة
-- **ملاحظات على الآيات** مع إمكانية البحث فيها
-- **تصنيف تلقائي** حسب السورة أو الموضوع
-- **مشاركة المجموعات** مع الأصدقاء
-
-### إعدادات اللغة والتوطين
-- **دعم متعدد اللغات**: العربية، الإنجليزية، الأردية، التركية، الإندونيسية، الملايو، الفرنسية
-- **تبديل سريع** بين اللغات من الإعدادات
-- **واجهة RTL/LTR** تلقائية حسب اللغة المختارة
-
----
-
-## 🏗️ للمطورين | For Developers
-
-### معمارية احترافية
-- **BLoC Pattern** لإدارة الحالة بشكل منظم وقابل للاختبار
-- **Clean Architecture** مع فصل واضح بين الطبقات (Presentation, Domain, Data)
-- **Dependency Injection** باستخدام GetIt
-- **Repository Pattern** لإدارة مصادر البيانات
-- **Use Cases** منفصلة لكل عملية
-
-### جودة الكود
-- **تفتيت الملفات الكبيرة**: تم تقسيم `mushaf_screen.dart` (7600+ سطر) إلى مكونات مستقلة
-- **Widgets قابلة لإعادة الاستخدام** مع توثيق واضح
-- **Extensions منظمة** لفصل الوظائف (النطق، المشاركة، التنسيق)
-- **تعليقات توضيحية** باللغتين العربية والإنجليزية
-- **معايير تسمية موحدة** عبر المشروع
-
-### الأداء والتحسين
-- **تحميل خطوط QCF عند الطلب** بدلاً من تحميلها جميعاً مسبقاً
-- **تقليل حجم الباندل** بإزالة الأصول غير المستخدمة
-- **تسريع أول تشغيل** بتأجيل تهيئة الخدمات الثقيلة
-- **Lazy Loading** للموارد الكبيرة
-- **Caching ذكي** للبيانات المستخدمة بكثرة
-- **تحسينات الذاكرة** لتجنب التسريبات
-
-### قابلية التوسع
-- **إضافة تفاسير جديدة** بسهولة عبر نظام الموارد
-- **إضافة ترجمات جديدة** بدون تعديل الكود الأساسي
-- **إضافة قراء جدد** عبر ملفات JSON
-- **إضافة لغات جديدة** عبر ملفات التوطين
-- **API جاهز** للتكامل مع خدمات خارجية
-
-### الاختبار
-- **Unit Tests** للـ Use Cases والـ Repositories
-- **Widget Tests** للمكونات الأساسية
-- **Integration Tests** للتدفقات الكاملة
-- **Mock Data** جاهز للاختبار
-
----
-
----
-
-## 📚 الموارد القرآنية المتاحة | Available Quranic Resources
-
-### 📖 التفاسير (61 تفسيراً بـ 25 لغة)
-
-#### التفاسير العربية (12):
-1. **تفسير الطبري** - الإمام الطبري
-2. **تفسير ابن كثير** - الإمام ابن كثير
-3. **تفسير القرطبي** - الإمام القرطبي
-4. **تفسير السعدي** - الشيخ عبد الرحمن السعدي
-5. **التفسير الميسر** - مجمع الملك فهد
-6. **تفسير البغوي** - الإمام البغوي
-7. **التفسير الوسيط** - مجمع البحوث الإسلامية
-8. **المختصر في تفسير القرآن الكريم** - مركز تفسير
-9. **السراج في بيان غريب القرآن** - الخضيري
-10. **تفسير تنوير المقباس** - ابن عباس
-11. **تفسير الجلالين** - الإمام السيوطي والمحلي
-12. **أسباب النزول** - الإمام الواحدي
-
-#### تفاسير بلغات أخرى:
-- **الإنجليزية** (10): Ibn Kathir (Abridged), Tazkirul Quran, Maarif-ul-Quran, Al-Mukhtasar, Al-Jalalayn, Ibn Abbas (Tanwir al-Miqbas), Asbab Al-Nuzul, Al-Qurtubi, Al-Tabari, Al-Baghawi
-- **الأردية** (7): بيان القرآن، السعدي، تذكير القرآن، ابن كثير، الجلالين، القرطبي، معارف القرآن
-- **البنغالية** (5): فتح المجيد، ابن كثير، أبو بكر زكريا، أحسن البيان، وغيرها
-- **الروسية** (4): السعدي، المختصر، ابن كثير، الجلالين
-- **الإندونيسية** (4): المختصر، ابن كثير، الجلالين، القرطبي
-- **التركية** (3): المختصر، ابن كثير، الجلالين
-- **الفارسية** (3): المختصر، ابن كثير، الجلالين
-- **الماليزية** (2): ابن كثير، الجلالين
-- **لغات أخرى**: بوسنية، إسبانية، إيطالية، صينية، كردية، مالايالامية، فرنسية، أسامية، يابانية، ألبانية، خميرية، فيتنامية، تاغالوغية، سواحيلية، هوسا، أمهرية
-
-### 🌍 الترجمات (150+ ترجمة بأكثر من 50 لغة)
-
-#### أبرز الترجمات الإنجليزية (25 ترجمة):
-- Saheeh International
-- Marmaduke Pickthall
-- Abdullah Yusuf Ali
-- Muhammad Muhsin Khan & Taqi-ud-Din al-Hilali
-- Muhammad Asad
-- Dr. Mustafa Khattab (The Clear Quran)
-- Tafheem-ul-Quran (Abul A'la Maududi)
-- Maarif-ul-Quran
-- Abdul Haleem
-- Fadel Soliman (Bridges' Translation)
-- وغيرها...
-
-#### الترجمات الأردية (11 ترجمة):
-- تفهيم القرآن - سيد أبو الأعلى المودودي
-- فتح محمد جالندهري
-- محمد جوناگڑھی
-- في ظلال القرآن
-- بيان القرآن
-- وغيرها...
-
-#### لغات أخرى مدعومة (40+ لغة):
-عربية، إسبانية، فرنسية، ألمانية، إيطالية، برتغالية، روسية، تركية، فارسية، أردية، بنغالية، هندية، إندونيسية، ملايو، صينية، يابانية، كورية، فيتنامية، تايلاندية، كردية، أمازيغية، سواحيلية، هوسا، يوروبا، صومالية، أمهرية، أوزبكية، كازاخية، طاجيكية، أذرية، تترية، أويغورية، بشتو، سندية، نيبالية، أسامية، مالايالامية، تاميلية، تيلوغو، كانادا، ماراثية، غوجاراتية، بنجابية، أورومو، أمهرية، كينيارواندا، لوغاندا، بامبارا، وغيرها...
-
-### 🎙️ القراء (56 قارئاً)
-
-#### قراء مشهورون:
-1. **عبد الباسط عبد الصمد** (مرتل 192kbps + مجود + ورش)
-2. **محمود خليل الحصري** (مرتل 128kbps + مجود)
-3. **مشاري راشد العفاسي** (مرتل 128kbps)
-4. **سعد الغامدي** (مرتل 40kbps)
-5. **ماهر المعيقلي** (مرتل 128kbps)
-6. **محمد صديق المنشاوي** (مرتل 192kbps + مجود)
-7. **ياسر الدوسري** (مرتل 128kbps + ورش)
-8. **عبد الرحمن السديس** (مرتل 192kbps)
-9. **أبو بكر الشاطري** (مرتل 128kbps)
-10. **سعود الشريم** (مرتل 128kbps)
-11. **ناصر القطامي** (مرتل 128kbps)
-12. **أحمد العجمي** (مرتل 128kbps)
-13. **محمد أيوب** (مرتل 64kbps)
-14. **محمد جبريل** (مرتل 64kbps)
-15. **مصطفى إسماعيل** (مجود 48kbps)
-16. **خليفة الطنيجي** (مرتل 128kbps)
-17. **إدريس أبكر** (مرتل 128kbps)
-18. **فارس عباد** (مرتل 64kbps)
-19. **صلاح البدير** (مرتل 128kbps)
-20. **عبد الله المطرود** (مرتل 128kbps)
-21. **محمد اللحيدان** (مرتل 128kbps)
-22. **عبد الباري الثبيتي** (مرتل 128kbps)
-23. **محسن القاسم** (مرتل 192kbps)
-24. **بندر بليلة** (مرتل 128kbps)
-25. **علي جابر** (مرتل 64kbps)
-26. **هاني الرفاعي** (مرتل 192kbps)
-27. **محمد الطبلاوي** (مجود 128kbps)
-28. **محمود علي البنا** (مجود 32kbps)
-29. **فاتح سفر أغيتش** (مرتل 64kbps)
-30. **رعد الكردي** (مرتل 128kbps)
-31. **وديع اليمني** (مرتل 128kbps)
-32. **أيمن سويد** (مرتل 64kbps)
-33. **أكرم العلاقمي** (مرتل 128kbps)
-34. **ياسر سلامة** (مرتل 128kbps)
-35. **سهل ياسين** (مرتل 128kbps)
-36. **عزيز عليلي** (مرتل 128kbps)
-37. **توفيق الصايغ** (مرتل 128kbps)
-38. **عبد الله عواد الجهني** (مرتل 128kbps)
-39. **خالد القحطاني** (ورش 192kbps)
-40. **أحمد نعينع** (مرتل 128kbps)
-41. **عبد الله بصفر** (مجود 192kbps)
-42. **صلاح بوخاطر** (مرتل 128kbps)
-43. **إبراهيم الأخضر** (مرتل 64kbps)
-44. **علي الحذيفي** (مرتل 64kbps)
-45. **محمد عبد الكريم** (مرتل 128kbps)
-46. **عبد الرحمن العوسي** (مرتل 128kbps)
-47. **كريم منصوري** (مرتل 40kbps)
-48. **نبيل رفاعي** (مرتل 40kbps)
-49. **شهريار پرهيزگار** (مرتل 48kbps)
-50. **يوسف إدغوش** (مرتل 128kbps)
-
-#### قراء بروايات خاصة:
-- **رواية ورش**: عبد الباسط، إبراهيم الدوسري، ياسين الجزائري، عمر القزابري، ياسر الدوسري، خالد القحطاني
-- **قراء معلمون**: محمود خليل الحصري (معلم)، محمد صديق المنشاوي (معلم)
-
----
-
-## 📊 إحصائيات المشروع | Project Statistics
-
-- **أكثر من 150 ملف Dart** منظمة في معمارية واضحة
-- **أكثر من 60,000 سطر برمجي** مع توثيق شامل
-- **61 تفسيراً** بـ 25 لغة جاهز للاستخدام
-- **209+ ترجمة** بأكثر من 50 لغة
-- **56 قارئاً** بروايات متعددة (حفص، ورش، قالون)
-- **6 خطوط قرآنية** + 3 تخطيطات مصحف
-- **8 تبويبات تفسير** مع Pinnable Panels + Reorderable Tabs
-- **100+ ويدجت مخصص** قابل لإعادة الاستخدام
-- **15+ شاشة رئيسية** مع تنقل سلس
-- **دعم كامل** للوضع الداكن والفاتح (ألوان آية)
-- **290+ مورد قرآني** قابل للتحميل عند الطلب
-
----
-
-## � أحدث التحديثات | Recent Changes
-
-### نظام الثيمات الجديد (Ayah-Inspired Theme)
-- **إزالة FlexColorScheme** — استبدال بنظام Light/Dark ثابت بألوان مستوحاة من تطبيق آية
-- **AppColors مركزي** — تغيير لون واحد ينعكس على كل التطبيق
-- **Light Mode**: Warm Beige (#F5EBE0) + Sage Green (#5D7263) + Cream surfaces
-- **Dark Mode**: Deep Slate (#343A40) + Lighter Sage (#839788) + Charcoal cards
-- **AppTheme خالص** — ThemeData مباشر بدون مكتبات خارجية
-
-### إعادة تصميم شاشة المكتبة
-- **NestedScrollView + SliverAppBar** — الهيدر بينقبض عند التمرير
-- **TabBar مدور** — indicator باللون الأساسي مع ظل خفيف
-- **كروت بورقية** — ألوان AppColors + badge "مفعّل" + أنيميشن fade+slide
-- **إزالة الـ chip bar القديم** — TabBar أنظف وأسلس
-
-### نظام تحميل الموارد المتقدم
-- **HTML Detection** — كشف تلقائي لو السيرفر بيرجع HTML بدل البيانات
-- **Fallback CDN** — تحميل تلقائي من مصادر بديلة (GitHub CDN)
-- **Mutashabihat + Transliteration** — fallback شغال من Waqar144 و risan CDN
-- **رسائل خطأ واضحة** بالعربي لو المورد مش متاح
-
-### QCF Package — ميزات جديدة
-- **Sajda Verses Data** — 14+1 سجدة مع نوعها (واجبة/مستحبة)
-- **Surah Info Card** — كروت معلومات السورة مع badge سجدة
-- **Juz/Hizb Marker Overlay** — علامات الجزء والحزب على صفحات المصحف
-- **Page Position Indicator** — Apple-style floating pill مع معلومات الصفحة
-- **Reading Progress Tracker** — تتبع التقدم مع streak و completion %
-- **Waqf (Stop) Markers** — 10 علامات وقف مع وصف عربي ولون مقترح
-
-### تحسينات المصحف
-- **Responsive Rendering** — حساب ديناميكي لأبعاد الصفحة حسب حجم الشاشة
-- **3 تخطيطات**: صفحة واحدة، صفحة مزدوجة، تمرير مستمر
-- **Classic Mushaf Border** — إطار إسلامي كلاسيكي مع زخارف (قابل للتفعيل)
-- **Overlay متجاوب** — معلومات الجزء/الحزب/الربع بتتكبر مع المحتوى
-
-### نظام الصوتيات المتقدم
-- **56 قارئاً** مع روايات متعددة
-- **تتبع كلمة بكلمة** أثناء التشغيل (IdrisiumAudioTracker)
-- **تكرار ذكي** — آية واحدة، نطاق، أو سورة كاملة
-- **مؤقت النوم** — دقائق أو نهاية السورة
-- **تحميل أوفلاين** — تحميل سور كاملة مع إدارة التخزين
-- **قوائم تشغيل مخصصة** — إنشاء/حذف/إعادة تسمية
-
-### معمارية الميزات الجديدة (PHASE 4–5)
-- **Presentation BLoCs** لكل ميزة: Audio، Tafsir، Azkar، Qibla، Hifz، Prayer — كل واحد بـ state/events محددة
-- **Shared UI Widgets**: SkeletonLoading، ErrorStateWidget، EmptyStateWidget، Pressable، AppCard، SectionHeader، AppChip
-- **Feature Screens**: Azkar (categories + items with type filter)، Qibla (custom compass painter)، Hifz (dashboard with stats grid)، Tafsir (list + detail)، Audio (reciter list)، Prayer Times (next prayer highlight)
-- **Theme Compliance**: ترحيل كل الـ deprecated `ayaX` color aliases لـ `lightX` token names — صفر hardcoded colors في الموديولات الجديدة
-- **IDRISIUM Signature About Screen**: glassmorphism cards، animated logo reveal، founder photo with glow، social links grid
-
-### وضع الحفظ والقراءة الليلية
-- **3 مستويات إخفاء**: مرئي، مضبب، مخفي + وضع الاختبار
-- **وضع القراءة الليلية** — ألوان كهرمانية + تفعيل تلقائي عند الغروب
-
-### إزالة محتوى مخالف
-- **شيلت أسباب النزول** (الواحدي) — مش موثوق
-- **شيلت الجلالين** من 5 لغات + الوسيط + تنوير المقباس
-- **مراجعة كاملة** للترجمات والتفاسير — إزالة أي تأويل أو مخالفة
-
----
-
-## �🎯 الجمهور المستهدف | Target Audience
-
-### للمستخدمين
-- **قراء القرآن اليوميون** الذين يبحثون عن تجربة قراءة مريحة وقريبة من المصحف الورقي
-- **طلاب العلم** الذين يحتاجون لأدوات تحليل لغوي وتفسير متقدم
-- **المسلمون الجدد** الذين يحتاجون لترجمات وشروح بلغات متعددة
-- **حفظة القرآن** الذين يستخدمون نظام الختمة والتكرار الصوتي
-- **المهتمون بالأذكار والسنن** الذين يريدون تطبيقاً شاملاً لكل احتياجاتهم اليومية
-
-### للمطورين
-- **مطورو Flutter** الذين يريدون دراسة معمارية احترافية في مشروع حقيقي
-- **المهتمون بـ BLoC Pattern** وتطبيقه في مشاريع كبيرة
-- **المساهمون في المصادر المفتوحة** الذين يريدون المشاركة في مشروع إسلامي نافع
-- **المهتمون بتقنيات Rendering** والتحديات المتعلقة بالخطوط العربية والعثمانية
-
----
-
-## 🏗️ Architecture (BLoC + Clean Architecture)
-
-التطبيق مبني كـ **open-source Quran application** حقيقي، مش مجرد واجهة—والهدف إن التطوير يفضل سهل ومضمون مع الوقت.
-
-### ✅ مبادئ سريعة
-
-- **Presentation**: UI + `Bloc/Cubit` + Widgets.
-- **Domain**: Use-cases + Entities (منطق نظيف مستقل عن Flutter).
-- **Data**: Repositories + DataSources (Local/Assets/Downloads) + Models.
-
-### 🔧 Tech Stack (مختصر وقوي)
-
-- **Flutter 3.x + Dart 3+** (Records, Patterns, Sealed Classes)
-- **flutter_bloc / Cubit** (State Management)
-- **qcf_quran_with_update** (Uthmanic/QCF rendering + Sajda + Waqf + Reading Progress)
-- **hive_ce** (Offline local storage)
-- **just_audio** (Audio engine)
-- **home_widget + workmanager** (Home widget updates)
-- **awesome_notifications** (Notifications)
-- **share_plus** (Sharing)
-- **flutter_animate** (Subtle UI motion)
-- **flutter_screenutil** (Responsive design)
-- **google_fonts / Cairo** (Arabic typography)
-
-### 🧩 Deep Refactor (معلومة مهمة للمساهمين)
-
-تم تفتيت شاشة المصحف العملاقة `mushaf_screen.dart` (التي تجاوزت 7600 سطر) إلى مكونات مستقلة:
-
-1. **`widgets/`**: (الفهرس، الخيارات السفلية، الختمة، البحث، والتقييم) لتقليل الـCoupling.
-2. **`extensions/`**: فصل وظائف النطق/المشاركة كصورة باستخدام `part`.
-3. تحسينات لونية مركزية لدعم الوضع الداكن في النوافذ المنبثقة.
-
-### ⚡ Performance & Packaging
-
-تمت إضافة مسار واضح لتحسين الأداء وتقليل حجم الحزمة قبل التثبيت:
-
-- **تقليل حجم الباندل قبل التثبيت** عبر استبدال إدراج مجلدات كاملة من الأصول بقائمة ملفات محددة فعليًا في التطبيق.
-- **تحميل خطوط صفحات المصحف QCF عند الطلب** بدل تسجيل مئات عائلات الخطوط مسبقًا داخل الحزمة.
-- **تسريع أول تشغيل** عبر تأجيل تهيئة الموارد الثقيلة وتجهيز بعض الخدمات إلى ما بعد ظهور أول واجهة للمستخدم.
-- **تنظيف الحزمة النهائية** باستبعاد ملفات تطوير/عرض وموارد كبيرة غير مستخدمة من النسخة الموزعة للمستخدم.
-
-## 🚀 Installation
-
-لتشغيل تطبيق "الفُرقان" على جهازك أو المساهمة في تطويره:
-
-### المتطلبات الأساسية (Prerequisites)
-
-- [Flutter](https://docs.flutter.dev/get-started/install) (3.x أو أحدث)
-- VS Code أو Android Studio
-
-### الخطوات (Steps)
-
-1. **Clone**
-
-```bash
-git clone https://github.com/IDRISIUMCorp/imaanly-quran-flutter-app.git
+## Tech Stack
+
+| Area | Technology |
+|---|---|
+| Framework | Flutter 3.x, Dart 3.10+ |
+| State management | `flutter_bloc` (BLoC / Cubit) |
+| Dependency injection | `get_it` |
+| Local storage | `hive_ce`, `shared_preferences` |
+| Quran rendering | `qcf_quran` (customized package in `packages/`) |
+| Audio | `just_audio` with background playback |
+| Prayer times | `adhan_dart` and `hijri` |
+| Qibla | `flutter_compass_v2` (patched copy in `packages/`) and `geolocator` |
+| Notifications | `awesome_notifications` |
+| Home widgets | `home_widget` and `workmanager` |
+| UI motion | `flutter_animate` |
+
+## Architecture
+
+The app follows **Clean Architecture** with BLoC for state management:
+
+- **Presentation** — screens, widgets and Bloc/Cubit.
+- **Domain** — use cases and entities, independent of Flutter.
+- **Data** — repositories, data sources (local, assets, downloads) and models.
+
+```
+lib/
+├── features/        # Home, Tasbih, Prayer, Goals, Calendar, Sunnah, Analytics, ...
+├── src/
+│   ├── screen/      # Quran, Mushaf, Qibla, Azkar, Settings, Search, ...
+│   ├── theme/       # AppColors, AppTheme, AppFonts, shared widgets (HeroCard, SoftCard)
+│   ├── widget/      # Reusable widgets (audio, sharing, ...)
+│   └── core/        # Services, audio, settings
+└── l10n/            # Localization files
+packages/            # Customized qcf_quran and compass packages
 ```
 
-1. **Install dependencies**
+Design tokens live in `lib/src/theme/app_colors.dart` and the typeface in `lib/src/theme/app_fonts.dart`, so the look of the whole app can be changed from one place.
+
+---
+
+## Getting Started
+
+### Prerequisites
+- [Flutter](https://docs.flutter.dev/get-started/install) 3.x with Dart `^3.10`
+- Android Studio or VS Code with the Flutter extension
+- An Android device or emulator
+
+### Run
 
 ```bash
+git clone https://github.com/muhammadnaumantahir/Imaanly.git
+cd Imaanly
 flutter pub get
-```
-
-1. **Run (Android)**
-
-```bash
 flutter run
 ```
 
-> ملاحظة للمطورين: التطبيق يعتمد على قواعد بيانات محلية (`hive_ce`) ولا يتطلب أي إعدادات خوادم أو مفاتيح API خارجية للتشغيل المبدئي.
+No server setup or API keys are required for the first run.
 
-## 🔍 SEO Keywords
+### Regenerate app icon and splash screen
 
-> الكلمات دي مقصودة لتحسين اكتشاف المشروع على GitHub والبحث وAI models بدون حشو.
+```bash
+dart run icons_launcher:create
+dart run flutter_native_splash:create
+```
 
-- Flutter Quran app
-- open-source Quran application
-- production-ready Flutter Quran application
-- BLoC + Clean Architecture Flutter
-- Uthmanic script rendering
-- QCF mushaf Flutter
-- word-by-word Quran (word-level tools)
-- tafsir and translation resources Flutter
-- Quran home widget (Ayah of the Day)
-- prayer times qibla azkar Flutter
-- offline-first Flutter app (Hive)
+The splash artwork is `assets/img/splash_logo.png`, and the icon source is `assets/img/Quran_Logo_v3.png`.
 
-### 🤝 شكر وتقدير (Acknowledgments)
+### Quality checks
 
-إن هذا الإنجاز التقني لم يكن ليخرج بهذا الكمال لولا فضل الله، ثم البناء على أعمال إخوة ومطورين كرام:
-
-1. **العرض العثماني للقرآن (QCF Quran)**:
-   تم الاستعانة بالمكتبة البرمجية الأساسية [qcf_quran](https://github.com/m4hmoud-atef/qcf_quran) للمطور **محمود عاطف** (جزاه الله خيراً كبيراً).
-   - **إعادة الهندسة والتطوير**: قام **المهندس إدريس غامد** بإجراء عملية [إعادة بناء وتخصيص عميقة للمكتبة](https://github.com/idris-ghamid/qcf_quran_with_update) لتتوافق مع معايير الفُرقان، حيث شملت:
-     - بناء وتكامل نظام **`QcfThemeData`** لدعم الألوان الديناميكية والـ(Dark/Light Mode).
-     - تطوير **Responsive Typography** لضبط الخطوط تلقائيًا لمئات أحجام الشاشات.
-     - إصلاح جذري لمشاكل قص التشكيل (Font Clipping).
-
-2. **العمود الفقري وقاعدة البيانات**:
-   اعتمدنا في القواعد الأساسية (قاعدة بيانات القراء، تفريعات التفاسير، الترجمات، ومحرك حساب مواقيت الصلاة) على مشروع [al_quran_v3](https://github.com/IsmailHosenIsmailJames/al_quran_v3) للمطور **Ismail Hosen** (بارك الله في جهده).
-
-3. **مصادر الموارد القرآنية**:
-   - **التفاسير والترجمات**: [Quranic Universal Library](https://github.com/quran/quran.com-api) - مكتبة شاملة للموارد القرآنية
-   - **التلاوات الصوتية**: [EveryAyah.com](https://everyayah.com) و [Quran.com](https://quran.com) - مصادر موثوقة للتلاوات القرآنية
-   - **البيانات الوصفية**: [Tanzil Project](https://tanzil.net) - بيانات دقيقة عن السور والآيات
-
-## ⚖️ الترخيص الوقفي (Charity & License)
-
-هذا المشروع يخضع لترخيص **Apache License 2.0** مقترناً بـ **شرط وقفي قطعي الدلالة**:
-
-التطبيق وكامل المصدر البرمجي (Source Code) الخاص به متاحان كـ **"صدقة جارية"** لوجه الله تعالى عن المطور الرئيسي **إدريس غامد** وشركة **IDRISIUM Corp**.
-
-<div align="center">
-  <b style="color: red;">يُمنع منعاً باتاً وتاماً وتحت طائلة أي ظرف من الظروف بيع هذا الكود، أو طرح أي تطبيق مبني عليه بهدف التربح أو الاستخدام التجاري المغلق أو إضافة مساحات إعلانية ربحية. يجب أن تظل كافة النسخ المستنسخة منه مجانية للمسلمين 100% مع وجوب الالتزام بذكر المصدر والمطور الأصلي.</b>
-</div>
-
-لمزيد من التفاصيل المعقمة وشروط الاستخدام، يرجى مراجعة ملف حقوق الملكية والترخيص المرفق [LICENSE](LICENSE).
+```bash
+flutter analyze
+flutter test
+```
 
 ---
+
+## Data Sources
+
+- **Tafsir and translations**: [Quranic Universal Library](https://github.com/quran/quran.com-api)
+- **Recitations**: [EveryAyah.com](https://everyayah.com) and [Quran.com](https://quran.com)
+- **Quran metadata**: [Tanzil Project](https://tanzil.net)
+
+## Contributing
+
+Contributions are welcome — bug fixes, translations, design polish and tests. Please open an issue to discuss larger changes first, and keep the Waqf condition below in mind: contributions must keep the project free for everyone.
+
+---
+
+## Credits and Acknowledgments
+
+Imaanly is built on the work of several open-source developers:
+
+1. **Original application** — developed by **IDRISIUM Corp** (engineer **Idris Ghamid**), [github.com/IDRISIUM](https://github.com/IDRISIUM). Original repository: [IDRISIUMCorp/imaanly-quran-flutter-app](https://github.com/IDRISIUMCorp/imaanly-quran-flutter-app).
+2. **Uthmanic rendering** — the core [qcf_quran](https://github.com/m4hmoud-atef/qcf_quran) library by **Mahmoud Atef**, deeply reworked by Idris Ghamid in [qcf_quran_with_update](https://github.com/idris-ghamid/qcf_quran_with_update), adding the `QcfThemeData` system for dynamic light and dark colors, responsive typography, and a fix for diacritic clipping.
+3. **Foundations** — the reciter database, tafsir and translation structure, and the prayer-time engine build on [al_quran_v3](https://github.com/IsmailHosenIsmailJames/al_quran_v3) by **Ismail Hosen**.
+4. **Quranic resources** — Quranic Universal Library, EveryAyah.com, Quran.com and the Tanzil Project (see above).
+5. **Redesign and maintenance** — maintained by [Muhammad Nauman Tahir](https://github.com/muhammadnaumantahir): the emerald and gold interface, English localization, Tasbih, Verse of the Day and related improvements.
+
+---
+
+## License and Waqf Condition
+
+This project is released under the **Apache License 2.0**, together with a **Waqf (endowment) condition** set by the original developers:
+
+> The application and its complete source code are offered as **ongoing charity (sadaqah jariyah)** for the sake of Allah, on behalf of the lead developer **Idris Ghamid** and **IDRISIUM Corp**.
+>
+> **It is strictly prohibited, under any circumstances, to sell this code, or to publish any application built on it for profit, closed commercial use, or with profit-making advertising. All copies must remain 100% free for Muslims, and the original source and developer must be credited.**
+
+See the [LICENSE](LICENSE) file for the license text.
+
+---
+
 <div align="center">
 
-يقول عز وجل 
+*"Indeed, it is We who sent down the Reminder, and indeed We will be its guardian."*
 
-"إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ"
+**إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ**
+
+— Al-Hijr 15:9 (meaning)
 
 </div>
 
@@ -729,10 +241,10 @@ flutter run
 
 ## Star History
 
-<a href="https://www.star-history.com/?repos=IDRISIUMCorp%2Fimaanly-quran-flutter-app&type=date&legend=bottom-right">
+<a href="https://www.star-history.com/?repos=muhammadnaumantahir%2FImaanly&type=date&legend=bottom-right">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=IDRISIUMCorp/imaanly-quran-flutter-app&type=date&theme=dark&legend=bottom-right" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=IDRISIUMCorp/imaanly-quran-flutter-app&type=date&legend=bottom-right" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=IDRISIUMCorp/imaanly-quran-flutter-app&type=date&legend=bottom-right" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=muhammadnaumantahir/Imaanly&type=date&theme=dark&legend=bottom-right" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=muhammadnaumantahir/Imaanly&type=date&legend=bottom-right" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=muhammadnaumantahir/Imaanly&type=date&legend=bottom-right" />
  </picture>
 </a>
