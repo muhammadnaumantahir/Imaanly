@@ -43,6 +43,8 @@ class AthanFeatureCenter extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 36),
         children: [
           const HeroCard(
+            showSkyline: true,
+            padding: EdgeInsets.fromLTRB(22, 22, 22, 52),
             child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               Icon(Icons.auto_awesome_rounded, color: AppColors.gold, size: 30),
               SizedBox(height: 14),

@@ -3,6 +3,7 @@ import 'dart:ui' show FontFeature;
 
 import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:hijri/hijri_calendar.dart';
@@ -130,6 +131,19 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
     } catch (_) {}
   }
 
+  /// Sky colours (top, bottom) for the hero, based on the upcoming prayer.
+  (Color, Color) _skyColors(Prayer? p, bool isDark) => switch (p) {
+        Prayer.fajr => (const Color(0xFF1F2A6B), const Color(0xFF8E4A8F)),
+        Prayer.sunrise => (const Color(0xFF2F5FA8), const Color(0xFFD98A4E)),
+        Prayer.dhuhr => (const Color(0xFF1B78B8), const Color(0xFF14806A)),
+        Prayer.asr => (const Color(0xFF0E6E55), const Color(0xFFB9822B)),
+        Prayer.maghrib => (const Color(0xFF5B2A86), const Color(0xFFD9573A)),
+        Prayer.isha => (const Color(0xFF0B1B3D), const Color(0xFF24457E)),
+        _ => isDark
+            ? (AppColors.gradientTopDark, AppColors.gradientBottomDark)
+            : (AppColors.gradientTop, AppColors.gradientBottom),
+      };
+
   void _open(Widget page) =>
       Navigator.of(context).push(MaterialPageRoute(builder: (_) => page));
 
@@ -214,9 +228,9 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _header(cs),
+                        _header(cs).animate().fadeIn(duration: 400.ms).slideY(begin: -0.08, curve: Curves.easeOutCubic),
                         const SizedBox(height: 18),
-                        _hero(cs, isDark),
+                        _hero(cs, isDark).animate().fadeIn(duration: 550.ms, delay: 100.ms).slideY(begin: 0.06, curve: Curves.easeOutCubic),
                         const SizedBox(height: 26),
                         _SectionTitle(
                           title: "Today's prayers",
@@ -224,7 +238,7 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
                           onTap: () => _open(const PrayerTimePage()),
                         ),
                         const SizedBox(height: 10),
-                        _prayerList(cs),
+                        _prayerList(cs).animate().fadeIn(duration: 500.ms, delay: 250.ms).slideY(begin: 0.06, curve: Curves.easeOutCubic),
                         const SizedBox(height: 26),
                         _SectionTitle(
                           title: 'Quick access',
@@ -232,7 +246,7 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
                           onTap: () => _open(const AthanFeatureCenter()),
                         ),
                         const SizedBox(height: 12),
-                        _quickAccess(),
+                        _quickAccess().animate().fadeIn(duration: 500.ms, delay: 400.ms).slideY(begin: 0.06, curve: Curves.easeOutCubic),
                         const SizedBox(height: 26),
                         _SectionTitle(
                           title: 'More for your journey',
@@ -240,7 +254,7 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
                           onTap: () => _open(const AthanFeatureCenter()),
                         ),
                         const SizedBox(height: 10),
-                        _moreCard(cs),
+                        _moreCard(cs).animate().fadeIn(duration: 500.ms, delay: 550.ms).slideY(begin: 0.06, curve: Curves.easeOutCubic),
                       ],
                     ),
                   ),
@@ -342,12 +356,31 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(32),
       child: Container(
-        decoration: BoxDecoration(gradient: AppColors.heroGradient(isDark)),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [_skyColors(_next, isDark).$1, _skyColors(_next, isDark).$2],
+          ),
+        ),
         child: Stack(
           children: [
             Positioned.fill(
               child: CustomPaint(
-                painter: StarPatternPainter(Colors.white.withValues(alpha: 0.07)),
+                painter: StarPatternPainter(Colors.white.withValues(alpha: 0.05)),
+              ),
+            ),
+            if (_next == null || _next == Prayer.fajr || _next == Prayer.isha)
+              const Positioned.fill(
+                child: CustomPaint(painter: StarFieldPainter()),
+              ),
+            Positioned(
+              left: 0,
+              right: 0,
+              bottom: 0,
+              height: 96,
+              child: CustomPaint(
+                painter: MosqueSkylinePainter(Colors.black.withValues(alpha: 0.24)),
               ),
             ),
             Positioned(
@@ -368,7 +401,7 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(22),
+              padding: const EdgeInsets.fromLTRB(22, 22, 22, 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -427,7 +460,7 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
                     hasNext ? _countdown(_remaining) : 'Set your location',
                     style: const TextStyle(
                       color: onHero,
-                      fontSize: 46,
+                      fontSize: 54,
                       fontWeight: FontWeight.w300,
                       height: 1.1,
                       letterSpacing: 1,
@@ -440,7 +473,7 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
                       borderRadius: BorderRadius.circular(999),
                       child: LinearProgressIndicator(
                         value: _progress,
-                        minHeight: 6,
+                        minHeight: 8,
                         backgroundColor: Colors.white.withValues(alpha: 0.18),
                         valueColor: const AlwaysStoppedAnimation<Color>(AppColors.gold),
                       ),
@@ -511,6 +544,15 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
       decoration: BoxDecoration(
         color: isNext ? cs.primaryContainer.withValues(alpha: 0.55) : Colors.transparent,
         borderRadius: BorderRadius.circular(18),
+        boxShadow: isNext
+            ? [
+                BoxShadow(
+                  color: _skyColors(p, false).$1.withValues(alpha: 0.22),
+                  blurRadius: 18,
+                  offset: const Offset(0, 6),
+                ),
+              ]
+            : null,
       ),
       child: Row(
         children: [
@@ -518,13 +560,13 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
             width: 38,
             height: 38,
             decoration: BoxDecoration(
-              color: isNext ? cs.primary : cs.primaryContainer.withValues(alpha: 0.5),
+              color: isNext ? _skyColors(p, false).$1 : cs.primaryContainer.withValues(alpha: 0.5),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Icon(
               _icon(p),
               size: 20,
-              color: isNext ? cs.onPrimary : cs.primary,
+              color: isNext ? Colors.white : cs.primary,
             ),
           ),
           const SizedBox(width: 14),

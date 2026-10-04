@@ -16,12 +16,14 @@ class HeroCard extends StatelessWidget {
     this.padding = const EdgeInsets.all(22),
     this.radius = 28,
     this.showPattern = true,
+    this.showSkyline = false,
   });
 
   final Widget child;
   final EdgeInsetsGeometry padding;
   final double radius;
   final bool showPattern;
+  final bool showSkyline;
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +59,16 @@ class HeroCard extends StatelessWidget {
               Positioned.fill(
                 child: CustomPaint(
                   painter: StarPatternPainter(Colors.white.withValues(alpha: 0.07)),
+                ),
+              ),
+            if (showSkyline)
+              Positioned(
+                left: 0,
+                right: 0,
+                bottom: 0,
+                height: 96,
+                child: CustomPaint(
+                  painter: MosqueSkylinePainter(Colors.black.withValues(alpha: 0.22)),
                 ),
               ),
             Positioned(
@@ -195,4 +207,92 @@ class StarPatternPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant StarPatternPainter oldDelegate) =>
       oldDelegate.color != color;
+}
+
+
+/// A simple mosque silhouette (domes and minarets) drawn along the bottom edge.
+class MosqueSkylinePainter extends CustomPainter {
+  const MosqueSkylinePainter(this.color);
+
+  final Color color;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final w = size.width;
+    final h = size.height;
+    final ground = h * 0.80;
+    final path = Path()
+      ..moveTo(0, h)
+      ..lineTo(0, ground);
+
+    void minaret(double cx, double halfWidth, double height) {
+      final top = ground - height;
+      path
+        ..lineTo(cx - halfWidth, ground)
+        ..lineTo(cx - halfWidth, top)
+        ..lineTo(cx, top - h * 0.16)
+        ..lineTo(cx + halfWidth, top)
+        ..lineTo(cx + halfWidth, ground);
+    }
+
+    void dome(double cx, double radius, double drum) {
+      final base = ground - drum;
+      path
+        ..lineTo(cx - radius, ground)
+        ..lineTo(cx - radius, base)
+        ..arcToPoint(
+          Offset(cx + radius, base),
+          radius: Radius.circular(radius),
+          clockwise: true,
+        )
+        ..lineTo(cx + radius, ground);
+    }
+
+    minaret(w * 0.08, w * 0.012, h * 0.30);
+    dome(w * 0.24, w * 0.05, h * 0.06);
+    dome(w * 0.50, w * 0.11, h * 0.08);
+    dome(w * 0.76, w * 0.05, h * 0.06);
+    minaret(w * 0.92, w * 0.012, h * 0.30);
+
+    path
+      ..lineTo(w, ground)
+      ..lineTo(w, h)
+      ..close();
+    canvas.drawPath(path, Paint()..color = color);
+  }
+
+  @override
+  bool shouldRepaint(covariant MosqueSkylinePainter oldDelegate) =>
+      oldDelegate.color != color;
+}
+
+/// Deterministic scatter of small stars for night-time skies.
+class StarFieldPainter extends CustomPainter {
+  const StarFieldPainter({this.count = 30});
+
+  final int count;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    var seed = 7;
+    double next() {
+      seed = (seed * 48271) % 2147483647;
+      return seed / 2147483647;
+    }
+
+    for (var i = 0; i < count; i++) {
+      final x = next() * size.width;
+      final y = next() * size.height * 0.6;
+      final radius = 0.6 + next() * 1.2;
+      final alpha = 0.35 + next() * 0.55;
+      canvas.drawCircle(
+        Offset(x, y),
+        radius,
+        Paint()..color = Colors.white.withValues(alpha: alpha),
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant StarFieldPainter oldDelegate) => false;
 }
