@@ -461,10 +461,16 @@ class _QiblaDirectionState extends State<QiblaDirection> {
             color: isDark ? const Color(0xFF11332A) : Colors.white,
             borderRadius: BorderRadius.circular(32),
             border: Border.all(
-              color: statusColor.withValues(alpha: 0.2),
-              width: 2,
+              color: statusColor.withValues(alpha: guidance.isAligned ? 0.85 : 0.2),
+              width: guidance.isAligned ? 3 : 2,
             ),
             boxShadow: [
+              if (guidance.isAligned)
+                BoxShadow(
+                  color: statusColor.withValues(alpha: 0.35),
+                  blurRadius: 36,
+                  spreadRadius: 2,
+                ),
               BoxShadow(
                 color: isDark ? Colors.black.withValues(alpha: 0.3) : Colors.black.withValues(alpha: 0.08),
                 blurRadius: 20,
@@ -498,7 +504,9 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                     ),
                     
                     // Center Kaaba Icon
-                    Container(
+                    AnimatedContainer(
+                      duration: const Duration(milliseconds: 350),
+                      curve: Curves.easeOutCubic,
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: statusColor.withValues(alpha: 0.15),
@@ -509,8 +517,9 @@ class _QiblaDirectionState extends State<QiblaDirection> {
                         ),
                         boxShadow: [
                           BoxShadow(
-                            color: statusColor.withValues(alpha: 0.3),
-                            blurRadius: 12,
+                            color: statusColor.withValues(alpha: guidance.isAligned ? 0.55 : 0.3),
+                            blurRadius: guidance.isAligned ? 30 : 12,
+                            spreadRadius: guidance.isAligned ? 4 : 0,
                           ),
                         ],
                       ),
