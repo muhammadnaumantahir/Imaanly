@@ -10,6 +10,7 @@ import '../../../src/screen/azkar/azkar_categories_screen.dart';
 import '../../../src/screen/qibla/qibla_direction.dart';
 import '../../../src/theme/app_colors.dart';
 import '../../../src/theme/app_widgets.dart';
+import '../../tasbih/presentation/tasbih_screen.dart';
 
 class AthanFeatureCenter extends StatelessWidget {
   const AthanFeatureCenter({super.key});
@@ -25,7 +26,8 @@ class AthanFeatureCenter extends StatelessWidget {
       ]),
       _FeatureGroup('Quran & remembrance', Icons.auto_stories_rounded, [
         _Feature('Holy Quran', 'Read, listen, bookmark and study', Icons.menu_book_rounded, const QuranReaderScreen()),
-        _Feature('Dhikr & Tasbih', 'Daily remembrance and counter', Icons.fingerprint_rounded, const AzkarCategoriesScreen()),
+        _Feature('Digital Tasbih', 'Tap to count with progress and totals', Icons.fingerprint_rounded, const TasbihScreen()),
+        _Feature('Azkar & Dhikr', 'Daily remembrance from the Muslim Adhkar', Icons.auto_stories_rounded, const AzkarCategoriesScreen()),
         _Feature('99 Names of Allah', 'Learn and reflect on the Names', Icons.favorite_outline_rounded, const NamesOfAllahScreen()),
         _Feature('Daily goals', 'Build a consistent worship routine', Icons.flag_outlined, const DailyGoalsScreen()),
       ]),

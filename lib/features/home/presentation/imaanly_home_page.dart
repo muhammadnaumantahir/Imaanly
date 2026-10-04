@@ -11,6 +11,9 @@ import 'package:intl/intl.dart';
 
 import '../../ath_an/presentation/athan_feature_center.dart';
 import '../../goals/presentation/daily_goals_screen.dart';
+import '../../islamic_calendar/presentation/islamic_calendar_screen.dart';
+import '../../tasbih/presentation/tasbih_screen.dart';
+import 'widgets/next_islamic_event_card.dart';
 import '../../../src/features/quran/presentation/quran_reader_screen.dart';
 import '../../../src/screen/azkar/azkar_categories_screen.dart';
 import '../../../src/screen/location_handler/model/location_data_qibla_data_state.dart';
@@ -247,6 +250,17 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
                         ),
                         const SizedBox(height: 12),
                         _quickAccess().animate().fadeIn(duration: 500.ms, delay: 400.ms).slideY(begin: 0.06, curve: Curves.easeOutCubic),
+                        const SizedBox(height: 26),
+                        _SectionTitle(
+                          title: 'Coming up',
+                          action: 'Calendar',
+                          onTap: () => _open(const IslamicCalendarScreen()),
+                        ),
+                        const SizedBox(height: 10),
+                        NextIslamicEventCard(
+                          now: _now,
+                          onTap: () => _open(const IslamicCalendarScreen()),
+                        ).animate().fadeIn(duration: 500.ms, delay: 500.ms).slideY(begin: 0.06, curve: Curves.easeOutCubic),
                         const SizedBox(height: 26),
                         _SectionTitle(
                           title: 'More for your journey',
@@ -621,8 +635,8 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
     final items = <_QuickItem>[
       _QuickItem('Quran', Icons.menu_book_rounded, () => _open(const QuranReaderScreen())),
       _QuickItem('Qibla', Icons.explore_rounded, () => _open(const QiblaDirection())),
-      _QuickItem('Dhikr', Icons.fingerprint_rounded, () => _open(const AzkarCategoriesScreen())),
-      _QuickItem('Goals', Icons.flag_rounded, () => _open(const DailyGoalsScreen())),
+      _QuickItem('Tasbih', Icons.fingerprint_rounded, () => _open(const TasbihScreen())),
+      _QuickItem('Azkar', Icons.auto_stories_rounded, () => _open(const AzkarCategoriesScreen())),
     ];
     return Row(
       children: [
@@ -648,20 +662,20 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
             Icons.calendar_month_rounded,
             'Islamic calendar',
             'Hijri dates and events',
-            () => _open(const AthanFeatureCenter()),
+            () => _open(const IslamicCalendarScreen()),
           ),
           const Divider(height: 22),
           _MoreRow(
-            Icons.calculate_rounded,
-            'Zakat calculator',
-            'Estimate your annual Zakat',
-            () => _open(const AthanFeatureCenter()),
+            Icons.flag_rounded,
+            'Daily goals',
+            'Set small, steady worship targets',
+            () => _open(const DailyGoalsScreen()),
           ),
           const Divider(height: 22),
           _MoreRow(
-            Icons.mosque_rounded,
-            'Mosque & Halal finder',
-            'Find nearby places',
+            Icons.grid_view_rounded,
+            'Zakat, mosques & more',
+            'Everything in Explore',
             () => _open(const AthanFeatureCenter()),
           ),
         ],
