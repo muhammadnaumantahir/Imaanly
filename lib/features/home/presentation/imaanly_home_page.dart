@@ -14,6 +14,7 @@ import '../../goals/presentation/daily_goals_screen.dart';
 import '../../islamic_calendar/presentation/islamic_calendar_screen.dart';
 import '../../tasbih/presentation/tasbih_screen.dart';
 import 'widgets/next_islamic_event_card.dart';
+import 'widgets/verse_of_the_day_card.dart';
 import '../../../src/features/quran/presentation/quran_reader_screen.dart';
 import '../../../src/screen/azkar/azkar_categories_screen.dart';
 import '../../../src/screen/location_handler/model/location_data_qibla_data_state.dart';
@@ -242,6 +243,11 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
                         ),
                         const SizedBox(height: 10),
                         _prayerList(cs).animate().fadeIn(duration: 500.ms, delay: 250.ms).slideY(begin: 0.06, curve: Curves.easeOutCubic),
+                        const SizedBox(height: 26),
+                        VerseOfTheDayCard(
+                          now: _now,
+                          onOpenQuran: () => _open(const QuranReaderScreen()),
+                        ).animate().fadeIn(duration: 500.ms, delay: 330.ms).slideY(begin: 0.06, curve: Curves.easeOutCubic),
                         const SizedBox(height: 26),
                         _SectionTitle(
                           title: 'Quick access',
