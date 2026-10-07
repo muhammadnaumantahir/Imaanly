@@ -11,6 +11,7 @@ import '../../../src/screen/qibla/qibla_direction.dart';
 import '../../../src/theme/app_colors.dart';
 import '../../../src/theme/app_widgets.dart';
 import '../../tasbih/presentation/tasbih_screen.dart';
+import '../../prayer_tracker/presentation/prayer_tracker_screen.dart';
 
 class AthanFeatureCenter extends StatelessWidget {
   const AthanFeatureCenter({super.key});
@@ -91,12 +92,6 @@ class _FeatureTile extends StatelessWidget {
       ]),
     );
   }
-}
-
-class PrayerTrackerScreen extends StatefulWidget { const PrayerTrackerScreen({super.key}); @override State<PrayerTrackerScreen> createState() => _PrayerTrackerScreenState(); }
-class _PrayerTrackerScreenState extends State<PrayerTrackerScreen> {
-  final _names = const ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha']; final _done = <bool>[false, false, false, false, false];
-  @override Widget build(BuildContext context) { final completed = _done.where((e) => e).length; return Scaffold(appBar: AppBar(title: const Text('Prayer tracker')), body: ListView(padding: const EdgeInsets.all(16), children: [Card(child: Padding(padding: const EdgeInsets.all(22), child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [Text('$completed of 5 prayers completed', style: const TextStyle(fontSize: 21, fontWeight: FontWeight.w800)), const SizedBox(height: 12), LinearProgressIndicator(value: completed / 5), const SizedBox(height: 8), Text('Keep your daily Salah streak going.', style: TextStyle(color: Theme.of(context).colorScheme.onSurfaceVariant))]))), const SizedBox(height: 12), for (var i = 0; i < _names.length; i++) Card(child: CheckboxListTile(value: _done[i], onChanged: (v) => setState(() => _done[i] = v ?? false), title: Text(_names[i], style: const TextStyle(fontWeight: FontWeight.w700)), subtitle: const Text('Today'), secondary: Icon(_done[i] ? Icons.check_circle_rounded : Icons.radio_button_unchecked_rounded))) ])); }
 }
 
 class ZakatCalculatorScreen extends StatefulWidget { const ZakatCalculatorScreen({super.key}); @override State<ZakatCalculatorScreen> createState() => _ZakatCalculatorScreenState(); }

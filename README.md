@@ -55,6 +55,8 @@ Then reference them here, e.g. <img src="docs/screenshots/home.png" width="22%" 
 - **Next-prayer hero** with a live countdown, progress bar, Hijri date and a sky that changes with the upcoming prayer (dawn, midday, afternoon, sunset, night with stars) over a mosque skyline.
 - **Today's prayers** timeline with the next prayer highlighted and passed prayers checked.
 - **Verse of the Day** — a rotating well-known ayah, shown with its reference; tap to enlarge, copy or open the Quran.
+- **Prayer check-offs** — tick each prayer right from the home list; progress is saved and shown as "3/5".
+- **Ramadan mode** — during Ramadan, a Suhoor-ends / Iftar countdown appears automatically.
 - **Quick access** to Quran, Qibla, Tasbih and Azkar.
 - **Coming up** — countdown to the next major Islamic date (Islamic New Year, Ashura, Ramadan, Eid al-Fitr, Arafah, Eid al-Adha). Dates follow the calculated Hijri calendar, so local moon sighting may differ by a day.
 
@@ -89,7 +91,8 @@ Share an ayah as text or as a customizable, designed image.
 ### Prayer, Qibla and Worship
 - **Accurate prayer times** from your location with several calculation methods (default **Karachi, Hanafi Asr**) and adjustable adhan and iqama timing.
 - **Qibla compass** with a gold-ringed dial, distance to the Kaaba, calibration help and a glow when you are aligned.
-- **Digital Tasbih** with six dhikr, targets of 33, 99, 100 or none, round counting, vibration feedback, daily and all-time totals, undo and reset.
+- **Prayer Tracker** — a saved record of your five daily prayers with current and best streaks, a 14-day history, and the ability to fill in missed days.
+- **Digital Tasbih** with six dhikr, targets of 33, 99, 100 or none, round counting, vibration feedback, daily and all-time totals, a 7-day chart with streak, undo and reset.
 - **Azkar** — morning, evening, sleep, prayer and more, each with a ring-style counter and references.
 - **Sunnah guides** for prayer and wudu with evidence and scholars' statements.
 - **Islamic calendar**, **prayer tracker**, **fasting tools**, **Zakat calculator**, **99 Names of Allah** and a **Hajj & Umrah** guide.

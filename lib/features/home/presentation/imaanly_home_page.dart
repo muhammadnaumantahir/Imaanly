@@ -3,6 +3,7 @@ import 'dart:ui' show FontFeature;
 
 import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geocoding/geocoding.dart';
@@ -13,7 +14,10 @@ import '../../ath_an/presentation/athan_feature_center.dart';
 import '../../goals/presentation/daily_goals_screen.dart';
 import '../../islamic_calendar/presentation/islamic_calendar_screen.dart';
 import '../../tasbih/presentation/tasbih_screen.dart';
+import '../../prayer_tracker/data/prayer_tracker_store.dart';
+import '../../prayer_tracker/presentation/prayer_tracker_screen.dart';
 import 'widgets/next_islamic_event_card.dart';
+import 'widgets/ramadan_card.dart';
 import 'widgets/verse_of_the_day_card.dart';
 import '../../../src/features/quran/presentation/quran_reader_screen.dart';
 import '../../../src/screen/azkar/azkar_categories_screen.dart';
@@ -69,6 +73,7 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
   @override
   void initState() {
     super.initState();
+    PrayerTrackerStore.instance.load();
     _refresh();
     _timer = Timer.periodic(const Duration(seconds: 1), (_) {
       if (!mounted) return;
@@ -236,10 +241,19 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
                         const SizedBox(height: 18),
                         _hero(cs, isDark).animate().fadeIn(duration: 550.ms, delay: 100.ms).slideY(begin: 0.06, curve: Curves.easeOutCubic),
                         const SizedBox(height: 26),
+                        if (HijriCalendar.fromDate(_now).hMonth == 9) ...[
+                          RamadanCard(
+                            now: _now,
+                            fajr: _timeOf(Prayer.fajr),
+                            maghrib: _timeOf(Prayer.maghrib),
+                            day: HijriCalendar.fromDate(_now).hDay,
+                          ),
+                          const SizedBox(height: 22),
+                        ],
                         _SectionTitle(
-                          title: "Today's prayers",
-                          action: 'View all',
-                          onTap: () => _open(const PrayerTimePage()),
+                          title: "Today's prayers \u2022 ${PrayerTrackerStore.instance.doneCount(_now)}/5",
+                          action: 'Tracker',
+                          onTap: () => _open(const PrayerTrackerScreen()),
                         ),
                         const SizedBox(height: 10),
                         _prayerList(cs).animate().fadeIn(duration: 500.ms, delay: 250.ms).slideY(begin: 0.06, curve: Curves.easeOutCubic),
@@ -552,6 +566,32 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
     );
   }
 
+  Widget _checkDot(ColorScheme cs, Prayer p) {
+    final index = _prayers.indexOf(p);
+    if (index < 0) return const SizedBox.shrink();
+    final store = PrayerTrackerStore.instance;
+    final done = store.isDone(_now, index);
+    return InkResponse(
+      radius: 22,
+      onTap: () {
+        HapticFeedback.selectionClick();
+        store.toggle(_now, index);
+        setState(() {});
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 220),
+        width: 26,
+        height: 26,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: done ? cs.primary : Colors.transparent,
+          border: Border.all(color: done ? cs.primary : cs.outline.withValues(alpha: 0.7), width: 1.6),
+        ),
+        child: done ? Icon(Icons.check_rounded, size: 16, color: cs.onPrimary) : null,
+      ),
+    );
+  }
+
   Widget _prayerRow(ColorScheme cs, Prayer p) {
     final time = _timeOf(p);
     final isNext = p == _next;
@@ -632,6 +672,8 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
               fontFeatures: const [FontFeature.tabularFigures()],
             ),
           ),
+          const SizedBox(width: 12),
+          _checkDot(cs, p),
         ],
       ),
     );

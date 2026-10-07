@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ui' show FontFeature;
 
 import 'package:flutter/material.dart';
@@ -42,6 +43,7 @@ class _TasbihScreenState extends State<TasbihScreen> {
   final List<int> _counts = List<int>.filled(_dhikrList.length, 0);
   int _today = 0;
   int _lifetime = 0;
+  final Map<String, int> _history = {};
   bool _haptics = true;
   bool _pressed = false;
 
@@ -71,6 +73,15 @@ class _TasbihScreenState extends State<TasbihScreen> {
       _today = prefs.getString('tasbih_today_date') == _todayStamp
           ? (prefs.getInt('tasbih_today_count') ?? 0)
           : 0;
+      final rawHistory = prefs.getString('tasbih_history');
+      if (rawHistory != null) {
+        try {
+          final map = jsonDecode(rawHistory) as Map<String, dynamic>;
+          map.forEach((k, v) {
+            if (v is int) _history[k] = v;
+          });
+        } catch (_) {}
+      }
     });
   }
 
@@ -84,6 +95,36 @@ class _TasbihScreenState extends State<TasbihScreen> {
     await prefs.setInt('tasbih_count_$_index', _counts[_index]);
     await prefs.setString('tasbih_today_date', _todayStamp);
     await prefs.setInt('tasbih_today_count', _today);
+    _history[_histKey(DateTime.now())] = _today;
+    if (_history.length > 60) {
+      final keys = _history.keys.toList()..sort();
+      for (final k in keys.take(_history.length - 60)) {
+        _history.remove(k);
+      }
+    }
+    await prefs.setString('tasbih_history', jsonEncode(_history));
+  }
+
+  String _histKey(DateTime d) =>
+      '${d.year}-${d.month.toString().padLeft(2, '0')}-${d.day.toString().padLeft(2, '0')}';
+
+  int _countOn(DateTime d) {
+    final key = _histKey(d);
+    final now = DateTime.now();
+    if (key == _histKey(now)) return _today;
+    return _history[key] ?? 0;
+  }
+
+  int get _streak {
+    final now = DateTime.now();
+    var day = DateTime(now.year, now.month, now.day);
+    if (_countOn(day) == 0) day = DateTime(day.year, day.month, day.day - 1);
+    var streak = 0;
+    while (_countOn(day) > 0) {
+      streak++;
+      day = DateTime(day.year, day.month, day.day - 1);
+    }
+    return streak;
   }
 
   int get _count => _counts[_index];
@@ -303,6 +344,18 @@ class _TasbihScreenState extends State<TasbihScreen> {
               ],
             ),
             const SizedBox(height: 14),
+            _HistoryCard(
+              values: [
+                for (var i = 6; i >= 0; i--)
+                  _countOn(DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - i)),
+              ],
+              weekdays: [
+                for (var i = 6; i >= 0; i--)
+                  DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day - i).weekday,
+              ],
+              streak: _streak,
+            ),
+            const SizedBox(height: 14),
             Row(
               children: [
                 Expanded(
@@ -351,6 +404,83 @@ class _StatCard extends StatelessWidget {
                 Text(label, style: TextStyle(color: cs.onSurfaceVariant, fontSize: 12, fontWeight: FontWeight.w600)),
                 const SizedBox(height: 2),
                 Text('$value', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+class _HistoryCard extends StatelessWidget {
+  const _HistoryCard({required this.values, required this.weekdays, required this.streak});
+
+  final List<int> values;
+  final List<int> weekdays;
+  final int streak;
+
+  static const List<String> _letters = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+    final maxValue = values.fold<int>(1, (a, b) => b > a ? b : a);
+    return SoftCard(
+      padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              const Text('Last 7 days', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 15)),
+              const Spacer(),
+              Icon(Icons.local_fire_department_rounded, size: 18, color: streak > 0 ? AppColors.goldDeep : cs.outline),
+              const SizedBox(width: 4),
+              Text(
+                streak == 1 ? '1 day streak' : '$streak day streak',
+                style: TextStyle(color: cs.onSurfaceVariant, fontWeight: FontWeight.w700, fontSize: 12.5),
+              ),
+            ],
+          ),
+          const SizedBox(height: 14),
+          SizedBox(
+            height: 96,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                for (var i = 0; i < values.length; i++)
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          values[i] == 0 ? '' : '${values[i]}',
+                          style: TextStyle(fontSize: 10, color: cs.onSurfaceVariant, fontWeight: FontWeight.w700),
+                        ),
+                        const SizedBox(height: 3),
+                        AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          width: 20,
+                          height: values[i] == 0 ? 4 : 8 + 52 * values[i] / maxValue,
+                          decoration: BoxDecoration(
+                            color: i == values.length - 1 ? cs.primary : cs.primary.withValues(alpha: 0.35),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        const SizedBox(height: 6),
+                        Text(
+                          _letters[weekdays[i] - 1],
+                          style: TextStyle(
+                            fontSize: 11,
+                            fontWeight: i == values.length - 1 ? FontWeight.w800 : FontWeight.w600,
+                            color: i == values.length - 1 ? cs.primary : cs.onSurfaceVariant,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
               ],
             ),
           ),
