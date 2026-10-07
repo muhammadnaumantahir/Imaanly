@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:home_widget/home_widget.dart';
@@ -195,6 +196,10 @@ class AyahOfTheDayService {
   }
 
   static Future<void> updateWidget({bool forceRefresh = false}) async {
+    if (kIsWeb) {
+      debugPrint('HomeWidget not supported on web');
+      return;
+    }
     await HomeWidget.setAppGroupId(appGroupId);
     final box = Hive.box("user");
     

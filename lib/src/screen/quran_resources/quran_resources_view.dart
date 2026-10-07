@@ -89,26 +89,31 @@ class _QuranResourcesViewState extends State<QuranResourcesView>
               ),
               centerTitle: true,
               flexibleSpace: FlexibleSpaceBar(
-                background: Padding(
-                  padding: EdgeInsets.only(
-                    top: kToolbarHeight + MediaQuery.of(context).padding.top + 12.h,
-                    left: 20.w,
-                    right: 20.w,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Choose the resources you need and download them to your device",
-                        style: TextStyle(
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.w500,
-                          color: textSub,
-                          height: 1.5,
+                background: LayoutBuilder(
+                  builder: (context, constraints) {
+                    final top = constraints.maxHeight > kToolbarHeight + 24
+                        ? kToolbarHeight + 12.h
+                        : constraints.maxHeight * 0.5;
+                    return Padding(
+                      padding: EdgeInsets.only(
+                        top: top,
+                        left: 20.w,
+                        right: 20.w,
+                      ),
+                      child: Align(
+                        alignment: Alignment.bottomLeft,
+                        child: Text(
+                          "Choose the resources you need and download them to your device",
+                          style: TextStyle(
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.w500,
+                            color: textSub,
+                            height: 1.5,
+                          ),
                         ),
                       ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               ),
               bottom: PreferredSize(
