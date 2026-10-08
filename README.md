@@ -214,11 +214,13 @@ Imaanly is built on the work of several open-source developers:
 2. **Uthmanic rendering** — the core [qcf_quran](https://github.com/m4hmoud-atef/qcf_quran) library by **Mahmoud Atef**, deeply reworked by Idris Ghamid in [qcf_quran_with_update](https://github.com/idris-ghamid/qcf_quran_with_update), adding the `QcfThemeData` system for dynamic light and dark colors, responsive typography, and a fix for diacritic clipping.
 3. **Foundations** — the reciter database, tafsir and translation structure, and the prayer-time engine build on [al_quran_v3](https://github.com/IsmailHosenIsmailJames/al_quran_v3) by **Ismail Hosen**.
 4. **Quranic resources** — Quranic Universal Library, EveryAyah.com, Quran.com and the Tanzil Project (see above).
-5. **Redesign and maintenance** — maintained by [Muhammad Nauman Tahir](https://github.com/muhammadnaumantahir): the emerald and gold interface, English localization, Tasbih, Verse of the Day and related improvements.
+5. **Redesign and maintenance** — by **RumiTech Solution**: the emerald and gold interface, English localization, Prayer Tracker, Tasbih, Verse of the Day and related improvements.
 
 ---
 
 ## License and Waqf Condition
+
+© 2026 RumiTech Solution (redesign and new features). Original work by IDRISIUM Corp, used under the license below.
 
 This project is released under the **Apache License 2.0**, together with a **Waqf (endowment) condition** set by the original developers:
 

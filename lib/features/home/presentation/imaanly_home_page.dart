@@ -19,7 +19,7 @@ import '../../prayer_tracker/presentation/prayer_tracker_screen.dart';
 import 'widgets/next_islamic_event_card.dart';
 import 'widgets/ramadan_card.dart';
 import 'widgets/verse_of_the_day_card.dart';
-import '../../../src/features/quran/presentation/quran_reader_screen.dart';
+import 'package:imaanly/src/screen/mushaf/mushaf_screen.dart';
 import '../../../src/screen/azkar/azkar_categories_screen.dart';
 import '../../../src/screen/location_handler/model/location_data_qibla_data_state.dart';
 import '../../../src/screen/prayer_time/prayer_time_page.dart';
@@ -260,7 +260,7 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
                         const SizedBox(height: 26),
                         VerseOfTheDayCard(
                           now: _now,
-                          onOpenQuran: () => _open(const QuranReaderScreen()),
+                          onOpenQuran: () => _open(const MushafScreen()),
                         ).animate().fadeIn(duration: 500.ms, delay: 330.ms).slideY(begin: 0.06, curve: Curves.easeOutCubic),
                         const SizedBox(height: 26),
                         _SectionTitle(
@@ -323,7 +323,7 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
           ),
         ],
         onDestinationSelected: (i) {
-          if (i == 1) _open(const QuranReaderScreen());
+          if (i == 1) _open(const MushafScreen());
           if (i == 2) _open(const PrayerTimePage());
           if (i == 3) _open(const AthanFeatureCenter());
         },
@@ -681,7 +681,7 @@ class _ImaanlyHomePageState extends State<ImaanlyHomePage> {
 
   Widget _quickAccess() {
     final items = <_QuickItem>[
-      _QuickItem('Quran', Icons.menu_book_rounded, () => _open(const QuranReaderScreen())),
+      _QuickItem('Quran', Icons.menu_book_rounded, () => _open(const MushafScreen())),
       _QuickItem('Qibla', Icons.explore_rounded, () => _open(const QiblaDirection())),
       _QuickItem('Tasbih', Icons.fingerprint_rounded, () => _open(const TasbihScreen())),
       _QuickItem('Azkar', Icons.auto_stories_rounded, () => _open(const AzkarCategoriesScreen())),

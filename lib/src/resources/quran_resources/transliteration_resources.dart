@@ -4,7 +4,7 @@ Map<String, List<Map<String, dynamic>>> transliterationResources = {
   "ayah": [
     {
       "language": "Arabic",
-      "name": "Latin pronunciation of ayahs",
+      "name": "Latin pronunciation of ayat",
       "description": "Full Latin-letter pronunciation of each ayah",
       "totalEntries": 6236,
       "score": 100,

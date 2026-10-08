@@ -70,7 +70,7 @@ Future<void> showStarredSheet({
                         child: starred.isEmpty
                             ? const Center(
                                 child: Text(
-                                  "No starred ayahs",
+                                  "No starred ayat",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w800,
                                     color: AppColors.lightTextMuted,

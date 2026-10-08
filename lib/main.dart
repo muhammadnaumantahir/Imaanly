@@ -205,8 +205,14 @@ class MyApp extends StatelessWidget {
         ],
         child: BlocBuilder<LanguageCubit, MyAppLocalization>(
           builder: (context, languageState) => BlocBuilder<ThemeCubit, ThemeState>(
-            builder: (context, themeState) => ScreenUtilInit(
-              designSize: const Size(360, 690),
+            builder: (context, themeState) => LayoutBuilder(
+          builder: (context, constraints) {
+            // On wide windows (web, tablets) cap the scale so text and spacing stay phone-sized.
+            final wide = constraints.maxWidth > 600;
+            return ScreenUtilInit(
+              designSize: wide
+                  ? Size(constraints.maxWidth / 1.3, constraints.maxHeight / 1.3)
+                  : const Size(360, 690),
               minTextAdapt: true,
               splitScreenMode: true,
               builder: (_, child) => MaterialApp(
@@ -219,14 +225,49 @@ class MyApp extends StatelessWidget {
                 theme: AppTheme.lightTheme().copyWith(pageTransitionsTheme: pageTransitionsTheme, textTheme: getTextTheme(languageState.locale, false)),
                 darkTheme: AppTheme.darkTheme().copyWith(pageTransitionsTheme: pageTransitionsTheme, textTheme: getTextTheme(languageState.locale, true)),
                 themeMode: themeState.themeMode,
-                builder: (context, child) => _FullscreenEnforcer(child: _AudioPlayerBridgeBinder(child: child ?? const SizedBox.shrink())),
+                builder: (context, child) => _WebFrame(child: _FullscreenEnforcer(child: _AudioPlayerBridgeBinder(child: child ?? const SizedBox.shrink()))),
                 scrollBehavior: AppScrollBehavior(),
                 home: const ImaanlyHomeShell(),
               ),
-            ),
+            );
+          },
+        ),
           ),
         ),
       ),
+    );
+  }
+}
+
+/// On wide windows (web or desktop preview) shows the app in a centered
+/// phone-width column, so layouts look the way they do on a phone.
+class _WebFrame extends StatelessWidget {
+  const _WebFrame({required this.child});
+
+  final Widget child;
+
+  static const double _maxWidth = 520;
+
+  @override
+  Widget build(BuildContext context) {
+    if (!kIsWeb) return child;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth <= _maxWidth + 80) return child;
+        final media = MediaQuery.of(context);
+        return ColoredBox(
+          color: Theme.of(context).colorScheme.surfaceContainerLowest,
+          child: Center(
+            child: SizedBox(
+              width: _maxWidth,
+              child: MediaQuery(
+                data: media.copyWith(size: Size(_maxWidth, constraints.maxHeight)),
+                child: child,
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }

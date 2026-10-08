@@ -180,7 +180,7 @@ class OfflineAudioService {
         ));
       }
 
-      final errorMsg = skipped404 > 0 ? "Skipped $skipped404 unavailable ayahs" : null;
+      final errorMsg = skipped404 > 0 ? "Skipped $skipped404 unavailable ayat" : null;
       controller.add(SurahDownloadProgress(
         surahNumber: surahNumber,
         totalAyahs: totalAyahs,

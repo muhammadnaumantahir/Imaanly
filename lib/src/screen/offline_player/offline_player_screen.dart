@@ -265,7 +265,7 @@ class _OfflinePlayerScreenState extends State<OfflinePlayerScreen>
                     const Gap(2),
                     Text(
                       isFullyDownloaded
-                          ? "${info.ayahCount} ayahs · ${OfflineAudioService.formatBytes(info.sizeBytes)}"
+                          ? "${info.ayahCount} ayat · ${OfflineAudioService.formatBytes(info.sizeBytes)}"
                           : "Incomplete (${info.ayahCount}/$ayahCount)",
                       style: TextStyle(
                         fontSize: 11,

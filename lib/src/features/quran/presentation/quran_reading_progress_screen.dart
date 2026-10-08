@@ -74,7 +74,7 @@ class _QuranReadingProgressView extends StatelessWidget {
                     const SizedBox(height: 16),
                     Text('${state.pagesToday} pages', style: Theme.of(context).textTheme.displaySmall?.copyWith(fontWeight: FontWeight.w800)),
                     const SizedBox(height: 4),
-                    Text('${state.ayahsToday} ayahs • ${state.formattedTimeToday}'),
+                    Text('${state.ayahsToday} ayat • ${state.formattedTimeToday}'),
                     if (state.hasGoal) ...[
                       const SizedBox(height: 18),
                       LinearProgressIndicator(value: state.goalProgress),
@@ -94,7 +94,7 @@ class _QuranReadingProgressView extends StatelessWidget {
                 Expanded(child: _MetricCard(label: 'All-time pages', value: '${state.totalPagesAllTime}', icon: Icons.menu_book_outlined)),
               ]),
               const SizedBox(height: 12),
-              _MetricCard(label: 'All-time ayahs', value: '${state.totalAyahsAllTime}', icon: Icons.format_list_numbered_outlined),
+              _MetricCard(label: 'All-time ayat', value: '${state.totalAyahsAllTime}', icon: Icons.format_list_numbered_outlined),
               const SizedBox(height: 20),
               Card(
                 child: Padding(

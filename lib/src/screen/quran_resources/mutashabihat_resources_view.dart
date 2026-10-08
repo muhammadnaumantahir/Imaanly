@@ -174,7 +174,7 @@ class _MutashabihatResourcesViewState
         return ManagedResourcesCatalog(
           title: "Manage mutashabihat",
           description:
-              "Ayahs similar in meaning or wording — enable more than one source to compare.",
+              "Ayat similar in meaning or wording — enable more than one source to compare.",
           emptyMessage: "No mutashabihat.",
           activationBehavior: ResourceActivationBehavior.multi,
           items: _buildItems(state),

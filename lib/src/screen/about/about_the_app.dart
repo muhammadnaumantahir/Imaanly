@@ -7,8 +7,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:simple_icons/simple_icons.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class AboutAppPage extends StatefulWidget {
   const AboutAppPage({super.key});
@@ -234,82 +232,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
                     
                     const Gap(24),
                     
-                    // ── GitHub Repo Button ──
-                    InkWell(
-                      onTap: () => launchUrl(
-                        Uri.parse("https://github.com/IDRISIUMCorp/imaanly-quran-flutter-app"),
-                        mode: LaunchMode.externalApplication,
-                      ),
-                      borderRadius: BorderRadius.circular(24),
-                      child: Container(
-                        width: double.infinity,
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [
-                              isDark ? const Color(0xFF17392F) : const Color(0xFFFFFFFF),
-                              isDark ? const Color(0xFF11332A) : const Color(0xFFE3EEE8),
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.circular(24),
-                          border: Border.all(
-                            color: isDark ? Colors.white12 : Colors.black12,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withValues(alpha: isDark ? 0.4 : 0.05),
-                              blurRadius: 20,
-                              offset: const Offset(0, 10),
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: isDark ? Colors.white10 : Colors.black.withValues(alpha: 0.05),
-                              ),
-                              child: Icon(SimpleIcons.github, color: isDark ? Colors.white : Colors.black, size: 30),
-                            ),
-                            const Gap(16),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Open source code",
-                                    style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.w900,
-                                      color: isDark ? Colors.white : Colors.black,
-                                    ),
-                                  ),
-                                  Text(
-                                    "GitHub Repository",
-                                    style: TextStyle(
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w600,
-                                      letterSpacing: 1.1,
-                                      color: isDark ? Colors.white60 : Colors.black54,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              color: isDark ? Colors.white38 : Colors.black38,
-                              size: 18,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ).animate().slideY(begin: 0.2).fadeIn(delay: const Duration(milliseconds: 100), duration: const Duration(milliseconds: 500)),
+.animate().slideY(begin: 0.2).fadeIn(delay: const Duration(milliseconds: 100), duration: const Duration(milliseconds: 500)),
 
                     const Gap(32),
 
@@ -344,7 +267,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
                       title: "Audio & recitation",
                       items: [
                         "40+ verified reciters",
-                        "Recite ayahs or words with smart selection",
+                        "Recite ayat or words with smart selection",
                         "Download audio to use offline",
                       ],
                       primary: primary,
@@ -356,7 +279,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
                       title: "Resources & tafsirs",
                       items: [
                         "Multiple tafsirs (Muyassar, Ibn Kathir for specialists)",
-                        "Complete grammatical analysis of the ayahs",
+                        "Complete grammatical analysis of the ayat",
                         "Translations in many living languages",
                       ],
                       primary: primary,
@@ -365,8 +288,8 @@ class _AboutAppPageState extends State<AboutAppPage> {
 
                     const Gap(40),
 
-                    // ── Idrisium Developer Card ──
-                    _buildDeveloperCard(themeState, isDark),
+                    // ── Credits ──
+                    _buildCreditsCard(themeState, isDark),
 
                     const Gap(40),
 
@@ -483,184 +406,49 @@ class _AboutAppPageState extends State<AboutAppPage> {
     ).animate().slideY(begin: 0.1).fadeIn(duration: const Duration(milliseconds: 500));
   }
 
-  Widget _buildDeveloperCard(ThemeState themeState, bool isDark) {
+  Widget _buildCreditsCard(ThemeState themeState, bool isDark) {
+    final primary = themeState.primary;
+    final muted = isDark ? Colors.white60 : Colors.black54;
     return Container(
-      padding: const EdgeInsets.all(28),
+      width: double.infinity,
+      padding: const EdgeInsets.all(22),
       decoration: BoxDecoration(
-        color: isDark ? const Color(0xFF0A241C) : Colors.white,
-        borderRadius: BorderRadius.circular(32),
-        border: Border.all(
-          color: themeState.primary.withValues(alpha: 0.2),
-          width: 1.5,
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: themeState.primary.withValues(alpha: 0.08),
-            blurRadius: 30,
-            spreadRadius: 5,
-          ),
-        ],
+        color: isDark ? const Color(0xFF11332A) : Colors.white,
+        borderRadius: BorderRadius.circular(24),
+        border: Border.all(color: isDark ? Colors.white12 : const Color(0xFFD3E2DA)),
       ),
       child: Column(
         children: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: themeState.primary.withValues(alpha: 0.15),
-                ),
-              ).animate(onPlay: (ctrl) => ctrl.repeat(reverse: true)).scale(
-                    begin: const Offset(1, 1),
-                    end: const Offset(1.15, 1.15),
-                    duration: const Duration(seconds: 2),
-                  ),
-              Container(
-                width: 86,
-                height: 86,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(
-                    color: themeState.primary,
-                    width: 2.5,
-                  ),
-                ),
-                child: ClipOval(
-                  child: Image.asset(
-                    "assets/dev/dev image.jpg",
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, _, _) => Container(
-                      color: isDark ? Colors.white10 : Colors.black12,
-                      child: Center(
-                        child: Text(
-                          "I",
-                          style: TextStyle(
-                            fontSize: 36,
-                            fontWeight: FontWeight.bold,
-                            color: themeState.primary,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const Gap(20),
-          const Text(
-            "Idris Ghamid",
-            style: TextStyle(fontSize: 26, fontWeight: FontWeight.w900),
-          ),
-          const Gap(4),
           Text(
-            "IDRIS GHAMID",
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
-              color: isDark ? Colors.white54 : Colors.black54,
-              letterSpacing: 2.0,
-            ),
+            "REDESIGNED & MAINTAINED BY",
+            style: TextStyle(fontSize: 11, letterSpacing: 1.6, fontWeight: FontWeight.w800, color: muted),
           ),
+          const Gap(8),
+          Text(
+            "RumiTech Solution",
+            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w900, color: primary),
+          ),
+          const Gap(18),
+          Divider(color: isDark ? Colors.white12 : const Color(0xFFD3E2DA)),
+          const Gap(14),
+          Text(
+            "ORIGINAL APP BY",
+            style: TextStyle(fontSize: 11, letterSpacing: 1.6, fontWeight: FontWeight.w800, color: muted),
+          ),
+          const Gap(6),
+          Text(
+            "IDRISIUM Corp",
+            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w800, color: isDark ? Colors.white : Colors.black87),
+          ),
+          const Gap(2),
+          Text("Founder: Idris Ghamid", style: TextStyle(fontSize: 13, color: muted)),
           const Gap(16),
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
-            decoration: BoxDecoration(
-              color: themeState.primary,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: themeState.primary.withValues(alpha: 0.4),
-                  blurRadius: 10,
-                  offset: const Offset(0, 4),
-                ),
-              ],
-            ),
-            child: const Text(
-              "IDRISIUM Corp",
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w900,
-                color: Colors.white,
-                letterSpacing: 1.5,
-              ),
-            ),
-          ),
-          const Gap(32),
-          Wrap(
-            spacing: 12,
-            runSpacing: 12,
-            alignment: WrapAlignment.center,
-            children: [
-              _buildSocialIcon(
-                themeState,
-                isDark,
-                icon: SimpleIcons.tiktok,
-                url: "https://www.tiktok.com/@idris.ghamid",
-              ),
-              _buildSocialIcon(
-                themeState,
-                isDark,
-                icon: SimpleIcons.instagram,
-                url: "https://www.instagram.com/idris.ghamid",
-              ),
-              _buildSocialIcon(
-                themeState,
-                isDark,
-                icon: SimpleIcons.telegram,
-                url: "https://t.me/IDRV72",
-              ),
-              _buildSocialIcon(
-                themeState,
-                isDark,
-                icon: SimpleIcons.github,
-                url: "https://github.com/IDRISIUM",
-              ),
-              _buildSocialIcon(
-                themeState,
-                isDark,
-                icon: Icons.email_rounded,
-                url: "mailto:idris.ghamid@gmail.com",
-              ),
-              _buildSocialIcon(
-                themeState,
-                isDark,
-                icon: Icons.language_rounded,
-                url: "http://idrisium.linkpc.net/",
-              ),
-            ],
+          Text(
+            "Released under the Apache License 2.0 with a Waqf condition: the app must stay free for everyone and must never be sold or monetised.",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 12, height: 1.5, color: muted),
           ),
         ],
-      ),
-    ).animate().scale(curve: Curves.easeOutBack, duration: const Duration(milliseconds: 600));
-  }
-
-  Widget _buildSocialIcon(
-    ThemeState themeState,
-    bool isDark, {
-    required IconData icon,
-    required String url,
-  }) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(16),
-        onTap: () => launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication),
-        child: Container(
-          width: 48,
-          height: 48,
-          decoration: BoxDecoration(
-            color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.03),
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: isDark ? Colors.white12 : Colors.black12,
-            ),
-          ),
-          child: Icon(icon, size: 22, color: themeState.primary),
-        ),
       ),
     );
   }
@@ -680,7 +468,7 @@ class _AboutAppPageState extends State<AboutAppPage> {
         ),
         const Gap(16),
         Text(
-          "CRAFTED WITH PRECISION BY IDRISIUM",
+          "\u00a9 2026 RUMITECH SOLUTION",
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 10,

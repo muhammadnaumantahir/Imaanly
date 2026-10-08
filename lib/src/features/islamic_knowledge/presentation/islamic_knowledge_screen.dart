@@ -56,7 +56,7 @@ class _IslamicKnowledgeScreenState extends State<IslamicKnowledgeScreen> {
           HeroCard(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             const Icon(Icons.auto_awesome_rounded, color: Color(0xFFE2BC6B), size: 30), const SizedBox(height: 14),
             Text('Learn with purpose', style: Theme.of(context).textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w900, color: Colors.white)), const SizedBox(height: 6),
-            Text('Explore Quran commentary, Hadith, Sunnah, saved ayahs and worship resources already available in Imaanly.', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white70)),
+            Text('Explore Quran commentary, Hadith, Sunnah, saved ayat and worship resources already available in Imaanly.', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Colors.white70)),
           ])), const SizedBox(height: 14),
           TextField(controller: _searchController, decoration: InputDecoration(hintText: 'Search knowledge', prefixIcon: const Icon(Icons.search_rounded), suffixIcon: _searchController.text.isEmpty ? null : IconButton(onPressed: _searchController.clear, icon: const Icon(Icons.clear_rounded)), filled: true, border: OutlineInputBorder(borderRadius: BorderRadius.circular(18), borderSide: BorderSide.none))),
         ]))),

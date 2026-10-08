@@ -9,6 +9,7 @@ import 'package:imaanly/features/dhikr/domain/dhikr_progress.dart';
 import 'package:imaanly/features/worship/data/worship_activity_repository.dart';
 import 'package:imaanly/src/screen/azkar/azkar_share_screen.dart';
 import 'package:imaanly/src/theme/app_colors.dart';
+import 'azkar_category_names.dart';
 
 class AzkarDetailScreen extends StatefulWidget {
   const AzkarDetailScreen({super.key, required this.categoryName, required this.azkarList, required this.primary});
@@ -108,7 +109,7 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
       textDirection: TextDirection.ltr,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(widget.categoryName),
+          title: Text(azkarCategoryTitle(widget.categoryName)),
           actions: [
             IconButton(
               onPressed: () => setState(() => _fontSize = (_fontSize + 2).clamp(20, 48).toDouble()),

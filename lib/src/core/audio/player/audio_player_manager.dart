@@ -473,7 +473,7 @@ class AudioPlayerManager {
       return true;
     }
 
-    log("Need to download some ayahs");
+    log("Need to download some ayat");
     await (_uiBridge?.showOfflineAudioAlert(
           missingCount: surahInfoModel.versesCount - count,
           totalCount: surahInfoModel.versesCount,

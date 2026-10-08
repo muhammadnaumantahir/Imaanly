@@ -365,7 +365,6 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
         buffer.writeln(
           "Shared from the Imaanly app",
         );
-        buffer.writeln("github.com/IDRISIUMCorp/imaanly-quran-flutter-app");
       }
 
       await SharePlus.instance.share(ShareParams(text: buffer.toString()));
@@ -424,7 +423,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                           ),
                         ),
                         Text(
-                          "Share ayahs as an image or text",
+                          "Share ayat as an image or text",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 11.5,
@@ -1525,7 +1524,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                             ),
                           ),
                           Text(
-                            "github.com/IDRISIUM",
+                            "Quran \u2022 Prayer \u2022 Dhikr",
                             style: TextStyle(
                               fontSize: 11,
                               fontWeight: FontWeight.w500,
@@ -1828,7 +1827,7 @@ class _UnifiedShareBottomSheetState extends State<UnifiedShareBottomSheet> {
                         ),
                       ),
                       Text(
-                        "github.com/IDRISIUMCorp/imaanly-quran-flutter-app",
+                        "Quran \u2022 Prayer \u2022 Dhikr",
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w500,

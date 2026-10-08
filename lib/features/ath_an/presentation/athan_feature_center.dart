@@ -5,7 +5,7 @@ import '../../goals/presentation/daily_goals_screen.dart';
 import '../../islamic_calendar/presentation/islamic_calendar_screen.dart';
 import '../../fasting/presentation/fasting_launcher_screen.dart';
 import '../../../src/screen/prayer_time/prayer_time_page.dart';
-import '../../../src/features/quran/presentation/quran_reader_screen.dart';
+import 'package:imaanly/src/screen/mushaf/mushaf_screen.dart';
 import '../../../src/screen/azkar/azkar_categories_screen.dart';
 import '../../../src/screen/qibla/qibla_direction.dart';
 import '../../../src/theme/app_colors.dart';
@@ -26,7 +26,7 @@ class AthanFeatureCenter extends StatelessWidget {
         _Feature('Nearby mosques', 'Open a nearby Masjid search', Icons.location_city_rounded, null, _openMosques),
       ]),
       _FeatureGroup('Quran & remembrance', Icons.auto_stories_rounded, [
-        _Feature('Holy Quran', 'Read, listen, bookmark and study', Icons.menu_book_rounded, const QuranReaderScreen()),
+        _Feature('Holy Quran', 'Read, listen, bookmark and study', Icons.menu_book_rounded, const MushafScreen()),
         _Feature('Digital Tasbih', 'Tap to count with progress and totals', Icons.fingerprint_rounded, const TasbihScreen()),
         _Feature('Azkar & Dhikr', 'Daily remembrance from the Muslim Adhkar', Icons.auto_stories_rounded, const AzkarCategoriesScreen()),
         _Feature('99 Names of Allah', 'Learn and reflect on the Names', Icons.favorite_outline_rounded, const NamesOfAllahScreen()),

@@ -109,7 +109,7 @@ class NotificationService {
   Future<void> scheduleDailyWerdReminder({
     required TimeOfDay time,
     String title = 'Time for your daily wird',
-    String body = 'Don\'t forget your share of the Quran today — light up your heart with its ayahs.',
+    String body = 'Don\'t forget your share of the Quran today — light up your heart with its ayat.',
   }) async {
     await AwesomeNotifications().createNotification(
       content: NotificationContent(

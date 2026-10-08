@@ -174,7 +174,7 @@ class _TransliterationResourcesViewState
         return ManagedResourcesCatalog(
           title: "Manage Latin transliteration",
           description:
-              "Pronunciation of ayahs and words in Latin letters — helpful for non-Arabic speakers.",
+              "Pronunciation of ayat and words in Latin letters — helpful for non-Arabic speakers.",
           emptyMessage: "No pronunciation resources.",
           activationBehavior: ResourceActivationBehavior.multi,
           items: _buildItems(state),

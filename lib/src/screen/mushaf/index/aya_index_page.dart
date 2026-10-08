@@ -164,7 +164,7 @@ class _AyaIndexPageState extends State<AyaIndexPage>
                 Icon(Icons.star_outline_rounded, size: 56, color: Colors.grey.withValues(alpha: 0.4)),
                 const SizedBox(height: 14),
                 Text(
-                  "No starred ayahs",
+                  "No starred ayat",
                   style: TextStyle(
                     fontWeight: FontWeight.w800,
                     fontSize: 16,

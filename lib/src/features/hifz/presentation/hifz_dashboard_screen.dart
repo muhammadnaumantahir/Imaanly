@@ -170,7 +170,7 @@ class _StatsGrid extends StatelessWidget {
       childAspectRatio: 1.6,
       children: [
         _StatCard(label: 'Surahs', value: '${stats.totalSurahsMemorized}', icon: Icons.menu_book_outlined, color: accentColor),
-        _StatCard(label: 'Ayahs', value: '${stats.totalAyahsMemorized}', icon: Icons.format_list_numbered_outlined, color: isDark ? AppColors.successDark : AppColors.success),
+        _StatCard(label: 'Ayat', value: '${stats.totalAyahsMemorized}', icon: Icons.format_list_numbered_outlined, color: isDark ? AppColors.successDark : AppColors.success),
         _StatCard(label: 'Mastery', value: '${stats.overallMasteryPercentage.toStringAsFixed(0)}%', icon: Icons.trending_up_outlined, color: isDark ? AppColors.warningDark : AppColors.warning),
         _StatCard(label: 'Sessions', value: '${stats.totalSessions}', icon: Icons.timer_outlined, color: isDark ? AppColors.darkSecondary : AppColors.lightSecondary),
       ],
@@ -242,7 +242,7 @@ class _ProgressCard extends StatelessWidget {
             Text('${progress.progressPercentage.toStringAsFixed(0)}%', style: Theme.of(context).textTheme.labelSmall?.copyWith(color: isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted)),
           ]),
           SizedBox(height: AppSizes.paddingXS.h),
-          Text('Ayahs ${progress.ayahStart}-${progress.ayahEnd} | Reviews: ${progress.reviewCount} | Accuracy: ${progress.masteryPercentage.toStringAsFixed(0)}%', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted)),
+          Text('Ayat ${progress.ayahStart}-${progress.ayahEnd} | Reviews: ${progress.reviewCount} | Accuracy: ${progress.masteryPercentage.toStringAsFixed(0)}%', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: isDark ? AppColors.darkTextMuted : AppColors.lightTextMuted)),
           SizedBox(height: AppSizes.paddingS.h),
           Align(alignment: AlignmentDirectional.centerEnd, child: FilledButton.tonalIcon(onPressed: onReview, icon: const Icon(Icons.play_arrow_rounded), label: const Text('Review'))),
         ],

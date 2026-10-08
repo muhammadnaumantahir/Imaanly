@@ -194,7 +194,7 @@ class _SettingsPageState extends State<SettingsPage> with SingleTickerProviderSt
                                   title: "Memorization mode",
                                   subtitle: hifzState.isActive
                                       ? "Active — ${hifzState.hideLevel == HifzHideLevel.blurred ? 'Blurred' : hifzState.hideLevel == HifzHideLevel.hidden ? 'Hidden' : 'Visible'}"
-                                      : "Gradually hide ayahs and test your memorization",
+                                      : "Gradually hide ayat and test your memorization",
                                   themeState: themeState,
                                   isDark: isDark,
                                   trailing: Switch(

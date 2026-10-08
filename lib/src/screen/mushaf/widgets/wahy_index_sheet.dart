@@ -173,7 +173,7 @@ class WahyIndexSheetState extends State<WahyIndexSheet>
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        "Page ${localizedNumber(context, page)} · ${localizedNumber(context, s.versesCount)} ayahs",
+                        "Page ${localizedNumber(context, page)} · ${localizedNumber(context, s.versesCount)} ayat",
                         style: TextStyle(
                           fontWeight: FontWeight.w800,
                           color: AppColors.lightTextMuted,

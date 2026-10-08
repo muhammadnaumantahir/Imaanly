@@ -366,7 +366,7 @@ class _SearchScreenState extends State<SearchScreen> {
             children: [
               Icon(FluentIcons.search_24_regular, size: 56, color: const Color(0xFF4B6B5E).withValues(alpha: 0.4)),
               const Gap(16),
-              const Text("Search the ayahs of the Holy Quran", style: TextStyle(color: Color(0xFF4B6B5E), fontSize: 17, fontWeight: FontWeight.w800)),
+              const Text("Search the ayat of the Holy Quran", style: TextStyle(color: Color(0xFF4B6B5E), fontSize: 17, fontWeight: FontWeight.w800)),
               const Gap(8),
               const Text(
                 "You can search by any word or phrase",
@@ -457,7 +457,7 @@ class _SearchScreenState extends State<SearchScreen> {
             children: [
               if (results.isNotEmpty)
                 Text(
-                  "Surahs: $surahsCount, Ayahs: $ayahsCount (word repeats: $occurrences)",
+                  "Surahs: $surahsCount, Ayat: $ayahsCount (word repeats: $occurrences)",
                   style: const TextStyle(color: Color(0xFF3C524A), fontSize: 11, fontWeight: FontWeight.w700),
                 )
               else
@@ -661,7 +661,7 @@ class _SearchScreenState extends State<SearchScreen> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
-                "${localizedNumber(context, verseCount)} ayahs",
+                "${localizedNumber(context, verseCount)} ayat",
                 style: const TextStyle(color: Color(0xFF86A094), fontSize: 13, fontWeight: FontWeight.w800),
               ),
               const Gap(6),

@@ -118,7 +118,7 @@ class _HomeWidgetStudioScreenState extends State<HomeWidgetStudioScreen> with Ti
           indicatorWeight: 3,
           indicatorSize: TabBarIndicatorSize.tab,
           tabs: const [
-            Tab(text: "Ayahs & adhkar"),
+            Tab(text: "Ayat & adhkar"),
             Tab(text: "Prayer times"),
           ],
         ),

@@ -293,7 +293,7 @@ class _WahySideDrawerState extends State<WahySideDrawer>
                                 ),
                                 _AyahDrawerItemData(
                                   title: "Reading statistics",
-                                  subtitle: "Pages, ayahs & streak",
+                                  subtitle: "Pages, ayat & streak",
                                   icon: Icons.bar_chart_rounded,
                                   primary: widget.primary,
                                   onTap: () => _closeThenPush(context, const ReadingStatsScreen()),

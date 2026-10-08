@@ -109,10 +109,10 @@ class _DailyGoalsScreenState extends State<DailyGoalsScreen> {
           ),
           _GoalTile(
             icon: Icons.format_list_numbered_rounded,
-            title: 'Quran ayahs',
+            title: 'Quran ayat',
             value: _goals.quranAyahs,
             onEdit: () => _edit(
-              'Quran ayahs',
+              'Quran ayat',
               _goals.quranAyahs,
               (v) => _goals = _goals.copyWith(quranAyahs: v),
             ),

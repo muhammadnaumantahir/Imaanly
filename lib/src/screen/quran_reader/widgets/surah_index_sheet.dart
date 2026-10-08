@@ -263,7 +263,7 @@ class _SurahIndexSheetState extends State<SurahIndexSheet>
               ),
             ),
             subtitle: Text(
-              "${surah.revelationPlace == "makkah" ? "Meccan" : "Medinan"} • ${localizedNumber(context, surah.versesCount)} ayahs",
+              "${surah.revelationPlace == "makkah" ? "Meccan" : "Medinan"} • ${localizedNumber(context, surah.versesCount)} ayat",
               style: TextStyle(
                 fontSize: 12,
                 color: isDark ? Colors.white60 : Colors.black54,

@@ -6,6 +6,7 @@ import 'package:imaanly/src/theme/controller/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'azkar_category_names.dart';
 
 class AzkarCategoriesScreen extends StatefulWidget {
   final String? initialCategory;
@@ -80,7 +81,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
   List<String> get _filteredCategories {
     final query = _query.trim().toLowerCase();
     if (query.isEmpty) return _categories;
-    return _categories.where((category) => category.toLowerCase().contains(query)).toList();
+    return _categories.where((category) => category.toLowerCase().contains(query) || azkarCategoryTitle(category).toLowerCase().contains(query)).toList();
   }
 
   int _countFor(String category) =>
@@ -266,9 +267,9 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
               const SizedBox(height: 18),
               Row(
                 children: [
-                  _heroStat(Icons.menu_book_rounded, '${_allAzkar.length}', 'Dhikr'),
+                  _heroStat(Icons.menu_book_rounded, '${_allAzkar.length}', 'Adhkar'),
                   const SizedBox(width: 22),
-                  _heroStat(Icons.category_rounded, '${_categories.length}', 'Group'),
+                  _heroStat(Icons.category_rounded, '${_categories.length}', 'Groups'),
                 ],
               ),
             ],
@@ -381,13 +382,13 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(category, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: text, fontWeight: FontWeight.w900, fontSize: 15)),
+                      Text(azkarCategoryTitle(category), maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(color: text, fontWeight: FontWeight.w900, fontSize: 15)),
                       const SizedBox(height: 5),
-                      Text('${_countFor(category)} adhkar', style: TextStyle(color: muted, fontSize: 12, fontWeight: FontWeight.w600)),
+                      Text(adhkarCountLabel(_countFor(category)), style: TextStyle(color: muted, fontSize: 12, fontWeight: FontWeight.w600)),
                     ],
                   ),
                 ),
-                Icon(Icons.arrow_back_ios_new_rounded, size: 15, color: muted),
+                Icon(Icons.arrow_forward_ios_rounded, size: 15, color: muted),
               ],
             ),
           ),
@@ -436,13 +437,13 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
               ),
               const Spacer(),
               Text(
-                category,
+                azkarCategoryTitle(category),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(color: text, fontSize: 15, fontWeight: FontWeight.w900),
               ),
               const SizedBox(height: 4),
-              Text('$count dhikr', style: TextStyle(color: tint, fontSize: 11, fontWeight: FontWeight.w800)),
+              Text(adhkarCountLabel(count), style: TextStyle(color: tint, fontSize: 11, fontWeight: FontWeight.w800)),
             ],
           ),
         ),

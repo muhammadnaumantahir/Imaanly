@@ -685,7 +685,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
         children: [
           _pageTitle(
             "Highlight color",
-            "Choose a highlight color to emphasize ayahs or words.",
+            "Choose a highlight color to emphasize ayat or words.",
           ),
           const Gap(20),
 
@@ -856,7 +856,7 @@ class _PremiumOnboardingScreenState extends State<PremiumOnboardingScreen> {
                           ),
                           const Gap(4),
                           Text(
-                            "I'rab of the ayahs — you can turn it on or off anytime",
+                            "I'rab of the ayat — you can turn it on or off anytime",
                             style: TextStyle(
                               fontSize: 12,
                               color: isDark ? Colors.white60 : Colors.black45,

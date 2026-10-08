@@ -5,7 +5,7 @@ Map<String, List<Map<String, dynamic>>> mutashabihatResources = {
     {
       "language": "Arabic",
       "name": "Mutashabihat of the Holy Quran",
-      "description": "Ayahs similar in meaning, wording, or context",
+      "description": "Ayat similar in meaning, wording, or context",
       "totalEntries": 5277,
       "score": 100,
       "full_path":
@@ -15,8 +15,8 @@ Map<String, List<Map<String, dynamic>>> mutashabihatResources = {
   "similar_ayah": [
     {
       "language": "Arabic",
-      "name": "Similar ayahs",
-      "description": "Ayahs related in theme or meaning",
+      "name": "Similar ayat",
+      "description": "Ayat related in theme or meaning",
       "totalEntries": 4001,
       "score": 100,
       "full_path":
