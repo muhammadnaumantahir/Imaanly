@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'azkar_category_names.dart';
+import 'azkar_translations.dart';
 
 class AzkarCategoriesScreen extends StatefulWidget {
   final String? initialCategory;
@@ -44,6 +45,11 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
       final raw = await rootBundle.loadString(WahyAssets.jsonAzkar);
       final decoded = json.decode(raw);
       final list = List<Map<String, dynamic>>.from(decoded['data']);
+      // The stored explanations and sources are Arabic; show their English translations.
+      for (final item in list) {
+        item['description'] = azkarDescriptionText(item['description']?.toString());
+        item['reference'] = azkarReferenceText(item['reference']?.toString());
+      }
       final categories = <String>[];
 
       for (final item in list) {
