@@ -37,15 +37,18 @@ class QuranScriptFunction {
       final quranBox = await Hive.openBox("script_${scriptType.name}");
       for (String surahKey in quranScriptMap.keys) {
         final Map surahMap = quranScriptMap[surahKey] as Map;
+        final entries = <String, dynamic>{};
         for (final ayahKey in surahMap.keys) {
-          await quranBox.put("$surahKey:$ayahKey", surahMap[ayahKey]);
+          entries["$surahKey:$ayahKey"] = surahMap[ayahKey];
           processed++;
-          if (onProgress != null) {
-            final double temProgress = (processed / 18708) * 100;
-            if (temProgress.toInt() != progress) {
-              progress = temProgress.toInt();
-              onProgress(progress);
-            }
+        }
+        // One batched write per surah is far faster (especially on web) than 18k single writes.
+        await quranBox.putAll(entries);
+        if (onProgress != null) {
+          final double temProgress = (processed / 18708) * 100;
+          if (temProgress.toInt() != progress) {
+            progress = temProgress.toInt();
+            onProgress(progress);
           }
         }
       }
@@ -55,6 +58,17 @@ class QuranScriptFunction {
     }
     await userBox.put("writeQuranScriptVersion", quranScriptVersion);
     await userBox.put("writeQuranScript", true);
+  }
+
+  /// Imports the bundled Quran script into local storage the first time it is needed.
+  static Future<void> ensureQuranScriptWritten({
+    Function(int progress)? onProgress,
+  }) async {
+    final userBox = Hive.box("user");
+    final written = userBox.get("writeQuranScript", defaultValue: false) == true &&
+        userBox.get("writeQuranScriptVersion") == quranScriptVersion;
+    if (written) return;
+    await writeQuranScript(onProgress: onProgress);
   }
 
   static Future<void> initQuranScript(QuranScriptType type) async {

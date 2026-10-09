@@ -86,10 +86,10 @@ Future<void> _showWahyBookmarkColorSheet({
   final bg = isDark ? const Color(0xFF1A1A1A) : const Color(0xFFF7F1E6);
   final card = isDark ? const Color(0xFF252525) : const Color(0xFFFFF9F2);
   final colors = <String, ({String name, Color color})>{
-    "red": (name: "Ø§Ù„Ø£Ø­Ù…Ø±", color: const Color(0xFFB3261E)),
-    "yellow": (name: "Ø§Ù„Ø£ØµÙØ±", color: const Color(0xFFB68A00)),
-    "green": (name: "Ø§Ù„Ø£Ø®Ø¶Ø±", color: themeState.primary),
-    "blue": (name: "Ø§Ù„Ø£Ø²Ø±Ù‚", color: const Color(0xFF2962FF)),
+    "red": (name: "Red", color: const Color(0xFFB3261E)),
+    "yellow": (name: "Yellow", color: const Color(0xFFB68A00)),
+    "green": (name: "Green", color: themeState.primary),
+    "blue": (name: "Blue", color: const Color(0xFF2962FF)),
   };
 
   await showModalBottomSheet(
@@ -300,14 +300,14 @@ Widget getAyahByAyahTafsirCard({
 
       TafsirBookModel? book;
       for (final b in selected) {
-        if (b.name.contains("Ø§Ù„Ø³Ø¹Ø¯ÙŠ")) {
+        if (b.name.contains("السعدي")) {
           book = b;
           break;
         }
       }
       for (final b in selected) {
         if (book != null) break;
-        if (b.name.contains("Ø§Ù„Ù…ÙŠØ³Ø±")) {
+        if (b.name.contains("الميسر")) {
           book = b;
           break;
         }
@@ -421,7 +421,7 @@ Widget getAyahByAyahTafsirCard({
                         children: [
                           Expanded(
                             child: Text(
-                              _defaultTafsirBookNameCache[ayahKey] ?? "Ø§Ù„ØªÙØ³ÙŠØ±",
+                              _defaultTafsirBookNameCache[ayahKey] ?? "Tafsir",
                               textAlign: TextAlign.right,
                               style: TextStyle(
                                 fontSize: 16,
@@ -438,7 +438,7 @@ Widget getAyahByAyahTafsirCard({
                                 Clipboard.setData(ClipboardData(text: text));
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: const Text("ØªÙ… Ù†Ø³Ø® Ø§Ù„ØªÙØ³ÙŠØ±"),
+                                    content: const Text("Tafsir copied"),
                                     behavior: SnackBarBehavior.floating,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
@@ -1100,6 +1100,11 @@ Align getFootNoteWidget(
   );
 }
 
+/// Translation languages that are written right to left.
+const Set<String> _rtlTranslationLanguages = {
+  "urdu", "arabic", "persian", "farsi", "pashto", "sindhi", "uyghur", "kurdish", "hebrew", "dhivehi",
+};
+
 Widget getTranslationWithFootNoteWidget(
   BuildContext context,
   List<String> translationList,
@@ -1114,20 +1119,28 @@ Widget getTranslationWithFootNoteWidget(
       final String translation = translationList[index];
       final Map<int, String> footNote = footNoteAsStringMap[index];
       final TranslationBookModel? bookModel = translationBookInfoList[index];
+      final String languageName = (bookModel?.language ?? "").toLowerCase();
+      final bool isRtlTranslation = _rtlTranslationLanguages.contains(languageName);
 
       return Column(
         children: [
           SizedBox(
             width: MediaQuery.of(context).size.width,
-            child: Html(
-              data: translation.capitalize(),
-              style: {
-                "*": Style(
-                  fontSize: FontSize(quranViewState.translationFontSize),
-                  margin: Margins.zero,
-                  padding: HtmlPaddings.zero,
-                ),
-              },
+            child: Directionality(
+              textDirection: isRtlTranslation ? TextDirection.rtl : TextDirection.ltr,
+              child: Html(
+                data: translation.capitalize(),
+                style: {
+                  "*": Style(
+                    fontSize: FontSize(quranViewState.translationFontSize),
+                    margin: Margins.zero,
+                    padding: HtmlPaddings.zero,
+                    direction: isRtlTranslation ? TextDirection.rtl : TextDirection.ltr,
+                    textAlign: isRtlTranslation ? TextAlign.right : TextAlign.left,
+                    fontFamily: languageName == "urdu" ? "IndopakNastaleeq" : null,
+                  ),
+                },
+              ),
             ),
           ),
 
@@ -1238,7 +1251,7 @@ Widget getToolbarWidget(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
               child: Text(
                 showFullKey == true
-                    ? "${getSurahName(context, surahInfoModel.id)}\nØ§Ù„Ø¢ÙŠØ© ${localizedNumber(context, ayahNumber)}"
+                    ? "${getSurahName(context, surahInfoModel.id)}\nAyah ${localizedNumber(context, ayahNumber)}"
                     : localizedNumber(context, ayahNumber),
                 style: TextStyle(
                   color: Colors.black87,
@@ -1391,7 +1404,7 @@ Widget getToolbarWidget(
                       }
                       await box.put("wahy_starred", list);
                     },
-                    tooltip: isStarred ? "Ø¥Ø²Ø§Ù„Ø© Ù…Ù† Ø§Ù„Ù…ÙØ¶Ù„Ø©" : "Ø¥Ø¶Ø§ÙØ© Ù„Ù„Ù…ÙØ¶Ù„Ø©",
+                    tooltip: isStarred ? "Remove from favorites" : "Add to favorites",
                     icon: Icon(
                       isStarred
                           ? FluentIcons.star_24_filled

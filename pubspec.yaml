@@ -144,6 +144,8 @@ flutter:
     - assets/dev/dev image.jpg
     - assets/wahy/json/azkar.json
     - assets/wahy/json/Tafseer_Al_Saddi.json
+    - assets/wahy/en.json.gz
+    - assets/translations/
     - assets/quran_script/
     - assets/meta_data/
     - assets/fonts/google_fonts/

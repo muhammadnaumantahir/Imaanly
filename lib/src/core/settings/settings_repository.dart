@@ -105,11 +105,11 @@ class LocalSettingsRepository implements SettingsRepository {
   QuranScriptType get selectedQuranScriptType {
     final scriptName = _storage.userBox.get(
       _selectedScriptTypeKey,
-      defaultValue: QuranScriptType.values.first.name,
+      defaultValue: QuranScriptType.uthmani.name,
     );
     return QuranScriptType.values.firstWhere(
       (element) => element.name == scriptName,
-      orElse: () => QuranScriptType.values.first,
+      orElse: () => QuranScriptType.uthmani,
     );
   }
 

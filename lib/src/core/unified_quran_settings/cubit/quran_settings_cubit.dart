@@ -57,10 +57,10 @@ class QuranSettingsCubit extends Cubit<QuranSettingsState> {
       (e) => e.name == layoutModeString,
       orElse: () => MushafLayoutMode.singlePage,
     );
-    final fontFamilyString = _box.get(_kFontFamily, defaultValue: QuranFontFamily.qpcHafs.name) as String;
+    final fontFamilyString = _box.get(_kFontFamily, defaultValue: QuranFontFamily.meQuranVolt.name) as String;
     final fontFamily = QuranFontFamily.values.firstWhere(
       (e) => e.name == fontFamilyString,
-      orElse: () => QuranFontFamily.qpcHafs,
+      orElse: () => QuranFontFamily.meQuranVolt,
     );
 
     emit(

@@ -71,7 +71,7 @@ Then reference them here, e.g. <img src="docs/screenshots/home.png" width="22%" 
 
 ### Ayah Library
 Open any ayah to study it in depth, with tabs for:
-- **Translation**, including word-by-word translation
+- **Translation** — English (Saheeh International) is bundled and shown by default, with Urdu (Fateh Muhammad Jalandhry) as a built-in option; more languages can be downloaded. Includes word-by-word translation
 - **I'rab** (grammatical analysis)
 - **Morphology** and word roots
 - **Qira'at** with differences between readings
@@ -198,7 +198,7 @@ flutter test
 
 - **Tafsir and translations**: [Quranic Universal Library](https://github.com/quran/quran.com-api)
 - **Recitations**: [EveryAyah.com](https://everyayah.com) and [Quran.com](https://quran.com)
-- **Quran metadata**: [Tanzil Project](https://tanzil.net)
+- **Quran metadata and Urdu translation**: [Tanzil Project](https://tanzil.net) (Urdu text by Fateh Muhammad Jalandhry, distributed unmodified)
 
 ## Contributing
 

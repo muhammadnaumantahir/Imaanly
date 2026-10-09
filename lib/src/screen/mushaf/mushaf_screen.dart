@@ -61,6 +61,9 @@ import "package:imaanly/src/resources/quran_resources/quran_pages_info.dart";
 import "package:imaanly/src/utils/basic_functions.dart";
 import "package:imaanly/src/theme/app_colors.dart";
 import "package:imaanly/src/widget/share/unified_share_bottom_sheet.dart";
+import "package:imaanly/src/utils/quran_resources/bundled_translations.dart";
+import "package:imaanly/src/utils/quran_resources/default_offline_resources.dart";
+import "package:imaanly/src/utils/quran_resources/quran_translation_function.dart";
 part 'mushaf_share_extension.dart';
 part 'mushaf_pronunciation_extension.dart';
 
@@ -110,10 +113,45 @@ class _MushafRootState extends State<_MushafRoot> {
   Future<void> _ensureQuranScriptReady() async {
     if (_quranScriptReady) return;
     _quranScriptInitFuture ??= () async {
+      // First run: the Quran text and bundled translations are imported once.
+      await QuranScriptFunction.ensureQuranScriptWritten();
       await QuranScriptFunction.initQuranScript(QuranScriptType.uthmani);
+      // Tafsir and translations are optional extras; the Quran must open even if one fails.
+      try {
+        await DefaultOfflineResources.ensureInstalled();
+      } catch (_) {}
+      try {
+        await BundledTranslations.ensureInstalled();
+        await QuranTranslationFunction.init();
+      } catch (_) {}
       _quranScriptReady = true;
+      if (mounted) setState(() {});
     }();
     await _quranScriptInitFuture;
+  }
+
+  Widget _buildPreparingScreen(BuildContext context) {
+    return Scaffold(
+      backgroundColor: _bg(context),
+      body: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const CircularProgressIndicator(),
+            const SizedBox(height: 18),
+            Text(
+              "Preparing the Quran for first use",
+              style: TextStyle(color: _onBg(context), fontSize: 16, fontWeight: FontWeight.w700),
+            ),
+            const SizedBox(height: 6),
+            Text(
+              "This happens only once.",
+              style: TextStyle(color: _onBg(context).withValues(alpha: 0.7), fontSize: 13),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
 
@@ -334,6 +372,7 @@ class _MushafRootState extends State<_MushafRoot> {
 
   @override
   Widget build(BuildContext context) {
+    if (!_quranScriptReady) return _buildPreparingScreen(context);
     final themeState = context.read<ThemeCubit>().state;
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final bgColor = isDark ? Theme.of(context).colorScheme.surface : AppColors.lightBackground;
