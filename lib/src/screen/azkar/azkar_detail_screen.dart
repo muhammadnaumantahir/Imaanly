@@ -184,6 +184,15 @@ class _AzkarDetailScreenState extends State<AzkarDetailScreen> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(fontSize: _fontSize, height: 1.9, fontWeight: FontWeight.w700, color: cs.onSurface),
                                   ),
+                                  if (item['meaning']?.toString().isNotEmpty == true)
+                                    Padding(
+                                      padding: const EdgeInsets.only(top: 16),
+                                      child: Text(
+                                        item['meaning'].toString(),
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(color: cs.onSurface.withValues(alpha: 0.82), height: 1.55, fontSize: 14.5),
+                                      ),
+                                    ),
                                   if (item['description']?.toString().isNotEmpty == true)
                                     Padding(
                                       padding: const EdgeInsets.only(top: 18),

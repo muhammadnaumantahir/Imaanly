@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'azkar_category_names.dart';
+import 'azkar_meanings.dart';
 import 'azkar_translations.dart';
 
 class AzkarCategoriesScreen extends StatefulWidget {
@@ -49,6 +50,7 @@ class _AzkarCategoriesScreenState extends State<AzkarCategoriesScreen> {
       for (final item in list) {
         item['description'] = azkarDescriptionText(item['description']?.toString());
         item['reference'] = azkarReferenceText(item['reference']?.toString());
+        item['meaning'] = azkarMeaningText(item['zekr']?.toString());
       }
       final categories = <String>[];
 
