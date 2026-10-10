@@ -93,7 +93,7 @@ Share an ayah as text or as a customizable, designed image.
 - **Qibla compass** with a gold-ringed dial, distance to the Kaaba, calibration help and a glow when you are aligned.
 - **Prayer Tracker** — a saved record of your five daily prayers with current and best streaks, a 14-day history, and the ability to fill in missed days.
 - **Digital Tasbih** with six dhikr, targets of 33, 99, 100 or none, round counting, vibration feedback, daily and all-time totals, a 7-day chart with streak, undo and reset.
-- **Azkar** — morning, evening, sleep, prayer and more, each with a ring-style counter and references.
+- **Azkar** — all 133 Hisn al-Muslim chapters with English titles, the Arabic text, an English meaning under every supplication, translated virtue notes and sources, and a ring-style counter.
 - **Sunnah guides** for prayer and wudu with evidence and scholars' statements.
 - **Islamic calendar**, **prayer tracker**, **fasting tools**, **Zakat calculator**, **99 Names of Allah** and a **Hajj & Umrah** guide.
 - **Daily goals**, **Khatma** planning, reading statistics and a worship dashboard.
